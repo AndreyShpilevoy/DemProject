@@ -11,23 +11,21 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 {
     public static class BbCodeHelper
     {
-        private static readonly Dictionary<Regex, string> BbCodes;
-        private static readonly IDataLoadService DataLoadService;
+        public static Dictionary<Regex, string> BbCodes;
 
         static BbCodeHelper()
         {
             var dataLoadService = ServiceLocator.Current.GetInstance<IDataLoadService>();
-            DataLoadService = dataLoadService;
             BbCodes = new Dictionary<Regex, string>();
-            FillTheDictionaryBbcodes();
+            FillTheDictionaryBbcodes(dataLoadService);
         }
 
 
-        private static void FillTheDictionaryBbcodes()
+        private static void FillTheDictionaryBbcodes(IDataLoadService dataLoadService)
         {
             try
             {
-                var bbCodeList = DataLoadService.GetAllBbCodeModels();
+                var bbCodeList = dataLoadService.GetAllBbCodeModels();
 
                 foreach (var bbcode in bbCodeList)
                 {

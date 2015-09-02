@@ -112,9 +112,10 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="GetResultsTests.cs" />
-    <Compile Include="IntegrationTestBase.cs" />
+    <Compile Include="Tests\GetResultsTests.cs" />
+    <Compile Include="BaseTest\IntegrationTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\ModelsHelpersTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

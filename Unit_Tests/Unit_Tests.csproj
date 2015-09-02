@@ -114,9 +114,10 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="ExtentionMethodsTests.cs" />
-    <Compile Include="UnitTestBase.cs" />
-    <Compile Include="ViewHelpersTests.cs" />
+    <Compile Include="Tests\ExtentionMethodsTests.cs" />
+    <Compile Include="BaseTest\UnitTestBase.cs" />
+    <Compile Include="Tests\ModelsHelpersTests.cs" />
+    <Compile Include="Tests\ViewHelpersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +142,7 @@
       <Name>DEM_MVC_Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

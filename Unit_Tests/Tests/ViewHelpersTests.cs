@@ -1,12 +1,13 @@
 ﻿using DEM_MVC.Services;
+using Unit_Tests.BaseTest;
 using Xunit;
 
-namespace Unit_Tests
+namespace Unit_Tests.Tests
 {
     public class ViewHelpersTests : UnitTestBase
     {
         [Fact]
-        public void IsSelectRightEnding()
+        public void IsViewHelper_SelectRightEnding()
         {
             var one = ViewHelper.SelectRightEnding(1, "вариант", "варианта", "вариантов");
             var two = ViewHelper.SelectRightEnding(3, "вариант", "варианта", "вариантов");
@@ -17,7 +18,7 @@ namespace Unit_Tests
         }
 
         [Fact]
-        public void IsIsOdd()
+        public void IsViewHelper_IsOdd()
         {
             var itsOdd = ViewHelper.IsOdd(1);
             var itsNotOdd = ViewHelper.IsOdd(2);

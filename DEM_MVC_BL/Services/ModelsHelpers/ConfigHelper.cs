@@ -12,14 +12,12 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 {
     public static class ConfigHelper
     {
-        private static readonly IDataLoadService DataLoadService;
-        private static readonly List<ConfigModel> ConfigModels;
+        public static List<ConfigModel> ConfigModels;
 
         static ConfigHelper()
         {
             var dataLoadService = ServiceLocator.Current.GetInstance<IDataLoadService>();
-            DataLoadService = dataLoadService;
-            ConfigModels = DataLoadService.GetAllConfigModels();
+            ConfigModels = dataLoadService.GetAllConfigModels();
         }
 
         public static int GetPostsOnPageCount()
@@ -32,9 +30,9 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 
         public static int GetTopicsOnPageCount()
         {
-            var postsOnPage = ConfigModels.FirstOrDefault(x => x.ConfigName == "topicsOnPage");
-            if (postsOnPage == null) return 50;
-            var result = Int32.Parse(postsOnPage.ConfigValue);
+            var topicsOnPage = ConfigModels.FirstOrDefault(x => x.ConfigName == "topicsOnPage");
+            if (topicsOnPage == null) return 50;
+            var result = Int32.Parse(topicsOnPage.ConfigValue);
             return result == 0 ? 1 : result;
         }
     }

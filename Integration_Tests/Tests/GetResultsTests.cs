@@ -1,14 +1,15 @@
 ﻿using System.Data;
 using DEM_MVC_DAL.Interfaces.IRepositories;
+using Integration_Tests.BaseTest;
 using Microsoft.Practices.ServiceLocation;
 using Xunit;
 
-namespace Integration_Tests
+namespace Integration_Tests.Tests
 {
     public class GetResultsTests : IntegrationTestBase
     {
         [Fact]
-        public void IsGetAllForums()
+        public void IsIForumEntityRepository_GetAllForums()
         {
             DataTable dataTable;
             using (var unitOfWork = UnitOfWorkFactory.Create())
@@ -20,7 +21,7 @@ namespace Integration_Tests
         }
 
         [Fact]
-        public void IsGetForumById()
+        public void IsIForumEntityRepository_GetForumById()
         {
             DataTable dataTable;
             using (var unitOfWork = UnitOfWorkFactory.Create())
@@ -32,7 +33,7 @@ namespace Integration_Tests
         }
 
         [Fact]
-        public void IsGetAllTopicsByForumId()
+        public void IsITopicEntityRepository_GetAllTopicsByForumId()
         {
             DataTable dataTable;
             using (var unitOfWork = UnitOfWorkFactory.Create())
@@ -44,7 +45,7 @@ namespace Integration_Tests
         }
 
         [Fact]
-        public void IsGetTopicById()
+        public void IsITopicEntityRepository_GetTopicById()
         {
             DataTable dataTable;
             using (var unitOfWork = UnitOfWorkFactory.Create())
@@ -56,7 +57,7 @@ namespace Integration_Tests
         }
 
         [Fact]
-        public void IsGetAllPostsWithUsersByTopicId()
+        public void IsIPostEntityRepository_GetAllPostsWithUsersByTopicId()
         {
             DataTable dataTableUsers;
             DataTable dataTablePosts;
@@ -73,7 +74,7 @@ namespace Integration_Tests
         }
 
         [Fact]
-        public void IsGetAllPollOptionsByTopicId()
+        public void IsIPollEntityRepository_GetAllPollOptionsByTopicId()
         {
             DataTable dataTablePolls;
             DataTable dataTablePollsOptions;
@@ -90,7 +91,7 @@ namespace Integration_Tests
         }
 
         [Fact]
-        public void IsGetAllConfigs()
+        public void IsIConfigEntityRepository_GetAllConfigs()
         {
             DataTable dataTableConfigs;
             using (var unitOfWork = UnitOfWorkFactory.Create())
@@ -102,7 +103,7 @@ namespace Integration_Tests
         }
 
         [Fact]
-        public void IsGetAllBbCodes()
+        public void IsIBbCodeEntityRepository_GetAllBbCodes()
         {
             DataTable dataTableBbCodes;
             using (var unitOfWork = UnitOfWorkFactory.Create())

@@ -96,21 +96,4 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             return null;
         }
     }
-
-    public class PollModelHelper : IPollModelHelper
-    {
-        public List<PollOptionViewModel> CalculatePollOptionTotalPercent(List<PollOptionViewModel> pollsOptionViewModels)
-        {
-            double totalVotes = pollsOptionViewModels.Sum(x => x.PollOptionTotal);
-            foreach (var pollsOptionViewModel in pollsOptionViewModels)
-            {
-                pollsOptionViewModel.PollOptionTotalPercent = (100 * pollsOptionViewModel.PollOptionTotal) / totalVotes;
-            }
-            return pollsOptionViewModels;
-        }
-    }
-
-    public class PostModelHelper : IPostModelHelper
-    {
-    }
 }

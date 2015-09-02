@@ -69,6 +69,8 @@
     <Compile Include="Models\WarningModels.cs" />
     <Compile Include="Services\ModelsHelpers\ConfigHelper.cs" />
     <Compile Include="Services\ModelsHelpers\BbCodeHelper.cs" />
+    <Compile Include="Services\ModelsHelpers\PostModelHelper.cs" />
+    <Compile Include="Services\ModelsHelpers\PollModelHelper.cs" />
     <Compile Include="Services\ModelsHelpers\ForumEntityHelper.cs" />
     <Compile Include="Models\ForumModels.cs" />
     <Compile Include="Models\TopicModels.cs" />

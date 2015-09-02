@@ -9,7 +9,7 @@ using DEM_MVC_DAL.Interfaces.IUnitOfWork;
 using DEM_MVC_Infrastructure.Autofac;
 using Microsoft.Practices.ServiceLocation;
 
-namespace Integration_Tests
+namespace Integration_Tests.BaseTest
 {
     public class IntegrationTestBase
     {
