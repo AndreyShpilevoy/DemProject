@@ -1,0 +1,38 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/themes/base/css")
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div id="wrap">
+        <div id="headerMargin"></div>
+        <div id="header"></div>
+        <div class="divCenter">Форум в разработке. @Html.ActionLink("Перейти во временный чат", "Chat", "Forum") или в <a href="http://vk.com/exmachina2">группу в ВК</a>.</div>
+        <ul id="main-menu">
+            <li>
+                <a href="/">Форумы</a>
+            </li>
+            <li>
+                @Html.ActionLink("Временный чат", "Chat", "Forum")
+            </li>
+            <li>
+                <a href="http://vk.com/exmachina2">Группа в ВК</a>
+            </li>
+            <li style="float: right; border-left: 0; height: 25px;"></li>
+        </ul>
+        @RenderBody()
+    </div>
+    <div id="footerWrap">
+        <div id="footer"></div>
+    </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/custom")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

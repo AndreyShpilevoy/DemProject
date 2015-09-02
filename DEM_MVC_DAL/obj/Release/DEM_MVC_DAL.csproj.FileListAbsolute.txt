@@ -1,0 +1,14 @@
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\bin\Release\DEM_MVC_DAL.dll
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\bin\Release\DEM_MVC_DAL.pdb
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\bin\Release\Autofac.dll
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\bin\Release\Microsoft.Practices.ServiceLocation.dll
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\bin\Release\NLog.dll
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\bin\Release\Autofac.xml
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\bin\Release\Microsoft.Practices.ServiceLocation.pdb
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\bin\Release\Microsoft.Practices.ServiceLocation.xml
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\bin\Release\NLog.xml
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\obj\Release\DEM_MVC_DAL.dll
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\obj\Release\DEM_MVC_DAL.pdb
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\obj\Release\DEM_MVC_DAL.csprojResolveAssemblyReference.cache
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\bin\Release\DEM_MVC_Infrastructure.dll
+D:\kto4dem\DEM_MVC\DEM_MVC_DAL\bin\Release\DEM_MVC_Infrastructure.pdb

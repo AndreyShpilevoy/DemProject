@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DEM_MVC_BL.Models.ForumTableViewModel>
+
+@foreach (var forumCategory in Model)
+{
+    <div class="forumsContainer">
+        <div class="forumsCategory">
+            <div class="forumsCategoryName">
+                @Html.ActionLink(forumCategory.Title, "ViewForum", "Forum", new { forumId = forumCategory.ForumId }, null)
+            </div>
+            <div class="forumsCategoryTopics">
+                Темы
+            </div>
+            <div class="forumsCategoryPosts">
+                Сообщения
+            </div>
+            <div class="forumsCategoryLastPost">
+                Последнее сообщение
+            </div>
+        </div>
+        <div class="forumsCategoryBody">
+            @foreach (var forum in forumCategory.SubForums)
+            {
+                <div class="forum">
+                    <div class="forumsCategoryName">
+                        <div>
+                            @Html.ActionLink(forum.Title, "ViewForum", "Forum", new { forumId = forum.ForumId }, null)
+                        </div>
+                        <div>
+                            @forum.Description
+                        </div>
+                        @if (forum.DisplaySubForums && forum.SubForums.Count > 0)
+                        {
+                            <div>
+                                Подразделы:
+                                @foreach (var subForum in forum.SubForums)
+                                {
+                                    <span>@Html.ActionLink(subForum.Title, "ViewForum", "Forum", new { forumId = subForum.ForumId }, null) </span>
+                                }
+                            </div>
+                        }
+                    </div>
+                    <div class="forumsCategoryTopics">
+                        @forum.TopicsCount
+                    </div>
+                    <div class="forumsCategoryPosts">
+                        @forum.PostsCount
+                    </div>
+                    <div class="forumsCategoryLastPost">
+                        @if (String.IsNullOrWhiteSpace(forum.Username))
+                        {
+                            <div>Нет тем</div>
+                        }
+                        else
+                        {
+                            <div>
+                                @forum.LastTopicTitle
+                            </div>
+                            <div>
+                                @forum.LastPostTime <span style="color: #@forum.Groupcolor">@forum.Username</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
