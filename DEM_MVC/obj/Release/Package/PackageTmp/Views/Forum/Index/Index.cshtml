@@ -5,3 +5,17 @@
 }
 
 @Html.Action("ShowForumTable", "Forum")
+
+@*temporal block start*@
+@*todo delete temporal block*@
+<script>
+    $(function () {
+        $("#dialog").dialog();
+    });
+</script>
+<div id="dialog" title="Basic dialog">
+    <p>Сайт находится в разработке.</p>
+    <p>Регистрация, аунтификация и отправка сообщений ещё не реализованы.</p>
+    <p>Пожжалуйста, используйте для общения @Html.ActionLink("чат", "Chat", "Forum").</p>
+</div>
+@*temporal block end*@

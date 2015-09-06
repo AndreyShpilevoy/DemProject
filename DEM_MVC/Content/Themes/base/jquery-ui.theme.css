@@ -8,14 +8,14 @@
  *
  * http://api.jqueryui.com/category/theming/
  *
- * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=%22Lucida%20Grande%22%2C%22Trebuchet%20MS%22%2CVerdana%2CHelvetica%2CArial%2Csans-serif&fwDefault=normal&fsDefault=1.3em&cornerRadius=0px&bgColorHeader=%23f17c1c&bgTextureHeader=flat&bgImgOpacityHeader=100&borderColorHeader=%23939393&fcHeader=%23ffffff&iconColorHeader=%23ffffff&bgColorContent=%236c6c6c&bgTextureContent=flat&bgImgOpacityContent=100&borderColorContent=%23939393&fcContent=%23f5f4f1&iconColorContent=%23f5f4f1&bgColorDefault=%234c4c4c&bgTextureDefault=flat&bgImgOpacityDefault=100&borderColorDefault=%23969696&fcDefault=%23fbeab2&iconColorDefault=%23fbeab2&bgColorHover=%235c5c5c&bgTextureHover=flat&bgImgOpacityHover=100&borderColorHover=%23969696&fcHover=%23fbeab2&iconColorHover=%23fbeab2&bgColorActive=%236c6c6c&bgTextureActive=flat&bgImgOpacityActive=100&borderColorActive=%23969696&fcActive=%23fbeab2&iconColorActive=%23fbeab2&bgColorHighlight=%23fbeab2&bgTextureHighlight=flat&bgImgOpacityHighlight=100&borderColorHighlight=%23f2c01a&fcHighlight=%23363636&iconColorHighlight=%232e83ff&bgColorError=%23ecd5d8&bgTextureError=flat&bgImgOpacityError=100&borderColorError=%23db8180&fcError=%23000000&iconColorError=%23dd0000&bgColorOverlay=%23000000&bgTextureOverlay=flat&bgImgOpacityOverlay=0&opacityOverlay=20&bgColorShadow=%23121212&bgTextureShadow=flat&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=6px&offsetTopShadow=-6px&offsetLeftShadow=-6px&cornerRadiusShadow=0px
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=%22Lucida%20Grande%22%2C%20%22Trebuchet%20MS%22%2C%20Verdana%2C%20Helvetica%2C%20Arial%2C%20sans-serif&fwDefault=bold&fsDefault=1.3em&cornerRadius=0px&bgColorHeader=%23f17c1c&bgTextureHeader=flat&bgImgOpacityHeader=0&borderColorHeader=%23939393&fcHeader=%23ffffff&iconColorHeader=%23ffffff&bgColorContent=%23606060&bgTextureContent=flat&bgImgOpacityContent=0&borderColorContent=%23939393&fcContent=%23f5f4f1&iconColorContent=%23f5f4f1&bgColorDefault=%23464646&bgTextureDefault=flat&bgImgOpacityDefault=0&borderColorDefault=%23939393&fcDefault=%23fbeab2&iconColorDefault=%23fbeab2&bgColorHover=%23707070&bgTextureHover=flat&bgImgOpacityHover=100&borderColorHover=%23939393&fcHover=%23fbeab2&iconColorHover=%23fbeab2&bgColorActive=%23606060&bgTextureActive=flat&bgImgOpacityActive=30&borderColorActive=%23939393&fcActive=%23fbeab2&iconColorActive=%23fbeab2&bgColorHighlight=%23ffffff&bgTextureHighlight=flat&bgImgOpacityHighlight=80&borderColorHighlight=%23aaaaaa&fcHighlight=%23000000&iconColorHighlight=%23f17c1c&bgColorError=%23ECD5D8&bgTextureError=flat&bgImgOpacityError=100&borderColorError=%23db8180&fcError=%23000000&iconColorError=%23a83300&bgColorOverlay=%23606060&bgTextureOverlay=flat&bgImgOpacityOverlay=50&opacityOverlay=50&bgColorShadow=%23343434&bgTextureShadow=flat&bgImgOpacityShadow=30&opacityShadow=50&thicknessShadow=5px&offsetTopShadow=-5px&offsetLeftShadow=-5px&cornerRadiusShadow=0px
  */
 
 
 /* Component containers
 ----------------------------------*/
 .ui-widget {
-	font-family: "Lucida Grande","Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
+	font-family: "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
 	font-size: 1.3em;
 }
 .ui-widget .ui-widget {
@@ -25,12 +25,12 @@
 .ui-widget select,
 .ui-widget textarea,
 .ui-widget button {
-	font-family: "Lucida Grande","Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
+	font-family: "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
 	font-size: 1em;
 }
 .ui-widget-content {
 	border: 1px solid #939393;
-	background: #6c6c6c url("images/ui-bg_flat_100_6c6c6c_40x100.png") 50% 50% repeat-x;
+	background: #606060 url("images/ui-bg_flat_0_606060_40x100.png") 50% 50% repeat-x;
 	color: #f5f4f1;
 }
 .ui-widget-content a {
@@ -38,7 +38,7 @@
 }
 .ui-widget-header {
 	border: 1px solid #939393;
-	background: #f17c1c url("images/ui-bg_flat_100_f17c1c_40x100.png") 50% 50% repeat-x;
+	background: #f17c1c url("images/ui-bg_flat_0_f17c1c_40x100.png") 50% 50% repeat-x;
 	color: #ffffff;
 	font-weight: bold;
 }
@@ -51,9 +51,9 @@
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
-	border: 1px solid #969696;
-	background: #4c4c4c url("images/ui-bg_flat_100_4c4c4c_40x100.png") 50% 50% repeat-x;
-	font-weight: normal;
+	border: 1px solid #939393;
+	background: #464646 url("images/ui-bg_flat_0_464646_40x100.png") 50% 50% repeat-x;
+	font-weight: bold;
 	color: #fbeab2;
 }
 .ui-state-default a,
@@ -68,9 +68,9 @@
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
-	border: 1px solid #969696;
-	background: #5c5c5c url("images/ui-bg_flat_100_5c5c5c_40x100.png") 50% 50% repeat-x;
-	font-weight: normal;
+	border: 1px solid #939393;
+	background: #707070 url("images/ui-bg_flat_100_707070_40x100.png") 50% 50% repeat-x;
+	font-weight: bold;
 	color: #fbeab2;
 }
 .ui-state-hover a,
@@ -87,9 +87,9 @@
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-	border: 1px solid #969696;
-	background: #6c6c6c url("images/ui-bg_flat_100_6c6c6c_40x100.png") 50% 50% repeat-x;
-	font-weight: normal;
+	border: 1px solid #939393;
+	background: #606060 url("images/ui-bg_flat_30_606060_40x100.png") 50% 50% repeat-x;
+	font-weight: bold;
 	color: #fbeab2;
 }
 .ui-state-active a,
@@ -104,20 +104,20 @@
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
-	border: 1px solid #f2c01a;
-	background: #fbeab2 url("images/ui-bg_flat_100_fbeab2_40x100.png") 50% 50% repeat-x;
-	color: #363636;
+	border: 1px solid #aaaaaa;
+	background: #ffffff url("images/ui-bg_flat_80_ffffff_40x100.png") 50% 50% repeat-x;
+	color: #000000;
 }
 .ui-state-highlight a,
 .ui-widget-content .ui-state-highlight a,
 .ui-widget-header .ui-state-highlight a {
-	color: #363636;
+	color: #000000;
 }
 .ui-state-error,
 .ui-widget-content .ui-state-error,
 .ui-widget-header .ui-state-error {
 	border: 1px solid #db8180;
-	background: #ecd5d8 url("images/ui-bg_flat_100_ecd5d8_40x100.png") 50% 50% repeat-x;
+	background: #ECD5D8 url("images/ui-bg_flat_100_ECD5D8_40x100.png") 50% 50% repeat-x;
 	color: #000000;
 }
 .ui-state-error a,
@@ -179,11 +179,11 @@
 	background-image: url("images/ui-icons_fbeab2_256x240.png");
 }
 .ui-state-highlight .ui-icon {
-	background-image: url("images/ui-icons_2e83ff_256x240.png");
+	background-image: url("images/ui-icons_f17c1c_256x240.png");
 }
 .ui-state-error .ui-icon,
 .ui-state-error-text .ui-icon {
-	background-image: url("images/ui-icons_dd0000_256x240.png");
+	background-image: url("images/ui-icons_a83300_256x240.png");
 }
 
 /* positioning */
@@ -396,15 +396,15 @@
 
 /* Overlays */
 .ui-widget-overlay {
-	background: #000000 url("images/ui-bg_flat_0_000000_40x100.png") 50% 50% repeat-x;
-	opacity: .2;
-	filter: Alpha(Opacity=20); /* support: IE8 */
+	background: #606060 url("images/ui-bg_flat_50_606060_40x100.png") 50% 50% repeat-x;
+	opacity: .5;
+	filter: Alpha(Opacity=50); /* support: IE8 */
 }
 .ui-widget-shadow {
-	margin: -6px 0 0 -6px;
-	padding: 6px;
-	background: #121212 url("images/ui-bg_flat_0_121212_40x100.png") 50% 50% repeat-x;
-	opacity: .3;
-	filter: Alpha(Opacity=30); /* support: IE8 */
+	margin: -5px 0 0 -5px;
+	padding: 5px;
+	background: #343434 url("images/ui-bg_flat_30_343434_40x100.png") 50% 50% repeat-x;
+	opacity: .5;
+	filter: Alpha(Opacity=50); /* support: IE8 */
 	border-radius: 0px;
 }

@@ -49,3 +49,4 @@ D:\GitHub\DemProject\DEM_MVC_DAL\bin\Debug\Microsoft.Practices.ServiceLocation.x
 D:\GitHub\DemProject\DEM_MVC_DAL\bin\Debug\NLog.xml
 D:\GitHub\DemProject\DEM_MVC_DAL\obj\Debug\DEM_MVC_DAL.dll
 D:\GitHub\DemProject\DEM_MVC_DAL\obj\Debug\DEM_MVC_DAL.pdb
+D:\GitHub\DemProject\DEM_MVC_DAL\obj\Debug\DEM_MVC_DAL.csprojResolveAssemblyReference.cache
