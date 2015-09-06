@@ -10,7 +10,6 @@ using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Interfaces.IUnitOfWork;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.Practices.ServiceLocation;
-using NLog;
 
 namespace DEM_MVC_BL.Services
 {

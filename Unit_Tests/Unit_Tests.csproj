@@ -114,7 +114,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Tests\ExtentionMethodsTests.cs" />
+    <Compile Include="Tests\DataLoadServiceTests.cs" />
+    <Compile Include="Tests\DataTableExtentionsMethodsTests.cs" />
     <Compile Include="BaseTest\UnitTestBase.cs" />
     <Compile Include="Tests\ModelsHelpersTests.cs" />
     <Compile Include="Tests\ViewHelpersTests.cs" />

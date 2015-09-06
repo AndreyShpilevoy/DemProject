@@ -7,7 +7,7 @@ namespace Unit_Tests.Tests
     public class ViewHelpersTests : UnitTestBase
     {
         [Fact]
-        public void IsViewHelper_SelectRightEnding()
+        public void IsSelectRightEnding()
         {
             var one = ViewHelper.SelectRightEnding(1, "вариант", "варианта", "вариантов");
             var two = ViewHelper.SelectRightEnding(3, "вариант", "варианта", "вариантов");
@@ -18,7 +18,7 @@ namespace Unit_Tests.Tests
         }
 
         [Fact]
-        public void IsViewHelper_IsOdd()
+        public void IsIsOdd()
         {
             var itsOdd = ViewHelper.IsOdd(1);
             var itsNotOdd = ViewHelper.IsOdd(2);

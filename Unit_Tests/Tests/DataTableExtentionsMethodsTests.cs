@@ -6,10 +6,10 @@ using Xunit;
 
 namespace Unit_Tests.Tests
 {
-    public class ExtentionMethodsTests : UnitTestBase
+    public class DataTableExtentionsMethodsTests : UnitTestBase
     {
         [Fact]
-        public void IsDataTableExtentions_DataTableToModel()
+        public void IsDataTableToModel()
         {
             var configNameValue = "Test";
             var configValueValue = "Item";
@@ -29,7 +29,7 @@ namespace Unit_Tests.Tests
         }
 
         [Fact]
-        public void IsDataTableExtentions_DataTableToList()
+        public void IsDataTableToList()
         {
             var configNameValue = "Test";
             var configValueValue = "Item";

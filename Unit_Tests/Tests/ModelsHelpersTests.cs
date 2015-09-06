@@ -8,42 +8,120 @@ using Xunit;
 
 namespace Unit_Tests.Tests
 {
-    public class ModelsHelpersTests : UnitTestBase
+    public class BbCodeHelperTests : UnitTestBase
     {
         [Fact]
-        public void IsBbCodeHelper_BbCodeReplacerToHtml()
+        public void IsBbCodeReplacerToHtml()
         {
             BbCodeHelper.BbCodes = new Dictionary<Regex, string>() { { new Regex(@"\[b\](.+?)\[\/b\]", RegexOptions.Compiled), "<span style=\"font-weight:bold;\">${1}</span>" } };
             var testString = BbCodeHelper.BbCodeReplacerToHtml("[b]Test[/b] string. String [b]for[/b] testing.");
             Assert.Equal("<span style=\"font-weight:bold;\">Test</span> string. String <span style=\"font-weight:bold;\">for</span> testing.", testString);
         }
+    }
 
+    public class ForumModelHelperTests : UnitTestBase
+    {
         [Fact]
-        public void IsConfigModel_GetPostsOnPageCount()
+        public void IsTransformToHierarchy()
         {
-            var postsOnPage = new ConfigModel
+            var forumTableList = new List<ForumTableViewModel>()
             {
-                ConfigName = "postsOnPage",
-                ConfigValue = "25"
+                new ForumTableViewModel()
+                {
+                    Title = "Root",
+                    ForumId = 1,
+                    ParentId = 0,
+                    PostsCount = 0,
+                    TopicsCount = 0
+                },
+                new ForumTableViewModel()
+                {
+                    Title = "Level 1",
+                    ForumId = 2,
+                    ParentId = 1,
+                    PostsCount = 10,
+                    TopicsCount = 10
+                },
+                new ForumTableViewModel()
+                {
+                    Title = "Level 1",
+                    ForumId = 3,
+                    ParentId = 1,
+                    PostsCount = 10,
+                    TopicsCount = 10
+                },
+                new ForumTableViewModel()
+                {
+                    Title = "Level 2",
+                    ForumId = 4,
+                    ParentId = 2,
+                    PostsCount = 10,
+                    TopicsCount = 10
+                }
             };
-            ConfigHelper.ConfigModels = new List<ConfigModel>() { postsOnPage };
-            Assert.Equal(25, ConfigHelper.GetPostsOnPageCount());
+            var forumModelHelper = new ForumModelHelper();
+            forumTableList = forumModelHelper.TransformToHierarchy(forumTableList);
+            Assert.Equal(30, forumTableList[0].PostsCount);
+            Assert.Equal(30, forumTableList[0].TopicsCount);
+            Assert.Equal("Root", forumTableList[0].Title);
+            Assert.Equal(2, forumTableList[0].SubForums.Count);
         }
 
         [Fact]
-        public void IsConfigModel_GetTopicsOnPageCount()
+        public void IsGetGorumTreeById()
         {
-            var topicsOnPage = new ConfigModel
+            var forumTableList = new List<ForumTableViewModel>()
             {
-                ConfigName = "topicsOnPage",
-                ConfigValue = "12"
+                new ForumTableViewModel()
+                {
+                    Title = "Root",
+                    ForumId = 1,
+                    ParentId = 0,
+                    PostsCount = 30,
+                    TopicsCount = 30,
+                    SubForums = new List<ForumTableViewModel>()
+                    {
+                        new ForumTableViewModel()
+                        {
+                            Title = "Level 1.1",
+                            ForumId = 2,
+                            ParentId = 1,
+                            PostsCount = 20,
+                            TopicsCount = 20,
+                            SubForums = new List<ForumTableViewModel>()
+                            {
+                                new ForumTableViewModel()
+                                {
+                                    Title = "Level 2.1",
+                                    ForumId = 4,
+                                    ParentId = 2,
+                                    PostsCount = 10,
+                                    TopicsCount = 10
+                                }
+                            }
+                        },
+                        new ForumTableViewModel()
+                        {
+                            Title = "Level 1.2",
+                            ForumId = 3,
+                            ParentId = 1,
+                            PostsCount = 10,
+                            TopicsCount = 10,
+                            SubForums = new List<ForumTableViewModel>()
+                        }
+                    }
+                }
             };
-            ConfigHelper.ConfigModels = new List<ConfigModel>() { topicsOnPage };
-            Assert.Equal(12, ConfigHelper.GetTopicsOnPageCount());
+            var forumModelHelper = new ForumModelHelper();
+            var forumTable = forumModelHelper.GetGorumTreeById(forumTableList, 2);
+            Assert.Equal("Level 1.1", forumTable.Title);
         }
+    }
 
+    public class PollModelHelperTests : UnitTestBase
+    {
         [Fact]
-        public void IsPollModelHelper_CalculatePollOptionTotalPercent()
+        public void IsCalculatePollOptionTotalPercent()
         {
             var pollOptionsList = new List<PollOptionViewModel>()
             {
@@ -70,6 +148,33 @@ namespace Unit_Tests.Tests
             {
                 Assert.Equal(50.0, pollOption.PollOptionTotalPercent);
             }
+        }
+    }
+
+    public class ConfigHelperTests : UnitTestBase
+    {
+        [Fact]
+        public void IsGetPostsOnPageCount()
+        {
+            var postsOnPage = new ConfigModel
+            {
+                ConfigName = "postsOnPage",
+                ConfigValue = "25"
+            };
+            ConfigHelper.ConfigModels = new List<ConfigModel>() { postsOnPage };
+            Assert.Equal(25, ConfigHelper.GetPostsOnPageCount());
+        }
+
+        [Fact]
+        public void IsGetTopicsOnPageCount()
+        {
+            var topicsOnPage = new ConfigModel
+            {
+                ConfigName = "topicsOnPage",
+                ConfigValue = "12"
+            };
+            ConfigHelper.ConfigModels = new List<ConfigModel>() { topicsOnPage };
+            Assert.Equal(12, ConfigHelper.GetTopicsOnPageCount());
         }
     }
 }
