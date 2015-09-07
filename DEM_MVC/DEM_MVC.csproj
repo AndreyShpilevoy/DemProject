@@ -158,6 +158,12 @@
     <Content Include="Content\Themes\DEM\Images\ui-poll-5c5c5c_1x100.png" />
     <Content Include="Content\Themes\DEM\Images\ui-poll-6c6c6c_1x100.png" />
     <Content Include="Content\Themes\DEM\Images\ui-poll-result-f1831f_1x100.png" />
+    <Content Include="Errors\2000.html" />
+    <Content Include="Errors\400.shtml" />
+    <Content Include="Errors\401.shtml" />
+    <Content Include="Errors\403.shtml" />
+    <Content Include="Errors\404.shtml" />
+    <Content Include="Errors\500.shtml" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
@@ -188,7 +194,9 @@
     <Compile Include="Services\ViewHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="App_Data\SQL_Diagramms\DEM_Project.dbs" />
     <Content Include="App_Data\SQL_Diagramms\Create_Tables_WithOut_FK.dbs" />
