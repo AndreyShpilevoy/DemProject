@@ -18,13 +18,29 @@ namespace DEM_MVC_BL.Services
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IForumModelHelper _forumModelHelper;
         private readonly IPollModelHelper _pollModelHelper;
+        private readonly IForumEntityRepository _forumEntityRepository;
+        private readonly ITopicEntityRepository _topicEntityRepository;
+        private readonly IPollEntityRepository _pollEntityRepository;
+        private readonly IPostEntityRepository _postEntityRepository;
+        private readonly IBbCodeEntityRepository _bbCodeEntityRepository;
+        private readonly IConfigEntityRepository _configEntityRepository;
         //private readonly IPostModelHelper _postModelHelper;
 
-        public DataLoadService(IUnitOfWorkFactory unitOfWorkFactory, IForumModelHelper forumModelHelper, IPollModelHelper pollModelHelper)//, IPostModelHelper postModelHelper)
+        public DataLoadService(IUnitOfWorkFactory unitOfWorkFactory, IForumModelHelper forumModelHelper,
+            IPollModelHelper pollModelHelper, IForumEntityRepository forumEntityRepository,
+            ITopicEntityRepository topicEntityRepository, IPollEntityRepository pollEntityRepository,
+            IPostEntityRepository postEntityRepository, IBbCodeEntityRepository bbCodeEntityRepository,
+            IConfigEntityRepository configEntityRepository) //, IPostModelHelper postModelHelper
         {
             _unitOfWorkFactory = unitOfWorkFactory;
             _forumModelHelper = forumModelHelper;
             _pollModelHelper = pollModelHelper;
+            _forumEntityRepository = forumEntityRepository;
+            _topicEntityRepository = topicEntityRepository;
+            _pollEntityRepository = pollEntityRepository;
+            _postEntityRepository = postEntityRepository;
+            _bbCodeEntityRepository = bbCodeEntityRepository;
+            _configEntityRepository = configEntityRepository;
             //_postModelHelper = postModelHelper;
         }
 
@@ -37,8 +53,7 @@ namespace DEM_MVC_BL.Services
                 DataTable dataTable;
                 using (var unitOfWork = _unitOfWorkFactory.Create())
                 {
-                    IForumEntityRepository repository = ServiceLocator.Current.GetInstance<IForumEntityRepository>();
-                    dataTable = repository.GetAllForums(unitOfWork);
+                    dataTable = _forumEntityRepository.GetAllForums(unitOfWork);
                 }
                 forumTableViewModels = _forumModelHelper.TransformToHierarchy(dataTable.DataTableToList<ForumTableViewModel>());
             }
@@ -58,8 +73,7 @@ namespace DEM_MVC_BL.Services
                 DataTable forumsDataTable;
                 using (var unitOfWork = _unitOfWorkFactory.Create())
                 {
-                    IForumEntityRepository forumRepository = ServiceLocator.Current.GetInstance<IForumEntityRepository>();
-                    forumsDataTable = forumRepository.GetAllForums(unitOfWork);
+                    forumsDataTable = _forumEntityRepository.GetAllForums(unitOfWork);
                 }
                 var forumTableViewModelList = _forumModelHelper.TransformToHierarchy(forumsDataTable.DataTableToList<ForumTableViewModel>());
                 forumTableViewModel = _forumModelHelper.GetGorumTreeById(forumTableViewModelList, forumId);
@@ -72,6 +86,25 @@ namespace DEM_MVC_BL.Services
             return forumTableViewModel;
         }
 
+        public ForumShowViewModel GetForumShowViewModelById(int forumId)
+        {
+            var forumShowViewModel = new ForumShowViewModel();
+            try
+            {
+                DataTable forumDataTable;
+                using (var unitOfWork = _unitOfWorkFactory.Create())
+                {
+                    forumDataTable = _forumEntityRepository.GetForumById(forumId, unitOfWork);
+                }
+                forumShowViewModel = forumDataTable.DataTableToModel<ForumShowViewModel>();
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetTopicShowViewModelById");
+            }
+            return forumShowViewModel;
+        }
+
         public List<TopicTableViewModel> GetTopicTableViewModelsByForumId(int forumId, int onPage, int? page)
         {
             var topicTableViewModels = new List<TopicTableViewModel>();
@@ -81,8 +114,7 @@ namespace DEM_MVC_BL.Services
                 DataTable topicsDataTable;
                 using (var unitOfWork = _unitOfWorkFactory.Create())
                 {
-                    ITopicEntityRepository topicRepository = ServiceLocator.Current.GetInstance<ITopicEntityRepository>();
-                    topicsDataTable = topicRepository.GetAllTopicsByForumId(forumId, unitOfWork, onPage, page);
+                    topicsDataTable = _topicEntityRepository.GetAllTopicsByForumId(forumId, unitOfWork, onPage, page);
                 }
                 topicTableViewModels = topicsDataTable.DataTableToList<TopicTableViewModel>();
             }
@@ -93,26 +125,6 @@ namespace DEM_MVC_BL.Services
             return topicTableViewModels.OrderByDescending(x => x.LastPostTime).ToList();
         }
 
-        public ForumShowViewModel GetForumShowViewModelById(int forumId)
-        {
-            var forumShowViewModel = new ForumShowViewModel();
-            try
-            {
-                DataTable topicDataTable;
-                using (var unitOfWork = _unitOfWorkFactory.Create())
-                {
-                    IForumEntityRepository topicRepository = ServiceLocator.Current.GetInstance<IForumEntityRepository>();
-                    topicDataTable = topicRepository.GetForumById(forumId, unitOfWork);
-                }
-                forumShowViewModel = topicDataTable.DataTableToModel<ForumShowViewModel>();
-            }
-            catch (Exception exception)
-            {
-                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetTopicShowViewModelById");
-            }
-            return forumShowViewModel;
-        }
-
         public TopicShowViewModel GetTopicShowViewModelById(int topicId)
         {
             var topicShowViewModel = new TopicShowViewModel();
@@ -121,8 +133,7 @@ namespace DEM_MVC_BL.Services
                 DataTable topicDataTable;
                 using (var unitOfWork = _unitOfWorkFactory.Create())
                 {
-                    ITopicEntityRepository topicRepository = ServiceLocator.Current.GetInstance<ITopicEntityRepository>();
-                    topicDataTable = topicRepository.GetTopicById(topicId, unitOfWork);
+                    topicDataTable = _topicEntityRepository.GetTopicById(topicId, unitOfWork);
                 }
                 topicShowViewModel = topicDataTable.DataTableToModel<TopicShowViewModel>();
             }
@@ -142,15 +153,14 @@ namespace DEM_MVC_BL.Services
                 DataSet dataSet;
                 using (var unitOfWork = _unitOfWorkFactory.Create())
                 {
-                    IPollEntityRepository topicRepository = ServiceLocator.Current.GetInstance<IPollEntityRepository>();
-                    dataSet = topicRepository.GetPollWithOptionsByTopicId(topicId, unitOfWork);
+                    dataSet = _pollEntityRepository.GetPollWithOptionsByTopicId(topicId, unitOfWork);
                 }
                 pollViewModels = dataSet.Tables["Polls"].DataTableToList<PollViewModel>();
                 pollOptionsViewModels = dataSet.Tables["PollsOptions"].DataTableToList<PollOptionViewModel>();
 
                 foreach (var pollViewModel in pollViewModels)
                 {
-                    var pollsOptionViewModels  = pollOptionsViewModels.Where(x => x.PollId == pollViewModel.PollId).OrderBy(x => x.PollOptionId).ToList();
+                    var pollsOptionViewModels = pollOptionsViewModels.Where(x => x.PollId == pollViewModel.PollId).OrderBy(x => x.PollOptionId).ToList();
                     pollsOptionViewModels = _pollModelHelper.CalculatePollOptionTotalPercent(pollsOptionViewModels);
                     pollViewModel.PollOptionList = pollsOptionViewModels;
                 }
@@ -171,8 +181,7 @@ namespace DEM_MVC_BL.Services
                 DataSet dataSet;
                 using (var unitOfWork = _unitOfWorkFactory.Create())
                 {
-                    IPostEntityRepository postRepository = ServiceLocator.Current.GetInstance<IPostEntityRepository>();
-                    dataSet = postRepository.GetAllPostsWithUsersByTopicId(topicId, unitOfWork, onPage, page);
+                    dataSet = _postEntityRepository.GetAllPostsWithUsersByTopicId(topicId, unitOfWork, onPage, page);
                 }
                 postTableViewModels = dataSet.Tables["Posts"].DataTableToList<PostTableViewModel>();
                 userTableViewModels = dataSet.Tables["Users"].DataTableToList<UserTableViewModelForPosts>();
@@ -212,8 +221,7 @@ namespace DEM_MVC_BL.Services
                 DataTable dataTable;
                 using (var unitOfWork = _unitOfWorkFactory.Create())
                 {
-                    IBbCodeEntityRepository repository = ServiceLocator.Current.GetInstance<IBbCodeEntityRepository>();
-                    dataTable = repository.GetAllBbCodes(unitOfWork);
+                    dataTable = _bbCodeEntityRepository.GetAllBbCodes(unitOfWork);
                 }
                 bbCodeModels = dataTable.DataTableToList<BbCodeModel>();
             }
@@ -233,8 +241,7 @@ namespace DEM_MVC_BL.Services
                 DataTable dataTable;
                 using (var unitOfWork = _unitOfWorkFactory.Create())
                 {
-                    IConfigEntityRepository repository = ServiceLocator.Current.GetInstance<IConfigEntityRepository>();
-                    dataTable = repository.GetAllConfigs(unitOfWork);
+                    dataTable = _configEntityRepository.GetAllConfigs(unitOfWork);
                 }
                 configModels = dataTable.DataTableToList<ConfigModel>();
             }
