@@ -12,7 +12,7 @@ namespace DEM_MVC_DAL.UnitOfWork
         {
             _connectionString = connectionString;
         }
-        public IUnitOfWork Create()
+        public virtual IUnitOfWork Create()
         {
             var connection = new SqlConnection(_connectionString);
             connection.Open();
