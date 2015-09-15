@@ -448,7 +448,8 @@ dl.spoilerbox {
         font-weight: bold;
         list-style: outside none none;
         position: relative;
-        z-index: 200;
+        /*z-index: 200;*/
+        z-index: 100;
     }
 
         #main-menu li:not(:last-child) {
