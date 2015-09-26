@@ -57,6 +57,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                 if (lastForum != null)
                 {
                     root.LastTopicTitle = lastForum.LastTopicTitle;
+                    root.LastTopicId = lastForum.LastTopicId;
                     root.LastPostTime = lastForum.LastPostTime;
                     root.Groupcolor = lastForum.Groupcolor;
                     root.Username = lastForum.Username;
