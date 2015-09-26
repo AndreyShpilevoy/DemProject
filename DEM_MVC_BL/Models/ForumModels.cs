@@ -19,7 +19,7 @@ namespace DEM_MVC_BL.Models
         public string Username { get; set; }
         public string Groupcolor { get; set; }
         public string LastTopicTitle { get; set; }
-        public int LastPostId { get; set; }
+        public int LastTopicId { get; set; }
         public int ForumOrder { get; set; }
         public List<ForumTableViewModel> SubForums { get; set; }
 

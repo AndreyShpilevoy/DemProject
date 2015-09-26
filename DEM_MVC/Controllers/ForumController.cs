@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DEM_MVC_BL.Interfaces.IServices;
+using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Services.ModelsHelpers;
 
 namespace DEM_MVC.Controllers
@@ -65,7 +66,7 @@ namespace DEM_MVC.Controllers
         #region ViewTopicPageZone
 
         [HttpGet]
-        public ActionResult ViewTopic(int topicId, int? page)
+        public ActionResult ViewTopic(int topicId, int? page, int? postId)
         {
             var topicShowViewModel = _dataLoadService.GetTopicShowViewModelById(topicId);
             if (page == null || page < 1) topicShowViewModel.PageNumber = 1;
@@ -78,7 +79,14 @@ namespace DEM_MVC.Controllers
         {
             var onPage = ConfigHelper.GetPostsOnPageCount();
             var postTableViewModels = _dataLoadService.GetPostTableViewModelsByTopicId(topicId, onPage, page);
-            return PartialView("ViewTopic/_ShowPostTableByTopicId", postTableViewModels);
+
+            if (page == null || page < 1) page = 1;
+            PostTableViewModelList postTableViewModelList = new PostTableViewModelList()
+            {
+                PageNumber = (int)page,
+                PostTableViewModel = postTableViewModels
+            };
+            return PartialView("ViewTopic/_ShowPostTableByTopicId", postTableViewModelList);
         }
 
         [HttpGet]

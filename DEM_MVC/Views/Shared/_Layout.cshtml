@@ -9,7 +9,7 @@
     @Styles.Render("~/Content/css")
 </head>
 <body>
-    @Scripts.Render("~/bundles/jquery")
+    <div class="on-left tower" title="Наверх" id="back-to-top" style="display: none;"></div>
     <div id="wrap">
         <div id="headerMargin"></div>
         <div id="header"></div>
@@ -33,7 +33,7 @@
     <div id="footerWrap">
         <div id="footer"></div>
     </div>
-    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/custom")
     @RenderSection("scripts", required: false)

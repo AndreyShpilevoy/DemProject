@@ -9,6 +9,7 @@ namespace DEM_MVC_BL.Models
         private string _postText;
         public int PostId { get; set; }
         public int UserId { get; set; }
+        public int TopicId { get; set; }
 
         public DateTime PostTime { get; set; }
         public string PostSubject { get; set; }
@@ -30,5 +31,11 @@ namespace DEM_MVC_BL.Models
         public WarningPostTableViewModel PostWarning { get; set; }
         public UserTableViewModelForPosts User { get; set; }
         public UserTableViewModelForPosts EditUser { get; set; }
+    }
+
+    public class PostTableViewModelList
+    {
+        public List<PostTableViewModel> PostTableViewModel { get; set; }
+        public int PageNumber { get; set; }
     }
 }

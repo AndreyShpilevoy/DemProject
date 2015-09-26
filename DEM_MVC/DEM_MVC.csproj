@@ -170,6 +170,8 @@
     <Content Include="Scripts\Custom\bbMedia.js" />
     <Content Include="Scripts\Custom\bbCode.js" />
     <Content Include="Scripts\Custom\bbSpoiler.js" />
+    <Content Include="Scripts\Custom\getUrlParameter.js" />
+    <Content Include="Scripts\Custom\goToPosition.js" />
     <Content Include="Scripts\Custom\hoverBtnEffect.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />

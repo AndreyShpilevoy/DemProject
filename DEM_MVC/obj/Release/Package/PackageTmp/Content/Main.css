@@ -150,6 +150,10 @@ a:link, a:visited {
     padding: 0 2px;
 }
 
+.demNavigationBtn > .ui-button-text {
+    padding: 0;
+}
+
 .demNavigationSpan {
     margin: 0 2px;
     padding: 0 2px;
@@ -480,3 +484,27 @@ dl.spoilerbox {
                 float: left;
                 white-space: nowrap;
             }
+
+#back-to-top.tower {
+    background-position: center 15px;
+    bottom: 0;
+    height: auto;
+    margin: 0;
+    padding: 15px;
+}
+#back-to-top.on-left {
+    left: 0;
+}
+#back-to-top {
+    background: rgba(0, 0, 0, 0) url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAZlBMVEUAAACEiY2SmJ2epKmjqq+lrLGor7SosLWpsbaqsbaqsbeqsbeqsbeqsbeqsbeqsbeqsbeqsbeqsbeqsbeqsbeqsbeqsbeqsbersrettLm6wMTDyc3O09bZ3d/q6+3x8vP5+fr8/f1nT312AAAAF3RSTlMAGiEnNEFPYGpxeoeUnqm1vdLk7vP4+0kZka8AAACySURBVHgBddDxboYgDATwAx36qVPBQZ3TMd7/JbcQSpDM359ccyVFIl+rJqeXXqLUvBOzUxEpS4VNIXnRnevSPNXcW1zLPYVNAMh7SyPQOGLXRcxKDMSOEL6I9Vgp2X0I/pOSGSYXhT+5TMPmoujgf3Gwf4fI7xQZrjpDcnLVQpHn4IeXD/SvvroI+xDA9HASyO3hiFCOKrZF1FWJVUjUrc20yMRk8/goUBLdrI3Rs+LnX+9DKZ4DVjilAAAAAElFTkSuQmCC") no-repeat scroll 0 0;
+    cursor: pointer;
+    display: none;
+    height: 24px;
+    margin: 15px;
+    opacity: 0.6;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 24px;
+    z-index: 10;
+}

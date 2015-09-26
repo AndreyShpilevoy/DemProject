@@ -9,3 +9,14 @@ D:\kto4dem\DEM_MVC\DEM_MVC_Infrastructure\bin\Release\Microsoft.Practices.Servic
 D:\kto4dem\DEM_MVC\DEM_MVC_Infrastructure\bin\Release\NLog.xml
 D:\kto4dem\DEM_MVC\DEM_MVC_Infrastructure\obj\Release\DEM_MVC_Infrastructure.dll
 D:\kto4dem\DEM_MVC\DEM_MVC_Infrastructure\obj\Release\DEM_MVC_Infrastructure.pdb
+D:\GitHub\DemProject\DEM_MVC_Infrastructure\bin\Release\DEM_MVC_Infrastructure.dll
+D:\GitHub\DemProject\DEM_MVC_Infrastructure\bin\Release\DEM_MVC_Infrastructure.pdb
+D:\GitHub\DemProject\DEM_MVC_Infrastructure\bin\Release\Autofac.dll
+D:\GitHub\DemProject\DEM_MVC_Infrastructure\bin\Release\Microsoft.Practices.ServiceLocation.dll
+D:\GitHub\DemProject\DEM_MVC_Infrastructure\bin\Release\NLog.dll
+D:\GitHub\DemProject\DEM_MVC_Infrastructure\bin\Release\Autofac.xml
+D:\GitHub\DemProject\DEM_MVC_Infrastructure\bin\Release\Microsoft.Practices.ServiceLocation.pdb
+D:\GitHub\DemProject\DEM_MVC_Infrastructure\bin\Release\Microsoft.Practices.ServiceLocation.xml
+D:\GitHub\DemProject\DEM_MVC_Infrastructure\bin\Release\NLog.xml
+D:\GitHub\DemProject\DEM_MVC_Infrastructure\obj\Release\DEM_MVC_Infrastructure.dll
+D:\GitHub\DemProject\DEM_MVC_Infrastructure\obj\Release\DEM_MVC_Infrastructure.pdb

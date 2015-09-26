@@ -53,7 +53,7 @@
                         else
                         {
                             <div>
-                                @forum.LastTopicTitle
+                                 @Html.ActionLink(forum.LastTopicTitle, "ViewTopic", "Forum", new {topicId = forum.LastTopicId}, null)
                             </div>
                             <div>
                                 @forum.LastPostTime <span style="color: #@forum.Groupcolor">@forum.Username</span>

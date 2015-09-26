@@ -80,6 +80,7 @@ AS
 (
 	  PostId INT,
     UserId INT,
+    TopicId INT,
     PostTime DATETIME,
     PostSubject nvarchar(255),
     PostText nvarchar(MAX),
@@ -94,6 +95,7 @@ INSERT INTO
     @postsTable 	
 	   SELECT postsTable.post_id AS PostId,
 			  postsTable.user_id AS UserId,
+			  @topicId AS TopicId,
 			  postsTable.post_time AS PostTime,
 			  postsTable.post_subject AS PostSubject,
 			  postsTable.post_text AS PostText,
@@ -392,7 +394,7 @@ INSERT INTO
     group_colour nvarchar(8),
     forum_id INT,
 	topic_title nvarchar(255),
-    post_id INT
+    topic_id INT
 );
 INSERT INTO 
     @UsersInfoTempTable 
@@ -402,12 +404,12 @@ INSERT INTO
 			,groupsTable.group_colour
 			,tableWithUserId.forum_id
 			,tableWithUserId.topic_title
-			,tableWithUserId.post_id
+			,tableWithUserId.topic_id
 	  FROM dem_users usersTable JOIN (
 	  
 	  		  SELECT tableWithTime.LastPostTime
 				,postsTable.user_id
-				,postsTable.post_id
+				,postsTable.topic_id
 				,tableWithTime.forum_id
 				,topicsTable.topic_title
 		  FROM dem_posts postsTable, dem_topics topicsTable,(
@@ -438,7 +440,7 @@ INSERT INTO
 			  secondTable.username AS Username,
 			  secondTable.group_colour AS Groupcolor,
 			  secondTable.topic_title AS LastTopicTitle,
-			  secondTable.post_id AS LastPostId,
+			  secondTable.topic_id AS LastTopicId,
         ForumOrder
 	FROM @UsersInfoTempTable as secondTable RIGHT JOIN @ForumTempTable 
 	AS firstTable ON secondTable.forum_id = firstTable.ForumId 

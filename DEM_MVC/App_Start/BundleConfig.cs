@@ -14,9 +14,11 @@ namespace DEM_MVC
                         "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                        "~/Scripts/Custom/getUrlParameter.js",
                         "~/Scripts/Custom/bbSpoiler.js",
                         "~/Scripts/Custom/bbCode.js",
                         "~/Scripts/Custom/bbMedia.js",
+                        "~/Scripts/Custom/goToPosition.js",
                         "~/Scripts/Custom/hoverBtnEffect.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -27,9 +29,7 @@ namespace DEM_MVC
             //// ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
             //            "~/Scripts/modernizr-*"));
-
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/Main.css"));
-
+            
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery-ui.css",
                         "~/Content/themes/base/jquery-ui.min.css",
@@ -37,6 +37,8 @@ namespace DEM_MVC
                         "~/Content/themes/base/jquery-ui.structure.min.css",
                         "~/Content/themes/base/jquery-ui.theme.css",
                         "~/Content/themes/base/jquery-ui.theme.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/Main.css"));
         }
     }
 }
