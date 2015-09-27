@@ -69,8 +69,10 @@ namespace DEM_MVC.Controllers
         public ActionResult ViewTopic(int topicId, int? page, int? postId)
         {
             var topicShowViewModel = _dataLoadService.GetTopicShowViewModelById(topicId);
-            if (page == null || page < 1) topicShowViewModel.PageNumber = 1;
-            else topicShowViewModel.PageNumber = (int)page;
+            if (page == null || page < 1) 
+                topicShowViewModel.PageNumber = 1;
+            else 
+                topicShowViewModel.PageNumber = (int)page;
             return View("ViewTopic/ViewTopic", topicShowViewModel);
         }
 
@@ -80,7 +82,8 @@ namespace DEM_MVC.Controllers
             var onPage = ConfigHelper.GetPostsOnPageCount();
             var postTableViewModels = _dataLoadService.GetPostTableViewModelsByTopicId(topicId, onPage, page);
 
-            if (page == null || page < 1) page = 1;
+            if (page == null || page < 1) 
+                page = 1;
             PostTableViewModelList postTableViewModelList = new PostTableViewModelList()
             {
                 PageNumber = (int)page,
