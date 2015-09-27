@@ -447,10 +447,10 @@ INSERT INTO DEM_Project.dbo.dem_users (user_id
 	    ,user_vk
 	    ,user_fb
       ,user_website
-      ,user_occ
+      ,user_profession
       ,user_interests
       ,user_actkey
-      ,user_newpasswd
+      ,user_newpassword
       ,user_form_salt)
 	SELECT user_id
 		  ,user_type

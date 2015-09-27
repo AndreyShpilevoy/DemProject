@@ -937,7 +937,7 @@ CREATE TABLE dem_users (
 	user_email           nvarchar(255) NOT NULL   ,
 	user_email_hash      nvarchar(40) NOT NULL   ,
 	user_birthday        datetime NOT NULL   ,
-	user_gender          bit NOT NULL   ,
+	user_gender          INT NOT NULL   ,
 	user_lastvisit       datetime NOT NULL   ,
 	user_lastmark        datetime NOT NULL   ,
 	user_lastpage        nvarchar(255) NOT NULL   ,
@@ -959,10 +959,10 @@ CREATE TABLE dem_users (
 	user_vk              nvarchar(255) NOT NULL   ,
 	user_fb              nvarchar(255) NOT NULL   ,
 	user_website         nvarchar(max) NOT NULL   ,
-	user_occ             nvarchar(255) NOT NULL   ,
+	user_profession      nvarchar(255) NOT NULL   ,
 	user_interests       nvarchar(max) NOT NULL   ,
 	user_actkey          nvarchar(32) NOT NULL   ,
-	user_newpasswd       nvarchar(40) NOT NULL   ,
+	user_newpassword     nvarchar(40) NOT NULL   ,
 	user_form_salt       nvarchar(32) NOT NULL   ,
 	CONSTRAINT Pk_dem_users PRIMARY KEY ( user_id )
  );

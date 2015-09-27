@@ -60,6 +60,7 @@
     <Compile Include="Interfaces\IServices\IModelsHelpers\IPollModelHelper.cs" />
     <Compile Include="Models\BbCodeModels.cs" />
     <Compile Include="Models\ConfigModels.cs" />
+    <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\MedalModels.cs" />
     <Compile Include="Models\PollModels.cs" />
     <Compile Include="Models\PostModels.cs" />
