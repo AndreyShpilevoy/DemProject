@@ -339,8 +339,8 @@ INSERT INTO
 			,tableWithPostCount.DisplaySubForums
 			,tableWithPostCount.DisplayOnIndex
 			,tableWithPostCount.ForumOrder
-      ,tableWithPostCount.PostsCount
-      ,COUNT(topicsTable.topic_id) AS TopicsCount
+			,COUNT(topicsTable.topic_id) AS TopicsCount
+			,tableWithPostCount.PostsCount
 	  FROM dem_topics topicsTable RIGHT JOIN (
   
   SELECT tableWithTopicId.ForumId
