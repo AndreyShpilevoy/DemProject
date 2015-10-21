@@ -7,7 +7,7 @@ using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class TopicEntityRepository: ITopicEntityRepository
+    public class TopicRepository: ITopicRepository
     {
         public DataTable GetAllTopicsByForumId(int forumId, IUnitOfWork unitOfWork, int onPage, int? page)
         {

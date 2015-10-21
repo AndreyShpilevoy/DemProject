@@ -15,13 +15,13 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 
         static BbCodeHelper()
         {
-            var dataLoadService = ServiceLocator.Current.GetInstance<IDataLoadService>();
+            var dataLoadService = ServiceLocator.Current.GetInstance<IForumDataLoadWriteService>();
             BbCodes = new Dictionary<Regex, string>();
             FillTheDictionaryBbcodes(dataLoadService);
         }
 
 
-        private static void FillTheDictionaryBbcodes(IDataLoadService dataLoadService)
+        private static void FillTheDictionaryBbcodes(IForumDataLoadWriteService dataLoadService)
         {
             try
             {

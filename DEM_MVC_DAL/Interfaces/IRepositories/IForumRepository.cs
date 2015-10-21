@@ -2,7 +2,7 @@
 
 namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
-    public interface IForumEntityRepository
+    public interface IForumRepository
     {
         DataTable GetAllForums(IUnitOfWork.IUnitOfWork unitOfWork);
         

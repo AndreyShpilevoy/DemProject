@@ -13,24 +13,24 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace DEM_MVC_BL.Services
 {
-    public class DataLoadService : IDataLoadService
+    public class ForumDataLoadWriteService : IForumDataLoadWriteService
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IForumModelHelper _forumModelHelper;
         private readonly IPollModelHelper _pollModelHelper;
-        private readonly IForumEntityRepository _forumEntityRepository;
-        private readonly ITopicEntityRepository _topicEntityRepository;
-        private readonly IPollEntityRepository _pollEntityRepository;
-        private readonly IPostEntityRepository _postEntityRepository;
-        private readonly IBbCodeEntityRepository _bbCodeEntityRepository;
-        private readonly IConfigEntityRepository _configEntityRepository;
+        private readonly IForumRepository _forumEntityRepository;
+        private readonly ITopicRepository _topicEntityRepository;
+        private readonly IPollRepository _pollEntityRepository;
+        private readonly IPostRepository _postEntityRepository;
+        private readonly IBbCodeRepository _bbCodeEntityRepository;
+        private readonly IConfigRepository _configEntityRepository;
         //private readonly IPostModelHelper _postModelHelper;
 
-        public DataLoadService(IUnitOfWorkFactory unitOfWorkFactory, IForumModelHelper forumModelHelper,
-            IPollModelHelper pollModelHelper, IForumEntityRepository forumEntityRepository,
-            ITopicEntityRepository topicEntityRepository, IPollEntityRepository pollEntityRepository,
-            IPostEntityRepository postEntityRepository, IBbCodeEntityRepository bbCodeEntityRepository,
-            IConfigEntityRepository configEntityRepository) //, IPostModelHelper postModelHelper
+        public ForumDataLoadWriteService(IUnitOfWorkFactory unitOfWorkFactory, IForumModelHelper forumModelHelper,
+            IPollModelHelper pollModelHelper, IForumRepository forumEntityRepository,
+            ITopicRepository topicEntityRepository, IPollRepository pollEntityRepository,
+            IPostRepository postEntityRepository, IBbCodeRepository bbCodeEntityRepository,
+            IConfigRepository configEntityRepository) //, IPostModelHelper postModelHelper
         {
             _unitOfWorkFactory = unitOfWorkFactory;
             _forumModelHelper = forumModelHelper;

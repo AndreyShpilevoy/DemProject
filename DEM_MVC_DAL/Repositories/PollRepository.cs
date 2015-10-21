@@ -9,7 +9,7 @@ using NLog;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class PollEntityRepository : IPollEntityRepository
+    public class PollRepository : IPollRepository
     {
         public DataSet GetPollWithOptionsByTopicId(int topicId, IUnitOfWork unitOfWork)
         {

@@ -57,23 +57,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autofac\AutofacDalRegistration.cs" />
-    <Compile Include="Interfaces\IRepositories\IConfigEntityRepository.cs" />
-    <Compile Include="Interfaces\IRepositories\IPollEntityRepository.cs" />
-    <Compile Include="Interfaces\IRepositories\IBbCodeEntityRepository.cs" />
-    <Compile Include="Interfaces\IRepositories\IUserEntityRepository.cs" />
-    <Compile Include="Interfaces\IRepositories\IPostEntityRepository.cs" />
-    <Compile Include="Interfaces\IRepositories\ITopicEntityRepository.cs" />
-    <Compile Include="Interfaces\IRepositories\IForumEntityRepository.cs" />
+    <Compile Include="Interfaces\IRepositories\IConfigRepository.cs" />
+    <Compile Include="Interfaces\IRepositories\IPollRepository.cs" />
+    <Compile Include="Interfaces\IRepositories\IBbCodeRepository.cs" />
+    <Compile Include="Interfaces\IRepositories\IUserAccountRepository.cs" />
+    <Compile Include="Interfaces\IRepositories\IPostRepository.cs" />
+    <Compile Include="Interfaces\IRepositories\ITopicRepository.cs" />
+    <Compile Include="Interfaces\IRepositories\IForumRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IUnitOfWork\IUnitOfWorkFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ConfigEntityRepository.cs" />
-    <Compile Include="Repositories\ForumEntityRepository.cs" />
-    <Compile Include="Repositories\PollEntityRepository.cs" />
-    <Compile Include="Repositories\BbCodeEntityRepository.cs" />
-    <Compile Include="Repositories\UserEntityRepository.cs" />
-    <Compile Include="Repositories\PostEntityRepository.cs" />
-    <Compile Include="Repositories\TopicEntityRepository.cs" />
+    <Compile Include="Repositories\ConfigRepository.cs" />
+    <Compile Include="Repositories\ForumRepository.cs" />
+    <Compile Include="Repositories\PollRepository.cs" />
+    <Compile Include="Repositories\BbCodeRepository.cs" />
+    <Compile Include="Repositories\UserAccountRepository.cs" />
+    <Compile Include="Repositories\PostRepository.cs" />
+    <Compile Include="Repositories\TopicRepository.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWorkFactory.cs" />
   </ItemGroup>

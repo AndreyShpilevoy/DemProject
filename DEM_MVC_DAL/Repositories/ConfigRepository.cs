@@ -8,17 +8,16 @@ using NLog;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class BbCodeEntityRepository: IBbCodeEntityRepository
+    public class ConfigRepository: IConfigRepository
     {
-
-        public DataTable GetAllBbCodes(IUnitOfWork unitOfWork)
+        public DataTable GetAllConfigs(IUnitOfWork unitOfWork)
         {
             DataTable dataTable = new DataTable();
             try
             {
                 using (var cmd = unitOfWork.CreateCommand())
                 {
-                    cmd.CommandText = "GetAllBbCodes";
+                    cmd.CommandText = "GetAllConfigs";
                     cmd.CommandType = CommandType.StoredProcedure;
                     
                     var dataReader = cmd.ExecuteReader();
@@ -28,7 +27,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "BbCodeEntityRepository. Error in function GetAllBbCodes");
+                DemLogger.Current.Error(exception, "ConfigEntityRepository. Error in function GetAllConfig");
             }
             return dataTable;
         }

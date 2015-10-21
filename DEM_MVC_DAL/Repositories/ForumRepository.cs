@@ -9,7 +9,7 @@ using NLog;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class ForumEntityRepository : IForumEntityRepository
+    public class ForumRepository : IForumRepository
     {
         public DataTable GetAllForums(IUnitOfWork unitOfWork)
         {

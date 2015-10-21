@@ -2,7 +2,7 @@
 
 namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
-    public interface IPollEntityRepository
+    public interface IPollRepository
     {
         DataSet GetPollWithOptionsByTopicId(int topicId, IUnitOfWork.IUnitOfWork unitOfWork);
     }

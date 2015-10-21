@@ -7,10 +7,10 @@ using System.Web;
 using System.Web.Mvc;
 using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Services;
+using DEM_MVC_DAL.Repositories;
+using DEM_MVC_DAL.UnitOfWork;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-//using DapperIdentityDemo.Identity;
-//using DapperIdentityDemo.Models;
 
 namespace DEM_MVC.Controllers
 {
@@ -18,7 +18,7 @@ namespace DEM_MVC.Controllers
     public class AccountController : Controller
     {
         public AccountController()
-            : this(new UserManager<User>(new UserStore()))
+            : this(new UserManager<User>(new UserAccountDataLoadWriteService(new UnitOfWorkFactory(@"Data Source=.\SQLEXPRESS;Initial Catalog=DEM_Project; User ID=DemUser; Password=4252744;"), new UserAccountRepository())))
         {
         }
 

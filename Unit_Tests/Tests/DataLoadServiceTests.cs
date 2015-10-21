@@ -17,26 +17,26 @@ namespace Unit_Tests.Tests
         private Mock<UnitOfWorkFactory> _uowFactoryMocked;
         private Mock<ForumModelHelper> _forumModelHelperMocked;
         private Mock<PollModelHelper> _pollModelHelperMocked;
-        private Mock<IForumEntityRepository> _forumEntityRepository;
-        private Mock<ITopicEntityRepository> _topicEntityRepository;
-        private Mock<IPollEntityRepository> _pollEntityRepository;
-        private Mock<IPostEntityRepository> _postEntityRepository;
-        private Mock<IBbCodeEntityRepository> _bbCodeEntityRepository;
-        private Mock<IConfigEntityRepository> _configEntityRepository;
-        private DataLoadService _dataLoadService;
+        private Mock<IForumRepository> _forumEntityRepository;
+        private Mock<ITopicRepository> _topicEntityRepository;
+        private Mock<IPollRepository> _pollEntityRepository;
+        private Mock<IPostRepository> _postEntityRepository;
+        private Mock<IBbCodeRepository> _bbCodeEntityRepository;
+        private Mock<IConfigRepository> _configEntityRepository;
+        private ForumDataLoadWriteService _dataLoadService;
 
         public DataLoadServiceTests()
         {
             _uowFactoryMocked = new Mock<UnitOfWorkFactory>("");
             _forumModelHelperMocked = new Mock<ForumModelHelper>();
             _pollModelHelperMocked = new Mock<PollModelHelper>();
-            _forumEntityRepository = new Mock<IForumEntityRepository>();
-            _topicEntityRepository = new Mock<ITopicEntityRepository>();
-            _pollEntityRepository = new Mock<IPollEntityRepository>();
-            _postEntityRepository = new Mock<IPostEntityRepository>();
-            _bbCodeEntityRepository = new Mock<IBbCodeEntityRepository>();
-            _configEntityRepository = new Mock<IConfigEntityRepository>();
-            _dataLoadService = new DataLoadService(_uowFactoryMocked.Object, _forumModelHelperMocked.Object,
+            _forumEntityRepository = new Mock<IForumRepository>();
+            _topicEntityRepository = new Mock<ITopicRepository>();
+            _pollEntityRepository = new Mock<IPollRepository>();
+            _postEntityRepository = new Mock<IPostRepository>();
+            _bbCodeEntityRepository = new Mock<IBbCodeRepository>();
+            _configEntityRepository = new Mock<IConfigRepository>();
+            _dataLoadService = new ForumDataLoadWriteService(_uowFactoryMocked.Object, _forumModelHelperMocked.Object,
                 _pollModelHelperMocked.Object, _forumEntityRepository.Object, _topicEntityRepository.Object,
                 _pollEntityRepository.Object, _postEntityRepository.Object, _bbCodeEntityRepository.Object,
                 _configEntityRepository.Object);

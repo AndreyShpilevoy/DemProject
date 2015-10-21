@@ -9,7 +9,7 @@ using NLog;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class PostEntityRepository: IPostEntityRepository
+    public class PostRepository: IPostRepository
     {
         public DataSet GetAllPostsWithUsersByTopicId(int topicId, IUnitOfWork unitOfWork, int onPage, int? page)
         {

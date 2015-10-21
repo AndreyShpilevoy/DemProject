@@ -7,7 +7,7 @@ using DEM_MVC_BL.Models;
 
 namespace DEM_MVC_BL.Interfaces.IServices
 {
-    public interface IDataLoadService
+    public interface IForumDataLoadWriteService
     {
         List<ForumTableViewModel> GetAllForumTableViewModels();
         ForumTableViewModel GetForumTableViewModelById(int forumId);

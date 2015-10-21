@@ -11,9 +11,9 @@ namespace DEM_MVC.Controllers
     public class ForumController : Controller
     {
 
-        private readonly IDataLoadService _dataLoadService;
+        private readonly IForumDataLoadWriteService _dataLoadService;
 
-        public ForumController(IDataLoadService dataLoadService)
+        public ForumController(IForumDataLoadWriteService dataLoadService)
         {
             _dataLoadService = dataLoadService;
         }

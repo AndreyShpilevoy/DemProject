@@ -2,7 +2,7 @@
 
 namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
-    public interface IConfigEntityRepository
+    public interface IConfigRepository
     {
         DataTable GetAllConfigs(IUnitOfWork.IUnitOfWork unitOfWork);
     }

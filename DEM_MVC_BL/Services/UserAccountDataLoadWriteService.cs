@@ -1,37 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using DEM_MVC_BL.Models;
+using DEM_MVC_DAL.Interfaces.IRepositories;
+using DEM_MVC_DAL.Interfaces.IUnitOfWork;
+using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
 using NLog.Internal;
 
 namespace DEM_MVC_BL.Services
 {
-    public class UserStore : IUserStore<User>, IUserLoginStore<User>, IUserPasswordStore<User>, IUserSecurityStampStore<User>
+    public class UserAccountDataLoadWriteService : IUserStore<User>, IUserLoginStore<User>, IUserPasswordStore<User>, IUserSecurityStampStore<User>
     {
-        private readonly string connectionString;
+        private readonly IUnitOfWorkFactory _unitOfWorkFactory;
+        private readonly IUserAccountRepository _userAccountRepository;
 
-        public UserStore(string connectionString)
+        public UserAccountDataLoadWriteService(IUnitOfWorkFactory unitOfWorkFactory, IUserAccountRepository userAccountRepository)
         {
-            if (string.IsNullOrWhiteSpace(connectionString))
-                throw new ArgumentNullException("connectionString");
-
-            this.connectionString = connectionString;
-        }
-
-        public UserStore()
-        {
-            this.connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=test; User ID=DemUser; Password=4252744;";
-        }
-
-        public void Dispose()
-        {
-
+            _unitOfWorkFactory = unitOfWorkFactory;
+            _userAccountRepository = userAccountRepository;
         }
 
         #region IUserStore
@@ -43,51 +32,19 @@ namespace DEM_MVC_BL.Services
             Random rnd = new Random();
             return Task.Factory.StartNew(() =>
             {
-                user.UserId = rnd.Next(1, 999999999);
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                int userId;
+
+                try
                 {
-                    connection.Open();
-                    string sql = "insert into Users(UserId, UserName, PasswordHash, SecurityStamp) values(@userId, @userName, @passwordHash, @securityStamp)";
-                    var cmd = new SqlCommand(sql, connection);
-
-                    SqlParameter userId = new SqlParameter
+                    using (var unitOfWork = _unitOfWorkFactory.Create())
                     {
-                        ParameterName = "@userId",
-                        SqlDbType = SqlDbType.Int,
-                        Value = user.UserId,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(userId);
-
-                    SqlParameter userName = new SqlParameter
-                    {
-                        ParameterName = "@userName",
-                        SqlDbType = SqlDbType.VarChar,
-                        Value = user.UserName,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(userName);
-
-                    SqlParameter passwordHash = new SqlParameter
-                    {
-                        ParameterName = "@passwordHash",
-                        SqlDbType = SqlDbType.VarChar,
-                        Value = user.PasswordHash,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(passwordHash);
-
-                    SqlParameter securityStamp = new SqlParameter
-                    {
-                        ParameterName = "@securityStamp",
-                        SqlDbType = SqlDbType.VarChar,
-                        Value = user.SecurityStamp,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(securityStamp);
-
-                    cmd.ExecuteNonQuery();
-                    cmd.Dispose();
+                        userId = _userAccountRepository.CreateNewUserAccount(user.UserName, user.PasswordHash, user.SecurityStamp, unitOfWork);
+                    }
+                    user.UserId = userId;
+                }
+                catch (Exception exception)
+                {
+                    DemLogger.Current.Error(exception, "DataLoadService. Error in function GetAllForumTableViewModels");
                 }
             });
         }
@@ -99,7 +56,7 @@ namespace DEM_MVC_BL.Services
 
             return Task.Factory.StartNew(() =>
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(""))
                 {
                     connection.Open();
                     string sql = "delete from Users where UserId = @userId";
@@ -150,7 +107,7 @@ namespace DEM_MVC_BL.Services
             //});
             return Task.Factory.StartNew(() =>
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(""))
                 {
                     return new User();
                 }
@@ -283,5 +240,9 @@ namespace DEM_MVC_BL.Services
         }
 
         #endregion
+
+        public void Dispose()
+        {
+        }
     }
 }

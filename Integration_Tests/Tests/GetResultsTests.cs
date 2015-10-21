@@ -14,7 +14,7 @@ namespace Integration_Tests.Tests
             DataTable dataTable;
             using (var unitOfWork = UnitOfWorkFactory.Create())
             {
-                IForumEntityRepository repository = ServiceLocator.Current.GetInstance<IForumEntityRepository>();
+                IForumRepository repository = ServiceLocator.Current.GetInstance<IForumRepository>();
                 dataTable = repository.GetAllForums(unitOfWork);
             }
             Assert.NotEqual(dataTable.Rows.Count, 0);
@@ -26,7 +26,7 @@ namespace Integration_Tests.Tests
             DataTable dataTable;
             using (var unitOfWork = UnitOfWorkFactory.Create())
             {
-                IForumEntityRepository repository = ServiceLocator.Current.GetInstance<IForumEntityRepository>();
+                IForumRepository repository = ServiceLocator.Current.GetInstance<IForumRepository>();
                 dataTable = repository.GetForumById(8, unitOfWork);
             }
             Assert.NotEqual(dataTable.Rows.Count, 0);
@@ -38,7 +38,7 @@ namespace Integration_Tests.Tests
             DataTable dataTable;
             using (var unitOfWork = UnitOfWorkFactory.Create())
             {
-                ITopicEntityRepository repository = ServiceLocator.Current.GetInstance<ITopicEntityRepository>();
+                ITopicRepository repository = ServiceLocator.Current.GetInstance<ITopicRepository>();
                 dataTable = repository.GetAllTopicsByForumId(11, unitOfWork, 50, 1);
             }
             Assert.NotEqual(dataTable.Rows.Count, 0);
@@ -50,7 +50,7 @@ namespace Integration_Tests.Tests
             DataTable dataTable;
             using (var unitOfWork = UnitOfWorkFactory.Create())
             {
-                ITopicEntityRepository repository = ServiceLocator.Current.GetInstance<ITopicEntityRepository>();
+                ITopicRepository repository = ServiceLocator.Current.GetInstance<ITopicRepository>();
                 dataTable = repository.GetTopicById(1448, unitOfWork);
             }
             Assert.NotEqual(dataTable.Rows.Count, 0);
@@ -64,7 +64,7 @@ namespace Integration_Tests.Tests
             DataSet dataSet;
             using (var unitOfWork = UnitOfWorkFactory.Create())
             {
-                IPostEntityRepository repository = ServiceLocator.Current.GetInstance<IPostEntityRepository>();
+                IPostRepository repository = ServiceLocator.Current.GetInstance<IPostRepository>();
                 dataSet = repository.GetAllPostsWithUsersByTopicId(1448, unitOfWork, 20, 1);
             }
             dataTableUsers = dataSet.Tables["Posts"];
@@ -81,7 +81,7 @@ namespace Integration_Tests.Tests
             DataSet dataSet;
             using (var unitOfWork = UnitOfWorkFactory.Create())
             {
-                IPollEntityRepository repository = ServiceLocator.Current.GetInstance<IPollEntityRepository>();
+                IPollRepository repository = ServiceLocator.Current.GetInstance<IPollRepository>();
                 dataSet = repository.GetPollWithOptionsByTopicId(1448, unitOfWork);
             }
             dataTablePolls = dataSet.Tables["Polls"];
@@ -96,7 +96,7 @@ namespace Integration_Tests.Tests
             DataTable dataTableConfigs;
             using (var unitOfWork = UnitOfWorkFactory.Create())
             {
-                IConfigEntityRepository repository = ServiceLocator.Current.GetInstance<IConfigEntityRepository>();
+                IConfigRepository repository = ServiceLocator.Current.GetInstance<IConfigRepository>();
                 dataTableConfigs = repository.GetAllConfigs(unitOfWork);
             }
             Assert.NotEqual(dataTableConfigs.Rows.Count, 0);
@@ -108,7 +108,7 @@ namespace Integration_Tests.Tests
             DataTable dataTableBbCodes;
             using (var unitOfWork = UnitOfWorkFactory.Create())
             {
-                IBbCodeEntityRepository repository = ServiceLocator.Current.GetInstance<IBbCodeEntityRepository>();
+                IBbCodeRepository repository = ServiceLocator.Current.GetInstance<IBbCodeRepository>();
                 dataTableBbCodes = repository.GetAllBbCodes(unitOfWork);
             }
             Assert.NotEqual(dataTableBbCodes.Rows.Count, 0);
