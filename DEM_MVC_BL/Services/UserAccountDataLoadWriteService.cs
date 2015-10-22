@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Interfaces.IUnitOfWork;
@@ -12,7 +13,7 @@ using NLog.Internal;
 
 namespace DEM_MVC_BL.Services
 {
-    public class UserAccountDataLoadWriteService : IUserStore<User>, IUserLoginStore<User>, IUserPasswordStore<User>, IUserSecurityStampStore<User>
+    public class UserAccountDataLoadWriteService : IUserAccountDataLoadWriteService
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IUserAccountRepository _userAccountRepository;

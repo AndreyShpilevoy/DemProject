@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Services;
 using DEM_MVC_DAL.Repositories;
@@ -17,8 +18,8 @@ namespace DEM_MVC.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        public AccountController()
-            : this(new UserManager<User>(new UserAccountDataLoadWriteService(new UnitOfWorkFactory(@"Data Source=.\SQLEXPRESS;Initial Catalog=DEM_Project; User ID=DemUser; Password=4252744;"), new UserAccountRepository())))
+        public AccountController(IUserAccountDataLoadWriteService userAccountDataLoadWriteService)
+            : this(new UserManager<User>(userAccountDataLoadWriteService))
         {
         }
 
