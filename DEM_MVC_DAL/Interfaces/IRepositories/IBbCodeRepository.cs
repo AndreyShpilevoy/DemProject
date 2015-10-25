@@ -1,9 +1,12 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
+using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Interfaces.IUnitOfWork;
 
 namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
     public interface IBbCodeRepository
     {
-        DataTable GetAllBbCodes(IUnitOfWork.IUnitOfWork unitOfWork);
+        List<BbCodeEntity> GetAllBbCodes(IConnectionFactory connectionFactory);
     }
 }

@@ -9,11 +9,20 @@ namespace DEM_MVC_DAL.UnitOfWork
         private IDbConnection _connection;
         private IDbTransaction _transaction;
 
+        public IDbTransaction Transaction => _transaction;
+
         public UnitOfWork(IDbConnection connection)
         {
 
             _connection = connection;
             _transaction = connection.BeginTransaction();
+        }
+
+        public IDbConnection ReturnConnection()
+        {
+            //var command = _connection.CreateCommand();
+            //command.Transaction = _transaction;
+            return _connection;
         }
 
         public IDbCommand CreateCommand()

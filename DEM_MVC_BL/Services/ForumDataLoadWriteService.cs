@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using AutoMapper;
 using DEM_MVC_BL.ExtensionMethods;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models;
+using DEM_MVC_DAL.Entities;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Interfaces.IUnitOfWork;
 using DEM_MVC_Infrastructure.Models;
@@ -16,6 +18,7 @@ namespace DEM_MVC_BL.Services
     public class ForumDataLoadWriteService : IForumDataLoadWriteService
     {
         private readonly IUnitOfWorkFactory _unitOfWorkFactory;
+        private readonly IConnectionFactory _connectionFactory;
         private readonly IForumModelHelper _forumModelHelper;
         private readonly IPollModelHelper _pollModelHelper;
         private readonly IForumRepository _forumEntityRepository;
@@ -30,7 +33,7 @@ namespace DEM_MVC_BL.Services
             IPollModelHelper pollModelHelper, IForumRepository forumEntityRepository,
             ITopicRepository topicEntityRepository, IPollRepository pollEntityRepository,
             IPostRepository postEntityRepository, IBbCodeRepository bbCodeEntityRepository,
-            IConfigRepository configEntityRepository) //, IPostModelHelper postModelHelper
+            IConfigRepository configEntityRepository, IConnectionFactory connectionFactory) //, IPostModelHelper postModelHelper
         {
             _unitOfWorkFactory = unitOfWorkFactory;
             _forumModelHelper = forumModelHelper;
@@ -41,6 +44,7 @@ namespace DEM_MVC_BL.Services
             _postEntityRepository = postEntityRepository;
             _bbCodeEntityRepository = bbCodeEntityRepository;
             _configEntityRepository = configEntityRepository;
+            _connectionFactory = connectionFactory;
             //_postModelHelper = postModelHelper;
         }
 
@@ -218,12 +222,10 @@ namespace DEM_MVC_BL.Services
 
             try
             {
-                DataTable dataTable;
-                using (var unitOfWork = _unitOfWorkFactory.Create())
-                {
-                    dataTable = _bbCodeEntityRepository.GetAllBbCodes(unitOfWork);
-                }
-                bbCodeModels = dataTable.DataTableToList<BbCodeModel>();
+                List<BbCodeEntity> bbCodeEntities = _bbCodeEntityRepository.GetAllBbCodes(_connectionFactory);
+
+                Mapper.CreateMap<BbCodeEntity, BbCodeModel>();
+                bbCodeModels = Mapper.Map<List<BbCodeEntity>, List<BbCodeModel>>(bbCodeEntities);
             }
             catch (Exception exception)
             {

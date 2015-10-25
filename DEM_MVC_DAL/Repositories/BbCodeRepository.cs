@@ -1,36 +1,39 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
+using System.Linq;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Interfaces.IUnitOfWork;
 using DEM_MVC_Infrastructure.Models;
-using Microsoft.Practices.ServiceLocation;
-using NLog;
+using Dapper;
+using DEM_MVC_DAL.Entities;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class BbCodeRepository: IBbCodeRepository
+    public class BbCodeRepository : IBbCodeRepository
     {
 
-        public DataTable GetAllBbCodes(IUnitOfWork unitOfWork)
+        public List<BbCodeEntity> GetAllBbCodes(IConnectionFactory connectionFactory)
         {
-            DataTable dataTable = new DataTable();
+            List<BbCodeEntity> bbCodeEntities = new List<BbCodeEntity>();
             try
             {
-                using (var cmd = unitOfWork.CreateCommand())
+                using (var connection = connectionFactory.Create())
                 {
-                    cmd.CommandText = "GetAllBbCodes";
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    
-                    var dataReader = cmd.ExecuteReader();
-                    dataTable.Load(dataReader);
-                    dataReader.Close();
+                    bbCodeEntities = connection.Query<BbCodeEntity>(@"SELECT bbcode_order AS BbCodeOrder,
+                                                                             bbcode_tag AS BbCodeTag,
+                                                                             bbcode_helpline AS BbCodeHelpLine,
+                                                                             display_on_posting AS BbCodeOnPosting,
+                                                                             bbcode_match AS BbCodeMatch,
+                                                                             bbcode_template AS BbCodeTemplate,
+                                                                             bbcode_reg_options AS BbCodeRegexpOptions
+                                                                        FROM dem_bbcodes").ToList();
                 }
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, "BbCodeEntityRepository. Error in function GetAllBbCodes");
             }
-            return dataTable;
+            return bbCodeEntities;
         }
     }
 }
