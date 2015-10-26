@@ -6,6 +6,7 @@ using DEM_MVC_DAL.Interfaces.IUnitOfWork;
 using DEM_MVC_Infrastructure.Models;
 using Dapper;
 using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Services;
 
 namespace DEM_MVC_DAL.Repositories
 {
@@ -19,14 +20,7 @@ namespace DEM_MVC_DAL.Repositories
             {
                 using (var connection = connectionFactory.Create())
                 {
-                    bbCodeEntities = connection.Query<BbCodeEntity>(@"SELECT bbcode_order AS BbCodeOrder,
-                                                                             bbcode_tag AS BbCodeTag,
-                                                                             bbcode_helpline AS BbCodeHelpLine,
-                                                                             display_on_posting AS BbCodeOnPosting,
-                                                                             bbcode_match AS BbCodeMatch,
-                                                                             bbcode_template AS BbCodeTemplate,
-                                                                             bbcode_reg_options AS BbCodeRegexpOptions
-                                                                        FROM dem_bbcodes").ToList();
+                    bbCodeEntities = connection.Query<BbCodeEntity>(SqlCommandStorageService.GetAllBbCode()).ToList();
                 }
             }
             catch (Exception exception)

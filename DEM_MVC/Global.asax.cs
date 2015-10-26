@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using DEM_MVC_DAL.Services;
 using DEM_MVC_Infrastructure.Models;
 
 
@@ -19,6 +20,7 @@ namespace DEM_MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            DapperMapperHelperService.Initial();
         }
 
         //public void Init()

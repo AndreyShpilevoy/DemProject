@@ -48,7 +48,7 @@ namespace DEM_MVC_BL.Services
             //_postModelHelper = postModelHelper;
         }
 
-        public List<ForumTableViewModel> GetAllForumTableViewModels()
+        public List<ForumTableViewModel> GetAllForumTableViewModels()//todo
         {
             var forumTableViewModels = new List<ForumTableViewModel>();
 
@@ -68,7 +68,7 @@ namespace DEM_MVC_BL.Services
             return forumTableViewModels.OrderBy(x => x.ForumOrder).ToList();
         }
 
-        public ForumTableViewModel GetForumTableViewModelById(int forumId)
+        public ForumTableViewModel GetForumTableViewModelById(int forumId)//todo
         {
             var forumTableViewModel = new ForumTableViewModel();
 
@@ -90,7 +90,7 @@ namespace DEM_MVC_BL.Services
             return forumTableViewModel;
         }
 
-        public ForumShowViewModel GetForumShowViewModelById(int forumId)
+        public ForumShowViewModel GetForumShowViewModelById(int forumId)//todo
         {
             var forumShowViewModel = new ForumShowViewModel();
             try
@@ -109,7 +109,7 @@ namespace DEM_MVC_BL.Services
             return forumShowViewModel;
         }
 
-        public List<TopicTableViewModel> GetTopicTableViewModelsByForumId(int forumId, int onPage, int? page)
+        public List<TopicTableViewModel> GetTopicTableViewModelsByForumId(int forumId, int onPage, int? page)//todo
         {
             var topicTableViewModels = new List<TopicTableViewModel>();
 
@@ -129,7 +129,7 @@ namespace DEM_MVC_BL.Services
             return topicTableViewModels.OrderByDescending(x => x.LastPostTime).ToList();
         }
 
-        public TopicShowViewModel GetTopicShowViewModelById(int topicId)
+        public TopicShowViewModel GetTopicShowViewModelById(int topicId)//todo
         {
             var topicShowViewModel = new TopicShowViewModel();
             try
@@ -148,7 +148,7 @@ namespace DEM_MVC_BL.Services
             return topicShowViewModel;
         }
 
-        public List<PollViewModel> GetPollViewModelWithOptionsByTopicId(int topicId)
+        public List<PollViewModel> GetPollViewModelWithOptionsByTopicId(int topicId)//todo
         {
             var pollViewModels = new List<PollViewModel>();
             var pollOptionsViewModels = new List<PollOptionViewModel>();
@@ -176,7 +176,7 @@ namespace DEM_MVC_BL.Services
             return pollViewModels;
         }
 
-        public List<PostTableViewModel> GetPostTableViewModelsByTopicId(int topicId, int onPage, int? page)
+        public List<PostTableViewModel> GetPostTableViewModelsByTopicId(int topicId, int onPage, int? page)//todo
         {
             var postTableViewModels = new List<PostTableViewModel>();
             var userTableViewModels = new List<UserTableViewModelForPosts>();
@@ -240,12 +240,10 @@ namespace DEM_MVC_BL.Services
 
             try
             {
-                DataTable dataTable;
-                using (var unitOfWork = _unitOfWorkFactory.Create())
-                {
-                    dataTable = _configEntityRepository.GetAllConfigs(unitOfWork);
-                }
-                configModels = dataTable.DataTableToList<ConfigModel>();
+                List<ConfigEntity> configEntities = _configEntityRepository.GetAllConfigs(_connectionFactory);
+
+                Mapper.CreateMap<ConfigEntity, ConfigModel>();
+                configModels = Mapper.Map<List<ConfigEntity>, List<ConfigModel>>(configEntities);
             }
             catch (Exception exception)
             {

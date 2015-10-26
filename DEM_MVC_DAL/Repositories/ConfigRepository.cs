@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using Dapper;
+using DEM_MVC_DAL.Entities;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Interfaces.IUnitOfWork;
+using DEM_MVC_DAL.Services;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.Practices.ServiceLocation;
 using NLog;
@@ -10,26 +15,21 @@ namespace DEM_MVC_DAL.Repositories
 {
     public class ConfigRepository: IConfigRepository
     {
-        public DataTable GetAllConfigs(IUnitOfWork unitOfWork)
+        public List<ConfigEntity> GetAllConfigs(IConnectionFactory connectionFactory)
         {
-            DataTable dataTable = new DataTable();
+            List<ConfigEntity> configEntities = new List<ConfigEntity>();
             try
             {
-                using (var cmd = unitOfWork.CreateCommand())
+                using (var connection = connectionFactory.Create())
                 {
-                    cmd.CommandText = "GetAllConfigs";
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    
-                    var dataReader = cmd.ExecuteReader();
-                    dataTable.Load(dataReader);
-                    dataReader.Close();
+                    configEntities = connection.Query<ConfigEntity>(SqlCommandStorageService.GetAllConfigs()).ToList();
                 }
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, "ConfigEntityRepository. Error in function GetAllConfig");
             }
-            return dataTable;
+            return configEntities;
         }
     }
 }

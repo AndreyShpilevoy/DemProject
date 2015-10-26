@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Autofac\AutofacDalRegistration.cs" />
     <Compile Include="Entities\BbCodeEntity.cs" />
+    <Compile Include="Entities\ConfigEntity.cs" />
+    <Compile Include="Entities\ForumEntity.cs" />
     <Compile Include="Interfaces\IRepositories\IConfigRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IPollRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IBbCodeRepository.cs" />
@@ -81,6 +83,9 @@
     <Compile Include="Repositories\UserAccountRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Repositories\TopicRepository.cs" />
+    <Compile Include="Services\DapperColumnAttributeTypeMapperService.cs" />
+    <Compile Include="Services\DapperMapperHelperService.cs" />
+    <Compile Include="Services\SqlCommandStorageService.cs" />
     <Compile Include="UnitOfWork\ConnectionFactory.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWorkFactory.cs" />

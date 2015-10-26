@@ -174,7 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SQL_Scripts\Create_Tables_WithOut_FK_and_INDEX.sql" />
+    <Content Include="App_Data\SQL_Scripts\Create_TestUsersTables.sql" />
     <Content Include="App_Data\SQL_Scripts\Migrate_Script_From_adeusexm_phpbbex_To_DEM.sql" />
+    <Content Include="App_Data\SQL_Scripts\SQL_Views.sql" />
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
     <Content Include="Content\Main.css" />
     <Content Include="Content\Smiles\forBbCode\think.gif" />
