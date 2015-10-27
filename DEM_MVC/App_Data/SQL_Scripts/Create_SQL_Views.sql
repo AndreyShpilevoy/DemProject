@@ -6,6 +6,7 @@ AS
 			  forum_desc,
 			  display_subforum_list,
 			  display_on_index,
+			  sub_forums_count,
 			  topics_count,
 			  posts_count,
 			  last_post_time,
@@ -53,7 +54,8 @@ AS
 		,tableWithPostCount.forum_desc
 		,tableWithPostCount.display_subforum_list
 		,tableWithPostCount.display_on_index
-		,tableWithPostCount.forum_order
+		,tableWithPostCount.forum_order		
+		,tableWithPostCount.sub_forums_count
 		,COUNT(topicsTable.topic_id) AS topics_count
 		,tableWithPostCount.posts_count
 	FROM dem_topics topicsTable RIGHT JOIN (  
@@ -65,18 +67,39 @@ AS
 					,tableWithTopicId.display_subforum_list
 					,tableWithTopicId.display_on_index
 					,tableWithTopicId.forum_order
+					,tableWithTopicId.sub_forums_count
    				    ,COUNT(postsTable.post_id) AS posts_count
 	  			FROM dem_posts postsTable RIGHT JOIN ( 
  
-						SELECT forumsTable.forum_id
-    							,parent_id
-    							,forum_name
-    							,forum_desc
-    							,display_subforum_list
-    							,display_on_index
-    							,forum_order  
+						SELECT  forumsTable.forum_id
+    							,forumsTable.parent_id
+    							,forumsTable.forum_name
+    							,forumsTable.forum_desc
+    							,forumsTable.display_subforum_list
+    							,forumsTable.display_on_index
+    							,forumsTable.forum_order  
+								,forumsTable.sub_forums_count
     							,topicsTable.topic_id    
-  							FROM dem_forums forumsTable LEFT JOIN dem_topics topicsTable
+  							FROM (
+							
+									SELECT  foumsMain.forum_id,
+											foumsMain.parent_id,
+											foumsMain.forum_name,
+											foumsMain.forum_desc,
+											foumsMain.display_subforum_list,
+											foumsMain.display_on_index,
+											foumsMain.forum_order,  
+											COUNT(foumsSecondary.forum_id) AS sub_forums_count
+									FROM dem_forums AS foumsMain LEFT JOIN dem_forums AS foumsSecondary	ON foumsSecondary.parent_id = foumsMain.forum_Id
+									GROUP BY foumsMain.forum_id,
+											 foumsMain.parent_id,
+											 foumsMain.forum_name,
+											 foumsMain.forum_desc,
+											 foumsMain.display_subforum_list,
+											 foumsMain.display_on_index,
+											 foumsMain.forum_order
+
+							) forumsTable LEFT JOIN dem_topics topicsTable
 							ON forumsTable.forum_id = topicsTable.forum_id
 
 				)tableWithTopicId ON tableWithTopicId.topic_id = postsTable.topic_id
@@ -87,7 +110,8 @@ AS
 					,forum_desc
 					,display_subforum_list
 					,display_on_index
-					,forum_order
+					,forum_order					
+					,sub_forums_count
 
    )tableWithPostCount ON tableWithPostCount.forum_id = topicsTable.forum_id
   
@@ -99,6 +123,11 @@ AS
       ,display_on_index
       ,forum_order
       ,posts_count
+	  ,sub_forums_count
 
 	) 
-	AS forumTable ON userTable.forum_id = forumTable.forum_id 
+	AS forumTable ON userTable.forum_id = forumTable.forum_id;
+	GO 
+
+
+

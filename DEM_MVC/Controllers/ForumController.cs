@@ -40,10 +40,10 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ViewForum(int forumId, int? page)
         {
-            var forumShowViewModel = _dataLoadService.GetForumShowViewModelById(forumId);
-            if (page == null || page < 1) forumShowViewModel.PageNumber = 1;
-            else forumShowViewModel.PageNumber = (int)page;
-            return View("ViewForum/ViewForum", forumShowViewModel);
+            var forumInfoViewModel = _dataLoadService.GetForumInfoViewModelById(forumId);
+            if (page == null || page < 1) forumInfoViewModel.PageNumber = 1;
+            else forumInfoViewModel.PageNumber = (int)page;
+            return View("ViewForum/ViewForum", forumInfoViewModel);
         }
 
         [HttpGet]
@@ -57,8 +57,8 @@ namespace DEM_MVC.Controllers
         public ActionResult ShowTopicTableByForumId(int forumId, int? page)
         {
             var onPage = ConfigHelper.GetTopicsOnPageCount();
-            var forumShowViewModel = _dataLoadService.GetTopicTableViewModelsByForumId(forumId, onPage, page);
-            return PartialView("ViewForum/_ShowTopicTableByForumId", forumShowViewModel);
+            var forumInfoViewModel = _dataLoadService.GetTopicTableViewModelsByForumId(forumId, onPage, page);
+            return PartialView("ViewForum/_ShowTopicTableByForumId", forumInfoViewModel);
         }
 
         #endregion

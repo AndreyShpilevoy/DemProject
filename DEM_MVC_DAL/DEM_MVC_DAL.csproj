@@ -84,7 +84,7 @@
     <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Repositories\TopicRepository.cs" />
     <Compile Include="Services\DapperColumnAttributeTypeMapperService.cs" />
-    <Compile Include="Services\DapperMapperHelperService.cs" />
+    <Compile Include="Services\DapperMapperRegistrationService.cs" />
     <Compile Include="Services\SqlCommandStorageService.cs" />
     <Compile Include="UnitOfWork\ConnectionFactory.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />

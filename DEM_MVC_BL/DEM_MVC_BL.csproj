@@ -79,6 +79,7 @@
     <Compile Include="Models\AccountModels\UserAccountModels.cs" />
     <Compile Include="Models\ForumModels\UserModels.cs" />
     <Compile Include="Models\ForumModels\WarningModels.cs" />
+    <Compile Include="Services\AutoMapperMapperRegistrationService.cs" />
     <Compile Include="Services\ModelsHelpers\ConfigHelper.cs" />
     <Compile Include="Services\ModelsHelpers\BbCodeHelper.cs" />
     <Compile Include="Services\ModelsHelpers\PostModelHelper.cs" />
@@ -103,9 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

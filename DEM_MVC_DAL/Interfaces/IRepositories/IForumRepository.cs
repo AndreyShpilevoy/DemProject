@@ -1,11 +1,14 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
+using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Interfaces.IUnitOfWork;
 
 namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
     public interface IForumRepository
     {
-        DataTable GetAllForums(IUnitOfWork.IUnitOfWork unitOfWork);
-        
-        DataTable GetForumById(int forumId, IUnitOfWork.IUnitOfWork unitOfWork);
+        List<ForumEntity> GetAllForums(IConnectionFactory connectionFactory);
+
+        ForumEntity GetForumInfoById(int forumId, IConnectionFactory connectionFactory);
     }
 }

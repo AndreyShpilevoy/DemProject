@@ -29,7 +29,7 @@ namespace DEM_MVC_BL.Models
         }
     }
 
-    public class ForumShowViewModel
+    public class ForumInfoViewModel
     {
         public int ForumId { get; set; }
         public int TopicsCount { get; set; }

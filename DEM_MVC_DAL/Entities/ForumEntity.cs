@@ -23,6 +23,9 @@ namespace DEM_MVC_DAL.Entities
         [Column(Name = "display_on_index")]
         public bool DisplayOnIndex { get; set; }
 
+        [Column(Name = "sub_forums_count")]
+        public int SubForumsCount { get; set; }
+
         [Column(Name = "topics_count")]
         public int TopicsCount { get; set; }
 

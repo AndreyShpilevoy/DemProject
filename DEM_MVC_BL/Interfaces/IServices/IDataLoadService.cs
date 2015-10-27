@@ -12,7 +12,7 @@ namespace DEM_MVC_BL.Interfaces.IServices
         List<ForumTableViewModel> GetAllForumTableViewModels();
         ForumTableViewModel GetForumTableViewModelById(int forumId);
         List<TopicTableViewModel> GetTopicTableViewModelsByForumId(int forumId, int onPage, int? page);
-        ForumShowViewModel GetForumShowViewModelById(int topicId);
+        ForumInfoViewModel GetForumInfoViewModelById(int topicId);
         TopicShowViewModel GetTopicShowViewModelById(int topicId);
         List<PollViewModel> GetPollViewModelWithOptionsByTopicId(int topicId);
         List<PostTableViewModel> GetPostTableViewModelsByTopicId(int topicId, int onPage, int? page);

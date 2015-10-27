@@ -48,18 +48,16 @@ namespace DEM_MVC_BL.Services
             //_postModelHelper = postModelHelper;
         }
 
-        public List<ForumTableViewModel> GetAllForumTableViewModels()//todo
+        public List<ForumTableViewModel> GetAllForumTableViewModels()
         {
             var forumTableViewModels = new List<ForumTableViewModel>();
 
             try
             {
-                DataTable dataTable;
-                using (var unitOfWork = _unitOfWorkFactory.Create())
-                {
-                    dataTable = _forumEntityRepository.GetAllForums(unitOfWork);
-                }
-                forumTableViewModels = _forumModelHelper.TransformToHierarchy(dataTable.DataTableToList<ForumTableViewModel>());
+                List<ForumEntity> forumEntities = _forumEntityRepository.GetAllForums(_connectionFactory);
+                var tempForumModels = Mapper.Map<List<ForumEntity>, List<ForumTableViewModel>>(forumEntities);
+
+                forumTableViewModels = _forumModelHelper.TransformToHierarchy(tempForumModels);
             }
             catch (Exception exception)
             {
@@ -68,18 +66,16 @@ namespace DEM_MVC_BL.Services
             return forumTableViewModels.OrderBy(x => x.ForumOrder).ToList();
         }
 
-        public ForumTableViewModel GetForumTableViewModelById(int forumId)//todo
+        public ForumTableViewModel GetForumTableViewModelById(int forumId)
         {
             var forumTableViewModel = new ForumTableViewModel();
 
             try
             {
-                DataTable forumsDataTable;
-                using (var unitOfWork = _unitOfWorkFactory.Create())
-                {
-                    forumsDataTable = _forumEntityRepository.GetAllForums(unitOfWork);
-                }
-                var forumTableViewModelList = _forumModelHelper.TransformToHierarchy(forumsDataTable.DataTableToList<ForumTableViewModel>());
+                List<ForumEntity> forumEntities = _forumEntityRepository.GetAllForums(_connectionFactory);
+                var tempForumModels = Mapper.Map<List<ForumEntity>, List<ForumTableViewModel>>(forumEntities);
+                var forumTableViewModelList = _forumModelHelper.TransformToHierarchy(tempForumModels);
+
                 forumTableViewModel = _forumModelHelper.GetGorumTreeById(forumTableViewModelList, forumId);
                 forumTableViewModel.SubForums = forumTableViewModel.SubForums.OrderBy(x => x.ForumOrder).ToList();
             }
@@ -90,23 +86,19 @@ namespace DEM_MVC_BL.Services
             return forumTableViewModel;
         }
 
-        public ForumShowViewModel GetForumShowViewModelById(int forumId)//todo
+        public ForumInfoViewModel GetForumInfoViewModelById(int forumId)
         {
-            var forumShowViewModel = new ForumShowViewModel();
+            var forumInfoViewModel = new ForumInfoViewModel();
             try
             {
-                DataTable forumDataTable;
-                using (var unitOfWork = _unitOfWorkFactory.Create())
-                {
-                    forumDataTable = _forumEntityRepository.GetForumById(forumId, unitOfWork);
-                }
-                forumShowViewModel = forumDataTable.DataTableToModel<ForumShowViewModel>();
+                ForumEntity forumEntity = _forumEntityRepository.GetForumInfoById(forumId, _connectionFactory);
+                forumInfoViewModel = Mapper.Map<ForumEntity, ForumInfoViewModel>(forumEntity);
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, "DataLoadService. Error in function GetTopicShowViewModelById");
             }
-            return forumShowViewModel;
+            return forumInfoViewModel;
         }
 
         public List<TopicTableViewModel> GetTopicTableViewModelsByForumId(int forumId, int onPage, int? page)//todo
@@ -223,8 +215,6 @@ namespace DEM_MVC_BL.Services
             try
             {
                 List<BbCodeEntity> bbCodeEntities = _bbCodeEntityRepository.GetAllBbCodes(_connectionFactory);
-
-                Mapper.CreateMap<BbCodeEntity, BbCodeModel>();
                 bbCodeModels = Mapper.Map<List<BbCodeEntity>, List<BbCodeModel>>(bbCodeEntities);
             }
             catch (Exception exception)
@@ -241,8 +231,6 @@ namespace DEM_MVC_BL.Services
             try
             {
                 List<ConfigEntity> configEntities = _configEntityRepository.GetAllConfigs(_connectionFactory);
-
-                Mapper.CreateMap<ConfigEntity, ConfigModel>();
                 configModels = Mapper.Map<List<ConfigEntity>, List<ConfigModel>>(configEntities);
             }
             catch (Exception exception)

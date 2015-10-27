@@ -24,7 +24,14 @@ namespace DEM_MVC_DAL.Services
         {
             return @"SELECT forum_id, parent_id, forum_name, forum_desc, display_subforum_list, display_on_index, topics_count, posts_count, 
                             last_post_time, user_id, username, group_colour, last_topic_title, last_topic_id, forum_order
-                        FROM DEM_Project.dbo.AllForums";
+                        FROM AllForums";
+        }
+
+        public static string GetForumInfoById()
+        {
+            return @"SELECT forum_id, sub_forums_count, topics_count
+                        FROM AllForums
+                        WHERE forum_id = @forumId";
         }
     }
 }

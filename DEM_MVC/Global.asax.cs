@@ -20,7 +20,7 @@ namespace DEM_MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            DapperMapperHelperService.Initial();
+            MapperConfig.Initial();
         }
 
         //public void Init()

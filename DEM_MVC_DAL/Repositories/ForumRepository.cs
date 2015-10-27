@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using Dapper;
+using DEM_MVC_DAL.Entities;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Interfaces.IUnitOfWork;
+using DEM_MVC_DAL.Services;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.Practices.ServiceLocation;
 using NLog;
@@ -11,56 +16,39 @@ namespace DEM_MVC_DAL.Repositories
 {
     public class ForumRepository : IForumRepository
     {
-        public DataTable GetAllForums(IUnitOfWork unitOfWork)
+        public List<ForumEntity> GetAllForums(IConnectionFactory connectionFactory)
         {
-            DataTable dataTable = new DataTable();
+
+            List<ForumEntity> forumEntities = new List<ForumEntity>();
             try
             {
-                using (var cmd = unitOfWork.CreateCommand())
+                using (var connection = connectionFactory.Create())
                 {
-                    cmd.CommandText = "GetAllForums";
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    var dataReader = cmd.ExecuteReader();
-                    dataTable.Load(dataReader);
-                    dataReader.Close();
+                    forumEntities = connection.Query<ForumEntity>(SqlCommandStorageService.GetAllForums()).ToList();
                 }
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, "ForumEntityRepository. Error in function GetAllForums");
             }
-            return dataTable;
+            return forumEntities;
         }
         
-        public DataTable GetForumById(int forumId, IUnitOfWork unitOfWork)
+        public ForumEntity GetForumInfoById(int forumId, IConnectionFactory connectionFactory)
         {
-            DataTable dataTable = new DataTable();
+            ForumEntity forumEntity = new ForumEntity();
             try
             {
-                using (var cmd = unitOfWork.CreateCommand())
+                using (var connection = connectionFactory.Create())
                 {
-                    cmd.CommandText = "GetForumById";
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    SqlParameter param = new SqlParameter
-                    {
-                        ParameterName = "@forumId",
-                        SqlDbType = SqlDbType.Int,
-                        Value = forumId,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(param);
-
-                    var dataReader = cmd.ExecuteReader();
-                    dataTable.Load(dataReader);
-                    dataReader.Close();
+                    forumEntity = connection.Query<ForumEntity>(SqlCommandStorageService.GetForumInfoById(), new { forumId }).SingleOrDefault();
                 }
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, "ForumEntityRepository. Error in function GetForumById");
             }
-            return dataTable;
+            return forumEntity;
         }
     }
 }

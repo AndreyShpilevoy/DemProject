@@ -212,7 +212,7 @@ namespace DEM_MVC.Services
             return MvcHtmlString.Create(mainDiv.ToString());
         }
         
-        public static MvcHtmlString TopicPagingForViewForum(this HtmlHelper helper, ForumShowViewModel model, string actionName, string controlName, object htmlDefaultBtnAttributes = null, object htmlSelectedBtnAttributes = null)
+        public static MvcHtmlString TopicPagingForViewForum(this HtmlHelper helper, ForumInfoViewModel model, string actionName, string controlName, object htmlDefaultBtnAttributes = null, object htmlSelectedBtnAttributes = null)
         {
 
             var mainDiv = new TagBuilder("div");
