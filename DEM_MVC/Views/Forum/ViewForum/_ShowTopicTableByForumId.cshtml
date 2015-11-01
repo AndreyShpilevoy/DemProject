@@ -29,7 +29,7 @@
                             @Html.ActionLink(topic.Title, "ViewTopic", "Forum", new { topicId = topic.TopicId }, null)
                         </div>
                         <div class="topicsCategoryNameDescription">
-                            <span style="color: #@topic.TopicStarterGroupcolor">@Html.Raw(topic.TopicStarterUsername)</span> @topic.TopicStartTime
+                            <span style="color: #@topic.TopicStarterGroupColor">@Html.Raw(topic.TopicStarterUsername)</span> @topic.TopicStartTime
                         </div>
                         <div class="topicsCategoryNameDescriptionPaging">
                             @Html.PostPagingForViewForum(topic, "ViewTopic", "Forum", new { @class = navigationBtnClasses })
@@ -44,7 +44,7 @@
                     </div>
                     <div class="topicsCategoryLastPost">
                         <div>
-                            <span style="color: #@topic.LastPostGroupcolor">@Html.Raw(topic.LastPostUsername)</span> @topic.LastPostTime
+                            <span style="color: #@topic.LastPostGroupColor">@Html.Raw(topic.LastPostUsername)</span> @topic.LastPostTime
                         </div>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ namespace DEM_MVC.Services
             return MvcHtmlString.Create(span.ToString());
         }
         
-        public static MvcHtmlString PostPagingForViewTopic(this HtmlHelper helper, TopicShowViewModel model, string actionName, string controlName, object htmlDefaultBtnAttributes = null, object htmlSelectedBtnAttributes = null)
+        public static MvcHtmlString PostPagingForViewTopic(this HtmlHelper helper, TopicInfoViewModel model, string actionName, string controlName, object htmlDefaultBtnAttributes = null, object htmlSelectedBtnAttributes = null)
         {
 
             var mainDiv = new TagBuilder("div");

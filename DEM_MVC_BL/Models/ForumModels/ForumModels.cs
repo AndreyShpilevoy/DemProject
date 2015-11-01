@@ -17,7 +17,7 @@ namespace DEM_MVC_BL.Models
         public DateTime LastPostTime { get; set; }
         public int UserId { get; set; }
         public string Username { get; set; }
-        public string Groupcolor { get; set; }
+        public string GroupColor { get; set; }
         public string LastTopicTitle { get; set; }
         public int LastTopicId { get; set; }
         public int ForumOrder { get; set; }

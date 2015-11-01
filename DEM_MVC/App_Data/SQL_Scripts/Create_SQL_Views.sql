@@ -129,5 +129,98 @@ AS
 	AS forumTable ON userTable.forum_id = forumTable.forum_id;
 	GO 
 
+CREATE VIEW AllTopics
+AS
 
+SELECT	tableWithUserId.forum_id,
+		tableWithUserId.topic_id,
+		tableWithUserId.topic_title,
+		usersTable.username AS topic_starter_username,
+		usersTable.user_id AS topic_starter_user_id,
+		groupsTable.group_colour AS topic_starter_group_color,
+		tableWithUserId.topic_time AS topic_start_time,
+		tableWithUserId.posts_count,
+		tableWithUserId.topic_views,
+		tableWithUserId.last_post_time,
+		tableWithUserId.user_id AS last_post_user_id,
+		tableWithUserId.username AS last_post_username,
+		tableWithUserId.group_colour AS last_post_group_color,
+		tableWithUserId.post_id AS last_post_id,
+		tableWithUserId.topic_closed,
+		tableWithUserId.topic_first_post_show,
+		tableWithUserId.polls_enabled,
+		tableWithUserId.polls_only
+	FROM dem_users usersTable 
+	JOIN (
+
+		SELECT	tableWithUserId.forum_id,
+				tableWithUserId.topic_id,
+				tableWithUserId.topic_title,
+				tableWithUserId.topic_poster,
+				tableWithUserId.topic_time,
+				tableWithUserId.posts_count,
+				tableWithUserId.topic_views,
+				tableWithUserId.last_post_time,
+				usersTable.username,
+				usersTable.user_id,
+				groupsTable.group_colour,
+				tableWithUserId.post_id,
+				tableWithUserId.topic_closed,
+				tableWithUserId.topic_first_post_show,
+				tableWithUserId.polls_enabled,
+				tableWithUserId.polls_only
+			FROM dem_users usersTable 
+			JOIN (
+
+				SELECT	topicTableWithPostsCount.forum_id,
+						topicTableWithPostsCount.topic_id,
+						topicTableWithPostsCount.topic_title,
+						topicTableWithPostsCount.topic_poster,
+						topicTableWithPostsCount.topic_time,
+						topicTableWithPostsCount.posts_count,
+						topicTableWithPostsCount.topic_views,
+						topicTableWithPostsCount.last_post_time,
+						postsTable.user_id,
+						postsTable.post_id,
+						topicTableWithPostsCount.topic_closed,
+						topicTableWithPostsCount.topic_first_post_show,
+						topicTableWithPostsCount.polls_enabled,
+						topicTableWithPostsCount.polls_only
+					FROM dem_posts postsTable, dem_topics topicsTable,(
+
+							SELECT	topicsTable.forum_id,
+									topicsTable.topic_id,
+									topicsTable.topic_title,
+									topicsTable.topic_poster,
+									topicsTable.topic_time,
+									COUNT(postsTable.post_id) AS posts_count,
+									topicsTable.topic_views,
+									MAX(postsTable.post_time) AS last_post_time,
+									topicsTable.topic_closed,
+									topicsTable.topic_first_post_show,
+									topicsTable.polls_enabled,
+									topicsTable.polls_only
+								FROM		dem_topics topicsTable 
+								JOIN		dem_posts postsTable ON	topicsTable.topic_id = postsTable.topic_id 
+								GROUP BY	topicsTable.forum_id,
+											topicsTable.topic_id,
+											topicsTable.topic_title,
+											topicsTable.topic_poster,
+											topicsTable.topic_time,
+											topicsTable.topic_views,
+											topicsTable.topic_closed,
+											topicsTable.topic_first_post_show,
+											topicsTable.polls_enabled,
+											topicsTable.polls_only
+
+					)topicTableWithPostsCount 
+					WHERE last_post_time = postsTable.post_time AND topicsTable.topic_id = postsTable.topic_id
+	  
+			)tableWithUserId ON tableWithUserId.user_id = usersTable.user_id 
+			JOIN dem_groups groupsTable	ON groupsTable.group_id = usersTable.group_id
+	  
+	)tableWithUserId ON tableWithUserId.topic_poster = usersTable.user_id 
+	JOIN dem_groups groupsTable	ON groupsTable.group_id = usersTable.group_id;
+
+GO
 

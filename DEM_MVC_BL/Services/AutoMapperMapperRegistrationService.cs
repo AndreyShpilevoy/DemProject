@@ -12,6 +12,8 @@ namespace DEM_MVC_BL.Services
             Mapper.CreateMap<ForumEntity, ForumInfoViewModel>();
             Mapper.CreateMap<BbCodeEntity, BbCodeModel>();
             Mapper.CreateMap<ConfigEntity, ConfigModel>();
+            Mapper.CreateMap<TopicEntity, TopicTableViewModel>();
+            Mapper.CreateMap<TopicEntity, TopicInfoViewModel>();
         }
     }
 }

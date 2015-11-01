@@ -1,10 +1,13 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
+using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Interfaces.IUnitOfWork;
 
 namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
     public interface ITopicRepository
     {
-        DataTable GetAllTopicsByForumId(int forumId, IUnitOfWork.IUnitOfWork unitOfWork, int onPage, int? page);
-        DataTable GetTopicById(int topicId, IUnitOfWork.IUnitOfWork unitOfWork);
+        List<TopicEntity> GetTopicsByForumId(int forumId, IConnectionFactory connectionFactory, int onPage, int? page);
+        TopicEntity GetTopicById(int topicId, IConnectionFactory connectionFactory);
     }
 }

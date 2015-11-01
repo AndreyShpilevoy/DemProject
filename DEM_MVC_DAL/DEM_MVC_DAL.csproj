@@ -65,6 +65,7 @@
     <Compile Include="Entities\BbCodeEntity.cs" />
     <Compile Include="Entities\ConfigEntity.cs" />
     <Compile Include="Entities\ForumEntity.cs" />
+    <Compile Include="Entities\TopicEntity.cs" />
     <Compile Include="Interfaces\IRepositories\IConfigRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IPollRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IBbCodeRepository.cs" />

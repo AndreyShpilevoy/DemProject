@@ -42,7 +42,7 @@ namespace DEM_MVC_DAL.Entities
         public string Username { get; set; }
 
         [Column(Name = "group_colour")]
-        public string Groupcolor { get; set; }
+        public string GroupColor { get; set; }
 
         [Column(Name = "last_topic_title")]
         public string LastTopicTitle { get; set; }

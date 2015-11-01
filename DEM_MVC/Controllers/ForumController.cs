@@ -68,7 +68,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ViewTopic(int topicId, int? page, int? postId)
         {
-            var topicShowViewModel = _dataLoadService.GetTopicShowViewModelById(topicId);
+            var topicShowViewModel = _dataLoadService.GetTopicInfoViewModelById(topicId);
             if (page == null || page < 1) 
                 topicShowViewModel.PageNumber = 1;
             else 

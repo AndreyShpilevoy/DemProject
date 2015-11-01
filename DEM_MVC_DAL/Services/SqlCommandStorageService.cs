@@ -33,5 +33,24 @@ namespace DEM_MVC_DAL.Services
                         FROM AllForums
                         WHERE forum_id = @forumId";
         }
+
+        public static string GetTopicsByForumId()
+        {
+            return @"SELECT topic_id, topic_title, topic_starter_username, topic_starter_user_id, topic_starter_group_color, topic_start_time,
+                            posts_count, topic_views, last_post_time, last_post_user_id, last_post_username, last_post_group_color, last_post_id, 
+                            topic_closed
+                        FROM AllTopics
+                        WHERE forum_id = @forumId
+						ORDER BY AllTopics.last_post_time DESC
+						Offset (@page-1)*@onpage Rows
+						Fetch Next @onpage Rows Only";
+        }
+
+        public static string GetTopicById()
+        {
+            return @"SELECT forum_id, topic_id, topic_title, topic_first_post_show, topic_closed, polls_enabled, polls_only, posts_count
+                        FROM AllTopics
+                        WHERE topic_id = @topicId";
+        }
     }
 }

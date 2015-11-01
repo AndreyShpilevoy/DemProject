@@ -101,18 +101,14 @@ namespace DEM_MVC_BL.Services
             return forumInfoViewModel;
         }
 
-        public List<TopicTableViewModel> GetTopicTableViewModelsByForumId(int forumId, int onPage, int? page)//todo
+        public List<TopicTableViewModel> GetTopicTableViewModelsByForumId(int forumId, int onPage, int? page)
         {
             var topicTableViewModels = new List<TopicTableViewModel>();
 
             try
             {
-                DataTable topicsDataTable;
-                using (var unitOfWork = _unitOfWorkFactory.Create())
-                {
-                    topicsDataTable = _topicEntityRepository.GetAllTopicsByForumId(forumId, unitOfWork, onPage, page);
-                }
-                topicTableViewModels = topicsDataTable.DataTableToList<TopicTableViewModel>();
+                var topicEntities = _topicEntityRepository.GetTopicsByForumId(forumId, _connectionFactory, onPage, page);
+                topicTableViewModels = Mapper.Map<List<TopicEntity>, List<TopicTableViewModel>>(topicEntities);
             }
             catch (Exception exception)
             {
@@ -121,21 +117,17 @@ namespace DEM_MVC_BL.Services
             return topicTableViewModels.OrderByDescending(x => x.LastPostTime).ToList();
         }
 
-        public TopicShowViewModel GetTopicShowViewModelById(int topicId)//todo
+        public TopicInfoViewModel GetTopicInfoViewModelById(int topicId)
         {
-            var topicShowViewModel = new TopicShowViewModel();
+            var topicShowViewModel = new TopicInfoViewModel();
             try
             {
-                DataTable topicDataTable;
-                using (var unitOfWork = _unitOfWorkFactory.Create())
-                {
-                    topicDataTable = _topicEntityRepository.GetTopicById(topicId, unitOfWork);
-                }
-                topicShowViewModel = topicDataTable.DataTableToModel<TopicShowViewModel>();
+                var topicEntity = _topicEntityRepository.GetTopicById(topicId, _connectionFactory);
+                topicShowViewModel = Mapper.Map<TopicEntity, TopicInfoViewModel>(topicEntity);
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetTopicShowViewModelById");
+                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetTopicInfoViewModelById");
             }
             return topicShowViewModel;
         }

@@ -10,6 +10,7 @@ namespace DEM_MVC_DAL.Services
             SqlMapper.SetTypeMap(typeof(BbCodeEntity), new DapperColumnAttributeTypeMapperService<BbCodeEntity>());
             SqlMapper.SetTypeMap(typeof(ConfigEntity), new DapperColumnAttributeTypeMapperService<ConfigEntity>());
             SqlMapper.SetTypeMap(typeof(ForumEntity), new DapperColumnAttributeTypeMapperService<ForumEntity>());
+            SqlMapper.SetTypeMap(typeof(TopicEntity), new DapperColumnAttributeTypeMapperService<TopicEntity>());
         }
     }
 }

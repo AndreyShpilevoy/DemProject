@@ -56,7 +56,7 @@
                                 @Html.ActionLink(forum.LastTopicTitle, "ViewTopic", "Forum", new { topicId = forum.LastTopicId }, null)
                             </div>
                             <div>
-                                @forum.LastPostTime <span style="color: #@forum.Groupcolor">@Html.Raw(forum.Username)</span>
+                                @forum.LastPostTime <span style="color: #@forum.GroupColor">@Html.Raw(forum.Username)</span>
                             </div>
                         }
                     </div>

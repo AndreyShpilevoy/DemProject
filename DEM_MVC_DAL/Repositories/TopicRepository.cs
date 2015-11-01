@@ -1,94 +1,53 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using Dapper;
+using DEM_MVC_DAL.Entities;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Interfaces.IUnitOfWork;
+using DEM_MVC_DAL.Services;
 using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class TopicRepository: ITopicRepository
+    public class TopicRepository : ITopicRepository
     {
-        public DataTable GetAllTopicsByForumId(int forumId, IUnitOfWork unitOfWork, int onPage, int? page)
+        public List<TopicEntity> GetTopicsByForumId(int forumId, IConnectionFactory connectionFactory, int onPage, int? page)
         {
-            DataTable dataTable = new DataTable();
+
+            List<TopicEntity> topicEntities = new List<TopicEntity>();
             try
             {
-                using (var cmd = unitOfWork.CreateCommand())
+                if (page == null || page < 1) page = 1;
+                using (var connection = connectionFactory.Create())
                 {
-                    cmd.CommandText = "GetAllTopicsByForumId";
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    SqlParameter param = new SqlParameter
-                    {
-                        ParameterName = "@forumId",
-                        SqlDbType = SqlDbType.Int,
-                        Value = forumId,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(param);
-
-
-                    if (page == null || page < 1) page = 1;
-                    SqlParameter pageParam = new SqlParameter
-                    {
-                        ParameterName = "@page",
-                        SqlDbType = SqlDbType.Int,
-                        Value = page,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(pageParam);
-
-                    SqlParameter onPageParam = new SqlParameter
-                    {
-                        ParameterName = "@onPage",
-                        SqlDbType = SqlDbType.Int,
-                        Value = onPage,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(onPageParam);
-
-                    var dataReader = cmd.ExecuteReader();
-                    dataTable.Load(dataReader);
-                    dataReader.Close();
+                    topicEntities = connection.Query<TopicEntity>(SqlCommandStorageService.GetTopicsByForumId(), new { forumId, page, onPage }).ToList();
                 }
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "TopicEntityRepository. Error in function GetAllTopicsByForumId");
+                DemLogger.Current.Error(exception, "TopicEntityRepository. Error in function GetTopicsByForumId");
             }
-            return dataTable;
+            return topicEntities;
         }
 
-        public DataTable GetTopicById(int topicId, IUnitOfWork unitOfWork)
+        public TopicEntity GetTopicById(int topicId, IConnectionFactory connectionFactory)
         {
-            DataTable dataTable = new DataTable();
+            TopicEntity topicEntity = new TopicEntity();
             try
             {
-                using (var cmd = unitOfWork.CreateCommand())
+                using (var connection = connectionFactory.Create())
                 {
-                    cmd.CommandText = "GetTopicById";
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    SqlParameter param = new SqlParameter
-                    {
-                        ParameterName = "@topicId",
-                        SqlDbType = SqlDbType.Int,
-                        Value = topicId,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(param);
-
-                    var dataReader = cmd.ExecuteReader();
-                    dataTable.Load(dataReader);
-                    dataReader.Close();
+                    topicEntity = connection.Query<TopicEntity>(SqlCommandStorageService.GetTopicById(), new { topicId }).SingleOrDefault();
                 }
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, "TopicEntityRepository. Error in function GetTopicById");
             }
-            return dataTable;
+            return topicEntity;
         }
     }
 }
