@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using DEM_MVC_BL.Models;
+using DEM_MVC_BL.Models.ForumModels;
 
 namespace DEM_MVC.Services
 {

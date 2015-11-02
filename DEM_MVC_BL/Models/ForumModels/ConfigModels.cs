@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DEM_MVC_BL.Models
+﻿namespace DEM_MVC_BL.Models.ForumModels
 {
     public class ConfigModel
     {

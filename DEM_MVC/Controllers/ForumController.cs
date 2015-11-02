@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models;
+using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Services.ModelsHelpers;
 
 namespace DEM_MVC.Controllers

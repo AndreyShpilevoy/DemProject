@@ -62,10 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autofac\AutofacDalRegistration.cs" />
-    <Compile Include="Entities\BbCodeEntity.cs" />
-    <Compile Include="Entities\ConfigEntity.cs" />
-    <Compile Include="Entities\ForumEntity.cs" />
-    <Compile Include="Entities\TopicEntity.cs" />
+    <Compile Include="Entities\BbCodeEntities.cs" />
+    <Compile Include="Entities\ConfigEntities.cs" />
+    <Compile Include="Entities\ForumEntities.cs" />
+    <Compile Include="Entities\PollEntities.cs" />
+    <Compile Include="Entities\TopicEntities.cs" />
     <Compile Include="Interfaces\IRepositories\IConfigRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IPollRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IBbCodeRepository.cs" />

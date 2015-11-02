@@ -1,7 +1,7 @@
 ﻿@using System.Globalization
 @using DEM_MVC.Services
 @using Microsoft.Ajax.Utilities
-@model List<DEM_MVC_BL.Models.PollViewModel>
+@model List<DEM_MVC_BL.Models.ForumModels.PollViewModel>
 
 @foreach (var poll in Model)
 {
@@ -13,7 +13,7 @@
         </div>
         <div class="pollMaxOptionsDescription">
             <span>
-                Можно выбрать только poll.PollMaxOptions @Html.Raw(ViewHelper.SelectRightEnding(poll.PollMaxOptions, "вариант", "варианта", "вариантов")) ответа.
+                Можно выбрать только @poll.PollMaxOptions @Html.Raw(ViewHelper.SelectRightEnding(poll.PollMaxOptions, "вариант", "варианта", "вариантов")) ответа.
             </span>
         </div>
         <div class="pollOptionsConteiner">

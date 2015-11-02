@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Services.ModelsHelpers;
 
 namespace DEM_MVC_BL.Models

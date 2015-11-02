@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using Dapper;
+using DEM_MVC_DAL.Entities;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Interfaces.IUnitOfWork;
+using DEM_MVC_DAL.Services;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.Practices.ServiceLocation;
 using NLog;
@@ -11,35 +16,37 @@ namespace DEM_MVC_DAL.Repositories
 {
     public class PollRepository : IPollRepository
     {
-        public DataSet GetPollWithOptionsByTopicId(int topicId, IUnitOfWork unitOfWork)
+        public List<PollEntity> GetPollsByTopicId(int topicId, IConnectionFactory connectionFactory)
         {
-            DataSet dataSet = new DataSet();
+            List<PollEntity> pollEntities = new List<PollEntity>();
             try
             {
-                using (var cmd = unitOfWork.CreateCommand())
+                using (var connection = connectionFactory.Create())
                 {
-                    cmd.CommandText = "GetPollWithOptionsByTopicId";
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    SqlParameter param = new SqlParameter
-                    {
-                        ParameterName = "@topicId",
-                        SqlDbType = SqlDbType.Int,
-                        Value = topicId,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(param);
-
-                    var dataReader = cmd.ExecuteReader();
-                    dataSet.Load(dataReader, LoadOption.Upsert, "Polls", "PollsOptions");
-                    dataReader.Close();
+                    pollEntities = connection.Query<PollEntity>(SqlCommandStorageService.GetPollsByTopicId(), new { topicId }).ToList();
                 }
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "PostEntityRepository. Error in function GetAllPostsWithUsersByTopicId");
+                DemLogger.Current.Error(exception, "PostEntityRepository. Error in function GetPollsByTopicId");
             }
-            return dataSet;
+            return pollEntities;
+        }
+        public List<PollOptionEntity> GetPollOptionsByPollsId(List<int> pollIdList, IConnectionFactory connectionFactory)
+        {
+            List<PollOptionEntity> pollOptionEntities = new List<PollOptionEntity>();
+            try
+            {
+                using (var connection = connectionFactory.Create())
+                {
+                    pollOptionEntities = connection.Query<PollOptionEntity>(SqlCommandStorageService.GetPollOptionsByPollsId(), new { pollIdList }).ToList();
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "PostEntityRepository. Error in function GetPollOptionsByPollsId");
+            }
+            return pollOptionEntities;
         }
     }
 }

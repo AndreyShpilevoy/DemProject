@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using DEM_MVC_BL.Services.ModelsHelpers;
 
-namespace DEM_MVC_BL.Models
+namespace DEM_MVC_BL.Models.ForumModels
 {
     public class ForumTableViewModel
     {

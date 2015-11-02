@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DEM_MVC_BL.Models;
+using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_DAL.Entities;
 
 namespace DEM_MVC_BL.Services
@@ -14,6 +15,8 @@ namespace DEM_MVC_BL.Services
             Mapper.CreateMap<ConfigEntity, ConfigModel>();
             Mapper.CreateMap<TopicEntity, TopicTableViewModel>();
             Mapper.CreateMap<TopicEntity, TopicInfoViewModel>();
+            Mapper.CreateMap<PollEntity, PollViewModel>();
+            Mapper.CreateMap<PollOptionEntity, PollOptionViewModel>();
         }
     }
 }

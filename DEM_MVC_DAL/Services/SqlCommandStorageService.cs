@@ -52,5 +52,23 @@ namespace DEM_MVC_DAL.Services
                         FROM AllTopics
                         WHERE topic_id = @topicId";
         }
+
+        public static string GetPollsByTopicId()
+        {
+            return @"SELECT poll_id, poll_title, poll_start, poll_length, poll_max_options, poll_last_vote, poll_vote_change
+                        FROM dem_polls
+                        WHERE topic_id = @topicId";
+        }
+
+        public static string GetPollOptionsByPollsId()
+        {
+            return @"SELECT pollOptionsTable.poll_option_id, pollOptionsTable.poll_id, poll_option_text, COUNT(pollVotesTable.poll_option_id) AS poll_option_total
+                        FROM dem_poll_options pollOptionsTable
+                        LEFT JOIN dem_poll_votes pollVotesTable ON pollOptionsTable.poll_option_id = pollVotesTable.poll_option_id AND pollOptionsTable.poll_id = pollVotesTable.poll_id
+                        WHERE pollOptionsTable.poll_id IN (@pollIdList)
+                        GROUP BY    pollOptionsTable.poll_option_id,
+			                        pollOptionsTable.poll_id,
+			                        poll_option_text;";
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models;
+using DEM_MVC_BL.Models.ForumModels;
 using Microsoft.Practices.ServiceLocation;
 using NLog;
 

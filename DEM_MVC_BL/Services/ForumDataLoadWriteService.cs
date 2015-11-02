@@ -7,6 +7,7 @@ using DEM_MVC_BL.ExtensionMethods;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models;
+using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_DAL.Entities;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Interfaces.IUnitOfWork;
@@ -132,19 +133,18 @@ namespace DEM_MVC_BL.Services
             return topicShowViewModel;
         }
 
-        public List<PollViewModel> GetPollViewModelWithOptionsByTopicId(int topicId)//todo
+        public List<PollViewModel> GetPollViewModelWithOptionsByTopicId(int topicId)
         {
             var pollViewModels = new List<PollViewModel>();
             var pollOptionsViewModels = new List<PollOptionViewModel>();
+
             try
             {
-                DataSet dataSet;
-                using (var unitOfWork = _unitOfWorkFactory.Create())
-                {
-                    dataSet = _pollEntityRepository.GetPollWithOptionsByTopicId(topicId, unitOfWork);
-                }
-                pollViewModels = dataSet.Tables["Polls"].DataTableToList<PollViewModel>();
-                pollOptionsViewModels = dataSet.Tables["PollsOptions"].DataTableToList<PollOptionViewModel>();
+                var pollEntities = _pollEntityRepository.GetPollsByTopicId(topicId, _connectionFactory);
+                var pollOptionEntities = _pollEntityRepository.GetPollOptionsByPollsId(pollEntities.Select(x => x.PollId).ToList(), _connectionFactory);
+
+                pollViewModels = Mapper.Map<List<PollEntity>, List<PollViewModel>>(pollEntities);
+                pollOptionsViewModels = Mapper.Map<List<PollOptionEntity>, List<PollOptionViewModel>>(pollOptionEntities);
 
                 foreach (var pollViewModel in pollViewModels)
                 {
