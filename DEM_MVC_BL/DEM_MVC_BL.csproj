@@ -87,7 +87,6 @@
     <Compile Include="Services\ModelsHelpers\ForumEntityHelper.cs" />
     <Compile Include="Models\ForumModels\ForumModels.cs" />
     <Compile Include="Models\ForumModels\TopicModels.cs" />
-    <Compile Include="ExtensionMethods\DataTableExtentions.cs" />
     <Compile Include="Services\ForumDataLoadWriteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserAccountDataLoadWriteService.cs" />

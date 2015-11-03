@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using AutoMapper;
-using DEM_MVC_BL.ExtensionMethods;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
-using DEM_MVC_DAL.Interfaces.IUnitOfWork;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.Practices.ServiceLocation;
 
@@ -18,7 +17,6 @@ namespace DEM_MVC_BL.Services
 {
     public class ForumDataLoadWriteService : IForumDataLoadWriteService
     {
-        private readonly IUnitOfWorkFactory _unitOfWorkFactory;
         private readonly IConnectionFactory _connectionFactory;
         private readonly IForumModelHelper _forumModelHelper;
         private readonly IPollModelHelper _pollModelHelper;
@@ -30,13 +28,12 @@ namespace DEM_MVC_BL.Services
         private readonly IConfigRepository _configEntityRepository;
         //private readonly IPostModelHelper _postModelHelper;
 
-        public ForumDataLoadWriteService(IUnitOfWorkFactory unitOfWorkFactory, IForumModelHelper forumModelHelper,
+        public ForumDataLoadWriteService(IForumModelHelper forumModelHelper,
             IPollModelHelper pollModelHelper, IForumRepository forumEntityRepository,
             ITopicRepository topicEntityRepository, IPollRepository pollEntityRepository,
             IPostRepository postEntityRepository, IBbCodeRepository bbCodeEntityRepository,
             IConfigRepository configEntityRepository, IConnectionFactory connectionFactory) //, IPostModelHelper postModelHelper
         {
-            _unitOfWorkFactory = unitOfWorkFactory;
             _forumModelHelper = forumModelHelper;
             _pollModelHelper = pollModelHelper;
             _forumEntityRepository = forumEntityRepository;
@@ -160,19 +157,21 @@ namespace DEM_MVC_BL.Services
             return pollViewModels;
         }
 
-        public List<PostTableViewModel> GetPostTableViewModelsByTopicId(int topicId, int onPage, int? page)//todo
+        public List<PostTableViewModel> GetPostTableViewModelsByTopicId(int topicId, int onPage, int? page)
         {
             var postTableViewModels = new List<PostTableViewModel>();
             var userTableViewModels = new List<UserTableViewModelForPosts>();
             try
             {
-                DataSet dataSet;
-                using (var unitOfWork = _unitOfWorkFactory.Create())
-                {
-                    dataSet = _postEntityRepository.GetAllPostsWithUsersByTopicId(topicId, unitOfWork, onPage, page);
-                }
-                postTableViewModels = dataSet.Tables["Posts"].DataTableToList<PostTableViewModel>();
-                userTableViewModels = dataSet.Tables["Users"].DataTableToList<UserTableViewModelForPosts>();
+                List<PostEntity> postEntities = _postEntityRepository.GetAllPostsByTopicId(topicId, _connectionFactory, onPage, page);
+                var usersId = postEntities.Select(x => x.UserId).ToList();
+                usersId.AddRange(postEntities.Where(x => x.PostEditCount > 0).Select(y => y.PostEditUserId).ToList());
+                usersId = usersId.Distinct().ToList();
+                List<UserEntity> userEntities = _postEntityRepository.GetUsersForPostsByUsersId(_connectionFactory, usersId);
+
+
+                postTableViewModels = Mapper.Map<List<PostEntity>, List<PostTableViewModel>>(postEntities);
+                userTableViewModels = Mapper.Map<List<UserEntity>,List<UserTableViewModelForPosts>> (userEntities);
 
                 #region AddUsersToPosts
 

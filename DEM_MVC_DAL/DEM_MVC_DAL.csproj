@@ -66,7 +66,9 @@
     <Compile Include="Entities\ConfigEntities.cs" />
     <Compile Include="Entities\ForumEntities.cs" />
     <Compile Include="Entities\PollEntities.cs" />
+    <Compile Include="Entities\PostEntities.cs" />
     <Compile Include="Entities\TopicEntities.cs" />
+    <Compile Include="Entities\UserEntities.cs" />
     <Compile Include="Interfaces\IRepositories\IConfigRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IPollRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IBbCodeRepository.cs" />
@@ -74,9 +76,7 @@
     <Compile Include="Interfaces\IRepositories\IPostRepository.cs" />
     <Compile Include="Interfaces\IRepositories\ITopicRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IForumRepository.cs" />
-    <Compile Include="Interfaces\IUnitOfWork\IConnectionFactory.cs" />
-    <Compile Include="Interfaces\IUnitOfWork\IUnitOfWork.cs" />
-    <Compile Include="Interfaces\IUnitOfWork\IUnitOfWorkFactory.cs" />
+    <Compile Include="Interfaces\IFactory\IConnectionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ConfigRepository.cs" />
     <Compile Include="Repositories\ForumRepository.cs" />
@@ -88,9 +88,7 @@
     <Compile Include="Services\DapperColumnAttributeTypeMapperService.cs" />
     <Compile Include="Services\DapperMapperRegistrationService.cs" />
     <Compile Include="Services\SqlCommandStorageService.cs" />
-    <Compile Include="UnitOfWork\ConnectionFactory.cs" />
-    <Compile Include="UnitOfWork\UnitOfWork.cs" />
-    <Compile Include="UnitOfWork\UnitOfWorkFactory.cs" />
+    <Compile Include="Factory\ConnectionFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

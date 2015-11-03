@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using Dapper;
+using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
-using DEM_MVC_DAL.Interfaces.IUnitOfWork;
+using DEM_MVC_DAL.Services;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.Practices.ServiceLocation;
 using NLog;
@@ -11,54 +16,43 @@ namespace DEM_MVC_DAL.Repositories
 {
     public class PostRepository: IPostRepository
     {
-        public DataSet GetAllPostsWithUsersByTopicId(int topicId, IUnitOfWork unitOfWork, int onPage, int? page)
+        public List<PostEntity> GetAllPostsByTopicId(int topicId, IConnectionFactory connectionFactory, int onPage, int? page)
         {
-            DataSet dataSet = new DataSet();
+            List<PostEntity> postEntities = new List<PostEntity>();
             try
             {
-                using (var cmd = unitOfWork.CreateCommand())
+                if (page == null || page < 1) page = 1;
+                using (var connection = connectionFactory.Create())
                 {
-                    cmd.CommandText = "GetPostsAndUsersablesByTopicId";
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    SqlParameter topicIdParam = new SqlParameter
-                    {
-                        ParameterName = "@topicId",
-                        SqlDbType = SqlDbType.Int,
-                        Value = topicId,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(topicIdParam);
-
-                    if (page == null || page < 1) page = 1;
-                    SqlParameter pageParam = new SqlParameter
-                    {
-                        ParameterName = "@page",
-                        SqlDbType = SqlDbType.Int,
-                        Value = page,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(pageParam);
-
-                    SqlParameter onPageParam = new SqlParameter
-                    {
-                        ParameterName = "@onPage",
-                        SqlDbType = SqlDbType.Int,
-                        Value = onPage,
-                        Direction = ParameterDirection.Input
-                    };
-                    cmd.Parameters.Add(onPageParam);
-
-                    var dataReader = cmd.ExecuteReader();
-                    dataSet.Load(dataReader, LoadOption.Upsert, "Posts", "Users");
-                    dataReader.Close();
+                    postEntities = connection.Query<PostEntity>(SqlCommandStorageService.GetPostsByTopicId(), new { topicId, onPage, page }).ToList();
                 }
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "PostEntityRepository. Error in function GetAllPostsWithUsersByTopicId");
+                DemLogger.Current.Error(exception, "PostEntityRepository. Error in function GetAllPostsByTopicId");
             }
-            return dataSet;
+            return postEntities;
+        }
+
+        public List<UserEntity> GetUsersForPostsByUsersId(IConnectionFactory connectionFactory, List<int> usersId)
+        {
+            List<UserEntity> userEntities = new List<UserEntity>();
+            try
+            {
+                //using (var connection = connectionFactory.Create())
+                //{
+                //    userEntities = connection.Query<UserEntity>(SqlCommandStorageService.GetUsersForPostsByUsersId(), new { userIdList = usersId }).ToList();
+                //}
+                using (var connection = connectionFactory.Create())
+                {
+                    userEntities = connection.Query<UserEntity>(SqlCommandStorageService.GetUsersForPostsByUsersId(), new { usersId }).ToList();
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "PostEntityRepository. Error in function GetUsersForPostsByUsersId");
+            }
+            return userEntities;
         }
     }
 }

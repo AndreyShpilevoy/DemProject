@@ -21,7 +21,6 @@ namespace DEM_MVC_BL.Models.ForumModels
         }
 
         public int PostRate { get; set; }
-        public int PostReportsCount { get; set; }
 
         public int PostEditUserId { get; set; }
         public DateTime PostEditTime { get; set; }

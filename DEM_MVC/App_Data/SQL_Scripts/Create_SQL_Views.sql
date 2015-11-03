@@ -127,7 +127,8 @@ AS
 
 	) 
 	AS forumTable ON userTable.forum_id = forumTable.forum_id;
-	GO 
+	
+GO 
 
 CREATE VIEW AllTopics
 AS
@@ -224,3 +225,97 @@ SELECT	tableWithUserId.forum_id,
 
 GO
 
+CREATE VIEW AllUsersForPosts
+AS
+SELECT  usersTable.user_id,
+		usersTable.username,
+		usersTable.user_birthday,
+		usersTable.user_avatar,
+		usersTable.user_signature,
+		usersTable.user_from,
+		usersTable.user_steam,
+		usersTable.user_skype,
+		usersTable.user_vk,
+		usersTable.user_fb,
+		usersTable.user_website,
+		usersTable.unique_rank_title,	
+		ranksCommonTable.rank_title AS common_rank_title,
+		usersTable.user_posts_count,
+		usersTable.group_colour,
+		usersTable.group_avatar_url
+	FROM dem_ranks ranksCommonTable,(
+
+		SELECT  usersTable.user_id,
+				usersTable.username,
+				usersTable.user_birthday,
+				usersTable.user_avatar,
+				usersTable.user_signature,
+				usersTable.user_from,
+				usersTable.user_steam,
+				usersTable.user_skype,
+				usersTable.user_vk,
+				usersTable.user_fb,
+				usersTable.user_website,
+				usersTable.unique_rank_title,
+				usersTable.user_posts_count,
+				usersTable.group_colour,
+				usersTable.group_avatar_url,	
+				MAX(ranksCommonTable.rank_min) AS rank_min
+			FROM dem_ranks ranksCommonTable,(
+
+				SELECT  usersTable.user_id,
+						usersTable.username,
+						usersTable.user_birthday,
+						usersTable.user_avatar,
+						usersTable.user_signature,
+						usersTable.user_from,
+						usersTable.user_steam,
+						usersTable.user_skype,
+						usersTable.user_vk,
+						usersTable.user_fb,
+						usersTable.user_website,
+						ranksUniqueTable.rank_title AS unique_rank_title,
+						COUNT(postsTable.user_id) AS user_posts_count,			  
+						groupsTable.group_colour,
+						groupsTable.group_avatar_url
+					FROM dem_users usersTable 
+					JOIN dem_groups groupsTable ON usersTable.group_id = groupsTable.group_id
+					LEFT JOIN dem_posts postsTable ON usersTable.user_id = postsTable.user_id
+					LEFT JOIN dem_ranks ranksUniqueTable ON usersTable.user_rank = ranksUniqueTable.rank_id
+
+					GROUP BY	usersTable.user_id,
+								usersTable.username,
+								usersTable.user_birthday,
+								usersTable.user_avatar,
+								usersTable.user_signature,
+								usersTable.user_from,
+								usersTable.user_steam,
+								usersTable.user_skype,
+								usersTable.user_vk,
+								usersTable.user_fb,
+								usersTable.user_website,
+								ranksUniqueTable.rank_title,			  
+								groupsTable.group_colour,
+								groupsTable.group_avatar_url
+			  
+			)usersTable 
+			WHERE user_posts_count >= ranksCommonTable.rank_min AND ranksCommonTable.rank_special <> 1
+			GROUP BY    usersTable.user_id,
+						usersTable.username,
+						usersTable.user_birthday,
+						usersTable.user_avatar,
+						usersTable.user_signature,
+						usersTable.user_from,
+						usersTable.user_steam,
+						usersTable.user_skype,
+						usersTable.user_vk,
+						usersTable.user_fb,
+						usersTable.user_website,
+						usersTable.unique_rank_title,
+						usersTable.user_posts_count,
+						usersTable.group_colour,
+						usersTable.group_avatar_url
+			  
+	)usersTable 
+	WHERE ranksCommonTable.rank_min = usersTable.rank_min AND ranksCommonTable.rank_special <> 1;
+GO

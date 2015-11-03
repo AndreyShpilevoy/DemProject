@@ -17,6 +17,8 @@ namespace DEM_MVC_BL.Services
             Mapper.CreateMap<TopicEntity, TopicInfoViewModel>();
             Mapper.CreateMap<PollEntity, PollViewModel>();
             Mapper.CreateMap<PollOptionEntity, PollOptionViewModel>();
+            Mapper.CreateMap<PostEntity, PostTableViewModel>();
+            Mapper.CreateMap<UserEntity, UserTableViewModelForPosts>();
         }
     }
 }

@@ -9,7 +9,6 @@ using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Services;
 using DEM_MVC_DAL.Repositories;
-using DEM_MVC_DAL.UnitOfWork;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 

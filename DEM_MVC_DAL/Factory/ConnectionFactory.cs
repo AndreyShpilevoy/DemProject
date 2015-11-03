@@ -1,8 +1,8 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using DEM_MVC_DAL.Interfaces.IUnitOfWork;
+using DEM_MVC_DAL.Interfaces.IFactory;
 
-namespace DEM_MVC_DAL.UnitOfWork
+namespace DEM_MVC_DAL.Factory
 {
     public class ConnectionFactory : IConnectionFactory
     {
