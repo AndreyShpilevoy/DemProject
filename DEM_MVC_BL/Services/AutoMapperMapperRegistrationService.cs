@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.ForumModels;
+using DEM_MVC_BL.Models.IdentityModels;
 using DEM_MVC_DAL.Entities;
 
 namespace DEM_MVC_BL.Services
@@ -19,6 +20,8 @@ namespace DEM_MVC_BL.Services
             Mapper.CreateMap<PollOptionEntity, PollOptionViewModel>();
             Mapper.CreateMap<PostEntity, PostTableViewModel>();
             Mapper.CreateMap<UserEntity, UserTableViewModelForPosts>();
+            Mapper.CreateMap<UserIdentityEntity, IdentityMember>();
+            Mapper.CreateMap<GroupIdentityEntity, IdentityRole>();
         }
     }
 }

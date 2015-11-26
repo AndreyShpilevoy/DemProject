@@ -65,9 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autofac\AutofacBlRegistration.cs" />
+    <Compile Include="Interfaces\IServices\IGroupIdentityService.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IPostModelHelper.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IPollModelHelper.cs" />
-    <Compile Include="Interfaces\IServices\IUserAccountDataLoadWriteService.cs" />
+    <Compile Include="Interfaces\IServices\IUserIdentityService.cs" />
     <Compile Include="Models\ForumModels\BbCodeModels.cs" />
     <Compile Include="Models\ForumModels\ConfigModels.cs" />
     <Compile Include="Models\ForumModels\Enums.cs" />
@@ -76,7 +77,8 @@
     <Compile Include="Models\ForumModels\PostModels.cs" />
     <Compile Include="Interfaces\IServices\IDataLoadService.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IForumEntityHelper.cs" />
-    <Compile Include="Models\AccountModels\UserAccountModels.cs" />
+    <Compile Include="Models\IdentityModels\GroupIdentityModels.cs" />
+    <Compile Include="Models\IdentityModels\UserIdentityModels.cs" />
     <Compile Include="Models\ForumModels\UserModels.cs" />
     <Compile Include="Models\ForumModels\WarningModels.cs" />
     <Compile Include="Services\AutoMapperMapperRegistrationService.cs" />
@@ -87,9 +89,10 @@
     <Compile Include="Services\ModelsHelpers\ForumEntityHelper.cs" />
     <Compile Include="Models\ForumModels\ForumModels.cs" />
     <Compile Include="Models\ForumModels\TopicModels.cs" />
-    <Compile Include="Services\ForumDataLoadWriteService.cs" />
+    <Compile Include="Services\DataLoadService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\UserAccountDataLoadWriteService.cs" />
+    <Compile Include="Services\GroupIdentityService.cs" />
+    <Compile Include="Services\UserIdentityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DEM_MVC_DAL\DEM_MVC_DAL.csproj">

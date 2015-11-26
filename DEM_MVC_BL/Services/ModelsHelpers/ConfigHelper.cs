@@ -17,7 +17,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 
         static ConfigHelper()
         {
-            var dataLoadService = ServiceLocator.Current.GetInstance<IForumDataLoadWriteService>();
+            var dataLoadService = ServiceLocator.Current.GetInstance<IDataLoadService>();
             ConfigModels = dataLoadService.GetAllConfigModels();
         }
 

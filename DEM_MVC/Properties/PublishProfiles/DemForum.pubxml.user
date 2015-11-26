@@ -7,7 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>ftp://dem.org.ua/dem.org.ua</_PublishTargetUrl>
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAApQTUFY+7NUOo09oKjDcqoAAAAAACAAAAAAAQZgAAAAEAACAAAABe8EsYqQvHOaAkZsuZnRZASHNMNl4+NMMtR018mtE2dwAAAAAOgAAAAAIAACAAAADw+ziQXMFM3Ysb0O7D1dwYsmHlA++7DYVYpLMoNlyIgyAAAADvVic9GFKUNms8WmOvTD24xtIHUFvTdXR/dGYA9CVjpEAAAABfpJHepUCvdJ/p58wnfcm+JtCyLbtHqDcLhKc7LOhdOiO58dpFM+wajsFneTrxgACOnKPlnCNBbO4NsFKXRgDB</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7oBiClrTVka4Y9Iwny0SSQAAAAACAAAAAAAQZgAAAAEAACAAAAAuI/SA/HFwooJuNaTftN/hgxlg+dtaIPRa/j+n4DDyPQAAAAAOgAAAAAIAACAAAABlHsngEJvBmivBaLHhhLNVqvSxG2uosBX6MJReKKLVxSAAAADCaz8/tsmpOVBMecOD1A9rEwd5X03PSPYEHfoLQhtPpEAAAACq6k+UXjybPMtNEpWUYr4WzklAIehe/mRBzjKimf3akUuBzy+uHlpko0vsVU0txYlMqZD8Wz7Co2BYAsvPHDSR</EncryptedPassword>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -17,7 +17,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/06/2015 00:22:24</publishTime>
     </File>
     <File Include="bin/Autofac.Extras.CommonServiceLocator.dll">
-      <publishTime>10/27/2015 01:28:24</publishTime>
+      <publishTime>11/06/2015 00:22:24</publishTime>
     </File>
     <File Include="bin/Autofac.Integration.Mvc.dll">
       <publishTime>11/06/2015 00:22:24</publishTime>
@@ -29,13 +29,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/06/2015 00:22:25</publishTime>
     </File>
     <File Include="bin/DEM_MVC.dll">
-      <publishTime>11/26/2015 15:09:36</publishTime>
+      <publishTime>11/26/2015 17:53:10</publishTime>
     </File>
     <File Include="bin/DEM_MVC_BL.dll">
-      <publishTime>11/26/2015 15:00:56</publishTime>
+      <publishTime>11/26/2015 17:53:10</publishTime>
     </File>
     <File Include="bin/DEM_MVC_DAL.dll">
-      <publishTime>11/26/2015 15:00:55</publishTime>
+      <publishTime>11/26/2015 17:53:09</publishTime>
     </File>
     <File Include="bin/DEM_MVC_Infrastructure.dll">
       <publishTime>11/26/2015 15:00:55</publishTime>
@@ -89,7 +89,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/06/2015 00:22:25</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>10/27/2015 01:28:25</publishTime>
+      <publishTime>11/06/2015 00:22:25</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
       <publishTime>11/06/2015 00:22:25</publishTime>
@@ -101,13 +101,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/06/2015 00:22:25</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
-      <publishTime>10/27/2015 01:28:25</publishTime>
+      <publishTime>11/06/2015 00:22:25</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.dll">
-      <publishTime>10/27/2015 01:28:25</publishTime>
+      <publishTime>11/06/2015 00:22:25</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Razor.dll">
-      <publishTime>10/27/2015 01:28:25</publishTime>
+      <publishTime>11/06/2015 00:22:25</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>11/06/2015 00:22:25</publishTime>
@@ -376,32 +376,53 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery-ui-1.11.4.min.js">
       <publishTime>11/06/2015 00:22:23</publishTime>
     </File>
+    <File Include="Views/Account/ConfirmEmail.cshtml">
+      <publishTime>11/26/2015 15:35:52</publishTime>
+    </File>
     <File Include="Views/Account/ExternalLoginConfirmation.cshtml">
-      <publishTime>11/06/2015 00:22:23</publishTime>
+      <publishTime>11/26/2015 15:35:52</publishTime>
     </File>
     <File Include="Views/Account/ExternalLoginFailure.cshtml">
-      <publishTime>11/06/2015 00:22:23</publishTime>
+      <publishTime>11/26/2015 15:35:53</publishTime>
+    </File>
+    <File Include="Views/Account/ForgotPassword.cshtml">
+      <publishTime>11/26/2015 15:35:53</publishTime>
+    </File>
+    <File Include="Views/Account/ForgotPasswordConfirmation.cshtml">
+      <publishTime>11/26/2015 15:35:53</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>11/06/2015 00:22:23</publishTime>
+      <publishTime>11/26/2015 15:35:53</publishTime>
     </File>
     <File Include="Views/Account/Manage.cshtml">
       <publishTime>11/06/2015 00:22:23</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
-      <publishTime>11/06/2015 00:22:23</publishTime>
+      <publishTime>11/26/2015 15:35:53</publishTime>
+    </File>
+    <File Include="Views/Account/ResetPassword.cshtml">
+      <publishTime>11/26/2015 15:35:53</publishTime>
+    </File>
+    <File Include="Views/Account/ResetPasswordConfirmation.cshtml">
+      <publishTime>11/26/2015 15:35:53</publishTime>
+    </File>
+    <File Include="Views/Account/SendCode.cshtml">
+      <publishTime>11/26/2015 15:35:53</publishTime>
+    </File>
+    <File Include="Views/Account/VerifyCode.cshtml">
+      <publishTime>11/26/2015 15:35:53</publishTime>
     </File>
     <File Include="Views/Account/_ChangePasswordPartial.cshtml">
-      <publishTime>11/06/2015 00:22:23</publishTime>
+      <publishTime>11/26/2015 15:35:52</publishTime>
     </File>
     <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
-      <publishTime>11/06/2015 00:22:23</publishTime>
+      <publishTime>11/26/2015 15:35:52</publishTime>
     </File>
     <File Include="Views/Account/_RemoveAccountPartial.cshtml">
-      <publishTime>11/06/2015 00:22:23</publishTime>
+      <publishTime>11/26/2015 15:35:52</publishTime>
     </File>
     <File Include="Views/Account/_SetPasswordPartial.cshtml">
-      <publishTime>11/06/2015 00:22:23</publishTime>
+      <publishTime>11/26/2015 15:35:52</publishTime>
     </File>
     <File Include="Views/Forum/Chat/Chat.cshtml">
       <publishTime>11/06/2015 00:22:23</publishTime>
@@ -430,11 +451,35 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Forum/ViewTopic/_ShowPostTableByTopicId.cshtml">
       <publishTime>11/06/2015 00:22:23</publishTime>
     </File>
+    <File Include="Views/Manage/AddPhoneNumber.cshtml">
+      <publishTime>11/26/2015 15:36:04</publishTime>
+    </File>
+    <File Include="Views/Manage/ChangePassword.cshtml">
+      <publishTime>11/26/2015 15:36:04</publishTime>
+    </File>
+    <File Include="Views/Manage/Index.cshtml">
+      <publishTime>11/26/2015 15:36:04</publishTime>
+    </File>
+    <File Include="Views/Manage/ManageLogins.cshtml">
+      <publishTime>11/26/2015 15:36:04</publishTime>
+    </File>
+    <File Include="Views/Manage/SetPassword.cshtml">
+      <publishTime>11/26/2015 15:36:04</publishTime>
+    </File>
+    <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
+      <publishTime>11/26/2015 15:36:04</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/06/2015 00:22:23</publishTime>
     </File>
+    <File Include="Views/Shared/Lockout.cshtml">
+      <publishTime>11/26/2015 15:36:26</publishTime>
+    </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>11/06/2015 00:22:23</publishTime>
+    </File>
+    <File Include="Views/Shared/_LoginPartial.cshtml">
+      <publishTime>11/26/2015 15:36:26</publishTime>
     </File>
     <File Include="Views/web.config">
       <publishTime>11/06/2015 00:22:23</publishTime>
@@ -443,7 +488,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/06/2015 00:22:23</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/26/2015 15:14:30</publishTime>
+      <publishTime>11/26/2015 17:53:13</publishTime>
     </File>
   </ItemGroup>
 </Project>

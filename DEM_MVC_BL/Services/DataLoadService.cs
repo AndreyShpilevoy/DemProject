@@ -15,7 +15,7 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace DEM_MVC_BL.Services
 {
-    public class ForumDataLoadWriteService : IForumDataLoadWriteService
+    public class DataLoadService : IDataLoadService
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly IForumModelHelper _forumModelHelper;
@@ -28,7 +28,7 @@ namespace DEM_MVC_BL.Services
         private readonly IConfigRepository _configEntityRepository;
         //private readonly IPostModelHelper _postModelHelper;
 
-        public ForumDataLoadWriteService(IForumModelHelper forumModelHelper,
+        public DataLoadService(IForumModelHelper forumModelHelper,
             IPollModelHelper pollModelHelper, IForumRepository forumEntityRepository,
             ITopicRepository topicEntityRepository, IPollRepository pollEntityRepository,
             IPostRepository postEntityRepository, IBbCodeRepository bbCodeEntityRepository,
