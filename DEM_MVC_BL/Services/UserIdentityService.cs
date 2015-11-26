@@ -15,7 +15,8 @@ using NLog.Internal;
 
 namespace DEM_MVC_BL.Services
 {
-    public class UserIdentityService<TUser> : IUserIdentityService<TUser> where TUser : IdentityMember
+    public class UserIdentityService<TUser> : IUserIdentityService<TUser> 
+        where TUser : IdentityMember
     {
         public IQueryable<TUser> Users
         {
