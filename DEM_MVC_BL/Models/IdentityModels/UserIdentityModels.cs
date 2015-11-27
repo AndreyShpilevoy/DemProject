@@ -49,14 +49,14 @@ namespace DEM_MVC_BL.Models.IdentityModels
     //}
 
         
-    public class IdentityMember : IUser<int>
+    public class IdentityUser : IUser<int>
     {
-        public IdentityMember()
+        public IdentityUser()
         {
             //  Id = Guid.NewGuid().ToString();
         }
         
-        public IdentityMember(string userName)
+        public IdentityUser(string userName)
             : this()
         {
             UserName = userName;

@@ -20,8 +20,8 @@ namespace DEM_MVC_BL.Services
             Mapper.CreateMap<PollOptionEntity, PollOptionViewModel>();
             Mapper.CreateMap<PostEntity, PostTableViewModel>();
             Mapper.CreateMap<UserEntity, UserTableViewModelForPosts>();
-            Mapper.CreateMap<UserIdentityEntity, IdentityMember>();
-            Mapper.CreateMap<GroupIdentityEntity, IdentityRole>();
+            Mapper.CreateMap<UserIdentityEntity, IdentityUser>();
+            Mapper.CreateMap<GroupIdentityEntity, IdentityGroup>();
         }
     }
 }

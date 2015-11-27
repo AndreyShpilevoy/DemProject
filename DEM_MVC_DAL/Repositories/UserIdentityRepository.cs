@@ -11,8 +11,7 @@ using NLog;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class UserIdentityRepository<TUser>  : IUserIdentityRepository<TUser>
-        where TUser : UserIdentityEntity
+    public class UserIdentityRepository  : IUserIdentityRepository
     {
         public string GetUserName(int memberId, IConnectionFactory connectionFactory)
         {
@@ -24,17 +23,17 @@ namespace DEM_MVC_DAL.Repositories
             throw new NotImplementedException();
         }
 
-        public TUser GetUserById(int memberId, IConnectionFactory connectionFactory)
+        public UserIdentityEntity GetUserById(int memberId, IConnectionFactory connectionFactory)
         {
             throw new NotImplementedException();
         }
 
-        public List<TUser> GetUserByName(string userName, IConnectionFactory connectionFactory)
+        public List<UserIdentityEntity> GetUserByName(string userName, IConnectionFactory connectionFactory)
         {
             throw new NotImplementedException();
         }
 
-        public List<TUser> GetUserByEmail(string email, IConnectionFactory connectionFactory)
+        public UserIdentityEntity GetUserByEmail(string email, IConnectionFactory connectionFactory)
         {
             throw new NotImplementedException();
         }
@@ -54,7 +53,7 @@ namespace DEM_MVC_DAL.Repositories
             throw new NotImplementedException();
         }
 
-        public void Insert(TUser member, IConnectionFactory connectionFactory)
+        public void Insert(UserIdentityEntity member, IConnectionFactory connectionFactory)
         {
             throw new NotImplementedException();
         }
@@ -64,12 +63,12 @@ namespace DEM_MVC_DAL.Repositories
             throw new NotImplementedException();
         }
 
-        public void Delete(TUser member, IConnectionFactory connectionFactory)
+        public void Delete(UserIdentityEntity member, IConnectionFactory connectionFactory)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(TUser member, IConnectionFactory connectionFactory)
+        public void Update(UserIdentityEntity member, IConnectionFactory connectionFactory)
         {
             throw new NotImplementedException();
         }

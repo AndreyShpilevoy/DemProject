@@ -76,9 +76,9 @@
     <Compile Include="Entities\TopicEntities.cs" />
     <Compile Include="Entities\UserEntities.cs" />
     <Compile Include="Interfaces\IRepositories\IConfigRepository.cs" />
-    <Compile Include="Interfaces\IRepositories\IUserLoginIdentityRepository.cs" />
-    <Compile Include="Interfaces\IRepositories\IUserClaimIdentityRepository.cs" />
-    <Compile Include="Interfaces\IRepositories\IUserGroupIdentityRepository.cs" />
+    <Compile Include="Interfaces\IRepositories\IUserLoginsIdentityRepository.cs" />
+    <Compile Include="Interfaces\IRepositories\IUserClaimsIdentityRepository.cs" />
+    <Compile Include="Interfaces\IRepositories\IUserGroupsIdentityRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IUserIdentityRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IPollRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IBbCodeRepository.cs" />
@@ -93,9 +93,9 @@
     <Compile Include="Repositories\PollRepository.cs" />
     <Compile Include="Repositories\BbCodeRepository.cs" />
     <Compile Include="Repositories\GroupIdentityRepository.cs" />
-    <Compile Include="Repositories\UserGroupIdentityRepository.cs" />
-    <Compile Include="Repositories\UserLoginIdentityRepository.cs" />
-    <Compile Include="Repositories\UserClaimIdentityRepository.cs" />
+    <Compile Include="Repositories\UserGroupsIdentityRepository.cs" />
+    <Compile Include="Repositories\UserLoginsIdentityRepository.cs" />
+    <Compile Include="Repositories\UserClaimIsdentityRepository.cs" />
     <Compile Include="Repositories\UserIdentityRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Repositories\TopicRepository.cs" />

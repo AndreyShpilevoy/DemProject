@@ -3,19 +3,19 @@
 namespace DEM_MVC_BL.Models.IdentityModels
 {
 
-    public class IdentityRole : IRole<int>
+    public class IdentityGroup : IRole<int>
     {
-        public IdentityRole()
+        public IdentityGroup()
         {
             //  Id = Guid.NewGuid().ToString();
         }
 
-        public IdentityRole(string name) : this()
+        public IdentityGroup(string name) : this()
         {
             Name = name;
         }
 
-        public IdentityRole(string name, int id)
+        public IdentityGroup(string name, int id)
         {
             Name = name;
             Id = id;

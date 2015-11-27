@@ -5,10 +5,10 @@ using DEM_MVC_DAL.Interfaces.IFactory;
 
 namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
-    public interface IUserGroupIdentityRepository
+    public interface IUserGroupsIdentityRepository
     {
         List<string> FindByUserId(int memberId, IConnectionFactory connectionFactory);
         void Delete(int memberId, IConnectionFactory connectionFactory);
-        void Insert(UserIdentityEntity member, int roleId, IConnectionFactory connectionFactory);
+        void Insert(UserIdentityEntity member, int groupId, IConnectionFactory connectionFactory);
     }
 }

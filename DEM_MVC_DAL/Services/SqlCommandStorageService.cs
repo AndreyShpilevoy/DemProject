@@ -8,7 +8,7 @@ namespace DEM_MVC_DAL.Services
 {
     static internal class SqlCommandStorageService
     {
-        static internal string GetAllBbCode()
+        internal static string GetAllBbCode()
         {
             return @"SELECT bbcode_order, 
                             bbcode_tag, 
@@ -21,7 +21,7 @@ namespace DEM_MVC_DAL.Services
                         FROM dem_bbcodes";
         }
 
-        public static string GetAllConfigs()
+        internal static string GetAllConfigs()
         {
             return @"SELECT config_name, 
                             config_value 
@@ -29,7 +29,7 @@ namespace DEM_MVC_DAL.Services
                         FROM dem_config";
         }
 
-        public static string GetAllForums()
+        internal static string GetAllForums()
         {
             return @"SELECT forum_id, 
                             parent_id, 
@@ -49,7 +49,7 @@ namespace DEM_MVC_DAL.Services
                         FROM AllForums";
         }
 
-        public static string GetForumInfoById()
+        internal static string GetForumInfoById()
         {
             return @"SELECT forum_id, 
                             sub_forums_count, 
@@ -59,7 +59,7 @@ namespace DEM_MVC_DAL.Services
                         WHERE forum_id = @forumId";
         }
 
-        public static string GetTopicsByForumId()
+        internal static string GetTopicsByForumId()
         {
             return @"SELECT topic_id, 
                             topic_title, 
@@ -84,7 +84,7 @@ namespace DEM_MVC_DAL.Services
 						Fetch Next @onpage Rows Only";
         }
 
-        public static string GetTopicById()
+        internal static string GetTopicById()
         {
             return @"SELECT forum_id, 
                             topic_id, 
@@ -99,7 +99,7 @@ namespace DEM_MVC_DAL.Services
                         WHERE topic_id = @topicId";
         }
 
-        public static string GetPollsByTopicId()
+        internal static string GetPollsByTopicId()
         {
             return @"SELECT poll_id, 
                             poll_title, 
@@ -113,7 +113,7 @@ namespace DEM_MVC_DAL.Services
                         WHERE topic_id = @topicId";
         }
 
-        public static string GetPollOptionsByPollsId()
+        internal static string GetPollOptionsByPollsId()
         {
             return @"SELECT pollOptionsTable.poll_option_id, 
                             pollOptionsTable.poll_id, 
@@ -129,7 +129,7 @@ namespace DEM_MVC_DAL.Services
 			                        poll_option_text;";
         }
 
-        public static string GetPostsByTopicId()
+        internal static string GetPostsByTopicId()
         {
             return @"SELECT postsTable.post_id,
 			                postsTable.user_id,
@@ -162,7 +162,7 @@ namespace DEM_MVC_DAL.Services
                         Fetch Next @onpage Rows Only;";
         }
 
-        public static string GetUsersForPostsByUsersId()
+        internal static string GetUsersForPostsByUsersId()
         {
             return @"SELECT user_id,
                    username,
@@ -183,6 +183,84 @@ namespace DEM_MVC_DAL.Services
 
                         FROM AllUsersForPosts
                         WHERE user_id IN @usersId;";
+        }
+
+        internal static string GroupIdentityDelete()
+        {
+            return @"DELETE
+                        FROM dem_groups
+                        WHERE group_id = @id";
+        }
+
+        internal static string GroupIdentityInsert()
+        {
+            return @"INSERT INTO dem_groups (group_name) VALUES (@name)";
+        }
+
+        internal static string GroupIdentityGetGroupName()
+        {
+            return @"SELECT group_name 
+                        FROM dem_groups 
+                        WHERE group_id = @id";
+        }
+
+        internal static string GroupIdentityGetGroupId()
+        {
+            return @"SELECT group_id
+                        FROM dem_groups 
+                        WHERE group_name  = @name";
+        }
+
+        internal static string GroupIdentityUpdate()
+        {
+            return @"UPDATE dem_groups
+                        SET group_name = @name
+                        WHERE group_id = @id";
+        }
+
+        internal static string GroupIdentityGetGroupById()
+        {
+            return @"SELECT group_id,
+                            group_type,
+                            group_name,
+                            group_desc,
+                            group_avatar_url,
+                            group_colour,
+                            group_legend,
+                        FROM dem_groups 
+                        WHERE group_id  = @id";
+        }
+
+        internal static string GroupIdentityGetGroupByName()
+        {
+            return @"SELECT group_id,
+                            group_type,
+                            group_name,
+                            group_desc,
+                            group_avatar_url,
+                            group_colour,
+                            group_legend,
+                        FROM dem_groups 
+                        WHERE group_name  = @name";
+        }
+
+        internal static string UserGroupsIdentityInsert()
+        {
+            return @"INSERT INTO dem_user_group (user_Id, group_Id) VALUES (@userId, @groupId)";
+        }
+
+        internal static string UserGroupsIdentityDelete()
+        {
+            return @"DELETE 
+                        FROM dem_user_group 
+                        WHERE user_Id = @userId";
+        }
+
+        internal static string UserGroupsIdentityFindByUserId()
+        {
+            return @"SELECT dem_groups.group_name 
+                        FROM dem_user_group, dem_groups 
+                        WHERE dem_user_group.user_Id=@userId and dem_user_group.group_Id = dem_groups.group_id";
         }
     }
 }

@@ -6,12 +6,12 @@ namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
     public interface IGroupIdentityRepository
     {
-        void Delete(int roleId, IConnectionFactory connectionFactory);
-        void Insert(GroupIdentityEntity role, IConnectionFactory connectionFactory);
-        string GetRoleName(int roleId, IConnectionFactory connectionFactory);
-        int GetRoleId(string roleName, IConnectionFactory connectionFactory);
-        GroupIdentityEntity GetRoleById(int roleId, IConnectionFactory connectionFactory);
-        GroupIdentityEntity GetRoleByName(string roleName, IConnectionFactory connectionFactory);
-        void Update(GroupIdentityEntity role, IConnectionFactory connectionFactory);
+        void Delete(int groupId, IConnectionFactory connectionFactory);
+        void Insert(GroupIdentityEntity group, IConnectionFactory connectionFactory);
+        string GetGroupName(int groupId, IConnectionFactory connectionFactory);
+        int GetGroupId(string groupName, IConnectionFactory connectionFactory);
+        GroupIdentityEntity GetGroupById(int groupId, IConnectionFactory connectionFactory);
+        GroupIdentityEntity GetGroupByName(string groupName, IConnectionFactory connectionFactory);
+        void Update(GroupIdentityEntity group, IConnectionFactory connectionFactory);
     }
 }

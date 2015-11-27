@@ -12,8 +12,8 @@ using NLog.Internal;
 
 namespace DEM_MVC_BL.Services
 {
-    public class GroupIdentityService<TRole> : IGroupIdentityService<TRole>
-        where TRole : IdentityRole
+    public class GroupIdentityService<TGroup> : IGroupIdentityService<TGroup>
+        where TGroup : IdentityGroup
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly IGroupIdentityRepository _groupIdentityRepository;
@@ -25,7 +25,7 @@ namespace DEM_MVC_BL.Services
             _groupIdentityRepository = groupIdentityRepository;
         }
 
-        public IQueryable<TRole> Roles
+        public IQueryable<TGroup> Roles
         {
             get
             {
@@ -41,17 +41,17 @@ namespace DEM_MVC_BL.Services
             }
         }
 
-        public Task CreateAsync(TRole role)
+        public Task CreateAsync(TGroup group)
         {
             try
             {
-                if (role == null)
+                if (group == null)
                 {
-                    throw new ArgumentNullException(nameof(role));
+                    throw new ArgumentNullException(nameof(group));
                 }
 
-                var roleEntity = Mapper.Map<IdentityRole, GroupIdentityEntity>(role);
-                _groupIdentityRepository.Insert(roleEntity, _connectionFactory);
+                var groupEntity = Mapper.Map<IdentityGroup, GroupIdentityEntity>(group);
+                _groupIdentityRepository.Insert(groupEntity, _connectionFactory);
             }
             catch (Exception exception)
             {
@@ -62,17 +62,17 @@ namespace DEM_MVC_BL.Services
 
         }
 
-        public Task UpdateAsync(TRole role)
+        public Task UpdateAsync(TGroup group)
         {
             try
             {
-                if (role == null)
+                if (group == null)
                 {
-                    throw new ArgumentNullException(nameof(role));
+                    throw new ArgumentNullException(nameof(group));
                 }
 
-                var roleEntity = Mapper.Map<IdentityRole, GroupIdentityEntity>(role);
-                _groupIdentityRepository.Update(roleEntity, _connectionFactory);
+                var groupEntity = Mapper.Map<IdentityGroup, GroupIdentityEntity>(group);
+                _groupIdentityRepository.Update(groupEntity, _connectionFactory);
             }
             catch (Exception exception)
             {
@@ -82,16 +82,16 @@ namespace DEM_MVC_BL.Services
             return Task.FromResult<Object>(null);
         }
 
-        public Task DeleteAsync(TRole role)
+        public Task DeleteAsync(TGroup group)
         {
             try
             {
-                if (role == null)
+                if (group == null)
                 {
-                    throw new ArgumentNullException(nameof(role));
+                    throw new ArgumentNullException(nameof(group));
                 }
 
-                _groupIdentityRepository.Delete(role.Id, _connectionFactory);
+                _groupIdentityRepository.Delete(group.Id, _connectionFactory);
 
             }
             catch (Exception exception)
@@ -101,35 +101,35 @@ namespace DEM_MVC_BL.Services
             return Task.FromResult<Object>(null);
         }
 
-        public Task<TRole> FindByIdAsync(int roleId)
+        public Task<TGroup> FindByIdAsync(int groupId)
         {
             try
             {
-                var roleEntity = _groupIdentityRepository.GetRoleById(roleId, _connectionFactory);
-                TRole result = Mapper.Map<GroupIdentityEntity, IdentityRole>(roleEntity) as TRole;
+                var groupEntity = _groupIdentityRepository.GetGroupById(groupId, _connectionFactory);
+                TGroup result = Mapper.Map<GroupIdentityEntity, IdentityGroup>(groupEntity) as TGroup;
 
-                return Task.FromResult<TRole>(result);
+                return Task.FromResult<TGroup>(result);
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, "GroupIdentityService. Error in function FindByIdAsync");
-                return null;
+                return Task.FromResult<TGroup>(null);
             }
         }
 
-        public Task<TRole> FindByNameAsync(string roleName)
+        public Task<TGroup> FindByNameAsync(string groupName)
         {
             try
             {
-                var roleEntity = _groupIdentityRepository.GetRoleByName(roleName, _connectionFactory);
-                TRole result = Mapper.Map<GroupIdentityEntity, IdentityRole>(roleEntity) as TRole;
+                var groupEntity = _groupIdentityRepository.GetGroupByName(groupName, _connectionFactory);
+                TGroup result = Mapper.Map<GroupIdentityEntity, IdentityGroup>(groupEntity) as TGroup;
 
-                return Task.FromResult<TRole>(result);
+                return Task.FromResult<TGroup>(result);
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, "GroupIdentityService. Error in function FindByNameAsync");
-                return null;
+                return Task.FromResult<TGroup>(null);
             }
         }
 

@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity;
 namespace DEM_MVC_BL.Interfaces.IServices
 {
     public interface IGroupIdentityService<TRole> : IQueryableRoleStore<TRole, int> 
-        where TRole : IdentityRole
+        where TRole : IdentityGroup
     {
     }
 }

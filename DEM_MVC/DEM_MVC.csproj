@@ -177,6 +177,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Member.sql" />
+    <Content Include="App_Data\MemberClaim.sql" />
+    <Content Include="App_Data\MemberLogin.sql" />
+    <Content Include="App_Data\dem_user_group.sql" />
     <Content Include="App_Data\SQL_Scripts\Create_SQL_Views.sql" />
     <Content Include="App_Data\SQL_Scripts\Create_Tables_WithOut_FK_and_INDEX.sql" />
     <Content Include="App_Data\SQL_Scripts\Create_TestUsersTables.sql" />

@@ -12,7 +12,7 @@ using NLog;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class UserLoginIdentityRepository  : IUserLoginIdentityRepository {
+    public class UserLoginsIdentityRepository  : IUserLoginsIdentityRepository {
         public void Delete(UserIdentityEntity member, UserLoginInfo login, IConnectionFactory connectionFactory)
         {
             throw new NotImplementedException();

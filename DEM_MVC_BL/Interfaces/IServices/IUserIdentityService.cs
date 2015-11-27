@@ -18,7 +18,7 @@ namespace DEM_MVC_BL.Interfaces.IServices
         IUserTwoFactorStore<TUser, int>,
         IUserLockoutStore<TUser, int>,
         IUserStore<TUser, int>
-        where TUser : IdentityMember
+        where TUser : IdentityUser
     {
     }
 }

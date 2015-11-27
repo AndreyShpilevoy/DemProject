@@ -5,9 +5,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.IdentityModels;
+using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
@@ -15,215 +18,810 @@ using NLog.Internal;
 
 namespace DEM_MVC_BL.Services
 {
-    public class UserIdentityService<TUser> : IUserIdentityService<TUser> 
-        where TUser : IdentityMember
+    public class UserIdentityService<TUser> : IUserIdentityService<TUser>
+        where TUser : IdentityUser
     {
+        private readonly IConnectionFactory _connectionFactory;
+        private readonly IUserIdentityRepository _userIdentityRepository;
+        private readonly IUserGroupsIdentityRepository _userGroupsIdentityRepository;
+        private readonly IUserClaimsIdentityRepository _userClaimsIdentityRepository;
+        private readonly IUserLoginsIdentityRepository _userLoginsIdentityRepository;
+        private readonly IGroupIdentityRepository _groupIdentityRepository;
+
+        public UserIdentityService(IConnectionFactory connectionFactory,
+            IUserIdentityRepository userIdentityRepository,
+            IUserGroupsIdentityRepository userGroupsIdentityRepository,
+            IUserClaimsIdentityRepository userClaimsIdentityRepository,
+            IUserLoginsIdentityRepository userLoginsIdentityRepository,
+            IGroupIdentityRepository groupIdentityRepository)
+        {
+            _connectionFactory = connectionFactory;
+            _userIdentityRepository = userIdentityRepository;
+            _userGroupsIdentityRepository = userGroupsIdentityRepository;
+            _userClaimsIdentityRepository = userClaimsIdentityRepository;
+            _userLoginsIdentityRepository = userLoginsIdentityRepository;
+            _groupIdentityRepository = groupIdentityRepository;
+        }
+
         public IQueryable<TUser> Users
         {
             get
             {
-                throw new NotImplementedException();
+                try
+                {
+                    throw new NotImplementedException();
+                }
+                catch (Exception exception)
+                {
+                    DemLogger.Current.Error(exception, "GroupIdentityService. Error in property Users");
+                    throw;
+                }
             }
         }
 
-        public Task AddClaimAsync(TUser user, Claim claim)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task AddLoginAsync(TUser user, UserLoginInfo login)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task AddToRoleAsync(TUser user, string roleName)
-        {
-            throw new NotImplementedException();
-        }
 
         public Task CreateAsync(TUser user)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                if (user == null)
+                {
+                    throw new ArgumentNullException(nameof(user));
+                }
 
-        public Task DeleteAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<TUser> FindAsync(UserLoginInfo login)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<TUser> FindByEmailAsync(string email)
-        {
-            throw new NotImplementedException();
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userIdentityRepository.Insert(userEntity, _connectionFactory);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function CreateAsync");
+                return Task.FromResult<object>(null);
+            }
+            return Task.FromResult<object>(null);
         }
 
         public Task<TUser> FindByIdAsync(int userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                //if (string.IsNullOrEmpty(userId))
+                //{
+                //    throw new ArgumentException("Null or empty argument: userId");
+                //}
+
+                var userEntity = _userIdentityRepository.GetUserById(userId, _connectionFactory);
+                TUser result = Mapper.Map<UserIdentityEntity, IdentityUser>(userEntity) as TUser;
+                if (result != null)
+                {
+                    return Task.FromResult<TUser>(result);
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function FindByIdAsync");
+                return Task.FromResult<TUser>(null);
+            }
+            return Task.FromResult<TUser>(null);
         }
 
         public Task<TUser> FindByNameAsync(string userName)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                if (string.IsNullOrEmpty(userName))
+                {
+                    throw new ArgumentException("Null or empty argument: userName");
+                }
 
-        public Task<int> GetAccessFailedCountAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
+                var userEntity = _userIdentityRepository.GetUserByName(userName, _connectionFactory);
+                List<TUser> result = Mapper.Map<List<UserIdentityEntity>, List<IdentityUser>>(userEntity) as List<TUser>;
 
-        public Task<IList<Claim>> GetClaimsAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
+                // Should I throw if > 1 user?
+                if (result != null && result.Count == 1)
+                {
+                    return Task.FromResult<TUser>(result[0]);
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function FindByNameAsync");
+                return Task.FromResult<TUser>(null);
+            }
 
-        public Task<string> GetEmailAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> GetEmailConfirmedAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> GetLockoutEnabledAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<DateTimeOffset> GetLockoutEndDateAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IList<UserLoginInfo>> GetLoginsAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<string> GetPasswordHashAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<string> GetPhoneNumberAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> GetPhoneNumberConfirmedAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IList<string>> GetRolesAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<string> GetSecurityStampAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> GetTwoFactorEnabledAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> HasPasswordAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> IncrementAccessFailedCountAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> IsInRoleAsync(TUser user, string roleName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task RemoveClaimAsync(TUser user, Claim claim)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task RemoveFromRoleAsync(TUser user, string roleName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task RemoveLoginAsync(TUser user, UserLoginInfo login)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task ResetAccessFailedCountAsync(TUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SetEmailAsync(TUser user, string email)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SetEmailConfirmedAsync(TUser user, bool confirmed)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SetLockoutEnabledAsync(TUser user, bool enabled)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SetLockoutEndDateAsync(TUser user, DateTimeOffset lockoutEnd)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SetPasswordHashAsync(TUser user, string passwordHash)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SetPhoneNumberAsync(TUser user, string phoneNumber)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SetPhoneNumberConfirmedAsync(TUser user, bool confirmed)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SetSecurityStampAsync(TUser user, string stamp)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SetTwoFactorEnabledAsync(TUser user, bool enabled)
-        {
-            throw new NotImplementedException();
+            return Task.FromResult<TUser>(null);
         }
 
         public Task UpdateAsync(TUser user)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (user == null)
+                {
+                    throw new ArgumentNullException(nameof(user));
+                }
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userIdentityRepository.Update(userEntity, _connectionFactory);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function UpdateAsync");
+                return Task.FromResult<object>(null);
+            }
+
+            return Task.FromResult<object>(null);
+        }
+
+        public Task AddClaimAsync(TUser user, Claim claim)
+        {
+            try
+            {
+                if (user == null)
+                {
+                    throw new ArgumentNullException(nameof(user));
+                }
+
+                if (claim == null)
+                {
+                    throw new ArgumentNullException(nameof(claim));
+                }
+
+                _userClaimsIdentityRepository.Insert(claim, user.Id, _connectionFactory);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function AddClaimAsync");
+                return Task.FromResult<object>(null);
+            }
+
+            return Task.FromResult<object>(null);
+        }
+
+
+        public Task<IList<Claim>> GetClaimsAsync(TUser user)
+        {
+            try
+            {
+                ClaimsIdentity identity = _userClaimsIdentityRepository.FindByUserId(user.Id, _connectionFactory);
+
+                return Task.FromResult<IList<Claim>>(identity.Claims.ToList());
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetClaimsAsync");
+                return Task.FromResult<IList<Claim>>(null);
+            }
+        }
+
+
+        public Task RemoveClaimAsync(TUser user, Claim claim)
+        {
+            try
+            {
+                if (user == null)
+                {
+                    throw new ArgumentNullException(nameof(user));
+                }
+
+                if (claim == null)
+                {
+                    throw new ArgumentNullException(nameof(claim));
+                }
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userClaimsIdentityRepository.Delete(userEntity, claim, _connectionFactory);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function RemoveClaimAsync");
+                return Task.FromResult<object>(null);
+            }
+
+            return Task.FromResult<object>(null);
+        }
+
+
+        public Task AddLoginAsync(TUser user, UserLoginInfo login)
+        {
+            try
+            {
+                if (user == null)
+                {
+                    throw new ArgumentNullException(nameof(user));
+                }
+
+                if (login == null)
+                {
+                    throw new ArgumentNullException(nameof(login));
+                }
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userLoginsIdentityRepository.Insert(userEntity, login, _connectionFactory);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function AddLoginAsync");
+                return Task.FromResult<object>(null);
+            }
+
+            return Task.FromResult<object>(null);
+        }
+
+        public Task<TUser> FindAsync(UserLoginInfo login)
+        {
+            try
+            {
+                if (login == null)
+                {
+                    throw new ArgumentNullException(nameof(login));
+                }
+
+                var userId = _userLoginsIdentityRepository.FindUserIdByLogin(login, _connectionFactory);
+                if (userId > 0)
+                {
+                    var userEntity = _userIdentityRepository.GetUserById(userId, _connectionFactory);
+                    TUser user = Mapper.Map<UserIdentityEntity, IdentityUser>(userEntity) as TUser;
+
+                    if (user != null)
+                    {
+                        return Task.FromResult<TUser>(user);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function FindAsync");
+                return Task.FromResult<TUser>(null);
+            }
+            return Task.FromResult<TUser>(null);
+        }
+
+        public Task<IList<UserLoginInfo>> GetLoginsAsync(TUser user)
+        {
+            try
+            {
+                //List<UserLoginInfo> userLogins = new List<UserLoginInfo>();
+                if (user == null)
+                {
+                    throw new ArgumentNullException(nameof(user));
+                }
+
+                List<UserLoginInfo> logins = _userLoginsIdentityRepository.FindByUserId(user.Id, _connectionFactory);
+                if (logins != null)
+                {
+                    return Task.FromResult<IList<UserLoginInfo>>(logins);
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetLoginsAsync");
+                return Task.FromResult<IList<UserLoginInfo>>(null);
+            }
+            return Task.FromResult<IList<UserLoginInfo>>(null);
+        }
+
+        public Task RemoveLoginAsync(TUser user, UserLoginInfo login)
+        {
+            try
+            {
+                if (user == null)
+                {
+                    throw new ArgumentNullException(nameof(user));
+                }
+
+                if (login == null)
+                {
+                    throw new ArgumentNullException(nameof(login));
+                }
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userLoginsIdentityRepository.Delete(userEntity, login, _connectionFactory);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function RemoveLoginAsync");
+                return Task.FromResult<object>(null);
+            }
+
+            return Task.FromResult<object>(null);
+        }
+
+        public Task AddToRoleAsync(TUser user, string groupName)
+        {
+            try
+            {
+                if (user == null)
+                {
+                    throw new ArgumentNullException(nameof(user));
+                }
+
+                if (string.IsNullOrEmpty(groupName))
+                {
+                    throw new ArgumentException("Argument cannot be null or empty: group.");
+                }
+
+                int groupId = _groupIdentityRepository.GetGroupId(groupName, _connectionFactory);
+                if (groupId > 0)
+                {
+
+                    var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                    _userGroupsIdentityRepository.Insert(userEntity, groupId, _connectionFactory);
+                }
+                //if (!string.IsNullOrEmpty(groupId))
+                //{
+                //    _userGroupsIdentityRepository.Insert(user, groupId);
+                //}
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function AddToRoleAsync");
+                return Task.FromResult<object>(null);
+            }
+
+            return Task.FromResult<object>(null);
+        }
+
+        public Task<IList<string>> GetRolesAsync(TUser user)
+        {
+            try
+            {
+                if (user == null)
+                {
+                    throw new ArgumentNullException(nameof(user));
+                }
+
+                List<string> groups = _userGroupsIdentityRepository.FindByUserId(user.Id, _connectionFactory);
+                {
+                    if (groups != null)
+                    {
+                        return Task.FromResult<IList<string>>(groups);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetRolesAsync");
+                return Task.FromResult<IList<string>>(null);
+            }
+
+            return Task.FromResult<IList<string>>(null);
+        }
+
+        public Task<bool> IsInRoleAsync(TUser user, string group)
+        {
+            try
+            {
+                if (user == null)
+                {
+                    throw new ArgumentNullException(nameof(user));
+                }
+
+                if (string.IsNullOrEmpty(group))
+                {
+                    throw new ArgumentNullException(nameof(group));
+                }
+
+                List<string> groups = _userGroupsIdentityRepository.FindByUserId(user.Id, _connectionFactory);
+                {
+                    if (groups != null && groups.Contains(group))
+                    {
+                        return Task.FromResult<bool>(true);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function IsInRoleAsync");
+                return Task.FromResult<bool>(false);
+            }
+
+            return Task.FromResult<bool>(false);
+        }
+
+        public Task RemoveFromRoleAsync(TUser user, string group)
+        {
+            try
+            {
+                throw new NotImplementedException();
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "GroupIdentityService. Error in function RemoveFromRoleAsync");
+                throw;
+            }
+        }
+
+        public Task DeleteAsync(TUser user)
+        {
+            try
+            {
+                if (user != null)
+                {
+                    var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                    _userIdentityRepository.Delete(userEntity, _connectionFactory);
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function DeleteAsync");
+                return Task.FromResult<object>(null);
+            }
+
+            return Task.FromResult<object>(null);
+        }
+
+        public Task<string> GetPasswordHashAsync(TUser user)
+        {
+            try
+            {
+                string passwordHash = _userIdentityRepository.GetPasswordHash(user.Id, _connectionFactory);
+                return Task.FromResult<string>(passwordHash);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetPasswordHashAsync");
+                return Task.FromResult<string>(null);
+            }
+
+        }
+
+        public Task<bool> HasPasswordAsync(TUser user)
+        {
+            try
+            {
+                var hasPassword = !string.IsNullOrEmpty(_userIdentityRepository.GetPasswordHash(user.Id, _connectionFactory));
+
+                return Task.FromResult<bool>(Boolean.Parse(hasPassword.ToString()));//todo review
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function HasPasswordAsync");
+                return Task.FromResult<bool>(false);
+            }
+        }
+
+        public Task SetPasswordHashAsync(TUser user, string passwordHash)
+        {
+            try
+            {
+                user.PasswordHash = passwordHash;
+
+                return Task.FromResult<Object>(null);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetPasswordHashAsync");
+                return Task.FromResult<Object>(null);
+            }
+        }
+
+        public Task SetSecurityStampAsync(TUser user, string stamp)
+        {
+            try
+            {
+                user.SecurityStamp = stamp;
+
+                return Task.FromResult(0);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetSecurityStampAsync");
+                return Task.FromResult(0);
+            }
+
+        }
+
+        public Task<string> GetSecurityStampAsync(TUser user)
+        {
+            try
+            {
+                return Task.FromResult(user.SecurityStamp);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetSecurityStampAsync");
+                return Task.FromResult<string>(null);
+            }
+        }
+
+        public Task SetEmailAsync(TUser user, string email)
+        {
+            try
+            {
+                user.Email = email;
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userIdentityRepository.Update(userEntity, _connectionFactory);
+
+                return Task.FromResult(0);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetEmailAsync");
+                return Task.FromResult(0);
+            }
+
+        }
+
+        public Task<string> GetEmailAsync(TUser user)
+        {
+            try
+            {
+                return Task.FromResult(user.Email);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetEmailAsync");
+                return Task.FromResult<string>(null);
+            }
+        }
+
+        public Task<bool> GetEmailConfirmedAsync(TUser user)
+        {
+            try
+            {
+                return Task.FromResult(user.EmailConfirmed);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetEmailConfirmedAsync");
+                return Task.FromResult<bool>(false);
+            }
+        }
+
+        public Task SetEmailConfirmedAsync(TUser user, bool confirmed)
+        {
+            try
+            {
+                user.EmailConfirmed = confirmed;
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userIdentityRepository.Update(userEntity, _connectionFactory);
+
+                return Task.FromResult(0);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetEmailConfirmedAsync");
+                return Task.FromResult(0);
+            }
+        }
+
+        public Task<TUser> FindByEmailAsync(string email)
+        {
+            try
+            {
+                if (String.IsNullOrEmpty(email))
+                {
+                    throw new ArgumentNullException(nameof(email));
+                }
+
+                var userEntity = _userIdentityRepository.GetUserByEmail(email, _connectionFactory);
+                TUser result = Mapper.Map<UserIdentityEntity, IdentityUser>(userEntity) as TUser;
+
+                if (result != null)
+                {
+                    return Task.FromResult<TUser>(result);
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function FindByEmailAsync");
+                return Task.FromResult<TUser>(null);
+            }
+            return Task.FromResult<TUser>(null);
+        }
+
+        public Task SetPhoneNumberAsync(TUser user, string phoneNumber)
+        {
+            try
+            {
+                user.PhoneNumber = phoneNumber;
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userIdentityRepository.Update(userEntity, _connectionFactory);
+
+                return Task.FromResult(0);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetPhoneNumberAsync");
+                return Task.FromResult(0);
+            }
+        }
+
+        public Task<string> GetPhoneNumberAsync(TUser user)
+        {
+            try
+            {
+                return Task.FromResult(user.PhoneNumber);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetPhoneNumberAsync");
+                return Task.FromResult<string>(null);
+            }
+        }
+
+        public Task<bool> GetPhoneNumberConfirmedAsync(TUser user)
+        {
+            try
+            {
+                return Task.FromResult(user.PhoneNumberConfirmed);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetPhoneNumberAsync");
+                return Task.FromResult<bool>(false);
+            }
+        }
+
+        public Task SetPhoneNumberConfirmedAsync(TUser user, bool confirmed)
+        {
+            try
+            {
+                user.PhoneNumberConfirmed = confirmed;
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userIdentityRepository.Update(userEntity, _connectionFactory);
+
+                return Task.FromResult(0);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetPhoneNumberConfirmedAsync");
+                return Task.FromResult(0);
+            }
+        }
+
+        public Task SetTwoFactorEnabledAsync(TUser user, bool enabled)
+        {
+            try
+            {
+                user.TwoFactorEnabled = enabled;
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userIdentityRepository.Update(userEntity, _connectionFactory);
+
+                return Task.FromResult(0);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetTwoFactorEnabledAsync");
+                return Task.FromResult(0);
+            }
+        }
+
+        public Task<bool> GetTwoFactorEnabledAsync(TUser user)
+        {
+            try
+            {
+                return Task.FromResult(user.TwoFactorEnabled);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetTwoFactorEnabledAsync");
+                return Task.FromResult<bool>(false);
+            }
+        }
+
+        public Task<DateTimeOffset> GetLockoutEndDateAsync(TUser user)
+        {
+            try
+            {
+                return
+                Task.FromResult(user.LockoutEndDateUtc.HasValue
+                    ? new DateTimeOffset(DateTime.SpecifyKind(user.LockoutEndDateUtc.Value, DateTimeKind.Utc))
+                    : new DateTimeOffset());
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetLockoutEndDateAsync");
+                return Task.FromResult<DateTimeOffset>(new DateTimeOffset());
+            }
+        }
+
+
+        public Task SetLockoutEndDateAsync(TUser user, DateTimeOffset lockoutEnd)
+        {
+            try
+            {
+                user.LockoutEndDateUtc = lockoutEnd.UtcDateTime;
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userIdentityRepository.Update(userEntity, _connectionFactory);
+
+                return Task.FromResult(0);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetLockoutEndDateAsync");
+                return Task.FromResult(0);
+            }
+        }
+
+        public Task<int> IncrementAccessFailedCountAsync(TUser user)
+        {
+            try
+            {
+                user.AccessFailedCount++;
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userIdentityRepository.Update(userEntity, _connectionFactory);
+
+                return Task.FromResult(user.AccessFailedCount);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function IncrementAccessFailedCountAsync");
+                return Task.FromResult(0);
+            }
+        }
+
+        public Task ResetAccessFailedCountAsync(TUser user)
+        {
+            try
+            {
+                user.AccessFailedCount = 0;
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userIdentityRepository.Update(userEntity, _connectionFactory);
+
+                return Task.FromResult(0);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function ResetAccessFailedCountAsync");
+                return Task.FromResult(0);
+            }
+        }
+
+        public Task<int> GetAccessFailedCountAsync(TUser user)
+        {
+            try
+            {
+                return Task.FromResult(user.AccessFailedCount);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetAccessFailedCountAsync");
+                return Task.FromResult(0);
+            }
+        }
+
+        public Task<bool> GetLockoutEnabledAsync(TUser user)
+        {
+            try
+            {
+                return Task.FromResult(user.LockoutEnabled);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetLockoutEnabledAsync");
+                return Task.FromResult<bool>(false);
+            }
+        }
+
+        public Task SetLockoutEnabledAsync(TUser user, bool enabled)
+        {
+            try
+            {
+                user.LockoutEnabled = enabled;
+
+                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                _userIdentityRepository.Update(userEntity, _connectionFactory);
+
+                return Task.FromResult(0);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetLockoutEnabledAsync");
+                return Task.FromResult(0);
+            }
+        }
+
+        public void Dispose()
+        {
         }
     }
 }
