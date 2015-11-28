@@ -17,6 +17,8 @@ namespace DEM_MVC_DAL.Services
             SqlMapper.SetTypeMap(typeof(UserEntity), new DapperColumnAttributeTypeMapperService<UserEntity>());
             SqlMapper.SetTypeMap(typeof(GroupIdentityEntity), new DapperColumnAttributeTypeMapperService<GroupIdentityEntity>());
             SqlMapper.SetTypeMap(typeof(UserIdentityEntity), new DapperColumnAttributeTypeMapperService<UserIdentityEntity>());
+            SqlMapper.SetTypeMap(typeof(ClaimIdentityEntity), new DapperColumnAttributeTypeMapperService<ClaimIdentityEntity>());
+            SqlMapper.SetTypeMap(typeof(UserLoginInfoIdentityEntity), new DapperColumnAttributeTypeMapperService<UserLoginInfoIdentityEntity>());
         }
     }
 }

@@ -70,7 +70,8 @@ namespace DEM_MVC_BL.Services
                 }
 
                 var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
-                _userIdentityRepository.Insert(userEntity, _connectionFactory);
+                var id = _userIdentityRepository.Insert(userEntity, _connectionFactory);
+                user.Id = id;
             }
             catch (Exception exception)
             {
@@ -286,7 +287,9 @@ namespace DEM_MVC_BL.Services
                     throw new ArgumentNullException(nameof(user));
                 }
 
-                List<UserLoginInfo> logins = _userLoginsIdentityRepository.FindByUserId(user.Id, _connectionFactory);
+                var loginEntities = _userLoginsIdentityRepository.FindByUserId(user.Id, _connectionFactory);
+                List<UserLoginInfo> logins = Mapper.Map<List<UserLoginInfoIdentityEntity>, List<UserLoginInfo>>(loginEntities);
+
                 if (logins != null)
                 {
                     return Task.FromResult<IList<UserLoginInfo>>(logins);

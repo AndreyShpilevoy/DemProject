@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Autofac\AutofacDalRegistration.cs" />
     <Compile Include="Entities\BbCodeEntities.cs" />
+    <Compile Include="Entities\ClaimIdentityEntities.cs" />
     <Compile Include="Entities\ConfigEntities.cs" />
     <Compile Include="Entities\ForumEntities.cs" />
     <Compile Include="Entities\UserIdentityEntities.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Entities\PostEntities.cs" />
     <Compile Include="Entities\TopicEntities.cs" />
     <Compile Include="Entities\UserEntities.cs" />
+    <Compile Include="Entities\UserLoginInfoIdentityEntities.cs" />
     <Compile Include="Interfaces\IRepositories\IConfigRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IUserLoginsIdentityRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IUserClaimsIdentityRepository.cs" />

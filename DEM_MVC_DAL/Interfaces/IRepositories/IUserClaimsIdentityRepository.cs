@@ -7,9 +7,9 @@ namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
     public interface IUserClaimsIdentityRepository
     {
-        ClaimsIdentity FindByUserId(int memberId, IConnectionFactory connectionFactory);
-        void Delete(int memberId, IConnectionFactory connectionFactory);
-        void Insert(Claim memberClaim, int memberId, IConnectionFactory connectionFactory);
-        void Delete(UserIdentityEntity member, Claim claim, IConnectionFactory connectionFactory);
+        ClaimsIdentity FindByUserId(int userId, IConnectionFactory connectionFactory);
+        void Delete(int userId, IConnectionFactory connectionFactory);
+        void Insert(Claim userClaim, int userId, IConnectionFactory connectionFactory);
+        void Delete(UserIdentityEntity user, Claim claim, IConnectionFactory connectionFactory);
     }
 }

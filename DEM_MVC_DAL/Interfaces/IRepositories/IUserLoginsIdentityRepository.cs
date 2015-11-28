@@ -8,10 +8,10 @@ namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
     public interface IUserLoginsIdentityRepository
     {
-        void Delete(UserIdentityEntity member, UserLoginInfo login, IConnectionFactory connectionFactory);
+        void Delete(UserIdentityEntity user, UserLoginInfo login, IConnectionFactory connectionFactory);
         void Delete(int userId, IConnectionFactory connectionFactory);
-        void Insert(UserIdentityEntity member, UserLoginInfo login, IConnectionFactory connectionFactory);
-        int FindUserIdByLogin(UserLoginInfo memberLogin, IConnectionFactory connectionFactory);
-        List<UserLoginInfo> FindByUserId(int memberId, IConnectionFactory connectionFactory);
+        void Insert(UserIdentityEntity user, UserLoginInfo login, IConnectionFactory connectionFactory);
+        int FindUserIdByLogin(UserLoginInfo userLogin, IConnectionFactory connectionFactory);
+        List<UserLoginInfoIdentityEntity> FindByUserId(int userId, IConnectionFactory connectionFactory);
     }
 }

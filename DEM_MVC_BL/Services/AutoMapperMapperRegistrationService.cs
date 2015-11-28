@@ -3,6 +3,7 @@ using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Models.IdentityModels;
 using DEM_MVC_DAL.Entities;
+using Microsoft.AspNet.Identity;
 
 namespace DEM_MVC_BL.Services
 {
@@ -22,6 +23,7 @@ namespace DEM_MVC_BL.Services
             Mapper.CreateMap<UserEntity, UserTableViewModelForPosts>();
             Mapper.CreateMap<UserIdentityEntity, IdentityUser>();
             Mapper.CreateMap<GroupIdentityEntity, IdentityGroup>();
+            Mapper.CreateMap<UserLoginInfoIdentityEntity, UserLoginInfo>();
         }
     }
 }

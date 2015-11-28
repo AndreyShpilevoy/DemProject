@@ -177,9 +177,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Member.sql" />
-    <Content Include="App_Data\MemberClaim.sql" />
-    <Content Include="App_Data\MemberLogin.sql" />
+    <Content Include="App_Data\dem_users.sql" />
+    <Content Include="App_Data\dem_user_claim.sql" />
+    <Content Include="App_Data\dem_user_login.sql" />
     <Content Include="App_Data\dem_user_group.sql" />
     <Content Include="App_Data\SQL_Scripts\Create_SQL_Views.sql" />
     <Content Include="App_Data\SQL_Scripts\Create_Tables_WithOut_FK_and_INDEX.sql" />
@@ -240,11 +240,14 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\MapperConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Autofac\AutofacRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

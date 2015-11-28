@@ -8,17 +8,17 @@ namespace DEM_MVC_DAL.Interfaces.IRepositories
     public interface IUserIdentityRepository//<TUser>
         //where TUser : UserIdentityEntity
     {
-        string GetUserName(int memberId, IConnectionFactory connectionFactory);
-        int GetmemberId(string userName, IConnectionFactory connectionFactory);
-        UserIdentityEntity GetUserById(int memberId, IConnectionFactory connectionFactory);
+        string GetUserName(int userId, IConnectionFactory connectionFactory);
+        int GetUserId(string userName, IConnectionFactory connectionFactory);
+        UserIdentityEntity GetUserById(int userId, IConnectionFactory connectionFactory);
         List<UserIdentityEntity> GetUserByName(string userName, IConnectionFactory connectionFactory);
         UserIdentityEntity GetUserByEmail(string email, IConnectionFactory connectionFactory);
-        string GetPasswordHash(int memberId, IConnectionFactory connectionFactory);
-        void SetPasswordHash(int memberId, string passwordHash, IConnectionFactory connectionFactory);
-        string GetSecurityStamp(int memberId, IConnectionFactory connectionFactory);
-        void Insert(UserIdentityEntity member, IConnectionFactory connectionFactory);
-        void Delete(int memberId, IConnectionFactory connectionFactory);
-        void Delete(UserIdentityEntity member, IConnectionFactory connectionFactory);
-        void Update(UserIdentityEntity member, IConnectionFactory connectionFactory);
+        string GetPasswordHash(int userId, IConnectionFactory connectionFactory);
+        void SetPasswordHash(int userId, string passwordHash, IConnectionFactory connectionFactory);
+        string GetSecurityStamp(int userId, IConnectionFactory connectionFactory);
+        int Insert(UserIdentityEntity user, IConnectionFactory connectionFactory);
+        void Delete(int userId, IConnectionFactory connectionFactory);
+        void Delete(UserIdentityEntity user, IConnectionFactory connectionFactory);
+        void Update(UserIdentityEntity user, IConnectionFactory connectionFactory);
     }
 }

@@ -262,5 +262,380 @@ namespace DEM_MVC_DAL.Services
                         FROM dem_user_group, dem_groups 
                         WHERE dem_user_group.user_Id=@userId and dem_user_group.group_Id = dem_groups.group_id";
         }
+
+        internal static string UserClaimIsdentityRepositoryFindByUserId()
+        {
+            return @"SELECT id,
+                            user_id,
+                            claim_type,
+                            claim_value
+                        FROM dem_user_claim 
+                        WHERE user_id=@userId";
+        }
+
+        internal static string UserClaimIsdentityRepositoryDeleteById()
+        {
+            return @"DELETE 
+                        FROM dem_user_claim 
+                        WHERE user_id = @userId";
+        }
+
+        internal static string UserClaimIsdentityRepositoryDelete()
+        {
+            return @"DELETE 
+                        FROM dem_user_claim 
+                        WHERE user_id = @userId AND @claim_value = @claimValue AND claim_type = @claimType";
+        }
+
+        internal static string UserClaimIsdentityRepositoryInsert()
+        {
+            return @"INSERT INTO dem_user_claim (claim_value, claim_type, user_Id) VALUES (@claimValue, @claimType, @userId)";
+        }
+
+        internal static string UserLoginsIdentityRepositoryDelete()
+        {
+            return @"DELETE 
+                        FROM dem_user_login 
+                        WHERE user_id = @userId AND login_provider = @loginProvider AND provider_key = @providerKey";
+        }
+
+        internal static string UserLoginsIdentityRepositoryDeleteById()
+        {
+            return @"DELETE 
+                        FROM dem_user_login 
+                        WHERE user_id = @userId";
+        }
+
+        internal static string UserLoginsIdentityRepositoryInsert()
+        {
+            return @"INSERT INTO dem_user_login (login_provider, provider_key, user_id) VALUES (@loginProvider, @providerKey, @userId)";
+        }
+
+        internal static string UserLoginsIdentityRepositoryFindUserIdByLogin()
+        {
+            return @"SELECT user_id 
+                        FROM dem_user_login 
+                        WHERE LoginProvider = @loginProvider AND ProviderKey = @providerKey";
+        }
+
+        internal static string UserLoginsIdentityRepositoryFindByUserId()
+        {
+            return @"SELECT login_provider, 
+                            provider_key,
+                            user_id   
+                        FROM dem_user_login 
+                        WHERE user_id = @userId";
+        }
+
+        internal static string UserIdentityRepositoryGetUserName()
+        {
+            return @"SELECT username 
+                        FROM dem_users_test 
+                        WHERE user_id=@userId";
+        }
+
+        internal static string UserIdentityRepositoryGetUserId()
+        {
+            return @"SELECT user_id 
+                        FROM dem_users_test 
+                        WHERE username=@userName";
+        }
+
+        internal static string UserIdentityRepositoryGetUserById()
+        {
+            return @"SELECT user_id,
+	                        user_type,
+	                        user_ip,
+	                        user_browser,
+	                        user_regdate,
+                            user_email,
+                            user_email_confirmed,
+                            password_hash,
+                            security_stamp,
+                            phone_number,
+                            phone_number_confirmed,
+                            two_factor_enabled,
+                            lockout_end_date_utc,
+                            lockout_enable,
+                            access_failed_count,
+                            username,
+	                        user_birthday,
+	                        user_gender,
+	                        user_lastvisit,
+	                        user_lastmark,
+	                        user_lastpage,
+	                        user_inactive_reason,
+	                        user_inactive_time,
+	                        user_lang,
+	                        user_timezone,
+	                        user_dateformat,
+	                        user_rank,
+	                        user_notify,
+	                        user_notify_pm,
+	                        user_avatar,
+	                        user_signature,
+	                        user_from,
+	                        user_steam,
+	                        user_skype,
+	                        user_icq,
+	                        user_vk,
+	                        user_fb,
+	                        user_website,
+	                        user_profession,
+	                        user_interests
+                        FROM dem_users_test 
+                        WHERE user_id = @userId";
+        }
+
+        internal static string UserIdentityRepositoryGetUserByName()
+        {
+            return @"SELECT user_id,
+	                        user_type,
+	                        user_ip,
+	                        user_browser,
+	                        user_regdate,
+                            user_email,
+                            user_email_confirmed,
+                            password_hash,
+                            security_stamp,
+                            phone_number,
+                            phone_number_confirmed,
+                            two_factor_enabled,
+                            lockout_end_date_utc,
+                            lockout_enable,
+                            access_failed_count,
+                            username,
+	                        user_birthday,
+	                        user_gender,
+	                        user_lastvisit,
+	                        user_lastmark,
+	                        user_lastpage,
+	                        user_inactive_reason,
+	                        user_inactive_time,
+	                        user_lang,
+	                        user_timezone,
+	                        user_dateformat,
+	                        user_rank,
+	                        user_notify,
+	                        user_notify_pm,
+	                        user_avatar,
+	                        user_signature,
+	                        user_from,
+	                        user_steam,
+	                        user_skype,
+	                        user_icq,
+	                        user_vk,
+	                        user_fb,
+	                        user_website,
+	                        user_profession,
+	                        user_interests
+                        FROM dem_users_test 
+                        WHERE username=@userName";
+        }
+
+        internal static string UserIdentityRepositoryGetUserByEmail()
+        {
+            return @"SELECT user_id,
+	                        user_type,
+	                        user_ip,
+	                        user_browser,
+	                        user_regdate,
+                            user_email,
+                            user_email_confirmed,
+                            password_hash,
+                            security_stamp,
+                            phone_number,
+                            phone_number_confirmed,
+                            two_factor_enabled,
+                            lockout_end_date_utc,
+                            lockout_enable,
+                            access_failed_count,
+                            username,
+	                        user_birthday,
+	                        user_gender,
+	                        user_lastvisit,
+	                        user_lastmark,
+	                        user_lastpage,
+	                        user_inactive_reason,
+	                        user_inactive_time,
+	                        user_lang,
+	                        user_timezone,
+	                        user_dateformat,
+	                        user_rank,
+	                        user_notify,
+	                        user_notify_pm,
+	                        user_avatar,
+	                        user_signature,
+	                        user_from,
+	                        user_steam,
+	                        user_skype,
+	                        user_icq,
+	                        user_vk,
+	                        user_fb,
+	                        user_website,
+	                        user_profession,
+	                        user_interests
+                        FROM dem_users_test 
+                        WHERE user_email=@email";
+        }
+
+        internal static string UserIdentityRepositoryGetPasswordHash()
+        {
+            return @"SELECT password_hash 
+                        FROM dem_users_test 
+                        WHERE user_id = @userId";
+        }
+
+        internal static string UserIdentityRepositorySetPasswordHash()
+        {
+            return @"UPDATE dem_users_test SET password_hash = @passwordHash WHERE user_id = @userId";
+        }
+
+        internal static string UserIdentityRepositoryGetSecurityStamp()
+        {
+            return @"SELECT security_stamp 
+                        FROM dem_users_test 
+                        WHERE user_id = @userId";
+        }
+
+        internal static string UserIdentityRepositoryInsert()
+        {
+            return @"INSERT INTO dem_users_test
+                                                    (user_id, 
+                                                    user_type,
+                                                    user_ip,
+                                                    user_browser,
+                                                    user_regdate,
+                                                    user_email,
+                                                    user_email_confirmed,
+                                                    password_hash,
+                                                    security_stamp,
+                                                    phone_number,
+                                                    phone_number_confirmed,
+                                                    two_factor_enabled,
+                                                    lockout_end_date_utc,
+                                                    lockout_enable,
+                                                    access_failed_count,
+                                                    username,
+                                                    user_birthday,
+                                                    user_gender,
+                                                    user_lastvisit,
+                                                    user_lastmark,
+                                                    user_lastpage,
+                                                    user_inactive_reason,
+                                                    user_inactive_time,
+                                                    user_lang,
+                                                    user_timezone,
+                                                    user_dateformat,
+                                                    user_rank,
+                                                    user_notify,
+                                                    user_notify_pm,
+                                                    user_avatar,
+                                                    user_signature,
+                                                    user_from,
+                                                    user_steam,
+                                                    user_skype,
+                                                    user_icq,
+                                                    user_vk,
+                                                    user_fb,
+                                                    user_website,
+                                                    user_profession,
+                                                    user_interests)
+                    VALUES  
+                                                    (@userId, 
+                                                    @userType,
+                                                    @userIp,
+                                                    @userBrowser,
+                                                    @userRegdate,
+                                                    @userEmail,
+                                                    @userEmailConfirmed,
+                                                    @passwordHash,
+                                                    @securityStamp,
+                                                    @phoneNumber,
+                                                    @phoneNumberConfirmed,
+                                                    @twoFactorEnabled,
+                                                    @lockoutEndDateUtc,
+                                                    @lockoutEnable,
+                                                    @accessFailedCount,
+                                                    @userName,
+                                                    @userBirthday,
+                                                    @userGender,
+                                                    @userLastVisit,
+                                                    @userLastMark,
+                                                    @userLastPage,
+                                                    @userInactiveReason,
+                                                    @userInactiveTime,
+                                                    @userLang,
+                                                    @userTimeZone,
+                                                    @userDateFormat,
+                                                    @userRank,
+                                                    @userNotify,
+                                                    @userNotify_pm,
+                                                    @userAvatar,
+                                                    @userSignature,
+                                                    @userFrom,
+                                                    @userSteam,
+                                                    @userSkype,
+                                                    @userIcq,
+                                                    @userVk,
+                                                    @userFb,
+                                                    @userWebsite,
+                                                    @userProfession,
+                                                    @userInterests)
+                    SELECT Cast(SCOPE_IDENTITY() as int)";
+        }
+
+        internal static string UserIdentityRepositoryDeleteById()
+        {
+            return @"DELETE 
+                        FROM dem_users_test 
+                        WHERE user_id = @userId";
+        }
+
+        internal static string UserIdentityRepositoryUpdate()
+        {
+            return @"UPDATE dem_users_test SET
+                                                    user_id = @userId, 
+                                                    user_type = @userType,
+                                                    user_ip = @userIp,
+                                                    user_browser = @userBrowser,
+                                                    user_regdate = @userRegdate,
+                                                    user_email = @userEmail,
+                                                    user_email_confirmed = @userEmailConfirmed,
+                                                    password_hash = @passwordHash,
+                                                    security_stamp = @securityStamp,
+                                                    phone_number = @phoneNumber,
+                                                    phone_number_confirmed = @phoneNumberConfirmed,
+                                                    two_factor_enabled = @twoFactorEnabled,
+                                                    lockout_end_date_utc = @lockoutEndDateUtc,
+                                                    lockout_enable = @lockoutEnable,
+                                                    access_failed_count = @accessFailedCount,
+                                                    username = @userName,
+                                                    user_birthday = @userBirthday,
+                                                    user_gender = @userGender,
+                                                    user_lastvisit = @userLastVisit,
+                                                    user_lastmark = @userLastMark,
+                                                    user_lastpage = @userLastPage,
+                                                    user_inactive_reason = @userInactiveReason,
+                                                    user_inactive_time = @userInactiveTime,
+                                                    user_lang = @userLang,
+                                                    user_timezone = @userTimeZone,
+                                                    user_dateformat = @userDateFormat,
+                                                    user_rank = @userRank,
+                                                    user_notify = @userNotify,
+                                                    user_notify_pm = @userNotify_pm,
+                                                    user_avatar = @userAvatar,
+                                                    user_signature = @userSignature,
+                                                    user_from = @userFrom,
+                                                    user_steam = @userSteam,
+                                                    user_skype = @userSkype,
+                                                    user_icq = @userIcq,
+                                                    user_vk = @userVk,
+                                                    user_fb = @userFb,
+                                                    user_website = @userWebsite,
+                                                    user_profession = @userProfession,
+                                                    user_interests = @userInterests
+                        WHERE user_id = @userId";
+        }
     }
 }
