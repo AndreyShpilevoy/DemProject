@@ -12,11 +12,7 @@ namespace DEM_MVC
     {
         protected void Application_Start()
         {
-            AutofacConfig.Initialize();
             AreaRegistration.RegisterAllAreas();
-            
-            DemLogger.Current.Info("Application Start");
-
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
@@ -41,7 +37,7 @@ namespace DEM_MVC
 
         protected void Application_End()
         {
-            DemLogger.Current.Info("Application End");
+            //DemLogger.Current.Info("Application End");
         }
     }
 }

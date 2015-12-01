@@ -301,10 +301,10 @@ namespace DEM_MVC.Controllers
             }
         }
 
-        private async Task SignInAsync(AppMember AppMember, bool isPersistent)
+        private async Task SignInAsync(AppMember appMember, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie, DefaultAuthenticationTypes.TwoFactorCookie);
-            AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, await AppMember.GenerateUserIdentityAsync(UserManager));
+            AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, await appMember.GenerateUserIdentityAsync(UserManager));
         }
 
         private void AddErrors(IdentityResult result)

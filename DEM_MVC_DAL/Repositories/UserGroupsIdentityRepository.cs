@@ -43,7 +43,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserGroupsIdentityRepository. Error in function Insert");
+                DemLogger.Current.Error(exception, "UserGroupsIdentityRepository. Error in function Delete");
             }
         }
 

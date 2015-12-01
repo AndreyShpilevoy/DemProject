@@ -49,9 +49,22 @@ namespace DEM_MVC.Controllers
                 return View(model);
             }
 
+            // Require the user to have a confirmed email before they can log on.
+            var user = await UserManager.FindByNameAsync(model.UserName);
+            if (user != null)
+            {
+                if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                {
+                    //ViewBag.errorMessage = "You must have a confirmed email to log on.";
+                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
+                    return View("Error");
+                }
+            }
+
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -132,19 +145,25 @@ namespace DEM_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var AppMember = new AppMember { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(AppMember, model.Password);
+                var appMember = new AppMember { UserName = model.UserName, Email = model.Email };
+                var result = await UserManager.CreateAsync(appMember, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(AppMember, isPersistent: false, rememberBrowser: false);
+                    //await SignInManager.SignInAsync(appMember, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(AppMember.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = AppMember.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(AppMember.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(appMember.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = appMember.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(appMember.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Forum");
+                    string callbackUrl = await SendEmailConfirmationTokenAsync(appMember.Id, "Confirm your account");
+
+                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+                                    + "before you can log in.";
+
+                    return View("Info");
+                    //return RedirectToAction("Index", "Forum");
                 }
                 AddErrors(result);
             }
@@ -183,8 +202,8 @@ namespace DEM_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var AppMember = await UserManager.FindByNameAsync(model.Email);
-                if (AppMember == null || !(await UserManager.IsEmailConfirmedAsync(AppMember.Id)))
+                var appMember = await UserManager.FindByNameAsync(model.Email);
+                if (appMember == null || !(await UserManager.IsEmailConfirmedAsync(appMember.Id)))
                 {
                     // Don't reveal that the AppMember does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
@@ -192,10 +211,10 @@ namespace DEM_MVC.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(AppMember.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = AppMember.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(AppMember.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                 string code = await UserManager.GeneratePasswordResetTokenAsync(appMember.Id);
+                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = appMember.Id, code = code }, protocol: Request.Url.Scheme);		
+                 await UserManager.SendEmailAsync(appMember.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -348,14 +367,14 @@ namespace DEM_MVC.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var AppMember = new AppMember { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(AppMember);
+                var appMember = new AppMember { UserName = model.Email, Email = model.Email };
+                var result = await UserManager.CreateAsync(appMember);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddLoginAsync(AppMember.Id, info.Login);
+                    result = await UserManager.AddLoginAsync(appMember.Id, info.Login);
                     if (result.Succeeded)
                     {
-                        await SignInManager.SignInAsync(AppMember, isPersistent: false, rememberBrowser: false);
+                        await SignInManager.SignInAsync(appMember, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
                 }
@@ -440,6 +459,16 @@ namespace DEM_MVC.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
+        }
+        private async Task<string> SendEmailConfirmationTokenAsync(int userId, string subject)
+        {
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
+            var callbackUrl = Url.Action("ConfirmEmail", "Account",
+               new { userId = userId, code = code }, protocol: Request.Url.Scheme);
+            await UserManager.SendEmailAsync(userId, subject,
+               "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+            return callbackUrl;
         }
         #endregion
     }

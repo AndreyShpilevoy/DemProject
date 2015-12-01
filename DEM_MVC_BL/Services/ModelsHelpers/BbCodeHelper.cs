@@ -80,11 +80,14 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
         {
             try
             {
-                foreach (var bbCode in BbCodes)
+                if (!String.IsNullOrWhiteSpace(text))
                 {
-                    while (bbCode.Key.IsMatch(text))
+                    foreach (var bbCode in BbCodes)
                     {
-                        text = bbCode.Key.Replace(text, bbCode.Value);
+                        while (bbCode.Key.IsMatch(text))
+                        {
+                            text = bbCode.Key.Replace(text, bbCode.Value);
+                        }
                     }
                 }
                 return text;

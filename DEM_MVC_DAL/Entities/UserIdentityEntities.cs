@@ -51,20 +51,20 @@ namespace DEM_MVC_DAL.Entities
         public string UserBrowser { get; set; }
 
         [Column(Name = "user_regdate")]
-        public DateTime UserRegDate { get; set; }
+        public DateTime? UserRegDate { get; set; }
 
         [Column(Name = "user_birthday")]
-        public DateTime UserBirthday { get; set; }
+        public DateTime? UserBirthday { get; set; }
 
         [Column(Name = "user_gender")]
         public int UserGender { get; set; }
         //    public UserGender UserGender { get; set; }
 
         [Column(Name = "user_lastvisit")]
-        public DateTime UserLastVisit { get; set; }
+        public DateTime? UserLastVisit { get; set; }
 
         [Column(Name = "user_lastmark")]
-        public DateTime UserLastMark { get; set; }
+        public DateTime? UserLastMark { get; set; }
 
         [Column(Name = "user_lastpage")]
         public string UserLastPage { get; set; }
@@ -73,7 +73,7 @@ namespace DEM_MVC_DAL.Entities
         public int UserInactiveReason { get; set; }
 
         [Column(Name = "user_inactive_time")]
-        public DateTime UserInactiveTime { get; set; }
+        public DateTime? UserInactiveTime { get; set; }
 
         [Column(Name = "user_lang")]
         public string UserLang { get; set; }

@@ -21,13 +21,18 @@ namespace DEM_MVC
                 LoginPath = new PathString("/Account/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
-                    // Enables the application to validate the security stamp when the AppMember logs in.
-                    // This is a security feature which is used when you change a password or add an external login to your account.  
+                    //// Enables the application to validate the security stamp when the AppMember logs in.
+                    //// This is a security feature which is used when you change a password or add an external login to your account.  
+                    //OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, AppMember, int>(
+                    //    validateInterval: TimeSpan.FromMinutes(30),
+                    //    regenerateIdentityCallback: (manager, appMember) => 
+                    //    appMember.GenerateUserIdentityAsync(manager),
+                    //    getUserIdCallback: (id) => (Int32.Parse(id.GetUserId())))
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, AppMember, int>(
-                        validateInterval: TimeSpan.FromMinutes(30),
-                        regenerateIdentityCallback: (manager, appMember) =>
-                        appMember.GenerateUserIdentityAsync(manager),
-                        getUserIdCallback: (id) => (Int32.Parse(id.GetUserId())))
+                    validateInterval: TimeSpan.FromMinutes(30),
+                    regenerateIdentityCallback: (manager, user) =>
+                        user.GenerateUserIdentityAsync(manager),
+                    getUserIdCallback: (id) => GrabUserId(id))
                 }
             });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
@@ -62,6 +67,15 @@ namespace DEM_MVC
 
             // Setup VK authentication.
             //app.UseVkontakteAuthentication("5110893", "qSKFTkMQgkEKXE8rL5R5", "offline,email ");
+        }
+    public static int GrabUserId(System.Security.Claims.ClaimsIdentity claim)
+    {
+        int id;
+        var o = claim.GetUserId();
+        if (!int.TryParse(o, out id))
+            return 0;
+        else
+            return id;
         }
     }
 }

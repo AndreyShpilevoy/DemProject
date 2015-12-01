@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using DEM_MVC.Models;
@@ -7,16 +9,41 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataProtection;
+using System.Configuration;
+using System.Net.Mail;
+using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC
 {
-
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            await configSendGridasync(message);
+        }
+        private async Task configSendGridasync(IdentityMessage message)
+        {
+            var myMessage = new MailMessage();
+            myMessage.To.Add(new MailAddress(message.Destination));  // replace with valid value 
+            myMessage.From = new MailAddress("support@dem.org.ua", "DeusExMachina");  // replace with valid value
+            myMessage.Subject = message.Subject;
+            myMessage.Body = message.Body;
+            myMessage.IsBodyHtml = true;
+
+            using (var smtp = new SmtpClient())
+            {
+
+                var credentials = new NetworkCredential(
+                           ConfigurationManager.AppSettings["mailAccount"],
+                           ConfigurationManager.AppSettings["mailPassword"]
+                           );
+
+                smtp.Credentials = credentials;
+                smtp.Host = ConfigurationManager.AppSettings["host"];//"mail.dem.org.ua";
+                smtp.Port = Int32.Parse(ConfigurationManager.AppSettings["port"]); //2525;
+                smtp.EnableSsl = Boolean.Parse(ConfigurationManager.AppSettings["enableSsl"]);//false
+                await smtp.SendMailAsync(myMessage);
+            }
         }
     }
 
@@ -44,7 +71,7 @@ namespace DEM_MVC
             PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = false,
+                RequireNonLetterOrDigit = true,
                 RequireDigit = true,
                 RequireLowercase = true,
                 RequireUppercase = true,
@@ -52,8 +79,8 @@ namespace DEM_MVC
 
             // Configure user lockout defaults
             UserLockoutEnabledByDefault = false;
-            //DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
-            //MaxFailedAccessAttemptsBeforeLockout = 5;
+            DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            MaxFailedAccessAttemptsBeforeLockout = 5;
 
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
@@ -75,69 +102,6 @@ namespace DEM_MVC
         }
     }
 
-    //// Configure the application AppMember manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-    //public class ApplicationUserManager : UserManager<AppMember, int>
-    //{
-    //    public ApplicationUserManager(IUserStore<AppMember, int> store)
-    //        : base(store)
-    //    {
-    //    }
-
-    //    public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
-    //    {
-    //        //var manager = new ApplicationUserManager(
-    //        //new UserStore<AppMember>(
-    //        //context.Get<ApplicationDbContext>()));
-
-    //        var manager = new ApplicationUserManager(
-    //            new UserStore<AppMember>(
-    //                context.Get<ApplicationDbContext>() as DbManager));
-
-    //        // Configure validation logic for usernames
-    //        manager.UserValidator = new UserValidator<AppMember, int>(manager)
-    //        {
-    //            AllowOnlyAlphanumericUserNames = false,
-    //            RequireUniqueEmail = true
-    //        };
-
-    //        // Configure validation logic for passwords
-    //        manager.PasswordValidator = new PasswordValidator
-    //        {
-    //            RequiredLength = 6,
-    //            RequireNonLetterOrDigit = false,
-    //            RequireDigit = false,
-    //            RequireLowercase = false,
-    //            RequireUppercase = false,
-    //        };
-
-    //        // Configure AppMember lockout defaults
-    //        manager.UserLockoutEnabledByDefault = false;
-    //        manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
-    //        manager.MaxFailedAccessAttemptsBeforeLockout = 5;
-
-    //        // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the AppMember
-    //        // You can write your own provider and plug it in here.
-    //        manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<AppMember, int>
-    //        {
-    //            MessageFormat = "Your security code is {0}"
-    //        });
-    //        manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<AppMember, int>
-    //        {
-    //            Subject = "Security Code",
-    //            BodyFormat = "Your security code is {0}"
-    //        });
-    //        manager.EmailService = new EmailService();
-    //        manager.SmsService = new SmsService();
-    //        var dataProtectionProvider = options.DataProtectionProvider;
-    //        if (dataProtectionProvider != null)
-    //        {
-    //            manager.UserTokenProvider =
-    //                new DataProtectorTokenProvider<AppMember, int>(dataProtectionProvider.Create("ASP.NET Identity"));
-    //        }
-    //        return manager;
-    //    }
-    //}
-
     // Configure the application sign-in manager which is used in this application.
     public class ApplicationSignInManager : SignInManager<AppMember, int>
     {
@@ -146,9 +110,9 @@ namespace DEM_MVC
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(AppMember AppMember)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(AppMember appMember)
         {
-            return AppMember.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
+            return appMember.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
         }
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)

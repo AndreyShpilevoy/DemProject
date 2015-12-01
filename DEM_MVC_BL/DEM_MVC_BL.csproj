@@ -81,7 +81,6 @@
     <Compile Include="Models\IdentityModels\UserIdentityModels.cs" />
     <Compile Include="Models\ForumModels\UserModels.cs" />
     <Compile Include="Models\ForumModels\WarningModels.cs" />
-    <Compile Include="Services\AutoMapperMapperRegistrationService.cs" />
     <Compile Include="Services\ModelsHelpers\ConfigHelper.cs" />
     <Compile Include="Services\ModelsHelpers\BbCodeHelper.cs" />
     <Compile Include="Services\ModelsHelpers\PostModelHelper.cs" />

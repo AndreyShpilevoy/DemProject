@@ -160,7 +160,6 @@ namespace DEM_MVC_DAL.Repositories
                     id = connection.ExecuteScalar<int>(SqlCommandStorageService.UserIdentityRepositoryInsert(),
                         new
                         {
-                            userId = user.Id,
                             userType = user.UserType,
                             userIp = user.UserIp,
                             userBrowser = user.UserBrowser,

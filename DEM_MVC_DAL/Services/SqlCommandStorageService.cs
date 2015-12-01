@@ -501,8 +501,7 @@ namespace DEM_MVC_DAL.Services
         internal static string UserIdentityRepositoryInsert()
         {
             return @"INSERT INTO dem_users_test
-                                                    (user_id, 
-                                                    user_type,
+                                                    (user_type,
                                                     user_ip,
                                                     user_browser,
                                                     user_regdate,
@@ -542,8 +541,7 @@ namespace DEM_MVC_DAL.Services
                                                     user_profession,
                                                     user_interests)
                     VALUES  
-                                                    (@userId, 
-                                                    @userType,
+                                                    (@userType,
                                                     @userIp,
                                                     @userBrowser,
                                                     @userRegdate,
@@ -594,8 +592,7 @@ namespace DEM_MVC_DAL.Services
 
         internal static string UserIdentityRepositoryUpdate()
         {
-            return @"UPDATE dem_users_test SET
-                                                    user_id = @userId, 
+            return @"UPDATE dem_users_test SET 
                                                     user_type = @userType,
                                                     user_ip = @userIp,
                                                     user_browser = @userBrowser,

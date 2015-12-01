@@ -69,6 +69,8 @@ namespace DEM_MVC_BL.Services
                     throw new ArgumentNullException(nameof(user));
                 }
 
+                user.UserRegDate = DateTime.Now;
+
                 var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
                 var id = _userIdentityRepository.Insert(userEntity, _connectionFactory);
                 user.Id = id;
@@ -91,9 +93,11 @@ namespace DEM_MVC_BL.Services
                 //}
 
                 var userEntity = _userIdentityRepository.GetUserById(userId, _connectionFactory);
-                TUser result = Mapper.Map<UserIdentityEntity, IdentityUser>(userEntity) as TUser;
-                if (result != null)
+                var identityUser = Mapper.Map<UserIdentityEntity, IdentityUser>(userEntity);
+
+                if (identityUser != null)
                 {
+                    TUser result = Mapper.Map<IdentityUser, TUser>(identityUser);
                     return Task.FromResult<TUser>(result);
                 }
             }
@@ -114,13 +118,14 @@ namespace DEM_MVC_BL.Services
                     throw new ArgumentException("Null or empty argument: userName");
                 }
 
-                var userEntity = _userIdentityRepository.GetUserByName(userName, _connectionFactory);
-                List<TUser> result = Mapper.Map<List<UserIdentityEntity>, List<IdentityUser>>(userEntity) as List<TUser>;
+                var userEntities = _userIdentityRepository.GetUserByName(userName, _connectionFactory);
+                var identityUsers = Mapper.Map<List<UserIdentityEntity>, List<IdentityUser>>(userEntities);
 
                 // Should I throw if > 1 user?
-                if (result != null && result.Count == 1)
+                if (identityUsers != null && identityUsers.Count == 1)
                 {
-                    return Task.FromResult<TUser>(result[0]);
+                    TUser result = Mapper.Map<IdentityUser, TUser>(identityUsers[0]);
+                    return Task.FromResult<TUser>(result);
                 }
             }
             catch (Exception exception)
@@ -261,11 +266,12 @@ namespace DEM_MVC_BL.Services
                 if (userId > 0)
                 {
                     var userEntity = _userIdentityRepository.GetUserById(userId, _connectionFactory);
-                    TUser user = Mapper.Map<UserIdentityEntity, IdentityUser>(userEntity) as TUser;
+                    var identityUser = Mapper.Map<UserIdentityEntity, IdentityUser>(userEntity);
 
-                    if (user != null)
+                    if (identityUser != null)
                     {
-                        return Task.FromResult<TUser>(user);
+                        TUser result = Mapper.Map<IdentityUser, TUser>(identityUser);
+                        return Task.FromResult<TUser>(result);
                     }
                 }
             }
@@ -600,10 +606,11 @@ namespace DEM_MVC_BL.Services
                 }
 
                 var userEntity = _userIdentityRepository.GetUserByEmail(email, _connectionFactory);
-                TUser result = Mapper.Map<UserIdentityEntity, IdentityUser>(userEntity) as TUser;
+                var identityUser = Mapper.Map<UserIdentityEntity, IdentityUser>(userEntity);
 
-                if (result != null)
+                if (identityUser != null)
                 {
+                    TUser result = Mapper.Map<IdentityUser, TUser>(identityUser);
                     return Task.FromResult<TUser>(result);
                 }
             }
