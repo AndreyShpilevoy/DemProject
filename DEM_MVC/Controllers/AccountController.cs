@@ -202,7 +202,7 @@ namespace DEM_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var appMember = await UserManager.FindByNameAsync(model.Email);
+                var appMember = await UserManager.FindByEmailAsync(model.Email);
                 if (appMember == null || !(await UserManager.IsEmailConfirmedAsync(appMember.Id)))
                 {
                     // Don't reveal that the AppMember does not exist or is not confirmed
@@ -248,13 +248,13 @@ namespace DEM_MVC.Controllers
             {
                 return View(model);
             }
-            var AppMember = await UserManager.FindByNameAsync(model.Email);
-            if (AppMember == null)
+            var appMember = await UserManager.FindByEmailAsync(model.Email);
+            if (appMember == null)
             {
                 // Don't reveal that the AppMember does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            var result = await UserManager.ResetPasswordAsync(AppMember.Id, model.Code, model.Password);
+            var result = await UserManager.ResetPasswordAsync(appMember.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
