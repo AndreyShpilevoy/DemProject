@@ -315,7 +315,7 @@ namespace DEM_MVC_DAL.Services
         {
             return @"SELECT user_id 
                         FROM dem_user_login 
-                        WHERE LoginProvider = @loginProvider AND ProviderKey = @providerKey";
+                        WHERE login_provider = @loginProvider AND provider_key = @providerKey";
         }
 
         internal static string UserLoginsIdentityRepositoryFindByUserId()

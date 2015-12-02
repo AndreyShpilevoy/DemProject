@@ -51,31 +51,40 @@ namespace DEM_MVC
             //    clientSecret: "");
 
             //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            //   consumerKey: "xvz1evFS4wEEPTGEFPHBog",
+            //   consumerSecret: "L8qq9PZyRg6ieKGEKhZolGC0vJWLw8iEJ88DRdyOg");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1485202508455441",
+               appSecret: "1626c949c1be3e0e13c23c9ea9ab42c5");
+            //   appId: "809815392478491",
+            //   appSecret: "1aa8db07eb1e26241941ab3bfacab399");
 
             // Setup Google authentication.
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
+            {
+                ClientId = "383782677897-n8jsk65idgso5fek0994eco32avsvp66.apps.googleusercontent.com",
+                ClientSecret = "GZLOp-xZBSmWiaHlnFFvkzjL",
+                CallbackPath = new PathString("/Manage/LinkLoginCallback/")
+            });
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
             //{
-            //    ClientId = "822547630726-dauuvskrpg867qs0bc6b9n9efior1b5a.apps.googleusercontent.com",
-            //    ClientSecret = "woq7VyGlR1310MGysdWwWvID"
+            //    ClientId = "620387322426-cttg2916hjkos8ml5p2b897r9hgf1u1o.apps.googleusercontent.com",
+            //    ClientSecret = "DqQuHx72WhYDyPwpky56fKdL"
             //});
 
             // Setup VK authentication.
-            //app.UseVkontakteAuthentication("5110893", "qSKFTkMQgkEKXE8rL5R5", "offline,email ");
+            app.UseVkontakteAuthentication("5110893", "qSKFTkMQgkEKXE8rL5R5", "offline,email ");
+            //app.UseVkontakteAuthentication("5172594", "s9A0IVjNjUUUoKf9TYaG", "offline,email ");
         }
-    public static int GrabUserId(System.Security.Claims.ClaimsIdentity claim)
-    {
-        int id;
-        var o = claim.GetUserId();
-        if (!int.TryParse(o, out id))
-            return 0;
-        else
-            return id;
+        public static int GrabUserId(System.Security.Claims.ClaimsIdentity claim)
+        {
+            int id;
+            var o = claim.GetUserId();
+            if (!int.TryParse(o, out id))
+                return 0;
+            else
+                return id;
         }
     }
 }
