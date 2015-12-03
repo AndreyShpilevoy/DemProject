@@ -343,7 +343,7 @@ namespace DEM_MVC.Controllers
                     // If the AppMember does not have an account, then prompt the AppMember to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email, UserName = loginInfo.DefaultUserName});
             }
         }
 
@@ -367,7 +367,7 @@ namespace DEM_MVC.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var appMember = new AppMember { UserName = model.Email, Email = model.Email };
+                var appMember = new AppMember { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(appMember);
                 if (result.Succeeded)
                 {

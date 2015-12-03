@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Configuration;
+using System.Net.Http;
 using DEM_MVC.Models;
+using DEM_MVC.Services.Handlers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Owin;
 
@@ -50,33 +54,43 @@ namespace DEM_MVC
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "xvz1evFS4wEEPTGEFPHBog",
-            //   consumerSecret: "L8qq9PZyRg6ieKGEKhZolGC0vJWLw8iEJ88DRdyOg");
-
-            app.UseFacebookAuthentication(
-               appId: "1485202508455441",
-               appSecret: "1626c949c1be3e0e13c23c9ea9ab42c5");
-            //   appId: "809815392478491",
-            //   appSecret: "1aa8db07eb1e26241941ab3bfacab399");
-
-            // Setup Google authentication.
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["TwitterEnable"]))
             {
-                ClientId = "383782677897-n8jsk65idgso5fek0994eco32avsvp66.apps.googleusercontent.com",
-                ClientSecret = "GZLOp-xZBSmWiaHlnFFvkzjL",
-                CallbackPath = new PathString("/Manage/LinkLoginCallback/")
-            });
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
-            //{
-            //    ClientId = "620387322426-cttg2916hjkos8ml5p2b897r9hgf1u1o.apps.googleusercontent.com",
-            //    ClientSecret = "DqQuHx72WhYDyPwpky56fKdL"
-            //});
+                app.UseTwitterAuthentication(
+                   consumerKey: ConfigurationManager.AppSettings["TwitterConsumerKey"],
+                   consumerSecret: ConfigurationManager.AppSettings["TwitterConsumerSecret"]);
+            }
 
-            // Setup VK authentication.
-            app.UseVkontakteAuthentication("5110893", "qSKFTkMQgkEKXE8rL5R5", "offline,email ");
-            //app.UseVkontakteAuthentication("5172594", "s9A0IVjNjUUUoKf9TYaG", "offline,email ");
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["FacebookEnable"]))
+            {
+                var facebookOptions = new FacebookAuthenticationOptions()
+                {
+                    AppId = ConfigurationManager.AppSettings["FacebookId"],
+                    AppSecret = ConfigurationManager.AppSettings["FacebookSecret"],
+                    BackchannelHttpHandler = new FacebookBackChannelHandler(),
+                    UserInformationEndpoint = ConfigurationManager.AppSettings["UserInformationEndpoint"]
+                };
+                app.UseFacebookAuthentication(facebookOptions);
+            }
+
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["GoogleEnable"]))
+            {
+                app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
+                {
+                    ClientId = ConfigurationManager.AppSettings["GoogleClientId"],
+                    ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"],
+                    CallbackPath = new PathString(ConfigurationManager.AppSettings["GoogleCallbackPath"])
+                });
+            }
+
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["VkontakteEnable"]))
+            {
+                app.UseVkontakteAuthentication(ConfigurationManager.AppSettings["VkontakteId"],
+                    ConfigurationManager.AppSettings["VkontakteSecret"],
+                    ConfigurationManager.AppSettings["VkontakteOptions"]);
+            }
         }
+
         public static int GrabUserId(System.Security.Claims.ClaimsIdentity claim)
         {
             int id;

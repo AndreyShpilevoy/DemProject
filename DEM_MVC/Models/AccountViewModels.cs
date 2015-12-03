@@ -7,6 +7,13 @@ namespace DEM_MVC.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        [DataType(DataType.Text)]
+        [StringLength(25, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        [Display(Name = "LogIn")]
+        public string UserName { get; set; }
+
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
