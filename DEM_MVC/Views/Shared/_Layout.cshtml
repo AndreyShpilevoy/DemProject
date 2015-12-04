@@ -16,7 +16,6 @@
         <div class="divCenter">
             Форум в разработке. @Html.ActionLink("Перейти во временный чат", "Chat", "Forum") или в <a href="http://vk.com/exmachina2">группу в ВК</a>.
         </div>
-        @*@Html.Partial("_LoginPartial")*@
         <ul id="main-menu">
             <li>
                 <a href="/">Форумы</a>
@@ -27,7 +26,7 @@
             <li>
                 <a href="http://vk.com/exmachina2">Группа в ВК</a>
             </li>
-            <li style="float: right; border-left: 0; height: 25px;"></li>
+            @Html.Partial("_LoginPartial")
         </ul>
         @RenderBody()
     </div>

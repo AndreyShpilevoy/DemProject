@@ -10,6 +10,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Owin;
+using Owin.Security.Providers.Steam;
+using Owin.Security.Providers.Wargaming;
 
 namespace DEM_MVC
 {
@@ -88,6 +90,16 @@ namespace DEM_MVC
                 app.UseVkontakteAuthentication(ConfigurationManager.AppSettings["VkontakteId"],
                     ConfigurationManager.AppSettings["VkontakteSecret"],
                     ConfigurationManager.AppSettings["VkontakteOptions"]);
+            }
+
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["SteamEnable"]))
+            {
+                app.UseSteamAuthentication(ConfigurationManager.AppSettings["SteamApiKey"]);
+            }
+
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["WargamingEnable"]))
+            {
+                app.UseWargamingAccountAuthentication(ConfigurationManager.AppSettings["WargamingApiID"], WargamingAuthenticationOptions.Region.Russia);
             }
         }
 
