@@ -136,6 +136,10 @@
       <HintPath>..\packages\Owin.Security.Providers.1.25\lib\net45\Owin.Security.Providers.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="reCAPTCHA.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\reCAPTCH.MVC.1.0.1\lib\net45\reCAPTCHA.MVC.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -206,6 +210,8 @@
     <Content Include="App_Data\SQL_Scripts\Create_TestUsersTables.sql" />
     <Content Include="App_Data\SQL_Scripts\Migrate_Script_From_adeusexm_phpbbex_To_DEM.sql" />
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
+    <Content Include="Content\Bootstrap\bootstrap.css" />
+    <Content Include="Content\Bootstrap\bootstrap.min.css" />
     <Content Include="Content\Main.css" />
     <Content Include="Content\Smiles\forBbCode\think.gif" />
     <Content Include="Content\TempIdentity.css" />
@@ -240,9 +246,16 @@
     <Content Include="Errors\403.shtml" />
     <Content Include="Errors\404.shtml" />
     <Content Include="Errors\500.shtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Custom\bbMedia.js" />
     <Content Include="Scripts\Custom\bbCode.js" />
     <Content Include="Scripts\Custom\bbSpoiler.js" />

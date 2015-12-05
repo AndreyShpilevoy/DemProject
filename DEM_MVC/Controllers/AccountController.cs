@@ -9,6 +9,7 @@ using DEM_MVC.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using reCAPTCHA.MVC;
 
 namespace DEM_MVC.Controllers
 {
@@ -90,10 +91,10 @@ namespace DEM_MVC.Controllers
             {
                 return View("Error");
             }
-            var AppMember = await UserManager.FindByIdAsync(await SignInManager.GetVerifiedUserIdAsync());
-            if (AppMember != null)
+            var appMember = await UserManager.FindByIdAsync(await SignInManager.GetVerifiedUserIdAsync());
+            if (appMember != null)
             {
-                var code = await UserManager.GenerateTwoFactorTokenAsync(AppMember.Id, provider);
+                var code = await UserManager.GenerateTwoFactorTokenAsync(appMember.Id, provider);
             }
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
@@ -141,9 +142,10 @@ namespace DEM_MVC.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        [CaptchaValidator]
+        public async Task<ActionResult> Register(RegisterViewModel model, bool captchaValid)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && captchaValid)
             {
                 var appMember = new AppMember { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(appMember, model.Password);
@@ -211,9 +213,14 @@ namespace DEM_MVC.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
+
                  string code = await UserManager.GeneratePasswordResetTokenAsync(appMember.Id);
-                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = appMember.Id, code = code }, protocol: Request.Url.Scheme);		
-                 await UserManager.SendEmailAsync(appMember.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = appMember.Id, code = code }, protocol: Request.Url.Scheme);
+                var mailMessage =
+                    String.Format(
+                        "Приветствую Вас, органическая форма жизни. {0} С вами говорит Автоматический Комплекс Управления программным обеспечением ресурса DeusExMachina - Botty. {0}{0} Приятно Вам сообщить, что вы, видимо, забыли свой пароль. Ха-ха!{0} Согласно принятому протоколу вежливости, я должен предложить вам ссылку для восстановления пароля. {0} Вот она <a href=\"{1}\">Ссылка</a>. {0}{0} Спасибо, что воспользовались услугами Автоматического Комплекса Управления программным обеспечением ресурса DeusExMachina - Botty. {0} Оставайтесь с нами и приятного вам общения. {0}{0} <a href=\"http://dem.org.ua\">DeusExMachina</a>",
+                        "<br />", callbackUrl);
+                 await UserManager.SendEmailAsync(appMember.Id, "Восстановление пароля", mailMessage);
                  return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
@@ -287,12 +294,12 @@ namespace DEM_MVC.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
-            var userId = await SignInManager.GetVerifiedUserIdAsync();
+            int? userId = await SignInManager.GetVerifiedUserIdAsync();
             if (userId == null)
             {
                 return View("Error");
             }
-            var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
+            var userFactors = await UserManager.GetValidTwoFactorProvidersAsync((int) userId);
             var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
             return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
@@ -465,8 +472,11 @@ namespace DEM_MVC.Controllers
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
             var callbackUrl = Url.Action("ConfirmEmail", "Account",
                new { userId = userId, code = code }, protocol: Request.Url.Scheme);
-            await UserManager.SendEmailAsync(userId, subject,
-               "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+            var message =
+                String.Format(
+                    "Приветствую Вас, органическая форма жизни. {0} С вами говорит Автоматический Комплекс Управления программным обеспечением ресурса DeusExMachina - Botty. {0}{0} Обязан Вам сообщить, что вы, только что, зарегистрировались на сайте DeusExMachina. {0} Согласно принятому протоколу взаимодействия  в чрезвычайных ситуациях, я должен предложить вам ссылку для подтверждения EMail адреса. {0} Вот она <a href=\"{1}\">Ссылка</a>. {0}{0} Спасибо, что воспользовались услугами Автоматического Комплекса Управления программным обеспечением ресурса DeusExMachina - Botty. {0} Оставайтесь с нами и приятного вам общения. {0}{0} <a href=\"http://dem.org.ua\">DeusExMachina</a>",
+                    "<br />", callbackUrl);
+            await UserManager.SendEmailAsync(userId, "Подтверждение EMail'а", message);
 
             return callbackUrl;
         }

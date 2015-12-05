@@ -42,8 +42,10 @@ namespace DEM_MVC
                         "~/Content/themes/base/jquery-ui.theme.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                "~/Content/Bootstrap/bootstrap.css",
                 "~/Content/Main.css",
                 "~/Content/TempIdentity.css"));
+            
         }
     }
 }
