@@ -72,7 +72,7 @@ namespace DEM_MVC
             PasswordValidator = new CustomPasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
+                RequireNonLetterOrDigit = false,
                 RequireDigit = true,
                 RequireLowercase = true,
                 RequireUppercase = true
