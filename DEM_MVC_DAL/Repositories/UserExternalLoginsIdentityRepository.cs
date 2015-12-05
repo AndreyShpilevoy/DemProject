@@ -15,7 +15,7 @@ using NLog;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class UserLoginsIdentityRepository : IUserLoginsIdentityRepository
+    public class UserExternalLoginsIdentityRepository : IUserExternalLoginsIdentityRepository
     {
         public void Delete(UserIdentityEntity user, UserLoginInfo login, IConnectionFactory connectionFactory)
         {

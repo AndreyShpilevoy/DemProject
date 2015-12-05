@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity;
 
 namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
-    public interface IUserLoginsIdentityRepository
+    public interface IUserExternalLoginsIdentityRepository
     {
         void Delete(UserIdentityEntity user, UserLoginInfo login, IConnectionFactory connectionFactory);
         void Delete(int userId, IConnectionFactory connectionFactory);

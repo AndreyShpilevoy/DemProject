@@ -246,21 +246,21 @@ namespace DEM_MVC_DAL.Services
 
         internal static string UserGroupsIdentityInsert()
         {
-            return @"INSERT INTO dem_user_group (user_Id, group_Id) VALUES (@userId, @groupId)";
+            return @"INSERT INTO dem_user_groups (user_Id, group_Id) VALUES (@userId, @groupId)";
         }
 
         internal static string UserGroupsIdentityDelete()
         {
             return @"DELETE 
-                        FROM dem_user_group 
+                        FROM dem_user_groups 
                         WHERE user_Id = @userId";
         }
 
         internal static string UserGroupsIdentityFindByUserId()
         {
             return @"SELECT dem_groups.group_name 
-                        FROM dem_user_group, dem_groups 
-                        WHERE dem_user_group.user_Id=@userId and dem_user_group.group_Id = dem_groups.group_id";
+                        FROM dem_user_groups, dem_groups 
+                        WHERE dem_user_groups.user_Id=@userId and dem_user_groups.group_Id = dem_groups.group_id";
         }
 
         internal static string UserClaimIsdentityRepositoryFindByUserId()
@@ -295,26 +295,26 @@ namespace DEM_MVC_DAL.Services
         internal static string UserLoginsIdentityRepositoryDelete()
         {
             return @"DELETE 
-                        FROM dem_user_login 
+                        FROM dem_user_external_login 
                         WHERE user_id = @userId AND login_provider = @loginProvider AND provider_key = @providerKey";
         }
 
         internal static string UserLoginsIdentityRepositoryDeleteById()
         {
             return @"DELETE 
-                        FROM dem_user_login 
+                        FROM dem_user_external_login 
                         WHERE user_id = @userId";
         }
 
         internal static string UserLoginsIdentityRepositoryInsert()
         {
-            return @"INSERT INTO dem_user_login (login_provider, provider_key, user_id) VALUES (@loginProvider, @providerKey, @userId)";
+            return @"INSERT INTO dem_user_external_login (login_provider, provider_key, user_id) VALUES (@loginProvider, @providerKey, @userId)";
         }
 
         internal static string UserLoginsIdentityRepositoryFindUserIdByLogin()
         {
             return @"SELECT user_id 
-                        FROM dem_user_login 
+                        FROM dem_user_external_login 
                         WHERE login_provider = @loginProvider AND provider_key = @providerKey";
         }
 
@@ -323,21 +323,21 @@ namespace DEM_MVC_DAL.Services
             return @"SELECT login_provider, 
                             provider_key,
                             user_id   
-                        FROM dem_user_login 
+                        FROM dem_user_external_login 
                         WHERE user_id = @userId";
         }
 
         internal static string UserIdentityRepositoryGetUserName()
         {
             return @"SELECT username 
-                        FROM dem_users_test 
+                        FROM dem_users 
                         WHERE user_id=@userId";
         }
 
         internal static string UserIdentityRepositoryGetUserId()
         {
             return @"SELECT user_id 
-                        FROM dem_users_test 
+                        FROM dem_users 
                         WHERE username=@userName";
         }
 
@@ -383,7 +383,7 @@ namespace DEM_MVC_DAL.Services
 	                        user_website,
 	                        user_profession,
 	                        user_interests
-                        FROM dem_users_test 
+                        FROM dem_users 
                         WHERE user_id = @userId";
         }
 
@@ -429,7 +429,7 @@ namespace DEM_MVC_DAL.Services
 	                        user_website,
 	                        user_profession,
 	                        user_interests
-                        FROM dem_users_test 
+                        FROM dem_users 
                         WHERE username=@userName";
         }
 
@@ -475,32 +475,32 @@ namespace DEM_MVC_DAL.Services
 	                        user_website,
 	                        user_profession,
 	                        user_interests
-                        FROM dem_users_test 
+                        FROM dem_users 
                         WHERE user_email=@email";
         }
 
         internal static string UserIdentityRepositoryGetPasswordHash()
         {
             return @"SELECT password_hash 
-                        FROM dem_users_test 
+                        FROM dem_users 
                         WHERE user_id = @userId";
         }
 
         internal static string UserIdentityRepositorySetPasswordHash()
         {
-            return @"UPDATE dem_users_test SET password_hash = @passwordHash WHERE user_id = @userId";
+            return @"UPDATE dem_users SET password_hash = @passwordHash WHERE user_id = @userId";
         }
 
         internal static string UserIdentityRepositoryGetSecurityStamp()
         {
             return @"SELECT security_stamp 
-                        FROM dem_users_test 
+                        FROM dem_users 
                         WHERE user_id = @userId";
         }
 
         internal static string UserIdentityRepositoryInsert()
         {
-            return @"INSERT INTO dem_users_test
+            return @"INSERT INTO dem_users
                                                     (user_type,
                                                     user_ip,
                                                     user_browser,
@@ -586,13 +586,13 @@ namespace DEM_MVC_DAL.Services
         internal static string UserIdentityRepositoryDeleteById()
         {
             return @"DELETE 
-                        FROM dem_users_test 
+                        FROM dem_users 
                         WHERE user_id = @userId";
         }
 
         internal static string UserIdentityRepositoryUpdate()
         {
-            return @"UPDATE dem_users_test SET 
+            return @"UPDATE dem_users SET 
                                                     user_type = @userType,
                                                     user_ip = @userIp,
                                                     user_browser = @userBrowser,

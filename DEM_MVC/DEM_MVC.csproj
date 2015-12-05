@@ -199,8 +199,8 @@
   <ItemGroup>
     <Content Include="App_Data\dem_users.sql" />
     <Content Include="App_Data\dem_user_claim.sql" />
-    <Content Include="App_Data\dem_user_login.sql" />
-    <Content Include="App_Data\dem_user_group.sql" />
+    <Content Include="App_Data\dem_user_external_login.sql" />
+    <Content Include="App_Data\dem_user_groups.sql" />
     <Content Include="App_Data\SQL_Scripts\Create_SQL_Views.sql" />
     <Content Include="App_Data\SQL_Scripts\Create_Tables_WithOut_FK_and_INDEX.sql" />
     <Content Include="App_Data\SQL_Scripts\Create_TestUsersTables.sql" />
@@ -208,6 +208,7 @@
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
     <Content Include="Content\Main.css" />
     <Content Include="Content\Smiles\forBbCode\think.gif" />
+    <Content Include="Content\TempIdentity.css" />
     <Content Include="Content\Themes\base\images\ui-bg_flat_0_464646_40x100.png" />
     <Content Include="Content\Themes\base\images\ui-bg_flat_0_606060_40x100.png" />
     <Content Include="Content\Themes\base\images\ui-bg_flat_0_f17c1c_40x100.png" />

@@ -43,8 +43,9 @@ AS
 			)tableWithTime 
 			WHERE last_post_time = postsTable.post_time AND topicsTable.topic_id = postsTable.topic_id  AND topicsTable.forum_id = tableWithTime.forum_id 
 	  
-	  )tableWithUserId ON tableWithUserId.user_id = usersTable.user_id JOIN dem_groups groupsTable
-	  ON groupsTable.group_id = usersTable.group_id
+	  )tableWithUserId ON tableWithUserId.user_id = usersTable.user_id 
+	  JOIN dem_user_groups userGroupsTable ON userGroupsTable.user_Id = usersTable.user_Id 
+	  JOIN dem_groups groupsTable ON groupsTable.group_id = userGroupsTable.group_id
 
 	) as userTable RIGHT JOIN (
 	
@@ -218,10 +219,12 @@ SELECT	tableWithUserId.forum_id,
 					WHERE last_post_time = postsTable.post_time AND topicsTable.topic_id = postsTable.topic_id
 	  
 			)tableWithUserId ON tableWithUserId.user_id = usersTable.user_id 
-			JOIN dem_groups groupsTable	ON groupsTable.group_id = usersTable.group_id
+			JOIN dem_user_groups userGroupsTable ON userGroupsTable.user_Id = usersTable.user_Id 
+			JOIN dem_groups groupsTable ON groupsTable.group_id = userGroupsTable.group_id
 	  
 	)tableWithUserId ON tableWithUserId.topic_poster = usersTable.user_id 
-	JOIN dem_groups groupsTable	ON groupsTable.group_id = usersTable.group_id;
+	JOIN dem_user_groups userGroupsTable ON userGroupsTable.user_Id = usersTable.user_Id 
+	  JOIN dem_groups groupsTable ON groupsTable.group_id = userGroupsTable.group_id
 
 GO
 
@@ -279,7 +282,8 @@ SELECT  usersTable.user_id,
 						groupsTable.group_colour,
 						groupsTable.group_avatar_url
 					FROM dem_users usersTable 
-					JOIN dem_groups groupsTable ON usersTable.group_id = groupsTable.group_id
+					JOIN dem_user_groups userGroupsTable ON userGroupsTable.user_Id = usersTable.user_Id 
+					JOIN dem_groups groupsTable ON groupsTable.group_id = userGroupsTable.group_id
 					LEFT JOIN dem_posts postsTable ON usersTable.user_id = postsTable.user_id
 					LEFT JOIN dem_ranks ranksUniqueTable ON usersTable.user_rank = ranksUniqueTable.rank_id
 

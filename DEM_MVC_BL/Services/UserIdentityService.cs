@@ -25,14 +25,14 @@ namespace DEM_MVC_BL.Services
         private readonly IUserIdentityRepository _userIdentityRepository;
         private readonly IUserGroupsIdentityRepository _userGroupsIdentityRepository;
         private readonly IUserClaimsIdentityRepository _userClaimsIdentityRepository;
-        private readonly IUserLoginsIdentityRepository _userLoginsIdentityRepository;
+        private readonly IUserExternalLoginsIdentityRepository _userLoginsIdentityRepository;
         private readonly IGroupIdentityRepository _groupIdentityRepository;
 
         public UserIdentityService(IConnectionFactory connectionFactory,
             IUserIdentityRepository userIdentityRepository,
             IUserGroupsIdentityRepository userGroupsIdentityRepository,
             IUserClaimsIdentityRepository userClaimsIdentityRepository,
-            IUserLoginsIdentityRepository userLoginsIdentityRepository,
+            IUserExternalLoginsIdentityRepository userLoginsIdentityRepository,
             IGroupIdentityRepository groupIdentityRepository)
         {
             _connectionFactory = connectionFactory;
