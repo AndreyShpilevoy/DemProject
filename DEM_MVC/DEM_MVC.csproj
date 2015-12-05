@@ -297,6 +297,7 @@
     <Compile Include="Services\AutoMapperMapperRegistrationService.cs" />
     <Compile Include="Services\CustomHtmlHelpers.cs" />
     <Compile Include="Services\Handlers\FacebookBackChannelHandler.cs" />
+    <Compile Include="Services\Helpers\CustomPasswordValidator.cs" />
     <Compile Include="Services\ViewHelper.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

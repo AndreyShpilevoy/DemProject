@@ -8,8 +8,8 @@ namespace DEM_MVC.Models
     {
         [Required]
         [DataType(DataType.Text)]
-        [StringLength(25, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
-        [Display(Name = "LogIn")]
+        [StringLength(25, ErrorMessage = "{0} должен быть не менее {2} символов в длинну.", MinimumLength = 3)]
+        [Display(Name = "Логин")]
         public string UserName { get; set; }
 
 
@@ -58,16 +58,16 @@ namespace DEM_MVC.Models
     {
         [Required]
         [DataType(DataType.Text)]
-        [StringLength(25, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
-        [Display(Name = "LogIn")]
+        [StringLength(25, ErrorMessage = "{0} должен быть не менее {2} символов в длинну.", MinimumLength = 3)]
+        [Display(Name = "Логин")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Запомнить меня?")]
         public bool RememberMe { get; set; }
     }
 
@@ -75,8 +75,8 @@ namespace DEM_MVC.Models
     {
         [Required]
         [DataType(DataType.Text)]
-        [StringLength(25, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
-        [Display(Name = "LogIn")]
+        [StringLength(25, ErrorMessage = "{0} должен быть не менее {2} символов в длинну.", MinimumLength = 3)]
+        [Display(Name = "Логин")]
         public string UserName { get; set; }
 
         [Required]
@@ -85,14 +85,14 @@ namespace DEM_MVC.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} должен быть не менее {2} символов в длинну.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Подтверждение пароля")]
+        [Compare("Password", ErrorMessage = "Пароль и Подтверждение пароля не совпадают.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -104,14 +104,14 @@ namespace DEM_MVC.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} должен быть не менее {2} символов в длинну.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Подтверждение пароля")]
+        [Compare("Password", ErrorMessage = "Пароль и Подтверждение пароля не совпадают.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

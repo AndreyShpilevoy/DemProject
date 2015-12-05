@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataProtection;
 using System.Configuration;
 using System.Net.Mail;
+using DEM_MVC.Services.Helpers;
 using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC
@@ -68,13 +69,13 @@ namespace DEM_MVC
             };
 
             // Configure validation logic for passwords
-            PasswordValidator = new PasswordValidator
+            PasswordValidator = new CustomPasswordValidator
             {
                 RequiredLength = 6,
                 RequireNonLetterOrDigit = true,
-                RequireDigit = false,
+                RequireDigit = true,
                 RequireLowercase = true,
-                RequireUppercase = true,
+                RequireUppercase = true
             };
 
             // Configure user lockout defaults
