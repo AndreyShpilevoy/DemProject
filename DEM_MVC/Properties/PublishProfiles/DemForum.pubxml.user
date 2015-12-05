@@ -35,13 +35,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/06/2015 00:22:25</publishTime>
     </File>
     <File Include="bin/DEM_MVC.dll">
-      <publishTime>12/05/2015 19:31:02</publishTime>
+      <publishTime>12/05/2015 19:58:31</publishTime>
     </File>
     <File Include="bin/DEM_MVC_BL.dll">
-      <publishTime>12/05/2015 16:55:32</publishTime>
+      <publishTime>12/05/2015 19:58:30</publishTime>
     </File>
     <File Include="bin/DEM_MVC_DAL.dll">
-      <publishTime>12/05/2015 16:55:31</publishTime>
+      <publishTime>12/05/2015 19:58:30</publishTime>
     </File>
     <File Include="bin/DEM_MVC_Infrastructure.dll">
       <publishTime>11/26/2015 15:00:55</publishTime>

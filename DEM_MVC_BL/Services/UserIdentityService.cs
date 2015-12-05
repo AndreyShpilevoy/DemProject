@@ -74,6 +74,10 @@ namespace DEM_MVC_BL.Services
                 var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
                 var id = _userIdentityRepository.Insert(userEntity, _connectionFactory);
                 user.Id = id;
+                if (id != 0)
+                {
+                    AddToRoleAsync(user, "REGISTERED");
+                }
             }
             catch (Exception exception)
             {

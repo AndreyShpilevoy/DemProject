@@ -200,6 +200,7 @@ namespace DEM_MVC_DAL.Repositories
                             userProfession = user.UserProfession,
                             userInterests = user.UserInterests
                         });
+
                 }
             }
             catch (Exception exception)
