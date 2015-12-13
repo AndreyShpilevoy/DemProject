@@ -27,7 +27,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var o = _permissionsService.UserHasPermission(null, 64, "send_message_on_forum");//todo temp
+            var o = _permissionsService.UserHasPermission(new AppMember() {Id = 66}, 64, "send_message_on_forum");//todo temp
             return View("Index/Index");
         }
 

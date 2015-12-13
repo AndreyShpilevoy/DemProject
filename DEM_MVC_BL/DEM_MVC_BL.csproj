@@ -86,6 +86,7 @@
     <Compile Include="Models\PermissionModels\PermissionModels.cs" />
     <Compile Include="Services\ModelsHelpers\ConfigHelper.cs" />
     <Compile Include="Services\ModelsHelpers\BbCodeHelper.cs" />
+    <Compile Include="Services\ModelsHelpers\PermissionHelper.cs" />
     <Compile Include="Services\ModelsHelpers\PostModelHelper.cs" />
     <Compile Include="Services\ModelsHelpers\PollModelHelper.cs" />
     <Compile Include="Services\ModelsHelpers\ForumEntityHelper.cs" />

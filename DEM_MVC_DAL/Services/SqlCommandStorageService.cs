@@ -650,12 +650,12 @@ namespace DEM_MVC_DAL.Services
         internal static string GetGroupsPermissionByGroupsIdAndPermissionName()
         {
             return @"SELECT *
-                        FROM[dem_permissions_groups]
-                        WHERE[group_id] in @groupId AND[permission_Id] =
+                        FROM [dem_permissions_groups]
+                        WHERE [group_id] in @groupsId AND [permission_Id] =
                        (
-                           SELECT[permission_Id]
-                            FROM[dem_permissions]
-                            WHERE[permission_Title] = @permissionTitle
+                           SELECT [permission_Id]
+                            FROM [dem_permissions]
+                            WHERE [permission_Title] = @permissionTitle
 	                    )";
         }
 

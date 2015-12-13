@@ -12,13 +12,13 @@ namespace DEM_MVC_DAL.Repositories
 {
     public class PermissionRepository : IPermissionRepository
     {
-        public Dictionary<IdentityPermissionEntity, string> GetPermissionsByUserId(string permissionTitle, int userId, IConnectionFactory connectionFactory)
+        public List<IdentityPermissionEntity> GetPermissionsByUserId(string permissionTitle, int userId, IConnectionFactory connectionFactory)
         {
-            Dictionary<IdentityPermissionEntity, string> identityPermissionEntities = new Dictionary<IdentityPermissionEntity, string>();
+            List<IdentityPermissionEntity> identityPermissionEntities = new List<IdentityPermissionEntity>();
 
             try
             {
-                UserPermissionEntity userPermissionEntity;
+                UserPermissionEntity userPermissionEntity = new UserPermissionEntity();
                 List<GroupPermissionEntity> groupPermissionEntities;
 
                 using (var connection = connectionFactory.Create())
@@ -37,10 +37,15 @@ namespace DEM_MVC_DAL.Repositories
                             new { permissionTitle, groupsId }).ToList();
                 }
 
-                if (userPermissionEntity != null) identityPermissionEntities.Add(userPermissionEntity, "user");
+                if (userPermissionEntity != null)
+                {
+                    userPermissionEntity.Type = "UserPermission";
+                    identityPermissionEntities.Add(userPermissionEntity);
+                }
                 foreach (var groupPermissionEntity in groupPermissionEntities)
                 {
-                    identityPermissionEntities.Add(groupPermissionEntity, "group");
+                    groupPermissionEntity.Type = "GroupPermission";
+                    identityPermissionEntities.Add(groupPermissionEntity);
                 }
             }
             catch (Exception exception)

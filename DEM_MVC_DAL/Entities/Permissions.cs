@@ -20,10 +20,12 @@ namespace DEM_MVC_DAL.Entities
         public int PermissionId { get; set; }
 
         [Column(Name = "forums_id")]
-        public int ForumsId { get; set; }
+        public string ForumsId { get; set; }
 
-        [Column(Name = "settings_state")]
+        [Column(Name = "state")]
         public int SettingsState { get; set; }
+
+        public string Type { get; set; }
     }
 
     public class UserPermissionEntity : IdentityPermissionEntity

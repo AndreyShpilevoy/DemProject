@@ -6,8 +6,10 @@
 
         public int PermissionId { get; set; }
         
-        public int ForumsId { get; set; }
+        public string ForumsId { get; set; }
         
-        public int SettingsState { get; set; }
+        public bool SettingsState { get; set; }
+
+        public string Type { get; set; }
     }
 }

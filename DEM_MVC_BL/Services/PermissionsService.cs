@@ -5,6 +5,7 @@ using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Models.IdentityModels;
 using DEM_MVC_BL.Models.PermissionModels;
+using DEM_MVC_BL.Services.ModelsHelpers;
 using DEM_MVC_DAL.Entities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
@@ -25,17 +26,18 @@ namespace DEM_MVC_BL.Services
 
         public bool UserHasPermission(IdentityUser user, int forumId, string permissionName)
         {
-            var permissoionModels = new Dictionary<PermissionModel, string>();
+            bool result = false;
             try
             {
-                var permissions = _permissionRepository.GetPermissionsByUserId(permissionName, 66, _connectionFactory);
-                permissoionModels = Mapper.Map<Dictionary <IdentityPermissionEntity, string>, Dictionary <PermissionModel, string>>(permissions);
+                var permissions = _permissionRepository.GetPermissionsByUserId(permissionName, user.Id, _connectionFactory);
+                var permissoionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
+                result = PermissionHelper.CalulateUserPermissionsForForumId(forumId, permissoionModels);
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetTopicShowViewModelById");
+                DemLogger.Current.Error(exception, "PermissionsService. Error in function UserHasPermission");
             }
-            return false;
+            return result;
         }
     }
 }
