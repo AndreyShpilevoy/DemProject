@@ -70,6 +70,7 @@
     <Compile Include="Entities\ClaimIdentityEntities.cs" />
     <Compile Include="Entities\ConfigEntities.cs" />
     <Compile Include="Entities\ForumEntities.cs" />
+    <Compile Include="Entities\Permissions.cs" />
     <Compile Include="Entities\UserIdentityEntities.cs" />
     <Compile Include="Entities\GroupIdentityEntities.cs" />
     <Compile Include="Entities\PollEntities.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Entities\UserEntities.cs" />
     <Compile Include="Entities\UserLoginInfoIdentityEntities.cs" />
     <Compile Include="Interfaces\IRepositories\IConfigRepository.cs" />
+    <Compile Include="Interfaces\IRepositories\IPermissionRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IUserExternalLoginsIdentityRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IUserClaimsIdentityRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IUserGroupsIdentityRepository.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ConfigRepository.cs" />
     <Compile Include="Repositories\ForumRepository.cs" />
+    <Compile Include="Repositories\PermissionRepository.cs" />
     <Compile Include="Repositories\PollRepository.cs" />
     <Compile Include="Repositories\BbCodeRepository.cs" />
     <Compile Include="Repositories\GroupIdentityRepository.cs" />

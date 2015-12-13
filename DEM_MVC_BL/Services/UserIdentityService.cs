@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices;
-using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.IdentityModels;
 using DEM_MVC_DAL.Entities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
-using NLog.Internal;
 
 namespace DEM_MVC_BL.Services
 {

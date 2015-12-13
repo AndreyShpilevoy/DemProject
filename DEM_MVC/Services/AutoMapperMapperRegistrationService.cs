@@ -3,6 +3,7 @@ using AutoMapper;
 using DEM_MVC.Models;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Models.IdentityModels;
+using DEM_MVC_BL.Models.PermissionModels;
 using DEM_MVC_DAL.Entities;
 using Microsoft.AspNet.Identity;
 
@@ -26,6 +27,8 @@ namespace DEM_MVC.Services
             Mapper.CreateMap<AppMember, IdentityUser>().ReverseMap();
             Mapper.CreateMap<GroupIdentityEntity, IdentityGroup>().ReverseMap();
             Mapper.CreateMap<UserLoginInfoIdentityEntity, UserLoginInfo>().ReverseMap();
+            Mapper.CreateMap<PermissionEntity, PermissionModel>().ReverseMap();
+            Mapper.CreateMap<IdentityPermissionModel, IdentityPermissionEntity>().ReverseMap();
         }
     }
 }

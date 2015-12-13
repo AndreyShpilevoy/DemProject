@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DEM_MVC.Models;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.ForumModels;
@@ -13,10 +14,12 @@ namespace DEM_MVC.Controllers
     {
 
         private readonly IDataLoadService _dataLoadService;
+        private readonly IPermissionsService _permissionsService;
 
-        public ForumController(IDataLoadService dataLoadService)
+        public ForumController(IDataLoadService dataLoadService, IPermissionsService permissionsService)
         {
             _dataLoadService = dataLoadService;
+            _permissionsService = permissionsService;
         }
 
         #region IndexPageZone
@@ -24,6 +27,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            var o = _permissionsService.UserHasPermission(null, 64, "send_message_on_forum");//todo temp
             return View("Index/Index");
         }
 
