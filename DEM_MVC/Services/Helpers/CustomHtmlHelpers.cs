@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
 using DEM_MVC_BL.Models.ForumModels;
+using DEM_MVC_BL.Services.ModelsHelpers;
 
 namespace DEM_MVC.Services.Helpers
 {
@@ -356,27 +358,17 @@ namespace DEM_MVC.Services.Helpers
 
             #region buttons
 
-            Dictionary<string, string> buttonsNameAndScriptDictionary = new Dictionary<string, string>()
-            {
-                { "b", "doAddTags('[b]','[/b]','" + propertyName + "')" },
-                { "i", "doAddTags('[i]','[/i]','" + propertyName + "')" },
-                { "u", "doAddTags('[u]','[/u]','" + propertyName + "')" },
-                { "url", "doURL('" + propertyName + "')" },
-                { "img", "doImage('" + propertyName + "')" },
-                { "LIST NUM", "doList('[LIST=1]','[/LIST]','" + propertyName + "')" },
-                { "LIST", "doList('[LIST]','[/LIST]','" + propertyName + "')" },
-                { "quote", "doAddTags('[quote]','[/quote]','" + propertyName + "')" },
-                { "code", "doAddTags('[code]','[/code]','" + propertyName + "')" }
-            };
+            var bbCodes = BbCodeHelper.BbCodeList;
+            bbCodes = bbCodes.OrderBy(x => x.BbCodeOrder).ToList();
 
-            foreach (var button in buttonsNameAndScriptDictionary)
+            foreach (var bbCode in bbCodes.Where(x=>x.BbCodeOnPosting))
             {
                 var buttonBuilder = new TagBuilder("a");
-                buttonBuilder.MergeAttribute("onClick", button.Value);
-                buttonBuilder.Attributes.Add("name", button.Key);
-                buttonBuilder.Attributes.Add("id", button.Key);
+                buttonBuilder.Attributes.Add("title", bbCode.BbCodeHelpLine);
+                buttonBuilder.Attributes.Add("id", "bbCodeId_" + bbCode.BbCodeTag);
+                buttonBuilder.InnerHtml = bbCode.BbCodeTag;
+                buttonBuilder.MergeAttribute("onClick", String.Format("doAddTags('[{0}]','[/{0}]','textareaId_" + propertyName + "')", bbCode.BbCodeTag));
                 buttonBuilder.AddCssClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only nonDecoration demNavigationBtn");
-                buttonBuilder.InnerHtml = button.Key;
 
                 buttonsDiv.InnerHtml += buttonBuilder;
             }
@@ -386,8 +378,7 @@ namespace DEM_MVC.Services.Helpers
             #region textarea
 
             TagBuilder textarea = new TagBuilder("textarea");
-            textarea.Attributes.Add("name", propertyName);
-            textarea.Attributes.Add("id", propertyName);
+            textarea.Attributes.Add("id", "textareaId_" + propertyName);
             //textarea.Attributes.Add("cols", "20");
             textarea.Attributes.Add("rows", "10");
 

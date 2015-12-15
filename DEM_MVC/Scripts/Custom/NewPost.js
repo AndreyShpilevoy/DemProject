@@ -9,7 +9,7 @@ function createItem(stringUrl, formName) {
         success: function (partialView) {
             $(partialView).dialog({
                 resizable: false,
-                width: 915,
+                width: 1000,
                 modal: true,
                 title: "Create new post",
                 buttons: [
@@ -21,7 +21,9 @@ function createItem(stringUrl, formName) {
                             var data = $(formName).serialize();
                             $.post(stringUrl, data, function(returnedData) {
                                 if (returnedData.succes) {
-                                    //reloadPartial(partialName, reloadStringUrl);
+                                    //reload partial
+                                    $("#postsMainPanel").load('/Forum/ShowPostTableByTopicId' + window.location.search);
+
                                     $(thisdata).remove();
                                 } else alert(returnedData.responseText);
                             });
@@ -31,6 +33,7 @@ function createItem(stringUrl, formName) {
                         text: "Cancel",
                         "class": 'ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only',
                         click: function () {
+                            $(formName).remove();
                             $(this).dialog("close");
                         }
                     }

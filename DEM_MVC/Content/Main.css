@@ -523,7 +523,7 @@ dl.spoilerbox {
     z-index: 10;
 }
 
-#PostBody {
+#textareaId_PostBody {
     color: #000000;
     background-color: #cccbc6;
     border-width: 1px;

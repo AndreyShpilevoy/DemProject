@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using DEM_MVC_BL.Interfaces.IServices;
+using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.Practices.ServiceLocation;
 using NLog;
@@ -12,6 +13,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
     public static class BbCodeHelper
     {
         public static Dictionary<Regex, string> BbCodes;
+        public static List<BbCodeModel> BbCodeList;
 
         static BbCodeHelper()
         {
@@ -25,9 +27,9 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
         {
             try
             {
-                var bbCodeList = dataLoadService.GetAllBbCodeModels();
+                BbCodeList = dataLoadService.GetAllBbCodeModels();
 
-                foreach (var bbcode in bbCodeList)
+                foreach (var bbcode in BbCodeList)
                 {
                     RegexOptions regExOptions = RegexOptions.None;
                     var optionArray = bbcode.BbCodeRegexpOptions.Split('/');

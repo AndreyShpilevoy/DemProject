@@ -1,176 +1,113 @@
 /*****************************************/
-// Name: Javascript Textarea BBCode Markup Editor
-// Version: 1.3
-// Author: Balakrishnan
-// Last Modified Date: 25/jan/2009
-// License: Free
-// URL: http://www.corpocrat.com
-// Chancged by kto: 15/dec/2015
+// by kto: 15/dec/2015
+// parts of Javascript Textarea BBCode Markup Editor Version: 1.3 was used
 /******************************************/
 
-var textarea;
-var content;
+function doAddTags(tag1, tag2, textAreaId) {
+    var textarea = $('#' + textAreaId)[0];
+    var selectedValue;
 
-function doImage(obj)
-{
-textarea = document.getElementById(obj);
-var url = prompt('Enter the Image URL:','http://');
-var scrollTop = textarea.scrollTop;
-var scrollLeft = textarea.scrollLeft;
+    if (tag1 === "[url]") {
+        doURL(textarea);
+    }
+        // Code for IE
+    else if (document.selection) {
+        textarea.focus();
+        selectedValue = document.selection.createRange();
+        selectedValue.text = tag1 + selectedValue.text + tag2;
+    }
+        // Code for Mozilla Firefox
+    else {
+        var len = textarea.value.length;
+        var start = textarea.selectionStart;
+        var end = textarea.selectionEnd;
 
-if (url != '' && url != null) {
+        var scrollTop = textarea.scrollTop;
+        var scrollLeft = textarea.scrollLeft;
 
-	if (document.selection) 
-			{
-				textarea.focus();
-				var sel = document.selection.createRange();
-				sel.text = '[img]' + url + '[/img]';
-			}
-   else 
-    {
-		var len = textarea.value.length;
-	    var start = textarea.selectionStart;
-		var end = textarea.selectionEnd;
-		
-        var sel = textarea.value.substring(start, end);
-	    //alert(sel);
-		var rep = '[img]' + url + '[/img]';
-        textarea.value =  textarea.value.substring(0,start) + rep + textarea.value.substring(end,len);
-		
-			
-		textarea.scrollTop = scrollTop;
-		textarea.scrollLeft = scrollLeft;
-	}
+
+        selectedValue = textarea.value.substring(start, end);
+        if (selectedValue.length === 0 && tag1 === "[img]") {
+            doImage(textarea);
+        } else {
+            var rep = tag1 + selectedValue + tag2;
+            textarea.value = textarea.value.substring(0, start) + rep + textarea.value.substring(end, len);
+
+            textarea.scrollTop = scrollTop;
+            textarea.scrollLeft = scrollLeft;
+        }
+
+    }
 }
 
+function doImage(textarea) {
+    var url = prompt("Enter the Image URL:", "http://");
+    var scrollTop = textarea.scrollTop;
+    var scrollLeft = textarea.scrollLeft;
+    var selectedValue;
+
+    if (url !== "" && url != null) {
+
+        if (document.selection) {
+            textarea.focus();
+            selectedValue = document.selection.createRange();
+            selectedValue.text = "[img]" + url + "[/img]";
+        }
+        else {
+            var length = textarea.value.length;
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
+
+            var replaceValue = "[img]" + url + "[/img]";
+            textarea.value = textarea.value.substring(0, start) + replaceValue + textarea.value.substring(end, length);
+
+            textarea.scrollTop = scrollTop;
+            textarea.scrollLeft = scrollLeft;
+        }
+    }
+
 }
 
-function doURL(obj)
-{
-textarea = document.getElementById(obj);
-var url = prompt('Enter the URL:','http://');
-var scrollTop = textarea.scrollTop;
-var scrollLeft = textarea.scrollLeft;
+function doURL(textarea) {
+    var url = prompt("Enter the URL:", "http://");
+    var scrollTop = textarea.scrollTop;
+    var scrollLeft = textarea.scrollLeft;
+    var selectedValue;
+    var replaceValue;
 
-if (url != '' && url != null) {
+    if (url !== "" && url != null) {
 
-	if (document.selection) 
-			{
-				textarea.focus();
-				var sel = document.selection.createRange();
-				
-			if(sel.text==""){
-					sel.text = '[url]'  + url + '[/url]';
-					} else {
-					sel.text = '[url=' + url + ']' + sel.text + '[/url]';
-					}			
+        if (document.selection) {
+            textarea.focus();
+            selectedValue = document.selection.createRange();
 
-				//alert(sel.text);
-				
-			}
-   else 
-    {
-		var len = textarea.value.length;
-	    var start = textarea.selectionStart;
-		var end = textarea.selectionEnd;
-		
-        var sel = textarea.value.substring(start, end);
-		
-		if(sel==""){
-				var rep = '[url]' + url + '[/url]';
-				} else
-				{
-				var rep = '[url=' + url + ']' + sel + '[/url]';
-				}
-	    //alert(sel);
-		
-        textarea.value =  textarea.value.substring(0,start) + rep + textarea.value.substring(end,len);
-		
-			
-		textarea.scrollTop = scrollTop;
-		textarea.scrollLeft = scrollLeft;
-	}
- }
-}
+            if (selectedValue.text === "") {
+                selectedValue.text = "[url]" + url + "[/url]";
+            } else {
+                selectedValue.text = "[url=" + url + "]" + selectedValue.text + "[/url]";
+            }
 
-function doAddTags(tag1,tag2,obj)
-{
-textarea = document.getElementById(obj);
-	// Code for IE
-		if (document.selection) 
-			{
-				textarea.focus();
-				var sel = document.selection.createRange();
-				//alert(sel.text);
-				sel.text = tag1 + sel.text + tag2;
-			}
-   else 
-    {  // Code for Mozilla Firefox
-		var len = textarea.value.length;
-	    var start = textarea.selectionStart;
-		var end = textarea.selectionEnd;
-		
-		
-		var scrollTop = textarea.scrollTop;
-		var scrollLeft = textarea.scrollLeft;
+            //alert(sel.text);
 
-		
-        var sel = textarea.value.substring(start, end);
-	    //alert(sel);
-		var rep = tag1 + sel + tag2;
-        textarea.value =  textarea.value.substring(0,start) + rep + textarea.value.substring(end,len);
-		
-		textarea.scrollTop = scrollTop;
-		textarea.scrollLeft = scrollLeft;
-		
-		
-	}
-}
+        }
+        else {
+            var length = textarea.value.length;
+            var start = textarea.selectionStart;
+            var end = textarea.selectionEnd;
 
-function doList(tag1,tag2,obj){
-textarea = document.getElementById(obj);
-// Code for IE
-		if (document.selection) 
-			{
-				textarea.focus();
-				var sel = document.selection.createRange();
-				var list = sel.text.split('\n');
-		
-				for(i=0;i<list.length;i++) 
-				{
-				list[i] = '[*]' + list[i];
-				}
-				//alert(list.join("\n"));
-				sel.text = tag1 + '\n' + list.join("\n") + '\n' + tag2;
-			} else
-			// Code for Firefox
-			{
+            selectedValue = textarea.value.substring(start, end);
 
-		var len = textarea.value.length;
-	    var start = textarea.selectionStart;
-		var end = textarea.selectionEnd;
-		var i;
-		
-		var scrollTop = textarea.scrollTop;
-		var scrollLeft = textarea.scrollLeft;
+            if (selectedValue === "") {
+                replaceValue = "[url]" + url + "[/url]";
+            } else {
+                replaceValue = "[url=" + url + "]" + selectedValue + "[/url]";
+            }
 
-		
-        var sel = textarea.value.substring(start, end);
-	    //alert(sel);
-		
-		var list = sel.split('\n');
-		
-		for(i=0;i<list.length;i++) 
-		{
-		list[i] = '[*]' + list[i];
-		}
-		//alert(list.join("<br>"));
-        
-		
-		var rep = tag1 + '\n' + list.join("\n") + '\n' +tag2;
-		textarea.value =  textarea.value.substring(0,start) + rep + textarea.value.substring(end,len);
-		
-		textarea.scrollTop = scrollTop;
-		textarea.scrollLeft = scrollLeft;
- }
+            textarea.value = textarea.value.substring(0, start) + replaceValue + textarea.value.substring(end, length);
+
+
+            textarea.scrollTop = scrollTop;
+            textarea.scrollLeft = scrollLeft;
+        }
+    }
 }
