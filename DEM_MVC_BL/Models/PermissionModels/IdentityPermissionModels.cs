@@ -1,4 +1,6 @@
-﻿namespace DEM_MVC_BL.Models.PermissionModels
+﻿using DEM_MVC_Infrastructure.Models;
+
+namespace DEM_MVC_BL.Models.PermissionModels
 {
     public class IdentityPermissionModel
     {
@@ -10,6 +12,6 @@
         
         public bool SettingsState { get; set; }
 
-        public string Type { get; set; }
+        public IdentityPermissionType Type { get; set; }
     }
 }

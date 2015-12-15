@@ -39,12 +39,12 @@ namespace DEM_MVC_DAL.Repositories
 
                 if (userPermissionEntity != null)
                 {
-                    userPermissionEntity.Type = "UserPermission";
+                    userPermissionEntity.Type = IdentityPermissionType.UserPermission;
                     identityPermissionEntities.Add(userPermissionEntity);
                 }
                 foreach (var groupPermissionEntity in groupPermissionEntities)
                 {
-                    groupPermissionEntity.Type = "GroupPermission";
+                    groupPermissionEntity.Type = IdentityPermissionType.GroupPermission;
                     identityPermissionEntities.Add(groupPermissionEntity);
                 }
             }

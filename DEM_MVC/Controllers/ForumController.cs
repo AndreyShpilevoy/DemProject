@@ -7,6 +7,8 @@ using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Services.ModelsHelpers;
+using DEM_MVC_Infrastructure.Models;
+using Microsoft.AspNet.Identity;
 
 namespace DEM_MVC.Controllers
 {
@@ -27,7 +29,6 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var o = _permissionsService.UserHasPermission(new AppMember() {Id = 66}, 64, "send_message_on_forum");//todo temp
             return View("Index/Index");
         }
 
@@ -105,6 +106,27 @@ namespace DEM_MVC.Controllers
         }
 
         #endregion
+
+        #region CreatePostZone
+
+        [HttpGet]
+        public ActionResult CreatePost()
+        {
+            return User.Identity.GetUserId<int>() != 0 ? PartialView("ViewTopic/_CreatePost", new CreatePostModel()) : null;
+        }
+
+        [HttpPost]
+        public ActionResult CreatePost(CreatePostModel newPostModel)
+        {
+            var userId = User.Identity.GetUserId<int>();
+            if (userId == 0) return new JsonResult {Data = new {succes = false, responseText = "Something wrong!"}};
+
+            var o = _permissionsService.UserHasPermission(userId, 64, CommonConstants.PostMessageInOpenTopic);//todo temp
+            return new JsonResult { Data = new { succes = true } };
+        }
+
+        #endregion
+
 
         #region RestartAppZone
 

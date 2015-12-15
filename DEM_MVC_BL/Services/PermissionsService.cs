@@ -24,12 +24,12 @@ namespace DEM_MVC_BL.Services
             _permissionRepository = permissionRepository;
         }
 
-        public bool UserHasPermission(IdentityUser user, int forumId, string permissionName)
+        public bool UserHasPermission(int userId, int forumId, string permissionName)
         {
             bool result = false;
             try
             {
-                var permissions = _permissionRepository.GetPermissionsByUserId(permissionName, user.Id, _connectionFactory);
+                var permissions = _permissionRepository.GetPermissionsByUserId(permissionName, userId, _connectionFactory);
                 var permissoionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
                 result = PermissionHelper.CalulateUserPermissionsForForumId(forumId, permissoionModels);
             }

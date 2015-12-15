@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using DEM_MVC_DAL.Services;
+using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_DAL.Entities
 {
@@ -25,7 +26,7 @@ namespace DEM_MVC_DAL.Entities
         [Column(Name = "state")]
         public int SettingsState { get; set; }
 
-        public string Type { get; set; }
+        public IdentityPermissionType Type { get; set; }
     }
 
     public class UserPermissionEntity : IdentityPermissionEntity

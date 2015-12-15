@@ -1,7 +1,7 @@
 ﻿using System;
 using DEM_MVC_Infrastructure.Models;
 
-namespace DEM_MVC.Services
+namespace DEM_MVC.Services.Helpers
 {
     public static class ViewHelper
     {

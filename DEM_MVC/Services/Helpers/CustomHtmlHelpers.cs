@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.ForumModels;
 
-namespace DEM_MVC.Services
+namespace DEM_MVC.Services.Helpers
 {
     public static class CustomHtmlHelpers
     {
@@ -37,7 +34,7 @@ namespace DEM_MVC.Services
             }
             return MvcHtmlString.Create(span.ToString());
         }
-        
+
         public static MvcHtmlString PostPagingForViewTopic(this HtmlHelper helper, TopicInfoViewModel model, string actionName, string controlName, object htmlDefaultBtnAttributes = null, object htmlSelectedBtnAttributes = null)
         {
 
@@ -181,12 +178,12 @@ namespace DEM_MVC.Services
             {
                 for (var i = 1; i <= model.PagesCount; i++)
                 {
-                        var a = new TagBuilder("a");
-                        a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                        a.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, i));
-                        a.InnerHtml += i.ToString();
-                        mainDiv.InnerHtml += a;
-                    
+                    var a = new TagBuilder("a");
+                    a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
+                    a.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, i));
+                    a.InnerHtml += i.ToString();
+                    mainDiv.InnerHtml += a;
+
                 }
             }
             else if (model.PagesCount > 1)
@@ -203,16 +200,16 @@ namespace DEM_MVC.Services
 
                 for (var i = model.PagesCount - 2; i <= model.PagesCount; i++)
                 {
-                        var a = new TagBuilder("a");
-                        a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                        a.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, i));
-                        a.InnerHtml += i.ToString();
-                        mainDiv.InnerHtml += a;
+                    var a = new TagBuilder("a");
+                    a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
+                    a.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, i));
+                    a.InnerHtml += i.ToString();
+                    mainDiv.InnerHtml += a;
                 }
             }
             return MvcHtmlString.Create(mainDiv.ToString());
         }
-        
+
         public static MvcHtmlString TopicPagingForViewForum(this HtmlHelper helper, ForumInfoViewModel model, string actionName, string controlName, object htmlDefaultBtnAttributes = null, object htmlSelectedBtnAttributes = null)
         {
 
@@ -347,5 +344,65 @@ namespace DEM_MVC.Services
             return MvcHtmlString.Create(mainDiv.ToString());
         }
 
+        public static MvcHtmlString BbCodeTextAreaFor<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, object htmlAttributes = null, object content = null)
+        {
+
+            var data = ModelMetadata.FromLambdaExpression(expression, helper.ViewData);
+            string propertyName = data.PropertyName;
+
+            var mainDiv = new TagBuilder("div");
+            var buttonsDiv = new TagBuilder("div");
+            var textAreaDiv = new TagBuilder("div");
+
+            #region buttons
+
+            Dictionary<string, string> buttonsNameAndScriptDictionary = new Dictionary<string, string>()
+            {
+                { "b", "doAddTags('[b]','[/b]','" + propertyName + "')" },
+                { "i", "doAddTags('[i]','[/i]','" + propertyName + "')" },
+                { "u", "doAddTags('[u]','[/u]','" + propertyName + "')" },
+                { "url", "doURL('" + propertyName + "')" },
+                { "img", "doImage('" + propertyName + "')" },
+                { "LIST NUM", "doList('[LIST=1]','[/LIST]','" + propertyName + "')" },
+                { "LIST", "doList('[LIST]','[/LIST]','" + propertyName + "')" },
+                { "quote", "doAddTags('[quote]','[/quote]','" + propertyName + "')" },
+                { "code", "doAddTags('[code]','[/code]','" + propertyName + "')" }
+            };
+
+            foreach (var button in buttonsNameAndScriptDictionary)
+            {
+                var buttonBuilder = new TagBuilder("a");
+                buttonBuilder.MergeAttribute("onClick", button.Value);
+                buttonBuilder.Attributes.Add("name", button.Key);
+                buttonBuilder.Attributes.Add("id", button.Key);
+                buttonBuilder.AddCssClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only nonDecoration demNavigationBtn");
+                buttonBuilder.InnerHtml = button.Key;
+
+                buttonsDiv.InnerHtml += buttonBuilder;
+            }
+
+            #endregion
+
+            #region textarea
+
+            TagBuilder textarea = new TagBuilder("textarea");
+            textarea.Attributes.Add("name", propertyName);
+            textarea.Attributes.Add("id", propertyName);
+            //textarea.Attributes.Add("cols", "20");
+            textarea.Attributes.Add("rows", "10");
+
+            if (htmlAttributes != null)
+            {
+                var attributes = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+                textarea.MergeAttributes(attributes);
+            }
+
+            #endregion
+
+            textAreaDiv.InnerHtml += textarea;
+            mainDiv.InnerHtml += buttonsDiv;
+            mainDiv.InnerHtml += textAreaDiv;
+            return new MvcHtmlString(mainDiv.ToString());
+        }
     }
 }

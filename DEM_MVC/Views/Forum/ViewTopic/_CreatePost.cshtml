@@ -1,0 +1,19 @@
+﻿@using DEM_MVC.Services.Helpers
+@model DEM_MVC.Models.CreatePostModel
+
+<form id="AddPostForm">
+    <div id="AddPostDiv">
+        <div>
+            @Html.LabelFor(m => m.PostTitle)
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.PostTitle)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.PostBody)
+        </div>
+        <div>
+            @Html.BbCodeTextAreaFor(m => m.PostBody)
+        </div>
+    </div>
+</form>
