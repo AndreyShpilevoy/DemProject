@@ -37,4 +37,17 @@ namespace DEM_MVC_BL.Models.ForumModels
         public List<PostTableViewModel> PostTableViewModel { get; set; }
         public int PageNumber { get; set; }
     }
+
+    public class NewPostModel
+    {
+        public string PostSubject { get; set; }
+
+        public string PostText { get; set; }
+
+        public int TopicId { get; set; }
+
+        public int UserId { get; set; }
+
+        public DateTime PostTime { get; set; }
+    }
 }

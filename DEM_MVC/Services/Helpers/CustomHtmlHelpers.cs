@@ -378,8 +378,16 @@ namespace DEM_MVC.Services.Helpers
             #region textarea
 
             TagBuilder textarea = new TagBuilder("textarea");
-            textarea.Attributes.Add("id", "textareaId_" + propertyName);
-            //textarea.Attributes.Add("cols", "20");
+            textarea.MergeAttributes(new RouteValueDictionary(htmlAttributes));
+            if (content != null)
+            {
+                textarea.SetInnerText(content.ToString());
+            }
+            if (!textarea.Attributes.ContainsKey("id"))
+            {
+                textarea.Attributes.Add("id", "textareaId_" + propertyName);
+            }
+            textarea.Attributes.Add("name", propertyName);
             textarea.Attributes.Add("rows", "10");
 
             if (htmlAttributes != null)

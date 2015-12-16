@@ -523,7 +523,7 @@ dl.spoilerbox {
     z-index: 10;
 }
 
-#textareaId_PostBody {
+#NewPostBody {
     color: #000000;
     background-color: #cccbc6;
     border-width: 1px;
@@ -533,7 +533,7 @@ dl.spoilerbox {
     resize: vertical;
 }
 
-#PostTitle {
+#NewPostTitle {
     color: #000000;
     background-color: #cccbc6;
     border-width: 1px;

@@ -29,6 +29,8 @@ namespace DEM_MVC.Services
             Mapper.CreateMap<UserLoginInfoIdentityEntity, UserLoginInfo>().ReverseMap();
             Mapper.CreateMap<PermissionEntity, PermissionModel>().ReverseMap();
             Mapper.CreateMap<IdentityPermissionModel, IdentityPermissionEntity>().ReverseMap();
+            Mapper.CreateMap<NewPostViewModel, NewPostModel>().ReverseMap();
+            Mapper.CreateMap<NewPostModel, NewPostEntity>().ReverseMap();
         }
     }
 }

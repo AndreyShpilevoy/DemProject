@@ -665,5 +665,22 @@ namespace DEM_MVC_DAL.Services
                         FROM [dem_user_groups]
                         WHERE [user_Id] = @userId";
         }
+
+        public static string CreateNewPost()
+        {
+
+            return @"INSERT INTO dem_posts
+                                                    (user_id, 
+                                                    topic_id, 
+                                                    post_time, 
+                                                    post_subject, 
+                                                    post_text)
+                    VALUES  
+                                                    (@userId,
+                                                    @topicId,
+                                                    @postTime,
+                                                    @postSubject,
+                                                    @postText);";
+        }
     }
 }

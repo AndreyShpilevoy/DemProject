@@ -1,19 +1,20 @@
 ﻿@using DEM_MVC.Services.Helpers
-@model DEM_MVC.Models.CreatePostModel
+@model DEM_MVC.Models.NewPostViewModel
 
 <form id="AddPostForm">
     <div id="AddPostDiv">
         <div>
-            @Html.LabelFor(m => m.PostTitle)
+            @Html.LabelFor(m => m.PostSubject)
         </div>
         <div>
-            @Html.TextBoxFor(m => m.PostTitle)
+            @Html.TextBoxFor(m => m.PostSubject, new { id = "NewPostTitle" })
         </div>
         <div>
-            @Html.LabelFor(m => m.PostBody)
+            @Html.LabelFor(m => m.PostText)
         </div>
         <div>
-            @Html.BbCodeTextAreaFor(m => m.PostBody)
+            @Html.BbCodeTextAreaFor(m => m.PostText, new {id = "NewPostBody"})
         </div>
+        @Html.HiddenFor(m => m.TopicId)
     </div>
 </form>

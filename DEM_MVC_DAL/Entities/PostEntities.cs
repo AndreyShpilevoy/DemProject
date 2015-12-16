@@ -39,4 +39,22 @@ namespace DEM_MVC_DAL.Entities
         [Column(Name = "post_edit_count")]
         public int PostEditCount { get; set; }
     }
+
+    public class NewPostEntity
+    {
+        [Column(Name = "post_subject")]
+        public string PostSubject { get; set; }
+
+        [Column(Name = "post_text")]
+        public string PostText { get; set; }
+
+        [Column(Name = "topic_id")]
+        public int TopicId { get; set; }
+
+        [Column(Name = "user_id")]
+        public int UserId { get; set; }
+
+        [Column(Name = "post_time")]
+        public DateTime PostTime { get; set; }
+    }
 }

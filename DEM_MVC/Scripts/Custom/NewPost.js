@@ -5,7 +5,7 @@
 function createItem(stringUrl, formName) {
     $.ajax({
         type: 'get',
-        url: stringUrl,
+        url: stringUrl + window.location.search,
         success: function (partialView) {
             $(partialView).dialog({
                 resizable: false,

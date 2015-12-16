@@ -39,10 +39,6 @@ namespace DEM_MVC_DAL.Repositories
             List<UserEntity> userEntities = new List<UserEntity>();
             try
             {
-                //using (var connection = connectionFactory.Create())
-                //{
-                //    userEntities = connection.Query<UserEntity>(SqlCommandStorageService.GetUsersForPostsByUsersId(), new { userIdList = usersId }).ToList();
-                //}
                 using (var connection = connectionFactory.Create())
                 {
                     userEntities = connection.Query<UserEntity>(SqlCommandStorageService.GetUsersForPostsByUsersId(), new { usersId }).ToList();
@@ -53,6 +49,29 @@ namespace DEM_MVC_DAL.Repositories
                 DemLogger.Current.Error(exception, "PostEntityRepository. Error in function GetUsersForPostsByUsersId");
             }
             return userEntities;
+        }
+
+        public void CreateNewPost(NewPostEntity newPostEntity, IConnectionFactory connectionFactory)
+        {
+            try
+            {
+                using (var connection = connectionFactory.Create())
+                {
+                    connection.Execute(SqlCommandStorageService.CreateNewPost(),
+                        new
+                        {
+                            userId = newPostEntity.UserId,
+                            topicId = newPostEntity.TopicId,
+                            postTime = newPostEntity.PostTime,
+                            postSubject= newPostEntity.PostSubject,
+                            postText = newPostEntity.PostText
+                        });
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "PostRepository. Error in function CreateNewPost");
+            }
         }
     }
 }

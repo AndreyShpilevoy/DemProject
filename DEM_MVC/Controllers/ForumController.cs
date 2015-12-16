@@ -2,11 +2,13 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using DEM_MVC.Models;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Services.ModelsHelpers;
+using DEM_MVC_DAL.Entities;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
 
@@ -16,9 +18,12 @@ namespace DEM_MVC.Controllers
     {
 
         private readonly IDataLoadService _dataLoadService;
+        private readonly IDataWriteService _dataWriteService;
         private readonly IPermissionsService _permissionsService;
 
-        public ForumController(IDataLoadService dataLoadService, IPermissionsService permissionsService)
+        public ForumController(IDataLoadService dataLoadService, 
+            IPermissionsService permissionsService,
+            IDataWriteService dataWriteService)
         {
             _dataLoadService = dataLoadService;
             _permissionsService = permissionsService;
@@ -110,24 +115,31 @@ namespace DEM_MVC.Controllers
         #region CreatePostZone
 
         [HttpGet]
-        public ActionResult CreatePost()
+        public ActionResult CreatePost(int topicId)
         {
-            return User.Identity.GetUserId<int>() != 0 ? PartialView("ViewTopic/_CreatePost", new CreatePostModel()) : null;
+            return User.Identity.GetUserId<int>() != 0 ? PartialView("ViewTopic/_CreatePost", new NewPostViewModel() {TopicId = topicId }) : null;
         }
 
         [HttpPost]
-        public ActionResult CreatePost(CreatePostModel newPostModel)
+        public ActionResult CreatePost(NewPostViewModel newPostViewModel)
         {
             var userId = User.Identity.GetUserId<int>();
             if (userId == 0) return new JsonResult {Data = new {succes = false, responseText = "Something wrong!"}};
 
-            var o = _permissionsService.UserHasPermission(userId, 64, CommonConstants.PostMessageInOpenTopic);//todo temp
+            var permission = _permissionsService.UserHasPermission(userId, newPostViewModel.TopicId, CommonConstants.PostMessageInOpenTopic);//todo temp
+            if (permission)
+            {
+                newPostViewModel.UserId = userId;
+                newPostViewModel.PostTime = DateTime.Now;
+                   var newPostModel = Mapper.Map<NewPostViewModel, NewPostModel>(newPostViewModel);
+                _dataWriteService.CreateNewPost(newPostModel);
+            }
+
             return new JsonResult { Data = new { succes = true } };
         }
 
         #endregion
-
-
+        
         #region RestartAppZone
 
         [HttpGet]

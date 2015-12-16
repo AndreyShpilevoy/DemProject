@@ -2,15 +2,15 @@
 
 namespace DEM_MVC.Models
 {
-    public class CreatePostModel
+    public class NewPostViewModel
     {
-        public string PostTitle { get; set; }
+        public string PostSubject { get; set; }
 
-        public string PostBody { get; set; }
+        public string PostText { get; set; }
 
-        public int PostTopicId { get; set; }
+        public int TopicId { get; set; }
 
-        public int PostUserId { get; set; }
+        public int UserId { get; set; }
 
         public DateTime PostTime { get; set; }
 
