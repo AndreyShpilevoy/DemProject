@@ -356,25 +356,6 @@ namespace DEM_MVC.Services.Helpers
             var buttonsDiv = new TagBuilder("div");
             var textAreaDiv = new TagBuilder("div");
 
-            #region buttons
-
-            var bbCodes = BbCodeHelper.BbCodeList;
-            bbCodes = bbCodes.OrderBy(x => x.BbCodeOrder).ToList();
-
-            foreach (var bbCode in bbCodes.Where(x=>x.BbCodeOnPosting))
-            {
-                var buttonBuilder = new TagBuilder("a");
-                buttonBuilder.Attributes.Add("title", bbCode.BbCodeHelpLine);
-                buttonBuilder.Attributes.Add("id", "bbCodeId_" + bbCode.BbCodeTag);
-                buttonBuilder.InnerHtml = bbCode.BbCodeTag;
-                buttonBuilder.MergeAttribute("onClick", String.Format("doAddTags('[{0}]','[/{0}]','textareaId_" + propertyName + "')", bbCode.BbCodeTag));
-                buttonBuilder.AddCssClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only nonDecoration demNavigationBtn");
-
-                buttonsDiv.InnerHtml += buttonBuilder;
-            }
-
-            #endregion
-
             #region textarea
 
             TagBuilder textarea = new TagBuilder("textarea");
@@ -394,6 +375,26 @@ namespace DEM_MVC.Services.Helpers
             {
                 var attributes = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
                 textarea.MergeAttributes(attributes);
+            }
+
+            #endregion
+
+
+            #region buttons
+
+            var bbCodes = BbCodeHelper.BbCodeList;
+            bbCodes = bbCodes.OrderBy(x => x.BbCodeOrder).ToList();
+
+            foreach (var bbCode in bbCodes.Where(x => x.BbCodeOnPosting))
+            {
+                var buttonBuilder = new TagBuilder("a");
+                buttonBuilder.Attributes.Add("title", bbCode.BbCodeHelpLine);
+                buttonBuilder.Attributes.Add("id", "bbCodeId_" + bbCode.BbCodeTag);
+                buttonBuilder.InnerHtml = bbCode.BbCodeTag;
+                buttonBuilder.MergeAttribute("onClick", String.Format("doAddTags('[{0}]','[/{0}]','" + textarea.Attributes.SingleOrDefault(x => x.Key == "id").Value + "')", bbCode.BbCodeTag));
+                buttonBuilder.AddCssClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only nonDecoration demNavigationBtn");
+
+                buttonsDiv.InnerHtml += buttonBuilder;
             }
 
             #endregion

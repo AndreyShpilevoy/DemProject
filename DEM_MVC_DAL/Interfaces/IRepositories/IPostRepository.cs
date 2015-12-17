@@ -7,7 +7,7 @@ namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
     public interface IPostRepository
     {
-        List<PostEntity> GetAllPostsByTopicId(int topicId, IConnectionFactory connectionFactory, int onPage, int? page);
+        List<ReadPostEntity> GetAllPostsByTopicId(int topicId, IConnectionFactory connectionFactory, int onPage, int? page);
         List<UserEntity> GetUsersForPostsByUsersId(IConnectionFactory connectionFactory, List<int> usersId);
         void CreateNewPost(NewPostEntity newPostEntity, IConnectionFactory connectionFactory);
     }

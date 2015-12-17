@@ -10,21 +10,22 @@ using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Services;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.Practices.ServiceLocation;
+using Microsoft.SqlServer.Server;
 using NLog;
 
 namespace DEM_MVC_DAL.Repositories
 {
     public class PostRepository: IPostRepository
     {
-        public List<PostEntity> GetAllPostsByTopicId(int topicId, IConnectionFactory connectionFactory, int onPage, int? page)
+        public List<ReadPostEntity> GetAllPostsByTopicId(int topicId, IConnectionFactory connectionFactory, int onPage, int? page)
         {
-            List<PostEntity> postEntities = new List<PostEntity>();
+            List<ReadPostEntity> postEntities = new List<ReadPostEntity>();
             try
             {
                 if (page == null || page < 1) page = 1;
                 using (var connection = connectionFactory.Create())
                 {
-                    postEntities = connection.Query<PostEntity>(SqlCommandStorageService.GetPostsByTopicId(), new { topicId, onPage, page }).ToList();
+                    postEntities = connection.Query<ReadPostEntity>(SqlCommandStorageService.GetPostsByTopicId(), new { topicId, onPage, page }).ToList();
                 }
             }
             catch (Exception exception)
@@ -62,9 +63,22 @@ namespace DEM_MVC_DAL.Repositories
                         {
                             userId = newPostEntity.UserId,
                             topicId = newPostEntity.TopicId,
+                            posterIp = newPostEntity.PosterIp,
                             postTime = newPostEntity.PostTime,
-                            postSubject= newPostEntity.PostSubject,
-                            postText = newPostEntity.PostText
+                            postMerged = newPostEntity.PostMerged,
+                            postReported = newPostEntity.PostReported,
+                            enableBbcode = newPostEntity.EnableBbcode,
+                            enableSmilies = newPostEntity.EnableSmilies,
+                            enableMagicUrl = newPostEntity.EnableMagicUrl,
+                            enableSig = newPostEntity.EnableSignature,
+                            postSubject = newPostEntity.PostSubject,
+                            postText = newPostEntity.PostText,
+                            postAttachment = newPostEntity.PostAttachment,
+                            postEditTime = newPostEntity.PostEditTime,
+                            postEditReason = newPostEntity.PostEditReason,
+                            postEditUser = newPostEntity.PostEditUser,
+                            postEditCount = newPostEntity.PostEditCount,
+                            postEditLocked = newPostEntity.PostEditLocked
                         });
                 }
             }

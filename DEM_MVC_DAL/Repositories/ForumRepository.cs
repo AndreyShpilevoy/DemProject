@@ -50,5 +50,22 @@ namespace DEM_MVC_DAL.Repositories
             }
             return forumEntity;
         }
+
+        public int GetForumIdByTopicId(int topicId, IConnectionFactory connectionFactory)
+        {
+            int forumId = 0;
+            try
+            {
+                using (var connection = connectionFactory.Create())
+                {
+                    forumId = connection.ExecuteScalar<int>(SqlCommandStorageService.GetForumIdByTopicId(), new { topicId });
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "ForumEntityRepository. Error in function GetForumById");
+            }
+            return forumId;
+        }
     }
 }

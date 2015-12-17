@@ -27,6 +27,7 @@ namespace DEM_MVC.Controllers
         {
             _dataLoadService = dataLoadService;
             _permissionsService = permissionsService;
+            _dataWriteService = dataWriteService;
         }
 
         #region IndexPageZone
@@ -126,7 +127,7 @@ namespace DEM_MVC.Controllers
             var userId = User.Identity.GetUserId<int>();
             if (userId == 0) return new JsonResult {Data = new {succes = false, responseText = "Something wrong!"}};
 
-            var permission = _permissionsService.UserHasPermission(userId, newPostViewModel.TopicId, CommonConstants.PostMessageInOpenTopic);//todo temp
+            var permission = _permissionsService.UserHasPermissionByTopicId(userId, newPostViewModel.TopicId, CommonConstants.PostMessageInOpenTopic);//todo temp
             if (permission)
             {
                 newPostViewModel.UserId = userId;

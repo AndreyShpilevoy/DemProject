@@ -670,17 +670,50 @@ namespace DEM_MVC_DAL.Services
         {
 
             return @"INSERT INTO dem_posts
-                                                    (user_id, 
-                                                    topic_id, 
-                                                    post_time, 
-                                                    post_subject, 
-                                                    post_text)
+                                                    (topic_id,
+                                                    user_id,
+                                                    poster_ip,
+                                                    post_time,
+                                                    post_merged,
+                                                    post_reported,
+                                                    enable_bbcode,
+                                                    enable_smilies,
+                                                    enable_magic_url,
+                                                    enable_sig,
+                                                    post_subject,
+                                                    post_text,
+                                                    post_attachment,
+                                                    post_edit_time,
+                                                    post_edit_reason,
+                                                    post_edit_user,
+                                                    post_edit_count,
+                                                    post_edit_locked)
                     VALUES  
-                                                    (@userId,
-                                                    @topicId,
+                                                    (@topicId,
+                                                    @userId,
+                                                    @posterIp,
                                                     @postTime,
+                                                    @postMerged,
+                                                    @postReported,
+                                                    @enableBbcode,
+                                                    @enableSmilies,
+                                                    @enableMagicUrl,
+                                                    @enableSig,
                                                     @postSubject,
-                                                    @postText);";
+                                                    @postText,
+                                                    @postAttachment,
+                                                    @postEditTime,
+                                                    @postEditReason,
+                                                    @postEditUser,
+                                                    @postEditCount,
+                                                    @postEditLocked);";
+        }
+
+        internal static string GetForumIdByTopicId()
+        {
+            return @"SELECT forum_id
+                        FROM dem_topics
+                        WHERE topic_id = @topicId";
         }
     }
 }

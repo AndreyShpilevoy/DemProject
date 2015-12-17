@@ -10,5 +10,7 @@ namespace DEM_MVC_DAL.Interfaces.IRepositories
         List<ForumEntity> GetAllForums(IConnectionFactory connectionFactory);
 
         ForumEntity GetForumInfoById(int forumId, IConnectionFactory connectionFactory);
+
+        int GetForumIdByTopicId(int topicId, IConnectionFactory connectionFactory);
     }
 }

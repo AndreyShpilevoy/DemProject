@@ -21,7 +21,7 @@ namespace DEM_MVC.Services
             Mapper.CreateMap<TopicEntity, TopicInfoViewModel>().ReverseMap();
             Mapper.CreateMap<PollEntity, PollViewModel>().ReverseMap();
             Mapper.CreateMap<PollOptionEntity, PollOptionViewModel>().ReverseMap();
-            Mapper.CreateMap<PostEntity, PostTableViewModel>().ReverseMap();
+            Mapper.CreateMap<ReadPostEntity, PostTableViewModel>().ReverseMap();
             Mapper.CreateMap<UserEntity, UserTableViewModelForPosts>().ReverseMap();
             Mapper.CreateMap<UserIdentityEntity, IdentityUser>().Include<UserIdentityEntity, AppMember>().ReverseMap();
             Mapper.CreateMap<AppMember, IdentityUser>().ReverseMap();

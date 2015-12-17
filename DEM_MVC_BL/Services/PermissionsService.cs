@@ -17,18 +17,40 @@ namespace DEM_MVC_BL.Services
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly IPermissionRepository _permissionRepository;
+        private readonly IForumRepository _forumRepository;
 
-        public PermissionsService(IConnectionFactory connectionFactory, IPermissionRepository permissionRepository)
+        public PermissionsService(IConnectionFactory connectionFactory, 
+            IPermissionRepository permissionRepository, 
+            IForumRepository forumRepository)
         {
             _connectionFactory = connectionFactory;
             _permissionRepository = permissionRepository;
+            _forumRepository = forumRepository;
         }
 
-        public bool UserHasPermission(int userId, int forumId, string permissionName)
+        public bool UserHasPermissionByForumId(int userId, int forumId, string permissionName)
         {
             bool result = false;
             try
             {
+                var permissions = _permissionRepository.GetPermissionsByUserId(permissionName, userId, _connectionFactory);
+                var permissoionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
+                result = PermissionHelper.CalulateUserPermissionsForForumId(forumId, permissoionModels);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "PermissionsService. Error in function UserHasPermission");
+            }
+            return result;
+        }
+
+        public bool UserHasPermissionByTopicId(int userId, int topicId, string permissionName)
+        {
+            bool result = false;
+            try
+            {
+                var forumId = _forumRepository.GetForumIdByTopicId(topicId, _connectionFactory);
+
                 var permissions = _permissionRepository.GetPermissionsByUserId(permissionName, userId, _connectionFactory);
                 var permissoionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
                 result = PermissionHelper.CalulateUserPermissionsForForumId(forumId, permissoionModels);

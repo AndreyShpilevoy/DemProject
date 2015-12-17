@@ -163,14 +163,14 @@ namespace DEM_MVC_BL.Services
             var userTableViewModels = new List<UserTableViewModelForPosts>();
             try
             {
-                List<PostEntity> postEntities = _postEntityRepository.GetAllPostsByTopicId(topicId, _connectionFactory, onPage, page);
+                List<ReadPostEntity> postEntities = _postEntityRepository.GetAllPostsByTopicId(topicId, _connectionFactory, onPage, page);
                 var usersId = postEntities.Select(x => x.UserId).ToList();
                 usersId.AddRange(postEntities.Where(x => x.PostEditCount > 0).Select(y => y.PostEditUserId).ToList());
                 usersId = usersId.Distinct().ToList();
                 List<UserEntity> userEntities = _postEntityRepository.GetUsersForPostsByUsersId(_connectionFactory, usersId);
 
 
-                postTableViewModels = Mapper.Map<List<PostEntity>, List<PostTableViewModel>>(postEntities);
+                postTableViewModels = Mapper.Map<List<ReadPostEntity>, List<PostTableViewModel>>(postEntities);
                 userTableViewModels = Mapper.Map<List<UserEntity>,List<UserTableViewModelForPosts>> (userEntities);
 
                 #region AddUsersToPosts

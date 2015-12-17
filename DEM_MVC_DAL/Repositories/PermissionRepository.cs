@@ -18,7 +18,7 @@ namespace DEM_MVC_DAL.Repositories
 
             try
             {
-                UserPermissionEntity userPermissionEntity = new UserPermissionEntity();
+                UserPermissionEntity userPermissionEntity;
                 List<GroupPermissionEntity> groupPermissionEntities;
 
                 using (var connection = connectionFactory.Create())
