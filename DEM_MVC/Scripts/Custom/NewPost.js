@@ -22,9 +22,9 @@ function createItem(stringUrl, formName) {
                             $.post(stringUrl, data, function(returnedData) {
                                 if (returnedData.succes) {
                                     //reload partial
-                                    $("#postsMainPanel").load('/Forum/ShowPostTableByTopicId' + window.location.search);
-
-                                    $(thisdata).remove();
+                                   // $("#postsMainPanel").load('/Forum/ShowPostTableByTopicId' + window.location.search);
+                                    location.reload();
+                                    //$(thisdata).remove();
                                 } else alert(returnedData.responseText);
                             });
                         }

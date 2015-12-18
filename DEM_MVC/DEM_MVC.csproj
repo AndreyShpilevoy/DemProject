@@ -347,6 +347,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Views\Forum\ViewTopic\_CreatePost.cshtml" />
+    <Content Include="Views\Forum\ViewTopic\ShowTopicPaging.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

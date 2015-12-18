@@ -1,3 +1,3 @@
-﻿$('dl.spoilerbox > dt').on('click', function () {
-    $(this).parent().toggleClass('spoilerbox-on');
+﻿$("dl.spoilerbox > dt").on("click", function () {
+    $(this).parent().toggleClass("spoilerbox-on");
 });

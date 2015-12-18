@@ -80,12 +80,12 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ViewTopic(int topicId, int? page, int? postId)
         {
-            var topicShowViewModel = _dataLoadService.GetTopicInfoViewModelById(topicId);
+            var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(topicId);
             if (page == null || page < 1) 
-                topicShowViewModel.PageNumber = 1;
+                topicInfoViewModel.PageNumber = 1;
             else 
-                topicShowViewModel.PageNumber = (int)page;
-            return View("ViewTopic/ViewTopic", topicShowViewModel);
+                topicInfoViewModel.PageNumber = (int)page;
+            return View("ViewTopic/ViewTopic", topicInfoViewModel);
         }
 
         [HttpGet]
