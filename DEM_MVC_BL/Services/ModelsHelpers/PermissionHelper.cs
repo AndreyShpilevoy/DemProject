@@ -10,11 +10,30 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
         public static bool CalulateUserPermissionsForForumId(int forumId, List<IdentityPermissionModel> permissoionModels)
         {
             var forumsId = new List<string>();
+            var forumsIdForDelete = new List<string>();
             foreach (var groupPermissoionModel in permissoionModels.Where(x=>x.Type == IdentityPermissionType.GroupPermission && x.SettingsState))
             {
                 forumsId = groupPermissoionModel.ForumsId.Split(',').ToList();
             }
             forumsId = forumsId.Distinct().ToList();
+
+
+
+            foreach (var groupPermissoionModel in permissoionModels.Where(x => x.Type == IdentityPermissionType.GroupPermission && !x.SettingsState))
+            {
+                forumsIdForDelete = groupPermissoionModel.ForumsId.Split(',').ToList();
+            }
+
+            foreach (var forumIdForDelete in forumsIdForDelete.Distinct().ToList())
+            {
+                forumsId.Remove(forumIdForDelete);
+            }
+
+
+
+
+
+
 
             var userPermission = permissoionModels.SingleOrDefault(x => x.Type == IdentityPermissionType.UserPermission);
 

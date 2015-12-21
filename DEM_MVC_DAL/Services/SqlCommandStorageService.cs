@@ -659,6 +659,30 @@ namespace DEM_MVC_DAL.Services
 	                    )";
         }
 
+        internal static string GetUserSeveralPermissionsByUserIdAndPermissionName()
+        {
+            return @"SELECT *
+	                    FROM [dem_permissions_users]
+	                    WHERE [user_id] = @userId AND [permission_Id] IN 
+	                    (
+		                    SELECT [permission_Id]  
+		                    FROM [dem_permissions]
+		                    WHERE [permission_Title] IN @permissionsTitleList
+	                    )";
+        }
+
+        internal static string GetGroupsSeveralPermissionsByGroupsIdAndPermissionName()
+        {
+            return @"SELECT *
+                        FROM [dem_permissions_groups]
+                        WHERE [group_id] in @groupsId AND [permission_Id] IN
+                       (
+                           SELECT [permission_Id]
+                            FROM [dem_permissions]
+                            WHERE [permission_Title] IN @permissionsTitleList
+	                    )";
+        }
+
         internal static string GetUserGroupsId()
         {
             return @"SELECT [group_Id]

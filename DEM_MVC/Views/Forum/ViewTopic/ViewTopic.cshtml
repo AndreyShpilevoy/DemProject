@@ -1,4 +1,5 @@
 ﻿@using DEM_MVC.Services.Helpers
+@using DEM_MVC_Infrastructure.Models
 @using Microsoft.AspNet.Identity
 @model DEM_MVC_BL.Models.ForumModels.TopicInfoViewModel
 
@@ -7,12 +8,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <div class="topic-actions">
     <div class="topic-actions-buttons">
-        @if (User.Identity.GetUserId<int>() != 0)
+        @*@if (User.Identity.GetUserId<int>() != 0 && false)
+            
         {
             <button class="AddNewPost ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">New Post</button>
-        }
+        }*@
     </div>
     @*@{
         var navigationBtnClasses = "ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only nonDecoration demNavigationBtn";
@@ -37,10 +40,10 @@
 }
 <div class="topic-actions">
     <div class="topic-actions-buttons">
-        @if (User.Identity.GetUserId<int>() != 0)
+        @*@if (User.Identity.GetUserId<int>() != 0)
         {
             <button class="AddNewPost ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">New Post</button>
-        }
+        }*@
     </div>
     <div class="topic-actions-paging">
         @Html.Partial("ViewTopic/ShowTopicPaging", Model)

@@ -33,7 +33,23 @@ namespace DEM_MVC_BL.Services
             bool result = false;
             try
             {
-                var permissions = _permissionRepository.GetPermissionsByUserId(permissionName, userId, _connectionFactory);
+                var permissions = _permissionRepository.GetPermissionByUserId(permissionName, userId, _connectionFactory);
+                var permissoionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
+                result = PermissionHelper.CalulateUserPermissionsForForumId(forumId, permissoionModels);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "PermissionsService. Error in function UserHasPermission");
+            }
+            return result;
+        }
+
+        public bool UserHasPermissionByForumId(int userId, int forumId, List<string> permissionsNameList)
+        {
+            bool result = false;
+            try
+            {
+                var permissions = _permissionRepository.GetSeveralPermissionsByUserId(permissionsNameList, userId, _connectionFactory);
                 var permissoionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
                 result = PermissionHelper.CalulateUserPermissionsForForumId(forumId, permissoionModels);
             }
@@ -51,7 +67,25 @@ namespace DEM_MVC_BL.Services
             {
                 var forumId = _forumRepository.GetForumIdByTopicId(topicId, _connectionFactory);
 
-                var permissions = _permissionRepository.GetPermissionsByUserId(permissionName, userId, _connectionFactory);
+                var permissions = _permissionRepository.GetPermissionByUserId(permissionName, userId, _connectionFactory);
+                var permissoionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
+                result = PermissionHelper.CalulateUserPermissionsForForumId(forumId, permissoionModels);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, "PermissionsService. Error in function UserHasPermission");
+            }
+            return result;
+        }
+
+        public bool UserHasPermissionByTopicId(int userId, int topicId, List<string> permissionsNameList)
+        {
+            bool result = false;
+            try
+            {
+                var forumId = _forumRepository.GetForumIdByTopicId(topicId, _connectionFactory);
+
+                var permissions = _permissionRepository.GetSeveralPermissionsByUserId(permissionsNameList, userId, _connectionFactory);
                 var permissoionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
                 result = PermissionHelper.CalulateUserPermissionsForForumId(forumId, permissoionModels);
             }

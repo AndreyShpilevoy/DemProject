@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,7 +22,7 @@ namespace DEM_MVC.Controllers
         private readonly IDataWriteService _dataWriteService;
         private readonly IPermissionsService _permissionsService;
 
-        public ForumController(IDataLoadService dataLoadService, 
+        public ForumController(IDataLoadService dataLoadService,
             IPermissionsService permissionsService,
             IDataWriteService dataWriteService)
         {
@@ -81,9 +82,9 @@ namespace DEM_MVC.Controllers
         public ActionResult ViewTopic(int topicId, int? page, int? postId)
         {
             var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(topicId);
-            if (page == null || page < 1) 
+            if (page == null || page < 1)
                 topicInfoViewModel.PageNumber = 1;
-            else 
+            else
                 topicInfoViewModel.PageNumber = (int)page;
             return View("ViewTopic/ViewTopic", topicInfoViewModel);
         }
@@ -94,7 +95,7 @@ namespace DEM_MVC.Controllers
             var onPage = ConfigHelper.GetPostsOnPageCount();
             var postTableViewModels = _dataLoadService.GetPostTableViewModelsByTopicId(topicId, onPage, page);
 
-            if (page == null || page < 1) 
+            if (page == null || page < 1)
                 page = 1;
             PostTableViewModelList postTableViewModelList = new PostTableViewModelList()
             {
@@ -118,29 +119,53 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult CreatePost(int topicId)
         {
-            return User.Identity.GetUserId<int>() != 0 ? PartialView("ViewTopic/_CreatePost", new NewPostViewModel() {TopicId = topicId }) : null;
+            var userId = User.Identity.GetUserId<int>();
+            if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
+
+            var permission = _permissionsService.UserHasPermissionByTopicId(userId, topicId,
+                new List<string>() {CommonConstants.PostMessageInOpenTopic, CommonConstants.PostMessageInClosedTopic});
+
+            if (!permission) return new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } };
+            return PartialView("ViewTopic/_CreatePost", new NewPostViewModel() { TopicId = topicId });
+            
         }
 
         [HttpPost]
         public ActionResult CreatePost(NewPostViewModel newPostViewModel)
         {
             var userId = User.Identity.GetUserId<int>();
-            if (userId == 0) return new JsonResult {Data = new {succes = false, responseText = "Something wrong!"}};
+            if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
 
-            var permission = _permissionsService.UserHasPermissionByTopicId(userId, newPostViewModel.TopicId, CommonConstants.PostMessageInOpenTopic);//todo temp
-            if (permission)
-            {
-                newPostViewModel.UserId = userId;
-                newPostViewModel.PostTime = DateTime.Now;
-                   var newPostModel = Mapper.Map<NewPostViewModel, NewPostModel>(newPostViewModel);
-                _dataWriteService.CreateNewPost(newPostModel);
-            }
+            var permission = _permissionsService.UserHasPermissionByTopicId(userId, newPostViewModel.TopicId,
+                new List<string>() {CommonConstants.PostMessageInOpenTopic, CommonConstants.PostMessageInClosedTopic});
 
-            return new JsonResult { Data = new { succes = true } };
+            if (!permission) return new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } };
+            newPostViewModel.UserId = userId;
+            newPostViewModel.PostTime = DateTime.Now;
+            var newPostModel = Mapper.Map<NewPostViewModel, NewPostModel>(newPostViewModel);
+            _dataWriteService.CreateNewPost(newPostModel);
+
+            return new JsonResult { Data = new { success = true } };
         }
 
         #endregion
-        
+
+        #region CheckPermissionsZone
+
+        [HttpPost]
+        public ActionResult CheckPermissions (int topicId, List<string> permissionsName)
+        {
+            var userId = User.Identity.GetUserId<int>();
+            if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
+
+            var permission = _permissionsService.UserHasPermissionByTopicId(userId, topicId, permissionsName);
+
+            return !permission ? new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } } 
+                               : new JsonResult { Data = new {success = true } };
+        }
+
+        #endregion
+
         #region RestartAppZone
 
         [HttpGet]
