@@ -121,9 +121,11 @@ namespace DEM_MVC.Controllers
         {
             var userId = User.Identity.GetUserId<int>();
             if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
-
-            var permission = _permissionsService.UserHasPermissionByTopicId(userId, topicId,
-                new List<string>() {CommonConstants.PostMessageInOpenTopic, CommonConstants.PostMessageInClosedTopic});
+            
+            var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(topicId);
+            var permission = _permissionsService.UserHasPermissionByForumId(userId, topicInfoViewModel.ForumId, topicInfoViewModel.TopicClosed 
+                ? new List<string>() { CommonConstants.PostMessageInClosedTopic } 
+                : new List<string>() { CommonConstants.PostMessageInOpenTopic });
 
             if (!permission) return new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } };
             return PartialView("ViewTopic/_CreatePost", new NewPostViewModel() { TopicId = topicId });
@@ -136,8 +138,10 @@ namespace DEM_MVC.Controllers
             var userId = User.Identity.GetUserId<int>();
             if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
 
-            var permission = _permissionsService.UserHasPermissionByTopicId(userId, newPostViewModel.TopicId,
-                new List<string>() {CommonConstants.PostMessageInOpenTopic, CommonConstants.PostMessageInClosedTopic});
+            var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(newPostViewModel.TopicId);
+            var permission = _permissionsService.UserHasPermissionByForumId(userId, topicInfoViewModel.ForumId, topicInfoViewModel.TopicClosed
+                ? new List<string>() { CommonConstants.PostMessageInClosedTopic }
+                : new List<string>() { CommonConstants.PostMessageInOpenTopic });
 
             if (!permission) return new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } };
             newPostViewModel.UserId = userId;
@@ -162,6 +166,21 @@ namespace DEM_MVC.Controllers
 
             return !permission ? new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } } 
                                : new JsonResult { Data = new {success = true } };
+        }
+
+        [HttpPost]
+        public ActionResult CheckNewPostPermissions(int topicId)
+        {
+            var userId = User.Identity.GetUserId<int>();
+            if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
+
+            var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(topicId);
+            var permission = _permissionsService.UserHasPermissionByForumId(userId, topicInfoViewModel.ForumId, topicInfoViewModel.TopicClosed
+                ? new List<string>() { CommonConstants.PostMessageInClosedTopic }
+                : new List<string>() { CommonConstants.PostMessageInOpenTopic });
+
+            return !permission ? new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } }
+                               : new JsonResult { Data = new { success = true } };
         }
 
         #endregion

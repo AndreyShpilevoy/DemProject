@@ -1,11 +1,7 @@
 ﻿$(document).ready(function() {
-    var permissionsName = new Array();
-    permissionsName[0] = "post_message_in_open_topic";
-    permissionsName[1] = "post_message_in_closed_topic";
-
     var topicId = getUrlParameter("topicId");
 
-    $.post("/Forum/CheckPermissions/", { topicId, permissionsName }, function(permissions) {
+    $.post("/Forum/CheckNewPostPermissions/", { topicId }, function (permissions) {
         if (permissions.success) {
             $(".topic-actions-buttons").append('<button class="AddNewPost ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"><span class="ui-button-text">New Post</span></button>');
 

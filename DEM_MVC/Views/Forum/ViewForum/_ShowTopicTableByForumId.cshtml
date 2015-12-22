@@ -27,6 +27,10 @@
                     <div class="topicsCategoryName">
                         <div>
                             @Html.ActionLink(topic.Title, "ViewTopic", "Forum", new { topicId = topic.TopicId }, null)
+                            @if(topic.TopicClosed)
+                            {
+                                @Html.Span(" - тема закрыта", new { @class = "colorRed textBold" })
+                            }
                         </div>
                         <div class="topicsCategoryNameDescription">
                             <span style="color: #@topic.TopicStarterGroupColor">@Html.Raw(topic.TopicStarterUsername)</span> @topic.TopicStartTime
