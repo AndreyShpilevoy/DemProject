@@ -546,6 +546,10 @@ dl.spoilerbox {
     color: #E64848
 }
 
+.colorGreen {
+    color: #00a410
+}
+
 .textBold {
     font-weight: bold;
 }
@@ -557,4 +561,8 @@ dl.spoilerbox {
 .ui-widget {
     font-family: "Lucida Grande","Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
     font-size: 1.2em;
+}
+
+.display-none {
+    display: none
 }

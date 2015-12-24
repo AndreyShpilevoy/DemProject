@@ -23,6 +23,7 @@ namespace DEM_MVC
                         "~/Scripts/Custom/bbMedia.js",
                         "~/Scripts/Custom/goToPosition.js",
                         "~/Scripts/Custom/hoverBtnEffect.js",
+                        "~/Scripts/Custom/adminControls.js",
                         "~/Scripts/Custom/NewPost.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bbCode").Include(

@@ -255,6 +255,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\Custom\adminControls.js" />
     <Content Include="Scripts\Custom\bbEditor.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -347,7 +348,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Views\Forum\ViewTopic\_CreatePost.cshtml" />
-    <Content Include="Views\Forum\ViewTopic\ShowTopicPaging.cshtml" />
+    <Content Include="Views\Forum\ViewTopic\_ShowTopicPaging.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

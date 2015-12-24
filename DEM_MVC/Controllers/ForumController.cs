@@ -185,6 +185,29 @@ namespace DEM_MVC.Controllers
 
         #endregion
 
+        #region AdminActions
+
+
+        [HttpPost]
+        public ActionResult DeletePost(int postId)
+        {
+            return null;
+        }
+
+        [HttpPost]
+        public ActionResult BanUser(int userId)
+        {
+            return null;
+        }
+
+        [HttpPost]
+        public ActionResult UnbanUser(int userId)
+        {
+            return null;
+        }
+
+        #endregion
+
         #region RestartAppZone
 
         [HttpGet]
