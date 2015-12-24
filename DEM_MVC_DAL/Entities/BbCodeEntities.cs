@@ -24,5 +24,8 @@ namespace DEM_MVC_DAL.Entities
 
         [Column(Name = "bbcode_reg_options")]
         public string BbCodeRegexpOptions { get; set; }
+
+        [Column(Name = "no_parse_code")]
+        public bool NoParse { get; set; }
     }
 }

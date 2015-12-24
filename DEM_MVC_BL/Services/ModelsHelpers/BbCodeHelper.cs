@@ -87,6 +87,8 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                 if (!String.IsNullOrWhiteSpace(text))
                 {
                     text = ProcessNoParceBbCodes(text);
+
+
                     foreach (var bbCode in BbCodes)
                     {
                         while (bbCode.Key.IsMatch(text))
@@ -95,7 +97,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                         }
                     }
                 }
-                return HttpUtility.UrlDecode(text);
+                return text?.Replace("[{ignoreCode}", "[");
             }
             catch (Exception exception)
             {
@@ -107,70 +109,68 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
         {
             try
             {
-                List<string> noParceBbCodes = new List<string>() { "code" };
-                if (!String.IsNullOrWhiteSpace(text))
+                var noParceBbCodes = BbCodeList.Where(x=>x.NoParse).ToList();
+                if (String.IsNullOrWhiteSpace(text)) return text;
+
+                foreach (var code in noParceBbCodes)
                 {
-                    foreach (var code in noParceBbCodes)
+                    var openCodesInfo = Regex.Matches(text, String.Format(@"(\[{0}\])", code.BbCodeTag), RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
+                    var closeCodesInfo = Regex.Matches(text, String.Format(@"(\[\/{0}\])", code.BbCodeTag), RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
+                    IEnumerable<Match> combinedCodesInfo = openCodesInfo.OfType<Match>().Concat(closeCodesInfo.OfType<Match>()).Where(m => m.Success).OrderBy(x=>x.Index);
+
+                    List<NoParseBbCodeType> identifier = new List<NoParseBbCodeType>();
+                    List<NoParseBbCodeHelper> noParseBbCodes = new List<NoParseBbCodeHelper>();
+
+                    foreach (var codeInfo in combinedCodesInfo)
                     {
-                        var openCodesInfo = Regex.Matches(text, String.Format(@"(\[{0}\])", code), RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
-                        var closeCodesInfo = Regex.Matches(text, String.Format(@"(\[\/{0}\])", code), RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
-                        IEnumerable<Match> combinedCodesInfo = openCodesInfo.OfType<Match>().Concat(closeCodesInfo.OfType<Match>()).Where(m => m.Success).OrderBy(x=>x.Index);
-
-                        List<NoParseBbCodeType> identifier = new List<NoParseBbCodeType>();
-                        List<NoParseBbCodeHelper> noParseBbCodes = new List<NoParseBbCodeHelper>();
-
-                        foreach (var codeInfo in combinedCodesInfo)
+                        if (codeInfo.Value == String.Format("[{0}]", code.BbCodeTag) && (identifier.Count == 0))
                         {
-                            if (codeInfo.Value == String.Format("[{0}]", code) && (identifier.Count == 0))
+                            noParseBbCodes.Add(new NoParseBbCodeHelper()
                             {
-                                noParseBbCodes.Add(new NoParseBbCodeHelper()
-                                {
-                                    StartPosition = codeInfo.Index,
-                                    Length = codeInfo.Length,
-                                    CodeType = NoParseBbCodeType.Open
-                                });
-                                identifier.Add(NoParseBbCodeType.Open);
-                            }
-                            else if (codeInfo.Value == String.Format("[{0}]", code) && (identifier.Count > 0))
-                            {
-                                identifier.Add(NoParseBbCodeType.Open);
-                            }
-                            else if (codeInfo.Value == String.Format("[/{0}]", code) && (identifier.Count(x => x == NoParseBbCodeType.Open) == 1))
-                            {
-                                noParseBbCodes.Add(new NoParseBbCodeHelper()
-                                {
-                                    StartPosition = codeInfo.Index,
-                                    Length = codeInfo.Length,
-                                    CodeType = NoParseBbCodeType.Close
-                                });
-                                identifier.Remove(NoParseBbCodeType.Open);
-                            }
-                            else if (codeInfo.Value == String.Format("[/{0}]", code) && (identifier.Count(x => x == NoParseBbCodeType.Open) > 1))
-                            {
-                                identifier.Remove(NoParseBbCodeType.Open);
-                            }
+                                StartPosition = codeInfo.Index,
+                                Length = codeInfo.Length,
+                                CodeType = NoParseBbCodeType.Open
+                            });
+                            identifier.Add(NoParseBbCodeType.Open);
                         }
-                        for (var i = noParseBbCodes.Count-1; i >= 0 ; i -= 2)
+                        else if (codeInfo.Value == String.Format("[{0}]", code.BbCodeTag) && (identifier.Count > 0))
                         {
-                            var changedTextStartPosition = noParseBbCodes[i - 1].StartPosition + noParseBbCodes[i - 1].Length;
-                            var changedTextLength = noParseBbCodes[i].StartPosition - (noParseBbCodes[i - 1].StartPosition + noParseBbCodes[i - 1].Length);
-
-                            //var changedTextPart = HttpUtility.UrlEncode(text.Substring(changedTextStartPosition, changedTextLength));
-                            var changedTextPart = text.Substring(changedTextStartPosition, changedTextLength)
-                                .Replace("[", "%5B")
-                                .Replace("]", "%5D");
-                            var textStringBuilder = new StringBuilder(text);
-                            textStringBuilder.Remove(changedTextStartPosition, changedTextLength);
-                            textStringBuilder.Insert(changedTextStartPosition, changedTextPart);
-                            text = textStringBuilder.ToString();
+                            identifier.Add(NoParseBbCodeType.Open);
                         }
+                        else if (codeInfo.Value == String.Format("[/{0}]", code.BbCodeTag) && (identifier.Count(x => x == NoParseBbCodeType.Open) == 1))
+                        {
+                            noParseBbCodes.Add(new NoParseBbCodeHelper()
+                            {
+                                StartPosition = codeInfo.Index,
+                                Length = codeInfo.Length,
+                                CodeType = NoParseBbCodeType.Close
+                            });
+                            identifier.Remove(NoParseBbCodeType.Open);
+                        }
+                        else if (codeInfo.Value == String.Format("[/{0}]", code.BbCodeTag) && (identifier.Count(x => x == NoParseBbCodeType.Open) > 1))
+                        {
+                            identifier.Remove(NoParseBbCodeType.Open);
+                        }
+                    }
+                    for (var i = noParseBbCodes.Count-1; i >= 0 ; i -= 2)
+                    {
+                        var changedTextStartPosition = noParseBbCodes[i - 1].StartPosition + noParseBbCodes[i - 1].Length;
+                        var changedTextLength = noParseBbCodes[i].StartPosition - (noParseBbCodes[i - 1].StartPosition + noParseBbCodes[i - 1].Length);
+
+                        //var changedTextPart = HttpUtility.UrlEncode(text.Substring(changedTextStartPosition, changedTextLength));
+                        var changedTextPart = text.Substring(changedTextStartPosition, changedTextLength)
+                            .Replace("[", "[{ignoreCode}");
+                        var textStringBuilder = new StringBuilder(text);
+                        textStringBuilder.Remove(changedTextStartPosition, changedTextLength);
+                        textStringBuilder.Insert(changedTextStartPosition, changedTextPart);
+                        text = textStringBuilder.ToString();
                     }
                 }
                 return text;
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "BbCodeHelper. Error in function BbCodeReplacerToHtml");
+                DemLogger.Current.Error(exception, "BbCodeHelper. Error in function ProcessNoParceBbCodes");
                 return null;
             }
         }

@@ -27,6 +27,8 @@
         <div class="postUserInfo postShadow">
             <div class="UsenName" style="color: #@post.User.GroupColor">
                 <span class="userName">@post.User.UserName</span>
+                <span class="banUserBtn">ban</span>
+                <span class="unbanUserBtn">unban</span>
             </div>
             <div class="UserRank">
                 @if (String.IsNullOrWhiteSpace(post.User.UserUniqueRank))

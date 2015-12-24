@@ -50,6 +50,7 @@ CREATE TABLE dem_bbcodes (
 	bbcode_match         nvarchar(max) NOT NULL   ,
 	bbcode_template      nvarchar(max) NOT NULL   ,
   bbcode_reg_options   NVARCHAR(max) NOT NULL   ,
+  no_parse_code			 bit NOT NULL
 	CONSTRAINT Pk_dem_bbcodes PRIMARY KEY ( bbcode_id )
  );
 

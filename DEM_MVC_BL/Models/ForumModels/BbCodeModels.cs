@@ -9,5 +9,6 @@
         public string BbCodeMatch { get; set; }
         public string BbCodeTemplate { get; set; }
         public string BbCodeRegexpOptions { get; set; }
+        public bool NoParse { get; set; }
     }
 }

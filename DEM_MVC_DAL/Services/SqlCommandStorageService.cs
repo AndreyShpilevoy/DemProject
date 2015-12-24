@@ -16,7 +16,8 @@ namespace DEM_MVC_DAL.Services
                             display_on_posting, 
                             bbcode_match, 
                             bbcode_template, 
-                            bbcode_reg_options 
+                            bbcode_reg_options,
+                            no_parse_code 
 
                         FROM dem_bbcodes";
         }
@@ -246,7 +247,7 @@ namespace DEM_MVC_DAL.Services
 
         internal static string UserGroupsIdentityInsert()
         {
-            return @"INSERT INTO dem_user_groups (user_Id, group_Id) VALUES (@userId, @groupId)";
+            return @"INSERT INTO dem_user_groups (user_Id, group_Id, [default]) VALUES (@userId, @groupId, @defaultGroup)";
         }
 
         internal static string UserGroupsIdentityDelete()
