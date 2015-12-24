@@ -246,7 +246,7 @@ namespace DEM_MVC_DAL.Services
 
         internal static string UserGroupsIdentityInsert()
         {
-            return @"INSERT INTO dem_user_groups (user_Id, group_Id) VALUES (@userId, @groupId)";
+            return @"INSERT INTO dem_user_groups (user_Id, group_Id, [default]) VALUES (@userId, @groupId, @defaultGroup)";
         }
 
         internal static string UserGroupsIdentityDelete()

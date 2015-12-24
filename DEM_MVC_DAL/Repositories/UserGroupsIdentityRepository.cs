@@ -53,7 +53,7 @@ namespace DEM_MVC_DAL.Repositories
             {
                 using (var connection = connectionFactory.Create())
                 {
-                    connection.Execute(SqlCommandStorageService.UserGroupsIdentityInsert(), new { userId = user.Id, groupId });
+                    connection.Execute(SqlCommandStorageService.UserGroupsIdentityInsert(), new { userId = user.Id, groupId, defaultGroup = true });
                 }
             }
             catch (Exception exception)

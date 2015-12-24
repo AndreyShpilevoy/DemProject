@@ -46,6 +46,7 @@ AS
 	  )tableWithUserId ON tableWithUserId.user_id = usersTable.user_id 
 	  JOIN dem_user_groups userGroupsTable ON userGroupsTable.user_Id = usersTable.user_Id 
 	  JOIN dem_groups groupsTable ON groupsTable.group_id = userGroupsTable.group_id
+	  WHERE userGroupsTable.[default] = 1
 
 	) as userTable RIGHT JOIN (
 	
@@ -221,10 +222,12 @@ SELECT	tableWithUserId.forum_id,
 			)tableWithUserId ON tableWithUserId.user_id = usersTable.user_id 
 			JOIN dem_user_groups userGroupsTable ON userGroupsTable.user_Id = usersTable.user_Id 
 			JOIN dem_groups groupsTable ON groupsTable.group_id = userGroupsTable.group_id
+			WHERE userGroupsTable.[default] = 1
 	  
 	)tableWithUserId ON tableWithUserId.topic_poster = usersTable.user_id 
 	JOIN dem_user_groups userGroupsTable ON userGroupsTable.user_Id = usersTable.user_Id 
-	  JOIN dem_groups groupsTable ON groupsTable.group_id = userGroupsTable.group_id
+	JOIN dem_groups groupsTable ON groupsTable.group_id = userGroupsTable.group_id
+	WHERE userGroupsTable.[default] = 1
 
 GO
 
@@ -286,6 +289,7 @@ SELECT  usersTable.user_id,
 					JOIN dem_groups groupsTable ON groupsTable.group_id = userGroupsTable.group_id
 					LEFT JOIN dem_posts postsTable ON usersTable.user_id = postsTable.user_id
 					LEFT JOIN dem_ranks ranksUniqueTable ON usersTable.user_rank = ranksUniqueTable.rank_id
+					WHERE userGroupsTable.[default] = 1
 
 					GROUP BY	usersTable.user_id,
 								usersTable.username,
