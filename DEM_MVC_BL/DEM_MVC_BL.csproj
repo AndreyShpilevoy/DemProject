@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autofac\AutofacBlRegistration.cs" />
+    <Compile Include="Interfaces\IServices\IAdminService.cs" />
     <Compile Include="Interfaces\IServices\IDataWriteService.cs" />
     <Compile Include="Interfaces\IServices\IGroupIdentityService.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IPostModelHelper.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Models\ForumModels\WarningModels.cs" />
     <Compile Include="Models\PermissionModels\IdentityPermissionModels.cs" />
     <Compile Include="Models\PermissionModels\PermissionModels.cs" />
+    <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\DataWriteService.cs" />
     <Compile Include="Services\ModelsHelpers\ConfigHelper.cs" />
     <Compile Include="Services\ModelsHelpers\BbCodeHelper.cs" />

@@ -247,7 +247,7 @@ namespace DEM_MVC_DAL.Services
 
         internal static string UserGroupsIdentityInsert()
         {
-            return @"INSERT INTO dem_user_groups (user_Id, group_Id, [default]) VALUES (@userId, @groupId, @defaultGroup)";
+            return @"INSERT INTO dem_user_groups (user_Id, group_Id, primaryGroup) VALUES (@userId, @groupId, @primaryGroup)";
         }
 
         internal static string UserGroupsIdentityDelete()
@@ -739,6 +739,48 @@ namespace DEM_MVC_DAL.Services
             return @"SELECT forum_id
                         FROM dem_topics
                         WHERE topic_id = @topicId";
+        }
+
+        internal static string AdminDeletePost()
+        {
+            return @"DELETE
+                      FROM dem_posts
+                      WHERE post_id = @postId";
+        }
+
+        internal static string AdminCheckPost()
+        {
+            return @"SELECT TOP 1 post_id
+                      FROM dem_posts
+                      where post_id = @postId";
+        }
+
+        internal static string BanUser()
+        {
+            return @"DELETE
+                      FROM dem_posts
+                      WHERE post_id = @postId";
+        }
+
+        internal static string CheckBanUser()
+        {
+            return @"SELECT TOP 1 post_id
+                      FROM dem_posts
+                      where post_id = @postId";
+        }
+
+        internal static string UnbanUser()
+        {
+            return @"DELETE
+                      FROM dem_posts
+                      WHERE post_id = @postId";
+        }
+
+        internal static string CheckUnbanUser()
+        {
+            return @"SELECT TOP 1 post_id
+                      FROM dem_posts
+                      where post_id = @postId";
         }
     }
 }

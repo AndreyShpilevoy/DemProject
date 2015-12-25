@@ -21,14 +21,17 @@ namespace DEM_MVC.Controllers
         private readonly IDataLoadService _dataLoadService;
         private readonly IDataWriteService _dataWriteService;
         private readonly IPermissionsService _permissionsService;
+        private readonly IAdminService _adminService;
 
         public ForumController(IDataLoadService dataLoadService,
             IPermissionsService permissionsService,
-            IDataWriteService dataWriteService)
+            IDataWriteService dataWriteService,
+            IAdminService adminService)
         {
             _dataLoadService = dataLoadService;
             _permissionsService = permissionsService;
             _dataWriteService = dataWriteService;
+            _adminService = adminService;
         }
 
         #region IndexPageZone
@@ -191,19 +194,31 @@ namespace DEM_MVC.Controllers
         [HttpPost]
         public ActionResult DeletePost(int postId)
         {
-            return null;
+            if (_adminService.DeletePost(postId))
+            {
+                return new JsonResult { Data = new { success = true, responseText = "Post was deleted." } };
+            }
+            return new JsonResult { Data = new { success = false, responseText = "Post wasn't deleted. Please, contact with administrator." } };
         }
 
         [HttpPost]
         public ActionResult BanUser(int userId)
         {
-            return null;
+            if (_adminService.BanUser(userId))
+            {
+                return new JsonResult { Data = new { success = true, responseText = "User wasn banned." } };
+            }
+            return new JsonResult { Data = new { success = false, responseText = "User wasn't banned. Please, contact with administrator." } };
         }
 
         [HttpPost]
         public ActionResult UnbanUser(int userId)
         {
-            return null;
+            if (_adminService.UnbanUser(userId))
+            {
+                return new JsonResult { Data = new { success = true, responseText = "User wasn unbanned." } };
+            }
+            return new JsonResult { Data = new { success = false, responseText = "User wasn't unbanned. Please, contact with administrator." } };
         }
 
         #endregion
