@@ -9,7 +9,6 @@ using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Services.ModelsHelpers;
-using DEM_MVC_DAL.Entities;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
 

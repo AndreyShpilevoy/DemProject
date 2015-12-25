@@ -757,30 +757,30 @@ namespace DEM_MVC_DAL.Services
 
         internal static string BanUser()
         {
-            return @"DELETE
-                      FROM dem_posts
-                      WHERE post_id = @postId";
-        }
-
-        internal static string CheckBanUser()
-        {
-            return @"SELECT TOP 1 post_id
-                      FROM dem_posts
-                      where post_id = @postId";
+            return @"INSERT INTO dem_user_groups
+                            (user_Id,
+                            group_Id,
+							primaryGroup)
+                        VALUES  
+                            (@userId,
+                            16,
+                            0)";
         }
 
         internal static string UnbanUser()
         {
             return @"DELETE
-                      FROM dem_posts
-                      WHERE post_id = @postId";
+                      FROM dem_user_groups
+                      WHERE user_Id = @userId 
+                      AND group_Id = 16";
         }
 
-        internal static string CheckUnbanUser()
+        internal static string CheckIsUserBanned()
         {
-            return @"SELECT TOP 1 post_id
-                      FROM dem_posts
-                      where post_id = @postId";
+            return @"SELECT TOP 1 user_Id
+                      FROM dem_user_groups
+                      WHERE user_Id = @userId 
+                      AND group_Id = 16";
         }
     }
 }

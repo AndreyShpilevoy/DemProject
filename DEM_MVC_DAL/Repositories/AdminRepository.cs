@@ -15,9 +15,10 @@ namespace DEM_MVC_DAL.Repositories
             {
                 using (var connection = connectionFactory.Create())
                 {
-                    connection.Execute(SqlCommandStorageService.AdminDeletePost(), new { postId });
-                    connection.ExecuteScalar<int>(SqlCommandStorageService.AdminCheckPost(), new { postId });
-                    return true;
+                    connection.Execute(SqlCommandStorageService.AdminDeletePost(), new {postId});
+                    var validator = connection.ExecuteScalar<int>(SqlCommandStorageService.AdminCheckPost(), new {postId});
+                    if(validator == 0) return true;
+                    return false;
                 }
             }
             catch (Exception exception)
@@ -33,9 +34,12 @@ namespace DEM_MVC_DAL.Repositories
             {
                 using (var connection = connectionFactory.Create())
                 {
-                    connection.Execute(SqlCommandStorageService.BanUser(), new { userId });
-                    connection.ExecuteScalar<int>(SqlCommandStorageService.CheckBanUser(), new { userId });
-                    return true;
+                    var validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(),
+                        new {userId});
+                    if (validator != 0) return false;
+                    connection.Execute(SqlCommandStorageService.BanUser(), new {userId});
+                    validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(), new {userId});
+                    return validator != 0;
                 }
             }
             catch (Exception exception)
@@ -51,14 +55,17 @@ namespace DEM_MVC_DAL.Repositories
             {
                 using (var connection = connectionFactory.Create())
                 {
-                    connection.Execute(SqlCommandStorageService.UnbanUser(), new { userId });
-                    connection.ExecuteScalar<int>(SqlCommandStorageService.CheckUnbanUser(), new { userId });
-                    return true;
+                    var validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(),
+                        new {userId});
+                    if (validator == 0) return false;
+                    connection.Execute(SqlCommandStorageService.UnbanUser(), new {userId});
+                    validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(), new {userId});
+                    return validator == 0;
                 }
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "AdminRepository. Error in function UnbanUser");
+                DemLogger.Current.Error(exception, "AdminRepository. Error in function BanUser");
                 return false;
             }
         }
