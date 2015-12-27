@@ -146,6 +146,8 @@ namespace DEM_MVC.Controllers
                 : new List<string>() { CommonConstants.PostMessageInOpenTopic });
 
             if (!permission) return new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } };
+
+            if (String.IsNullOrWhiteSpace(newPostViewModel.PostText)) return new JsonResult { Data = new { success = false, responseText = "You can't create post with empty \"PostText\" field." } };
             newPostViewModel.UserId = userId;
             newPostViewModel.PostTime = DateTime.Now;
             var newPostModel = Mapper.Map<NewPostViewModel, NewPostModel>(newPostViewModel);
