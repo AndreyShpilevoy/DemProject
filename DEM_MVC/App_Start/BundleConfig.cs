@@ -23,8 +23,15 @@ namespace DEM_MVC
                         "~/Scripts/Custom/bbMedia.js",
                         "~/Scripts/Custom/goToPosition.js",
                         "~/Scripts/Custom/hoverBtnEffect.js",
-                        "~/Scripts/Custom/adminControls.js",
+                        "~/Scripts/Custom/WorkWithCoocies.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/adminControls").Include(
+                        "~/Scripts/Custom/adminControls.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/newPostControls").Include(
                         "~/Scripts/Custom/NewPost.js"));
+
+
 
             bundles.Add(new ScriptBundle("~/bundles/bbCode").Include(
                         "~/Scripts/Custom/bbEditor.js"));
@@ -50,7 +57,7 @@ namespace DEM_MVC
                 "~/Content/Bootstrap/bootstrap.css",
                 "~/Content/Main.css",
                 "~/Content/TempIdentity.css"));
-            
+
         }
     }
 }

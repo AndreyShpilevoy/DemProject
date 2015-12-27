@@ -8,24 +8,5 @@
 
 @*temporal block start*@
 @*todo delete temporal block*@
-<script>
-    document.addEventListener("DOMContentLoaded", function (event) {
-        $("#dialog").dialog({
-            modal: true,
-            buttons: {
-                "Продолжить просмотр": function () {
-                    $(this).dialog("close");
-                }
-            }
-        });
-    });
-</script>
-<div id="dialog" title="Сайт в разработке">
-    <p>Сайт находится в разработке.</p>
-    <p>Регистрация, аутентификация и отправка сообщений ещё не реализованы.</p>
-    <p>Пожалуйста, используйте для общения @Html.ActionLink("чат", "Chat", "Forum").</p>
-    <p>Но вы можете использовать сайт в режиме чтения.</p>
-    <p>Так же обратитве внимание на:</p>
-    <p>@Html.ActionLink("Каталог файлов", "ViewForum", "Forum", new { forumId = 68 }, null)</p>
-</div>
+@Html.Partial("Index/_SiteUnderCostruction")
 @*temporal block end*@

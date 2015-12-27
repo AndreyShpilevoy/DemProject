@@ -266,6 +266,7 @@
     <Content Include="Scripts\Custom\goToPosition.js" />
     <Content Include="Scripts\Custom\hoverBtnEffect.js" />
     <Content Include="Scripts\Custom\NewPost.js" />
+    <Content Include="Scripts\Custom\WorkWithCoocies.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
@@ -349,6 +350,7 @@
     <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Views\Forum\ViewTopic\_CreatePost.cshtml" />
     <Content Include="Views\Forum\ViewTopic\_ShowTopicPaging.cshtml" />
+    <Content Include="Views\Forum\Index\_SiteUnderCostruction.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

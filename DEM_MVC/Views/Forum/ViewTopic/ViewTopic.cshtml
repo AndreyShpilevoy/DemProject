@@ -1,7 +1,5 @@
-﻿@using DEM_MVC.Services.Helpers
-@using DEM_MVC_Infrastructure.Models
-@using Microsoft.AspNet.Identity
-@model DEM_MVC_BL.Models.ForumModels.TopicInfoViewModel
+﻿@model DEM_MVC_BL.Models.ForumModels.TopicInfoViewModel
+@using System.Web.Optimization
 
 @{
     ViewBag.Title = "ViewForum";
@@ -50,3 +48,8 @@
     </div>
     <div class="clear"></div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/adminControls")
+    @Scripts.Render("~/bundles/newPostControls")
+}
