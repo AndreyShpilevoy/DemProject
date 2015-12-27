@@ -55,7 +55,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 
                 var latestDateTime = root.SubForums.Select(x => x.LastPostTime).Max();
                 var lastForum = root.SubForums.FirstOrDefault(x => x.LastPostTime == latestDateTime);
-                if (lastForum != null)
+                if (lastForum != null && latestDateTime > root.LastPostTime)
                 {
                     root.LastTopicTitle = lastForum.LastTopicTitle;
                     root.LastTopicId = lastForum.LastTopicId;
