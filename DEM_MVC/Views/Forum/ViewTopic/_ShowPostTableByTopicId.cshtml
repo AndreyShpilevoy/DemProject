@@ -26,6 +26,9 @@
                 <button class="deletePostBtn @btnClasses" role="button" onclick="deletePost(@post.PostId)"><span class="ui-button-text colorRed">Delete Post</span></button>
             </div>
         </div>
+        <div class="postTime">
+            <span>Сообщение отправлено: @post.PostTime</span>
+        </div>
         <div class="postBody">
             <div class="postUserInfo postShadow">
                 <div class="UsenName" style="color: #@post.User.GroupColor">
