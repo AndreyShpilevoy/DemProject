@@ -5,7 +5,7 @@
     permissionsName[1] = "show_admin_controls";
 
 
-    $.post("/Forum/CheckPermissions/", { topicId, permissionsName }, function (permissions) {
+    $.post("/Permissions/CheckPermissions/", { topicId, permissionsName }, function (permissions) {
         if (permissions.success) {
             $('.deletePostBtn').removeClass("display-none");
             $('.banUserBtn').removeClass("display-none");
@@ -20,7 +20,7 @@
 function deletePost(postId) {
     var data = { postId: postId };
 
-    $.post('/Forum/DeletePost/', data, function (returnedData) {
+    $.post('/Administration/DeletePost/', data, function (returnedData) {
         if (returnedData.success) {
             location.reload();
         } else alert(returnedData.responseText);
@@ -31,7 +31,7 @@ function deletePost(postId) {
 function banUser(userId) {
     var data = { userId: userId };
 
-    $.post('/Forum/BanUser/', data, function (returnedData) {
+    $.post('/Administration/BanUser/', data, function (returnedData) {
         if (returnedData.success) {
             alert('user banned');
         } else alert(returnedData.responseText);
@@ -42,7 +42,7 @@ function banUser(userId) {
 function unbanUser(userId) {
     var data = { userId: userId };
 
-    $.post('/Forum/UnbanUser/', data, function (returnedData) {
+    $.post('/Administration/UnbanUser/', data, function (returnedData) {
         if (returnedData.success) {
             alert('user unbanned');
         } else alert(returnedData.responseText);

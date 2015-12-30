@@ -290,8 +290,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Autofac\AutofacRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PermissionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -360,7 +362,10 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Administration\" />
+    <Folder Include="Views\Permissions\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DEM_MVC_BL\DEM_MVC_BL.csproj">
       <Project>{76d78273-6bf5-4915-8c70-c087a148609a}</Project>

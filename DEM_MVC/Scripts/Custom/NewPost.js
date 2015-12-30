@@ -1,7 +1,7 @@
 ﻿$(document).ready(function() {
     var topicId = getUrlParameter("topicId");
 
-    $.post("/Forum/CheckNewPostPermissions/", { topicId }, function (permissions) {
+    $.post("/Permissions/CheckNewPostPermissions/", { topicId }, function (permissions) {
         if (permissions.success) {
             $(".topic-actions-buttons").append('<button class="AddNewPost ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"><span class="ui-button-text">New Post</span></button>');
 

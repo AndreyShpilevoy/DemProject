@@ -13,6 +13,10 @@
 }
 else
 {
-    <li class="main-menu-last-li">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    <li class="main-menu-last-li">
+        @if (Request.Url != null)
+        {
+            @Html.ActionLink("Log in", "Login", "Account", routeValues: new { returnUrl = Request.Url.PathAndQuery }, htmlAttributes: new { id = "loginLink" })
+        }</li>
     <li class="main-menu-pre-last-li">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
 }
