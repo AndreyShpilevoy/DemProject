@@ -35,7 +35,7 @@ namespace DEM_MVC.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Подтверждение пароля")]
-        [Compare("Password", ErrorMessage = "Новый пароль и Подтверждение пароля не совпадают.")]
+        [Compare("NewPassword", ErrorMessage = "Новый пароль и Подтверждение пароля не совпадают.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -54,7 +54,7 @@ namespace DEM_MVC.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Подтверждение пароля")]
-        [Compare("Password", ErrorMessage = "Новый пароль и Подтверждение пароля не совпадают.")]
+        [Compare("NewPassword", ErrorMessage = "Новый пароль и Подтверждение пароля не совпадают.")]
         public string ConfirmPassword { get; set; }
     }
 
