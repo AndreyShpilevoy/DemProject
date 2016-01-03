@@ -1,8 +1,8 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using DEM_MVC_DAL.Services;
 using DEM_MVC_Infrastructure.Models;
 
 
@@ -29,10 +29,11 @@ namespace DEM_MVC
         //    DemLogger.Current.Info("Application Dispose");
         //}
 
-        //protected void Application_Error()
-        //{
-        //    DemLogger.Current.Info("Application Error");
-        //}
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = Server.GetLastError();
+            DemLogger.Current.Error(exception, "Application_Error");
+        }
 
 
         protected void Application_End()

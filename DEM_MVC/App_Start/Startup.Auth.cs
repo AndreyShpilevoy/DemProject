@@ -36,10 +36,11 @@ namespace DEM_MVC
                     //    getUserIdCallback: (id) => (Int32.Parse(id.GetUserId())))
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, AppMember, int>(
                     validateInterval: TimeSpan.FromMinutes(30),
-                    regenerateIdentityCallback: (manager, user) =>
-                        user.GenerateUserIdentityAsync(manager),
-                    getUserIdCallback: (id) => GrabUserId(id))
-                }
+                    regenerateIdentityCallback: (manager, user) => user.GenerateUserIdentityAsync(manager),
+                    getUserIdCallback: GrabUserId)
+                },
+                ExpireTimeSpan = TimeSpan.FromDays(7),
+                SlidingExpiration = true
             });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 

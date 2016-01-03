@@ -294,8 +294,8 @@ namespace DEM_MVC.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
-            int? userId = await SignInManager.GetVerifiedUserIdAsync();
-            if (userId == null)
+            int userId = await SignInManager.GetVerifiedUserIdAsync();
+            if (userId == 0)
             {
                 return View("Error");
             }
