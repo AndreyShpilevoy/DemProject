@@ -32,7 +32,10 @@ namespace DEM_MVC
         protected void Application_Error(object sender, EventArgs e)
         {
             Exception exception = Server.GetLastError();
-            DemLogger.Current.Error(exception, "Application_Error");
+            if (!(exception is HttpException))
+            {
+                DemLogger.Current.Error(exception, "Application_Error");
+            }
         }
 
 
