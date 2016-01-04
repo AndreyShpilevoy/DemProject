@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using DEM_MVC.Models;
+using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -56,8 +57,8 @@ namespace DEM_MVC.Controllers
             {
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                 {
-                    //ViewBag.errorMessage = "You must have a confirmed email to log on.";
-                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
+                    ViewBag.errorMessage = "You must have a confirmed email to log on.";
+                    await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
                     return View("Error");
                 }
             }
@@ -89,12 +90,13 @@ namespace DEM_MVC.Controllers
             // Require that the AppMember has already logged in via username/password or external login
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
+                DemLogger.Current.Error("AccountController. GET Action VerifyCode: SignInManager.HasBeenVerifiedAsync() return false");
                 return View("Error");
             }
             var appMember = await UserManager.FindByIdAsync(await SignInManager.GetVerifiedUserIdAsync());
             if (appMember != null)
             {
-                var code = await UserManager.GenerateTwoFactorTokenAsync(appMember.Id, provider);
+                await UserManager.GenerateTwoFactorTokenAsync(appMember.Id, provider);
             }
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
@@ -181,6 +183,7 @@ namespace DEM_MVC.Controllers
         {
             if (userId == null || code == null)
             {
+                DemLogger.Current.Error("AccountController. GET Action ConfirmEmail: userId == null || code == null");
                 return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(Int32.Parse(userId), code);
@@ -241,7 +244,12 @@ namespace DEM_MVC.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            if (code == null)
+            {
+                DemLogger.Current.Error("AccountController. GET Action ResetPassword: code == null");
+                return View("Error");
+            }
+            else return View();
         }
 
         //
@@ -297,6 +305,7 @@ namespace DEM_MVC.Controllers
             int userId = await SignInManager.GetVerifiedUserIdAsync();
             if (userId == 0)
             {
+                DemLogger.Current.Error("AccountController. GET Action SendCode: userId == 0");
                 return View("Error");
             }
             var userFactors = await UserManager.GetValidTwoFactorProvidersAsync((int) userId);
@@ -319,6 +328,7 @@ namespace DEM_MVC.Controllers
             // Generate the token and send it
             if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
             {
+                DemLogger.Current.Error("AccountController. POST Action SendCode: SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider) return false");
                 return View("Error");
             }
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });

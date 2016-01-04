@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using DEM_MVC.Models;
+using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -135,7 +136,12 @@ namespace DEM_MVC.Controllers
         {
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(Int32.Parse(User.Identity.GetUserId()), phoneNumber);
             // Send an SMS through the SMS provider to verify the phone number
-            return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
+            if (phoneNumber == null)
+            {
+                DemLogger.Current.Error("ManageController. GET Action VerifyPhoneNumber: phoneNumber == null");
+                return View("Error");
+            }
+            else return View(new VerifyPhoneNumberViewModel {PhoneNumber = phoneNumber});
         }
 
         //
@@ -251,14 +257,15 @@ namespace DEM_MVC.Controllers
                 message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : "";
-            var AppMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
-            if (AppMember == null)
+            var appMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
+            if (appMember == null)
             {
+                DemLogger.Current.Error("ManageController. GET Action ManageLogins: appMember == null");
                 return View("Error");
             }
             var userLogins = await UserManager.GetLoginsAsync(Int32.Parse(User.Identity.GetUserId()));
             var otherLogins = AuthenticationManager.GetExternalAuthenticationTypes().Where(auth => userLogins.All(ul => auth.AuthenticationType != ul.LoginProvider)).ToList();
-            ViewBag.ShowRemoveButton = AppMember.PasswordHash != null || userLogins.Count > 1;
+            ViewBag.ShowRemoveButton = appMember.PasswordHash != null || userLogins.Count > 1;
             return View(new ManageLoginsViewModel
             {
                 CurrentLogins = userLogins,
