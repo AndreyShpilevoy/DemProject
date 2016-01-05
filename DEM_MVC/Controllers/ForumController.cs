@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using DEM_MVC.Models;
 using DEM_MVC_BL.Interfaces.IServices;
+using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Services.ModelsHelpers;
@@ -16,18 +17,20 @@ namespace DEM_MVC.Controllers
 {
     public class ForumController : Controller
     {
-
         private readonly IDataLoadService _dataLoadService;
         private readonly IDataWriteService _dataWriteService;
         private readonly IPermissionsService _permissionsService;
+        private IConfigHelper _configHelper;
 
         public ForumController(IDataLoadService dataLoadService,
             IPermissionsService permissionsService,
-            IDataWriteService dataWriteService)
+            IDataWriteService dataWriteService,
+            IConfigHelper configHelper)
         {
             _dataLoadService = dataLoadService;
             _permissionsService = permissionsService;
             _dataWriteService = dataWriteService;
+            _configHelper = configHelper;
         }
 
         #region IndexPageZone
@@ -68,7 +71,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ShowTopicTableByForumId(int forumId, int? page)
         {
-            var onPage = ConfigHelper.GetTopicsOnPageCount();
+            var onPage = _configHelper.GetTopicsOnPageCount();
             var forumInfoViewModel = _dataLoadService.GetTopicTableViewModelsByForumId(forumId, onPage, page);
             return PartialView("ViewForum/_ShowTopicTableByForumId", forumInfoViewModel);
         }
@@ -91,7 +94,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ShowPostTableByTopicId(int topicId, int? page)
         {
-            var onPage = ConfigHelper.GetPostsOnPageCount();
+            var onPage = _configHelper.GetPostsOnPageCount();
             var postTableViewModels = _dataLoadService.GetPostTableViewModelsByTopicId(topicId, onPage, page);
 
             if (page == null || page < 1)
@@ -159,6 +162,12 @@ namespace DEM_MVC.Controllers
         public ActionResult Chat()//todo Should be deleted in future
         {
             return PartialView("Chat/Chat");
+        }
+
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            Exception e = filterContext.Exception;
+            DemLogger.Current.Error(e, "ForumController. OnException");
         }
     }
 }

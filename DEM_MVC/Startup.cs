@@ -12,6 +12,8 @@ namespace DEM_MVC
             AutofacConfig.Initialize(app);
             DemLogger.Current.Info("Application Start");
             ConfigureAuth(app);
+
+            MapperConfig.Initial();
         }
     }
 }

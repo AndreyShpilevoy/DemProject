@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using DEM_MVC_BL.Interfaces.IServices;
-using DEM_MVC_BL.Models;
+using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.ForumModels;
-using Microsoft.Practices.ServiceLocation;
-using NLog;
 
 namespace DEM_MVC_BL.Services.ModelsHelpers
 {
-    public static class ConfigHelper
+    public class ConfigHelper : IConfigHelper
     {
-        public static List<ConfigModel> ConfigModels;
+        public List<ConfigModel> ConfigModels;
 
-        static ConfigHelper()
+        public ConfigHelper(IDataLoadService dataLoadService,
+            IAppCache appCache)
         {
-            var dataLoadService = ServiceLocator.Current.GetInstance<IDataLoadService>();
-            ConfigModels = dataLoadService.GetAllConfigModels();
+            ConfigModels = appCache.Get<ConfigModel>(appCache.ConfigModels);
+            if (ConfigModels == null)
+            {
+                ConfigModels = dataLoadService.GetAllConfigModels();
+                appCache.Add(ConfigModels, appCache.ConfigModels);
+            }
         }
 
-        public static int GetPostsOnPageCount()
+        public int GetPostsOnPageCount()
         {
             var postsOnPage = ConfigModels.FirstOrDefault(x => x.ConfigName == "postsOnPage");
             if (postsOnPage == null) return 20;
@@ -29,7 +30,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             return result == 0 ? 1 : result;
         }
 
-        public static int GetTopicsOnPageCount()
+        public int GetTopicsOnPageCount()
         {
             var topicsOnPage = ConfigModels.FirstOrDefault(x => x.ConfigName == "topicsOnPage");
             if (topicsOnPage == null) return 50;

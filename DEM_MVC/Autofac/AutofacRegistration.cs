@@ -7,9 +7,7 @@ namespace DEM_MVC.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            //builder.RegisterAssemblyTypes(this.GetType().Assembly).AsImplementedInterfaces().SingleInstance();
             builder.RegisterAssemblyTypes(typeof(MvcApplication).Assembly);
-            //builder.RegisterType<DataLoadService>().As<IDataLoadService>().InstancePerLifetimeScope();
         }
     }
 }

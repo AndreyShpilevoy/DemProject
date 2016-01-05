@@ -13,13 +13,7 @@ namespace DEM_MVC_BL.Models.ForumModels
 
         public DateTime PostTime { get; set; }
         public string PostSubject { get; set; }
-
-        public string PostText
-        {
-            get { return _postText; }
-            set { _postText = BbCodeHelper.BbCodeReplacerToHtml(value); }
-        }
-
+        public string PostText { get; set; }
         public int PostRate { get; set; }
 
         public int PostEditUserId { get; set; }

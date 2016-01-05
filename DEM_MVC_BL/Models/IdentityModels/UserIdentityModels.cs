@@ -125,11 +125,7 @@ namespace DEM_MVC_BL.Models.IdentityModels
 
         public string UserAvatar { get; set; }
 
-        public string UserSignature
-        {
-            get { return _userSignature; }
-            set { _userSignature = BbCodeHelper.BbCodeReplacerToHtml(value); }
-        }
+        public string UserSignature { get; set; }
 
         public string UserFrom { get; set; }
 

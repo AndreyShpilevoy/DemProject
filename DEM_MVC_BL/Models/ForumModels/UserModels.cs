@@ -11,13 +11,7 @@ namespace DEM_MVC_BL.Models.ForumModels
         public string UserName { get; set; }
         public DateTime UserBirthday { get; set; }
         public string UserAvatar { get; set; }
-
-        public string UserSignature
-        {
-            get { return _userSignature; }
-            set { _userSignature = BbCodeHelper.BbCodeReplacerToHtml(value); }
-        }
-
+        public string UserSignature { get; set; }
         public string UserFrom { get; set; }
         public string UserSteam { get; set; }
         public string UserSkype { get; set; }

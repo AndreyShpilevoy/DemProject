@@ -7,8 +7,8 @@ namespace DEM_MVC
     {
         public static void Initial()
         {
-            AutoMapperMapperRegistrationService.Initial();
             DapperMapperRegistrationService.Initial();
+            AutoMapperMapperRegistrationService.Initial();
         }
 
     }

@@ -19,15 +19,7 @@ namespace DEM_MVC_BL.Models.ForumModels
         public string LastPostGroupColor { get; set; }
         public int LastPostId { get; set; }
         public bool TopicClosed { get; set; }
-
-        public int PagesCount
-        {
-            get
-            {
-                var result = (int)Math.Ceiling((double)PostsCount / ConfigHelper.GetPostsOnPageCount());
-                return result;
-            }
-        }
+        public int PagesCount { get; set; }
     }
 
     public class TopicInfoViewModel
@@ -43,14 +35,7 @@ namespace DEM_MVC_BL.Models.ForumModels
         public bool PollsOnly { get; set; }
 
         public int PostsCount { get; set; }
-        public int PagesCount
-        {
-            get
-            {
-                var result = (int) Math.Ceiling((double) PostsCount/ConfigHelper.GetPostsOnPageCount());
-                return result;
-            }
-        }
+        public int PagesCount { get; set; }
         public int PageNumber { get; set; }
     }
 }

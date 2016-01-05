@@ -34,14 +34,7 @@ namespace DEM_MVC_BL.Models.ForumModels
         public int ForumId { get; set; }
         public int TopicsCount { get; set; }
         public int SubForumsCount { get; set; }
-        public int PagesCount
-        {
-            get
-            {
-                var result = (int)Math.Ceiling((double)TopicsCount / ConfigHelper.GetTopicsOnPageCount());
-                return result;
-            }
-        }
+        public int PagesCount { get; set; }
         public int PageNumber { get; set; }
     }
 }

@@ -3,35 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web;
 using DEM_MVC_BL.Interfaces.IServices;
+using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_Infrastructure.Models;
-using Microsoft.Practices.ServiceLocation;
-using NLog;
 
 namespace DEM_MVC_BL.Services.ModelsHelpers
 {
-    public static class BbCodeHelper
+    public class BbCodeHelper : IBbCodeHelper
     {
-        public static Dictionary<Regex, string> BbCodes;
-        public static List<BbCodeModel> BbCodeList;
+        public Dictionary<Regex, string> BbCodes;
+        public List<BbCodeModel> BbCodeModels { get; set; }
 
-        static BbCodeHelper()
+        public BbCodeHelper(IDataLoadService dataLoadService,
+            IAppCache appCache)
         {
-            var dataLoadService = ServiceLocator.Current.GetInstance<IDataLoadService>();
-            BbCodes = new Dictionary<Regex, string>();
-            FillTheDictionaryBbcodes(dataLoadService);
+            BbCodeModels = appCache.Get<BbCodeModel>(appCache.BbCodeModels);
+            if (BbCodeModels == null)
+            {
+                FillTheDictionaryBbcodes(dataLoadService);
+                appCache.Add(BbCodeModels, appCache.BbCodeModels);
+            }
         }
 
-
-        private static void FillTheDictionaryBbcodes(IDataLoadService dataLoadService)
+        public void FillTheDictionaryBbcodes(IDataLoadService dataLoadService)
         {
             try
             {
-                BbCodeList = dataLoadService.GetAllBbCodeModels();
+                BbCodeModels = dataLoadService.GetAllBbCodeModels();
+                BbCodes = new Dictionary<Regex, string>();
 
-                foreach (var bbcode in BbCodeList)
+                foreach (var bbcode in BbCodeModels)
                 {
                     RegexOptions regExOptions = RegexOptions.None;
                     var optionArray = bbcode.BbCodeRegexpOptions.Split('/');
@@ -80,7 +82,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
         }
 
-        public static string BbCodeReplacerToHtml(string text)
+        public string BbCodeReplacerToHtml(string text)
         {
             try
             {
@@ -105,11 +107,12 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                 return null;
             }
         }
-        private static string ProcessNoParceBbCodes(string text)
+
+        private string ProcessNoParceBbCodes(string text)
         {
             try
             {
-                var noParceBbCodes = BbCodeList.Where(x=>x.NoParse).ToList();
+                var noParceBbCodes = BbCodeModels.Where(x=>x.NoParse).ToList();
                 if (String.IsNullOrWhiteSpace(text)) return text;
 
                 foreach (var code in noParceBbCodes)

@@ -11,14 +11,12 @@ namespace DEM_MVC_DAL.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(this.GetType().Assembly)
-                .Where(x => x != typeof(ConnectionFactory))
-                .AsImplementedInterfaces().SingleInstance();
+                .Where(x => x != typeof (ConnectionFactory))
+                .AsImplementedInterfaces();
 
             builder.RegisterType<ConnectionFactory>()
                 .As<IConnectionFactory>()
                 .WithParameter(new TypedParameter(typeof(string), ConfigurationManager.ConnectionStrings["DemConnectionString"].ConnectionString));
-
-            //builder.RegisterType<LoggerFactory>().As<ILoggerFactory>().InstancePerLifetimeScope();
         }
     }
 }

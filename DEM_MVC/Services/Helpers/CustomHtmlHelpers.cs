@@ -4,8 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
+using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Services.ModelsHelpers;
+using Microsoft.Practices.ServiceLocation;
 
 namespace DEM_MVC.Services.Helpers
 {
@@ -382,7 +384,8 @@ namespace DEM_MVC.Services.Helpers
 
             #region buttons
 
-            var bbCodes = BbCodeHelper.BbCodeList;
+            var bbCodeHelper = ServiceLocator.Current.GetInstance<IBbCodeHelper>();
+            var bbCodes = bbCodeHelper.BbCodeModels;
             bbCodes = bbCodes.OrderBy(x => x.BbCodeOrder).ToList();
 
             foreach (var bbCode in bbCodes.Where(x => x.BbCodeOnPosting))

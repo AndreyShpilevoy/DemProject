@@ -47,5 +47,11 @@ namespace DEM_MVC.Controllers
             return !permission ? new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } }
                                : new JsonResult { Data = new { success = true } };
         }
+
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            Exception e = filterContext.Exception;
+            DemLogger.Current.Error(e, "PermissionsController. OnException");
+        }
     }
 }

@@ -354,5 +354,11 @@ namespace DEM_MVC.Controllers
         }
 
         #endregion
+
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            Exception e = filterContext.Exception;
+            DemLogger.Current.Error(e, "ManageController. OnException");
+        }
     }
 }

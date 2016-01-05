@@ -80,5 +80,11 @@ namespace DEM_MVC.Controllers
             HttpRuntime.UnloadAppDomain();
             return null;
         }
+
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            Exception e = filterContext.Exception;
+            DemLogger.Current.Error(e, "AdministrationController. OnException");
+        }
     }
 }

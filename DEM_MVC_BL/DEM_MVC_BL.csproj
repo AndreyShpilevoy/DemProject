@@ -57,6 +57,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -67,8 +68,11 @@
   <ItemGroup>
     <Compile Include="Autofac\AutofacBlRegistration.cs" />
     <Compile Include="Interfaces\IServices\IAdminService.cs" />
+    <Compile Include="Interfaces\IServices\IAppCache.cs" />
     <Compile Include="Interfaces\IServices\IDataWriteService.cs" />
     <Compile Include="Interfaces\IServices\IGroupIdentityService.cs" />
+    <Compile Include="Interfaces\IServices\IModelsHelpers\IBbCodeHelper.cs" />
+    <Compile Include="Interfaces\IServices\IModelsHelpers\IConfigHelper.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IPostModelHelper.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IPollModelHelper.cs" />
     <Compile Include="Interfaces\IServices\IPermissionsService.cs" />
@@ -88,6 +92,7 @@
     <Compile Include="Models\PermissionModels\IdentityPermissionModels.cs" />
     <Compile Include="Models\PermissionModels\PermissionModels.cs" />
     <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\AppCache.cs" />
     <Compile Include="Services\DataWriteService.cs" />
     <Compile Include="Services\ModelsHelpers\ConfigHelper.cs" />
     <Compile Include="Services\ModelsHelpers\BbCodeHelper.cs" />
@@ -115,6 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
