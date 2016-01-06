@@ -1,0 +1,62 @@
+﻿@using System.Globalization
+@using DEM_MVC.Services.Helpers
+@model List<DEM_MVC_BL.Models.ForumModels.PollViewModel>
+
+@foreach (var poll in Model)
+{
+    <div class="pollContainer">
+        <div class="pollTitle">
+            <span>
+                Голосование "@Html.Raw(poll.PollTitle)"
+            </span>
+        </div>
+        <div class="pollMaxOptionsDescription">
+            <span>
+                Можно выбрать только @poll.PollMaxOptions @Html.Raw(ViewHelper.SelectRightEnding(poll.PollMaxOptions, "вариант", "варианта", "вариантов")) ответа.
+            </span>
+        </div>
+        <div class="pollOptionsConteiner">
+            @for (var i = 0; i < poll.PollOptionList.Count; i++)
+            {
+                var pollOptionOddEvenInt = "rowColor2";
+                if (ViewHelper.IsOdd(i))
+                {
+                    pollOptionOddEvenInt = "rowColor1";
+                }
+                <div class="pollOptionRow @pollOptionOddEvenInt">
+                    <div class="pollOptionColumn pollOptionText">
+                        @Html.Raw(poll.PollOptionList[i].PollOptionText)
+                    </div>
+                    <div class="pollOptionColumn pollOptionInput divCenter">
+                        @if (poll.PollMaxOptions == 1)
+                        {
+                            @:<input type="radio" checked="checked" value="@poll.PollOptionList[i].PollOptionId" name="vote_id[]">
+                        }
+                        else
+                        {
+                            @:<input id="vote_@poll.PollOptionList[i].PollOptionId" type="checkbox" value="@poll.PollOptionList[i].PollOptionId" name="vote_id[]">
+                        }
+                    </div>
+                    <div class="pollOptionColumn">
+                        <div id="progressbar" class="ui-progressbar ui-widget-content ui-poll-common-color" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="37">
+                            <div class="ui-progressbar-value ui-widget-header ui-poll-result-color" style="width: @Math.Round(poll.PollOptionList[i].PollOptionTotalPercent, 2, MidpointRounding.AwayFromZero).ToString(CultureInfo.InvariantCulture)%;">
+                                <span class="ui-pollOptional-total">
+                                    @poll.PollOptionList[i].PollOptionTotal
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pollOptionColumn pollOptionTotalPercent">
+                        <span>
+                            @Math.Round(poll.PollOptionList[i].PollOptionTotalPercent, 2, MidpointRounding.AwayFromZero).ToString(CultureInfo.InvariantCulture)%
+                        </span>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="divCenter">
+            <input class="ui-button ui-widget ui-state-default ui-corner-all" type="submit" value="Переголосовать" name="update">
+            <input class="ui-button ui-widget ui-state-default ui-corner-all" type="submit" value="Снять голос" name="unvote">
+        </div>
+    </div>
+}
