@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{76D78273-6BF5-4915-8C70-C087A148609A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DEM_MVC_BL</RootNamespace>
+    <AssemblyName>DEM_MVC_BL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.2.1\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Autofac\AutofacBlRegistration.cs" />
+    <Compile Include="Interfaces\IServices\IAdminService.cs" />
+    <Compile Include="Interfaces\IServices\IAppCache.cs" />
+    <Compile Include="Interfaces\IServices\IDataWriteService.cs" />
+    <Compile Include="Interfaces\IServices\IGroupIdentityService.cs" />
+    <Compile Include="Interfaces\IServices\IModelsHelpers\IBbCodeHelper.cs" />
+    <Compile Include="Interfaces\IServices\IModelsHelpers\IConfigHelper.cs" />
+    <Compile Include="Interfaces\IServices\IModelsHelpers\IPostModelHelper.cs" />
+    <Compile Include="Interfaces\IServices\IModelsHelpers\IPollModelHelper.cs" />
+    <Compile Include="Interfaces\IServices\IPermissionsService.cs" />
+    <Compile Include="Interfaces\IServices\IUserIdentityService.cs" />
+    <Compile Include="Models\ForumModels\BbCodeModels.cs" />
+    <Compile Include="Models\ForumModels\ConfigModels.cs" />
+    <Compile Include="Models\ForumModels\Enums.cs" />
+    <Compile Include="Models\ForumModels\MedalModels.cs" />
+    <Compile Include="Models\ForumModels\PollModels.cs" />
+    <Compile Include="Models\ForumModels\PostModels.cs" />
+    <Compile Include="Interfaces\IServices\IDataLoadService.cs" />
+    <Compile Include="Interfaces\IServices\IModelsHelpers\IForumEntityHelper.cs" />
+    <Compile Include="Models\IdentityModels\GroupIdentityModels.cs" />
+    <Compile Include="Models\IdentityModels\UserIdentityModels.cs" />
+    <Compile Include="Models\ForumModels\UserModels.cs" />
+    <Compile Include="Models\ForumModels\WarningModels.cs" />
+    <Compile Include="Models\PermissionModels\IdentityPermissionModels.cs" />
+    <Compile Include="Models\PermissionModels\PermissionModels.cs" />
+    <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\AppCache.cs" />
+    <Compile Include="Services\DataWriteService.cs" />
+    <Compile Include="Services\ModelsHelpers\ConfigHelper.cs" />
+    <Compile Include="Services\ModelsHelpers\BbCodeHelper.cs" />
+    <Compile Include="Services\ModelsHelpers\PermissionHelper.cs" />
+    <Compile Include="Services\ModelsHelpers\PostModelHelper.cs" />
+    <Compile Include="Services\ModelsHelpers\PollModelHelper.cs" />
+    <Compile Include="Services\ModelsHelpers\ForumEntityHelper.cs" />
+    <Compile Include="Models\ForumModels\ForumModels.cs" />
+    <Compile Include="Models\ForumModels\TopicModels.cs" />
+    <Compile Include="Services\DataLoadService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GroupIdentityService.cs" />
+    <Compile Include="Services\PermissionsService.cs" />
+    <Compile Include="Services\UserIdentityService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DEM_MVC_DAL\DEM_MVC_DAL.csproj">
+      <Project>{cbe9681a-a383-4434-a98e-37fe8bf35047}</Project>
+      <Name>DEM_MVC_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DEM_MVC_Infrastructure\DEM_MVC_Infrastructure.csproj">
+      <Project>{cf38e358-5aa4-44d4-b0c0-a8aa098efbec}</Project>
+      <Name>DEM_MVC_Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

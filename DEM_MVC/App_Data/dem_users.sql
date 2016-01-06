@@ -1,0 +1,48 @@
+﻿CREATE TABLE [dbo].[dem_users] (
+    user_id					INT IDENTITY (1, 1)	NOT NULL,
+	user_type				INT				NOT NULL,
+	user_ip					NVARCHAR(100)		NULL,
+	user_browser			NVARCHAR(225)		NULL,
+	user_regdate			DATETIME2(3)		NULL,
+    user_email				NVARCHAR (256)		NULL,
+    user_email_confirmed	BIT					NOT NULL,
+    password_hash			NVARCHAR (MAX)		NULL,
+    security_stamp			NVARCHAR (MAX)		NULL,
+    phone_number			NVARCHAR (MAX)		NULL,
+    phone_number_confirmed	BIT					NOT NULL,
+    two_factor_enabled		BIT					NOT NULL,
+    lockout_end_date_utc    DATETIME2(3)		NULL,
+    lockout_enable	        BIT					NOT NULL,
+    access_failed_count     INT					NOT NULL,
+    username				NVARCHAR(255)		NOT NULL,   
+	user_birthday			DATETIME2(3)		NULL,   
+	user_gender				INT					NULL,   
+	user_lastvisit			DATETIME2(3)		NULL,   
+	user_lastmark			DATETIME2(3)		NULL,   
+	user_lastpage			NVARCHAR(255)		NULL,   
+	user_inactive_reason	INT					NULL,   
+	user_inactive_time		DATETIME2(3)		NULL,   
+	user_lang				NVARCHAR(30)		NULL,   
+	user_timezone			DECIMAL(5,2)		NULL,   
+	user_dateformat			NVARCHAR(30)		NULL,   
+	user_rank				INT					NULL,   
+	user_notify				BIT					NULL,   
+	user_notify_pm			BIT					NULL,   
+	user_avatar				NVARCHAR(MAX)		NULL,   
+	user_signature			NVARCHAR(MAX)		NULL,   
+	user_from				NVARCHAR(255)		NULL,   
+	user_steam				NVARCHAR(255)		NULL,   
+	user_skype				NVARCHAR(255)		NULL,   
+	user_icq				NVARCHAR(255)		NULL,   
+	user_vk					NVARCHAR(255)		NULL,   
+	user_fb					NVARCHAR(255)		NULL,   
+	user_website			NVARCHAR(MAX)		NULL,   
+	user_profession			NVARCHAR(255)		NULL,   
+	user_interests			NVARCHAR(MAX)		NULL,
+    CONSTRAINT [PK_dbo.dem_users] PRIMARY KEY CLUSTERED (user_id ASC)
+);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [dem_users_username_Index]
+    ON [dbo].[dem_users]([username] ASC);
