@@ -68,19 +68,6 @@ namespace DEM_MVC.Controllers
             return new JsonResult { Data = new { success = false, responseText = "User wasn't unbanned. Please, contact with administrator." } };
         }
 
-        [HttpGet]
-        public ActionResult RestartApp()//todo create autorize for this method. Should be deleted in future
-        {
-            var currentUserId = User.Identity.GetUserId<int>();
-            if (currentUserId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't reload application - You not authorized. Please, contact with administrator." } };
-
-            if (!_permissionsService.UserHasPermissionByForumId(currentUserId, 8, CommonConstants.ShowAdminControls))
-                return new JsonResult { Data = new { success = false, responseText = "You can't reload application - you have not permisson. Please, contact with administrator." } };
-
-            HttpRuntime.UnloadAppDomain();
-            return null;
-        }
-
         protected override void OnException(ExceptionContext filterContext)
         {
             Exception e = filterContext.Exception;
