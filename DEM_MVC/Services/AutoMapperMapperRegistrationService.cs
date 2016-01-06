@@ -95,7 +95,7 @@ namespace DEM_MVC.Services
         protected override int ResolveCore(ForumEntity source)
         {
             var configHelper = ServiceLocator.Current.GetInstance<IConfigHelper>();
-            return (int)Math.Ceiling((double)source.TopicsCount / configHelper.GetPostsOnPageCount());
+            return (int)Math.Ceiling((double)source.TopicsCount / configHelper.GetTopicsOnPageCount());
         }
     }
 
