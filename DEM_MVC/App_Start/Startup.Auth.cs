@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Configuration;
 using System.Net.Http;
+using System.Threading.Tasks;
 using DEM_MVC.Models;
 using DEM_MVC.Services.Handlers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security.Twitter;
 using Owin;
 using Owin.Security.Providers.Steam;
 using Owin.Security.Providers.Wargaming;
@@ -60,8 +63,23 @@ namespace DEM_MVC
             if (Convert.ToBoolean(ConfigurationManager.AppSettings["TwitterEnable"]))
             {
                 app.UseTwitterAuthentication(
-                   consumerKey: ConfigurationManager.AppSettings["TwitterConsumerKey"],
-                   consumerSecret: ConfigurationManager.AppSettings["TwitterConsumerSecret"]);
+                    new TwitterAuthenticationOptions
+                    {
+                        ConsumerKey = ConfigurationManager.AppSettings["TwitterConsumerKey"],
+                        ConsumerSecret = ConfigurationManager.AppSettings["TwitterConsumerSecret"],
+                        BackchannelCertificateValidator = new CertificateSubjectKeyIdentifierValidator(
+                       new[]
+                       {
+                          "A5EF0B11CEC04103A34A659048B21CE0572D7D47", // VeriSign Class 3 Secure Server CA - G2
+                           "0D445C165344C1827E1D20AB25F40163D8BE79A5", // VeriSign Class 3 Secure Server CA - G3
+                           "7FD365A7C2DDECBBF03009F34339FA02AF333133", // VeriSign Class 3 Public Primary Certification Authority - G5
+                           "39A55D933676616E73A761DFA16A7E59CDE66FAD", // Symantec Class 3 Secure Server CA - G4
+                           "4EB6D578499B1CCF5F581EAD56BE3D9B6744A5E5", // VeriSign Class 3 Primary CA - G5
+                           "5168FF90AF0207753CCCD9656462A212B859723B", // DigiCert SHA2 High Assurance Server C‎A 
+                           "B13EC36903F8BF4701D498261A0802EF63642BC3", // DigiCert High Assurance EV Root CA
+                           "B77DDB6867D3B325E01C90793413E15BF0E44DF2" //https://github.com/RockstarLabs/oauthforaspnet/issues/12
+                       })
+                    });
             }
 
             if (Convert.ToBoolean(ConfigurationManager.AppSettings["FacebookEnable"]))
