@@ -1,9 +1,9 @@
 ﻿using System;
 using DEM_MVC_Infrastructure.Models;
 
-namespace DEM_MVC.Services.Helpers
+namespace DEM_MVC.Services
 {
-    public static class ViewHelper
+    public static class HelpfulFunctionsService
     {
 
         public static string SelectRightEnding(int value, string wordForOne, string wordFromTwoToFive, string wordForElse)
@@ -22,7 +22,7 @@ namespace DEM_MVC.Services.Helpers
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "ViewHelper. Error in function SelectRightEnding");
+                DemLogger.Current.Error(exception, "HelpfulFunctionsService. Error in function SelectRightEnding");
                 return null;
             }
         }
@@ -35,7 +35,7 @@ namespace DEM_MVC.Services.Helpers
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "ViewHelper. Error in function IsOdd");
+                DemLogger.Current.Error(exception, "HelpfulFunctionsService. Error in function IsOdd");
                 return false;
             }
         }

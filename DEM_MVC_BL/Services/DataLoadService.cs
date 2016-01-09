@@ -26,13 +26,12 @@ namespace DEM_MVC_BL.Services
         private readonly IPostRepository _postEntityRepository;
         private readonly IBbCodeRepository _bbCodeEntityRepository;
         private readonly IConfigRepository _configEntityRepository;
-        //private readonly IPostModelHelper _postModelHelper;
 
         public DataLoadService(IForumModelHelper forumModelHelper,
             IPollModelHelper pollModelHelper, IForumRepository forumEntityRepository,
             ITopicRepository topicEntityRepository, IPollRepository pollEntityRepository,
             IPostRepository postEntityRepository, IBbCodeRepository bbCodeEntityRepository,
-            IConfigRepository configEntityRepository, IConnectionFactory connectionFactory) //, IPostModelHelper postModelHelper
+            IConfigRepository configEntityRepository, IConnectionFactory connectionFactory)
         {
             _forumModelHelper = forumModelHelper;
             _pollModelHelper = pollModelHelper;
@@ -43,7 +42,6 @@ namespace DEM_MVC_BL.Services
             _bbCodeEntityRepository = bbCodeEntityRepository;
             _configEntityRepository = configEntityRepository;
             _connectionFactory = connectionFactory;
-            //_postModelHelper = postModelHelper;
         }
 
         public List<ForumTableViewModel> GetAllForumTableViewModels()

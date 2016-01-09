@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using DEM_MVC.Models;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
-using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.ForumModels;
-using DEM_MVC_BL.Services.ModelsHelpers;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
 
@@ -135,7 +131,7 @@ namespace DEM_MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreatePost(NewPostViewModel newPostViewModel)
+        public JsonResult CreatePost(NewPostViewModel newPostViewModel)
         {
             var userId = User.Identity.GetUserId<int>();
             if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };

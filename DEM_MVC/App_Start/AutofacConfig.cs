@@ -28,8 +28,7 @@ namespace DEM_MVC
             builder.RegisterModule(new AutofacBlRegistration());
             builder.RegisterModule(new AutofacDalRegistration());
             builder.RegisterModule(new AutofacInfrastructureRegistration());
-
-            //builder.RegisterType<ApplicationDbContext>().AsSelf().InstancePerRequest();
+            
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
             builder.RegisterType<UserIdentityService<AppMember>>().As<IUserStore<AppMember, int>>().InstancePerRequest();
             builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
@@ -52,18 +51,5 @@ namespace DEM_MVC
             app.UseAutofacMiddleware(container);
             app.UseAutofacMvc();
         }
-
-
-        //public class ApplicationDbContext
-        //{
-        //    public ApplicationDbContext(string connectionName)
-        //    {
-        //    }
-
-        //    public static ApplicationDbContext Create()
-        //    {
-        //        return new ApplicationDbContext("");
-        //    }
-        //}
     }
 }

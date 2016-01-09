@@ -1,5 +1,5 @@
 ﻿@using System.Globalization
-@using DEM_MVC.Services.Helpers
+@using DEM_MVC.Services
 @model List<DEM_MVC_BL.Models.ForumModels.PollViewModel>
 
 @foreach (var poll in Model)
@@ -12,14 +12,14 @@
         </div>
         <div class="pollMaxOptionsDescription">
             <span>
-                Можно выбрать только @poll.PollMaxOptions @Html.Raw(ViewHelper.SelectRightEnding(poll.PollMaxOptions, "вариант", "варианта", "вариантов")) ответа.
+                Можно выбрать только @poll.PollMaxOptions @Html.Raw(HelpfulFunctionsService.SelectRightEnding(poll.PollMaxOptions, "вариант", "варианта", "вариантов")) ответа.
             </span>
         </div>
         <div class="pollOptionsConteiner">
             @for (var i = 0; i < poll.PollOptionList.Count; i++)
             {
                 var pollOptionOddEvenInt = "rowColor2";
-                if (ViewHelper.IsOdd(i))
+                if (HelpfulFunctionsService.IsOdd(i))
                 {
                     pollOptionOddEvenInt = "rowColor1";
                 }

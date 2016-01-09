@@ -73,7 +73,6 @@
     <Compile Include="Interfaces\IServices\IGroupIdentityService.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IBbCodeHelper.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IConfigHelper.cs" />
-    <Compile Include="Interfaces\IServices\IModelsHelpers\IPostModelHelper.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IPollModelHelper.cs" />
     <Compile Include="Interfaces\IServices\IPermissionsService.cs" />
     <Compile Include="Interfaces\IServices\IUserIdentityService.cs" />
@@ -97,7 +96,6 @@
     <Compile Include="Services\ModelsHelpers\ConfigHelper.cs" />
     <Compile Include="Services\ModelsHelpers\BbCodeHelper.cs" />
     <Compile Include="Services\ModelsHelpers\PermissionHelper.cs" />
-    <Compile Include="Services\ModelsHelpers\PostModelHelper.cs" />
     <Compile Include="Services\ModelsHelpers\PollModelHelper.cs" />
     <Compile Include="Services\ModelsHelpers\ForumEntityHelper.cs" />
     <Compile Include="Models\ForumModels\ForumModels.cs" />
@@ -120,9 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

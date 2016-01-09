@@ -6,7 +6,6 @@ namespace DEM_MVC_BL.Models.ForumModels
 {
     public class UserTableViewModelForPosts
     {
-        private string _userSignature;
         public int UserId { get; set; }
         public string UserName { get; set; }
         public DateTime UserBirthday { get; set; }
