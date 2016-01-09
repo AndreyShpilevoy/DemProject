@@ -108,6 +108,10 @@
       <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
       <Private>True</Private>
@@ -121,7 +125,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
@@ -241,12 +245,12 @@
     <Content Include="Content\Themes\DEM\Images\ui-poll-5c5c5c_1x100.png" />
     <Content Include="Content\Themes\DEM\Images\ui-poll-6c6c6c_1x100.png" />
     <Content Include="Content\Themes\DEM\Images\ui-poll-result-f1831f_1x100.png" />
-    <Content Include="Errors\2000.html" />
-    <Content Include="Errors\400.shtml" />
-    <Content Include="Errors\401.shtml" />
-    <Content Include="Errors\403.shtml" />
-    <Content Include="Errors\404.shtml" />
-    <Content Include="Errors\500.shtml" />
+    <Content Include="ErrorPages\2000.html" />
+    <Content Include="ErrorPages\400.shtml" />
+    <Content Include="ErrorPages\401.shtml" />
+    <Content Include="ErrorPages\403.shtml" />
+    <Content Include="ErrorPages\404.shtml" />
+    <Content Include="ErrorPages\500.shtml" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -254,7 +258,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
-    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\Custom\adminControls.js" />
     <Content Include="Scripts\Custom\bbEditor.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -267,10 +270,12 @@
     <Content Include="Scripts\Custom\hoverBtnEffect.js" />
     <Content Include="Scripts\Custom\NewPost.js" />
     <Content Include="Scripts\Custom\WorkWithCoocies.js" />
-    <Content Include="Scripts\jquery-2.1.4.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.0.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -285,7 +290,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
-    <Compile Include="App_Start\MapperConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Autofac\AutofacRegistration.cs" />
@@ -303,10 +307,11 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AutoMapperMapperRegistrationService.cs" />
-    <Compile Include="Services\Helpers\CustomHtmlHelpers.cs" />
+    <Compile Include="Services\HtmlHelpers\PagingHtmlHelpers.cs" />
+    <Compile Include="Services\HtmlHelpers\CustomHtmlHelpers.cs" />
     <Compile Include="Services\Handlers\FacebookBackChannelHandler.cs" />
-    <Compile Include="Services\Helpers\CustomPasswordValidator.cs" />
-    <Compile Include="Services\Helpers\ViewHelper.cs" />
+    <Compile Include="Services\CustomErrorMessagesForPasswordValidatorService.cs" />
+    <Compile Include="Services\HelpfulFunctionsService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -327,7 +332,6 @@
     <Content Include="Views\Forum\ViewTopic\ViewTopic.cshtml" />
     <Content Include="Views\Forum\ViewTopic\_ShowPostTableByTopicId.cshtml" />
     <Content Include="Views\Forum\ViewTopic\_ShowPollTableByTopicId.cshtml" />
-    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Forum\Chat\Chat.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -391,7 +395,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60783</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -1,4 +1,4 @@
-﻿@using DEM_MVC.Services.Helpers
+﻿@using DEM_MVC.Services
 @model DEM_MVC_BL.Models.ForumModels.PostTableViewModelList
 
 @{
@@ -7,7 +7,7 @@
 @for (int i = 0; i < postTableViewModel.Count; i++)
 {
     var pollOptionOddEvenInt = "postColor2";
-    if (ViewHelper.IsOdd(i))
+    if (HelpfulFunctionsService.IsOdd(i))
     {
         pollOptionOddEvenInt = "postColor1";
     }

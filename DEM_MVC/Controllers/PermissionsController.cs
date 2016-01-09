@@ -22,7 +22,7 @@ namespace DEM_MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult CheckPermissions(int topicId, List<string> permissionsName)
+        public JsonResult CheckPermissions(int topicId, List<string> permissionsName)
         {
             var userId = User.Identity.GetUserId<int>();
             if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
@@ -34,7 +34,7 @@ namespace DEM_MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult CheckNewPostPermissions(int topicId)
+        public JsonResult CheckNewPostPermissions(int topicId)
         {
             var userId = User.Identity.GetUserId<int>();
             if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };

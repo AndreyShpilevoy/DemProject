@@ -1,4 +1,6 @@
-﻿using DEM_MVC_Infrastructure.Models;
+﻿using DEM_MVC.Services;
+using DEM_MVC_DAL.Services;
+using DEM_MVC_Infrastructure.Models;
 using Microsoft.Owin;
 using Owin;
 
@@ -12,8 +14,8 @@ namespace DEM_MVC
             AutofacConfig.Initialize(app);
             DemLogger.Current.Info("Application Start");
             ConfigureAuth(app);
-
-            MapperConfig.Initial();
+            DapperMapperRegistrationService.Initial();
+            AutoMapperMapperRegistrationService.Initial();
         }
     }
 }

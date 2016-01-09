@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using DEM_MVC.Models;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
 namespace DEM_MVC.Controllers

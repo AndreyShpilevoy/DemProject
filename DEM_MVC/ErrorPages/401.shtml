@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>- DeusExMachina - 404 -</title>
+    <title>- DeusExMachina - 401 -</title>
     <style>
 
         body {background:#1b1b1b;color:#ffffff;font-family:verdana;font-size:11pt;text-align:center;margin:100px;}
@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-    <span class="neg">ERROR 404</span>
+    <span class="neg">ERROR 401</span>
     <p>
         Botty: Приветствую Вас, органическая форма жизни.<br /><br />
         Botty: С вами говорит Автоматический Комплекс Управления программным обеспечением ресурса DeusExMachina.<br /><br />
@@ -35,7 +35,7 @@
 
         <a href="/">Уйти на главную</a> |
 
-        <a href="/Errors/2000.html">Разогреть северный мост материнской платы до 2000 градусов по Цельсию</a>
+        <a href="/ErrorPages/2000.html">Разогреть северный мост материнской платы до 2000 градусов по Цельсию</a>
     </div>
 </body>
 </html>

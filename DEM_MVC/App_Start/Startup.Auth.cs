@@ -30,13 +30,6 @@ namespace DEM_MVC
                 LoginPath = new PathString("/Account/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
-                    //// Enables the application to validate the security stamp when the AppMember logs in.
-                    //// This is a security feature which is used when you change a password or add an external login to your account.  
-                    //OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, AppMember, int>(
-                    //    validateInterval: TimeSpan.FromMinutes(30),
-                    //    regenerateIdentityCallback: (manager, appMember) => 
-                    //    appMember.GenerateUserIdentityAsync(manager),
-                    //    getUserIdCallback: (id) => (Int32.Parse(id.GetUserId())))
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, AppMember, int>(
                     validateInterval: TimeSpan.FromMinutes(30),
                     regenerateIdentityCallback: (manager, user) => user.GenerateUserIdentityAsync(manager),
@@ -55,10 +48,13 @@ namespace DEM_MVC
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            #region logging in with third party login providers
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["MicrosoftEnable"]))
+            {
+                app.UseMicrosoftAccountAuthentication(
+                    clientId: ConfigurationManager.AppSettings["MicrosoftClientId"],
+                    clientSecret: ConfigurationManager.AppSettings["MicrosoftClientSecret"]);
+            }
 
             if (Convert.ToBoolean(ConfigurationManager.AppSettings["TwitterEnable"]))
             {
@@ -120,6 +116,7 @@ namespace DEM_MVC
             {
                 app.UseWargamingAccountAuthentication(ConfigurationManager.AppSettings["WargamingApiID"], WargamingAuthenticationOptions.Region.Russia);
             }
+            #endregion
         }
 
         public static int GrabUserId(System.Security.Claims.ClaimsIdentity claim)

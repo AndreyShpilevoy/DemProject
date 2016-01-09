@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 
-namespace DEM_MVC.Services.Helpers
+namespace DEM_MVC.Services
 {
-    public class CustomPasswordValidator : PasswordValidator
+    //class for localization of password error messages on login page
+    public class CustomErrorMessagesForPasswordValidatorService : PasswordValidator
     {
         public override async Task<IdentityResult> ValidateAsync(string password)
         {

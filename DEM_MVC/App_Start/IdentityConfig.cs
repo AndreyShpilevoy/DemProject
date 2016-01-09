@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -11,8 +10,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataProtection;
 using System.Configuration;
 using System.Net.Mail;
-using DEM_MVC.Services.Helpers;
-using DEM_MVC_Infrastructure.Models;
+using DEM_MVC.Services;
 
 namespace DEM_MVC
 {
@@ -22,11 +20,13 @@ namespace DEM_MVC
         {
             await configSendGridasync(message);
         }
+
         private async Task configSendGridasync(IdentityMessage message)
         {
             var myMessage = new MailMessage();
             myMessage.To.Add(new MailAddress(message.Destination));  // replace with valid value 
-            myMessage.From = new MailAddress("support@dem.org.ua", "DeusExMachina");  // replace with valid value
+            myMessage.From = new MailAddress(ConfigurationManager.AppSettings["mailAccount"],
+                ConfigurationManager.AppSettings["mailAccountDisplayName"]);  // replace with valid value
             myMessage.Subject = message.Subject;
             myMessage.Body = message.Body;
             myMessage.IsBodyHtml = true;
@@ -69,7 +69,7 @@ namespace DEM_MVC
             };
 
             // Configure validation logic for passwords
-            PasswordValidator = new CustomPasswordValidator
+            PasswordValidator = new CustomErrorMessagesForPasswordValidatorService
             {
                 RequiredLength = 6,
                 RequireNonLetterOrDigit = false,

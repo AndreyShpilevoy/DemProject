@@ -6,7 +6,6 @@ namespace DEM_MVC_BL.Models.ForumModels
 {
     public class PostTableViewModel
     {
-        private string _postText;
         public int PostId { get; set; }
         public int UserId { get; set; }
         public int TopicId { get; set; }
