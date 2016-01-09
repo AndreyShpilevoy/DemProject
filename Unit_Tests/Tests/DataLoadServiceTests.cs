@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+﻿using Autofac.Extras.Moq;
 using DEM_MVC_BL.Services;
 using DEM_MVC_BL.Services.ModelsHelpers;
+using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
-using DEM_MVC_DAL.Interfaces.IUnitOfWork;
-using DEM_MVC_DAL.UnitOfWork;
 using Moq;
 using Unit_Tests.BaseTest;
 using Xunit;
@@ -14,32 +11,14 @@ namespace Unit_Tests.Tests
 {
     public class DataLoadServiceTests : UnitTestBase
     {
-        private Mock<UnitOfWorkFactory> _uowFactoryMocked;
-        private Mock<ForumModelHelper> _forumModelHelperMocked;
-        private Mock<PollModelHelper> _pollModelHelperMocked;
-        private Mock<IForumRepository> _forumEntityRepository;
-        private Mock<ITopicRepository> _topicEntityRepository;
-        private Mock<IPollRepository> _pollEntityRepository;
-        private Mock<IPostRepository> _postEntityRepository;
-        private Mock<IBbCodeRepository> _bbCodeEntityRepository;
-        private Mock<IConfigRepository> _configEntityRepository;
-        private ForumDataLoadWriteService _dataLoadService;
+        private DataLoadService _dataLoadService;
 
         public DataLoadServiceTests()
         {
-            _uowFactoryMocked = new Mock<UnitOfWorkFactory>("");
-            _forumModelHelperMocked = new Mock<ForumModelHelper>();
-            _pollModelHelperMocked = new Mock<PollModelHelper>();
-            _forumEntityRepository = new Mock<IForumRepository>();
-            _topicEntityRepository = new Mock<ITopicRepository>();
-            _pollEntityRepository = new Mock<IPollRepository>();
-            _postEntityRepository = new Mock<IPostRepository>();
-            _bbCodeEntityRepository = new Mock<IBbCodeRepository>();
-            _configEntityRepository = new Mock<IConfigRepository>();
-            _dataLoadService = new ForumDataLoadWriteService(_uowFactoryMocked.Object, _forumModelHelperMocked.Object,
-                _pollModelHelperMocked.Object, _forumEntityRepository.Object, _topicEntityRepository.Object,
-                _pollEntityRepository.Object, _postEntityRepository.Object, _bbCodeEntityRepository.Object,
-                _configEntityRepository.Object);
+            using (var mock = AutoMock.GetLoose())
+            {
+                _dataLoadService = mock.Create<DataLoadService>();
+            }
         }
 
         //[Fact]
