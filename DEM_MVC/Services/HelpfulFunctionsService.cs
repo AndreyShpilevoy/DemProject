@@ -6,7 +6,7 @@ namespace DEM_MVC.Services
     public static class HelpfulFunctionsService
     {
 
-        public static string SelectRightEnding(int value, string wordForOne, string wordFromTwoToFive, string wordForElse)
+        public static string SelectRightEnding(int value, string wordForOne, string wordFromTwoToFour, string wordForElse)
         {
             try
             {
@@ -17,7 +17,7 @@ namespace DEM_MVC.Services
 
                 value %= 10;
                 if (value == 1) return wordForOne;
-                if (value > 1 && value < 5) return wordFromTwoToFive;
+                if (value > 1 && value < 5) return wordFromTwoToFour;
                 return wordForElse;
             }
             catch (Exception exception)
@@ -31,7 +31,7 @@ namespace DEM_MVC.Services
         {
             try
             {
-                return value % 2 != 0;
+                return value % 2 == 1;
             }
             catch (Exception exception)
             {

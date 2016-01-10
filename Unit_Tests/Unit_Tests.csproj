@@ -156,6 +156,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Tests\DataLoadServiceTests.cs" />
+    <Compile Include="Tests\AdminServiceTests.cs" />
     <Compile Include="Tests\DataTableExtentionsMethodsTests.cs" />
     <Compile Include="BaseTest\UnitTestBase.cs" />
     <Compile Include="Tests\ModelsHelpersTests.cs" />

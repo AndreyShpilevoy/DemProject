@@ -6,30 +6,57 @@ namespace Unit_Tests.Tests
 {
     public class HelpfulFunctionsServiceTests : UnitTestBase
     {
-        [Fact]
-        public void IsSelectRightEnding()
+        [Theory]
+        [InlineData(1)]
+        public void SelectRightEndingFunctionShouldReturnFirstOptionAndShoudntBeNull(int value)
         {
-            var wordForOne = HelpfulFunctionsService.SelectRightEnding(1, "wordForOne", "wordFromTwoToFive", "wordForElse");
-            var wordFromTwoToFive = HelpfulFunctionsService.SelectRightEnding(3, "wordForOne", "wordFromTwoToFive", "wordForElse");
-            var wordForElse = HelpfulFunctionsService.SelectRightEnding(10, "wordForOne", "wordFromTwoToFive", "wordForElse");
+            var wordForOne = HelpfulFunctionsService.SelectRightEnding(value, "wordForOne", "wordFromTwoToFour", "wordForElse");
 
             Assert.NotNull(wordForOne);
-            Assert.NotNull(wordFromTwoToFive);
-            Assert.NotNull(wordForElse);
-
             Assert.Equal(wordForOne, "wordForOne");
-            Assert.Equal(wordFromTwoToFive, "wordFromTwoToFive");
+        }
+
+        [Theory]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        public void SelectRightEndingFunctionShouldReturnSecondOptionAndShoudntBeNull(int value)
+        {
+            var wordFromTwoToFour = HelpfulFunctionsService.SelectRightEnding(value, "wordForOne", "wordFromTwoToFour", "wordForElse");
+
+            Assert.NotNull(wordFromTwoToFour);
+            Assert.Equal(wordFromTwoToFour, "wordFromTwoToFour");
+        }
+
+        [Theory]
+        [InlineData(5)]
+        [InlineData(10)]
+        [InlineData(20)]
+        [InlineData(152456)]
+        public void SelectRightEndingFunctionShouldReturnThirdOptionAndShoudntBeNull(int value)
+        {
+            var wordForElse = HelpfulFunctionsService.SelectRightEnding(value, "wordForOne", "wordFromTwoToFour", "wordForElse");
+
+            Assert.NotNull(wordForElse);
             Assert.Equal(wordForElse, "wordForElse");
         }
 
-        [Fact]
-        public void IsIsOdd()
+        [Theory]
+        [InlineData(1)]
+        [InlineData(31)]
+        [InlineData(157487)]
+        public void IsOddFunctionShouldReturnTrue(int value)
         {
-            var itsOdd = HelpfulFunctionsService.IsOdd(1);
-            var itsNotOdd = HelpfulFunctionsService.IsOdd(2);
+            Assert.True(HelpfulFunctionsService.IsOdd(value));
+        }
 
-            Assert.Equal(itsOdd, true);
-            Assert.Equal(itsNotOdd, false);
+        [Theory]
+        [InlineData(2)]
+        [InlineData(88)]
+        [InlineData(5464312)]
+        public void IsOddFunctionShouldReturnFalse(int value)
+        {
+            Assert.False(HelpfulFunctionsService.IsOdd(value));
         }
     }
 }
