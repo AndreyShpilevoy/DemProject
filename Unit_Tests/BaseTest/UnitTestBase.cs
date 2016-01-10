@@ -18,41 +18,39 @@ namespace Unit_Tests.BaseTest
     {
         public UnitTestBase()
         {
-            {
-                #region Autofac
+            #region Autofac
 
-                var builder = new ContainerBuilder();
+            var builder = new ContainerBuilder();
 
-                // REGISTER DEPENDENCIES
-                builder.RegisterModule(new AutofacRegistration());
-                builder.RegisterModule(new AutofacBlRegistration());
-                builder.RegisterModule(new AutofacDalRegistration());
-                builder.RegisterModule(new AutofacInfrastructureRegistration());
+            // REGISTER DEPENDENCIES
+            builder.RegisterModule(new AutofacRegistration());
+            builder.RegisterModule(new AutofacBlRegistration());
+            builder.RegisterModule(new AutofacDalRegistration());
+            builder.RegisterModule(new AutofacInfrastructureRegistration());
 
-                builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
-                builder.RegisterType<UserIdentityService<AppMember>>().As<IUserStore<AppMember, int>>().InstancePerRequest();
-                builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
-                //builder.Register<IAuthenticationManager>(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
-                //builder.Register<IDataProtectionProvider>(c => app.GetDataProtectionProvider()).InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<UserIdentityService<AppMember>>().As<IUserStore<AppMember, int>>().InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            //builder.Register<IAuthenticationManager>(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            //builder.Register<IDataProtectionProvider>(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
-                // REGISTER CONTROLLERS SO DEPENDENCIES ARE CONSTRUCTOR INJECTED
-                builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            // REGISTER CONTROLLERS SO DEPENDENCIES ARE CONSTRUCTOR INJECTED
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
-                // BUILD THE CONTAINER
-                var container = builder.Build();
+            // BUILD THE CONTAINER
+            var container = builder.Build();
 
-                // REPLACE THE MVC DEPENDENCY RESOLVER WITH AUTOFAC
-                DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            // REPLACE THE MVC DEPENDENCY RESOLVER WITH AUTOFAC
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-                var csl = new AutofacServiceLocator(container);
-                ServiceLocator.SetLocatorProvider(() => csl);
+            var csl = new AutofacServiceLocator(container);
+            ServiceLocator.SetLocatorProvider(() => csl);
 
-                // REGISTER WITH OWIN
-                //app.UseAutofacMiddleware(container);
-                //app.UseAutofacMvc();
+            // REGISTER WITH OWIN
+            //app.UseAutofacMiddleware(container);
+            //app.UseAutofacMvc();
 
-                #endregion
-            }
-        } 
+            #endregion
+        }
     }
 }
