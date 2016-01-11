@@ -5,4 +5,10 @@
         UserPermission = 0,
         GroupPermission = 1
     };
+    public enum UserGender
+    {
+        None,
+        Male,
+        Female
+    }
 }

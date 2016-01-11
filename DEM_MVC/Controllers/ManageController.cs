@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using DEM_MVC.Models;
+using DEM_MVC.Models.ManageViewModels;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
