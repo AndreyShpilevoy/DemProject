@@ -69,7 +69,7 @@ namespace DEM_MVC
             };
 
             // Configure validation logic for passwords
-            PasswordValidator = new CustomErrorMessagesForPasswordValidatorService
+            PasswordValidator = new TranslateErrorMessagesForPasswordValidatorService
             {
                 RequiredLength = 6,
                 RequireNonLetterOrDigit = false,

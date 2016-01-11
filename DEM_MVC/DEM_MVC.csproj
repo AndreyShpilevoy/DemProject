@@ -301,16 +301,36 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ForumPostModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\AccountViewModels\ForgotPasswordViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\RegisterViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\LoginViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\ForgotViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\VerifyCodeViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\SendCodeViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\ExternalLoginListViewModel.cs" />
+    <Compile Include="Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\IndexViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\ManageLoginsViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\FactorViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\SetPasswordViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\AddPhoneNumberViewModel.cs" />
+    <Compile Include="Models\ManageViewModels\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Models\NewPostViewModel.cs" />
+    <Compile Include="Models\AppMember.cs" />
+    <Compile Include="Models\ManageViewModels\ConfigureTwoFactorViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AutoMapperMapperRegistrationService.cs" />
+    <Compile Include="Services\AutoMapper\AutoMapperRegistrationService.cs" />
+    <Compile Include="Services\AutoMapper\ValueResolvers\ForumEntityPagesCountResolver.cs" />
+    <Compile Include="Services\AutoMapper\ValueResolvers\ReadPostEntityPostTextResolver.cs" />
+    <Compile Include="Services\AutoMapper\ValueResolvers\TopicEntityPagesCountResolver.cs" />
+    <Compile Include="Services\AutoMapper\ValueResolvers\UserEntityUserSignatureResolver.cs" />
+    <Compile Include="Services\AutoMapper\ValueResolvers\UserIdentityEntityUserSignatureResolver.cs" />
     <Compile Include="Services\HtmlHelpers\PagingHtmlHelpers.cs" />
     <Compile Include="Services\HtmlHelpers\CustomHtmlHelpers.cs" />
     <Compile Include="Services\Handlers\FacebookBackChannelHandler.cs" />
-    <Compile Include="Services\CustomErrorMessagesForPasswordValidatorService.cs" />
+    <Compile Include="Services\TranslateErrorMessagesForPasswordValidatorService.cs" />
     <Compile Include="Services\HelpfulFunctionsService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

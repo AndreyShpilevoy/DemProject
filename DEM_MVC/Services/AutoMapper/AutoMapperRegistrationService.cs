@@ -1,17 +1,15 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using DEM_MVC.Models;
-using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
+using DEM_MVC.Services.AutoMapper.ValueResolvers;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Models.IdentityModels;
 using DEM_MVC_BL.Models.PermissionModels;
 using DEM_MVC_DAL.Entities;
 using Microsoft.AspNet.Identity;
-using Microsoft.Practices.ServiceLocation;
 
-namespace DEM_MVC.Services
+namespace DEM_MVC.Services.AutoMapper
 {
-    public static class AutoMapperMapperRegistrationService
+    public static class AutoMapperRegistrationService
     {
         public static void Initial()
         {
@@ -58,53 +56,6 @@ namespace DEM_MVC.Services
             Mapper.CreateMap<ForumEntity, ForumInfoViewModel>()
                   .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<ForumEntityPagesCountResolver>());
             Mapper.CreateMap<ForumInfoViewModel, ForumEntity>();
-        }
-    }
-
-    public class ReadPostEntityPostTextResolver : ValueResolver<ReadPostEntity, String>
-    {
-        protected override string ResolveCore(ReadPostEntity source)
-        {
-            var bbCodeHelper = ServiceLocator.Current.GetInstance<IBbCodeHelper>();
-
-            return bbCodeHelper.BbCodeReplacerToHtml(source.PostText);
-        }
-    }
-
-    public class UserEntityUserSignatureResolver : ValueResolver<UserEntity, String>
-    {
-        protected override string ResolveCore(UserEntity source)
-        {
-            var bbCodeHelper = ServiceLocator.Current.GetInstance<IBbCodeHelper>();
-
-            return bbCodeHelper.BbCodeReplacerToHtml(source.UserSignature);
-        }
-    }
-
-    public class UserIdentityEntityUserSignatureResolver : ValueResolver<UserIdentityEntity, String>
-    {
-        protected override string ResolveCore(UserIdentityEntity source)
-        {
-            var bbCodeHelper = ServiceLocator.Current.GetInstance<IBbCodeHelper>();
-            return bbCodeHelper.BbCodeReplacerToHtml(source.UserSignature);
-        }
-    }
-
-    public class ForumEntityPagesCountResolver : ValueResolver<ForumEntity, int>
-    {
-        protected override int ResolveCore(ForumEntity source)
-        {
-            var configHelper = ServiceLocator.Current.GetInstance<IConfigHelper>();
-            return (int)Math.Ceiling((double)source.TopicsCount / configHelper.GetTopicsOnPageCount());
-        }
-    }
-
-    public class TopicEntityPagesCountResolver : ValueResolver<TopicEntity, int>
-    {
-        protected override int ResolveCore(TopicEntity source)
-        {
-            var configHelper = ServiceLocator.Current.GetInstance<IConfigHelper>();
-            return (int)Math.Ceiling((double)source.PostsCount / configHelper.GetPostsOnPageCount());
         }
     }
 }

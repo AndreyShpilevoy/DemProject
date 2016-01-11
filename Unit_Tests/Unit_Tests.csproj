@@ -156,11 +156,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Tests\DataLoadServiceTests.cs" />
-    <Compile Include="Tests\AdminServiceTests.cs" />
-    <Compile Include="Tests\DataTableExtentionsMethodsTests.cs" />
     <Compile Include="BaseTest\UnitTestBase.cs" />
+    <Compile Include="Tests\DEM_MVC\HelpfulFunctionsServiceTests\When_I_use_SelectRightEnding_function.cs" />
     <Compile Include="Tests\ModelsHelpersTests.cs" />
-    <Compile Include="Tests\HelpfulFunctionsServiceTests.cs" />
+    <Compile Include="Tests\DEM_MVC\HelpfulFunctionsServiceTests\When_I_use_IsOdd_function.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -185,7 +184,9 @@
       <Name>DEM_MVC_Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Tests\DEM_MVC_BL\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
