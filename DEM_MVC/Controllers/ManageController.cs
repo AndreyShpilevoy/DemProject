@@ -57,10 +57,10 @@ namespace DEM_MVC.Controllers
             var result = await UserManager.RemoveLoginAsync(Int32.Parse(User.Identity.GetUserId()), new UserLoginInfo(loginProvider, providerKey));
             if (result.Succeeded)
             {
-                var AppMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
-                if (AppMember != null)
+                var appMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
+                if (appMember != null)
                 {
-                    await SignInAsync(AppMember, isPersistent: false);
+                    await SignInAsync(appMember, isPersistent: false).ConfigureAwait(false);
                 }
                 message = ManageMessageId.RemoveLoginSuccess;
             }
@@ -97,7 +97,7 @@ namespace DEM_MVC.Controllers
                     Destination = model.Number,
                     Body = "Your security code is: " + code
                 };
-                await UserManager.SmsService.SendAsync(message);
+                await UserManager.SmsService.SendAsync(message).ConfigureAwait(false);
             }
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
@@ -108,10 +108,10 @@ namespace DEM_MVC.Controllers
         public async Task<ActionResult> EnableTwoFactorAuthentication()
         {
             await UserManager.SetTwoFactorEnabledAsync(Int32.Parse(User.Identity.GetUserId()), true);
-            var AppMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
-            if (AppMember != null)
+            var appMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
+            if (appMember != null)
             {
-                await SignInAsync(AppMember, isPersistent: false);
+                await SignInAsync(appMember, isPersistent: false).ConfigureAwait(false);
             }
             return RedirectToAction("Index", "Manage");
         }
@@ -122,10 +122,10 @@ namespace DEM_MVC.Controllers
         public async Task<ActionResult> DisableTwoFactorAuthentication()
         {
             await UserManager.SetTwoFactorEnabledAsync(Int32.Parse(User.Identity.GetUserId()), false);
-            var AppMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
-            if (AppMember != null)
+            var appMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
+            if (appMember != null)
             {
-                await SignInAsync(AppMember, isPersistent: false);
+                await SignInAsync(appMember, isPersistent: false).ConfigureAwait(false);
             }
             return RedirectToAction("Index", "Manage");
         }
@@ -134,7 +134,7 @@ namespace DEM_MVC.Controllers
         // GET: /Manage/VerifyPhoneNumber
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
-            var code = await UserManager.GenerateChangePhoneNumberTokenAsync(Int32.Parse(User.Identity.GetUserId()), phoneNumber);
+            await UserManager.GenerateChangePhoneNumberTokenAsync(Int32.Parse(User.Identity.GetUserId()), phoneNumber);
             // Send an SMS through the SMS provider to verify the phone number
             if (phoneNumber == null)
             {
@@ -157,10 +157,10 @@ namespace DEM_MVC.Controllers
             var result = await UserManager.ChangePhoneNumberAsync(Int32.Parse(User.Identity.GetUserId()), model.PhoneNumber, model.Code);
             if (result.Succeeded)
             {
-                var AppMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
-                if (AppMember != null)
+                var appMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
+                if (appMember != null)
                 {
-                    await SignInAsync(AppMember, isPersistent: false);
+                    await SignInAsync(appMember, isPersistent: false).ConfigureAwait(false);
                 }
                 return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
             }
@@ -178,10 +178,10 @@ namespace DEM_MVC.Controllers
             {
                 return RedirectToAction("Index", new { Message = ManageMessageId.Error });
             }
-            var AppMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
-            if (AppMember != null)
+            var appMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
+            if (appMember != null)
             {
-                await SignInAsync(AppMember, isPersistent: false);
+                await SignInAsync(appMember, isPersistent: false).ConfigureAwait(false);
             }
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
@@ -206,10 +206,10 @@ namespace DEM_MVC.Controllers
             var result = await UserManager.ChangePasswordAsync(Int32.Parse(User.Identity.GetUserId()), model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {
-                var AppMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
-                if (AppMember != null)
+                var appMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
+                if (appMember != null)
                 {
-                    await SignInAsync(AppMember, isPersistent: false);
+                    await SignInAsync(appMember, isPersistent: false).ConfigureAwait(false);
                 }
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
@@ -235,10 +235,10 @@ namespace DEM_MVC.Controllers
                 var result = await UserManager.AddPasswordAsync(Int32.Parse(User.Identity.GetUserId()), model.NewPassword);
                 if (result.Succeeded)
                 {
-                    var AppMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
-                    if (AppMember != null)
+                    var appMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
+                    if (appMember != null)
                     {
-                        await SignInAsync(AppMember, isPersistent: false);
+                        await SignInAsync(appMember, isPersistent: false).ConfigureAwait(false);
                     }
                     return RedirectToAction("Index", new { Message = ManageMessageId.SetPasswordSuccess });
                 }

@@ -22,7 +22,9 @@ namespace DEM_MVC_DAL.Repositories
             List<ReadPostEntity> postEntities = new List<ReadPostEntity>();
             try
             {
-                if (page == null || page < 1) page = 1;
+                if (page == null || page < 1)
+                    page = 1;
+
                 using (var connection = connectionFactory.Create())
                 {
                     postEntities = connection.Query<ReadPostEntity>(SqlCommandStorageService.GetPostsByTopicId(), new { topicId, onPage, page }).ToList();

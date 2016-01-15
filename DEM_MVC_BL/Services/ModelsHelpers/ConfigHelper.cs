@@ -25,7 +25,10 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
         public int GetPostsOnPageCount()
         {
             var postsOnPage = ConfigModels.FirstOrDefault(x => x.ConfigName == "postsOnPage");
-            if (postsOnPage == null) return 20;
+
+            if (postsOnPage == null)
+                return 20;
+
             var result = Int32.Parse(postsOnPage.ConfigValue);
             return result == 0 ? 1 : result;
         }
@@ -33,7 +36,10 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
         public int GetTopicsOnPageCount()
         {
             var topicsOnPage = ConfigModels.FirstOrDefault(x => x.ConfigName == "topicsOnPage");
-            if (topicsOnPage == null) return 50;
+
+            if (topicsOnPage == null)
+                return 50;
+
             var result = Int32.Parse(topicsOnPage.ConfigValue);
             return result == 0 ? 1 : result;
         }

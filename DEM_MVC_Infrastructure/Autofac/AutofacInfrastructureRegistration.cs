@@ -8,7 +8,6 @@ namespace DEM_MVC_Infrastructure.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(this.GetType().Assembly).AsImplementedInterfaces().SingleInstance();
-            //builder.RegisterType<LoggerFactory>().As<ILoggerFactory>().InstancePerLifetimeScope();
         }
     }
 }

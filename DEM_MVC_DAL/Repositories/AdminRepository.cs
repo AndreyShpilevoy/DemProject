@@ -17,7 +17,10 @@ namespace DEM_MVC_DAL.Repositories
                 {
                     connection.Execute(SqlCommandStorageService.AdminDeletePost(), new {postId});
                     var validator = connection.ExecuteScalar<int>(SqlCommandStorageService.AdminCheckPost(), new {postId});
-                    if(validator == 0) return true;
+
+                    if(validator == 0)
+                        return true;
+
                     return false;
                 }
             }
@@ -34,9 +37,11 @@ namespace DEM_MVC_DAL.Repositories
             {
                 using (var connection = connectionFactory.Create())
                 {
-                    var validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(),
-                        new {userId});
-                    if (validator != 0) return false;
+                    var validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(), new {userId});
+
+                    if (validator != 0)
+                        return false;
+
                     connection.Execute(SqlCommandStorageService.BanUser(), new {userId});
                     validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(), new {userId});
                     return validator != 0;
@@ -55,9 +60,11 @@ namespace DEM_MVC_DAL.Repositories
             {
                 using (var connection = connectionFactory.Create())
                 {
-                    var validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(),
-                        new {userId});
-                    if (validator == 0) return false;
+                    var validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(), new {userId});
+
+                    if (validator == 0)
+                        return false;
+
                     connection.Execute(SqlCommandStorageService.UnbanUser(), new {userId});
                     validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(), new {userId});
                     return validator == 0;

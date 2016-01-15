@@ -113,7 +113,9 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             try
             {
                 var noParceBbCodes = BbCodeModels.Where(x=>x.NoParse).ToList();
-                if (String.IsNullOrWhiteSpace(text)) return text;
+
+                if (String.IsNullOrWhiteSpace(text))
+                    return text;
 
                 foreach (var code in noParceBbCodes)
                 {
@@ -159,8 +161,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                     {
                         var changedTextStartPosition = noParseBbCodes[i - 1].StartPosition + noParseBbCodes[i - 1].Length;
                         var changedTextLength = noParseBbCodes[i].StartPosition - (noParseBbCodes[i - 1].StartPosition + noParseBbCodes[i - 1].Length);
-
-                        //var changedTextPart = HttpUtility.UrlEncode(text.Substring(changedTextStartPosition, changedTextLength));
+                        
                         var changedTextPart = text.Substring(changedTextStartPosition, changedTextLength)
                             .Replace("[", "[{ignoreCode}");
                         var textStringBuilder = new StringBuilder(text);

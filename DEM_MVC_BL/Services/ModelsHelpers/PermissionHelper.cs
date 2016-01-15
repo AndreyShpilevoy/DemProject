@@ -37,7 +37,8 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 
             var userPermission = permissoionModels.SingleOrDefault(x => x.Type == IdentityPermissionType.UserPermission);
 
-            if (userPermission == null) return forumsId.Contains(forumId.ToString());
+            if (userPermission == null)
+                return forumsId.Contains(forumId.ToString());
 
             if (userPermission.SettingsState)
             {

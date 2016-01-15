@@ -14,22 +14,23 @@ using DEM_MVC.Services;
 
 namespace DEM_MVC
 {
-    public class EmailService : IIdentityMessageService
+    public class EmailService : IIdentityMessageService, IDisposable
     {
+        private MailMessage _myMessage;
         public async Task SendAsync(IdentityMessage message)
         {
-            await configSendGridasync(message);
+            await ConfigSendGridasync(message).ConfigureAwait(false);
         }
 
-        private async Task configSendGridasync(IdentityMessage message)
+        private async Task ConfigSendGridasync(IdentityMessage message)
         {
-            var myMessage = new MailMessage();
-            myMessage.To.Add(new MailAddress(message.Destination));  // replace with valid value 
-            myMessage.From = new MailAddress(ConfigurationManager.AppSettings["mailAccount"],
+            _myMessage = new MailMessage();
+            _myMessage.To.Add(new MailAddress(message.Destination));  // replace with valid value 
+            _myMessage.From = new MailAddress(ConfigurationManager.AppSettings["mailAccount"],
                 ConfigurationManager.AppSettings["mailAccountDisplayName"]);  // replace with valid value
-            myMessage.Subject = message.Subject;
-            myMessage.Body = message.Body;
-            myMessage.IsBodyHtml = true;
+            _myMessage.Subject = message.Subject;
+            _myMessage.Body = message.Body;
+            _myMessage.IsBodyHtml = true;
 
             using (var smtp = new SmtpClient())
             {
@@ -40,11 +41,15 @@ namespace DEM_MVC
                            );
 
                 smtp.Credentials = credentials;
-                smtp.Host = ConfigurationManager.AppSettings["host"];//"mail.dem.org.ua";
-                smtp.Port = Int32.Parse(ConfigurationManager.AppSettings["port"]); //2525;
+                smtp.Host = ConfigurationManager.AppSettings["host"];
+                smtp.Port = Int32.Parse(ConfigurationManager.AppSettings["port"]);
                 smtp.EnableSsl = Boolean.Parse(ConfigurationManager.AppSettings["enableSsl"]);//false
-                await smtp.SendMailAsync(myMessage);
+                await smtp.SendMailAsync(_myMessage).ConfigureAwait(false);
             }
+        }
+        public void Dispose()
+        {
+            _myMessage.Dispose();
         }
     }
 

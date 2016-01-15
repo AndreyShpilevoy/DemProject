@@ -20,7 +20,9 @@ namespace DEM_MVC_DAL.Repositories
             List<TopicEntity> topicEntities = new List<TopicEntity>();
             try
             {
-                if (page == null || page < 1) page = 1;
+                if (page == null || page < 1)
+                    page = 1;
+
                 using (var connection = connectionFactory.Create())
                 {
                     topicEntities = connection.Query<TopicEntity>(SqlCommandStorageService.GetTopicsByForumId(), new { forumId, page, onPage }).ToList();

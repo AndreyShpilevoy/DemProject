@@ -25,7 +25,9 @@ namespace DEM_MVC.Controllers
         public JsonResult CheckPermissions(int topicId, List<string> permissionsName)
         {
             var userId = User.Identity.GetUserId<int>();
-            if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
+
+            if (userId == 0)
+                return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
 
             var permission = _permissionsService.UserHasPermissionByTopicId(userId, topicId, permissionsName);
 
@@ -37,7 +39,9 @@ namespace DEM_MVC.Controllers
         public JsonResult CheckNewPostPermissions(int topicId)
         {
             var userId = User.Identity.GetUserId<int>();
-            if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
+
+            if (userId == 0)
+                return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
 
             var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(topicId);
             var permission = _permissionsService.UserHasPermissionByForumId(userId, topicInfoViewModel.ForumId, topicInfoViewModel.TopicClosed
