@@ -16,7 +16,7 @@ namespace DEM_MVC.Controllers
         private readonly IDataLoadService _dataLoadService;
         private readonly IDataWriteService _dataWriteService;
         private readonly IPermissionsService _permissionsService;
-        private IConfigHelper _configHelper;
+        private readonly IConfigHelper _configHelper;
 
         public ForumController(IDataLoadService dataLoadService,
             IPermissionsService permissionsService,
@@ -52,8 +52,7 @@ namespace DEM_MVC.Controllers
         public ActionResult ViewForum(int forumId, int? page)
         {
             var forumInfoViewModel = _dataLoadService.GetForumInfoViewModelById(forumId);
-            if (page == null || page < 1) forumInfoViewModel.PageNumber = 1;
-            else forumInfoViewModel.PageNumber = (int)page;
+            forumInfoViewModel.PageNumber = page == null || page < 1 ? 1 : (int) page;
             return View("ViewForum/ViewForum", forumInfoViewModel);
         }
 
@@ -77,13 +76,10 @@ namespace DEM_MVC.Controllers
         #region ViewTopicPageZone
 
         [HttpGet]
-        public ActionResult ViewTopic(int topicId, int? page, int? postId)
+        public ActionResult ViewTopic(int topicId, int? page)
         {
             var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(topicId);
-            if (page == null || page < 1)
-                topicInfoViewModel.PageNumber = 1;
-            else
-                topicInfoViewModel.PageNumber = (int)page;
+            topicInfoViewModel.PageNumber = page == null || page < 1 ? 1 : (int) page;
             return View("ViewTopic/ViewTopic", topicInfoViewModel);
         }
 
@@ -118,14 +114,18 @@ namespace DEM_MVC.Controllers
         public ActionResult CreatePost(int topicId)
         {
             var userId = User.Identity.GetUserId<int>();
-            if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
+
+            if (userId == 0)
+                return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
             
             var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(topicId);
             var permission = _permissionsService.UserHasPermissionByForumId(userId, topicInfoViewModel.ForumId, topicInfoViewModel.TopicClosed 
                 ? new List<string>() { CommonConstants.PostMessageInClosedTopic } 
                 : new List<string>() { CommonConstants.PostMessageInOpenTopic });
 
-            if (!permission) return new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } };
+            if (!permission)
+                return new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } };
+
             return PartialView("ViewTopic/_CreatePost", new NewPostViewModel() { TopicId = topicId });
             
         }
@@ -134,16 +134,21 @@ namespace DEM_MVC.Controllers
         public JsonResult CreatePost(NewPostViewModel newPostViewModel)
         {
             var userId = User.Identity.GetUserId<int>();
-            if (userId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
+
+            if (userId == 0)
+                return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
 
             var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(newPostViewModel.TopicId);
             var permission = _permissionsService.UserHasPermissionByForumId(userId, topicInfoViewModel.ForumId, topicInfoViewModel.TopicClosed
                 ? new List<string>() { CommonConstants.PostMessageInClosedTopic }
                 : new List<string>() { CommonConstants.PostMessageInOpenTopic });
 
-            if (!permission) return new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } };
+            if (!permission)
+                return new JsonResult { Data = new { success = false, responseText = "You can't create post in this topic. Please, contact with administrator." } };
 
-            if (String.IsNullOrWhiteSpace(newPostViewModel.PostText)) return new JsonResult { Data = new { success = false, responseText = "You can't create post with empty \"PostText\" field." } };
+            if (String.IsNullOrWhiteSpace(newPostViewModel.PostText))
+                return new JsonResult { Data = new { success = false, responseText = "You can't create post with empty \"PostText\" field." } };
+
             newPostViewModel.UserId = userId;
             newPostViewModel.PostTime = DateTime.Now;
             var newPostModel = Mapper.Map<NewPostViewModel, NewPostModel>(newPostViewModel);

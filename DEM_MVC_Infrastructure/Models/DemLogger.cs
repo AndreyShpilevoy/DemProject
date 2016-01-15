@@ -9,7 +9,14 @@ namespace DEM_MVC_Infrastructure.Models
         private static ILogger _current;
         public static ILogger Current
         {
-            get {return _current ?? (_current = ServiceLocator.Current.GetInstance<ILoggerFactory>().CreateLogger());}
+            get
+            {
+                if (_current != null)
+                    return _current;
+
+                _current = ServiceLocator.Current.GetInstance<ILoggerFactory>().CreateLogger();
+                return _current;
+            }
         }
     }
 }

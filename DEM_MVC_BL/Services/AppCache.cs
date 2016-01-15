@@ -17,13 +17,23 @@ namespace DEM_MVC_BL.Services
             return memoryCache.Get(key) as List<T>;
         }
 
-        public bool Add<T>(List<T> value, string key, int expirationInMinutes = 20)
+        public bool Add<T>(List<T> value, string key)
+        {
+            return Add(value, key, 20);
+        }
+
+        public bool Add<T>(List<T> value, string key, int expirationInMinutes)
         {
             MemoryCache memoryCache = MemoryCache.Default;
             return memoryCache.Add(key, value, DateTime.Now.AddMinutes(expirationInMinutes));
         }
 
-        public void Update<T>(List<T> value, string key, int expirationInMinutes = 20)
+        public void Update<T>(List<T> value, string key)
+        {
+            Update(value, key, 20);
+        }
+
+        public void Update<T>(List<T> value, string key, int expirationInMinutes)
         {
             MemoryCache memoryCache = MemoryCache.Default;
             memoryCache.Set(key, value, DateTime.Now.AddMinutes(expirationInMinutes));

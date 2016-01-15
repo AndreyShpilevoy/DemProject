@@ -16,8 +16,13 @@ namespace DEM_MVC.Services
                     return wordForElse;
 
                 value %= 10;
-                if (value == 1) return wordForOne;
-                if (value > 1 && value < 5) return wordFromTwoToFour;
+
+                if (value == 1)
+                    return wordForOne;
+
+                if (value > 1 && value < 5)
+                    return wordFromTwoToFour;
+
                 return wordForElse;
             }
             catch (Exception exception)

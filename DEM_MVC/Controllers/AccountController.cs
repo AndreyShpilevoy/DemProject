@@ -52,14 +52,11 @@ namespace DEM_MVC.Controllers
 
             // Require the user to have a confirmed email before they can log on.
             var user = await UserManager.FindByNameAsync(model.UserName);
-            if (user != null)
+            if (user != null && !await UserManager.IsEmailConfirmedAsync(user.Id))
             {
-                if (!await UserManager.IsEmailConfirmedAsync(user.Id))
-                {
-                    ViewBag.errorMessage = "You must have a confirmed email to log on.";
-                    await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
-                    return View("Error");
-                }
+                ViewBag.errorMessage = "You must have a confirmed email to log on.";
+                await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
+                return View("Error");
             }
 
 
@@ -152,21 +149,12 @@ namespace DEM_MVC.Controllers
                 var result = await UserManager.CreateAsync(appMember, model.Password);
                 if (result.Succeeded)
                 {
-                    //await SignInManager.SignInAsync(appMember, isPersistent: false, rememberBrowser: false);
-
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(appMember.Id);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = appMember.Id, code = code }, protocol: Request.Url.Scheme);
-                    //await UserManager.SendEmailAsync(appMember.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    string callbackUrl = await SendEmailConfirmationTokenAsync(appMember.Id, "Confirm your account");
+                    await SendEmailConfirmationTokenAsync(appMember.Id, "Confirm your account");
 
                     ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
                                     + "before you can log in.";
 
                     return View("Info");
-                    //return RedirectToAction("Index", "Forum");
                 }
                 AddErrors(result);
             }
@@ -222,7 +210,7 @@ namespace DEM_MVC.Controllers
                     String.Format(
                         "Приветствую Вас, органическая форма жизни. {0} С вами говорит Автоматический Комплекс Управления программным обеспечением ресурса DeusExMachina - Botty. {0}{0} Приятно Вам сообщить, что вы, видимо, забыли свой пароль. Ха-ха!{0} Согласно принятому протоколу вежливости, я должен предложить вам ссылку для восстановления пароля. {0} Вот она <a href=\"{1}\">Ссылка</a>. {0}{0} Спасибо, что воспользовались услугами Автоматического Комплекса Управления программным обеспечением ресурса DeusExMachina - Botty. {0} Оставайтесь с нами и приятного вам общения. {0}{0} <a href=\"http://dem.org.ua\">DeusExMachina</a>",
                         "<br />", callbackUrl);
-                await UserManager.SendEmailAsync(appMember.Id, "Восстановление пароля", mailMessage);
+                await UserManager.SendEmailAsync(appMember.Id, "Восстановление пароля", mailMessage).ConfigureAwait(false);
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
@@ -390,7 +378,7 @@ namespace DEM_MVC.Controllers
                     result = await UserManager.AddLoginAsync(appMember.Id, info.Login);
                     if (result.Succeeded)
                     {
-                        await SignInManager.SignInAsync(appMember, isPersistent: false, rememberBrowser: false);
+                        await SignInManager.SignInAsync(appMember, isPersistent: false, rememberBrowser: false).ConfigureAwait(false);
                         return RedirectToLocal(returnUrl);
                     }
                 }
@@ -485,7 +473,7 @@ namespace DEM_MVC.Controllers
                 String.Format(
                     "Приветствую Вас, органическая форма жизни. {0} С вами говорит Автоматический Комплекс Управления программным обеспечением ресурса DeusExMachina - Botty. {0}{0} Обязан Вам сообщить, что вы, только что, зарегистрировались на сайте DeusExMachina. {0} Согласно принятому протоколу взаимодействия  в чрезвычайных ситуациях, я должен предложить вам ссылку для подтверждения EMail адреса. {0} Вот она <a href=\"{1}\">Ссылка</a>. {0}{0} Спасибо, что воспользовались услугами Автоматического Комплекса Управления программным обеспечением ресурса DeusExMachina - Botty. {0} Оставайтесь с нами и приятного вам общения. {0}{0} <a href=\"http://dem.org.ua\">DeusExMachina</a>",
                     "<br />", callbackUrl);
-            await UserManager.SendEmailAsync(userId, "Подтверждение EMail'а", message);
+            await UserManager.SendEmailAsync(userId, "Подтверждение EMail'а", message).ConfigureAwait(false);
 
             return callbackUrl;
         }

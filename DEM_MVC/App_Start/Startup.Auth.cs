@@ -123,10 +123,7 @@ namespace DEM_MVC
         {
             int id;
             var o = claim.GetUserId();
-            if (!int.TryParse(o, out id))
-                return 0;
-            else
-                return id;
+            return int.TryParse(o, out id) ? id : 0;
         }
     }
 }

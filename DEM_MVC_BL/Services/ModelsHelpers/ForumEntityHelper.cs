@@ -88,7 +88,9 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                     if (forum.ForumId == forumId)
                         return forum;
                     var forumResult = GetGorumTreeById(forum.SubForums, forumId);
-                    if (forumResult != null) return forumResult;
+
+                    if (forumResult != null)
+                        return forumResult;
                 }
             }
             catch (Exception exception)

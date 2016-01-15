@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
@@ -11,7 +12,14 @@ namespace DEM_MVC.Services.HtmlHelpers
 {
     public static class CustomHtmlHelpers
     {
-        public static MvcHtmlString SpanFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes = null)
+        public static MvcHtmlString SpanFor<TModel, TProperty>(this HtmlHelper<TModel> helper,
+            Expression<Func<TModel, TProperty>> expression)
+        {
+            return SpanFor(helper, expression, null);
+        }
+
+        public static MvcHtmlString SpanFor<TModel, TProperty>(this HtmlHelper<TModel> helper, 
+            Expression<Func<TModel, TProperty>> expression, object htmlAttributes)
         {
             var valueGetter = expression.Compile();
             var value = valueGetter(helper.ViewData.Model);
@@ -26,7 +34,12 @@ namespace DEM_MVC.Services.HtmlHelpers
             return MvcHtmlString.Create(span.ToString());
         }
 
-        public static MvcHtmlString Span(this HtmlHelper helper, object content, object htmlAttributes = null)
+        public static MvcHtmlString Span(this HtmlHelper helper, object content)
+        {
+            return Span(helper, content, null);
+        }
+
+        public static MvcHtmlString Span(this HtmlHelper helper, object content, object htmlAttributes)
         {
             var span = new TagBuilder("span");
             span.MergeAttributes(new RouteValueDictionary(htmlAttributes));
@@ -37,7 +50,20 @@ namespace DEM_MVC.Services.HtmlHelpers
             return MvcHtmlString.Create(span.ToString());
         }
 
-        public static MvcHtmlString BbCodeTextAreaFor<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, object htmlAttributes = null, object content = null)
+        public static MvcHtmlString BbCodeTextAreaFor<TModel, TValue>(this HtmlHelper<TModel> helper,
+            Expression<Func<TModel, TValue>> expression)
+        {
+            return BbCodeTextAreaFor(helper, expression, null);
+        }
+
+        public static MvcHtmlString BbCodeTextAreaFor<TModel, TValue>(this HtmlHelper<TModel> helper,
+            Expression<Func<TModel, TValue>> expression, object htmlAttributes)
+        {
+            return BbCodeTextAreaFor(helper, expression, htmlAttributes, null);
+        }
+
+        public static MvcHtmlString BbCodeTextAreaFor<TModel, TValue>(this HtmlHelper<TModel> helper, 
+            Expression<Func<TModel, TValue>> expression, object htmlAttributes, object content)
         {
 
             var data = ModelMetadata.FromLambdaExpression(expression, helper.ViewData);
@@ -77,6 +103,7 @@ namespace DEM_MVC.Services.HtmlHelpers
             var bbCodes = bbCodeHelper.BbCodeModels;
             bbCodes = bbCodes.OrderBy(x => x.BbCodeOrder).ToList();
 
+            var stringBuilder = new StringBuilder();
             foreach (var bbCode in bbCodes.Where(x => x.BbCodeOnPosting))
             {
                 var buttonBuilder = new TagBuilder("a");
@@ -86,9 +113,9 @@ namespace DEM_MVC.Services.HtmlHelpers
                 buttonBuilder.MergeAttribute("onClick", String.Format("doAddTags('[{0}]','[/{0}]','" + textarea.Attributes.SingleOrDefault(x => x.Key == "id").Value + "')", bbCode.BbCodeTag));
                 buttonBuilder.AddCssClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only nonDecoration demNavigationBtn");
 
-                buttonsDiv.InnerHtml += buttonBuilder;
+                stringBuilder.Append(buttonBuilder);
             }
-
+            buttonsDiv.InnerHtml = stringBuilder.ToString();
             #endregion
 
             textAreaDiv.InnerHtml += textarea;

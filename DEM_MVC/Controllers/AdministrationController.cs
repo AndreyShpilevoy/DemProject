@@ -21,7 +21,9 @@ namespace DEM_MVC.Controllers
         public ActionResult DeletePost(int postId)
         {
             var currentUserId = User.Identity.GetUserId<int>();
-            if (currentUserId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't delete post - You not authorized. Please, contact with administrator." } };
+
+            if (currentUserId == 0)
+                return new JsonResult { Data = new { success = false, responseText = "You can't delete post - You not authorized. Please, contact with administrator." } };
             
             if (!_permissionsService.UserHasPermissionByForumId(currentUserId, 8, CommonConstants.ShowAdminControls))//todo change check to Admin group, not to permisson
                 return new JsonResult { Data = new { success = false, responseText = "You can't delete post - you have not permisson. Please, contact with administrator." } };
@@ -37,7 +39,9 @@ namespace DEM_MVC.Controllers
         public ActionResult BanUser(int userId)
         {
             var currentUserId = User.Identity.GetUserId<int>();
-            if (currentUserId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't ban user - You not authorized. Please, contact with administrator." } };
+
+            if (currentUserId == 0)
+                return new JsonResult { Data = new { success = false, responseText = "You can't ban user - You not authorized. Please, contact with administrator." } };
 
             if (!_permissionsService.UserHasPermissionByForumId(currentUserId, 8, CommonConstants.ShowAdminControls))//todo change check to Admin group, not to permisson
                 return new JsonResult { Data = new { success = false, responseText = "You can't ban user - you have not permisson. Please, contact with administrator." } };
@@ -53,7 +57,9 @@ namespace DEM_MVC.Controllers
         public ActionResult UnbanUser(int userId)
         {
             var currentUserId = User.Identity.GetUserId<int>();
-            if (currentUserId == 0) return new JsonResult { Data = new { success = false, responseText = "You can't unban user - You not authorized. Please, contact with administrator." } };
+
+            if (currentUserId == 0)
+                return new JsonResult { Data = new { success = false, responseText = "You can't unban user - You not authorized. Please, contact with administrator." } };
 
             if (!_permissionsService.UserHasPermissionByForumId(currentUserId, 8, CommonConstants.ShowAdminControls))//todo change check to Admin group, not to permisson
                 return new JsonResult { Data = new { success = false, responseText = "You can't unban user - you have not permisson. Please, contact with administrator." } };
