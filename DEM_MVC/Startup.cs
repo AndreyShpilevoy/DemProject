@@ -1,5 +1,4 @@
-﻿using DEM_MVC.Services;
-using DEM_MVC.Services.AutoMapper;
+﻿using DEM_MVC.Services.AutoMapper;
 using DEM_MVC_DAL.Services;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.Owin;

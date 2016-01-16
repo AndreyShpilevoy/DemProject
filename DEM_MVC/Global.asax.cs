@@ -33,7 +33,7 @@ namespace DEM_MVC
             Exception exception = Server.GetLastError();
             if (!(exception is HttpException))
             {
-                DemLogger.Current.Error(exception, "Application_Error");
+                DemLogger.Current.Error(exception, "Application Error. Was caught in Global.asax file.");
             }
         }
 

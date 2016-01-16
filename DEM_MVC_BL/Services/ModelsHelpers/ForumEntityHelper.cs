@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
-using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_Infrastructure.Models;
-using Microsoft.Practices.ServiceLocation;
-using NLog;
 
 namespace DEM_MVC_BL.Services.ModelsHelpers
 {
@@ -33,7 +30,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "ForumModelHelper. Error in function TransformToHierarchy");
+                DemLogger.Current.Error(exception, $"{nameof(ForumModelHelper)}. Error in function {DemLogger.GetCallerInfo()}");
                 return null;
             }
         }
@@ -75,11 +72,11 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "ForumModelHelper. Error in function FillSubForums");
+                DemLogger.Current.Error(exception, $"{nameof(ForumModelHelper)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
 
-        public ForumTableViewModel GetGorumTreeById(List<ForumTableViewModel> forumModels, int forumId)
+        public ForumTableViewModel GetForumTreeById(List<ForumTableViewModel> forumModels, int forumId)
         {
             try
             {
@@ -87,7 +84,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                 {
                     if (forum.ForumId == forumId)
                         return forum;
-                    var forumResult = GetGorumTreeById(forum.SubForums, forumId);
+                    var forumResult = GetForumTreeById(forum.SubForums, forumId);
 
                     if (forumResult != null)
                         return forumResult;
@@ -95,7 +92,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "ForumModelHelper. Error in function GetGorumTreeById");
+                DemLogger.Current.Error(exception, $"{nameof(ForumModelHelper)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return null;
         }

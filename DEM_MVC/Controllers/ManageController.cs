@@ -138,7 +138,7 @@ namespace DEM_MVC.Controllers
             // Send an SMS through the SMS provider to verify the phone number
             if (phoneNumber == null)
             {
-                DemLogger.Current.Error("ManageController. GET Action VerifyPhoneNumber: phoneNumber == null");
+                DemLogger.Current.Error($"{nameof(ManageController)}. GET Action VerifyPhoneNumber: phoneNumber == null");
                 return View("Error");
             }
             else return View(new VerifyPhoneNumberViewModel {PhoneNumber = phoneNumber});
@@ -260,7 +260,7 @@ namespace DEM_MVC.Controllers
             var appMember = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
             if (appMember == null)
             {
-                DemLogger.Current.Error("ManageController. GET Action ManageLogins: appMember == null");
+                DemLogger.Current.Error($"{nameof(ManageController)}. GET Action ManageLogins: appMember == null");
                 return View("Error");
             }
             var userLogins = await UserManager.GetLoginsAsync(Int32.Parse(User.Identity.GetUserId()));
@@ -357,8 +357,8 @@ namespace DEM_MVC.Controllers
 
         protected override void OnException(ExceptionContext filterContext)
         {
-            Exception e = filterContext.Exception;
-            DemLogger.Current.Error(e, "ManageController. OnException");
+            Exception exception = filterContext.Exception;
+            DemLogger.Current.Error(exception, $"{nameof(ManageController)}. Error was caught in {DemLogger.GetCallerInfo()}");
         }
     }
 }

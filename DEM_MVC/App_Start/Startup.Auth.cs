@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Configuration;
-using System.Net.Http;
-using System.Threading.Tasks;
 using DEM_MVC.Models;
 using DEM_MVC.Services.Handlers;
 using Microsoft.AspNet.Identity;

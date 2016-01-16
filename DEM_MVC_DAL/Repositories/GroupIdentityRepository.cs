@@ -22,7 +22,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityRepository. Error in function Delete");
+                DemLogger.Current.Error(exception, $"{nameof(GroupIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
 
@@ -37,7 +37,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityRepository. Error in function Insert");
+                DemLogger.Current.Error(exception, $"{nameof(GroupIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
 
@@ -52,7 +52,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityRepository. Error in function GetGroupName");
+                DemLogger.Current.Error(exception, $"{nameof(GroupIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
                 return null;
             }
         }
@@ -68,7 +68,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityRepository. Error in function GetGroupId");
+                DemLogger.Current.Error(exception, $"{nameof(GroupIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
                 return 0;
             }
         }
@@ -85,7 +85,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityRepository. Error in function GetGroupById");
+                DemLogger.Current.Error(exception, $"{nameof(GroupIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return groupIdentityEntity;
         }
@@ -102,7 +102,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityRepository. Error in function GetGroupByName");
+                DemLogger.Current.Error(exception, $"{nameof(GroupIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return groupIdentityEntity;
         }
@@ -118,7 +118,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityRepository. Error in function Update");
+                DemLogger.Current.Error(exception, $"{nameof(GroupIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
     }

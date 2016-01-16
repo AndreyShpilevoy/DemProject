@@ -167,8 +167,8 @@ namespace DEM_MVC.Controllers
 
         protected override void OnException(ExceptionContext filterContext)
         {
-            Exception e = filterContext.Exception;
-            DemLogger.Current.Error(e, "ForumController. OnException");
+            Exception exception = filterContext.Exception;
+            DemLogger.Current.Error(exception, $"{nameof(ForumController)}. Error was caught in {DemLogger.GetCallerInfo()}");
         }
     }
 }

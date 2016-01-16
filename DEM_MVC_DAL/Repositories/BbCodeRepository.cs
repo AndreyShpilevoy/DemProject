@@ -25,7 +25,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "BbCodeEntityRepository. Error in function GetAllBbCodes");
+                DemLogger.Current.Error(exception, $"{nameof(BbCodeRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return bbCodeEntities;
         }

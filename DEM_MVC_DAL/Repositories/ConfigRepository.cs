@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using Dapper;
 using DEM_MVC_DAL.Entities;
@@ -8,8 +7,6 @@ using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Services;
 using DEM_MVC_Infrastructure.Models;
-using Microsoft.Practices.ServiceLocation;
-using NLog;
 
 namespace DEM_MVC_DAL.Repositories
 {
@@ -27,7 +24,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "ConfigEntityRepository. Error in function GetAllConfig");
+                DemLogger.Current.Error(exception, $"{nameof(ConfigRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return configEntities;
         }

@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autofac\AutofacInfrastructureRegistration.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Interfaces\IServices\ILoggerFactory.cs" />
     <Compile Include="Models\CommonConstants.cs" />
     <Compile Include="Models\CommonEnums.cs" />

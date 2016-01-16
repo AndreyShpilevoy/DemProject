@@ -86,7 +86,7 @@ namespace DEM_MVC.Controllers
             // Require that the AppMember has already logged in via username/password or external login
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
-                DemLogger.Current.Error("AccountController. GET Action VerifyCode: SignInManager.HasBeenVerifiedAsync() return false");
+                DemLogger.Current.Error($"{nameof(AdministrationController)}. GET Action VerifyCode: SignInManager.HasBeenVerifiedAsync() return false");
                 return View("Error");
             }
             var appMember = await UserManager.FindByIdAsync(await SignInManager.GetVerifiedUserIdAsync());
@@ -170,7 +170,7 @@ namespace DEM_MVC.Controllers
         {
             if (userId == null || code == null)
             {
-                DemLogger.Current.Error("AccountController. GET Action ConfirmEmail: userId == null || code == null");
+                DemLogger.Current.Error($"{nameof(AdministrationController)}. GET Action ConfirmEmail: userId == null || code == null");
                 return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(Int32.Parse(userId), code);
@@ -233,7 +233,7 @@ namespace DEM_MVC.Controllers
         {
             if (code == null)
             {
-                DemLogger.Current.Error("AccountController. GET Action ResetPassword: code == null");
+                DemLogger.Current.Error($"{nameof(AdministrationController)}. GET Action ResetPassword: code == null");
                 return View("Error");
             }
             else return View();
@@ -292,7 +292,7 @@ namespace DEM_MVC.Controllers
             int userId = await SignInManager.GetVerifiedUserIdAsync();
             if (userId == 0)
             {
-                DemLogger.Current.Error("AccountController. GET Action SendCode: userId == 0");
+                DemLogger.Current.Error($"{nameof(AdministrationController)}. GET Action SendCode: userId == 0");
                 return View("Error");
             }
             var userFactors = await UserManager.GetValidTwoFactorProvidersAsync((int)userId);
@@ -315,7 +315,7 @@ namespace DEM_MVC.Controllers
             // Generate the token and send it
             if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
             {
-                DemLogger.Current.Error("AccountController. POST Action SendCode: SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider) return false");
+                DemLogger.Current.Error($"{nameof(AdministrationController)}. POST Action SendCode: SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider) return false");
                 return View("Error");
             }
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
@@ -481,8 +481,8 @@ namespace DEM_MVC.Controllers
 
         protected override void OnException(ExceptionContext filterContext)
         {
-            Exception e = filterContext.Exception;
-            DemLogger.Current.Error(e, "AccountController. OnException");
+            Exception exception = filterContext.Exception;
+            DemLogger.Current.Error(exception, $"{nameof(AdministrationController)}. Error was caught in {DemLogger.GetCallerInfo()}");
         }
     }
 }

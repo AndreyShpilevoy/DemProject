@@ -78,7 +78,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "BbCodeHelper. Error in function FillTheDictionaryBbcodes");
+                DemLogger.Current.Error(exception, $"{nameof(BbCodeHelper)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
 
@@ -103,7 +103,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "BbCodeHelper. Error in function BbCodeReplacerToHtml");
+                DemLogger.Current.Error(exception, $"{nameof(BbCodeHelper)}. Error in function {DemLogger.GetCallerInfo()}");
                 return null;
             }
         }
@@ -174,7 +174,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "BbCodeHelper. Error in function ProcessNoParceBbCodes");
+                DemLogger.Current.Error(exception, $"{nameof(BbCodeHelper)}. Error in function {DemLogger.GetCallerInfo()}");
                 return null;
             }
         }

@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
-using DEM_MVC_BL.Models;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_DAL.Entities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_Infrastructure.Models;
-using Microsoft.Practices.ServiceLocation;
 
 namespace DEM_MVC_BL.Services
 {
@@ -57,7 +54,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetAllForumTableViewModels");
+                DemLogger.Current.Error(exception, $"{nameof(DataLoadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return forumTableViewModels.OrderBy(x => x.ForumOrder).ToList();
         }
@@ -72,12 +69,12 @@ namespace DEM_MVC_BL.Services
                 var tempForumModels = Mapper.Map<List<ForumEntity>, List<ForumTableViewModel>>(forumEntities);
                 var forumTableViewModelList = _forumModelHelper.TransformToHierarchy(tempForumModels);
 
-                forumTableViewModel = _forumModelHelper.GetGorumTreeById(forumTableViewModelList, forumId);
+                forumTableViewModel = _forumModelHelper.GetForumTreeById(forumTableViewModelList, forumId);
                 forumTableViewModel.SubForums = forumTableViewModel.SubForums.OrderBy(x => x.ForumOrder).ToList();
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetForumTableViewModelById");
+                DemLogger.Current.Error(exception, $"{nameof(DataLoadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return forumTableViewModel;
         }
@@ -92,7 +89,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetTopicShowViewModelById");
+                DemLogger.Current.Error(exception, $"{nameof(DataLoadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return forumInfoViewModel;
         }
@@ -108,7 +105,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetTopicTableViewModelsByForumId");
+                DemLogger.Current.Error(exception, $"{nameof(DataLoadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return topicTableViewModels.OrderByDescending(x => x.LastPostTime).ToList();
         }
@@ -123,7 +120,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetTopicInfoViewModelById");
+                DemLogger.Current.Error(exception, $"{nameof(DataLoadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return topicShowViewModel;
         }
@@ -150,7 +147,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetPollViewModelByTopicId");
+                DemLogger.Current.Error(exception, $"{nameof(DataLoadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return pollViewModels;
         }
@@ -192,7 +189,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetPostTableViewModelsByTopicId");
+                DemLogger.Current.Error(exception, $"{nameof(DataLoadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return postTableViewModels;
         }
@@ -208,7 +205,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetAllBbCodeModels");
+                DemLogger.Current.Error(exception, $"{nameof(DataLoadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return bbCodeModels;
         }
@@ -224,7 +221,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "DataLoadService. Error in function GetAllConfigModels");
+                DemLogger.Current.Error(exception, $"{nameof(DataLoadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return configModels;
         }

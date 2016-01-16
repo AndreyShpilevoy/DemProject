@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using DEM_MVC_DAL.Services;
 
 namespace DEM_MVC_DAL.Entities

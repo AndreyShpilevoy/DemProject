@@ -50,7 +50,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "PermissionRepository. Error in function GetUserPermission");
+                DemLogger.Current.Error(exception, $"{nameof(PermissionRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
 
             return identityPermissionEntities;
@@ -95,7 +95,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "PermissionRepository. Error in function GetUserPermission");
+                DemLogger.Current.Error(exception, $"{nameof(PermissionRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
 
             return identityPermissionEntities;

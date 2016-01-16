@@ -1,5 +1,4 @@
-﻿using System.Data;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using DEM_MVC_DAL.Entities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 

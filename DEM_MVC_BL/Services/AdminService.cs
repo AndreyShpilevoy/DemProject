@@ -1,8 +1,5 @@
 ﻿using System;
-using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices;
-using DEM_MVC_BL.Models.ForumModels;
-using DEM_MVC_DAL.Entities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_Infrastructure.Models;
@@ -29,7 +26,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "AdminService. Error in function DeletePost");
+                DemLogger.Current.Error(exception, $"{nameof(AdminService)}. Error in function {DemLogger.GetCallerInfo()}");
                 return false;
             }
         }
@@ -42,7 +39,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "AdminService. Error in function BanUser");
+                DemLogger.Current.Error(exception, $"{nameof(AdminService)}. Error in function {DemLogger.GetCallerInfo()}");
                 return false;
             }
         }
@@ -55,7 +52,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "AdminService. Error in function UnbanUser");
+                DemLogger.Current.Error(exception, $"{nameof(AdminService)}. Error in function {DemLogger.GetCallerInfo()}");
                 return false;
             }
         }
