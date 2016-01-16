@@ -1,11 +1,6 @@
 ﻿using Autofac.Extras.Moq;
 using DEM_MVC_BL.Services;
-using DEM_MVC_BL.Services.ModelsHelpers;
-using DEM_MVC_DAL.Interfaces.IFactory;
-using DEM_MVC_DAL.Interfaces.IRepositories;
-using Moq;
 using Unit_Tests.BaseTest;
-using Xunit;
 
 namespace Unit_Tests.Tests
 {

@@ -8,7 +8,6 @@ using DEM_MVC_DAL.Entities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_Infrastructure.Models;
-using NLog.Internal;
 
 namespace DEM_MVC_BL.Services
 {
@@ -35,7 +34,7 @@ namespace DEM_MVC_BL.Services
                 }
                 catch (Exception exception)
                 {
-                    DemLogger.Current.Error(exception, "GroupIdentityService. Error in property Roles");
+                    DemLogger.Current.Error(exception, $"{nameof(GroupIdentityService<TGroup>)}. Error in property {DemLogger.GetCallerInfo()}");
                     throw;
                 }
             }
@@ -55,7 +54,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityService. Error in function CreateAsync");
+                DemLogger.Current.Error(exception, $"{nameof(GroupIdentityService<TGroup>)}. Error in function {DemLogger.GetCallerInfo()}");
             }
 
             return Task.FromResult<object>(null);
@@ -76,7 +75,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityService. Error in function UpdateAsync");
+                DemLogger.Current.Error(exception, $"{nameof(GroupIdentityService<TGroup>)}. Error in function {DemLogger.GetCallerInfo()}");
             }
 
             return Task.FromResult<Object>(null);
@@ -96,7 +95,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityService. Error in function DeleteAsync");
+                DemLogger.Current.Error(exception, $"{nameof(GroupIdentityService<TGroup>)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return Task.FromResult<Object>(null);
         }
@@ -112,7 +111,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityService. Error in function FindByIdAsync");
+                DemLogger.Current.Error(exception, $"{nameof(GroupIdentityService<TGroup>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<TGroup>(null);
             }
         }
@@ -128,7 +127,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityService. Error in function FindByNameAsync");
+                DemLogger.Current.Error(exception, $"{nameof(GroupIdentityService<TGroup>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<TGroup>(null);
             }
         }

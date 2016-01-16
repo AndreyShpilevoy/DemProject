@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using DEM_MVC_DAL.Entities;
@@ -9,9 +7,6 @@ using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Services;
 using DEM_MVC_Infrastructure.Models;
-using Microsoft.Practices.ServiceLocation;
-using Microsoft.SqlServer.Server;
-using NLog;
 
 namespace DEM_MVC_DAL.Repositories
 {
@@ -32,7 +27,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "PostEntityRepository. Error in function GetAllPostsByTopicId");
+                DemLogger.Current.Error(exception, $"{nameof(PostRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return postEntities;
         }
@@ -49,7 +44,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "PostEntityRepository. Error in function GetUsersForPostsByUsersId");
+                DemLogger.Current.Error(exception, $"{nameof(PostRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return userEntities;
         }
@@ -86,7 +81,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "PostRepository. Error in function CreateNewPost");
+                DemLogger.Current.Error(exception, $"{nameof(PostRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
     }

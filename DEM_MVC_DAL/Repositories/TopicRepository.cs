@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using DEM_MVC_DAL.Entities;
@@ -30,7 +28,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "TopicEntityRepository. Error in function GetTopicsByForumId");
+                DemLogger.Current.Error(exception, $"{nameof(TopicRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return topicEntities;
         }
@@ -47,7 +45,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "TopicEntityRepository. Error in function GetTopicById");
+                DemLogger.Current.Error(exception, $"{nameof(TopicRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return topicEntity;
         }

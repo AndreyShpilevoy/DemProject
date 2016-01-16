@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using DEM_MVC_DAL.Entities;
@@ -9,8 +7,6 @@ using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Services;
 using DEM_MVC_Infrastructure.Models;
-using Microsoft.Practices.ServiceLocation;
-using NLog;
 
 namespace DEM_MVC_DAL.Repositories
 {
@@ -28,7 +24,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityRepository. Error in function GetUserName");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return userName;
         }
@@ -45,7 +41,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityRepository. Error in function GetUserId");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return userId;
         }
@@ -62,7 +58,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityRepository. Error in function GetUserById");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return userIdentityEntity;
         }
@@ -79,7 +75,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityRepository. Error in function GetUserByName");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return userIdentityEntities;
         }
@@ -96,7 +92,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityRepository. Error in function GetUserByEmail");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return userIdentityEntity;
         }
@@ -113,7 +109,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityRepository. Error in function GetPasswordHash");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return passwordHash;
         }
@@ -129,7 +125,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityRepository. Error in function SetPasswordHash");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
 
@@ -145,7 +141,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityRepository. Error in function GetSecurityStamp");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return securityStamp;
         }
@@ -205,7 +201,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityRepository. Error in function Insert");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return id;
         }
@@ -221,7 +217,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityRepository. Error in function Delete");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
 
@@ -233,7 +229,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityRepository. Error in function Delete");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
 
@@ -291,7 +287,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityRepository. Error in function Update");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
     }

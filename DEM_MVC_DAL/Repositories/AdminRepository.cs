@@ -26,7 +26,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "AdminRepository. Error in function DeletePost");
+                DemLogger.Current.Error(exception, $"{nameof(AdminRepository)}. Error in function {DemLogger.GetCallerInfo()}");
                 return false;
             }
         }
@@ -49,7 +49,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "AdminRepository. Error in function BanUser");
+                DemLogger.Current.Error(exception, $"{nameof(AdminRepository)}. Error in function {DemLogger.GetCallerInfo()}");
                 return false;
             }
         }
@@ -72,7 +72,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "AdminRepository. Error in function BanUser");
+                DemLogger.Current.Error(exception, $"{nameof(AdminRepository)}. Error in function {DemLogger.GetCallerInfo()}");
                 return false;
             }
         }

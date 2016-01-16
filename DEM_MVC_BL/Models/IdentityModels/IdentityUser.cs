@@ -1,5 +1,4 @@
 ﻿using System;
-using DEM_MVC_BL.Services.ModelsHelpers;
 using Microsoft.AspNet.Identity;
 
 namespace DEM_MVC_BL.Models.IdentityModels

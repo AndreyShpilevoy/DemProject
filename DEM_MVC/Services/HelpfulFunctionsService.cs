@@ -27,7 +27,7 @@ namespace DEM_MVC.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "HelpfulFunctionsService. Error in function SelectRightEnding");
+                DemLogger.Current.Error(exception, $"{nameof(HelpfulFunctionsService)}. Error in function {DemLogger.GetCallerInfo()}");
                 return null;
             }
         }
@@ -40,7 +40,7 @@ namespace DEM_MVC.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "HelpfulFunctionsService. Error in function IsOdd");
+                DemLogger.Current.Error(exception, $"{nameof(HelpfulFunctionsService)}. Error in function {DemLogger.GetCallerInfo()}");
                 return false;
             }
         }

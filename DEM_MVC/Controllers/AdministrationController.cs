@@ -73,8 +73,8 @@ namespace DEM_MVC.Controllers
 
         protected override void OnException(ExceptionContext filterContext)
         {
-            Exception e = filterContext.Exception;
-            DemLogger.Current.Error(e, "AdministrationController. OnException");
+            Exception exception = filterContext.Exception;
+            DemLogger.Current.Error(exception, $"{nameof(AdministrationController)}. Error was caught in {DemLogger.GetCallerInfo()}");
         }
     }
 }

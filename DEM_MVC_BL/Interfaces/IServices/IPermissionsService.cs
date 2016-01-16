@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using DEM_MVC_BL.Models.IdentityModels;
 
 namespace DEM_MVC_BL.Interfaces.IServices
 {

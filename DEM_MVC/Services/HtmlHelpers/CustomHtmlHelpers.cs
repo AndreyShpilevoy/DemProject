@@ -5,7 +5,6 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
-using DEM_MVC_BL.Models.ForumModels;
 using Microsoft.Practices.ServiceLocation;
 
 namespace DEM_MVC.Services.HtmlHelpers

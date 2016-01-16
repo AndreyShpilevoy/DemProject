@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices;
-using DEM_MVC_BL.Models.ForumModels;
-using DEM_MVC_BL.Models.IdentityModels;
 using DEM_MVC_BL.Models.PermissionModels;
 using DEM_MVC_BL.Services.ModelsHelpers;
 using DEM_MVC_DAL.Entities;
@@ -39,7 +37,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "PermissionsService. Error in function UserHasPermission");
+                DemLogger.Current.Error(exception, $"{nameof(PermissionsService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return result;
         }
@@ -55,7 +53,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "PermissionsService. Error in function UserHasPermission");
+                DemLogger.Current.Error(exception, $"{nameof(PermissionsService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return result;
         }
@@ -73,7 +71,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "PermissionsService. Error in function UserHasPermission");
+                DemLogger.Current.Error(exception, $"{nameof(PermissionsService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return result;
         }
@@ -91,7 +89,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "PermissionsService. Error in function UserHasPermission");
+                DemLogger.Current.Error(exception, $"{nameof(PermissionsService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return result;
         }

@@ -49,7 +49,7 @@ namespace DEM_MVC_BL.Services
                 }
                 catch (Exception exception)
                 {
-                    DemLogger.Current.Error(exception, "GroupIdentityService. Error in property Users");
+                    DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in property {DemLogger.GetCallerInfo()}");
                     throw;
                 }
             }
@@ -77,7 +77,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function CreateAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<object>(null);
             }
             return Task.FromResult<object>(null);
@@ -103,7 +103,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function FindByIdAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<TUser>(null);
             }
             return Task.FromResult<TUser>(null);
@@ -130,7 +130,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function FindByNameAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<TUser>(null);
             }
 
@@ -151,7 +151,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function UpdateAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<object>(null);
             }
 
@@ -176,7 +176,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function AddClaimAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<object>(null);
             }
 
@@ -194,7 +194,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetClaimsAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<IList<Claim>>(null);
             }
         }
@@ -219,7 +219,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function RemoveClaimAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<object>(null);
             }
 
@@ -246,7 +246,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function AddLoginAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<object>(null);
             }
 
@@ -277,7 +277,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function FindAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<TUser>(null);
             }
             return Task.FromResult<TUser>(null);
@@ -303,7 +303,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetLoginsAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<IList<UserLoginInfo>>(null);
             }
             return Task.FromResult<IList<UserLoginInfo>>(null);
@@ -328,7 +328,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function RemoveLoginAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<object>(null);
             }
 
@@ -363,7 +363,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function AddToRoleAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<object>(null);
             }
 
@@ -389,7 +389,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetRolesAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<IList<string>>(null);
             }
 
@@ -420,7 +420,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function IsInRoleAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<bool>(false);
             }
 
@@ -435,7 +435,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "GroupIdentityService. Error in function RemoveFromRoleAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 throw;
             }
         }
@@ -452,7 +452,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function DeleteAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<object>(null);
             }
 
@@ -468,7 +468,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetPasswordHashAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<string>(null);
             }
 
@@ -484,7 +484,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function HasPasswordAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<bool>(false);
             }
         }
@@ -499,7 +499,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetPasswordHashAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<Object>(null);
             }
         }
@@ -514,7 +514,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetSecurityStampAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult(0);
             }
 
@@ -528,7 +528,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetSecurityStampAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<string>(null);
             }
         }
@@ -546,7 +546,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetEmailAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult(0);
             }
 
@@ -560,7 +560,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetEmailAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<string>(null);
             }
         }
@@ -573,7 +573,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetEmailConfirmedAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<bool>(false);
             }
         }
@@ -591,7 +591,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetEmailConfirmedAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult(0);
             }
         }
@@ -616,7 +616,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function FindByEmailAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<TUser>(null);
             }
             return Task.FromResult<TUser>(null);
@@ -635,7 +635,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetPhoneNumberAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult(0);
             }
         }
@@ -648,7 +648,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetPhoneNumberAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<string>(null);
             }
         }
@@ -661,7 +661,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetPhoneNumberAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<bool>(false);
             }
         }
@@ -679,7 +679,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetPhoneNumberConfirmedAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult(0);
             }
         }
@@ -697,7 +697,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetTwoFactorEnabledAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult(0);
             }
         }
@@ -710,7 +710,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetTwoFactorEnabledAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<bool>(false);
             }
         }
@@ -726,7 +726,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetLockoutEndDateAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<DateTimeOffset>(new DateTimeOffset());
             }
         }
@@ -745,7 +745,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetLockoutEndDateAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult(0);
             }
         }
@@ -763,7 +763,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function IncrementAccessFailedCountAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult(0);
             }
         }
@@ -781,7 +781,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function ResetAccessFailedCountAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult(0);
             }
         }
@@ -794,7 +794,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetAccessFailedCountAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult(0);
             }
         }
@@ -807,7 +807,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function GetLockoutEnabledAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult<bool>(false);
             }
         }
@@ -825,7 +825,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, "UserIdentityService. Error in function SetLockoutEnabledAsync");
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityService<TUser>)}. Error in function {DemLogger.GetCallerInfo()}");
                 return Task.FromResult(0);
             }
         }
