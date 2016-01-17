@@ -24,7 +24,7 @@
                         FROM dem_config";
         }
 
-        internal static string GetAllForums()
+        internal static string GetAllForumsView()
         {
             return @"SELECT forum_id, 
                             parent_id, 
@@ -41,20 +41,20 @@
                             last_topic_id, 
                             forum_order
 
-                        FROM AllForums";
+                        FROM ForumsView";
         }
 
-        internal static string GetForumInfoById()
+        internal static string GetForumViewInfoById()
         {
             return @"SELECT forum_id, 
                             sub_forums_count, 
                             topics_count
 
-                        FROM AllForums
+                        FROM ForumsView
                         WHERE forum_id = @forumId";
         }
 
-        internal static string GetTopicsByForumId()
+        internal static string GetAllTopicsViewByForumId()
         {
             return @"SELECT topic_id, 
                             topic_title, 
@@ -71,15 +71,15 @@
                             last_post_id, 
                             topic_closed
 
-                        FROM AllTopics
+                        FROM TopicsView
                         WHERE forum_id = @forumId
 
-						ORDER BY AllTopics.last_post_time DESC
+						ORDER BY TopicsView.last_post_time DESC
 						Offset (@page-1)*@onpage Rows
 						Fetch Next @onpage Rows Only";
         }
 
-        internal static string GetTopicById()
+        internal static string GetTopicViewById()
         {
             return @"SELECT forum_id, 
                             topic_id, 
@@ -90,7 +90,7 @@
                             polls_only, 
                             posts_count
 
-                        FROM AllTopics
+                        FROM TopicsView
                         WHERE topic_id = @topicId";
         }
 
@@ -157,7 +157,7 @@
                         Fetch Next @onpage Rows Only;";
         }
 
-        internal static string GetUsersForPostsByUsersId()
+        internal static string GetUsersForPostsViewByUsersId()
         {
             return @"SELECT user_id,
                    username,
@@ -176,7 +176,7 @@
                    group_colour,
                    group_avatar_url
 
-                        FROM AllUsersForPosts
+                        FROM UsersForPostsView
                         WHERE user_id IN @usersId;";
         }
 

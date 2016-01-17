@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
-using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Entities.ForumsViewEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 
 namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
     public interface IForumRepository
     {
-        List<ForumEntity> GetAllForums(IConnectionFactory connectionFactory);
+        List<ForumsViewEntity> GetAllForums(IConnectionFactory connectionFactory);
 
-        ForumEntity GetForumInfoById(int forumId, IConnectionFactory connectionFactory);
+        ForumsViewEntity GetForumInfoById(int forumId, IConnectionFactory connectionFactory);
 
         int GetForumIdByTopicId(int topicId, IConnectionFactory connectionFactory);
     }

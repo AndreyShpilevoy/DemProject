@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
-using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Entities.PollEntities;
+using DEM_MVC_DAL.Entities.PollOptionEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Services;

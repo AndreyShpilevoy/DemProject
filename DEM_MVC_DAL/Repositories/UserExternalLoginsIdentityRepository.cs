@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
-using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Entities.UserIdentityEntities;
+using DEM_MVC_DAL.Entities.UserLoginInfoIdentityEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Services;

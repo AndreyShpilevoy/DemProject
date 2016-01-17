@@ -1,9 +1,9 @@
 ﻿using System;
 using DEM_MVC_DAL.Services;
 
-namespace DEM_MVC_DAL.Entities
+namespace DEM_MVC_DAL.Entities.UserForPostViewEntities
 {
-    public class UserEntity
+    public class UserForPostViewEntity
     {
         [Column(Name = "user_id")]
         public int UserId { get; set; }

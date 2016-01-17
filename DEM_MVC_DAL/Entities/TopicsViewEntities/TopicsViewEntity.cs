@@ -1,9 +1,9 @@
 ﻿using System;
 using DEM_MVC_DAL.Services;
 
-namespace DEM_MVC_DAL.Entities
+namespace DEM_MVC_DAL.Entities.TopicsViewEntities
 {
-    public class TopicEntity
+    public class TopicsViewEntity
     {
         [Column(Name = "forum_id")]
         public int ForumId { get; set; }

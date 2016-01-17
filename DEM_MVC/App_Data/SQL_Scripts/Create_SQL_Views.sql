@@ -1,4 +1,4 @@
-CREATE VIEW AllForums
+CREATE VIEW ForumsView
 AS
 	SELECT    forumTable.forum_id,
 			  parent_id,
@@ -132,7 +132,7 @@ AS
 	
 GO 
 
-CREATE VIEW AllTopics
+CREATE VIEW TopicsView
 AS
 
 SELECT	tableWithUserId.forum_id,
@@ -231,7 +231,7 @@ SELECT	tableWithUserId.forum_id,
 
 GO
 
-CREATE VIEW AllUsersForPosts
+CREATE VIEW UsersForPostsView
 AS
 SELECT  usersTable.user_id,
 		usersTable.username,

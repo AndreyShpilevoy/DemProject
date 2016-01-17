@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
-using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Entities.PostEntities;
+using DEM_MVC_DAL.Entities.UserForPostViewEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Services;
@@ -32,21 +33,21 @@ namespace DEM_MVC_DAL.Repositories
             return postEntities;
         }
 
-        public List<UserEntity> GetUsersForPostsByUsersId(IConnectionFactory connectionFactory, List<int> usersId)
+        public List<UserForPostViewEntity> GetUsersForPostsByUsersId(IConnectionFactory connectionFactory, List<int> usersId)
         {
-            List<UserEntity> userEntities = new List<UserEntity>();
+            List<UserForPostViewEntity> userForPostViewEntities = new List<UserForPostViewEntity>();
             try
             {
                 using (var connection = connectionFactory.Create())
                 {
-                    userEntities = connection.Query<UserEntity>(SqlCommandStorageService.GetUsersForPostsByUsersId(), new { usersId }).ToList();
+                    userForPostViewEntities = connection.Query<UserForPostViewEntity>(SqlCommandStorageService.GetUsersForPostsViewByUsersId(), new { usersId }).ToList();
                 }
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, $"{nameof(PostRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
-            return userEntities;
+            return userForPostViewEntities;
         }
 
         public void CreateNewPost(NewPostEntity newPostEntity, IConnectionFactory connectionFactory)

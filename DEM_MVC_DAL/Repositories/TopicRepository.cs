@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
-using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Entities.TopicsViewEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Services;
@@ -12,10 +12,10 @@ namespace DEM_MVC_DAL.Repositories
 {
     public class TopicRepository : ITopicRepository
     {
-        public List<TopicEntity> GetTopicsByForumId(int forumId, IConnectionFactory connectionFactory, int onPage, int? page)
+        public List<TopicsViewEntity> GetTopicsByForumId(int forumId, IConnectionFactory connectionFactory, int onPage, int? page)
         {
 
-            List<TopicEntity> topicEntities = new List<TopicEntity>();
+            List<TopicsViewEntity> topicViewEntities = new List<TopicsViewEntity>();
             try
             {
                 if (page == null || page < 1)
@@ -23,31 +23,31 @@ namespace DEM_MVC_DAL.Repositories
 
                 using (var connection = connectionFactory.Create())
                 {
-                    topicEntities = connection.Query<TopicEntity>(SqlCommandStorageService.GetTopicsByForumId(), new { forumId, page, onPage }).ToList();
+                    topicViewEntities = connection.Query<TopicsViewEntity>(SqlCommandStorageService.GetAllTopicsViewByForumId(), new { forumId, page, onPage }).ToList();
                 }
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, $"{nameof(TopicRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
-            return topicEntities;
+            return topicViewEntities;
         }
 
-        public TopicEntity GetTopicById(int topicId, IConnectionFactory connectionFactory)
+        public TopicsViewEntity GetTopicById(int topicId, IConnectionFactory connectionFactory)
         {
-            TopicEntity topicEntity = new TopicEntity();
+            TopicsViewEntity topicViewEntity = new TopicsViewEntity();
             try
             {
                 using (var connection = connectionFactory.Create())
                 {
-                    topicEntity = connection.Query<TopicEntity>(SqlCommandStorageService.GetTopicById(), new { topicId }).SingleOrDefault();
+                    topicViewEntity = connection.Query<TopicsViewEntity>(SqlCommandStorageService.GetTopicViewById(), new { topicId }).SingleOrDefault();
                 }
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, $"{nameof(TopicRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
-            return topicEntity;
+            return topicViewEntity;
         }
     }
 }

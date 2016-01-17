@@ -1,7 +1,7 @@
 ﻿using System;
 using DEM_MVC_DAL.Services;
 
-namespace DEM_MVC_DAL.Entities
+namespace DEM_MVC_DAL.Entities.UserIdentityEntities
 {
     public class UserIdentityEntity
     {
