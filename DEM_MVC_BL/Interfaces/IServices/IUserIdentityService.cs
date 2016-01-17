@@ -1,4 +1,4 @@
-﻿using DEM_MVC_BL.Models.IdentityModels;
+﻿using DEM_MVC_BL.Models.IdentityUserModels;
 using Microsoft.AspNet.Identity;
 
 namespace DEM_MVC_BL.Interfaces.IServices
@@ -14,7 +14,7 @@ namespace DEM_MVC_BL.Interfaces.IServices
         IUserTwoFactorStore<TUser, int>,
         IUserLockoutStore<TUser, int>,
         IUserStore<TUser, int>
-        where TUser : IdentityUser
+        where TUser : IdentityUserModel
     {
     }
 }

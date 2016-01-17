@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices;
-using DEM_MVC_BL.Models.IdentityModels;
+using DEM_MVC_BL.Models.IdentityUserModels;
 using DEM_MVC_DAL.Entities.UserIdentityEntities;
 using DEM_MVC_DAL.Entities.UserLoginInfoIdentityEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
@@ -16,7 +16,7 @@ using Microsoft.AspNet.Identity;
 namespace DEM_MVC_BL.Services
 {
     public class UserIdentityService<TUser> : IUserIdentityService<TUser>
-        where TUser : IdentityUser
+        where TUser : IdentityUserModel
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly IUserIdentityRepository _userIdentityRepository;
@@ -68,7 +68,7 @@ namespace DEM_MVC_BL.Services
 
                 user.UserRegDate = DateTime.Now;
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 var id = _userIdentityRepository.Insert(userEntity, _connectionFactory);
                 user.Id = id;
                 if (id != 0)
@@ -94,11 +94,11 @@ namespace DEM_MVC_BL.Services
                 //}
 
                 var userEntity = _userIdentityRepository.GetUserById(userId, _connectionFactory);
-                var identityUser = Mapper.Map<UserIdentityEntity, IdentityUser>(userEntity);
+                var identityUser = Mapper.Map<UserIdentityEntity, IdentityUserModel>(userEntity);
 
                 if (identityUser != null)
                 {
-                    TUser result = Mapper.Map<IdentityUser, TUser>(identityUser);
+                    TUser result = Mapper.Map<IdentityUserModel, TUser>(identityUser);
                     return Task.FromResult<TUser>(result);
                 }
             }
@@ -120,12 +120,12 @@ namespace DEM_MVC_BL.Services
                 }
 
                 var userEntities = _userIdentityRepository.GetUserByName(userName, _connectionFactory);
-                var identityUsers = Mapper.Map<List<UserIdentityEntity>, List<IdentityUser>>(userEntities);
+                var identityUsers = Mapper.Map<List<UserIdentityEntity>, List<IdentityUserModel>>(userEntities);
 
                 // Should I throw if > 1 user?
                 if (identityUsers != null && identityUsers.Count == 1)
                 {
-                    TUser result = Mapper.Map<IdentityUser, TUser>(identityUsers[0]);
+                    TUser result = Mapper.Map<IdentityUserModel, TUser>(identityUsers[0]);
                     return Task.FromResult<TUser>(result);
                 }
             }
@@ -147,7 +147,7 @@ namespace DEM_MVC_BL.Services
                     throw new ArgumentNullException(nameof(user));
                 }
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userIdentityRepository.Update(userEntity, _connectionFactory);
             }
             catch (Exception exception)
@@ -215,7 +215,7 @@ namespace DEM_MVC_BL.Services
                     throw new ArgumentNullException(nameof(claim));
                 }
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userClaimsIdentityRepository.Delete(userEntity, claim, _connectionFactory);
             }
             catch (Exception exception)
@@ -242,7 +242,7 @@ namespace DEM_MVC_BL.Services
                     throw new ArgumentNullException(nameof(login));
                 }
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userLoginsIdentityRepository.Insert(userEntity, login, _connectionFactory);
             }
             catch (Exception exception)
@@ -267,11 +267,11 @@ namespace DEM_MVC_BL.Services
                 if (userId > 0)
                 {
                     var userEntity = _userIdentityRepository.GetUserById(userId, _connectionFactory);
-                    var identityUser = Mapper.Map<UserIdentityEntity, IdentityUser>(userEntity);
+                    var identityUser = Mapper.Map<UserIdentityEntity, IdentityUserModel>(userEntity);
 
                     if (identityUser != null)
                     {
-                        TUser result = Mapper.Map<IdentityUser, TUser>(identityUser);
+                        TUser result = Mapper.Map<IdentityUserModel, TUser>(identityUser);
                         return Task.FromResult<TUser>(result);
                     }
                 }
@@ -324,7 +324,7 @@ namespace DEM_MVC_BL.Services
                     throw new ArgumentNullException(nameof(login));
                 }
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userLoginsIdentityRepository.Delete(userEntity, login, _connectionFactory);
             }
             catch (Exception exception)
@@ -354,7 +354,7 @@ namespace DEM_MVC_BL.Services
                 if (groupId > 0)
                 {
 
-                    var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                    var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                     _userGroupsIdentityRepository.Insert(userEntity, groupId, _connectionFactory);
                 }
                 //if (!string.IsNullOrEmpty(groupId))
@@ -447,7 +447,7 @@ namespace DEM_MVC_BL.Services
             {
                 if (user != null)
                 {
-                    var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                    var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                     _userIdentityRepository.Delete(userEntity, _connectionFactory);
                 }
             }
@@ -540,7 +540,7 @@ namespace DEM_MVC_BL.Services
             {
                 user.Email = email;
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userIdentityRepository.Update(userEntity, _connectionFactory);
 
                 return Task.FromResult(0);
@@ -585,7 +585,7 @@ namespace DEM_MVC_BL.Services
             {
                 user.EmailConfirmed = confirmed;
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userIdentityRepository.Update(userEntity, _connectionFactory);
 
                 return Task.FromResult(0);
@@ -607,11 +607,11 @@ namespace DEM_MVC_BL.Services
                 }
 
                 var userEntity = _userIdentityRepository.GetUserByEmail(email, _connectionFactory);
-                var identityUser = Mapper.Map<UserIdentityEntity, IdentityUser>(userEntity);
+                var identityUser = Mapper.Map<UserIdentityEntity, IdentityUserModel>(userEntity);
 
                 if (identityUser != null)
                 {
-                    TUser result = Mapper.Map<IdentityUser, TUser>(identityUser);
+                    TUser result = Mapper.Map<IdentityUserModel, TUser>(identityUser);
                     return Task.FromResult<TUser>(result);
                 }
             }
@@ -629,7 +629,7 @@ namespace DEM_MVC_BL.Services
             {
                 user.PhoneNumber = phoneNumber;
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userIdentityRepository.Update(userEntity, _connectionFactory);
 
                 return Task.FromResult(0);
@@ -673,7 +673,7 @@ namespace DEM_MVC_BL.Services
             {
                 user.PhoneNumberConfirmed = confirmed;
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userIdentityRepository.Update(userEntity, _connectionFactory);
 
                 return Task.FromResult(0);
@@ -691,7 +691,7 @@ namespace DEM_MVC_BL.Services
             {
                 user.TwoFactorEnabled = enabled;
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userIdentityRepository.Update(userEntity, _connectionFactory);
 
                 return Task.FromResult(0);
@@ -739,7 +739,7 @@ namespace DEM_MVC_BL.Services
             {
                 user.LockoutEndDateUtc = lockoutEnd.UtcDateTime;
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userIdentityRepository.Update(userEntity, _connectionFactory);
 
                 return Task.FromResult(0);
@@ -757,7 +757,7 @@ namespace DEM_MVC_BL.Services
             {
                 user.AccessFailedCount++;
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userIdentityRepository.Update(userEntity, _connectionFactory);
 
                 return Task.FromResult(user.AccessFailedCount);
@@ -775,7 +775,7 @@ namespace DEM_MVC_BL.Services
             {
                 user.AccessFailedCount = 0;
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userIdentityRepository.Update(userEntity, _connectionFactory);
 
                 return Task.FromResult(0);
@@ -819,7 +819,7 @@ namespace DEM_MVC_BL.Services
             {
                 user.LockoutEnabled = enabled;
 
-                var userEntity = Mapper.Map<IdentityUser, UserIdentityEntity>(user);
+                var userEntity = Mapper.Map<IdentityUserModel, UserIdentityEntity>(user);
                 _userIdentityRepository.Update(userEntity, _connectionFactory);
 
                 return Task.FromResult(0);

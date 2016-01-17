@@ -1,4 +1,4 @@
-﻿namespace DEM_MVC_BL.Models.ForumModels
+﻿namespace DEM_MVC_BL.Models.BbCodeModels
 {
     public class BbCodeModel
     {

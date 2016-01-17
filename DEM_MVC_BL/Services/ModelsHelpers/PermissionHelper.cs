@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DEM_MVC_BL.Models.PermissionModels;
+using DEM_MVC_BL.Models.IdentityPermissionModels;
 using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_BL.Services.ModelsHelpers

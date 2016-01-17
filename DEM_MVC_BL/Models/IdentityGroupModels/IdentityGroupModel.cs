@@ -1,21 +1,21 @@
 ﻿using Microsoft.AspNet.Identity;
 
-namespace DEM_MVC_BL.Models.IdentityModels
+namespace DEM_MVC_BL.Models.IdentityGroupModels
 {
 
-    public class IdentityGroup : IRole<int>
+    public class IdentityGroupModel : IRole<int>
     {
-        public IdentityGroup()
+        public IdentityGroupModel()
         {
             //  Id = Guid.NewGuid().ToString();
         }
 
-        public IdentityGroup(string name) : this()
+        public IdentityGroupModel(string name) : this()
         {
             Name = name;
         }
 
-        public IdentityGroup(string name, int id)
+        public IdentityGroupModel(string name, int id)
         {
             Name = name;
             Id = id;

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using DEM_MVC_BL.Models.PollOptionModels;
 
-namespace DEM_MVC_BL.Models.ForumModels
+namespace DEM_MVC_BL.Models.PollModels
 {
     public class PollViewModel
     {

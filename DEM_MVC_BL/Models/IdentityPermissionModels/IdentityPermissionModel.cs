@@ -1,6 +1,6 @@
 ﻿using DEM_MVC_Infrastructure.Models;
 
-namespace DEM_MVC_BL.Models.PermissionModels
+namespace DEM_MVC_BL.Models.IdentityPermissionModels
 {
     public class IdentityPermissionModel
     {

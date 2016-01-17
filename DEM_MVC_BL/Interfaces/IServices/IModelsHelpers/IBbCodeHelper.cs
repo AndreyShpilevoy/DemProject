@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using DEM_MVC_BL.Models.ForumModels;
+using DEM_MVC_BL.Models.BbCodeModels;
 
 namespace DEM_MVC_BL.Interfaces.IServices.IModelsHelpers
 {
