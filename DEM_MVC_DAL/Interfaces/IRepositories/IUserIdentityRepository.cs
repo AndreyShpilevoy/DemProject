@@ -4,8 +4,7 @@ using DEM_MVC_DAL.Interfaces.IFactory;
 
 namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
-    public interface IUserIdentityRepository//<TUser>
-        //where TUser : UserIdentityEntity
+    public interface IUserIdentityRepository
     {
         string GetUserName(int userId, IConnectionFactory connectionFactory);
         int GetUserId(string userName, IConnectionFactory connectionFactory);
@@ -19,5 +18,7 @@ namespace DEM_MVC_DAL.Interfaces.IRepositories
         void Delete(int userId, IConnectionFactory connectionFactory);
         void Delete(UserIdentityEntity user, IConnectionFactory connectionFactory);
         void Update(UserIdentityEntity user, IConnectionFactory connectionFactory);
+        bool BanUser(int userId, IConnectionFactory connectionFactory);
+        bool UnbanUser(int userId, IConnectionFactory connectionFactory);
     }
 }

@@ -9,20 +9,23 @@ namespace DEM_MVC_BL.Services
     public class AdminService : IAdminService
     {
         private readonly IConnectionFactory _connectionFactory;
-        private readonly IAdminRepository _adminRepository;
+        private readonly IPostRepository _postRepository;
+        private readonly IUserIdentityRepository _userIdentityRepository;
 
-        public AdminService(IAdminRepository adminRepository,
-            IConnectionFactory connectionFactory)
+        public AdminService(IPostRepository postRepository,
+            IConnectionFactory connectionFactory,
+            IUserIdentityRepository userIdentityRepository)
         {
-            _adminRepository = adminRepository;
+            _postRepository = postRepository;
             _connectionFactory = connectionFactory;
+            _userIdentityRepository = userIdentityRepository;
         }
 
         public bool DeletePost(int postId)
         {
             try
             {
-                return _adminRepository.DeletePost(postId, _connectionFactory);
+                return _postRepository.DeletePost(postId, _connectionFactory);
             }
             catch (Exception exception)
             {
@@ -35,7 +38,7 @@ namespace DEM_MVC_BL.Services
         {
             try
             {
-                return _adminRepository.BanUser(userId, _connectionFactory);
+                return _userIdentityRepository.BanUser(userId, _connectionFactory);
             }
             catch (Exception exception)
             {
@@ -48,7 +51,7 @@ namespace DEM_MVC_BL.Services
         {
             try
             {
-                return _adminRepository.UnbanUser(userId, _connectionFactory);
+                return _userIdentityRepository.UnbanUser(userId, _connectionFactory);
             }
             catch (Exception exception)
             {

@@ -290,5 +290,51 @@ namespace DEM_MVC_DAL.Repositories
                 DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
+
+        public bool BanUser(int userId, IConnectionFactory connectionFactory)
+        {
+            try
+            {
+                using (var connection = connectionFactory.Create())
+                {
+                    var validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(), new { userId });
+
+                    if (validator != 0)
+                        return false;
+
+                    connection.Execute(SqlCommandStorageService.BanUser(), new { userId });
+                    validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(), new { userId });
+                    return validator != 0;
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
+                return false;
+            }
+        }
+
+        public bool UnbanUser(int userId, IConnectionFactory connectionFactory)
+        {
+            try
+            {
+                using (var connection = connectionFactory.Create())
+                {
+                    var validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(), new { userId });
+
+                    if (validator == 0)
+                        return false;
+
+                    connection.Execute(SqlCommandStorageService.UnbanUser(), new { userId });
+                    validator = connection.ExecuteScalar<int>(SqlCommandStorageService.CheckIsUserBanned(), new { userId });
+                    return validator == 0;
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, $"{nameof(UserIdentityRepository)}. Error in function {DemLogger.GetCallerInfo()}");
+                return false;
+            }
+        }
     }
 }
