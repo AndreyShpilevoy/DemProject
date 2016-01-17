@@ -84,5 +84,26 @@ namespace DEM_MVC_DAL.Repositories
                 DemLogger.Current.Error(exception, $"{nameof(PostRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
+        public bool DeletePost(int postId, IConnectionFactory connectionFactory)
+        {
+            try
+            {
+                using (var connection = connectionFactory.Create())
+                {
+                    connection.Execute(SqlCommandStorageService.AdminDeletePost(), new { postId });
+                    var validator = connection.ExecuteScalar<int>(SqlCommandStorageService.AdminCheckPost(), new { postId });
+
+                    if (validator == 0)
+                        return true;
+
+                    return false;
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, $"{nameof(PostRepository)}. Error in function {DemLogger.GetCallerInfo()}");
+                return false;
+            }
+        }
     }
 }
