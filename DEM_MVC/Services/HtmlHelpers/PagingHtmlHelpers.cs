@@ -29,7 +29,7 @@ namespace DEM_MVC.Services.HtmlHelpers
             var mainDiv = new TagBuilder("div");
 
             var spanInfo = new TagBuilder("span");
-            spanInfo.SetInnerText(String.Format("Сообщений: {0} • Страница {1} из {2} ", model.PostsCount, model.PageNumber, model.PagesCount));
+            spanInfo.SetInnerText($"Сообщений: {model.PostsCount} • Страница {model.PageNumber} из {model.PagesCount} ");
             mainDiv.InnerHtml += spanInfo;
             var stringBuilder = new StringBuilder();
 
@@ -49,7 +49,7 @@ namespace DEM_MVC.Services.HtmlHelpers
                     {
                         var a = new TagBuilder("a");
                         a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                        a.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, i));
+                        a.Attributes.Add("href", $"/{controlName}/{actionName}?topicId={model.TopicId}&page={i}");
                         a.InnerHtml = i.ToString();
 
                         stringBuilder.Append(a);
@@ -72,7 +72,7 @@ namespace DEM_MVC.Services.HtmlHelpers
                     {
                         var a = new TagBuilder("a");
                         a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                        a.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, i));
+                        a.Attributes.Add("href", $"/{controlName}/{actionName}?topicId={model.TopicId}&page={i}");
                         a.InnerHtml = i.ToString();
 
                         stringBuilder.Append(a);
@@ -85,7 +85,8 @@ namespace DEM_MVC.Services.HtmlHelpers
 
                 var aLast = new TagBuilder("a");
                 aLast.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                aLast.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, model.PagesCount));
+                aLast.Attributes.Add("href",
+                    $"/{controlName}/{actionName}?topicId={model.TopicId}&page={model.PagesCount}");
                 aLast.InnerHtml += model.PagesCount.ToString();
                 stringBuilder.Append(aLast);
             }
@@ -93,7 +94,7 @@ namespace DEM_MVC.Services.HtmlHelpers
             {
                 var aFirst = new TagBuilder("a");
                 aFirst.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                aFirst.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, 1));
+                aFirst.Attributes.Add("href", $"/{controlName}/{actionName}?topicId={model.TopicId}&page={1}");
                 aFirst.InnerHtml += 1.ToString();
                 stringBuilder.Append(aFirst);
 
@@ -115,7 +116,7 @@ namespace DEM_MVC.Services.HtmlHelpers
                     {
                         var a = new TagBuilder("a");
                         a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                        a.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, i));
+                        a.Attributes.Add("href", $"/{controlName}/{actionName}?topicId={model.TopicId}&page={i}");
                         a.InnerHtml = i.ToString();
 
                         stringBuilder.Append(a);
@@ -126,7 +127,8 @@ namespace DEM_MVC.Services.HtmlHelpers
 
                 var aLast = new TagBuilder("a");
                 aLast.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                aLast.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, model.PagesCount));
+                aLast.Attributes.Add("href",
+                    $"/{controlName}/{actionName}?topicId={model.TopicId}&page={model.PagesCount}");
                 aLast.InnerHtml += model.PagesCount.ToString();
                 stringBuilder.Append(aLast);
             }
@@ -134,7 +136,7 @@ namespace DEM_MVC.Services.HtmlHelpers
             {
                 var aFirst = new TagBuilder("a");
                 aFirst.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                aFirst.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, 1));
+                aFirst.Attributes.Add("href", $"/{controlName}/{actionName}?topicId={model.TopicId}&page={1}");
                 aFirst.InnerHtml += 1.ToString();
                 stringBuilder.Append(aFirst);
 
@@ -156,7 +158,7 @@ namespace DEM_MVC.Services.HtmlHelpers
                     {
                         var a = new TagBuilder("a");
                         a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                        a.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, i));
+                        a.Attributes.Add("href", $"/{controlName}/{actionName}?topicId={model.TopicId}&page={i}");
                         a.InnerHtml = i.ToString();
 
                         stringBuilder.Append(a);
@@ -187,7 +189,7 @@ namespace DEM_MVC.Services.HtmlHelpers
                 {
                     var a = new TagBuilder("a");
                     a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                    a.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, i));
+                    a.Attributes.Add("href", $"/{controlName}/{actionName}?topicId={model.TopicId}&page={i}");
                     a.InnerHtml = i.ToString();
 
                     stringBuilder.Append(a);
@@ -198,7 +200,7 @@ namespace DEM_MVC.Services.HtmlHelpers
             {
                 var aFirst = new TagBuilder("a");
                 aFirst.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                aFirst.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, 1));
+                aFirst.Attributes.Add("href", $"/{controlName}/{actionName}?topicId={model.TopicId}&page={1}");
                 aFirst.InnerHtml += 1.ToString();
                 stringBuilder.Append(aFirst);
 
@@ -210,7 +212,7 @@ namespace DEM_MVC.Services.HtmlHelpers
                 {
                     var a = new TagBuilder("a");
                     a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                    a.Attributes.Add("href", String.Format("/{0}/{1}?topicId={2}&page={3}", controlName, actionName, model.TopicId, i));
+                    a.Attributes.Add("href", $"/{controlName}/{actionName}?topicId={model.TopicId}&page={i}");
                     a.InnerHtml = i.ToString();
 
                     stringBuilder.Append(a);
@@ -240,7 +242,7 @@ namespace DEM_MVC.Services.HtmlHelpers
             var stringBuilder = new StringBuilder();
 
             var spanInfo = new TagBuilder("span");
-            spanInfo.SetInnerText(String.Format("Тем: {0} • Страница {1} из {2} ", model.TopicsCount, model.PageNumber, model.PagesCount));
+            spanInfo.SetInnerText($"Тем: {model.TopicsCount} • Страница {model.PageNumber} из {model.PagesCount} ");
             mainDiv.InnerHtml += spanInfo;
 
             if (model.PagesCount <= 10)
@@ -258,7 +260,7 @@ namespace DEM_MVC.Services.HtmlHelpers
                     {
                         var a = new TagBuilder("a");
                         a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                        a.Attributes.Add("href", String.Format("/{0}/{1}?forumId={2}&page={3}", controlName, actionName, model.ForumId, i));
+                        a.Attributes.Add("href", $"/{controlName}/{actionName}?forumId={model.ForumId}&page={i}");
                         a.InnerHtml = i.ToString();
                         stringBuilder.Append(a);
                     }
@@ -279,7 +281,7 @@ namespace DEM_MVC.Services.HtmlHelpers
                     {
                         var a = new TagBuilder("a");
                         a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                        a.Attributes.Add("href", String.Format("/{0}/{1}?forumId={2}&page={3}", controlName, actionName, model.ForumId, i));
+                        a.Attributes.Add("href", $"/{controlName}/{actionName}?forumId={model.ForumId}&page={i}");
                         a.InnerHtml = i.ToString();
                         stringBuilder.Append(a);
                     }
@@ -291,7 +293,8 @@ namespace DEM_MVC.Services.HtmlHelpers
 
                 var aLast = new TagBuilder("a");
                 aLast.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                aLast.Attributes.Add("href", String.Format("/{0}/{1}?forumId={2}&page={3}", controlName, actionName, model.ForumId, model.PagesCount));
+                aLast.Attributes.Add("href",
+                    $"/{controlName}/{actionName}?forumId={model.ForumId}&page={model.PagesCount}");
                 aLast.InnerHtml += model.PagesCount.ToString();
                 stringBuilder.Append(aLast);
             }
@@ -299,7 +302,7 @@ namespace DEM_MVC.Services.HtmlHelpers
             {
                 var aFirst = new TagBuilder("a");
                 aFirst.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                aFirst.Attributes.Add("href", String.Format("/{0}/{1}?forumId={2}&page={3}", controlName, actionName, model.ForumId, 1));
+                aFirst.Attributes.Add("href", $"/{controlName}/{actionName}?forumId={model.ForumId}&page={1}");
                 aFirst.InnerHtml += 1.ToString();
                 stringBuilder.Append(aFirst);
 
@@ -320,7 +323,7 @@ namespace DEM_MVC.Services.HtmlHelpers
                     {
                         var a = new TagBuilder("a");
                         a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                        a.Attributes.Add("href", String.Format("/{0}/{1}?forumId={2}&page={3}", controlName, actionName, model.ForumId, i));
+                        a.Attributes.Add("href", $"/{controlName}/{actionName}?forumId={model.ForumId}&page={i}");
                         a.InnerHtml = i.ToString();
                         stringBuilder.Append(a);
                     }
@@ -330,7 +333,8 @@ namespace DEM_MVC.Services.HtmlHelpers
 
                 var aLast = new TagBuilder("a");
                 aLast.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                aLast.Attributes.Add("href", String.Format("/{0}/{1}?forumId={2}&page={3}", controlName, actionName, model.ForumId, model.PagesCount));
+                aLast.Attributes.Add("href",
+                    $"/{controlName}/{actionName}?forumId={model.ForumId}&page={model.PagesCount}");
                 aLast.InnerHtml += model.PagesCount.ToString();
                 stringBuilder.Append(aLast);
             }
@@ -338,7 +342,7 @@ namespace DEM_MVC.Services.HtmlHelpers
             {
                 var aFirst = new TagBuilder("a");
                 aFirst.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                aFirst.Attributes.Add("href", String.Format("/{0}/{1}?forumId={2}&page={3}", controlName, actionName, model.ForumId, 1));
+                aFirst.Attributes.Add("href", $"/{controlName}/{actionName}?forumId={model.ForumId}&page={1}");
                 aFirst.InnerHtml += 1.ToString();
                 stringBuilder.Append(aFirst);
 
@@ -359,7 +363,7 @@ namespace DEM_MVC.Services.HtmlHelpers
                     {
                         var a = new TagBuilder("a");
                         a.MergeAttributes(new RouteValueDictionary(htmlDefaultBtnAttributes));
-                        a.Attributes.Add("href", String.Format("/{0}/{1}?forumId={2}&page={3}", controlName, actionName, model.ForumId, i));
+                        a.Attributes.Add("href", $"/{controlName}/{actionName}?forumId={model.ForumId}&page={i}");
                         a.InnerHtml = i.ToString();
                         stringBuilder.Append(a);
                     }

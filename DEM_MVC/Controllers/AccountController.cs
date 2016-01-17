@@ -207,7 +207,7 @@ namespace DEM_MVC.Controllers
                 string code = await UserManager.GeneratePasswordResetTokenAsync(appMember.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = appMember.Id, code = code }, protocol: Request.Url.Scheme);
                 var mailMessage =
-                    String.Format(
+                    string.Format(
                         "Приветствую Вас, органическая форма жизни. {0} С вами говорит Автоматический Комплекс Управления программным обеспечением ресурса DeusExMachina - Botty. {0}{0} Приятно Вам сообщить, что вы, видимо, забыли свой пароль. Ха-ха!{0} Согласно принятому протоколу вежливости, я должен предложить вам ссылку для восстановления пароля. {0} Вот она <a href=\"{1}\">Ссылка</a>. {0}{0} Спасибо, что воспользовались услугами Автоматического Комплекса Управления программным обеспечением ресурса DeusExMachina - Botty. {0} Оставайтесь с нами и приятного вам общения. {0}{0} <a href=\"http://dem.org.ua\">DeusExMachina</a>",
                         "<br />", callbackUrl);
                 await UserManager.SendEmailAsync(appMember.Id, "Восстановление пароля", mailMessage).ConfigureAwait(false);
@@ -470,7 +470,7 @@ namespace DEM_MVC.Controllers
             var callbackUrl = Url.Action("ConfirmEmail", "Account",
                new { userId = userId, code = code }, protocol: Request.Url.Scheme);
             var message =
-                String.Format(
+                string.Format(
                     "Приветствую Вас, органическая форма жизни. {0} С вами говорит Автоматический Комплекс Управления программным обеспечением ресурса DeusExMachina - Botty. {0}{0} Обязан Вам сообщить, что вы, только что, зарегистрировались на сайте DeusExMachina. {0} Согласно принятому протоколу взаимодействия  в чрезвычайных ситуациях, я должен предложить вам ссылку для подтверждения EMail адреса. {0} Вот она <a href=\"{1}\">Ссылка</a>. {0}{0} Спасибо, что воспользовались услугами Автоматического Комплекса Управления программным обеспечением ресурса DeusExMachina - Botty. {0} Оставайтесь с нами и приятного вам общения. {0}{0} <a href=\"http://dem.org.ua\">DeusExMachina</a>",
                     "<br />", callbackUrl);
             await UserManager.SendEmailAsync(userId, "Подтверждение EMail'а", message).ConfigureAwait(false);
