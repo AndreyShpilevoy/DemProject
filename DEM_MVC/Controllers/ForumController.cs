@@ -16,12 +16,12 @@ namespace DEM_MVC.Controllers
         private readonly IDataLoadService _dataLoadService;
         private readonly IDataWriteService _dataWriteService;
         private readonly IPermissionsService _permissionsService;
-        private readonly IConfigHelper _configHelper;
+        private readonly IConfigModelHelper _configHelper;
 
         public ForumController(IDataLoadService dataLoadService,
             IPermissionsService permissionsService,
             IDataWriteService dataWriteService,
-            IConfigHelper configHelper)
+            IConfigModelHelper configHelper)
         {
             _dataLoadService = dataLoadService;
             _permissionsService = permissionsService;

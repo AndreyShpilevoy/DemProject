@@ -10,12 +10,12 @@ using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_BL.Services.ModelsHelpers
 {
-    public class BbCodeHelper : IBbCodeHelper
+    public class BbCodeModelHelper : IBbCodeModelHelper
     {
         public Dictionary<Regex, string> BbCodes;
         public List<BbCodeModel> BbCodeModels { get; set; }
 
-        public BbCodeHelper(IDataLoadService dataLoadService,
+        public BbCodeModelHelper(IDataLoadService dataLoadService,
             IAppCache appCache)
         {
             BbCodeModels = appCache.Get<BbCodeModel>(appCache.BbCodeModels);
@@ -78,7 +78,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(BbCodeHelper)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(BbCodeModelHelper)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
 
@@ -103,7 +103,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(BbCodeHelper)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(BbCodeModelHelper)}. Error in function {DemLogger.GetCallerInfo()}");
                 return null;
             }
         }
@@ -119,8 +119,8 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 
                 foreach (var code in noParceBbCodes)
                 {
-                    var openCodesInfo = Regex.Matches(text, string.Format(@"(\[{0}\])", code.BbCodeTag), RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
-                    var closeCodesInfo = Regex.Matches(text, string.Format(@"(\[\/{0}\])", code.BbCodeTag), RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
+                    var openCodesInfo = Regex.Matches(text, $@"(\[{code.BbCodeTag}\])", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
+                    var closeCodesInfo = Regex.Matches(text, $@"(\[\/{code.BbCodeTag}\])", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
                     IEnumerable<Match> combinedCodesInfo = openCodesInfo.OfType<Match>().Concat(closeCodesInfo.OfType<Match>()).Where(m => m.Success).OrderBy(x=>x.Index);
 
                     List<NoParseBbCodeType> identifier = new List<NoParseBbCodeType>();
@@ -128,7 +128,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 
                     foreach (var codeInfo in combinedCodesInfo)
                     {
-                        if (codeInfo.Value == string.Format("[{0}]", code.BbCodeTag) && (identifier.Count == 0))
+                        if (codeInfo.Value == $"[{code.BbCodeTag}]" && (identifier.Count == 0))
                         {
                             noParseBbCodes.Add(new NoParseBbCodeHelper()
                             {
@@ -138,11 +138,11 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                             });
                             identifier.Add(NoParseBbCodeType.Open);
                         }
-                        else if (codeInfo.Value == string.Format("[{0}]", code.BbCodeTag) && (identifier.Count > 0))
+                        else if (codeInfo.Value == $"[{code.BbCodeTag}]" && (identifier.Count > 0))
                         {
                             identifier.Add(NoParseBbCodeType.Open);
                         }
-                        else if (codeInfo.Value == string.Format("[/{0}]", code.BbCodeTag) && (identifier.Count(x => x == NoParseBbCodeType.Open) == 1))
+                        else if (codeInfo.Value == $"[/{code.BbCodeTag}]" && (identifier.Count(x => x == NoParseBbCodeType.Open) == 1))
                         {
                             noParseBbCodes.Add(new NoParseBbCodeHelper()
                             {
@@ -152,7 +152,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                             });
                             identifier.Remove(NoParseBbCodeType.Open);
                         }
-                        else if (codeInfo.Value == string.Format("[/{0}]", code.BbCodeTag) && (identifier.Count(x => x == NoParseBbCodeType.Open) > 1))
+                        else if (codeInfo.Value == $"[/{code.BbCodeTag}]" && (identifier.Count(x => x == NoParseBbCodeType.Open) > 1))
                         {
                             identifier.Remove(NoParseBbCodeType.Open);
                         }
@@ -174,7 +174,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(BbCodeHelper)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(BbCodeModelHelper)}. Error in function {DemLogger.GetCallerInfo()}");
                 return null;
             }
         }

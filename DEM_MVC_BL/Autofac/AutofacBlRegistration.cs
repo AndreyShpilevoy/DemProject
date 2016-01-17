@@ -10,11 +10,11 @@ namespace DEM_MVC_BL.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(this.GetType().Assembly)
-                .Where(x => x != typeof (BbCodeHelper) && x != typeof (ConfigHelper))
+                .Where(x => x != typeof (BbCodeModelHelper) && x != typeof (ConfigModelHelper))
                 .AsImplementedInterfaces();
 
-            builder.RegisterType<BbCodeHelper>().As<IBbCodeHelper>().SingleInstance();
-            builder.RegisterType<ConfigHelper>().As<IConfigHelper>().SingleInstance();
+            builder.RegisterType<BbCodeModelHelper>().As<IBbCodeModelHelper>().SingleInstance();
+            builder.RegisterType<ConfigModelHelper>().As<IConfigModelHelper>().SingleInstance();
         }
     }
 }
