@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
-using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Entities.ForumsViewEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_DAL.Services;
@@ -12,39 +12,39 @@ namespace DEM_MVC_DAL.Repositories
 {
     public class ForumRepository : IForumRepository
     {
-        public List<ForumEntity> GetAllForums(IConnectionFactory connectionFactory)
+        public List<ForumsViewEntity> GetAllForums(IConnectionFactory connectionFactory)
         {
 
-            List<ForumEntity> forumEntities = new List<ForumEntity>();
+            List<ForumsViewEntity> forumsViewEntities = new List<ForumsViewEntity>();
             try
             {
                 using (var connection = connectionFactory.Create())
                 {
-                    forumEntities = connection.Query<ForumEntity>(SqlCommandStorageService.GetAllForums()).ToList();
+                    forumsViewEntities = connection.Query<ForumsViewEntity>(SqlCommandStorageService.GetAllForumsView()).ToList();
                 }
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, $"{nameof(ForumRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
-            return forumEntities;
+            return forumsViewEntities;
         }
         
-        public ForumEntity GetForumInfoById(int forumId, IConnectionFactory connectionFactory)
+        public ForumsViewEntity GetForumInfoById(int forumId, IConnectionFactory connectionFactory)
         {
-            ForumEntity forumEntity = new ForumEntity();
+            ForumsViewEntity forumsViewEntity = new ForumsViewEntity();
             try
             {
                 using (var connection = connectionFactory.Create())
                 {
-                    forumEntity = connection.Query<ForumEntity>(SqlCommandStorageService.GetForumInfoById(), new { forumId }).SingleOrDefault();
+                    forumsViewEntity = connection.Query<ForumsViewEntity>(SqlCommandStorageService.GetForumViewInfoById(), new { forumId }).SingleOrDefault();
                 }
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, $"{nameof(ForumRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
-            return forumEntity;
+            return forumsViewEntity;
         }
 
         public int GetForumIdByTopicId(int topicId, IConnectionFactory connectionFactory)

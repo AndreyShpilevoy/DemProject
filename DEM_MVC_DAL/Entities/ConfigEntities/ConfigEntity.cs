@@ -1,6 +1,6 @@
 ﻿using DEM_MVC_DAL.Services;
 
-namespace DEM_MVC_DAL.Entities
+namespace DEM_MVC_DAL.Entities.ConfigEntities
 {
     public class ConfigEntity
     {

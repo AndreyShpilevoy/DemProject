@@ -68,18 +68,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autofac\AutofacDalRegistration.cs" />
-    <Compile Include="Entities\BbCodeEntities.cs" />
-    <Compile Include="Entities\ClaimIdentityEntities.cs" />
-    <Compile Include="Entities\ConfigEntities.cs" />
-    <Compile Include="Entities\ForumEntities.cs" />
-    <Compile Include="Entities\Permissions.cs" />
-    <Compile Include="Entities\UserIdentityEntities.cs" />
-    <Compile Include="Entities\GroupIdentityEntities.cs" />
-    <Compile Include="Entities\PollEntities.cs" />
-    <Compile Include="Entities\PostEntities.cs" />
-    <Compile Include="Entities\TopicEntities.cs" />
-    <Compile Include="Entities\UserEntities.cs" />
-    <Compile Include="Entities\UserLoginInfoIdentityEntities.cs" />
+    <Compile Include="Entities\BbCodeEntities\BbCodeEntity.cs" />
+    <Compile Include="Entities\ClaimIdentityEntities\ClaimIdentityEntity.cs" />
+    <Compile Include="Entities\ConfigEntities\ConfigEntity.cs" />
+    <Compile Include="Entities\ForumsViewEntities\ForumsViewEntity.cs" />
+    <Compile Include="Entities\PollOptionEntities\PollOptionEntity.cs" />
+    <Compile Include="Entities\PostEntities\NewPostEntity.cs" />
+    <Compile Include="Entities\IdentityPermissionEntities\UserPermissionEntity.cs" />
+    <Compile Include="Entities\IdentityPermissionEntities\GroupPermissionEntity.cs" />
+    <Compile Include="Entities\IdentityPermissionEntities\IdentityPermissionEntity.cs" />
+    <Compile Include="Entities\PermissionEntities\PermissionEntity.cs" />
+    <Compile Include="Entities\UserIdentityEntities\UserIdentityEntity.cs" />
+    <Compile Include="Entities\GroupIdentityEntities\GroupIdentityEntity.cs" />
+    <Compile Include="Entities\PollEntities\PollEntity.cs" />
+    <Compile Include="Entities\PostEntities\ReadPostEntity.cs" />
+    <Compile Include="Entities\TopicsViewEntities\TopicsViewEntity.cs" />
+    <Compile Include="Entities\UserForPostViewEntities\UserForPostViewEntity.cs" />
+    <Compile Include="Entities\UserLoginInfoIdentityEntities\UserLoginInfoIdentityEntity.cs" />
     <Compile Include="Interfaces\IRepositories\IConfigRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IPermissionRepository.cs" />
     <Compile Include="Interfaces\IRepositories\IUserExternalLoginsIdentityRepository.cs" />

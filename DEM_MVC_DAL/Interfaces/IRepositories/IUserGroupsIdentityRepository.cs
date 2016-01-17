@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Entities.UserIdentityEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 
 namespace DEM_MVC_DAL.Interfaces.IRepositories

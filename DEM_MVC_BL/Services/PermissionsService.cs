@@ -4,7 +4,7 @@ using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models.PermissionModels;
 using DEM_MVC_BL.Services.ModelsHelpers;
-using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Entities.IdentityPermissionEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_Infrastructure.Models;

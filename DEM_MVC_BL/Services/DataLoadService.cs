@@ -5,7 +5,14 @@ using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.ForumModels;
-using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Entities.BbCodeEntities;
+using DEM_MVC_DAL.Entities.ConfigEntities;
+using DEM_MVC_DAL.Entities.ForumsViewEntities;
+using DEM_MVC_DAL.Entities.PollEntities;
+using DEM_MVC_DAL.Entities.PollOptionEntities;
+using DEM_MVC_DAL.Entities.PostEntities;
+using DEM_MVC_DAL.Entities.TopicsViewEntities;
+using DEM_MVC_DAL.Entities.UserForPostViewEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_Infrastructure.Models;
@@ -47,8 +54,8 @@ namespace DEM_MVC_BL.Services
 
             try
             {
-                List<ForumEntity> forumEntities = _forumEntityRepository.GetAllForums(_connectionFactory);
-                var tempForumModels = Mapper.Map<List<ForumEntity>, List<ForumTableViewModel>>(forumEntities);
+                List<ForumsViewEntity> forumViewEntities = _forumEntityRepository.GetAllForums(_connectionFactory);
+                var tempForumModels = Mapper.Map<List<ForumsViewEntity>, List<ForumTableViewModel>>(forumViewEntities);
 
                 forumTableViewModels = _forumModelHelper.TransformToHierarchy(tempForumModels);
             }
@@ -65,8 +72,8 @@ namespace DEM_MVC_BL.Services
 
             try
             {
-                List<ForumEntity> forumEntities = _forumEntityRepository.GetAllForums(_connectionFactory);
-                var tempForumModels = Mapper.Map<List<ForumEntity>, List<ForumTableViewModel>>(forumEntities);
+                List<ForumsViewEntity> forumViewEntities = _forumEntityRepository.GetAllForums(_connectionFactory);
+                var tempForumModels = Mapper.Map<List<ForumsViewEntity>, List<ForumTableViewModel>>(forumViewEntities);
                 var forumTableViewModelList = _forumModelHelper.TransformToHierarchy(tempForumModels);
 
                 forumTableViewModel = _forumModelHelper.GetForumTreeById(forumTableViewModelList, forumId);
@@ -84,8 +91,8 @@ namespace DEM_MVC_BL.Services
             var forumInfoViewModel = new ForumInfoViewModel();
             try
             {
-                ForumEntity forumEntity = _forumEntityRepository.GetForumInfoById(forumId, _connectionFactory);
-                forumInfoViewModel = Mapper.Map<ForumEntity, ForumInfoViewModel>(forumEntity);
+                ForumsViewEntity forumViewEntity = _forumEntityRepository.GetForumInfoById(forumId, _connectionFactory);
+                forumInfoViewModel = Mapper.Map<ForumsViewEntity, ForumInfoViewModel>(forumViewEntity);
             }
             catch (Exception exception)
             {
@@ -100,8 +107,8 @@ namespace DEM_MVC_BL.Services
 
             try
             {
-                var topicEntities = _topicEntityRepository.GetTopicsByForumId(forumId, _connectionFactory, onPage, page);
-                topicTableViewModels = Mapper.Map<List<TopicEntity>, List<TopicTableViewModel>>(topicEntities);
+                List<TopicsViewEntity> topicViewEntities = _topicEntityRepository.GetTopicsByForumId(forumId, _connectionFactory, onPage, page);
+                topicTableViewModels = Mapper.Map<List<TopicsViewEntity>, List<TopicTableViewModel>>(topicViewEntities);
             }
             catch (Exception exception)
             {
@@ -115,8 +122,8 @@ namespace DEM_MVC_BL.Services
             var topicShowViewModel = new TopicInfoViewModel();
             try
             {
-                var topicEntity = _topicEntityRepository.GetTopicById(topicId, _connectionFactory);
-                topicShowViewModel = Mapper.Map<TopicEntity, TopicInfoViewModel>(topicEntity);
+                TopicsViewEntity topicViewEntity = _topicEntityRepository.GetTopicById(topicId, _connectionFactory);
+                topicShowViewModel = Mapper.Map<TopicsViewEntity, TopicInfoViewModel>(topicViewEntity);
             }
             catch (Exception exception)
             {
@@ -162,11 +169,11 @@ namespace DEM_MVC_BL.Services
                 var usersId = postEntities.Select(x => x.UserId).ToList();
                 usersId.AddRange(postEntities.Where(x => x.PostEditCount > 0).Select(y => y.PostEditUserId).ToList());
                 usersId = usersId.Distinct().ToList();
-                List<UserEntity> userEntities = _postEntityRepository.GetUsersForPostsByUsersId(_connectionFactory, usersId);
+                List<UserForPostViewEntity> userForPostViewEntities = _postEntityRepository.GetUsersForPostsByUsersId(_connectionFactory, usersId);
 
 
                 postTableViewModels = Mapper.Map<List<ReadPostEntity>, List<PostTableViewModel>>(postEntities);
-                userTableViewModels = Mapper.Map<List<UserEntity>,List<UserTableViewModelForPosts>> (userEntities);
+                userTableViewModels = Mapper.Map<List<UserForPostViewEntity>,List<UserTableViewModelForPosts>> (userForPostViewEntities);
 
                 #region AddUsersToPosts
 

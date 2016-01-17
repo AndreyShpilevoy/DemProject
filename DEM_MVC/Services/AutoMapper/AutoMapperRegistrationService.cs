@@ -4,7 +4,19 @@ using DEM_MVC.Services.AutoMapper.ValueResolvers;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Models.IdentityModels;
 using DEM_MVC_BL.Models.PermissionModels;
-using DEM_MVC_DAL.Entities;
+using DEM_MVC_DAL.Entities.BbCodeEntities;
+using DEM_MVC_DAL.Entities.ConfigEntities;
+using DEM_MVC_DAL.Entities.ForumsViewEntities;
+using DEM_MVC_DAL.Entities.GroupIdentityEntities;
+using DEM_MVC_DAL.Entities.IdentityPermissionEntities;
+using DEM_MVC_DAL.Entities.PermissionEntities;
+using DEM_MVC_DAL.Entities.PollEntities;
+using DEM_MVC_DAL.Entities.PollOptionEntities;
+using DEM_MVC_DAL.Entities.PostEntities;
+using DEM_MVC_DAL.Entities.TopicsViewEntities;
+using DEM_MVC_DAL.Entities.UserForPostViewEntities;
+using DEM_MVC_DAL.Entities.UserIdentityEntities;
+using DEM_MVC_DAL.Entities.UserLoginInfoIdentityEntities;
 using Microsoft.AspNet.Identity;
 
 namespace DEM_MVC.Services.AutoMapper
@@ -15,7 +27,7 @@ namespace DEM_MVC.Services.AutoMapper
         {
             Mapper.CreateMap<BbCodeEntity, BbCodeModel>().ReverseMap();
             Mapper.CreateMap<ConfigEntity, ConfigModel>().ReverseMap();
-            Mapper.CreateMap<ForumEntity, ForumTableViewModel>().ReverseMap();
+            Mapper.CreateMap<ForumsViewEntity, ForumTableViewModel>().ReverseMap();
             Mapper.CreateMap<PollEntity, PollViewModel>().ReverseMap();
             Mapper.CreateMap<PollOptionEntity, PollOptionViewModel>().ReverseMap();
             Mapper.CreateMap<GroupIdentityEntity, IdentityGroup>().ReverseMap();
@@ -30,9 +42,9 @@ namespace DEM_MVC.Services.AutoMapper
 
             Mapper.CreateMap<PostTableViewModel, ReadPostEntity>();
 
-            Mapper.CreateMap<UserEntity, UserTableViewModelForPosts>()
+            Mapper.CreateMap<UserForPostViewEntity, UserTableViewModelForPosts>()
                   .ForMember(entity => entity.UserSignature, opt => opt.ResolveUsing<UserEntityUserSignatureResolver>());
-            Mapper.CreateMap<UserTableViewModelForPosts, UserEntity>();
+            Mapper.CreateMap<UserTableViewModelForPosts, UserForPostViewEntity>();
 
             Mapper.CreateMap<UserIdentityEntity, IdentityUser>()
                   .Include<UserIdentityEntity, AppMember>()
@@ -45,17 +57,17 @@ namespace DEM_MVC.Services.AutoMapper
 
 
 
-            Mapper.CreateMap<TopicEntity, TopicTableViewModel>()
+            Mapper.CreateMap<TopicsViewEntity, TopicTableViewModel>()
                   .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<TopicEntityPagesCountResolver>());
-            Mapper.CreateMap<TopicTableViewModel, TopicEntity>();
+            Mapper.CreateMap<TopicTableViewModel, TopicsViewEntity>();
 
-            Mapper.CreateMap<TopicEntity, TopicInfoViewModel>()
+            Mapper.CreateMap<TopicsViewEntity, TopicInfoViewModel>()
                   .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<TopicEntityPagesCountResolver>());
-            Mapper.CreateMap<TopicInfoViewModel, TopicEntity>();
+            Mapper.CreateMap<TopicInfoViewModel, TopicsViewEntity>();
 
-            Mapper.CreateMap<ForumEntity, ForumInfoViewModel>()
+            Mapper.CreateMap<ForumsViewEntity, ForumInfoViewModel>()
                   .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<ForumEntityPagesCountResolver>());
-            Mapper.CreateMap<ForumInfoViewModel, ForumEntity>();
+            Mapper.CreateMap<ForumInfoViewModel, ForumsViewEntity>();
         }
     }
 }
