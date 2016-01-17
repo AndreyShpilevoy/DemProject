@@ -29,7 +29,7 @@ namespace DEM_MVC_BL.Services
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly IForumModelHelper _forumModelHelper;
-        private readonly IPollModelHelper _pollModelHelper;
+        private readonly IPollOptionModelHelper _pollModelHelper;
         private readonly IForumsViewRepository _forumEntityRepository;
         private readonly ITopicRepository _topicEntityRepository;
         private readonly IPollRepository _pollEntityRepository;
@@ -39,7 +39,7 @@ namespace DEM_MVC_BL.Services
         private readonly IConfigRepository _configEntityRepository;
 
         public DataLoadService(IForumModelHelper forumModelHelper,
-            IPollModelHelper pollModelHelper, 
+            IPollOptionModelHelper pollModelHelper, 
             IForumsViewRepository forumEntityRepository,
             ITopicRepository topicEntityRepository, 
             IPollRepository pollEntityRepository,
@@ -89,7 +89,7 @@ namespace DEM_MVC_BL.Services
                 var tempForumModels = Mapper.Map<List<ForumsViewEntity>, List<ForumTableViewModel>>(forumViewEntities);
                 var forumTableViewModelList = _forumModelHelper.TransformToHierarchy(tempForumModels);
 
-                forumTableViewModel = _forumModelHelper.GetForumTreeById(forumTableViewModelList, forumId);
+                forumTableViewModel = _forumModelHelper.GetFromHierarchyById(forumTableViewModelList, forumId);
                 forumTableViewModel.SubForums = forumTableViewModel.SubForums.OrderBy(x => x.ForumOrder).ToList();
             }
             catch (Exception exception)

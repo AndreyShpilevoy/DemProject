@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.IdentityPermissionModels;
 using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_BL.Services.ModelsHelpers
 {
-    public static class PermissionHelper
+    public class IdentityPermissionModelHelper : IIdentityPermissionModelHelper
     {
-        public static bool CalulateUserPermissionsForForumId(int forumId, List<IdentityPermissionModel> permissoionModels)
+        public bool CalulateUserPermissionsForForumId(int forumId, List<IdentityPermissionModel> permissoionModels)
         {
             var forumsId = new List<string>();
             var forumsIdForDelete = new List<string>();
@@ -16,8 +17,6 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                 forumsId = groupPermissoionModel.ForumsId.Split(',').ToList();
             }
             forumsId = forumsId.Distinct().ToList();
-
-
 
             foreach (var groupPermissoionModel in permissoionModels.Where(x => x.Type == IdentityPermissionType.GroupPermission && !x.SettingsState))
             {
@@ -28,12 +27,6 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             {
                 forumsId.Remove(forumIdForDelete);
             }
-
-
-
-
-
-
 
             var userPermission = permissoionModels.SingleOrDefault(x => x.Type == IdentityPermissionType.UserPermission);
 

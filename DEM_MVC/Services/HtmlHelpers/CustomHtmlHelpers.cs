@@ -98,7 +98,7 @@ namespace DEM_MVC.Services.HtmlHelpers
 
             #region buttons
 
-            var bbCodeHelper = ServiceLocator.Current.GetInstance<IBbCodeHelper>();
+            var bbCodeHelper = ServiceLocator.Current.GetInstance<IBbCodeModelHelper>();
             var bbCodes = bbCodeHelper.BbCodeModels;
             bbCodes = bbCodes.OrderBy(x => x.BbCodeOrder).ToList();
 

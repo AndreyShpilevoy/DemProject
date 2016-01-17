@@ -10,7 +10,7 @@ namespace DEM_MVC.Services.AutoMapper.ValueResolvers
     {
         protected override int ResolveCore(TopicsViewEntity source)
         {
-            var configHelper = ServiceLocator.Current.GetInstance<IConfigHelper>();
+            var configHelper = ServiceLocator.Current.GetInstance<IConfigModelHelper>();
             return (int)Math.Ceiling((double)source.PostsCount / configHelper.GetPostsOnPageCount());
         }
     }

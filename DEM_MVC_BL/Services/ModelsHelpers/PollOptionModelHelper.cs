@@ -5,7 +5,7 @@ using DEM_MVC_BL.Models.PollOptionModels;
 
 namespace DEM_MVC_BL.Services.ModelsHelpers
 {
-    public class PollModelHelper : IPollModelHelper
+    public class PollOptionModelHelper : IPollOptionModelHelper
     {
         public List<PollOptionViewModel> CalculatePollOptionTotalPercent(List<PollOptionViewModel> pollsOptionViewModels)
         {

@@ -7,6 +7,6 @@ namespace DEM_MVC_BL.Interfaces.IServices.IModelsHelpers
     {
         List<ForumTableViewModel> TransformToHierarchy(List<ForumTableViewModel> forumModels);
 
-        ForumTableViewModel GetForumTreeById(List<ForumTableViewModel> forumModels, int forumId);
+        ForumTableViewModel GetFromHierarchyById(List<ForumTableViewModel> forumModels, int forumId);
     }
 }

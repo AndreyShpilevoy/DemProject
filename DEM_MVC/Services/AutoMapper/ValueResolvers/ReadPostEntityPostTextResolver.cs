@@ -10,7 +10,7 @@ namespace DEM_MVC.Services.AutoMapper.ValueResolvers
     {
         protected override string ResolveCore(ReadPostEntity source)
         {
-            var bbCodeHelper = ServiceLocator.Current.GetInstance<IBbCodeHelper>();
+            var bbCodeHelper = ServiceLocator.Current.GetInstance<IBbCodeModelHelper>();
 
             return bbCodeHelper.BbCodeReplacerToHtml(source.PostText);
         }

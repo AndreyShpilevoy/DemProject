@@ -7,11 +7,11 @@ using DEM_MVC_BL.Models.ConfigModels;
 
 namespace DEM_MVC_BL.Services.ModelsHelpers
 {
-    public class ConfigHelper : IConfigHelper
+    public class ConfigModelHelper : IConfigModelHelper
     {
         public List<ConfigModel> ConfigModels;
 
-        public ConfigHelper(IDataLoadService dataLoadService,
+        public ConfigModelHelper(IDataLoadService dataLoadService,
             IAppCache appCache)
         {
             ConfigModels = appCache.Get<ConfigModel>(appCache.ConfigModels);

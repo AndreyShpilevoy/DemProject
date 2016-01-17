@@ -76,7 +76,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
         }
 
-        public ForumTableViewModel GetForumTreeById(List<ForumTableViewModel> forumModels, int forumId)
+        public ForumTableViewModel GetFromHierarchyById(List<ForumTableViewModel> forumModels, int forumId)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                 {
                     if (forum.ForumId == forumId)
                         return forum;
-                    var forumResult = GetForumTreeById(forum.SubForums, forumId);
+                    var forumResult = GetFromHierarchyById(forum.SubForums, forumId);
 
                     if (forumResult != null)
                         return forumResult;
