@@ -1,6 +1,7 @@
 ﻿using System;
+using DEM_MVC_BL.Models.PostModels;
 
-namespace DEM_MVC_BL.Models.ForumModels
+namespace DEM_MVC_BL.Models.WarningModels
 {
     public class WarningPostTableViewModel
     {

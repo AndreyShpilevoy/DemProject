@@ -1,16 +1,16 @@
 ﻿using System;
 using Microsoft.AspNet.Identity;
 
-namespace DEM_MVC_BL.Models.IdentityModels
+namespace DEM_MVC_BL.Models.IdentityUserModels
 {
-    public class IdentityUser : IUser<int>
+    public class IdentityUserModel : IUser<int>
     {
-        public IdentityUser()
+        public IdentityUserModel()
         {
             //  Id = Guid.NewGuid().ToString();
         }
 
-        public IdentityUser(string userName)
+        public IdentityUserModel(string userName)
             : this()
         {
             UserName = userName;

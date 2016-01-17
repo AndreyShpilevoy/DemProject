@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
-using DEM_MVC_BL.Models.ForumModels;
+using DEM_MVC_BL.Models.BbCodeModels;
 using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_BL.Services.ModelsHelpers

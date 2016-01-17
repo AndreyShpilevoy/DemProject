@@ -1,9 +1,17 @@
 ﻿using AutoMapper;
 using DEM_MVC.Models;
 using DEM_MVC.Services.AutoMapper.ValueResolvers;
+using DEM_MVC_BL.Models.BbCodeModels;
+using DEM_MVC_BL.Models.ConfigModels;
 using DEM_MVC_BL.Models.ForumModels;
-using DEM_MVC_BL.Models.IdentityModels;
+using DEM_MVC_BL.Models.IdentityGroupModels;
+using DEM_MVC_BL.Models.IdentityPermissionModels;
+using DEM_MVC_BL.Models.IdentityUserModels;
 using DEM_MVC_BL.Models.PermissionModels;
+using DEM_MVC_BL.Models.PollModels;
+using DEM_MVC_BL.Models.PollOptionModels;
+using DEM_MVC_BL.Models.PostModels;
+using DEM_MVC_BL.Models.TopicModels;
 using DEM_MVC_DAL.Entities.BbCodeEntities;
 using DEM_MVC_DAL.Entities.ConfigEntities;
 using DEM_MVC_DAL.Entities.ForumsViewEntities;
@@ -30,7 +38,7 @@ namespace DEM_MVC.Services.AutoMapper
             Mapper.CreateMap<ForumsViewEntity, ForumTableViewModel>().ReverseMap();
             Mapper.CreateMap<PollEntity, PollViewModel>().ReverseMap();
             Mapper.CreateMap<PollOptionEntity, PollOptionViewModel>().ReverseMap();
-            Mapper.CreateMap<GroupIdentityEntity, IdentityGroup>().ReverseMap();
+            Mapper.CreateMap<GroupIdentityEntity, IdentityGroupModel>().ReverseMap();
             Mapper.CreateMap<UserLoginInfoIdentityEntity, UserLoginInfo>().ReverseMap();
             Mapper.CreateMap<PermissionEntity, PermissionModel>().ReverseMap();
             Mapper.CreateMap<IdentityPermissionModel, IdentityPermissionEntity>().ReverseMap();
@@ -46,14 +54,14 @@ namespace DEM_MVC.Services.AutoMapper
                   .ForMember(entity => entity.UserSignature, opt => opt.ResolveUsing<UserEntityUserSignatureResolver>());
             Mapper.CreateMap<UserTableViewModelForPosts, UserForPostViewEntity>();
 
-            Mapper.CreateMap<UserIdentityEntity, IdentityUser>()
+            Mapper.CreateMap<UserIdentityEntity, IdentityUserModel>()
                   .Include<UserIdentityEntity, AppMember>()
                   .ForMember(entity => entity.UserSignature, opt => opt.ResolveUsing<UserIdentityEntityUserSignatureResolver>());
 
-            Mapper.CreateMap<IdentityUser, UserIdentityEntity>()
+            Mapper.CreateMap<IdentityUserModel, UserIdentityEntity>()
                 .Include<AppMember, UserIdentityEntity>();
 
-            Mapper.CreateMap<AppMember, IdentityUser>().ReverseMap();
+            Mapper.CreateMap<AppMember, IdentityUserModel>().ReverseMap();
 
 
 

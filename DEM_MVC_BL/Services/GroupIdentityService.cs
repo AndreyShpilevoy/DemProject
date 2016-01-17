@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices;
-using DEM_MVC_BL.Models.IdentityModels;
+using DEM_MVC_BL.Models.IdentityGroupModels;
 using DEM_MVC_DAL.Entities.GroupIdentityEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
@@ -12,7 +12,7 @@ using DEM_MVC_Infrastructure.Models;
 namespace DEM_MVC_BL.Services
 {
     public class GroupIdentityService<TGroup> : IGroupIdentityService<TGroup>
-        where TGroup : IdentityGroup
+        where TGroup : IdentityGroupModel
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly IGroupIdentityRepository _groupIdentityRepository;
@@ -49,7 +49,7 @@ namespace DEM_MVC_BL.Services
                     throw new ArgumentNullException(nameof(group));
                 }
 
-                var groupEntity = Mapper.Map<IdentityGroup, GroupIdentityEntity>(group);
+                var groupEntity = Mapper.Map<IdentityGroupModel, GroupIdentityEntity>(group);
                 _groupIdentityRepository.Insert(groupEntity, _connectionFactory);
             }
             catch (Exception exception)
@@ -70,7 +70,7 @@ namespace DEM_MVC_BL.Services
                     throw new ArgumentNullException(nameof(group));
                 }
 
-                var groupEntity = Mapper.Map<IdentityGroup, GroupIdentityEntity>(group);
+                var groupEntity = Mapper.Map<IdentityGroupModel, GroupIdentityEntity>(group);
                 _groupIdentityRepository.Update(groupEntity, _connectionFactory);
             }
             catch (Exception exception)
@@ -105,7 +105,7 @@ namespace DEM_MVC_BL.Services
             try
             {
                 var groupEntity = _groupIdentityRepository.GetGroupById(groupId, _connectionFactory);
-                TGroup result = Mapper.Map<GroupIdentityEntity, IdentityGroup>(groupEntity) as TGroup;
+                TGroup result = Mapper.Map<GroupIdentityEntity, IdentityGroupModel>(groupEntity) as TGroup;
 
                 return Task.FromResult<TGroup>(result);
             }
@@ -121,7 +121,7 @@ namespace DEM_MVC_BL.Services
             try
             {
                 var groupEntity = _groupIdentityRepository.GetGroupByName(groupName, _connectionFactory);
-                TGroup result = Mapper.Map<GroupIdentityEntity, IdentityGroup>(groupEntity) as TGroup;
+                TGroup result = Mapper.Map<GroupIdentityEntity, IdentityGroupModel>(groupEntity) as TGroup;
 
                 return Task.FromResult<TGroup>(result);
             }

@@ -5,7 +5,7 @@ using AutoMapper;
 using DEM_MVC.Models;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
-using DEM_MVC_BL.Models.ForumModels;
+using DEM_MVC_BL.Models.PostModels;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
 

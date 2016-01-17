@@ -1,4 +1,4 @@
-﻿using DEM_MVC_BL.Models.ForumModels;
+﻿using DEM_MVC_BL.Models.PostModels;
 
 namespace DEM_MVC_BL.Interfaces.IServices
 {
