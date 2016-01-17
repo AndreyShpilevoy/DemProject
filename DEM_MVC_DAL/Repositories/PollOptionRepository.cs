@@ -11,23 +11,23 @@ using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class PollRepository : IPollRepository
+    public class PollOptionRepository : IPollOptionRepository
     {
-        public List<PollEntity> GetPollsByTopicId(int topicId, IConnectionFactory connectionFactory)
+        public List<PollOptionEntity> GetPollOptionsByPollsId(List<int> pollIdList, IConnectionFactory connectionFactory)
         {
-            List<PollEntity> pollEntities = new List<PollEntity>();
+            List<PollOptionEntity> pollOptionEntities = new List<PollOptionEntity>();
             try
             {
                 using (var connection = connectionFactory.Create())
                 {
-                    pollEntities = connection.Query<PollEntity>(SqlCommandStorageService.GetPollsByTopicId(), new { topicId }).ToList();
+                    pollOptionEntities = connection.Query<PollOptionEntity>(SqlCommandStorageService.GetPollOptionsByPollsId(), new { pollIdList }).ToList();
                 }
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(PollRepository)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(PollOptionRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
-            return pollEntities;
+            return pollOptionEntities;
         }
     }
 }

@@ -4,7 +4,7 @@ using DEM_MVC_DAL.Interfaces.IFactory;
 
 namespace DEM_MVC_DAL.Interfaces.IRepositories
 {
-    public interface IForumRepository
+    public interface IForumsViewRepository
     {
         List<ForumsViewEntity> GetAllForums(IConnectionFactory connectionFactory);
 
