@@ -119,8 +119,8 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 
                 foreach (var code in noParceBbCodes)
                 {
-                    var openCodesInfo = Regex.Matches(text, String.Format(@"(\[{0}\])", code.BbCodeTag), RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
-                    var closeCodesInfo = Regex.Matches(text, String.Format(@"(\[\/{0}\])", code.BbCodeTag), RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
+                    var openCodesInfo = Regex.Matches(text, string.Format(@"(\[{0}\])", code.BbCodeTag), RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
+                    var closeCodesInfo = Regex.Matches(text, string.Format(@"(\[\/{0}\])", code.BbCodeTag), RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
                     IEnumerable<Match> combinedCodesInfo = openCodesInfo.OfType<Match>().Concat(closeCodesInfo.OfType<Match>()).Where(m => m.Success).OrderBy(x=>x.Index);
 
                     List<NoParseBbCodeType> identifier = new List<NoParseBbCodeType>();
@@ -128,7 +128,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 
                     foreach (var codeInfo in combinedCodesInfo)
                     {
-                        if (codeInfo.Value == String.Format("[{0}]", code.BbCodeTag) && (identifier.Count == 0))
+                        if (codeInfo.Value == string.Format("[{0}]", code.BbCodeTag) && (identifier.Count == 0))
                         {
                             noParseBbCodes.Add(new NoParseBbCodeHelper()
                             {
@@ -138,11 +138,11 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                             });
                             identifier.Add(NoParseBbCodeType.Open);
                         }
-                        else if (codeInfo.Value == String.Format("[{0}]", code.BbCodeTag) && (identifier.Count > 0))
+                        else if (codeInfo.Value == string.Format("[{0}]", code.BbCodeTag) && (identifier.Count > 0))
                         {
                             identifier.Add(NoParseBbCodeType.Open);
                         }
-                        else if (codeInfo.Value == String.Format("[/{0}]", code.BbCodeTag) && (identifier.Count(x => x == NoParseBbCodeType.Open) == 1))
+                        else if (codeInfo.Value == string.Format("[/{0}]", code.BbCodeTag) && (identifier.Count(x => x == NoParseBbCodeType.Open) == 1))
                         {
                             noParseBbCodes.Add(new NoParseBbCodeHelper()
                             {
@@ -152,7 +152,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                             });
                             identifier.Remove(NoParseBbCodeType.Open);
                         }
-                        else if (codeInfo.Value == String.Format("[/{0}]", code.BbCodeTag) && (identifier.Count(x => x == NoParseBbCodeType.Open) > 1))
+                        else if (codeInfo.Value == string.Format("[/{0}]", code.BbCodeTag) && (identifier.Count(x => x == NoParseBbCodeType.Open) > 1))
                         {
                             identifier.Remove(NoParseBbCodeType.Open);
                         }
