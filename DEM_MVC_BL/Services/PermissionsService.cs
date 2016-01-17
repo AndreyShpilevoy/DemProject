@@ -14,12 +14,12 @@ namespace DEM_MVC_BL.Services
     public class PermissionsService : IPermissionsService
     {
         private readonly IConnectionFactory _connectionFactory;
-        private readonly IPermissionRepository _permissionRepository;
-        private readonly IForumRepository _forumRepository;
+        private readonly IIdentityPermissionRepository _permissionRepository;
+        private readonly IForumsViewRepository _forumRepository;
 
         public PermissionsService(IConnectionFactory connectionFactory, 
-            IPermissionRepository permissionRepository, 
-            IForumRepository forumRepository)
+            IIdentityPermissionRepository permissionRepository, 
+            IForumsViewRepository forumRepository)
         {
             _connectionFactory = connectionFactory;
             _permissionRepository = permissionRepository;

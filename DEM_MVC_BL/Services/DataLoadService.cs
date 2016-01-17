@@ -24,24 +24,31 @@ namespace DEM_MVC_BL.Services
         private readonly IConnectionFactory _connectionFactory;
         private readonly IForumModelHelper _forumModelHelper;
         private readonly IPollModelHelper _pollModelHelper;
-        private readonly IForumRepository _forumEntityRepository;
+        private readonly IForumsViewRepository _forumEntityRepository;
         private readonly ITopicRepository _topicEntityRepository;
         private readonly IPollRepository _pollEntityRepository;
+        private readonly IPollOptionRepository _pollOptionEntityRepository;
         private readonly IPostRepository _postEntityRepository;
         private readonly IBbCodeRepository _bbCodeEntityRepository;
         private readonly IConfigRepository _configEntityRepository;
 
         public DataLoadService(IForumModelHelper forumModelHelper,
-            IPollModelHelper pollModelHelper, IForumRepository forumEntityRepository,
-            ITopicRepository topicEntityRepository, IPollRepository pollEntityRepository,
-            IPostRepository postEntityRepository, IBbCodeRepository bbCodeEntityRepository,
-            IConfigRepository configEntityRepository, IConnectionFactory connectionFactory)
+            IPollModelHelper pollModelHelper, 
+            IForumsViewRepository forumEntityRepository,
+            ITopicRepository topicEntityRepository, 
+            IPollRepository pollEntityRepository,
+            IPollOptionRepository pollOptionEntityRepository,
+            IPostRepository postEntityRepository, 
+            IBbCodeRepository bbCodeEntityRepository,
+            IConfigRepository configEntityRepository, 
+            IConnectionFactory connectionFactory)
         {
             _forumModelHelper = forumModelHelper;
             _pollModelHelper = pollModelHelper;
             _forumEntityRepository = forumEntityRepository;
             _topicEntityRepository = topicEntityRepository;
             _pollEntityRepository = pollEntityRepository;
+            _pollOptionEntityRepository = pollOptionEntityRepository;
             _postEntityRepository = postEntityRepository;
             _bbCodeEntityRepository = bbCodeEntityRepository;
             _configEntityRepository = configEntityRepository;
@@ -140,7 +147,7 @@ namespace DEM_MVC_BL.Services
             try
             {
                 var pollEntities = _pollEntityRepository.GetPollsByTopicId(topicId, _connectionFactory);
-                var pollOptionEntities = _pollEntityRepository.GetPollOptionsByPollsId(pollEntities.Select(x => x.PollId).ToList(), _connectionFactory);
+                var pollOptionEntities = _pollOptionEntityRepository.GetPollOptionsByPollsId(pollEntities.Select(x => x.PollId).ToList(), _connectionFactory);
 
                 pollViewModels = Mapper.Map<List<PollEntity>, List<PollViewModel>>(pollEntities);
                 pollOptionsViewModels = Mapper.Map<List<PollOptionEntity>, List<PollOptionViewModel>>(pollOptionEntities);

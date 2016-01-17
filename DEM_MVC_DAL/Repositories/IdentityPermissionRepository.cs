@@ -10,7 +10,7 @@ using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class PermissionRepository : IPermissionRepository
+    public class IdentityPermissionRepository : IIdentityPermissionRepository
     {
         public List<IdentityPermissionEntity> GetPermissionByUserId(string permissionTitle, int userId, IConnectionFactory connectionFactory)
         {
@@ -50,7 +50,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(PermissionRepository)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(IdentityPermissionRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
 
             return identityPermissionEntities;
@@ -95,7 +95,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(PermissionRepository)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(IdentityPermissionRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
 
             return identityPermissionEntities;

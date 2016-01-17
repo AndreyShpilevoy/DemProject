@@ -10,7 +10,7 @@ using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_DAL.Repositories
 {
-    public class ForumRepository : IForumRepository
+    public class ForumsViewRepository : IForumsViewRepository
     {
         public List<ForumsViewEntity> GetAllForums(IConnectionFactory connectionFactory)
         {
@@ -25,7 +25,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(ForumRepository)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(ForumsViewRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return forumsViewEntities;
         }
@@ -42,7 +42,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(ForumRepository)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(ForumsViewRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return forumsViewEntity;
         }
@@ -59,7 +59,7 @@ namespace DEM_MVC_DAL.Repositories
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(ForumRepository)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(ForumsViewRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return forumId;
         }
