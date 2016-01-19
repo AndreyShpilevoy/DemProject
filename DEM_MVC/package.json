@@ -1,0 +1,8 @@
+{
+	"version": "1.0.0",
+	"name": "DeusExMachina",
+	"private": true,
+  "devDependencies": {
+    "bower": "1.7.2"
+  }
+}
