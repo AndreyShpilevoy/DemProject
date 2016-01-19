@@ -2,7 +2,7 @@
   "name": "DeusExMachina",
   "private": true,
   "dependencies": {
-    "jQuery": "2.2.0",
+    "jquery": "2.2.0",
     "jquery-ui": "1.11.4"
   }
 }
