@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -24,6 +25,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <UseGlobalApplicationHostFile />
+    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -206,9 +208,8 @@
     <Content Include="App_Data\SQL_Scripts\Migrate_Script_From_adeusexm_phpbbex_To_DEM.sql" />
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
     <Content Include="Scripts\Custom\NewPost.js" />
-    <Content Include="wwwroot\css\Main.css" />
+    <Content Include="Scripts\css\Main.css" />
     <Content Include="wwwroot\images\Smiles\forBbCode\think.gif" />
-    <Content Include="wwwroot\css\site.min.css" />
     <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_0_464646_40x100.png" />
     <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_0_606060_40x100.png" />
     <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_0_f17c1c_40x100.png" />
@@ -223,10 +224,10 @@
     <Content Include="wwwroot\images\jquery-ui\ui-icons_f5f4f1_256x240.png" />
     <Content Include="wwwroot\images\jquery-ui\ui-icons_fbeab2_256x240.png" />
     <Content Include="wwwroot\images\jquery-ui\ui-icons_ffffff_256x240.png" />
-    <Content Include="wwwroot\css\jquery-ui\jquery-ui.css" />
-    <Content Include="wwwroot\css\jquery-ui\jquery-ui.min.css" />
-    <Content Include="wwwroot\css\jquery-ui\jquery-ui.structure.css" />
-    <Content Include="wwwroot\css\jquery-ui\jquery-ui.theme.css" />
+    <Content Include="Scripts\css\jquery-ui\jquery-ui.css" />
+    <Content Include="Scripts\css\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Scripts\css\jquery-ui\jquery-ui.structure.css" />
+    <Content Include="Scripts\css\jquery-ui\jquery-ui.theme.css" />
     <Content Include="wwwroot\images\DEM\Images\footer.png" />
     <Content Include="wwwroot\images\DEM\Images\head.png" />
     <Content Include="wwwroot\images\DEM\Images\ui-poll-5c5c5c_1x100.png" />
@@ -244,17 +245,18 @@
     <Content Include="package.json" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
-    <Content Include="wwwroot\js\Custom\bbCode.js" />
-    <Content Include="wwwroot\js\site.min.js" />
+    <Content Include="Scripts\Custom\bbCode.js" />
+    <Content Include="wwwroot\lib\jquery-ui\jquery-ui.min.js" />
+    <Content Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
     <Content Include="Scripts\Custom\adminControls.js" />
-    <Content Include="wwwroot\js\Custom\bbEditor.js" />
-    <Content Include="wwwroot\js\Custom\bbMedia.js" />
-    <Content Include="wwwroot\js\Custom\bbSpoiler.js" />
-    <Content Include="wwwroot\js\Custom\getUrlParameter.js" />
-    <Content Include="wwwroot\js\Custom\goToPosition.js" />
-    <Content Include="wwwroot\js\Custom\hoverBtnEffect.js" />
-    <Content Include="wwwroot\js\Custom\WorkWithCoocies.js" />
+    <Content Include="Scripts\Custom\bbEditor.js" />
+    <Content Include="Scripts\Custom\bbMedia.js" />
+    <Content Include="Scripts\Custom\bbSpoiler.js" />
+    <Content Include="Scripts\Custom\getUrlParameter.js" />
+    <Content Include="Scripts\Custom\goToPosition.js" />
+    <Content Include="Scripts\Custom\hoverBtnEffect.js" />
+    <Content Include="Scripts\Custom\WorkWithCoocies.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -351,6 +353,7 @@
     <Content Include="Views\Forum\ViewTopic\_CreatePost.cshtml" />
     <Content Include="Views\Forum\ViewTopic\_ShowTopicPaging.cshtml" />
     <Content Include="Views\Forum\Index\_SiteUnderCostruction.cshtml" />
+    <Content Include="tsd.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -363,6 +366,9 @@
   <ItemGroup>
     <Folder Include="Views\Administration\" />
     <Folder Include="Views\Permissions\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\TypingsForTypeScript\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DEM_MVC_BL\DEM_MVC_BL.csproj">
@@ -382,11 +388,18 @@
     <Analyzer Include="..\packages\SonarLint.1.6.0\analyzers\SonarLint.CSharp.dll" />
     <Analyzer Include="..\packages\SonarLint.1.6.0\analyzers\SonarLint.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\TypeScripts\FirstTestScript.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
