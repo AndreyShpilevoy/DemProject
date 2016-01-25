@@ -5,67 +5,76 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 
 var gulp = require("gulp"),
     tsd = require("gulp-tsd"),
-    cache = require("gulp-cache"),
-    sass = require("gulp-ruby-sass"),
+    cache = require("gulp-cache"),//-
+    sass = require("gulp-sass"),
     rimraf = require("rimraf"),
     concat = require("gulp-concat"),
     cssmin = require("gulp-cssmin"),
     uglify = require("gulp-uglify"),
-    rename = require("gulp-rename"),
+    rename = require("gulp-rename"),//-
     typescript = require("gulp-typescript"),
-    autoprefixer = require("gulp-autoprefixer");
+    autoprefixer = require("gulp-autoprefixer");//-
 
 var paths = {
     webroot: "./wwwroot/"
 };
+paths.cleanJsFiles = paths.webroot + "js/**/**.js";
+paths.cleanCssFiles = paths.webroot + "css/**/**.css";
+paths.cleanTsdFiles = paths.webroot + "TypingsForTypeScript/**/**.ts";
+paths.ts = paths.webroot + "TypeScripts/**/*.ts";
+paths.scss = paths.webroot + "scss/**/*.scss";
+paths.jsTempFolder = paths.webroot + "js/temp";
+paths.cssTempFolder = paths.webroot + "css/temp";
+paths.jsFolder = paths.webroot + "js";
+paths.cssFolder = paths.webroot + "css";
 
-gulp.task("tsd", function (callback) {
+gulp.task("clean:js", function (cb) {
+    rimraf(paths.cleanJsFiles, cb);
+});
+
+gulp.task("clean:css", function (cb) {
+    rimraf(paths.cleanCssFiles, cb);
+});
+
+gulp.task("clean:tsd", function (cb) {
+    rimraf(paths.cleanTsdFiles, cb);
+});
+
+gulp.task("clean:all", ["clean:js", "clean:css", "clean:tsd"]);
+
+gulp.task("load:tsd", function (callback) {
     tsd({
         command: "reinstall",
         config: "./tsd.json"
     }, callback);
 });
 
-gulp.task("typescript", function () {
-    return gulp.src("./wwwroot/TypeScripts/FirstTestScript.ts")
+gulp.task("procces:ts-to-js", function () {
+    return gulp.src(paths.ts)
 		.pipe(typescript({
-		    noImplicitAny: true,
-		    out: "output.js"
+		    noImplicitAny: true
 		}))
-		.pipe(gulp.dest("./wwwroot/js"));
+		.pipe(gulp.dest(paths.jsTempFolder));
 });
 
+gulp.task('procces:sass-to-css', function () {
+    return gulp.src(paths.scss)
+      .pipe(sass().on('error', sass.logError))
+      .pipe(gulp.dest(paths.cssTempFolder));
+});
 
+gulp.task("min:js", function () {
+    return gulp.src(paths.jsTempFolder + "/**/**.js")
+        .pipe(concat("dem.min.js"))
+        .pipe(uglify())
+        .pipe(gulp.dest(paths.jsFolder));
+});
 
-//paths.js = paths.webroot + "js/**/*.js";
-//paths.minJs = paths.webroot + "js/**/*.min.js";
-//paths.css = paths.webroot + "css/**/*.css";
-//paths.minCss = paths.webroot + "css/**/*.min.css";
-//paths.concatJsDest = paths.webroot + "js/site.min.js";
-//paths.concatCssDest = paths.webroot + "css/site.min.css";
+gulp.task("min:css", function () {
+    return gulp.src(paths.cssTempFolder + "/**/**.css")
+        .pipe(concat("dem.min.css"))
+        .pipe(cssmin())
+        .pipe(gulp.dest(paths.cssFolder));
+});
 
-//gulp.task("clean:js", function (cb) {
-//    rimraf(paths.concatJsDest, cb);
-//});
-
-//gulp.task("clean:css", function (cb) {
-//    rimraf(paths.concatCssDest, cb);
-//});
-
-//gulp.task("clean", ["clean:js", "clean:css"]);
-
-//gulp.task("min:js", function () {
-//    return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
-//        .pipe(concat(paths.concatJsDest))
-//        .pipe(uglify())
-//        .pipe(gulp.dest("."));
-//});
-
-//gulp.task("min:css", function () {
-//    return gulp.src([paths.css, "!" + paths.minCss])
-//        .pipe(concat(paths.concatCssDest))
-//        .pipe(cssmin())
-//        .pipe(gulp.dest("."));
-//});
-
-//gulp.task("min", ["min:js", "min:css"]);
+gulp.task("min", ["min:js", "min:css"]);
