@@ -5,7 +5,7 @@
   "devDependencies": {
     "bower": "1.7.2",
     "gulp": "3.9.0",
-    "gulp-ruby-sass": "2.0.6",
+    "gulp-sass": "2.1.1",
     "gulp-autoprefixer": "3.1.0",
     "gulp-concat": "2.6.0",
     "gulp-cssmin": "0.1.7",

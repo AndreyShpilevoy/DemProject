@@ -5,6 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -208,7 +209,8 @@
     <Content Include="App_Data\SQL_Scripts\Migrate_Script_From_adeusexm_phpbbex_To_DEM.sql" />
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
     <Content Include="Scripts\Custom\NewPost.js" />
-    <Content Include="Scripts\css\Main.css" />
+    <None Include="wwwroot\scss\Main.scss" />
+    <Content Include="wwwroot\css\dem.min.css" />
     <Content Include="wwwroot\images\Smiles\forBbCode\think.gif" />
     <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_0_464646_40x100.png" />
     <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_0_606060_40x100.png" />
@@ -224,15 +226,12 @@
     <Content Include="wwwroot\images\jquery-ui\ui-icons_f5f4f1_256x240.png" />
     <Content Include="wwwroot\images\jquery-ui\ui-icons_fbeab2_256x240.png" />
     <Content Include="wwwroot\images\jquery-ui\ui-icons_ffffff_256x240.png" />
-    <Content Include="Scripts\css\jquery-ui\jquery-ui.css" />
-    <Content Include="Scripts\css\jquery-ui\jquery-ui.min.css" />
-    <Content Include="Scripts\css\jquery-ui\jquery-ui.structure.css" />
-    <Content Include="Scripts\css\jquery-ui\jquery-ui.theme.css" />
-    <Content Include="wwwroot\images\DEM\Images\footer.png" />
-    <Content Include="wwwroot\images\DEM\Images\head.png" />
-    <Content Include="wwwroot\images\DEM\Images\ui-poll-5c5c5c_1x100.png" />
-    <Content Include="wwwroot\images\DEM\Images\ui-poll-6c6c6c_1x100.png" />
-    <Content Include="wwwroot\images\DEM\Images\ui-poll-result-f1831f_1x100.png" />
+    <None Include="wwwroot\scss\jquery-ui.scss" />
+    <Content Include="wwwroot\images\DEM\footer.png" />
+    <Content Include="wwwroot\images\DEM\head.png" />
+    <Content Include="wwwroot\images\DEM\ui-poll-5c5c5c_1x100.png" />
+    <Content Include="wwwroot\images\DEM\ui-poll-6c6c6c_1x100.png" />
+    <Content Include="wwwroot\images\DEM\ui-poll-result-f1831f_1x100.png" />
     <Content Include="ErrorPages\2000.html" />
     <Content Include="ErrorPages\400.shtml" />
     <Content Include="ErrorPages\401.shtml" />
@@ -246,6 +245,7 @@
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
     <Content Include="Scripts\Custom\bbCode.js" />
+    <Content Include="wwwroot\js\dem.min.js" />
     <Content Include="wwwroot\lib\jquery-ui\jquery-ui.min.js" />
     <Content Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
@@ -366,9 +366,6 @@
   <ItemGroup>
     <Folder Include="Views\Administration\" />
     <Folder Include="Views\Permissions\" />
-    <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\js\" />
-    <Folder Include="wwwroot\TypingsForTypeScript\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DEM_MVC_BL\DEM_MVC_BL.csproj">
