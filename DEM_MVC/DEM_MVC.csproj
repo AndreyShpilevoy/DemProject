@@ -386,7 +386,7 @@
     <Analyzer Include="..\packages\SonarLint.1.6.0\analyzers\SonarLint.dll" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="wwwroot\TypeScripts\FirstTestScript.ts" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\ScrollToPosition.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
