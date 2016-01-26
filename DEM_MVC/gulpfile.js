@@ -19,6 +19,7 @@ var paths = {
     webroot: "./wwwroot/"
 };
 paths.cleanJsFiles = paths.webroot + "js/**/**.js";
+paths.cleanJsFilesInTs = paths.webroot + "TypeScripts/**/**.js";
 paths.cleanCssFiles = paths.webroot + "css/**/**.css";
 paths.cleanTsdFiles = paths.webroot + "TypingsForTypeScript/**/**.ts";
 paths.ts = paths.webroot + "TypeScripts/**/*.ts";
@@ -27,6 +28,10 @@ paths.jsTempFolder = paths.webroot + "js/temp";
 paths.cssTempFolder = paths.webroot + "css/temp";
 paths.jsFolder = paths.webroot + "js";
 paths.cssFolder = paths.webroot + "css";
+
+gulp.task("clean:ts.js", function (cb) {
+    rimraf(paths.cleanJsFilesInTs, cb);
+});
 
 gulp.task("clean:js", function (cb) {
     rimraf(paths.cleanJsFiles, cb);
