@@ -1,4 +1,4 @@
-﻿class CoociesService {
+﻿class CookiesService {
 
     // return cookie by name or undefined
     getCookie(name: string) :string {

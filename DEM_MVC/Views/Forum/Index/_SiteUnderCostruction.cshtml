@@ -25,13 +25,13 @@
         });
     };
     document.addEventListener("DOMContentLoaded", function (event) {
-        var coociesService = new CoociesService();
+        var CookiesService = new CookiesService();
 
-        var visited = coociesService.getCookie('showedSiteUnderCostructionPopUp');
+        var visited = CookiesService.getCookie('showedSiteUnderCostructionPopUp');
         if (visited !== 'yes') {
             var optionsDictionary = new Dictionary();
             optionsDictionary.add("expires", 86400);
-            coociesService.setCookie('showedSiteUnderCostructionPopUp', 'yes', optionsDictionary);
+            CookiesService.setCookie('showedSiteUnderCostructionPopUp', 'yes', optionsDictionary);
             openSiteUnderCostructionPopUp();
         };
     });
