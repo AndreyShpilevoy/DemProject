@@ -383,7 +383,7 @@
     <Analyzer Include="..\packages\SonarLint.1.6.0\analyzers\SonarLint.dll" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="wwwroot\TypeScripts\CoociesService.ts" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\CookiesService.ts" />
     <TypeScriptCompile Include="wwwroot\TypeScripts\Collections.ts" />
     <TypeScriptCompile Include="wwwroot\TypeScripts\GetUrlParametr.ts" />
     <TypeScriptCompile Include="wwwroot\TypeScripts\ScrollPageService.ts" />
