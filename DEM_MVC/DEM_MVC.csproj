@@ -253,10 +253,7 @@
     <Content Include="Scripts\Custom\bbEditor.js" />
     <Content Include="Scripts\Custom\bbMedia.js" />
     <Content Include="Scripts\Custom\bbSpoiler.js" />
-    <Content Include="Scripts\Custom\getUrlParameter.js" />
-    <Content Include="Scripts\Custom\goToPosition.js" />
     <Content Include="Scripts\Custom\hoverBtnEffect.js" />
-    <Content Include="Scripts\Custom\WorkWithCoocies.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -386,7 +383,10 @@
     <Analyzer Include="..\packages\SonarLint.1.6.0\analyzers\SonarLint.dll" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="wwwroot\TypeScripts\ScrollToPosition.ts" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\CoociesService.ts" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\Collections.ts" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\GetUrlParametr.ts" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\ScrollPageService.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

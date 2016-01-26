@@ -63,18 +63,32 @@ gulp.task('procces:sass-to-css', function () {
       .pipe(gulp.dest(paths.cssTempFolder));
 });
 
-gulp.task("min:js", function () {
+gulp.task("concat-and-min:js", function () {
     return gulp.src(paths.jsTempFolder + "/**/**.js")
         .pipe(concat("dem.min.js"))
         .pipe(uglify())
         .pipe(gulp.dest(paths.jsFolder));
 });
 
-gulp.task("min:css", function () {
+gulp.task("concat-and-min:css", function () {
     return gulp.src(paths.cssTempFolder + "/**/**.css")
         .pipe(concat("dem.min.css"))
         .pipe(cssmin())
         .pipe(gulp.dest(paths.cssFolder));
 });
 
-gulp.task("min", ["min:js", "min:css"]);
+gulp.task("concat-and-min", ["concat-and-min:js", "concat-and-min:css"]);
+
+gulp.task("concat:js", function () {
+    return gulp.src(paths.jsTempFolder + "/**/**.js")
+        .pipe(concat("dem.min.js"))
+        .pipe(gulp.dest(paths.jsFolder));
+});
+
+gulp.task("concat:css", function () {
+    return gulp.src(paths.cssTempFolder + "/**/**.css")
+        .pipe(concat("dem.min.css"))
+        .pipe(gulp.dest(paths.cssFolder));
+});
+
+gulp.task("concat", ["concat:js", "concat:css"]);
