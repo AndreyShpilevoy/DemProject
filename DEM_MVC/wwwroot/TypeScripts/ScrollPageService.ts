@@ -45,6 +45,7 @@ window.onload = () => {
     var scrollPageToTopService = new ScrollPageService();
 
     if ($("#back-to-top").length) {
+        scrollPageToTopService.setSize();
         $(window).scroll(scrollPageToTopService.setVisibility);
         $(window).resize(scrollPageToTopService.setSize);
         $("#back-to-top").click(() => {

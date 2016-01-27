@@ -1,4 +1,4 @@
-/// <binding BeforeBuild='bild-debug' AfterBuild='bild-clean:ts.js' Clean='bild-clean:ts.js, clean:js, clean:css' />
+/// <binding BeforeBuild='bild-debug' AfterBuild='bild-clean:ts.js' Clean='bild-clean:ts.js, clean:js, clean:css, bild-reload:tsd' />
 /*
 This file in the main entry point for defining Gulp tasks and using Gulp plugins.
 Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
