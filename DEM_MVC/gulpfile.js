@@ -1,4 +1,5 @@
-﻿/*
+/// <binding BeforeBuild='bild-debug' AfterBuild='bild-clean:ts.js' Clean='bild-clean:ts.js, clean:js, clean:css' />
+/*
 This file in the main entry point for defining Gulp tasks and using Gulp plugins.
 Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 */
@@ -12,6 +13,7 @@ var gulp = require("gulp"),
     cssmin = require("gulp-cssmin"),
     uglify = require("gulp-uglify"),
     rename = require("gulp-rename"),//-
+    gulpsync = require("gulp-sync")(gulp),
     typescript = require("gulp-typescript"),
     autoprefixer = require("gulp-autoprefixer");//-
 
@@ -20,7 +22,9 @@ var paths = {
 };
 paths.cleanJsFiles = paths.webroot + "js/**/**.js";
 paths.cleanJsFilesInTs = paths.webroot + "TypeScripts/**/**.js";
+paths.cleanJsFilesInTemp = paths.webroot + "js/temp/**/**.js";
 paths.cleanCssFiles = paths.webroot + "css/**/**.css";
+paths.cleanCssFilesInTemp = paths.webroot + "css/temp/**/**.css";
 paths.cleanTsdFiles = paths.webroot + "TypingsForTypeScript/**/**.ts";
 paths.ts = paths.webroot + "TypeScripts/**/*.ts";
 paths.scss = paths.webroot + "scss/**/*.scss";
@@ -29,23 +33,26 @@ paths.cssTempFolder = paths.webroot + "css/temp";
 paths.jsFolder = paths.webroot + "js";
 paths.cssFolder = paths.webroot + "css";
 
-gulp.task("clean:ts.js", function (cb) {
-    rimraf(paths.cleanJsFilesInTs, cb);
+
+gulp.task("clean:js", function (callback) {
+    return rimraf(paths.cleanJsFiles, callback);
 });
 
-gulp.task("clean:js", function (cb) {
-    rimraf(paths.cleanJsFiles, cb);
+gulp.task("clean:temp-js", function (callback) {
+    return rimraf(paths.cleanJsFilesInTemp, callback);
 });
 
-gulp.task("clean:css", function (cb) {
-    rimraf(paths.cleanCssFiles, cb);
+gulp.task("clean:css", function (callback) {
+    rimraf(paths.cleanCssFiles, callback);
 });
 
-gulp.task("clean:tsd", function (cb) {
-    rimraf(paths.cleanTsdFiles, cb);
+gulp.task("clean:temp-css", function (callback) {
+    rimraf(paths.cleanCssFilesInTemp, callback);
 });
 
-gulp.task("clean:all", ["clean:js", "clean:css", "clean:tsd"]);
+gulp.task("clean:tsd", function (callback) {
+    rimraf(paths.cleanTsdFiles, callback);
+});
 
 gulp.task("load:tsd", function (callback) {
     tsd({
@@ -82,8 +89,6 @@ gulp.task("concat-and-min:css", function () {
         .pipe(gulp.dest(paths.cssFolder));
 });
 
-gulp.task("concat-and-min", ["concat-and-min:js", "concat-and-min:css"]);
-
 gulp.task("concat:js", function () {
     return gulp.src(paths.jsTempFolder + "/**/**.js")
         .pipe(concat("dem.min.js"))
@@ -96,4 +101,18 @@ gulp.task("concat:css", function () {
         .pipe(gulp.dest(paths.cssFolder));
 });
 
-gulp.task("concat", ["concat:js", "concat:css"]);
+gulp.task("bild-debug", gulpsync.async(
+    [["clean:js", "procces:ts-to-js", "concat:js", "clean:temp-js"],
+    ["clean:css", "procces:sass-to-css", "concat:css", "clean:temp-css"]]
+    ));
+
+gulp.task("bild-releas", gulpsync.async(
+    [["clean:js", "procces:ts-to-js", "concat-and-min:js", "clean:temp-js"],
+    ["clean:css", "procces:sass-to-css", "concat-and-min:css", "clean:temp-css"]]
+    ));
+
+gulp.task("bild-reload:tsd", gulpsync.sync(["clean:tsd", "load:tsd"]));
+
+gulp.task("bild-clean:ts.js", function (callback) {
+    rimraf(paths.cleanJsFilesInTs, callback);
+});

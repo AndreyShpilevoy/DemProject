@@ -1,4 +1,6 @@
-﻿class CookiesService {
+﻿/// <reference path="../TypingsForTypeScript/tsd.d.ts" />
+
+class CookiesService {
 
     // return cookie by name or undefined
     getCookie(name: string) :string {
