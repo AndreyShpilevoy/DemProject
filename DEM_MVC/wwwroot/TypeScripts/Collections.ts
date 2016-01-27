@@ -1,4 +1,6 @@
-﻿class Dictionary<T, TT> {
+﻿/// <reference path="../TypingsForTypeScript/tsd.d.ts" />
+
+class Dictionary<T, TT> {
     private keys: Array<T>;
     private values: Array<TT>;
 

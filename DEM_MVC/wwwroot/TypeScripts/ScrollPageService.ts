@@ -1,10 +1,10 @@
 ﻿/// <reference path="../TypingsForTypeScript/tsd.d.ts" />
 
 class ScrollPageService {
-    isVisible: boolean;
-    isTower: boolean;
+    isVisible = false;
+    isTower = false;
 
-    onScroll() {
+    setVisibility() {
         if ($(document).scrollTop() > 150) {
             if (this.isVisible) return;
             this.isVisible = true;
@@ -17,7 +17,7 @@ class ScrollPageService {
         }
     }
 
-    onResize() {
+    setSize() {
         if ($(document).width() - $("#wrap").width() > 120) {
             if (this.isTower) return;
             this.isTower = true;
@@ -40,12 +40,13 @@ class ScrollPageService {
 }
 
 
-var scrollPageToTopService = new ScrollPageService();
 
 window.onload = () => {
+    var scrollPageToTopService = new ScrollPageService();
+
     if ($("#back-to-top").length) {
-        $(window).scroll(scrollPageToTopService.onScroll);
-        $(window).resize(scrollPageToTopService.onResize);
+        $(window).scroll(scrollPageToTopService.setVisibility);
+        $(window).resize(scrollPageToTopService.setSize);
         $("#back-to-top").click(() => {
             scrollPageToTopService.goToTop();
         });
