@@ -15,7 +15,8 @@ var gulp = require("gulp"),
     rename = require("gulp-rename"),//-
     gulpsync = require("gulp-sync")(gulp),
     typescript = require("gulp-typescript"),
-    autoprefixer = require("gulp-autoprefixer");//-
+    autoprefixer = require("gulp-autoprefixer"),
+    Promise = require("es6-promise").Promise;;
 
 var paths = {
     webroot: "./wwwroot/"
@@ -69,9 +70,9 @@ gulp.task("procces:ts-to-js", function () {
 		.pipe(gulp.dest(paths.jsTempFolder));
 });
 
-gulp.task('procces:sass-to-css', function () {
+gulp.task("procces:sass-to-css", function () {
     return gulp.src(paths.scss)
-      .pipe(sass().on('error', sass.logError))
+      .pipe(sass().on("error", sass.logError))
       .pipe(gulp.dest(paths.cssTempFolder));
 });
 
@@ -84,6 +85,10 @@ gulp.task("concat-and-min:js", function () {
 
 gulp.task("concat-and-min:css", function () {
     return gulp.src(paths.cssTempFolder + "/**/**.css")
+        .pipe(autoprefixer({
+            browsers: ["> 1%", "last 2 versions"],
+            cascade: false
+        }))
         .pipe(concat("dem.min.css"))
         .pipe(cssmin())
         .pipe(gulp.dest(paths.cssFolder));
@@ -97,6 +102,10 @@ gulp.task("concat:js", function () {
 
 gulp.task("concat:css", function () {
     return gulp.src(paths.cssTempFolder + "/**/**.css")
+        .pipe(autoprefixer({
+            browsers: ["> 1%", "last 2 versions"],
+            cascade: false
+        }))
         .pipe(concat("dem.min.css"))
         .pipe(gulp.dest(paths.cssFolder));
 });
