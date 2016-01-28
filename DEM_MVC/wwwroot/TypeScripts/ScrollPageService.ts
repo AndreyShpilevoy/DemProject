@@ -38,24 +38,3 @@ class ScrollPageService {
         $("html, body").animate({ scrollTop: $(`#postId${postId}`).offset().top }, 500);
     }
 }
-
-
-
-window.onload = () => {
-    var scrollPageToTopService = new ScrollPageService();
-
-    if ($("#back-to-top").length) {
-        scrollPageToTopService.setSize();
-        $(window).scroll(scrollPageToTopService.setVisibility);
-        $(window).resize(scrollPageToTopService.setSize);
-        $("#back-to-top").click(() => {
-            scrollPageToTopService.goToTop();
-        });
-    }
-
-    var urlParametrService = new UrlParametrService();
-    var postId = urlParametrService.getParametrByName("postId");
-    if (postId) {
-        scrollPageToTopService.goToPost(postId);
-    }
-};

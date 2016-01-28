@@ -244,7 +244,6 @@
     <Content Include="package.json" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
-    <Content Include="Scripts\Custom\bbCode.js" />
     <Content Include="wwwroot\js\dem.min.js" />
     <Content Include="wwwroot\lib\jquery-ui\jquery-ui.min.js" />
     <Content Include="wwwroot\lib\jquery\dist\jquery.min.js" />
@@ -252,7 +251,6 @@
     <Content Include="Scripts\Custom\adminControls.js" />
     <Content Include="Scripts\Custom\bbEditor.js" />
     <Content Include="Scripts\Custom\bbMedia.js" />
-    <Content Include="Scripts\Custom\bbSpoiler.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -382,9 +380,11 @@
     <Analyzer Include="..\packages\SonarLint.1.6.0\analyzers\SonarLint.dll" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\TypeScripts\BbCodeService.ts" />
     <TypeScriptCompile Include="wwwroot\TypeScripts\CookiesService.ts" />
-    <TypeScriptCompile Include="wwwroot\TypeScripts\Collections.ts" />
-    <TypeScriptCompile Include="wwwroot\TypeScripts\GetUrlParametr.ts" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\CollectionsLibrary.ts" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\OnLoadRegistrationService.ts" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\UrlParametrService.ts" />
     <TypeScriptCompile Include="wwwroot\TypeScripts\ScrollPageService.ts" />
   </ItemGroup>
   <ItemGroup>
