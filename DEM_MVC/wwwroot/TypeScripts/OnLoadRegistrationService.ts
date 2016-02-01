@@ -8,6 +8,8 @@ window.onload = () => {
     var bbCodeService = new BbCodeService();
     regBbCodeSpoilerEvent(bbCodeService);
     regBbCodeCodeEvent(bbCodeService);
+
+    var bbMediaService = new BbMediaService();
 };
 
 function regScrollToTopEvent(scrollPageToTopService: ScrollPageService) {
