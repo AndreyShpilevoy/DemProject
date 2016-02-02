@@ -10,6 +10,7 @@ window.onload = () => {
     regBbCodeCodeEvent(bbCodeService);
 
     var bbMediaService = new BbMediaService();
+    processBbCodeMedia(bbMediaService);
 };
 
 function regScrollToTopEvent(scrollPageToTopService: ScrollPageService) {
@@ -37,4 +38,8 @@ function regBbCodeSpoilerEvent(bbCodeService: BbCodeService) {
 
 function regBbCodeCodeEvent(bbCodeService: BbCodeService) {
     $("dl.codebox > dt > span").on("click", bbCodeService.selectCode);
+}
+
+function processBbCodeMedia(bbMediaService: BbMediaService) {
+    bbMediaService.initBbCodeMediaService();
 }
