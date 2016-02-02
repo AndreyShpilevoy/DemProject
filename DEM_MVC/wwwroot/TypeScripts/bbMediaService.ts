@@ -1,8 +1,7 @@
 ﻿/// <reference path="../TypingsForTypeScript/tsd.d.ts" />
 
 class BbMediaService {
-
-    constructor() { this.prepareBbCodeMediaService(); }
+    cssSelector = ".bbCodeMedia:not(.bbCodeMedia-processed)";
 
     createFrame(urlLink: string, width: number, height: number) {
         return `<iframe style="vertical-align: bottom; width: ${width}px; height: ${height}px;" width="${width}" height="${height}" src="${urlLink}" webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>`;
@@ -24,52 +23,42 @@ class BbMediaService {
         return `${objectTagWithParams}${embedTagWithParams}></embed></object>`;
     }
 
-    processLink(sourceLink: string, frameWidth: number, frameHeight: number, tagType: string, itsHttps: string): string {//todo delete tagType
-        if (frameWidth === 0 && frameHeight === 0) {
-            frameWidth = 640;
-            frameHeight = 360;
-        } else {
-            if (frameWidth === 0 ) {
-                frameWidth = frameHeight * (16 / 9);
-            } else {
-                if (frameHeight === 0) {
-                    frameHeight = frameWidth * (9 / 16);
-                }
-            }
-        }
-        var httpType = itsHttps ? "https" : "http";//todo change check
+    processLink(sourceLink: string, itsHttps: boolean): string {//todo delete tagType
+        var frameWidth = 640;
+        var frameHeight = 360;
+        var httpType = true ? "https" : "http";//todo change check
         var parsedSourceLink: RegExpMatchArray;
         var resultLink: string;
         sourceLink = jQuery.trim(sourceLink);
 
         //youtube playlist
-        if ((parsedSourceLink = sourceLink.match(/^https?:\/\/(?:www\.)?youtube(?:-nocookie)?\.com\/(?:playlist\?(?:.*&)?list=|embed\/videoseries\?(?:.*&)?list=|p\/|view_play_list\?(?:.*&)?p=)([-_\w\d]+)/i))) {
+        if ((parsedSourceLink = sourceLink.match(/(?:www\.)?youtube(?:-nocookie)?\.com\/(?:playlist\?(?:.*&)?list=|embed\/videoseries\?(?:.*&)?list=|p\/|view_play_list\?(?:.*&)?p=)([-_\w\d]+)/i))) {
             return this.createFrame(`${httpType}://www.youtube.com/embed/videoseries?list=${parsedSourceLink[1]}`, frameWidth, frameHeight);
         }
 
         //youtube video
-        if ((parsedSourceLink = sourceLink.match(/^https?:\/\/(?:www\.)?(?:youtu\.be\/|(?:m\.)?youtube(?:-nocookie)?\.com\/(?:(?:watch|movie)\?(?:.*&)?v=|embed\/|v\/|attribution_link.*watch%3Fv%3D))([-_\w\d]+)(?:.*(?:[&?]start|[?&#]t)=(?:(\d+)h)?(?:(\d+)m)?(\d+)?)?/i))) {
+        if ((parsedSourceLink = sourceLink.match(/(?:www\.)?(?:youtu\.be\/|(?:m\.)?youtube(?:-nocookie)?\.com\/(?:(?:watch|movie)\?(?:.*&)?v=|embed\/|v\/|attribution_link.*watch%3Fv%3D))([-_\w\d]+)(?:.*(?:[&?]start|[?&#]t)=(?:(\d+)h)?(?:(\d+)m)?(\d+)?)?/i))) {
             var startVideoFromSecond = parsedSourceLink[2] ? parsedSourceLink[2] : 0 * 3600 + parsedSourceLink[3] ? parsedSourceLink[3] : 0 * 60 + parsedSourceLink[4] ? parsedSourceLink[4] : 0;
             return this.createFrame(`${httpType}://www.youtube.com/embed/${parsedSourceLink[1]}${startVideoFromSecond ? "?" + "start=" + startVideoFromSecond : ""}`, frameWidth, frameHeight);
         }
 
         //vimeo video
-        if ((parsedSourceLink = sourceLink.match(/^https?:\/\/(?:www\.)?(?:vimeo\.com|player\.vimeo\.com\/video)\/(\d+)/i))) {
+        if ((parsedSourceLink = sourceLink.match(/(?:www\.)?(?:vimeo\.com|player\.vimeo\.com\/video)\/(\d+)/i))) {
             return this.createFrame(`${httpType}://player.vimeo.com/video/${parsedSourceLink[1]}`, frameWidth, frameHeight);
         }
 
         //vk video
-        if ((parsedSourceLink = sourceLink.match(/^https?:\/\/(?:www\.)?(?:vk\.com|vkontakte\.ru)\/video_ext\.php\?oid=([-_\w\d]+)&id=([-_\w\d]+)&hash=([-_\w\d]+)(&sd|&hd=1|&hd=2|)/i))) {
+        if ((parsedSourceLink = sourceLink.match(/(?:vk\.com|vkontakte\.ru)\/video_ext\.php\?oid=([-_\w\d]+)&id=([-_\w\d]+)&hash=([-_\w\d]+)(&sd|&hd=1|&hd=2|)/i))) {
             return this.createFrame(`${httpType}://vk.com/video_ext.php?oid=${parsedSourceLink[1]}&id=${parsedSourceLink[2]}&hash=${parsedSourceLink[3]}${parsedSourceLink[4]}`, frameWidth, frameHeight);
         }
 
         //facebook video
-        if ((parsedSourceLink = sourceLink.match(/^https?:\/\/(?:[-.\w\d]+?\.)?facebook\.com\/(?:(?:video\/video|video|photo)\.php\?(?:.*&)?v=|video\/embed\?(?:.*&)?video_id=|v\/|[-_.\w\d]+\/videos\/)([-_\w\d]+)/i))) {
+        if ((parsedSourceLink = sourceLink.match(/(?:[-.\w\d]+?\.)?facebook\.com\/(?:(?:video\/video|video|photo)\.php\?(?:.*&)?v=|video\/embed\?(?:.*&)?video_id=|v\/|[-_.\w\d]+\/videos\/)([-_\w\d]+)/i))) {
             return this.createFrame(`${httpType}://www.facebook.com/video/embed?video_id=${parsedSourceLink[1]}`, frameWidth, frameHeight);
         }
 
         //twitch video
-        if ((parsedSourceLink = sourceLink.match(/^https?:\/\/((?:\w+\.)?twitch\.tv)\/([-_\w\d]+)(?:\/([bc])\/(\d+))?/i))) {
+        if ((parsedSourceLink = sourceLink.match(/((?:\w+\.)?twitch\.tv)\/([-_\w\d]+)(?:\/([bc])\/(\d+))?/i))) {
             if (parsedSourceLink[3]) {
                 return this.createObjectWithEmbed("http://www.twitch.tv/widgets/archive_embed_player.swf", frameWidth, frameHeight, {
                     flashvars: (parsedSourceLink[3].toLowerCase() === "b" ? "archive_id=" : "chapter_id=") + parsedSourceLink[4] + "&channel=" + parsedSourceLink[2] + "&auto_play=false"
@@ -83,31 +72,32 @@ class BbMediaService {
         }
 
         //coub video
-        if ((parsedSourceLink = sourceLink.match(/^https?:\/\/(?:www\.)?coub\.com\/(?:view|embed)\/([-_\w\d]+)/i))) {
+        if ((parsedSourceLink = sourceLink.match(/(?:www\.)?coub\.com\/(?:view|embed)\/([-_\w\d]+)/i))) {
             return this.createFrame(`${httpType}://coub.com/embed/${parsedSourceLink[1]}`, frameWidth, frameHeight);
         }
 
         //soundcloud music
-        if ((parsedSourceLink = sourceLink.match(/(^https?:\/\/soundcloud\.com\/[-_\w\d]+\/(?:sets\/)?[-_\w\d]+\/?$|https?(?::\/\/|%3A%2F%2F)api\.soundcloud\.com(?:\/|%2F)(?:tracks|playlists)(?:\/|%2F)\d+)/i))) {
-            var M = !!parsedSourceLink[0].match(/(\/|%2F)(sets|playlists)(\/|%2F)/i);
-            return this.createObjectWithEmbed(`https://player.soundcloud.com/player.swf?show_comments=true&auto_play=false&color=ff7700&url=${encodeURIComponent(decodeURIComponent(parsedSourceLink[0]))}`, (frameWidth ? frameWidth : 300), M ? 225 : 81, undefined);
+        if ((parsedSourceLink = sourceLink.match(/(api\.soundcloud\.com(?:\/|%2F)(?:tracks|playlists)(?:\/|%2F).*(?=\"\>))/i))) {
+            var itsPlayList = !!parsedSourceLink[0].match(/(\/|%2F)(playlists)(\/|%2F)/i);
+            //return this.createObjectWithEmbed(`https://player.soundcloud.com/player.swf?show_comments=true&auto_play=false&color=ff7700&url=${encodeURIComponent(decodeURIComponent(parsedSourceLink[0]))}`, (frameWidth ? frameWidth : 300), itsPlayList ? 225 : 81, undefined);
+            return this.createFrame(`${httpType}://w.soundcloud.com/player/?url=https%3A//${parsedSourceLink[0]}`, (frameWidth ? frameWidth : 300), itsPlayList ? 300 : 81);
         }
 
-        //yandex music
-        if ((parsedSourceLink = sourceLink.match(/^https?:\/\/music\.yandex\.(?:ru|by|ua|kz)\/(?:.*#!\/)?(?:track|embed|album\/[^/]+\/track)\/(\d+)/i))) {
+        //yandex music todo need check
+        if ((parsedSourceLink = sourceLink.match(/music\.yandex\.(?:ru|by|ua|kz)\/(?:.*#!\/)?(?:track|embed|album\/[^/]+\/track)\/(\d+)/i))) {
             return this.createObjectWithEmbed(`http://music.yandex.ru/embed/${parsedSourceLink[1]}/track.swf`, (frameWidth ? frameWidth : 300), 48, {
                 scale: "noscale",
                 flashvars: "bg-color=%23F2F2F2&amp;text-color=%23777777&amp;hover-text-color=%23000000"
             });
         }
 
-        //yandex video
-        if ((parsedSourceLink = sourceLink.match(/^https?:\/\/(?:video\.yandex\.(?:ru|by|ua|kz)\/iframe|(?:static|streaming)\.video\.yandex\.(?:ru|by|ua|kz)\/lite)\/([^\/"'<>]+)\/([^\/"'<>]+)/i))) {
+        //yandex video todo need check
+        if ((parsedSourceLink = sourceLink.match(/(?:video\.yandex\.(?:ru|by|ua|kz)\/iframe|(?:static|streaming)\.video\.yandex\.(?:ru|by|ua|kz)\/lite)\/([^\/"'<>]+)\/([^\/"'<>]+)/i))) {
             return this.createFrame(`${httpType}://video.yandex.ru/iframe/${parsedSourceLink[1]}/${parsedSourceLink[2]}/`, frameWidth, frameHeight);
         }
 
-        //google maps
-        if ((parsedSourceLink = sourceLink.match(/^https?:\/\/(?:www\.)?google(?:\.com)?\.\w+\/maps\/(?:place\/[^\/]+\/)?@(-?\d+\.\d+),(-?\d+\.\d+),(\d+)([zm])/i))) {
+        //google maps todo need check
+        if ((parsedSourceLink = sourceLink.match(/(?:www\.)?google(?:\.com)?\.\w+\/maps\/(?:place\/[^\/]+\/)?@(-?\d+\.\d+),(-?\d+\.\d+),(\d+)([zm])/i))) {
             resultLink = `${httpType}://maps.google.com/maps?ll=${parsedSourceLink[1]},${parsedSourceLink[2]}`;
             if (parsedSourceLink[4] === "z") {
                 resultLink += `&t=m&z=${parsedSourceLink[3]}`;
@@ -181,93 +171,33 @@ class BbMediaService {
         return undefined;
     }
 
-    prepareBbCodeMediaService() {
-        var thisClass = this;
-        var errorFunction = function (M, H, K) {
-            var imageBase64 = "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIzSURBVHjabJLPaxNBFMe/M7NJdjebxLShaGgtUhAhQSheBBGJiAje1aL48yIFKSiKV2+CCJ7Ev0Do/6AtVPTqJQFvDbVJNpXE/M5mZ3fWtysJrfjgLTuz7/PmO9+3LAgCRPH85TI9Lbx5XcF/YnL/USHw5BUlve/m5scdFoEhJEQ1fA8mkyJ/9/YIPLn3sEDfyywRh9s82KQGr/gUQiIB6DrAedlbf1KYQs7dBwUwVhZWEvFcDrF0+qZy5VUWPHuhB0oNYRicpVJQvR5UpwPljIskC4wa8XSKgAyc2j4mDdtXUhqRVLXxVA98f8AMQ3Aq8LsdeL/bCAgU1CyWScPZr8GxbZ9kWtmtTw6bmuM9XteV5w+4aQotewzwFaDC9OmkEGr+hbY/O2E9n95F+/DeCaS0ZKulIH2gWgV2d6kBgQ1bKenOoCNgGKR9hTHa8z1ASpLhRckE52TIyuHaGTheu0PuoSwMk4oJyucpT0RgIpOB0ES5uXpu5nZ0x9Gt2wXGWVkzk6HdGDfqcJrN0D2mZ+d4Mn8co4aNUb0Otz8o5n9UKmx4Y60QWq6ZJkEWxnUbzkEIeRaZQfK9gTE/J1JLixjWGxiSUW6/X9So6wKPaUCgMK41MCaIxmDNf92JjLDPrlqDWm0QuK6IJZPhXEGjW4ikdq9dL/FYbEv2uuSel8x9++IcNqJ++kw053gqJZx2+/LSXnUb0f9J2bp4qfTr/AV9uv43fy6f0vcWT5am6z8CDADQZUthDwq2GQAAAABJRU5ErkJggg==";
-            M.html("<div style=\"height: 100%; background-color: #000;\"><table style=\"width: 100%; height: 100%; border: 0; border-collapse: collapse; vertical-align: middle; text-align: center;\"><tr><td><div style=\"width: 140px; min-height: 14px; font: 10px/10px Verdana; color: #fff; display: inline-block; padding-left: 18px; border: 12px solid #333; background: #333 url(" + imageBase64 + ") no-repeat 0 center;\">" + K + "</div></td></tr></table></div><div style=\"text-align: right; height: 14px; margin-top: -14px; padding-right: 2px; font: 10px/10px Verdana; color: #555;\"></div>");
-            M.css("width", "400px").css("height", "80px");
-        };
+    createError(divContainer) {
+        var imageBase64 = "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIzSURBVHjabJLPaxNBFMe/M7NJdjebxLShaGgtUhAhQSheBBGJiAje1aL48yIFKSiKV2+CCJ7Ev0Do/6AtVPTqJQFvDbVJNpXE/M5mZ3fWtysJrfjgLTuz7/PmO9+3LAgCRPH85TI9Lbx5XcF/YnL/USHw5BUlve/m5scdFoEhJEQ1fA8mkyJ/9/YIPLn3sEDfyywRh9s82KQGr/gUQiIB6DrAedlbf1KYQs7dBwUwVhZWEvFcDrF0+qZy5VUWPHuhB0oNYRicpVJQvR5UpwPljIskC4wa8XSKgAyc2j4mDdtXUhqRVLXxVA98f8AMQ3Aq8LsdeL/bCAgU1CyWScPZr8GxbZ9kWtmtTw6bmuM9XteV5w+4aQotewzwFaDC9OmkEGr+hbY/O2E9n95F+/DeCaS0ZKulIH2gWgV2d6kBgQ1bKenOoCNgGKR9hTHa8z1ASpLhRckE52TIyuHaGTheu0PuoSwMk4oJyucpT0RgIpOB0ES5uXpu5nZ0x9Gt2wXGWVkzk6HdGDfqcJrN0D2mZ+d4Mn8co4aNUb0Otz8o5n9UKmx4Y60QWq6ZJkEWxnUbzkEIeRaZQfK9gTE/J1JLixjWGxiSUW6/X9So6wKPaUCgMK41MCaIxmDNf92JjLDPrlqDWm0QuK6IJZPhXEGjW4ikdq9dL/FYbEv2uuSel8x9++IcNqJ++kw053gqJZx2+/LSXnUb0f9J2bp4qfTr/AV9uv43fy6f0vcWT5am6z8CDADQZUthDwq2GQAAAABJRU5ErkJggg==";
+        divContainer.html("<div style=\"height: 100%; background-color: #000;\"><table style=\"width: 100%; height: 100%; border: 0; border-collapse: collapse; vertical-align: middle; text-align: center;\"><tr><td><div style=\"width: 140px; min-height: 14px; font: 10px/10px Verdana; color: #fff; display: inline-block; padding-left: 18px; border: 12px solid #333; background: #333 url(" + imageBase64 + ") no-repeat 0 center;\">Sorry, this URL is not supported</div></td></tr></table></div><div style=\"text-align: right; height: 14px; margin-top: -14px; padding-right: 2px; font: 10px/10px Verdana; color: #555;\"></div>");
+        divContainer.css("width", "400px").css("height", "80px");
+    }
 
-        var createErrorViaErrorFunction = function (I, G) {
-            errorFunction(I, G, "Sorry, this URL is not supported");
-        };
-
-        var wwwwFunction = function (K, thisClass) {
-            var N = jQuery(K);
-            if (N.hasClass("bbmedia-ready")) {
-                return;
-            }
-            var O = N.hasClass("bbmedia") ? "media" : false;
-            if (!O) {
-                return;
-            }
-            N.addClass("bbmedia-ready");
-            var H = N.attr("data-url").replace(/&amp;/ig, "&");
-            var G = N.attr("style");
-            var J: string = String(G.indexOf("width") > -1 ? N.width() : 0);
-            var Q: string = String(G.indexOf("height") > -1 ? N.height() : 0);
-            if (N.attr("data-width")) {
-                J = N.attr("data-width");
-            }
-            if (N.attr("data-height")) {
-                Q = N.attr("data-height");
-            }
-            var M = N.attr("data-args");
-            if (M && (M = String(jQuery.trim(M).replace(/[\s,]+/g, ",").match(/^(\d+)?(?:[,x](\d+))?(?:(?:^|,)(audio|video))?/i)))) {
-                if (M[1] !== undefined) {
-                    J = M[1];
-                }
-                if (M[2] !== undefined) {
-                    Q = M[2];
-                }
-                if (M[3] !== undefined && O == "media") {
-                    O = M[3];
-                }
-            }
-            var I = thisClass.processLink(H, parseInt(J), parseInt(Q), O, "https:" == document.location.protocol);
-            if (!I) {
-                createErrorViaErrorFunction(N, O);
-            } else {
-                var R = jQuery(I);
-                J = R.attr("width");
-                Q = R.attr("height");
-                N.css("width", J).css("height", Q).empty().append(R);
-            }
-        };
-        var someCss = ".bbaudio:not(.bbmedia-ready), .bbvideo:not(.bbmedia-ready), .bbmedia:not(.bbmedia-ready)";
-        var s = function (G) {
-            jQuery(someCss, G).each(function () {
-                wwwwFunction(this, thisClass);
-            });
-        };
-        s(document.body);
-        if (!("MutationObserver" in window)) {
+    processHtmlDivElement(divContainer: JQuery, thisClass: BbMediaService) {
+        if (divContainer.hasClass("bbCodeMedia-processed")) {
             return;
         }
-        var B = new MutationObserver(function (G) {
-            var H = [];
-            G.forEach(function (I) {
-                for (var J = 0; J < I.addedNodes.length; J++) {
-                    var K = I.addedNodes[J];
-                    if (!K || !(K instanceof Element) || K.parentNode === null || H.indexOf(K) !== -1) {
-                        continue;
-                    }
-                    H.push(K);
-                    if (!document.body.contains(<any>K)) {
-                        continue;
-                    }
-                    if (jQuery(K).is(someCss)) {
-                        wwwwFunction(K, thisClass);
-                    } else {
-                        s(K);
-                    }
-                }
-            });
-        });
-        B.observe(document.body, {
-            childList: true,
-            subtree: true
+        divContainer.addClass("bbCodeMedia-processed");
+        var decodedUrl = divContainer.attr("data-url").replace(/&amp;/ig, "&");
+        var I = thisClass.processLink(decodedUrl, "https:" == document.location.protocol);
+        if (!I) {
+            thisClass.createError(divContainer);
+        } else {
+            var R = jQuery(I);
+            var J = R.attr("width");
+            var Q = R.attr("height");
+            divContainer.css("width", J).css("height", Q).empty().append(R);
+        }
+    }
+
+    initBbCodeMediaService() {
+        //call wwwwFunction foreach Div, that satisfies the conditions. As params use Div element and this Class.
+        jQuery(this.cssSelector, document.body).each((index: number, element: HTMLDivElement) => {
+            this.processHtmlDivElement(jQuery(element), this);
         });
     }
 }
