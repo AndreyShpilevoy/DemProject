@@ -8,9 +8,7 @@ window.onload = () => {
     var bbCodeService = new BbCodeService();
     regBbCodeSpoilerEvent(bbCodeService);
     regBbCodeCodeEvent(bbCodeService);
-
-    var bbMediaService = new BbMediaService();
-    processBbCodeMedia(bbMediaService);
+    processBbCodeMedia(bbCodeService);
 };
 
 function regScrollToTopEvent(scrollPageToTopService: ScrollPageService) {
@@ -40,6 +38,6 @@ function regBbCodeCodeEvent(bbCodeService: BbCodeService) {
     $("dl.codebox > dt > span").on("click", bbCodeService.selectCode);
 }
 
-function processBbCodeMedia(bbMediaService: BbMediaService) {
-    bbMediaService.initBbCodeMediaService();
+function processBbCodeMedia(bbCodeService: BbCodeService) {
+    bbCodeService.processMediaBbCodes();
 }
