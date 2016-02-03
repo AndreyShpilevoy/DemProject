@@ -250,7 +250,6 @@
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
     <Content Include="Scripts\Custom\adminControls.js" />
     <Content Include="Scripts\Custom\bbEditor.js" />
-    <Content Include="Scripts\Custom\bbMedia.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
