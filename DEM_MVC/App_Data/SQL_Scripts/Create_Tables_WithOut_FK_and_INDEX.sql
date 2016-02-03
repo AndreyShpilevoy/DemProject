@@ -92,7 +92,7 @@ VALUES
 (33,	'h3',	    N'Заголовок первого уровня: [h3]Заголовок[/h3]',																					                1,	'\[h3\](.*?)\[\/h3\]',					    		'IgnoreCase/Compiled/Singleline',		N'<h3>$1</h3>',0),
 (34,	'h4',	    N'Заголовок первого уровня: [h4]Заголовок[/h4]',																			                        1,	'\[h4\](.*?)\[\/h4\]',						    	'IgnoreCase/Compiled/Singleline',		N'<h4>$1</h4>',0),
 (35,	'h5',	    N'Заголовок первого уровня: [h5]Заголовок[/h5]',																			                        1,	'\[h5\](.*?)\[\/h5\]',						    	'IgnoreCase/Compiled/Singleline',		N'<h5>$1</h5>',0),
-(36,	'media',   	N'Вставить аудио, видео, карту, панораму или другое мультимедиа: [media]http://youtube.com/url[/media]',                                   			1,	'\[media\](.*?)\[\/media\]',						'IgnoreCase/Compiled/Singleline',		N'<div class=''bbCodeMedia'' data-url=''$1'' style=''margin: 1px; display: inline-block; vertical-align: bottom;''><div style=''width: 200px; height: 40px; border: 1px solid #999; display: table-cell; text-align: center; vertical-align: middle; font: 10px/10px Verdana; color: #555; opacity: 0.5;''></div></div>',0),
+(36,	'media',   	N'Вставить аудио, видео, карту, панораму или другое мультимедиа: [media]http://youtube.com/url[/media]',                                   			1,	'\[media\](.*?)\[\/media\]',						'IgnoreCase/Compiled/Singleline',		N'<div class=''bbCodeMedia'' data-url=''$1''></div>',0),
 (37,	'new line',	N'Заменяет NewLine на <br/>',																											            0,	'(\r\n|\r|\n|\n\r)',								'IgnoreCase/Singleline',	    		N'<br/>',0);
 
 CREATE TABLE dem_bots ( 
