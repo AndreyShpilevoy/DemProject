@@ -31,7 +31,7 @@ function regScrollToPostEvent(scrollPageToTopService: ScrollPageService) {
 }
 
 function regBbCodeSpoilerEvent(bbCodeService: BbCodeService) {
-    $("dl.spoilerbox > dt").on("click", bbCodeService.changeSpoilerState);
+    bbCodeService.processSpoilerBbCodes();
 }
 
 function regBbCodeCodeEvent(bbCodeService: BbCodeService) {
