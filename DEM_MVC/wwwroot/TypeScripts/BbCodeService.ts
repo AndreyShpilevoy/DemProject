@@ -150,10 +150,10 @@ class BbCodeService {
         }
 
         //google maps
-        if ((parsedSourceLink = sourceLink.match(/(?:www\.)?google(?:\.com)?\.\w+\/maps\/(?:place\/[^\/]+\/)?@(-?\d+\.\d+),(-?\d+\.\d+),(\d+)([zm])/i))) {
+        if ((parsedSourceLink = sourceLink.match(/(?:www\.)?google(?:\.com)?\.\w+\/maps\/(?:place\/[^\/]+\/)?@(-?\d+\.\d+),(-?\d+\.\d+),(\d+|\d+.\d+)([zm])/i))) {
             resultLink = `https://maps.google.com/maps?ll=${parsedSourceLink[1]},${parsedSourceLink[2]}`;
             if (parsedSourceLink[4] === "z") {
-                resultLink += `&t=m&z=${parsedSourceLink[3]}`;
+                resultLink += `&t=m&z=${parseInt(parsedSourceLink[3])}`;
             } else {
                 var counter = 377;
                 var zoomLevel = 18;
