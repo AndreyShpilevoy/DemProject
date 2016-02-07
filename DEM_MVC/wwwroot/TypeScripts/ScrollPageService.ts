@@ -1,40 +1,78 @@
 ﻿/// <reference path="../TypingsForTypeScript/tsd.d.ts" />
 
 class ScrollPageService {
-    isVisible = false;
-    isTower = false;
+    private isVisible: boolean;
+    private isTower: boolean;
+    private backToTopCssSelector: string;
+    private postId: string;
+    private urlParametrService: UrlParametrService;
 
-    setVisibility() {
+    constructor() {
+        this.urlParametrService = new UrlParametrService();
+        this.backToTopCssSelector = "#back-to-top";
+        this.postId = "postId";
+        this.isVisible = false;
+        this.isTower = false;
+
+        this.registerScrollToTopEvent();
+    }
+
+    registerScrollToPostEvent() {
+        var postId = this.urlParametrService.getParametrByName(this.postId);
+        if (postId) {
+            this.goToPost(postId, this.postId);
+        }
+    }
+
+    private registerScrollToTopEvent() {
+        var self = this;
+        if ($(this.backToTopCssSelector).length) {
+            this.setSize(self);
+
+            $(window).scroll(() => {
+                this.setVisibility(this);
+            });
+            $(window).resize(() => {
+                this.setSize(this);
+            });
+
+            $(this.backToTopCssSelector).click(() => {
+                this.goToTop();
+            });
+        }
+    }
+
+    private setVisibility(self: ScrollPageService) {
         if ($(document).scrollTop() > 150) {
             if (this.isVisible) return;
             this.isVisible = true;
-            $("#back-to-top").stop(true, true).fadeIn();
+            $(self.backToTopCssSelector).stop(true, true).fadeIn();
         }
         else {
             if (!this.isVisible) return;
             this.isVisible = false;
-            $("#back-to-top").stop(true, true).fadeOut();
+            $(self.backToTopCssSelector).stop(true, true).fadeOut();
         }
     }
 
-    setSize() {
+    private setSize(self: ScrollPageService) {
         if ($(document).width() - $("#wrap").width() > 120) {
             if (this.isTower) return;
             this.isTower = true;
-            $("#back-to-top").addClass("tower");
+            $(self.backToTopCssSelector).addClass("tower");
         }
         else {
             if (!this.isTower) return;
             this.isTower = false;
-            $("#back-to-top").removeClass("tower");
+            $(self.backToTopCssSelector).removeClass("tower");
         }
     }
 
-    goToTop() {
+    private goToTop() {
         $("html, body").animate({ scrollTop: 0 }, 500);
     }
 
-    goToPost(postId: number) {
-        $("html, body").animate({ scrollTop: $(`#postId${postId}`).offset().top }, 500);
+    private goToPost(postId: string, postIdName: string) {
+        $("html, body").animate({ scrollTop: $(`#${postIdName}${postId}`).offset().top }, 500);
     }
 }

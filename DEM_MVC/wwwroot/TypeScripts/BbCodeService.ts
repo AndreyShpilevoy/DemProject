@@ -1,26 +1,37 @@
 ﻿/// <reference path="../TypingsForTypeScript/tsd.d.ts" />
 
 class BbCodeService {
-    spoilerCssClasProcessed = "spoilerbox-processed";
-    spoilerCssSelector = `.spoilerbox:not(.${this.spoilerCssClasProcessed})`;
+    private spoilerCssProcessedSelector: string;
+    private spoilerCssSelector: string;
+    private codeCssProcessedSelector: string;
+    private codeCssSelector: string;
+    private mediaCssProcessedSelector: string;
+    private mediaCssSelector: string;
 
-    mediaCssClasProcessed = "bbCodeMedia-processed";
-    mediaCssSelector = `.bbCodeMedia:not(.${this.mediaCssClasProcessed})`;;
+    constructor() {
+            this.spoilerCssProcessedSelector = "spoilerbox-processed";
+            this.spoilerCssSelector = `.spoilerbox:not(.${this.spoilerCssProcessedSelector})`;
+
+            this.codeCssProcessedSelector = "codebox-processed";
+            this.codeCssSelector = `.codebox:not(.${this.codeCssProcessedSelector})`;
+
+            this.mediaCssProcessedSelector = "bbCodeMedia-processed";
+            this.mediaCssSelector = `.bbCodeMedia:not(.${this.mediaCssProcessedSelector})`;
+    }
 
     processSpoilerBbCodes() {
         $(this.spoilerCssSelector, document.body).each((index: number, element: HTMLDivElement) => {
             this.registerSpoilerBbCodesEvent($(element), this);
         });
-        //$("dl.spoilerbox > dt").on("click", this.changeSpoilerState);
     }
 
-    private registerSpoilerBbCodesEvent(divContainer: JQuery, thisClass: BbCodeService) {
+    private registerSpoilerBbCodesEvent(divContainer: JQuery, self: BbCodeService) {
         //if element was processed before - return
-        if (thisClass.checkIfElementProcessedBeforeAndMarkIfNot(divContainer, this.spoilerCssClasProcessed)) {
+        if (self.checkIfElementProcessedBeforeAndMarkIfNot(divContainer, this.spoilerCssProcessedSelector)) {
             return;
         }
         $(divContainer).find(">dt").on("click", () => {
-            thisClass.changeSpoilerState(divContainer);
+            self.changeSpoilerState(divContainer);
         });
     }
 
@@ -28,11 +39,28 @@ class BbCodeService {
         $(divContainer).toggleClass("spoilerbox-on");
     }
 
-    selectCode() {
+
+    processCodeBbCodes() {
+        $(this.codeCssSelector, document.body).each((index: number, element: HTMLDivElement) => {
+            this.registerCodeBbCodesEvent($(element), this);
+        });
+    }
+
+    private registerCodeBbCodesEvent(divContainer: JQuery, self: BbCodeService) {
+        //if element was processed before - return
+        if (self.checkIfElementProcessedBeforeAndMarkIfNot(divContainer, this.codeCssProcessedSelector)) {
+            return;
+        }
+        $(divContainer).find(" > dt > span").on("click", () => {
+            self.selectCode(divContainer);
+        });
+    }
+
+    private selectCode(divContainer: JQuery) {
         if (window.getSelection) {
             var selection = window.getSelection();
             var range = document.createRange();
-            range.selectNodeContents($(this).parent().parent().find("code")[0]);
+            range.selectNodeContents($(divContainer).find("code")[0]);
             selection.removeAllRanges();
             selection.addRange(range);
             document.execCommand("copy");
@@ -40,21 +68,21 @@ class BbCodeService {
     }
 
 
-    processMediaBbCodes():void {
+    processMediaBbCodes(): void {
         //call wwwwFunction foreach Div, that satisfies the conditions. As params use Div element and this Class.
         $(this.mediaCssSelector, document.body).each((index: number, element: HTMLDivElement) => {
             this.processHtmlDivElement($(element), this);
         });
     }
 
-    private processHtmlDivElement(divContainer: JQuery, thisClass: BbCodeService): void {
+    private processHtmlDivElement(divContainer: JQuery, self: BbCodeService): void {
         //if element was processed before - return
-        if (thisClass.checkIfElementProcessedBeforeAndMarkIfNot(divContainer, this.mediaCssClasProcessed)) {
+        if (self.checkIfElementProcessedBeforeAndMarkIfNot(divContainer, this.mediaCssProcessedSelector)) {
             return;
         }
 
         var decodedUrl = divContainer.attr("data-url").replace(/&amp;/ig, "&");
-        var resultStringItem = thisClass.processLink(decodedUrl, thisClass);
+        var resultStringItem = self.processLink(decodedUrl, self);
 
         //if result is not valid - create error message
         if (!resultStringItem) {
@@ -65,7 +93,7 @@ class BbCodeService {
         }
     }
 
-    private processLink(sourceLink: string, thisClass: BbCodeService): string {
+    private processLink(sourceLink: string, self: BbCodeService): string {
         var frameWidth = 640;
         var frameHeight = 360;
         var audioPlaylistFrameHeight = 640;
@@ -143,7 +171,7 @@ class BbCodeService {
             return this.createFrame(`${resultLink}&output=embed`, frameWidth, frameHeight);
         }
 
-        return thisClass.createHtml5TagFromTheSource(sourceLink, frameWidth, frameHeight);
+        return self.createHtml5TagFromTheSource(sourceLink, frameWidth, frameHeight);
     }
 
     private createFrame(urlLink: string, width: number, height: number) {
@@ -154,33 +182,30 @@ class BbCodeService {
         var parsedSourceLink: RegExpMatchArray;
         var sourceLinkMatchAudioFormats = sourceLink.match(/\.(ogg|oga|opus|webma|mp3|aac|m4a|wav)(?:\s*;|$)/i);
         var sourceLinkMatchVideoFormats = sourceLink.match(/\.(ogv|webm|webmv|mp4|m4v)(?:\s*;|$)/i);
-        var audioOrVideoFormats: {};
+        var audioOrVideoFormats = new Dictionary<string, string>();
         if ((sourceLinkMatchAudioFormats || sourceLinkMatchVideoFormats) && !(sourceLinkMatchAudioFormats && sourceLinkMatchVideoFormats)) {
             var resourceType: string;
             if (sourceLinkMatchAudioFormats) {
                 resourceType = "audio";
-                audioOrVideoFormats = {
-                    aac: "aac",
-                    m4a: "mp4",
-                    mp3: "mpeg",
-                    mp4: "mp4",
-                    oga: "ogg",
-                    ogg: "ogg",
-                    opus: "opus",
-                    wav: "wav",
-                    webm: "webm",
-                    webma: "webm"
-                }
+                audioOrVideoFormats.add("aac", "aac");
+                audioOrVideoFormats.add("m4a", "mp4");
+                audioOrVideoFormats.add("mp3", "mpeg");
+                audioOrVideoFormats.add("mp4", "mp4");
+                audioOrVideoFormats.add("oga", "ogg");
+                audioOrVideoFormats.add("ogg", "ogg");
+                audioOrVideoFormats.add("opus", "opus");
+                audioOrVideoFormats.add("wav", "wav");
+                audioOrVideoFormats.add("webm", "webm");
+                audioOrVideoFormats.add("webma", "webm");
+
             } else if (sourceLinkMatchVideoFormats) {
                 resourceType = "video";
-                audioOrVideoFormats = {
-                    m4v: "mp4",
-                    mp4: "mp4",
-                    ogg: "ogg",
-                    ogv: "ogg",
-                    webm: "webm",
-                    webmv: "webm"
-                }
+                audioOrVideoFormats.add("m4v", "mp4");
+                audioOrVideoFormats.add("mp4", "mp4");
+                audioOrVideoFormats.add("ogg", "ogg");
+                audioOrVideoFormats.add("ogv", "ogg");
+                audioOrVideoFormats.add("webm", "webm");
+                audioOrVideoFormats.add("webmv", "webm");
             } else {
                 return undefined;
             }
@@ -192,11 +217,11 @@ class BbCodeService {
             $.each(sourceLinkCollection, (index, link) => {
                 if ((parsedSourceLink = link.match(/^(?:https?:\/\/)?[^:"']*\.(ogg|oga|ogv|opus|webm|webma|webmv|mp3|aac|mp4|m4a|m4v|wav)$/i))) {
                     var fileFormat = parsedSourceLink[1];
-                    if (audioOrVideoFormats[fileFormat] === undefined) {
+                    if (!audioOrVideoFormats.getValueByKey(fileFormat)) {
                         sourceTag = "";
                         return false;
                     }
-                    var type = resourceType + "/" + audioOrVideoFormats[fileFormat];
+                    var type = resourceType + "/" + audioOrVideoFormats.getValueByKey(fileFormat);
                     sourceTag += `<source src="${link}" type="${type}">`;
                     aTag += `${aTag ? ", " : ""}<a href="${link}">${parsedSourceLink[1].toUpperCase()}</a>`;
                 } else {

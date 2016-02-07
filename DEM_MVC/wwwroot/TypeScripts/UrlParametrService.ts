@@ -11,14 +11,14 @@ class UrlParametrService {
         this.urlVariablesArray = this.pageUrl.split("&");
     }
 
-    getParametrByName(parameterName: string) :number {
+    getParametrByName(parameterName: string) :string {
         this.searchingParamName = parameterName;
 
         for (var i = 0; i < this.urlVariablesArray.length; i++) {
             this.nameValueParamArray = this.urlVariablesArray[i].split("=");
 
             if (this.nameValueParamArray[0] === this.searchingParamName) {
-                return this.nameValueParamArray[1] === undefined ? 0 : parseInt(this.nameValueParamArray[1]);
+                return this.nameValueParamArray[1] === undefined ? null : this.nameValueParamArray[1];
             }
         }
     }
