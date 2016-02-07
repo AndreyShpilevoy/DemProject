@@ -1,0 +1,9 @@
+{
+  "name": "DeusExMachina",
+  "private": true,
+  "dependencies": {
+    "jquery": "2.2.0",
+    "jquery-ui": "1.11.4",
+    "jquery-validation": "1.14.0"
+  }
+}

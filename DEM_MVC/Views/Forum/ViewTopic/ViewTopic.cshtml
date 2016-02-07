@@ -1,5 +1,5 @@
 ﻿@model DEM_MVC_BL.Models.TopicModels.TopicInfoViewModel
-@using System.Web.Optimization
+
 
 @{
     ViewBag.Title = "ViewForum";
@@ -9,16 +9,8 @@
 
 <div class="topic-actions">
     <div class="topic-actions-buttons">
-        @*@if (User.Identity.GetUserId<int>() != 0 && false)
-            
-        {
-            <button class="AddNewPost ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">New Post</button>
-        }*@
+
     </div>
-    @*@{
-        var navigationBtnClasses = "ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only nonDecoration demNavigationBtn";
-        var currentPageNavigationBtnClasses = "ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only nonDecoration demNavigationSpan ui-state-active";
-    }*@
     <div class="topic-actions-paging">
         @Html.Partial("ViewTopic/_ShowTopicPaging", Model)
     </div>
@@ -49,7 +41,7 @@
     <div class="clear"></div>
 </div>
 
-@section Scripts {
+@*@section Scripts {
     @Scripts.Render("~/bundles/adminControls")
     @Scripts.Render("~/bundles/newPostControls")
-}
+}*@

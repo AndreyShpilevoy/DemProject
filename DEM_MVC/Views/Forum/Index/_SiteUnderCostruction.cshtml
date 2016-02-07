@@ -25,9 +25,13 @@
         });
     };
     document.addEventListener("DOMContentLoaded", function (event) {
-        var visited = getCookie('showedSiteUnderCostructionPopUp');
+        var cookiesService = new CookiesService();
+
+        var visited = cookiesService.getCookie('showedSiteUnderCostructionPopUp');
         if (visited !== 'yes') {
-            setCookie('showedSiteUnderCostructionPopUp', 'yes', { expires: 86400 });
+            var optionsDictionary = new Dictionary();
+            optionsDictionary.add("expires", 86400);
+            cookiesService.setCookie('showedSiteUnderCostructionPopUp', 'yes', optionsDictionary);
             openSiteUnderCostructionPopUp();
         };
     });

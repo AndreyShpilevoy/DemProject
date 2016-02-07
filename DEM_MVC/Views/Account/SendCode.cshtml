@@ -1,5 +1,5 @@
 ﻿@model DEM_MVC.Models.AccountViewModels.SendCodeViewModel
-@using System.Web.Optimization
+
 @{
     ViewBag.Title = "Send";
 }
@@ -15,11 +15,11 @@
         <div class="col-md-8">
             Select Two-Factor Authentication Provider:
             @Html.DropDownListFor(model => model.SelectedProvider, Model.Providers)
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" class="ui-button ui-state-default ui-button-text-only ui-button-external-logins" />
         </div>
     </div>
 }
 
-@section Scripts {
+@*@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@
