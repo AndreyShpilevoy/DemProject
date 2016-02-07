@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_Infrastructure.Models;
@@ -24,7 +25,7 @@ namespace DEM_MVC.Controllers
 
             if (currentUserId == 0)
                 return new JsonResult { Data = new { success = false, responseText = "You can't delete post - You not authorized. Please, contact with administrator." } };
-            
+
             if (!_permissionsService.UserHasPermissionByForumId(currentUserId, 8, CommonConstants.ShowAdminControls))//todo change check to Admin group, not to permisson
                 return new JsonResult { Data = new { success = false, responseText = "You can't delete post - you have not permisson. Please, contact with administrator." } };
 
@@ -69,6 +70,25 @@ namespace DEM_MVC.Controllers
                 return new JsonResult { Data = new { success = true, responseText = "User wasn unbanned." } };
             }
             return new JsonResult { Data = new { success = false, responseText = "User wasn't unbanned. Please, contact with administrator." } };
+        }
+
+
+        [HttpGet]
+        public ActionResult RestartApp()//todo create autorize for this method. Should be deleted in future
+        {
+            var currentUserId = User.Identity.GetUserId<int>();
+            if (currentUserId == 0)
+                return new JsonResult
+            {
+                Data = new { success = false, responseText = "You can't reload application - You not authorized. Please, contact with administrator." }
+            };
+
+            if (!_permissionsService.UserHasPermissionByForumId(currentUserId, 8, CommonConstants.ShowAdminControls))
+                return new JsonResult { Data = new { success = false, responseText = "You can't reload application - you have not permisson. Please, contact with administrator." } };
+
+            DemLogger.Current.Info($"App was restarted via AdministrationController/RestartApp at {DateTime.UtcNow}");
+            HttpRuntime.UnloadAppDomain();
+            return null;
         }
 
         protected override void OnException(ExceptionContext filterContext)
