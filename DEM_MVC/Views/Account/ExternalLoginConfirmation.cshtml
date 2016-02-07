@@ -1,5 +1,5 @@
 ﻿@model DEM_MVC.Models.AccountViewModels.ExternalLoginConfirmationViewModel
-@using System.Web.Optimization
+
 @{
     ViewBag.Title = "Register";
 }
@@ -32,11 +32,11 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Register" />
+            <input type="submit" class="ui-button ui-state-default ui-button-text-only ui-button-external-logins"  value="Register" />
         </div>
     </div>
 }
 
-@section Scripts {
+@*@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@
