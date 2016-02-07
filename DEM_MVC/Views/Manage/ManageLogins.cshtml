@@ -38,7 +38,7 @@
                                         <div>
                                             @Html.Hidden("loginProvider", account.LoginProvider)
                                             @Html.Hidden("providerKey", account.ProviderKey)
-                                            <input type="submit" value="Remove" title="Remove this @account.LoginProvider login from your account" />
+                                            <input  class="ui-button ui-state-default ui-button-text-only ui-button-external-logins" type="submit" value="Remove" title="Remove this @account.LoginProvider login from your account" />
                                         </div>
                                     }
                                 }
@@ -61,7 +61,7 @@
                     <p>
                         @foreach (AuthenticationDescription p in Model.OtherLogins)
                         {
-                            <button type="submit" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                            <button  class="ui-button ui-state-default ui-button-text-only ui-button-external-logins" type="submit" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
                         }
                     </p>
                 </div>

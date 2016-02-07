@@ -208,7 +208,8 @@
     <Content Include="App_Data\SQL_Scripts\Create_TestUsersTables.sql" />
     <Content Include="App_Data\SQL_Scripts\Migrate_Script_From_adeusexm_phpbbex_To_DEM.sql" />
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
-    <None Include="wwwroot\scss\main.scss" />
+    <None Include="wwwroot\scss\bootstrap.scss" />
+    <None Include="wwwroot\scss\main-dem.scss" />
     <Content Include="wwwroot\css\dem.min.css" />
     <Content Include="wwwroot\images\Smiles\forBbCode\think.gif" />
     <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_0_464646_40x100.png" />
@@ -245,6 +246,7 @@
     <Content Include="bower.json" />
     <Content Include="wwwroot\js\dem.min.js" />
     <Content Include="wwwroot\lib\jquery-ui\jquery-ui.min.js" />
+    <Content Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
     <Content Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
     <TypeScriptCompile Include="wwwroot\TypeScripts\bbEditor.ts" />
