@@ -4,7 +4,7 @@ class CookiesService {
 
     // return cookie by name or undefined
     getCookie(name: string) :string {
-        name = name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1');
+        name = name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1");
 
         var matches = document.cookie.match(new RegExp(
             `(?:^|; )${name}=([^;]*)`

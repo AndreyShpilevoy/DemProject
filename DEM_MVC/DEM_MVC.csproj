@@ -208,8 +208,7 @@
     <Content Include="App_Data\SQL_Scripts\Create_TestUsersTables.sql" />
     <Content Include="App_Data\SQL_Scripts\Migrate_Script_From_adeusexm_phpbbex_To_DEM.sql" />
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
-    <Content Include="Scripts\Custom\NewPost.js" />
-    <None Include="wwwroot\scss\Main.scss" />
+    <None Include="wwwroot\scss\main.scss" />
     <Content Include="wwwroot\css\dem.min.css" />
     <Content Include="wwwroot\images\Smiles\forBbCode\think.gif" />
     <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_0_464646_40x100.png" />
@@ -248,8 +247,7 @@
     <Content Include="wwwroot\lib\jquery-ui\jquery-ui.min.js" />
     <Content Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
-    <Content Include="Scripts\Custom\adminControls.js" />
-    <Content Include="Scripts\Custom\bbEditor.js" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\bbEditor.ts" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -379,10 +377,13 @@
     <Analyzer Include="..\packages\SonarLint.1.6.0\analyzers\SonarLint.dll" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\TypeScripts\AdminControlService.ts" />
     <TypeScriptCompile Include="wwwroot\TypeScripts\BbCodeService.ts" />
     <TypeScriptCompile Include="wwwroot\TypeScripts\CookiesService.ts" />
     <TypeScriptCompile Include="wwwroot\TypeScripts\CollectionsLibrary.ts" />
-    <TypeScriptCompile Include="wwwroot\TypeScripts\OnLoadRegistrationService.ts" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\OnDocumentReady.ts" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\PermissionService.ts" />
+    <TypeScriptCompile Include="wwwroot\TypeScripts\PostService.ts" />
     <TypeScriptCompile Include="wwwroot\TypeScripts\UrlParametrService.ts" />
     <TypeScriptCompile Include="wwwroot\TypeScripts\ScrollPageService.ts" />
   </ItemGroup>

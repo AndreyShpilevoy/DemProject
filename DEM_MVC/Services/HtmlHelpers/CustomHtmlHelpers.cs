@@ -110,7 +110,7 @@ namespace DEM_MVC.Services.HtmlHelpers
                 buttonBuilder.Attributes.Add("id", "bbCodeId_" + bbCode.BbCodeTag);
                 buttonBuilder.InnerHtml = bbCode.BbCodeTag;
                 buttonBuilder.MergeAttribute("onClick", string.Format("doAddTags('[{0}]','[/{0}]','" + textarea.Attributes.SingleOrDefault(x => x.Key == "id").Value + "')", bbCode.BbCodeTag));
-                buttonBuilder.AddCssClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only nonDecoration demNavigationBtn");
+                buttonBuilder.AddCssClass("demNavigationBtn nonDecoration ui-button ui-state-default ui-button-text-only");
 
                 stringBuilder.Append(buttonBuilder);
             }
