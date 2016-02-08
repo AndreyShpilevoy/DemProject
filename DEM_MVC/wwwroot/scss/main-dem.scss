@@ -392,6 +392,7 @@ dl {
             overflow: auto;
             padding-top: 5px;
             white-space: normal;
+            background-color: transparent;
         }
 
         > dt {
@@ -507,7 +508,7 @@ dl {
         bottom: 0;
         height: auto;
         margin: 0;
-        padding: 15px;
+        padding: 30px;
     }
 
     &.on-left {
