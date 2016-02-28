@@ -14,9 +14,9 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace Unit_Tests.BaseTest
 {
-    public class UnitTestBase
+    public abstract class UnitTestBase
     {
-        public UnitTestBase()
+        protected UnitTestBase()
         {
             #region Autofac
 

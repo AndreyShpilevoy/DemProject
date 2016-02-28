@@ -4,7 +4,7 @@ using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_Infrastructure.Models;
 
-namespace DEM_MVC_BL.Services
+namespace DEM_MVC_BL.Services.Administration
 {
     public class AdminService : IAdminService
     {

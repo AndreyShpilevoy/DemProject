@@ -4,6 +4,7 @@ using System.Linq;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.ConfigModels;
+using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_BL.Services.ModelsHelpers
 {
@@ -14,11 +15,11 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
         public ConfigModelHelper(IDataLoadService dataLoadService,
             IAppCache appCache)
         {
-            ConfigModels = appCache.Get<ConfigModel>(appCache.ConfigModels);
+            ConfigModels = appCache.Get<ConfigModel>(CommonConstants.ConfigModels);
             if (ConfigModels == null)
             {
                 ConfigModels = dataLoadService.GetAllConfigModels();
-                appCache.Add(ConfigModels, appCache.ConfigModels);
+                appCache.Add(ConfigModels, CommonConstants.ConfigModels);
             }
         }
 
