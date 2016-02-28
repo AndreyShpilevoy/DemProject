@@ -12,27 +12,52 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 {
     public class BbCodeModelHelper : IBbCodeModelHelper
     {
+        private readonly IDataLoadService _dataLoadService;
+        private readonly IAppCache _appCache;
+
         private Dictionary<Regex, string> _bbCodes;
-        public List<BbCodeModel> BbCodeModels { get; set; }
+        private List<BbCodeModel> _bbCodeModels;
+        public Dictionary<Regex, string> BbCodes
+        {
+            get
+            {
+                _bbCodes = _appCache.Get<Regex, string>(CommonConstants.BbCodes);
+                if (_bbCodes != null)
+                    return _bbCodes;
+                _bbCodes = FillTheDictionaryBbcodes();
+                if (_bbCodes == null || _bbCodes.Count == 0)
+                    return null;
+                _appCache.Add(_bbCodes, CommonConstants.BbCodes);
+                return _bbCodes;
+            }
+        }
+        public List<BbCodeModel> BbCodeModels
+        {
+            get
+            {
+                _bbCodeModels = _appCache.Get<BbCodeModel>(CommonConstants.BbCodeModels);
+                if (_bbCodeModels != null)
+                    return _bbCodeModels;
+                _bbCodeModels = _dataLoadService.GetAllBbCodeModels();
+                if (_bbCodeModels == null || _bbCodeModels.Count == 0)
+                    return null;
+                _appCache.Add(_bbCodeModels, CommonConstants.BbCodeModels);
+                return _bbCodeModels;
+            }
+        }
 
         public BbCodeModelHelper(IDataLoadService dataLoadService,
             IAppCache appCache)
         {
-            BbCodeModels = appCache.Get<BbCodeModel>(CommonConstants.BbCodeModels);
-            if (BbCodeModels == null)
-            {
-                FillTheDictionaryBbcodes(dataLoadService);
-                if(BbCodeModels != null && BbCodeModels.Count > 0)
-                    appCache.Add(BbCodeModels, CommonConstants.BbCodeModels);
-            }
+            _dataLoadService = dataLoadService;
+            _appCache = appCache;
         }
 
-        public void FillTheDictionaryBbcodes(IDataLoadService dataLoadService)
+        public Dictionary<Regex, string> FillTheDictionaryBbcodes()
         {
             try
             {
-                BbCodeModels = dataLoadService.GetAllBbCodeModels();
-                _bbCodes = new Dictionary<Regex, string>();
+                var bbCodes = new Dictionary<Regex, string>();
 
                 foreach (var bbcode in BbCodeModels)
                 {
@@ -75,12 +100,14 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                                 break;
                         }
                     }
-                    _bbCodes.Add(new Regex(bbcode.BbCodeMatch, regExOptions), bbcode.BbCodeTemplate);
+                    bbCodes.Add(new Regex(bbcode.BbCodeMatch, regExOptions), bbcode.BbCodeTemplate);
                 }
+                return bbCodes;
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, $"{nameof(BbCodeModelHelper)}. Error in function {DemLogger.GetCallerInfo()}");
+                return null;
             }
         }
 
@@ -93,7 +120,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                     text = ProcessNoParceBbCodes(text);
 
 
-                    foreach (var bbCode in _bbCodes)
+                    foreach (var bbCode in BbCodes)
                     {
                         while (bbCode.Key.IsMatch(text))
                         {

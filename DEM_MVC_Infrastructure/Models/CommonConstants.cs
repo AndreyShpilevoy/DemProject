@@ -7,6 +7,7 @@
         public const string ShowAdminControls = "show_admin_controls";
 
         public const string BbCodeModels = "BbCodeModels";
+        public const string BbCodes = "BbCodes";
         public const string ConfigModels = "ConfigModels";
     }
 }
