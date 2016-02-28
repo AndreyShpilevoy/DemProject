@@ -7,9 +7,6 @@ namespace DEM_MVC_BL.Services
 {
     public class AppCache : IAppCache
     {
-        public string BbCodeModels => "BbCodeModels";
-        public string ConfigModels => "ConfigModels";
-
         public List<T> Get<T>(string key)
         {
             MemoryCache memoryCache = MemoryCache.Default;

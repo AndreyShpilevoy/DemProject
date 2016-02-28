@@ -2,7 +2,7 @@
 using Unit_Tests.BaseTest;
 using Xunit;
 
-namespace Unit_Tests.Tests.DEM_MVC.HelpfulFunctionsServiceTests
+namespace Unit_Tests.Tests.DEM_MVC.Services.HelpfulFunctionsService_Tests
 {
     public class When_I_use_SelectRightEnding_function : UnitTestBase
     {

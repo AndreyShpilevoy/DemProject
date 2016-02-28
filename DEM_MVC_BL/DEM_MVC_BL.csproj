@@ -97,7 +97,7 @@
     <Compile Include="Models\WarningModels\WarningPostTableViewModel.cs" />
     <Compile Include="Models\IdentityPermissionModels\IdentityPermissionModel.cs" />
     <Compile Include="Models\PermissionModels\PermissionModel.cs" />
-    <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\Administration\AdminService.cs" />
     <Compile Include="Services\AppCache.cs" />
     <Compile Include="Services\DataWriteService.cs" />
     <Compile Include="Services\ModelsHelpers\ConfigModelHelper.cs" />

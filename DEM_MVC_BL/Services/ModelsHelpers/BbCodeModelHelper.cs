@@ -12,17 +12,18 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 {
     public class BbCodeModelHelper : IBbCodeModelHelper
     {
-        public Dictionary<Regex, string> BbCodes;
+        private Dictionary<Regex, string> _bbCodes;
         public List<BbCodeModel> BbCodeModels { get; set; }
 
         public BbCodeModelHelper(IDataLoadService dataLoadService,
             IAppCache appCache)
         {
-            BbCodeModels = appCache.Get<BbCodeModel>(appCache.BbCodeModels);
+            BbCodeModels = appCache.Get<BbCodeModel>(CommonConstants.BbCodeModels);
             if (BbCodeModels == null)
             {
                 FillTheDictionaryBbcodes(dataLoadService);
-                appCache.Add(BbCodeModels, appCache.BbCodeModels);
+                if(BbCodeModels != null && BbCodeModels.Count > 0)
+                    appCache.Add(BbCodeModels, CommonConstants.BbCodeModels);
             }
         }
 
@@ -31,7 +32,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             try
             {
                 BbCodeModels = dataLoadService.GetAllBbCodeModels();
-                BbCodes = new Dictionary<Regex, string>();
+                _bbCodes = new Dictionary<Regex, string>();
 
                 foreach (var bbcode in BbCodeModels)
                 {
@@ -39,7 +40,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                     var optionArray = bbcode.BbCodeRegexpOptions.Split('/');
                     foreach (var option in optionArray)
                     {
-                        switch (option.ToLower())
+                        switch (option?.ToLower())
                         {
                             case "compiled":
                                 regExOptions |= RegexOptions.Compiled;
@@ -69,11 +70,12 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                                 regExOptions |= RegexOptions.RightToLeft;
                                 break;
                             case "none":
+                            default:
                                 regExOptions |= RegexOptions.None;
                                 break;
                         }
                     }
-                    BbCodes.Add(new Regex(bbcode.BbCodeMatch, regExOptions), bbcode.BbCodeTemplate);
+                    _bbCodes.Add(new Regex(bbcode.BbCodeMatch, regExOptions), bbcode.BbCodeTemplate);
                 }
             }
             catch (Exception exception)
@@ -91,7 +93,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                     text = ProcessNoParceBbCodes(text);
 
 
-                    foreach (var bbCode in BbCodes)
+                    foreach (var bbCode in _bbCodes)
                     {
                         while (bbCode.Key.IsMatch(text))
                         {
@@ -112,7 +114,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
         {
             try
             {
-                var noParceBbCodes = BbCodeModels.Where(x=>x.NoParse).ToList();
+                var noParceBbCodes = BbCodeModels.Where(x => x.NoParse).ToList();
 
                 if (String.IsNullOrWhiteSpace(text))
                     return text;
@@ -121,7 +123,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                 {
                     var openCodesInfo = Regex.Matches(text, $@"(\[{code.BbCodeTag}\])", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
                     var closeCodesInfo = Regex.Matches(text, $@"(\[\/{code.BbCodeTag}\])", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Singleline);
-                    IEnumerable<Match> combinedCodesInfo = openCodesInfo.OfType<Match>().Concat(closeCodesInfo.OfType<Match>()).Where(m => m.Success).OrderBy(x=>x.Index);
+                    IEnumerable<Match> combinedCodesInfo = openCodesInfo.OfType<Match>().Concat(closeCodesInfo.OfType<Match>()).Where(m => m.Success).OrderBy(x => x.Index);
 
                     List<NoParseBbCodeType> identifier = new List<NoParseBbCodeType>();
                     List<NoParseBbCodeHelper> noParseBbCodes = new List<NoParseBbCodeHelper>();
@@ -157,11 +159,11 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                             identifier.Remove(NoParseBbCodeType.Open);
                         }
                     }
-                    for (var i = noParseBbCodes.Count-1; i >= 0 ; i -= 2)
+                    for (var i = noParseBbCodes.Count - 1; i >= 0; i -= 2)
                     {
                         var changedTextStartPosition = noParseBbCodes[i - 1].StartPosition + noParseBbCodes[i - 1].Length;
                         var changedTextLength = noParseBbCodes[i].StartPosition - (noParseBbCodes[i - 1].StartPosition + noParseBbCodes[i - 1].Length);
-                        
+
                         var changedTextPart = text.Substring(changedTextStartPosition, changedTextLength)
                             .Replace("[", "[{ignoreCode}");
                         var textStringBuilder = new StringBuilder(text);
