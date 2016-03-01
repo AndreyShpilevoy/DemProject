@@ -13,7 +13,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
     public class BbCodeModelHelper : IBbCodeModelHelper
     {
         private readonly IDataLoadService _dataLoadService;
-        private readonly IAppCache _appCache;
+        private readonly IAppCacheService _appCache;
 
         private Dictionary<Regex, string> _bbCodes;
         private List<BbCodeModel> _bbCodeModels;
@@ -47,7 +47,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
         }
 
         public BbCodeModelHelper(IDataLoadService dataLoadService,
-            IAppCache appCache)
+            IAppCacheService appCache)
         {
             _dataLoadService = dataLoadService;
             _appCache = appCache;

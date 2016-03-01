@@ -10,7 +10,7 @@ namespace Unit_Tests.Tests.DEM_MVC_BL.Services.BbCodeModelHelper_Tests
     {
 
         protected readonly IDataLoadService _dataLoadService;
-        protected readonly IAppCache _appCache;
+        protected readonly IAppCacheService _appCache;
 
         protected BbCodeModelHelperUnitTestBase()
         {
@@ -54,7 +54,7 @@ namespace Unit_Tests.Tests.DEM_MVC_BL.Services.BbCodeModelHelper_Tests
                     }
                 });
                 _dataLoadService = mock.Create<IDataLoadService>();
-                _appCache = mock.Create<IAppCache>();
+                _appCache = mock.Create<IAppCacheService>();
 
             }
         }

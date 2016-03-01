@@ -11,7 +11,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
     public class ConfigModelHelper : IConfigModelHelper
     {
         private readonly IDataLoadService _dataLoadService;
-        private readonly IAppCache _appCache;
+        private readonly IAppCacheService _appCache;
         private List<ConfigModel> _configModels;
 
         public List<ConfigModel> ConfigModels
@@ -30,7 +30,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
         }
 
         public ConfigModelHelper(IDataLoadService dataLoadService,
-            IAppCache appCache)
+            IAppCacheService appCache)
         {
             _dataLoadService = dataLoadService;
             _appCache = appCache;
