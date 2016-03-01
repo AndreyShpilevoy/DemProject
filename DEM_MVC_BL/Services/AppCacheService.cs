@@ -5,7 +5,7 @@ using DEM_MVC_BL.Interfaces.IServices;
 
 namespace DEM_MVC_BL.Services
 {
-    public class AppCache : IAppCache
+    public class AppCacheService : IAppCacheService
     {
         public List<T> Get<T>(string key)
         {

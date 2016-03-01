@@ -70,7 +70,7 @@
   <ItemGroup>
     <Compile Include="Autofac\AutofacBlRegistration.cs" />
     <Compile Include="Interfaces\IServices\IAdminService.cs" />
-    <Compile Include="Interfaces\IServices\IAppCache.cs" />
+    <Compile Include="Interfaces\IServices\IAppCacheService.cs" />
     <Compile Include="Interfaces\IServices\IDataWriteService.cs" />
     <Compile Include="Interfaces\IServices\IGroupIdentityService.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IBbCodeModelHelper.cs" />
@@ -98,7 +98,7 @@
     <Compile Include="Models\IdentityPermissionModels\IdentityPermissionModel.cs" />
     <Compile Include="Models\PermissionModels\PermissionModel.cs" />
     <Compile Include="Services\Administration\AdminService.cs" />
-    <Compile Include="Services\AppCache.cs" />
+    <Compile Include="Services\AppCacheService.cs" />
     <Compile Include="Services\DataWriteService.cs" />
     <Compile Include="Services\ModelsHelpers\ConfigModelHelper.cs" />
     <Compile Include="Services\ModelsHelpers\BbCodeModelHelper.cs" />

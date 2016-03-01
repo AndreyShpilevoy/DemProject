@@ -2,7 +2,7 @@
 
 namespace DEM_MVC_BL.Interfaces.IServices
 {
-    public interface IAppCache
+    public interface IAppCacheService
     {
         List<T> Get<T>(string key);
         Dictionary<T,TT> Get<T, TT>(string key);
