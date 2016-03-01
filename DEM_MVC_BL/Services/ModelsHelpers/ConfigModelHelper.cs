@@ -10,17 +10,30 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 {
     public class ConfigModelHelper : IConfigModelHelper
     {
-        public List<ConfigModel> ConfigModels;
+        private readonly IDataLoadService _dataLoadService;
+        private readonly IAppCache _appCache;
+        private List<ConfigModel> _configModels;
+
+        public List<ConfigModel> ConfigModels
+        {
+            get
+            {
+                _configModels = _appCache.Get<ConfigModel>(CommonConstants.ConfigModels);
+                if (_configModels != null)
+                    return _configModels;
+                _configModels = _dataLoadService.GetAllConfigModels();
+                if (_configModels == null || _configModels.Count == 0)
+                    return null;
+                _appCache.Add(_configModels, CommonConstants.ConfigModels);
+                return _configModels;
+            }
+        }
 
         public ConfigModelHelper(IDataLoadService dataLoadService,
             IAppCache appCache)
         {
-            ConfigModels = appCache.Get<ConfigModel>(CommonConstants.ConfigModels);
-            if (ConfigModels == null)
-            {
-                ConfigModels = dataLoadService.GetAllConfigModels();
-                appCache.Add(ConfigModels, CommonConstants.ConfigModels);
-            }
+            _dataLoadService = dataLoadService;
+            _appCache = appCache;
         }
 
         public int GetPostsOnPageCount()
