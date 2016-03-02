@@ -155,7 +155,6 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Tests\DataLoadServiceTests.cs" />
     <Compile Include="BaseTest\UnitTestBase.cs" />
     <Compile Include="Tests\DEM_MVC\Services\HelpfulFunctionsService_Tests\When_I_use_SelectRightEnding_function.cs" />
     <Compile Include="Tests\DEM_MVC_BL\Services\BbCodeModelHelper_Tests\BbCodeModelHelperUnitTestBase.cs" />

@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using DEM_MVC.Models;
 using DEM_MVC_BL.Interfaces.IServices;
+using DEM_MVC_BL.Interfaces.IServices.Conference;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.PostModels;
 using DEM_MVC_Infrastructure.Models;
@@ -13,17 +14,26 @@ namespace DEM_MVC.Controllers
 {
     public class ConferenceController : Controller
     {
-        private readonly IDataLoadService _dataLoadService;
+        private readonly IForumReadService _forumReadService;
+        private readonly ITopicReadService _topicReadService;
+        private readonly IPostReadService _postReadService;
+        private readonly IPollReadService _pollReadService;
         private readonly IDataWriteService _dataWriteService;
         private readonly IPermissionsService _permissionsService;
         private readonly IConfigModelHelper _configHelper;
 
-        public ConferenceController(IDataLoadService dataLoadService,
+        public ConferenceController(IForumReadService forumReadService,
             IPermissionsService permissionsService,
             IDataWriteService dataWriteService,
-            IConfigModelHelper configHelper)
+            IConfigModelHelper configHelper,
+            ITopicReadService topicReadService,
+            IPostReadService postReadService,
+            IPollReadService pollReadService)
         {
-            _dataLoadService = dataLoadService;
+            _forumReadService = forumReadService;
+            _topicReadService = topicReadService;
+            _postReadService = postReadService;
+            _pollReadService = pollReadService;
             _permissionsService = permissionsService;
             _dataWriteService = dataWriteService;
             _configHelper = configHelper;
@@ -40,7 +50,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ShowForumTable()
         {
-            var forumTableViewModels = _dataLoadService.GetAllForumTableViewModels();
+            var forumTableViewModels = _forumReadService.GetAllForumTableViewModels();
             return PartialView("Index/_ShowForumTable", forumTableViewModels);
         }
 
@@ -51,7 +61,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ViewForum(int forumId, int? page)
         {
-            var forumInfoViewModel = _dataLoadService.GetForumInfoViewModelById(forumId);
+            var forumInfoViewModel = _forumReadService.GetForumInfoViewModelById(forumId);
             forumInfoViewModel.PageNumber = page == null || page < 1 ? 1 : (int) page;
             return View("ViewForum/ViewForum", forumInfoViewModel);
         }
@@ -59,7 +69,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ShowForumTableById(int forumId)
         {
-            var forumTableViewModel = _dataLoadService.GetForumTableViewModelById(forumId);
+            var forumTableViewModel = _forumReadService.GetForumTableViewModelById(forumId);
             return PartialView("ViewForum/_ShowForumTableById", forumTableViewModel);
         }
 
@@ -67,7 +77,7 @@ namespace DEM_MVC.Controllers
         public ActionResult ShowTopicTableByForumId(int forumId, int? page)
         {
             var onPage = _configHelper.GetTopicsOnPageCount();
-            var forumInfoViewModel = _dataLoadService.GetTopicTableViewModelsByForumId(forumId, onPage, page);
+            var forumInfoViewModel = _topicReadService.GetTopicTableViewModelsByForumId(forumId, onPage, page);
             return PartialView("ViewForum/_ShowTopicTableByForumId", forumInfoViewModel);
         }
 
@@ -78,7 +88,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ViewTopic(int topicId, int? page)
         {
-            var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(topicId);
+            var topicInfoViewModel = _topicReadService.GetTopicInfoViewModelById(topicId);
             topicInfoViewModel.PageNumber = page == null || page < 1 ? 1 : (int) page;
             return View("ViewTopic/ViewTopic", topicInfoViewModel);
         }
@@ -87,7 +97,7 @@ namespace DEM_MVC.Controllers
         public ActionResult ShowPostTableByTopicId(int topicId, int? page)
         {
             var onPage = _configHelper.GetPostsOnPageCount();
-            var postTableViewModels = _dataLoadService.GetPostTableViewModelsByTopicId(topicId, onPage, page);
+            var postTableViewModels = _postReadService.GetPostTableViewModelsByTopicId(topicId, onPage, page);
 
             if (page == null || page < 1)
                 page = 1;
@@ -102,7 +112,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ShowPollTableByTopicId(int topicId)
         {
-            var pollViewModels = _dataLoadService.GetPollViewModelWithOptionsByTopicId(topicId);
+            var pollViewModels = _pollReadService.GetPollViewModelWithOptionsByTopicId(topicId);
             return PartialView("ViewTopic/_ShowPollTableByTopicId", pollViewModels);
         }
 
@@ -118,7 +128,7 @@ namespace DEM_MVC.Controllers
             if (userId == 0)
                 return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
             
-            var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(topicId);
+            var topicInfoViewModel = _topicReadService.GetTopicInfoViewModelById(topicId);
             var permission = _permissionsService.UserHasPermissionByForumId(userId, topicInfoViewModel.ForumId, topicInfoViewModel.TopicClosed 
                 ? new List<string>() { CommonConstants.PostMessageInClosedTopic } 
                 : new List<string>() { CommonConstants.PostMessageInOpenTopic });
@@ -138,7 +148,7 @@ namespace DEM_MVC.Controllers
             if (userId == 0)
                 return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
 
-            var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(newPostViewModel.TopicId);
+            var topicInfoViewModel = _topicReadService.GetTopicInfoViewModelById(newPostViewModel.TopicId);
             var permission = _permissionsService.UserHasPermissionByForumId(userId, topicInfoViewModel.ForumId, topicInfoViewModel.TopicClosed
                 ? new List<string>() { CommonConstants.PostMessageInClosedTopic }
                 : new List<string>() { CommonConstants.PostMessageInOpenTopic });
