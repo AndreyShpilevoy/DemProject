@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using DEM_MVC_BL.Interfaces.IServices;
+using DEM_MVC_BL.Interfaces.IServices.Common;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.BbCodeModels;
 using DEM_MVC_Infrastructure.Models;

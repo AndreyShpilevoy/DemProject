@@ -19,13 +19,13 @@
 @if (Model.PollsEnabled)
 {
     <div id="pollsMainPanel">
-        @Html.Action("ShowPollTableByTopicId", "Forum")
+        @Html.Action("ShowPollTableByTopicId", "Conference")
     </div>
 }
 @if (!Model.PollsOnly)
 {
     <div id="postsMainPanel">
-        @Html.Action("ShowPostTableByTopicId", "Forum")
+        @Html.Action("ShowPostTableByTopicId", "Conference")
     </div>
 }
 <div class="topic-actions">

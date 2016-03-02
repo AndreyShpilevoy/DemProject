@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Caching;
-using DEM_MVC_BL.Interfaces.IServices;
+using DEM_MVC_BL.Interfaces.IServices.Common;
 
-namespace DEM_MVC_BL.Services
+namespace DEM_MVC_BL.Services.Common
 {
     public class AppCacheService : IAppCacheService
     {

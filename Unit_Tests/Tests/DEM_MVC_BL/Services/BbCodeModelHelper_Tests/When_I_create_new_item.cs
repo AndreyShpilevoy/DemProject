@@ -15,21 +15,21 @@ namespace Unit_Tests.Tests.DEM_MVC_BL.Services.BbCodeModelHelper_Tests
         [Fact]
         public void Constructor_should_init_BbCodeModels_with_3_objects()
         {
-            var bbCodeModelHelper = new BbCodeModelHelper(_dataLoadService, _appCache);
+            var bbCodeModelHelper = new BbCodeModelHelper(DataLoadService, AppCache);
             Assert.Equal(3, bbCodeModelHelper.BbCodeModels.Count);
         }
 
         [Fact]
         public void Constructor_shouldnt_init_BbCodeModels_without_objects()
         {
-            var bbCodeModelHelper = new BbCodeModelHelper(_dataLoadService, _appCache);
+            var bbCodeModelHelper = new BbCodeModelHelper(DataLoadService, AppCache);
             Assert.NotEmpty(bbCodeModelHelper.BbCodeModels);
         }
 
         [Fact]
         public void Constructor_shouldnt_be_null()
         {
-            var bbCodeModelHelper = new BbCodeModelHelper(_dataLoadService, _appCache);
+            var bbCodeModelHelper = new BbCodeModelHelper(DataLoadService, AppCache);
             Assert.NotNull(bbCodeModelHelper);
         }
     }

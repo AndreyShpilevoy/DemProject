@@ -11,14 +11,14 @@ using Microsoft.AspNet.Identity;
 
 namespace DEM_MVC.Controllers
 {
-    public class ForumController : Controller
+    public class ConferenceController : Controller
     {
         private readonly IDataLoadService _dataLoadService;
         private readonly IDataWriteService _dataWriteService;
         private readonly IPermissionsService _permissionsService;
         private readonly IConfigModelHelper _configHelper;
 
-        public ForumController(IDataLoadService dataLoadService,
+        public ConferenceController(IDataLoadService dataLoadService,
             IPermissionsService permissionsService,
             IDataWriteService dataWriteService,
             IConfigModelHelper configHelper)
@@ -168,7 +168,7 @@ namespace DEM_MVC.Controllers
         protected override void OnException(ExceptionContext filterContext)
         {
             Exception exception = filterContext.Exception;
-            DemLogger.Current.Error(exception, $"{nameof(ForumController)}. Error was caught in {DemLogger.GetCallerInfo()}");
+            DemLogger.Current.Error(exception, $"{nameof(ConferenceController)}. Error was caught in {DemLogger.GetCallerInfo()}");
         }
     }
 }

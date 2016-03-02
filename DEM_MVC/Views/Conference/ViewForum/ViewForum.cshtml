@@ -6,7 +6,7 @@
 }
 @if (Model.SubForumsCount > 0)
 {
-    @Html.Action("ShowForumTableById", "Forum")
+    @Html.Action("ShowForumTableById", "Conference")
 }
 
 @{
@@ -21,19 +21,19 @@
             New topic btn
         </div>
         <div class="forum-actions-paging">
-            @Html.TopicPagingForViewForum(Model, "ViewForum", "Forum", new {@class = navigationBtnClasses}, new {@class = currentPageNavigationBtnClasses})
+            @Html.TopicPagingForViewForum(Model, "ViewForum", "Conference", new {@class = navigationBtnClasses}, new {@class = currentPageNavigationBtnClasses})
         </div>
         <div class="clear"></div>
     </div>
 
-    @Html.Action("ShowTopicTableByForumId", "Forum")
+    @Html.Action("ShowTopicTableByForumId", "Conference")
 
     <div class="forum-actions">
         <div class="forum-actions-buttons">
             New topic btn
         </div>
         <div class="forum-actions-paging">
-            @Html.TopicPagingForViewForum(Model, "ViewForum", "Forum", new {@class = navigationBtnClasses}, new {@class = currentPageNavigationBtnClasses})
+            @Html.TopicPagingForViewForum(Model, "ViewForum", "Conference", new {@class = navigationBtnClasses}, new {@class = currentPageNavigationBtnClasses})
         </div>
         <div class="clear"></div>
     </div>
