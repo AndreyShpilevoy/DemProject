@@ -71,7 +71,12 @@
     <Compile Include="Autofac\AutofacBlRegistration.cs" />
     <Compile Include="Interfaces\IServices\Administration\IAdminService.cs" />
     <Compile Include="Interfaces\IServices\Common\IAppCacheService.cs" />
-    <Compile Include="Interfaces\IServices\Conference\ForumReadService.cs" />
+    <Compile Include="Interfaces\IServices\Conference\IBbCodeReadService.cs" />
+    <Compile Include="Interfaces\IServices\Conference\IConfigReadService.cs" />
+    <Compile Include="Interfaces\IServices\Conference\IForumReadService.cs" />
+    <Compile Include="Interfaces\IServices\Conference\IPollReadService.cs" />
+    <Compile Include="Interfaces\IServices\Conference\IPostReadService.cs" />
+    <Compile Include="Interfaces\IServices\Conference\ITopicReadService.cs" />
     <Compile Include="Interfaces\IServices\IDataWriteService.cs" />
     <Compile Include="Interfaces\IServices\IGroupIdentityService.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IBbCodeModelHelper.cs" />
@@ -89,7 +94,6 @@
     <Compile Include="Models\PostModels\NewPostModel.cs" />
     <Compile Include="Models\PostModels\PostTableViewModelList.cs" />
     <Compile Include="Models\PostModels\PostTableViewModel.cs" />
-    <Compile Include="Interfaces\IServices\IDataLoadService.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IForumModelHelper.cs" />
     <Compile Include="Models\TopicModels\TopicInfoViewModel.cs" />
     <Compile Include="Models\IdentityGroupModels\IdentityGroupModel.cs" />
@@ -100,6 +104,12 @@
     <Compile Include="Models\PermissionModels\PermissionModel.cs" />
     <Compile Include="Services\Administration\AdminService.cs" />
     <Compile Include="Services\Common\AppCacheService.cs" />
+    <Compile Include="Services\Conference\TopicReadService.cs" />
+    <Compile Include="Services\Conference\PostReadService.cs" />
+    <Compile Include="Services\Conference\PollReadService.cs" />
+    <Compile Include="Services\Conference\ForumReadService.cs" />
+    <Compile Include="Services\Conference\ConfigReadService.cs" />
+    <Compile Include="Services\Conference\BbCodeReadService.cs" />
     <Compile Include="Services\DataWriteService.cs" />
     <Compile Include="Services\ModelsHelpers\ConfigModelHelper.cs" />
     <Compile Include="Services\ModelsHelpers\BbCodeModelHelper.cs" />
@@ -108,7 +118,6 @@
     <Compile Include="Services\ModelsHelpers\ForumModelHelper.cs" />
     <Compile Include="Models\ForumModels\ForumTableViewModel.cs" />
     <Compile Include="Models\TopicModels\TopicTableViewModel.cs" />
-    <Compile Include="Services\DataLoadService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GroupIdentityService.cs" />
     <Compile Include="Services\PermissionsService.cs" />
@@ -132,9 +141,7 @@
     <Analyzer Include="..\packages\SonarLint.1.6.0\analyzers\SonarLint.CSharp.dll" />
     <Analyzer Include="..\packages\SonarLint.1.6.0\analyzers\SonarLint.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\Conference\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.Common;
+using DEM_MVC_BL.Interfaces.IServices.Conference;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.BbCodeModels;
 using DEM_MVC_Infrastructure.Models;
@@ -13,7 +14,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 {
     public class BbCodeModelHelper : IBbCodeModelHelper
     {
-        private readonly IDataLoadService _dataLoadService;
+        private readonly IBbCodeReadService _bbCodeReadService;
         private readonly IAppCacheService _appCache;
 
         private Dictionary<Regex, string> _bbCodes;
@@ -39,7 +40,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                 _bbCodeModels = _appCache.Get<BbCodeModel>(CommonConstants.BbCodeModels);
                 if (_bbCodeModels != null)
                     return _bbCodeModels;
-                _bbCodeModels = _dataLoadService.GetAllBbCodeModels();
+                _bbCodeModels = _bbCodeReadService.GetAllBbCodeModels();
                 if (_bbCodeModels == null || _bbCodeModels.Count == 0)
                     return null;
                 _appCache.Add(_bbCodeModels, CommonConstants.BbCodeModels);
@@ -47,10 +48,10 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
         }
 
-        public BbCodeModelHelper(IDataLoadService dataLoadService,
+        public BbCodeModelHelper(IBbCodeReadService bbCodeReadService,
             IAppCacheService appCache)
         {
-            _dataLoadService = dataLoadService;
+            _bbCodeReadService = bbCodeReadService;
             _appCache = appCache;
         }
 

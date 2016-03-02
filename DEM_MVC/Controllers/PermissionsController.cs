@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using DEM_MVC_BL.Interfaces.IServices;
+using DEM_MVC_BL.Interfaces.IServices.Conference;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
 
@@ -10,13 +11,13 @@ namespace DEM_MVC.Controllers
     public class PermissionsController : Controller
     {
         private readonly IPermissionsService _permissionsService;
-        private readonly IDataLoadService _dataLoadService;
+        private readonly ITopicReadService _topicReadService;
 
-        public PermissionsController(IDataLoadService dataLoadService, 
+        public PermissionsController(ITopicReadService topicReadService, 
             IPermissionsService permissionsService)
         {
             _permissionsService = permissionsService;
-            _dataLoadService = dataLoadService;
+            _topicReadService = topicReadService;
         }
 
         [HttpPost]
@@ -41,7 +42,7 @@ namespace DEM_MVC.Controllers
             if (userId == 0)
                 return new JsonResult { Data = new { success = false, responseText = "You can't create post - You not authorized. Please, contact with administrator." } };
 
-            var topicInfoViewModel = _dataLoadService.GetTopicInfoViewModelById(topicId);
+            var topicInfoViewModel = _topicReadService.GetTopicInfoViewModelById(topicId);
             var permission = _permissionsService.UserHasPermissionByForumId(userId, topicInfoViewModel.ForumId, topicInfoViewModel.TopicClosed
                 ? new List<string>() { CommonConstants.PostMessageInClosedTopic }
                 : new List<string>() { CommonConstants.PostMessageInOpenTopic });

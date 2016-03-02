@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.Common;
+using DEM_MVC_BL.Interfaces.IServices.Conference;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.ConfigModels;
 using DEM_MVC_Infrastructure.Models;
@@ -11,7 +12,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
 {
     public class ConfigModelHelper : IConfigModelHelper
     {
-        private readonly IDataLoadService _dataLoadService;
+        private readonly IConfigReadService _configReadService;
         private readonly IAppCacheService _appCache;
         private List<ConfigModel> _configModels;
 
@@ -22,7 +23,7 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
                 _configModels = _appCache.Get<ConfigModel>(CommonConstants.ConfigModels);
                 if (_configModels != null)
                     return _configModels;
-                _configModels = _dataLoadService.GetAllConfigModels();
+                _configModels = _configReadService.GetAllConfigModels();
                 if (_configModels == null || _configModels.Count == 0)
                     return null;
                 _appCache.Add(_configModels, CommonConstants.ConfigModels);
@@ -30,10 +31,10 @@ namespace DEM_MVC_BL.Services.ModelsHelpers
             }
         }
 
-        public ConfigModelHelper(IDataLoadService dataLoadService,
+        public ConfigModelHelper(IConfigReadService configReadService,
             IAppCacheService appCache)
         {
-            _dataLoadService = dataLoadService;
+            _configReadService = configReadService;
             _appCache = appCache;
         }
 

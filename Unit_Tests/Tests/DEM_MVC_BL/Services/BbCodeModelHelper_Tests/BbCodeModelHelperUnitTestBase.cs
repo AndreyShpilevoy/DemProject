@@ -2,6 +2,7 @@
 using Autofac.Extras.Moq;
 using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.Common;
+using DEM_MVC_BL.Interfaces.IServices.Conference;
 using DEM_MVC_BL.Models.BbCodeModels;
 using Unit_Tests.BaseTest;
 
@@ -10,7 +11,7 @@ namespace Unit_Tests.Tests.DEM_MVC_BL.Services.BbCodeModelHelper_Tests
     public abstract class BbCodeModelHelperUnitTestBase : UnitTestBase
     {
 
-        protected readonly IDataLoadService DataLoadService;
+        protected readonly IBbCodeReadService BbCodeReadService;
         protected readonly IAppCacheService AppCache;
 
         protected BbCodeModelHelperUnitTestBase()
@@ -18,7 +19,7 @@ namespace Unit_Tests.Tests.DEM_MVC_BL.Services.BbCodeModelHelper_Tests
             using (var mock = AutoMock.GetLoose())
             {
 
-                mock.Mock<IDataLoadService>().Setup(x => x.GetAllBbCodeModels()).Returns(new List<BbCodeModel>()
+                mock.Mock<IBbCodeReadService>().Setup(x => x.GetAllBbCodeModels()).Returns(new List<BbCodeModel>()
                 {
                     new BbCodeModel()
                     {
@@ -54,7 +55,7 @@ namespace Unit_Tests.Tests.DEM_MVC_BL.Services.BbCodeModelHelper_Tests
                         NoParse = true
                     }
                 });
-                DataLoadService = mock.Create<IDataLoadService>();
+                BbCodeReadService = mock.Create<IBbCodeReadService>();
                 AppCache = mock.Create<IAppCacheService>();
 
             }
