@@ -1,4 +1,4 @@
-﻿namespace DEM_MVC_BL.Interfaces.IServices
+﻿namespace DEM_MVC_BL.Interfaces.IServices.Administration
 {
     public interface IAdminService
     {

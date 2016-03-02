@@ -263,7 +263,7 @@
     <Compile Include="Autofac\AutofacRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
-    <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Controllers\ConferenceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PermissionsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -313,15 +313,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Forum\Index\Index.cshtml" />
-    <Content Include="Views\Forum\Index\_ShowForumTable.cshtml" />
-    <Content Include="Views\Forum\ViewForum\ViewForum.cshtml" />
-    <Content Include="Views\Forum\ViewForum\_ShowForumTableById.cshtml" />
-    <Content Include="Views\Forum\ViewForum\_ShowTopicTableByForumId.cshtml" />
-    <Content Include="Views\Forum\ViewTopic\ViewTopic.cshtml" />
-    <Content Include="Views\Forum\ViewTopic\_ShowPostTableByTopicId.cshtml" />
-    <Content Include="Views\Forum\ViewTopic\_ShowPollTableByTopicId.cshtml" />
-    <Content Include="Views\Forum\Chat\Chat.cshtml" />
+    <Content Include="Views\Conference\Index\Index.cshtml" />
+    <Content Include="Views\Conference\Index\_ShowForumTable.cshtml" />
+    <Content Include="Views\Conference\ViewForum\ViewForum.cshtml" />
+    <Content Include="Views\Conference\ViewForum\_ShowForumTableById.cshtml" />
+    <Content Include="Views\Conference\ViewForum\_ShowTopicTableByForumId.cshtml" />
+    <Content Include="Views\Conference\ViewTopic\ViewTopic.cshtml" />
+    <Content Include="Views\Conference\ViewTopic\_ShowPostTableByTopicId.cshtml" />
+    <Content Include="Views\Conference\ViewTopic\_ShowPollTableByTopicId.cshtml" />
+    <Content Include="Views\Conference\Chat\Chat.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -343,9 +343,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
-    <Content Include="Views\Forum\ViewTopic\_CreatePost.cshtml" />
-    <Content Include="Views\Forum\ViewTopic\_ShowTopicPaging.cshtml" />
-    <Content Include="Views\Forum\Index\_SiteUnderCostruction.cshtml" />
+    <Content Include="Views\Conference\ViewTopic\_CreatePost.cshtml" />
+    <Content Include="Views\Conference\ViewTopic\_ShowTopicPaging.cshtml" />
+    <Content Include="Views\Conference\Index\_SiteUnderCostruction.cshtml" />
     <Content Include="tsd.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

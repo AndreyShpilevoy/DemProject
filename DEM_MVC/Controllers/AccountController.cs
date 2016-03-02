@@ -396,7 +396,7 @@ namespace DEM_MVC.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Forum");
+            return RedirectToAction("Index", "Conference");
         }
 
         //
@@ -433,7 +433,7 @@ namespace DEM_MVC.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Forum");
+            return RedirectToAction("Index", "Conference");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

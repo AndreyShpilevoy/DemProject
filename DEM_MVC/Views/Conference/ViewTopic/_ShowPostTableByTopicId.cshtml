@@ -18,7 +18,7 @@
 
     <div id="@postId" class="post postShadow @pollOptionOddEvenInt">
         <div class="postLink">
-            @Html.ActionLink("Link to post", "ViewTopic", "Forum", new { topicId = post.TopicId, page = Model.PageNumber, postId = post.PostId }, null)
+            @Html.ActionLink("Link to post", "ViewTopic", "Conference", new { topicId = post.TopicId, page = Model.PageNumber, postId = post.PostId }, null)
         </div>
         <div class="postButtons">
             buttons

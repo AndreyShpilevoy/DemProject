@@ -25,7 +25,7 @@ class PostService {
                 $(this.buttonHolderCssSelector).append(this.newButtonCode);
 
                 $(".AddNewPost").on("click", () => {
-                    this.addNewPost("/Forum/CreatePost/", self);
+                    this.addNewPost("/Conference/CreatePost/", self);
                 });
             }
         });

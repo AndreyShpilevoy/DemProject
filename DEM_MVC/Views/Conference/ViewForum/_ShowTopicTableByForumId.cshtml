@@ -26,7 +26,7 @@
                 <div class="topic">
                     <div class="topicsCategoryName">
                         <div>
-                            @Html.ActionLink(topic.Title, "ViewTopic", "Forum", new { topicId = topic.TopicId }, null)
+                            @Html.ActionLink(topic.Title, "ViewTopic", "Conference", new { topicId = topic.TopicId }, null)
                             @if(topic.TopicClosed)
                             {
                                 @Html.Span(" - тема закрыта", new { @class = "colorRed textBold" })
@@ -36,7 +36,7 @@
                             <span style="color: #@topic.TopicStarterGroupColor">@Html.Raw(topic.TopicStarterUsername)</span> @topic.TopicStartTime
                         </div>
                         <div class="topicsCategoryNameDescriptionPaging">
-                            @Html.PostPagingForViewForum(topic, "ViewTopic", "Forum", new { @class = navigationBtnClasses })
+                            @Html.PostPagingForViewForum(topic, "ViewTopic", "Conference", new { @class = navigationBtnClasses })
                         </div>
                         <div class="clear"></div>
                     </div>
