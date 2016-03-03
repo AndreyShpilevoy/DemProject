@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DEM_MVC_BL.Interfaces.IServices
+namespace DEM_MVC_BL.Interfaces.IServices.Common
 {
     public interface IPermissionsService
     {

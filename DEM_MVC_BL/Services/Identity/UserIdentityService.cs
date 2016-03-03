@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
-using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models.IdentityUserModels;
 using DEM_MVC_DAL.Entities.UserIdentityEntities;
 using DEM_MVC_DAL.Entities.UserLoginInfoIdentityEntities;
@@ -13,9 +12,18 @@ using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
 
-namespace DEM_MVC_BL.Services
+namespace DEM_MVC_BL.Services.Identity
 {
-    public class UserIdentityService<TUser> : IUserIdentityService<TUser>
+    public class UserIdentityService<TUser> :  IUserLoginStore<TUser, int>,
+          IUserClaimStore<TUser, int>,
+          IUserRoleStore<TUser, int>,
+          IUserPasswordStore<TUser, int>,
+          IUserSecurityStampStore<TUser, int>,
+          IQueryableUserStore<TUser, int>,
+          IUserEmailStore<TUser, int>,
+          IUserPhoneNumberStore<TUser, int>,
+          IUserTwoFactorStore<TUser, int>,
+          IUserLockoutStore<TUser, int>
         where TUser : IdentityUserModel
     {
         private readonly IConnectionFactory _connectionFactory;
@@ -833,6 +841,7 @@ namespace DEM_MVC_BL.Services
 
         public void Dispose()
         {
+            // Method intentionally left empty.
         }
     }
 }
