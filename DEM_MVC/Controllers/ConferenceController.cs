@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using DEM_MVC.Models;
 using DEM_MVC_BL.Interfaces.IServices;
+using DEM_MVC_BL.Interfaces.IServices.Common;
 using DEM_MVC_BL.Interfaces.IServices.Conference;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.PostModels;
@@ -18,13 +19,13 @@ namespace DEM_MVC.Controllers
         private readonly ITopicReadService _topicReadService;
         private readonly IPostReadService _postReadService;
         private readonly IPollReadService _pollReadService;
-        private readonly IDataWriteService _dataWriteService;
+        private readonly IPostWriteService _dataWriteService;
         private readonly IPermissionsService _permissionsService;
         private readonly IConfigModelHelper _configHelper;
 
         public ConferenceController(IForumReadService forumReadService,
             IPermissionsService permissionsService,
-            IDataWriteService dataWriteService,
+            IPostWriteService dataWriteService,
             IConfigModelHelper configHelper,
             ITopicReadService topicReadService,
             IPostReadService postReadService,

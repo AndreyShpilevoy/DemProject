@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutoMapper;
-using DEM_MVC_BL.Interfaces.IServices;
+using DEM_MVC_BL.Interfaces.IServices.Common;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.IdentityPermissionModels;
 using DEM_MVC_DAL.Entities.IdentityPermissionEntities;
@@ -9,7 +9,7 @@ using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_Infrastructure.Models;
 
-namespace DEM_MVC_BL.Services
+namespace DEM_MVC_BL.Services.Common
 {
     public class PermissionsService : IPermissionsService
     {

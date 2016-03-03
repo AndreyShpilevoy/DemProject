@@ -1,20 +1,20 @@
 ﻿using System;
 using AutoMapper;
-using DEM_MVC_BL.Interfaces.IServices;
+using DEM_MVC_BL.Interfaces.IServices.Conference;
 using DEM_MVC_BL.Models.PostModels;
 using DEM_MVC_DAL.Entities.PostEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_Infrastructure.Models;
 
-namespace DEM_MVC_BL.Services
+namespace DEM_MVC_BL.Services.Conference
 {
-    public class DataWriteService : IDataWriteService
+    public class PostWriteService : IPostWriteService
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly IPostRepository _postRepository;
 
-        public DataWriteService(IPostRepository postRepository, 
+        public PostWriteService(IPostRepository postRepository, 
             IConnectionFactory connectionFactory)
         {
             _postRepository = postRepository;
@@ -30,7 +30,7 @@ namespace DEM_MVC_BL.Services
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(DataWriteService)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(PostWriteService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
         }
     }

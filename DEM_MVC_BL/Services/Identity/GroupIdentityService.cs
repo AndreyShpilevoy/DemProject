@@ -2,16 +2,16 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Models.IdentityGroupModels;
 using DEM_MVC_DAL.Entities.GroupIdentityEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
 using DEM_MVC_DAL.Interfaces.IRepositories;
 using DEM_MVC_Infrastructure.Models;
+using Microsoft.AspNet.Identity;
 
-namespace DEM_MVC_BL.Services
+namespace DEM_MVC_BL.Services.Identity
 {
-    public class GroupIdentityService<TGroup> : IGroupIdentityService<TGroup>
+    public class GroupIdentityService<TGroup> : IQueryableRoleStore<TGroup, int>
         where TGroup : IdentityGroupModel
     {
         private readonly IConnectionFactory _connectionFactory;
