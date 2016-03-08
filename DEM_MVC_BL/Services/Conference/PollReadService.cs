@@ -18,18 +18,18 @@ namespace DEM_MVC_BL.Services.Conference
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly IPollOptionModelHelper _pollModelHelper;
-        private readonly IPollRepository _pollEntityRepository;
-        private readonly IPollOptionRepository _pollOptionEntityRepository;
+        private readonly IPollRepository _pollRepository;
+        private readonly IPollOptionRepository _pollOptionRepository;
 
         public PollReadService(IConnectionFactory connectionFactory,
             IPollOptionModelHelper pollModelHelper,
-            IPollRepository pollEntityRepository,
-            IPollOptionRepository pollOptionEntityRepository)
+            IPollRepository pollRepository,
+            IPollOptionRepository pollOptionRepository)
         {
             _connectionFactory = connectionFactory;
             _pollModelHelper = pollModelHelper;
-            _pollEntityRepository = pollEntityRepository;
-            _pollOptionEntityRepository = pollOptionEntityRepository;
+            _pollRepository = pollRepository;
+            _pollOptionRepository = pollOptionRepository;
         }
 
         public List<PollViewModel> GetPollViewModelWithOptionsByTopicId(int topicId)
@@ -39,8 +39,8 @@ namespace DEM_MVC_BL.Services.Conference
 
             try
             {
-                var pollEntities = _pollEntityRepository.GetPollsByTopicId(topicId, _connectionFactory);
-                var pollOptionEntities = _pollOptionEntityRepository.GetPollOptionsByPollsId(pollEntities.Select(x => x.PollId).ToList(), _connectionFactory);
+                var pollEntities = _pollRepository.GetPollsByTopicId(topicId, _connectionFactory);
+                var pollOptionEntities = _pollOptionRepository.GetPollOptionsByPollsId(pollEntities.Select(x => x.PollId).ToList(), _connectionFactory);
 
                 pollViewModels = Mapper.Map<List<PollEntity>, List<PollViewModel>>(pollEntities);
                 pollOptionsViewModels = Mapper.Map<List<PollOptionEntity>, List<PollOptionViewModel>>(pollOptionEntities);

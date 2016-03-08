@@ -5,6 +5,7 @@ using Autofac.Integration.Mvc;
 using DEM_MVC;
 using DEM_MVC.Autofac;
 using DEM_MVC.Models;
+using DEM_MVC.Services.AutoMapper;
 using DEM_MVC_BL.Autofac;
 using DEM_MVC_BL.Services;
 using DEM_MVC_BL.Services.Identity;
@@ -52,6 +53,8 @@ namespace Unit_Tests.BaseTest
             //app.UseAutofacMvc();
 
             #endregion
+            
+            AutoMapperRegistrationService.Initial();
         }
     }
 }

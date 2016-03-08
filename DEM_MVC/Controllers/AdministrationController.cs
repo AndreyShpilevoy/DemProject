@@ -12,10 +12,10 @@ namespace DEM_MVC.Controllers
     public class AdministrationController : Controller
     {
         private readonly IAdminService _adminService;
-        private readonly IPermissionsService _permissionsService;
+        private readonly IPermissionsReadService _permissionsService;
 
         public AdministrationController(IAdminService adminService,
-            IPermissionsService permissionsService)
+            IPermissionsReadService permissionsService)
         {
             _adminService = adminService;
             _permissionsService = permissionsService;

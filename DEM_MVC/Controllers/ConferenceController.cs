@@ -20,13 +20,13 @@ namespace DEM_MVC.Controllers
         private readonly IPostReadService _postReadService;
         private readonly IPollReadService _pollReadService;
         private readonly IPostWriteService _dataWriteService;
-        private readonly IPermissionsService _permissionsService;
-        private readonly IConfigModelHelper _configHelper;
+        private readonly IPermissionsReadService _permissionsService;
+        private readonly IConfigReadService _configReadService;
 
         public ConferenceController(IForumReadService forumReadService,
-            IPermissionsService permissionsService,
+            IPermissionsReadService permissionsService,
             IPostWriteService dataWriteService,
-            IConfigModelHelper configHelper,
+            IConfigReadService configReadService,
             ITopicReadService topicReadService,
             IPostReadService postReadService,
             IPollReadService pollReadService)
@@ -37,7 +37,7 @@ namespace DEM_MVC.Controllers
             _pollReadService = pollReadService;
             _permissionsService = permissionsService;
             _dataWriteService = dataWriteService;
-            _configHelper = configHelper;
+            _configReadService = configReadService;
         }
 
         #region IndexPageZone
@@ -77,7 +77,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ShowTopicTableByForumId(int forumId, int? page)
         {
-            var onPage = _configHelper.GetTopicsOnPageCount();
+            var onPage = _configReadService.GetTopicsOnPageCount();
             var forumInfoViewModel = _topicReadService.GetTopicTableViewModelsByForumId(forumId, onPage, page);
             return PartialView("ViewForum/_ShowTopicTableByForumId", forumInfoViewModel);
         }
@@ -97,7 +97,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ShowPostTableByTopicId(int topicId, int? page)
         {
-            var onPage = _configHelper.GetPostsOnPageCount();
+            var onPage = _configReadService.GetPostsOnPageCount();
             var postTableViewModels = _postReadService.GetPostTableViewModelsByTopicId(topicId, onPage, page);
 
             if (page == null || page < 1)
