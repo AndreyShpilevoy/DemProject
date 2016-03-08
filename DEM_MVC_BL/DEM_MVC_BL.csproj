@@ -78,11 +78,9 @@
     <Compile Include="Interfaces\IServices\Conference\IPostReadService.cs" />
     <Compile Include="Interfaces\IServices\Conference\ITopicReadService.cs" />
     <Compile Include="Interfaces\IServices\Conference\IPostWriteService.cs" />
-    <Compile Include="Interfaces\IServices\IModelsHelpers\IBbCodeModelHelper.cs" />
-    <Compile Include="Interfaces\IServices\IModelsHelpers\IConfigModelHelper.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IIdentityPermissionModelHelper.cs" />
     <Compile Include="Interfaces\IServices\IModelsHelpers\IPollOptionModelHelper.cs" />
-    <Compile Include="Interfaces\IServices\Common\IPermissionsService.cs" />
+    <Compile Include="Interfaces\IServices\Common\IPermissionsReadService.cs" />
     <Compile Include="Models\BbCodeModels\BbCodeModel.cs" />
     <Compile Include="Models\ConfigModels\ConfigModel.cs" />
     <Compile Include="Models\ForumModels\ForumInfoViewModel.cs" />
@@ -110,8 +108,6 @@
     <Compile Include="Services\Conference\BbCodeReadService.cs" />
     <Compile Include="Services\Conference\PostWriteService.cs" />
     <Compile Include="Services\Identity\UserIdentityService.cs" />
-    <Compile Include="Services\ModelsHelpers\ConfigModelHelper.cs" />
-    <Compile Include="Services\ModelsHelpers\BbCodeModelHelper.cs" />
     <Compile Include="Services\ModelsHelpers\IdentityPermissionModelHelper.cs" />
     <Compile Include="Services\ModelsHelpers\PollOptionModelHelper.cs" />
     <Compile Include="Services\ModelsHelpers\ForumModelHelper.cs" />
@@ -119,7 +115,7 @@
     <Compile Include="Models\TopicModels\TopicTableViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Identity\GroupIdentityService.cs" />
-    <Compile Include="Services\Common\PermissionsService.cs" />
+    <Compile Include="Services\Common\PermissionsReadService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DEM_MVC_DAL\DEM_MVC_DAL.csproj">

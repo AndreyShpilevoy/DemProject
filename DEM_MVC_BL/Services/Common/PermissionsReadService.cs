@@ -11,14 +11,14 @@ using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_BL.Services.Common
 {
-    public class PermissionsService : IPermissionsService
+    public class PermissionsReadService : IPermissionsReadService
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly IIdentityPermissionRepository _permissionRepository;
         private readonly IForumsViewRepository _forumRepository;
         private readonly IIdentityPermissionModelHelper _identityPermissionModelHelper;
 
-        public PermissionsService(IConnectionFactory connectionFactory, 
+        public PermissionsReadService(IConnectionFactory connectionFactory, 
             IIdentityPermissionRepository permissionRepository, 
             IForumsViewRepository forumRepository,
             IIdentityPermissionModelHelper identityPermissionModelHelper)
@@ -40,7 +40,7 @@ namespace DEM_MVC_BL.Services.Common
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(PermissionsService)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(PermissionsReadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return result;
         }
@@ -56,7 +56,7 @@ namespace DEM_MVC_BL.Services.Common
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(PermissionsService)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(PermissionsReadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return result;
         }
@@ -74,7 +74,7 @@ namespace DEM_MVC_BL.Services.Common
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(PermissionsService)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(PermissionsReadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return result;
         }
@@ -92,7 +92,7 @@ namespace DEM_MVC_BL.Services.Common
             }
             catch (Exception exception)
             {
-                DemLogger.Current.Error(exception, $"{nameof(PermissionsService)}. Error in function {DemLogger.GetCallerInfo()}");
+                DemLogger.Current.Error(exception, $"{nameof(PermissionsReadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return result;
         }

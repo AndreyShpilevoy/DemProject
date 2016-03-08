@@ -16,15 +16,15 @@ namespace DEM_MVC_BL.Services.Conference
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly IForumModelHelper _forumModelHelper;
-        private readonly IForumsViewRepository _forumEntityRepository;
+        private readonly IForumsViewRepository _forumRepository;
 
         public ForumReadService(IConnectionFactory connectionFactory,
             IForumModelHelper forumModelHelper,
-            IForumsViewRepository forumEntityRepository)
+            IForumsViewRepository forumRepository)
         {
             _connectionFactory = connectionFactory;
             _forumModelHelper = forumModelHelper;
-            _forumEntityRepository = forumEntityRepository;
+            _forumRepository = forumRepository;
         }
 
         public List<ForumTableViewModel> GetAllForumTableViewModels()
@@ -33,7 +33,7 @@ namespace DEM_MVC_BL.Services.Conference
 
             try
             {
-                List<ForumsViewEntity> forumViewEntities = _forumEntityRepository.GetAllForums(_connectionFactory);
+                List<ForumsViewEntity> forumViewEntities = _forumRepository.GetAllForums(_connectionFactory);
                 var tempForumModels = Mapper.Map<List<ForumsViewEntity>, List<ForumTableViewModel>>(forumViewEntities);
 
                 forumTableViewModels = _forumModelHelper.TransformToHierarchy(tempForumModels);
@@ -51,7 +51,7 @@ namespace DEM_MVC_BL.Services.Conference
 
             try
             {
-                List<ForumsViewEntity> forumViewEntities = _forumEntityRepository.GetAllForums(_connectionFactory);
+                List<ForumsViewEntity> forumViewEntities = _forumRepository.GetAllForums(_connectionFactory);
                 var tempForumModels = Mapper.Map<List<ForumsViewEntity>, List<ForumTableViewModel>>(forumViewEntities);
                 var forumTableViewModelList = _forumModelHelper.TransformToHierarchy(tempForumModels);
 
@@ -70,7 +70,7 @@ namespace DEM_MVC_BL.Services.Conference
             var forumInfoViewModel = new ForumInfoViewModel();
             try
             {
-                ForumsViewEntity forumViewEntity = _forumEntityRepository.GetForumInfoById(forumId, _connectionFactory);
+                ForumsViewEntity forumViewEntity = _forumRepository.GetForumInfoById(forumId, _connectionFactory);
                 forumInfoViewModel = Mapper.Map<ForumsViewEntity, ForumInfoViewModel>(forumViewEntity);
             }
             catch (Exception exception)

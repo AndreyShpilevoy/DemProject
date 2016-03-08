@@ -1,5 +1,6 @@
 ﻿using System;
 using AutoMapper;
+using DEM_MVC_BL.Interfaces.IServices.Conference;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_DAL.Entities.ForumsViewEntities;
 using Microsoft.Practices.ServiceLocation;
@@ -10,8 +11,8 @@ namespace DEM_MVC.Services.AutoMapper.ValueResolvers
     {
         protected override int ResolveCore(ForumsViewEntity source)
         {
-            var configHelper = ServiceLocator.Current.GetInstance<IConfigModelHelper>();
-            return (int)Math.Ceiling((double)source.TopicsCount / configHelper.GetTopicsOnPageCount());
+            var configReadService = ServiceLocator.Current.GetInstance<IConfigReadService>();
+            return (int)Math.Ceiling((double)source.TopicsCount / configReadService.GetTopicsOnPageCount());
         }
     }
 }

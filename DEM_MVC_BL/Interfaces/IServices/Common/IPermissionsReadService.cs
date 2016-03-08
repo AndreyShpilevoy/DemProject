@@ -2,7 +2,7 @@
 
 namespace DEM_MVC_BL.Interfaces.IServices.Common
 {
-    public interface IPermissionsService
+    public interface IPermissionsReadService
     {
         bool UserHasPermissionByForumId(int userId, int forumId, string permissionName);
 

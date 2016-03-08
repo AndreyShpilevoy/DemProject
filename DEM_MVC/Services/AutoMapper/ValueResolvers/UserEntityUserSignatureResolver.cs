@@ -1,5 +1,6 @@
 ﻿using System;
 using AutoMapper;
+using DEM_MVC_BL.Interfaces.IServices.Conference;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_DAL.Entities.UserForPostViewEntities;
 using Microsoft.Practices.ServiceLocation;
@@ -10,9 +11,9 @@ namespace DEM_MVC.Services.AutoMapper.ValueResolvers
     {
         protected override string ResolveCore(UserForPostViewEntity source)
         {
-            var bbCodeHelper = ServiceLocator.Current.GetInstance<IBbCodeModelHelper>();
+            var bbCodeReadService = ServiceLocator.Current.GetInstance<IBbCodeReadService>();
 
-            return bbCodeHelper.BbCodeReplacerToHtml(source.UserSignature);
+            return bbCodeReadService.BbCodeReplacerToHtml(source.UserSignature);
         }
     }
 }

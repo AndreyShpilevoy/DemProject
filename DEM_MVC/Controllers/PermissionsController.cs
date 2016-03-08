@@ -11,11 +11,11 @@ namespace DEM_MVC.Controllers
 {
     public class PermissionsController : Controller
     {
-        private readonly IPermissionsService _permissionsService;
+        private readonly IPermissionsReadService _permissionsService;
         private readonly ITopicReadService _topicReadService;
 
         public PermissionsController(ITopicReadService topicReadService, 
-            IPermissionsService permissionsService)
+            IPermissionsReadService permissionsService)
         {
             _permissionsService = permissionsService;
             _topicReadService = topicReadService;

@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
+using DEM_MVC_BL.Interfaces.IServices.Conference;
 using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using Microsoft.Practices.ServiceLocation;
 
@@ -98,8 +99,8 @@ namespace DEM_MVC.Services.HtmlHelpers
 
             #region buttons
 
-            var bbCodeHelper = ServiceLocator.Current.GetInstance<IBbCodeModelHelper>();
-            var bbCodes = bbCodeHelper.BbCodeModels;
+            var bbCodeReadService = ServiceLocator.Current.GetInstance<IBbCodeReadService>();
+            var bbCodes = bbCodeReadService.BbCodeModels;
             bbCodes = bbCodes.OrderBy(x => x.BbCodeOrder).ToList();
 
             var stringBuilder = new StringBuilder();

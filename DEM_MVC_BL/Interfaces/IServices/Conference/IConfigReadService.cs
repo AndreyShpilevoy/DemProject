@@ -6,5 +6,8 @@ namespace DEM_MVC_BL.Interfaces.IServices.Conference
     public interface IConfigReadService
     {
         List<ConfigModel> GetAllConfigModels();
+        List<ConfigModel> ConfigModels { get; }
+        int GetPostsOnPageCount();
+        int GetTopicsOnPageCount();
     }
 }

@@ -4,24 +4,29 @@ using DEM_MVC_BL.Interfaces.IServices;
 using DEM_MVC_BL.Interfaces.IServices.Common;
 using DEM_MVC_BL.Interfaces.IServices.Conference;
 using DEM_MVC_BL.Models.BbCodeModels;
+using DEM_MVC_DAL.Entities.BbCodeEntities;
+using DEM_MVC_DAL.Interfaces.IFactory;
+using DEM_MVC_DAL.Interfaces.IRepositories;
 using Unit_Tests.BaseTest;
 
 namespace Unit_Tests.Tests.DEM_MVC_BL.Services.BbCodeModelHelper_Tests
 {
-    public abstract class BbCodeModelHelperUnitTestBase : UnitTestBase
+    public abstract class BbCodeReadServiceUnitTestBase : UnitTestBase
     {
 
-        protected readonly IBbCodeReadService BbCodeReadService;
+        protected readonly IBbCodeRepository BbCodeRepository;
+        protected readonly IConnectionFactory ConnectionFactory;
         protected readonly IAppCacheService AppCache;
 
-        protected BbCodeModelHelperUnitTestBase()
+        protected BbCodeReadServiceUnitTestBase()
         {
             using (var mock = AutoMock.GetLoose())
             {
 
-                mock.Mock<IBbCodeReadService>().Setup(x => x.GetAllBbCodeModels()).Returns(new List<BbCodeModel>()
+                ConnectionFactory = mock.Create<IConnectionFactory>();
+                mock.Mock<IBbCodeRepository>().Setup(x => x.GetAllBbCodes(ConnectionFactory)).Returns(new List<BbCodeEntity>()
                 {
-                    new BbCodeModel()
+                    new BbCodeEntity()
                     {
                         BbCodeHelpLine = "Жирный текст: [b]текст[/b]",
                         BbCodeMatch = @"\[b\](.*?)\[\/b\]",
@@ -32,7 +37,7 @@ namespace Unit_Tests.Tests.DEM_MVC_BL.Services.BbCodeModelHelper_Tests
                         BbCodeTemplate = "<span style=\"font-weight:bold; \">${1}</span>",
                         NoParse = false
                     },
-                    new BbCodeModel()
+                    new BbCodeEntity()
                     {
                         BbCodeHelpLine = "Добавлено: [upd=Время][/upd]",
                         BbCodeMatch = @"\[upd=(.*?)\[\/upd\]",
@@ -43,7 +48,7 @@ namespace Unit_Tests.Tests.DEM_MVC_BL.Services.BbCodeModelHelper_Tests
                         BbCodeTemplate = "<span style=\"font - size: 85 %; line - height: normal; color: #a7a7a7;\"><i>Добавлено:</i></span>",
                         NoParse = false
                     },
-                    new BbCodeModel()
+                    new BbCodeEntity()
                     {
                         BbCodeHelpLine = "[code]код[/code]",
                         BbCodeMatch = @"\[code\](.*?)\[\/code\]",
@@ -55,7 +60,7 @@ namespace Unit_Tests.Tests.DEM_MVC_BL.Services.BbCodeModelHelper_Tests
                         NoParse = true
                     }
                 });
-                BbCodeReadService = mock.Create<IBbCodeReadService>();
+                BbCodeRepository = mock.Create<IBbCodeRepository>();
                 AppCache = mock.Create<IAppCacheService>();
 
             }

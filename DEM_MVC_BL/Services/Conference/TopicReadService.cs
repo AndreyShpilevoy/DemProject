@@ -14,13 +14,13 @@ namespace DEM_MVC_BL.Services.Conference
     public class TopicReadService : ITopicReadService
     {
         private readonly IConnectionFactory _connectionFactory;
-        private readonly ITopicRepository _topicEntityRepository;
+        private readonly ITopicRepository _topicRepository;
 
         public TopicReadService(IConnectionFactory connectionFactory,
-            ITopicRepository topicEntityRepository)
+            ITopicRepository topicRepository)
         {
             _connectionFactory = connectionFactory;
-            _topicEntityRepository = topicEntityRepository;
+            _topicRepository = topicRepository;
         }
 
         public List<TopicTableViewModel> GetTopicTableViewModelsByForumId(int forumId, int onPage, int? page)
@@ -29,7 +29,7 @@ namespace DEM_MVC_BL.Services.Conference
 
             try
             {
-                List<TopicsViewEntity> topicViewEntities = _topicEntityRepository.GetTopicsByForumId(forumId, _connectionFactory, onPage, page);
+                List<TopicsViewEntity> topicViewEntities = _topicRepository.GetTopicsByForumId(forumId, _connectionFactory, onPage, page);
                 topicTableViewModels = Mapper.Map<List<TopicsViewEntity>, List<TopicTableViewModel>>(topicViewEntities);
             }
             catch (Exception exception)
@@ -44,7 +44,7 @@ namespace DEM_MVC_BL.Services.Conference
             var topicShowViewModel = new TopicInfoViewModel();
             try
             {
-                TopicsViewEntity topicViewEntity = _topicEntityRepository.GetTopicById(topicId, _connectionFactory);
+                TopicsViewEntity topicViewEntity = _topicRepository.GetTopicById(topicId, _connectionFactory);
                 topicShowViewModel = Mapper.Map<TopicsViewEntity, TopicInfoViewModel>(topicViewEntity);
             }
             catch (Exception exception)
