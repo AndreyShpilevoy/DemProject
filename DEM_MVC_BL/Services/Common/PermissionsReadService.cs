@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices.Common;
-using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.IdentityPermissionModels;
 using DEM_MVC_DAL.Entities.IdentityPermissionEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
@@ -16,17 +16,14 @@ namespace DEM_MVC_BL.Services.Common
         private readonly IConnectionFactory _connectionFactory;
         private readonly IIdentityPermissionRepository _permissionRepository;
         private readonly IForumsViewRepository _forumRepository;
-        private readonly IIdentityPermissionModelHelper _identityPermissionModelHelper;
 
         public PermissionsReadService(IConnectionFactory connectionFactory, 
             IIdentityPermissionRepository permissionRepository, 
-            IForumsViewRepository forumRepository,
-            IIdentityPermissionModelHelper identityPermissionModelHelper)
+            IForumsViewRepository forumRepository)
         {
             _connectionFactory = connectionFactory;
             _permissionRepository = permissionRepository;
             _forumRepository = forumRepository;
-            _identityPermissionModelHelper = identityPermissionModelHelper;
         }
 
         public bool UserHasPermissionByForumId(int userId, int forumId, string permissionName)
@@ -36,7 +33,7 @@ namespace DEM_MVC_BL.Services.Common
             {
                 var permissions = _permissionRepository.GetPermissionByUserId(permissionName, userId, _connectionFactory);
                 var permissoionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
-                result = _identityPermissionModelHelper.CalulateUserPermissionsForForumId(forumId, permissoionModels);
+                result = CalulateUserPermissionsForForumId(forumId, permissoionModels);
             }
             catch (Exception exception)
             {
@@ -52,7 +49,7 @@ namespace DEM_MVC_BL.Services.Common
             {
                 var permissions = _permissionRepository.GetSeveralPermissionsByUserId(permissionsNameList, userId, _connectionFactory);
                 var permissoionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
-                result = _identityPermissionModelHelper.CalulateUserPermissionsForForumId(forumId, permissoionModels);
+                result = CalulateUserPermissionsForForumId(forumId, permissoionModels);
             }
             catch (Exception exception)
             {
@@ -70,7 +67,7 @@ namespace DEM_MVC_BL.Services.Common
 
                 var permissions = _permissionRepository.GetPermissionByUserId(permissionName, userId, _connectionFactory);
                 var permissoionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
-                result = _identityPermissionModelHelper.CalulateUserPermissionsForForumId(forumId, permissoionModels);
+                result = CalulateUserPermissionsForForumId(forumId, permissoionModels);
             }
             catch (Exception exception)
             {
@@ -88,13 +85,53 @@ namespace DEM_MVC_BL.Services.Common
 
                 var permissions = _permissionRepository.GetSeveralPermissionsByUserId(permissionsNameList, userId, _connectionFactory);
                 var permissoionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
-                result = _identityPermissionModelHelper.CalulateUserPermissionsForForumId(forumId, permissoionModels);
+                result = CalulateUserPermissionsForForumId(forumId, permissoionModels);
             }
             catch (Exception exception)
             {
                 DemLogger.Current.Error(exception, $"{nameof(PermissionsReadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return result;
+        }
+
+        private bool CalulateUserPermissionsForForumId(int forumId, List<IdentityPermissionModel> permissoionModels)
+        {
+            var forumsId = new List<string>();
+            var forumsIdForDelete = new List<string>();
+            foreach (var groupPermissoionModel in permissoionModels.Where(x => x.Type == IdentityPermissionType.GroupPermission && x.SettingsState))
+            {
+                forumsId = groupPermissoionModel.ForumsId.Split(',').ToList();
+            }
+            forumsId = forumsId.Distinct().ToList();
+
+            foreach (var groupPermissoionModel in permissoionModels.Where(x => x.Type == IdentityPermissionType.GroupPermission && !x.SettingsState))
+            {
+                forumsIdForDelete = groupPermissoionModel.ForumsId.Split(',').ToList();
+            }
+
+            foreach (var forumIdForDelete in forumsIdForDelete.Distinct().ToList())
+            {
+                forumsId.Remove(forumIdForDelete);
+            }
+
+            var userPermission = permissoionModels.SingleOrDefault(x => x.Type == IdentityPermissionType.UserPermission);
+
+            if (userPermission == null)
+                return forumsId.Contains(forumId.ToString());
+
+            if (userPermission.SettingsState)
+            {
+                List<string> list = userPermission.ForumsId.Split(',').ToList();
+                forumsId.AddRange(list);
+            }
+            else
+            {
+                foreach (var userForumId in userPermission.ForumsId.Split(',').ToList())
+                {
+                    forumsId.Remove(userForumId);
+                }
+            }
+            return forumsId.Contains(forumId.ToString());
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices.Conference;
-using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_DAL.Entities.UserIdentityEntities;
 using Microsoft.Practices.ServiceLocation;
 

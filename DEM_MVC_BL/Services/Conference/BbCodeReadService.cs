@@ -79,7 +79,7 @@ namespace DEM_MVC_BL.Services.Conference
         }
 
 
-        public Dictionary<Regex, string> FillTheDictionaryBbcodes()
+        private Dictionary<Regex, string> FillTheDictionaryBbcodes()
         {
             try
             {

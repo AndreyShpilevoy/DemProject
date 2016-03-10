@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices.Conference;
-using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.PollModels;
 using DEM_MVC_BL.Models.PollOptionModels;
 using DEM_MVC_DAL.Entities.PollEntities;
@@ -17,17 +16,14 @@ namespace DEM_MVC_BL.Services.Conference
     public class PollReadService : IPollReadService
     {
         private readonly IConnectionFactory _connectionFactory;
-        private readonly IPollOptionModelHelper _pollModelHelper;
         private readonly IPollRepository _pollRepository;
         private readonly IPollOptionRepository _pollOptionRepository;
 
         public PollReadService(IConnectionFactory connectionFactory,
-            IPollOptionModelHelper pollModelHelper,
             IPollRepository pollRepository,
             IPollOptionRepository pollOptionRepository)
         {
             _connectionFactory = connectionFactory;
-            _pollModelHelper = pollModelHelper;
             _pollRepository = pollRepository;
             _pollOptionRepository = pollOptionRepository;
         }
@@ -48,7 +44,7 @@ namespace DEM_MVC_BL.Services.Conference
                 foreach (var pollViewModel in pollViewModels)
                 {
                     var pollsOptionViewModels = pollOptionsViewModels.Where(x => x.PollId == pollViewModel.PollId).OrderBy(x => x.PollOptionId).ToList();
-                    pollsOptionViewModels = _pollModelHelper.CalculatePollOptionTotalPercent(pollsOptionViewModels);
+                    pollsOptionViewModels = CalculatePollOptionTotalPercent(pollsOptionViewModels);
                     pollViewModel.PollOptionList = pollsOptionViewModels;
                 }
             }
@@ -57,6 +53,16 @@ namespace DEM_MVC_BL.Services.Conference
                 DemLogger.Current.Error(exception, $"{nameof(PollReadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return pollViewModels;
+        }
+
+        private List<PollOptionViewModel> CalculatePollOptionTotalPercent(List<PollOptionViewModel> pollsOptionViewModels)
+        {
+            double totalVotes = pollsOptionViewModels.Sum(x => x.PollOptionTotal);
+            foreach (var pollsOptionViewModel in pollsOptionViewModels)
+            {
+                pollsOptionViewModel.PollOptionTotalPercent = (100 * pollsOptionViewModel.PollOptionTotal) / totalVotes;
+            }
+            return pollsOptionViewModels;
         }
     }
 }

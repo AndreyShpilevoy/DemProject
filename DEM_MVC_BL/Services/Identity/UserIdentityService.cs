@@ -841,7 +841,7 @@ namespace DEM_MVC_BL.Services.Identity
 
         public void Dispose()
         {
-            // Method intentionally left empty.
+            // todo check why left empty.
         }
     }
 }

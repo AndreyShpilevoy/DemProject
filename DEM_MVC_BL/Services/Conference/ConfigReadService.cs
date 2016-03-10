@@ -43,7 +43,7 @@ namespace DEM_MVC_BL.Services.Conference
             _appCache = appCache;
         }
 
-        public List<ConfigModel> GetAllConfigModels()
+        private List<ConfigModel> GetAllConfigModels()
         {
             var configModels = new List<ConfigModel>();
 
