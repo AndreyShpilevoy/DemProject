@@ -1,6 +1,4 @@
 ﻿using Autofac;
-using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
-using DEM_MVC_BL.Services.ModelsHelpers;
 using Module = Autofac.Module;
 
 namespace DEM_MVC_BL.Autofac

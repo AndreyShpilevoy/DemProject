@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices.Conference;
-using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_DAL.Entities.ForumsViewEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
@@ -15,15 +14,12 @@ namespace DEM_MVC_BL.Services.Conference
     public class ForumReadService : IForumReadService
     {
         private readonly IConnectionFactory _connectionFactory;
-        private readonly IForumModelHelper _forumModelHelper;
         private readonly IForumsViewRepository _forumRepository;
 
         public ForumReadService(IConnectionFactory connectionFactory,
-            IForumModelHelper forumModelHelper,
             IForumsViewRepository forumRepository)
         {
             _connectionFactory = connectionFactory;
-            _forumModelHelper = forumModelHelper;
             _forumRepository = forumRepository;
         }
 
@@ -36,7 +32,7 @@ namespace DEM_MVC_BL.Services.Conference
                 List<ForumsViewEntity> forumViewEntities = _forumRepository.GetAllForums(_connectionFactory);
                 var tempForumModels = Mapper.Map<List<ForumsViewEntity>, List<ForumTableViewModel>>(forumViewEntities);
 
-                forumTableViewModels = _forumModelHelper.TransformToHierarchy(tempForumModels);
+                forumTableViewModels = TransformToHierarchy(tempForumModels);
             }
             catch (Exception exception)
             {
@@ -53,9 +49,9 @@ namespace DEM_MVC_BL.Services.Conference
             {
                 List<ForumsViewEntity> forumViewEntities = _forumRepository.GetAllForums(_connectionFactory);
                 var tempForumModels = Mapper.Map<List<ForumsViewEntity>, List<ForumTableViewModel>>(forumViewEntities);
-                var forumTableViewModelList = _forumModelHelper.TransformToHierarchy(tempForumModels);
+                var forumTableViewModelList = TransformToHierarchy(tempForumModels);
 
-                forumTableViewModel = _forumModelHelper.GetFromHierarchyById(forumTableViewModelList, forumId);
+                forumTableViewModel = GetFromHierarchyById(forumTableViewModelList, forumId);
                 forumTableViewModel.SubForums = forumTableViewModel.SubForums.OrderBy(x => x.ForumOrder).ToList();
             }
             catch (Exception exception)
@@ -78,6 +74,94 @@ namespace DEM_MVC_BL.Services.Conference
                 DemLogger.Current.Error(exception, $"{nameof(ForumReadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return forumInfoViewModel;
+        }
+
+
+        private List<ForumTableViewModel> TransformToHierarchy(List<ForumTableViewModel> forumModels)
+        {
+            try
+            {
+                var result = (from forum in forumModels
+                              let subForums = forumModels.Where(x => x.ParentId == forum.ForumId).ToList()
+                              where subForums.Count != 0
+                              let parentForum = forumModels.FirstOrDefault(x => x.ForumId == forum.ParentId)
+                              where parentForum == null
+                              select forum).ToList();
+
+                foreach (var forum in result)
+                {
+                    forum.SubForums = forumModels.Where(x => x.ParentId == forum.ForumId).ToList();
+                    FillSubForums(forum, forumModels);
+                }
+                return result;
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, $"{nameof(ForumReadService)}. Error in function {DemLogger.GetCallerInfo()}");
+                return null;
+            }
+        }
+
+        private void FillSubForums(ForumTableViewModel root, List<ForumTableViewModel> forumModels)
+        {
+            try
+            {
+                foreach (ForumTableViewModel childNode in root.SubForums)
+                {
+                    childNode.SubForums = forumModels.Where(x => x.ParentId == childNode.ForumId).ToList();
+                    if (childNode.SubForums.Count > 0)
+                    {
+                        FillSubForums(childNode, forumModels);
+                    }
+                }
+
+                #region RefillLastPostData
+
+                var latestDateTime = root.SubForums.Select(x => x.LastPostTime).Max();
+                var lastForum = root.SubForums.FirstOrDefault(x => x.LastPostTime == latestDateTime);
+                if (lastForum != null && latestDateTime > root.LastPostTime)
+                {
+                    root.LastTopicTitle = lastForum.LastTopicTitle;
+                    root.LastTopicId = lastForum.LastTopicId;
+                    root.LastPostTime = lastForum.LastPostTime;
+                    root.GroupColor = lastForum.GroupColor;
+                    root.Username = lastForum.Username;
+                }
+
+                #endregion
+
+                #region RecountTopicsAndPosts
+
+                root.TopicsCount += root.SubForums.Select(x => x.TopicsCount).Sum();
+                root.PostsCount += root.SubForums.Select(x => x.PostsCount).Sum();
+
+                #endregion
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, $"{nameof(ForumReadService)}. Error in function {DemLogger.GetCallerInfo()}");
+            }
+        }
+
+        private ForumTableViewModel GetFromHierarchyById(List<ForumTableViewModel> forumModels, int forumId)
+        {
+            try
+            {
+                foreach (var forum in forumModels)
+                {
+                    if (forum.ForumId == forumId)
+                        return forum;
+                    var forumResult = GetFromHierarchyById(forum.SubForums, forumId);
+
+                    if (forumResult != null)
+                        return forumResult;
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, $"{nameof(ForumReadService)}. Error in function {DemLogger.GetCallerInfo()}");
+            }
+            return null;
         }
     }
 }

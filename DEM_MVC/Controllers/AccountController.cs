@@ -473,7 +473,7 @@ namespace DEM_MVC.Controllers
                 string.Format(
                     "Приветствую Вас, органическая форма жизни. {0} С вами говорит Автоматический Комплекс Управления программным обеспечением ресурса DeusExMachina - Botty. {0}{0} Обязан Вам сообщить, что вы, только что, зарегистрировались на сайте DeusExMachina. {0} Согласно принятому протоколу взаимодействия  в чрезвычайных ситуациях, я должен предложить вам ссылку для подтверждения EMail адреса. {0} Вот она <a href=\"{1}\">Ссылка</a>. {0}{0} Спасибо, что воспользовались услугами Автоматического Комплекса Управления программным обеспечением ресурса DeusExMachina - Botty. {0} Оставайтесь с нами и приятного вам общения. {0}{0} <a href=\"http://dem.org.ua\">DeusExMachina</a>",
                     "<br />", callbackUrl);
-            await UserManager.SendEmailAsync(userId, "Подтверждение EMail'а", message).ConfigureAwait(false);
+            await UserManager.SendEmailAsync(userId, subject ?? "Подтверждение EMail'а", message).ConfigureAwait(false);
 
             return callbackUrl;
         }

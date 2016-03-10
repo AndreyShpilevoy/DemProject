@@ -134,6 +134,7 @@ namespace DEM_MVC_BL.Services.Identity
 
         public void Dispose()
         {
+            // todo check why left empty.
         }
     }
 }

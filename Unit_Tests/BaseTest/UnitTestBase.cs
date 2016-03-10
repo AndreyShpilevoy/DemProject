@@ -7,7 +7,6 @@ using DEM_MVC.Autofac;
 using DEM_MVC.Models;
 using DEM_MVC.Services.AutoMapper;
 using DEM_MVC_BL.Autofac;
-using DEM_MVC_BL.Services;
 using DEM_MVC_BL.Services.Identity;
 using DEM_MVC_DAL.Autofac;
 using DEM_MVC_Infrastructure.Autofac;

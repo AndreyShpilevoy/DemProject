@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Dapper;
+using DEM_MVC_Infrastructure.Models;
 
 namespace DEM_MVC_DAL.Services
 {
@@ -61,8 +62,9 @@ namespace DEM_MVC_DAL.Services
                         return result;
                     }
                 }
-                catch (NotImplementedException)
+                catch (NotImplementedException exception)
                 {
+                    DemLogger.Current.Error(exception, $"{"DapperColumnAttributeTypeMapperService"}. Error in function {DemLogger.GetCallerInfo()}");
                 }
             }
             return null;
@@ -80,8 +82,9 @@ namespace DEM_MVC_DAL.Services
                         return result;
                     }
                 }
-                catch (NotImplementedException)
+                catch (NotImplementedException exception)
                 {
+                    DemLogger.Current.Error(exception, $"{"DapperColumnAttributeTypeMapperService"}. Error in function {DemLogger.GetCallerInfo()}");
                 }
             }
             return null;
@@ -99,8 +102,9 @@ namespace DEM_MVC_DAL.Services
                         return result;
                     }
                 }
-                catch (NotImplementedException)
+                catch (NotImplementedException exception)
                 {
+                    DemLogger.Current.Error(exception, $"{"DapperColumnAttributeTypeMapperService"}. Error in function {DemLogger.GetCallerInfo()}");
                 }
             }
             return null;

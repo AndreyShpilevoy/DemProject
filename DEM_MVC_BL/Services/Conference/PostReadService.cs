@@ -32,7 +32,8 @@ namespace DEM_MVC_BL.Services.Conference
             {
                 List<ReadPostEntity> postEntities = _postRepository.GetAllPostsByTopicId(topicId, _connectionFactory, onPage, page);
                 var usersId = postEntities.Select(x => x.UserId).ToList();
-                usersId.AddRange(postEntities.Where(x => x.PostEditCount > 0).Select(y => y.PostEditUserId).ToList());
+                var list = (from x in postEntities where x.PostEditCount > 0 select x.PostEditUserId).ToList();
+                usersId.AddRange(list);
                 usersId = usersId.Distinct().ToList();
                 List<UserForPostViewEntity> userForPostViewEntities = _postRepository.GetUsersForPostsByUsersId(_connectionFactory, usersId);
 

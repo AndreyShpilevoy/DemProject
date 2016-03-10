@@ -5,7 +5,6 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
 using DEM_MVC_BL.Interfaces.IServices.Conference;
-using DEM_MVC_BL.Interfaces.IServices.IModelsHelpers;
 using Microsoft.Practices.ServiceLocation;
 
 namespace DEM_MVC.Services.HtmlHelpers
@@ -26,7 +25,7 @@ namespace DEM_MVC.Services.HtmlHelpers
 
             var span = new TagBuilder("span");
             span.MergeAttributes(new RouteValueDictionary(htmlAttributes));
-            if (value != null)
+            if (!Equals(value, default(TProperty)))
             {
                 span.SetInnerText(value.ToString());
             }
