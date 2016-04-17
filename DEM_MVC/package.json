@@ -3,19 +3,16 @@
 	"name": "DeusExMachina",
 	"private": true,
   "devDependencies": {
-    "bower": "1.7.7",
-    "gulp": "3.9.0",
-    "gulp-sass": "2.2.0",
-    "gulp-autoprefixer": "3.1.0",
-    "gulp-concat": "2.6.0",
-    "gulp-cssmin": "0.1.7",
-    "gulp-uglify": "1.5.1",
-    "gulp-rename": "1.2.2",
-    "gulp-cache": "0.4.2",
-    "gulp-typescript": "2.10.0",
-    "gulp-tsd": "0.1.0",
-    "gulp-sync": "0.1.4",
-    "rimraf": "2.5.1",
-    "es6-promise": "3.0.2"
+    "bower": "^1.7.9",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-uglify": "^1.5.3",
+    "gulp-typescript": "^2.13.0",
+    "gulp-tsd": "^0.1.1",
+    "gulp-sync": "^0.1.4",
+    "rimraf": "^2.5.2"
   }
 }

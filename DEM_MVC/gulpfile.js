@@ -6,17 +6,14 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 
 var gulp = require("gulp"),
     tsd = require("gulp-tsd"),
-    cache = require("gulp-cache"),//-
     sass = require("gulp-sass"),
     rimraf = require("rimraf"),
     concat = require("gulp-concat"),
     cssmin = require("gulp-cssmin"),
     uglify = require("gulp-uglify"),
-    rename = require("gulp-rename"),//-
     gulpsync = require("gulp-sync")(gulp),
-    typescript = require("gulp-typescript"),
-    autoprefixer = require("gulp-autoprefixer"),
-    Promise = require("es6-promise").Promise;;
+    typeScript = require("gulp-typescript"),
+    autoprefixer = require("gulp-autoprefixer");
 
 var paths = {
     webroot: "./wwwroot/"
@@ -63,11 +60,11 @@ gulp.task("load:tsd", function (callback) {
 });
 
 gulp.task("procces:ts-to-js", function () {
-    return gulp.src(paths.ts)
-		.pipe(typescript({
-		    noImplicitAny: true
-		}))
-		.pipe(gulp.dest(paths.jsTempFolder));
+    var tsResult = gulp.src(paths.ts)
+        .pipe(typeScript({
+            noImplicitAny: true
+        }));
+    return tsResult.js.pipe(gulp.dest(paths.jsTempFolder));
 });
 
 gulp.task("procces:sass-to-css", function () {
