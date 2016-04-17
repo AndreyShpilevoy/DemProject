@@ -208,6 +208,7 @@
     <Content Include="App_Data\SQL_Scripts\Create_TestUsersTables.sql" />
     <Content Include="App_Data\SQL_Scripts\Migrate_Script_From_adeusexm_phpbbex_To_DEM.sql" />
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
+    <Content Include="typings.json" />
     <None Include="wwwroot\scss\bootstrap.scss" />
     <None Include="wwwroot\scss\main-dem.scss" />
     <Content Include="wwwroot\css\dem.min.css" />
@@ -346,7 +347,6 @@
     <Content Include="Views\Conference\ViewTopic\_CreatePost.cshtml" />
     <Content Include="Views\Conference\ViewTopic\_ShowTopicPaging.cshtml" />
     <Content Include="Views\Conference\Index\_SiteUnderCostruction.cshtml" />
-    <Content Include="tsd.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

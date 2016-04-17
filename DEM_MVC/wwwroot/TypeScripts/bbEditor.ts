@@ -1,3 +1,4 @@
+/// <reference path="../TypingsForTypeScript/browser.d.ts" />
 /*****************************************/
 // by kto: 15/dec/2015
 // parts of Javascript Textarea BBCode Markup Editor Version: 1.3 was used
