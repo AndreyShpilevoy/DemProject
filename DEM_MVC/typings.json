@@ -1,0 +1,8 @@
+{
+  "name": "DeusExMachina",
+  "version": false,
+  "ambientDependencies": {
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#c44772fa6a7d07071baa6e11c9007b6d978f2d81",
+    "jqueryui": "github:DefinitelyTyped/DefinitelyTyped/jqueryui/jqueryui.d.ts#984a41af67d76b5134e0d4991a30f813dfb8561f"
+  }
+}

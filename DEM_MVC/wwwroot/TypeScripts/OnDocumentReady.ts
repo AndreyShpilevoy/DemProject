@@ -1,4 +1,4 @@
-﻿/// <reference path="../TypingsForTypeScript/tsd.d.ts" />
+﻿/// <reference path="../TypingsForTypeScript/browser.d.ts" />
 
 $(document).ready(() => {
     var urlParametrService = new UrlParametrService();

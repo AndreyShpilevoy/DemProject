@@ -1,4 +1,4 @@
-﻿/// <reference path="../TypingsForTypeScript/tsd.d.ts" />
+﻿/// <reference path="../TypingsForTypeScript/browser.d.ts" />
 
 class PostService {
     private permissionService: PermissionService;
