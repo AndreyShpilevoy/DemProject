@@ -33,49 +33,54 @@ namespace DEM_MVC.Services.AutoMapper
     {
         public static void Initial()
         {
-            Mapper.CreateMap<BbCodeEntity, BbCodeModel>().ReverseMap();
-            Mapper.CreateMap<ConfigEntity, ConfigModel>().ReverseMap();
-            Mapper.CreateMap<ForumsViewEntity, ForumTableViewModel>().ReverseMap();
-            Mapper.CreateMap<PollEntity, PollViewModel>().ReverseMap();
-            Mapper.CreateMap<PollOptionEntity, PollOptionViewModel>().ReverseMap();
-            Mapper.CreateMap<GroupIdentityEntity, IdentityGroupModel>().ReverseMap();
-            Mapper.CreateMap<UserLoginInfoIdentityEntity, UserLoginInfo>().ReverseMap();
-            Mapper.CreateMap<PermissionEntity, PermissionModel>().ReverseMap();
-            Mapper.CreateMap<IdentityPermissionModel, IdentityPermissionEntity>().ReverseMap();
-            Mapper.CreateMap<NewPostViewModel, NewPostModel>().ReverseMap();
-            Mapper.CreateMap<NewPostModel, NewPostEntity>().ReverseMap();
+            Mapper.AssertConfigurationIsValid();
+            Mapper.Initialize(cfg => {
+                cfg.CreateMap<BbCodeEntity, BbCodeModel>().ReverseMap();
+                cfg.CreateMap<ConfigEntity, ConfigModel>().ReverseMap();
+                cfg.CreateMap<ForumsViewEntity, ForumTableViewModel>().ReverseMap();
+                cfg.CreateMap<PollEntity, PollViewModel>().ReverseMap();
+                cfg.CreateMap<PollOptionEntity, PollOptionViewModel>().ReverseMap();
+                cfg.CreateMap<GroupIdentityEntity, IdentityGroupModel>().ReverseMap();
+                cfg.CreateMap<UserLoginInfoIdentityEntity, UserLoginInfo>().ReverseMap();
+                cfg.CreateMap<PermissionEntity, PermissionModel>().ReverseMap();
+                cfg.CreateMap<IdentityPermissionModel, IdentityPermissionEntity>().ReverseMap();
+                cfg.CreateMap<NewPostViewModel, NewPostModel>().ReverseMap();
+                cfg.CreateMap<NewPostModel, NewPostEntity>().ReverseMap();
 
-            Mapper.CreateMap<ReadPostEntity, PostTableViewModel>()
-                  .ForMember(entity => entity.PostText, opt => opt.ResolveUsing<ReadPostEntityPostTextResolver>());
+                cfg.CreateMap<ReadPostEntity, PostTableViewModel>()
+                      .ForMember(entity => entity.PostText, opt => opt.ResolveUsing<ReadPostEntityPostTextResolver>());
 
-            Mapper.CreateMap<PostTableViewModel, ReadPostEntity>();
+                cfg.CreateMap<PostTableViewModel, ReadPostEntity>();
 
-            Mapper.CreateMap<UserForPostViewEntity, UserTableViewModelForPosts>()
-                  .ForMember(entity => entity.UserSignature, opt => opt.ResolveUsing<UserEntityUserSignatureResolver>());
-            Mapper.CreateMap<UserTableViewModelForPosts, UserForPostViewEntity>();
+                cfg.CreateMap<UserForPostViewEntity, UserTableViewModelForPosts>()
+                      .ForMember(entity => entity.UserSignature, opt => opt.ResolveUsing<UserEntityUserSignatureResolver>());
+                cfg.CreateMap<UserTableViewModelForPosts, UserForPostViewEntity>();
 
-            Mapper.CreateMap<UserIdentityEntity, IdentityUserModel>()
-                  .Include<UserIdentityEntity, AppMember>()
-                  .ForMember(entity => entity.UserSignature, opt => opt.ResolveUsing<UserIdentityEntityUserSignatureResolver>());
+                cfg.CreateMap<UserIdentityEntity, IdentityUserModel>()
+                      .Include<UserIdentityEntity, AppMember>()
+                      .ForMember(entity => entity.UserSignature, opt => opt.ResolveUsing<UserIdentityEntityUserSignatureResolver>());
+                cfg.CreateMap<UserIdentityEntity, AppMember>();
 
-            Mapper.CreateMap<IdentityUserModel, UserIdentityEntity>()
-                .Include<AppMember, UserIdentityEntity>();
+                cfg.CreateMap<IdentityUserModel, UserIdentityEntity>()
+                    .Include<AppMember, UserIdentityEntity>();
+                cfg.CreateMap<AppMember, UserIdentityEntity>();
 
-            Mapper.CreateMap<AppMember, IdentityUserModel>().ReverseMap();
+                cfg.CreateMap<AppMember, IdentityUserModel>().ReverseMap();
 
 
 
-            Mapper.CreateMap<TopicsViewEntity, TopicTableViewModel>()
-                  .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<TopicEntityPagesCountResolver>());
-            Mapper.CreateMap<TopicTableViewModel, TopicsViewEntity>();
+                cfg.CreateMap<TopicsViewEntity, TopicTableViewModel>()
+                      .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<TopicEntityPagesCountResolver>());
+                cfg.CreateMap<TopicTableViewModel, TopicsViewEntity>();
 
-            Mapper.CreateMap<TopicsViewEntity, TopicInfoViewModel>()
-                  .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<TopicEntityPagesCountResolver>());
-            Mapper.CreateMap<TopicInfoViewModel, TopicsViewEntity>();
+                cfg.CreateMap<TopicsViewEntity, TopicInfoViewModel>()
+                      .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<TopicEntityPagesCountResolver>());
+                cfg.CreateMap<TopicInfoViewModel, TopicsViewEntity>();
 
-            Mapper.CreateMap<ForumsViewEntity, ForumInfoViewModel>()
-                  .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<ForumEntityPagesCountResolver>());
-            Mapper.CreateMap<ForumInfoViewModel, ForumsViewEntity>();
+                cfg.CreateMap<ForumsViewEntity, ForumInfoViewModel>()
+                      .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<ForumEntityPagesCountResolver>());
+                cfg.CreateMap<ForumInfoViewModel, ForumsViewEntity>();
+            });
         }
     }
 }
