@@ -199,3 +199,5 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
 DEM_MVC/Web.Release.config
+/DEM_MVC/wwwroot/dist/scripts/dem.min.js
+/DEM_MVC/wwwroot/dist/styles/dem.min.css

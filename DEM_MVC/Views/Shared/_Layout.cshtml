@@ -1,35 +1,33 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <link type="text/css" rel="stylesheet" href="~/wwwroot/css/dem.min.css" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	<link type="text/css" rel="stylesheet" href="~/wwwroot/dist/styles/dem.min.css" />
 </head>
 <body>
-    <div class="on-left" title="Наверх" id="back-to-top" style="display: none;"></div>
-    <div id="wrap">
-        <div id="headerMargin"></div>
-        <div id="header"></div>
-        <ul id="main-menu">
-            <li>
-                <a href="/">Форумы</a>
-            </li>
-            <li>
-                @Html.ActionLink("Временный чат", "Chat", "Conference")
-            </li>
-            <li>
-                <a href="http://vk.com/exmachina2">Группа в ВК</a>
-            </li>
-            @Html.Partial("_LoginPartial")
-        </ul>
-        @RenderBody()
-    </div>
-<div id="footerWrap">
-    <div id="footer"></div>
-</div>
-    <script src="~/wwwroot/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/wwwroot/lib/jquery-ui/jquery-ui.min.js"></script>
-    <script src="~/wwwroot/js/dem.min.js"></script>
+	<div class="on-left" title="Наверх" id="back-to-top" style="display: none;"></div>
+	<div id="wrap">
+		<div id="headerMargin"></div>
+		<div id="header"></div>
+		<ul id="main-menu">
+			<li>
+				<a href="/">Форумы</a>
+			</li>
+			<li>
+				@Html.ActionLink("Временный чат", "Chat", "Conference")
+			</li>
+			<li>
+				<a href="http://vk.com/exmachina2">Группа в ВК</a>
+			</li>
+			@Html.Partial("_LoginPartial")
+		</ul>
+		@RenderBody()
+	</div>
+	<div id="footerWrap">
+		<div id="footer"></div>
+	</div>
+	<script src="~/wwwroot/dist/scripts/dem.min.js"></script>
 </body>
 </html>

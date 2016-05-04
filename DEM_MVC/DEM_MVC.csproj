@@ -26,7 +26,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <UseGlobalApplicationHostFile />
-    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -210,30 +210,31 @@
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
     <Content Include="typings.json" />
     <Content Include="DEM_MVC.ruleset" />
-    <None Include="wwwroot\scss\bootstrap.scss" />
-    <None Include="wwwroot\scss\main-dem.scss" />
-    <Content Include="wwwroot\css\dem.min.css" />
-    <Content Include="wwwroot\images\Smiles\forBbCode\think.gif" />
-    <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_0_464646_40x100.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_0_606060_40x100.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_0_f17c1c_40x100.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_100_707070_40x100.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_100_ECD5D8_40x100.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_30_343434_40x100.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_30_606060_40x100.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_50_606060_40x100.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-bg_flat_80_ffffff_40x100.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-icons_a83300_256x240.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-icons_f17c1c_256x240.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-icons_f5f4f1_256x240.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-icons_fbeab2_256x240.png" />
-    <Content Include="wwwroot\images\jquery-ui\ui-icons_ffffff_256x240.png" />
-    <None Include="wwwroot\scss\jquery-ui.scss" />
-    <Content Include="wwwroot\images\DEM\footer.png" />
-    <Content Include="wwwroot\images\DEM\head.png" />
-    <Content Include="wwwroot\images\DEM\ui-poll-5c5c5c_1x100.png" />
-    <Content Include="wwwroot\images\DEM\ui-poll-6c6c6c_1x100.png" />
-    <Content Include="wwwroot\images\DEM\ui-poll-result-f1831f_1x100.png" />
+    <Content Include="eslint.config.json" />
+    <None Include="wwwroot\src\scss\bootstrap.scss" />
+    <None Include="wwwroot\src\scss\main-dem.scss" />
+    <Content Include="wwwroot\dist\images\DEM\footer.png" />
+    <Content Include="wwwroot\dist\images\DEM\head.png" />
+    <Content Include="wwwroot\dist\images\DEM\ui-poll-5c5c5c_1x100.png" />
+    <Content Include="wwwroot\dist\images\DEM\ui-poll-6c6c6c_1x100.png" />
+    <Content Include="wwwroot\dist\images\DEM\ui-poll-result-f1831f_1x100.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_0_464646_40x100.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_0_606060_40x100.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_0_f17c1c_40x100.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_100_707070_40x100.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_100_ecd5d8_40x100.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_30_343434_40x100.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_30_606060_40x100.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_50_606060_40x100.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_80_ffffff_40x100.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-icons_a83300_256x240.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-icons_f17c1c_256x240.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-icons_f5f4f1_256x240.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-icons_fbeab2_256x240.png" />
+    <Content Include="wwwroot\dist\images\jquery-ui\ui-icons_ffffff_256x240.png" />
+    <Content Include="wwwroot\dist\images\Smiles\forBbCode\think.gif" />
+    <Content Include="wwwroot\dist\styles\dem.min.css" />
+    <None Include="wwwroot\src\scss\jquery-ui.scss" />
     <Content Include="ErrorPages\2000.html" />
     <Content Include="ErrorPages\400.shtml" />
     <Content Include="ErrorPages\401.shtml" />
@@ -243,16 +244,15 @@
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
     <Content Include="package.json" />
-    <Content Include=".bowerrc" />
-    <Content Include="bower.json" />
-    <Content Include="wwwroot\js\dem.min.js" />
-    <Content Include="wwwroot\lib\jquery-ui\jquery-ui.min.js" />
-    <Content Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <Content Include="wwwroot\dist\scripts\dem.min.js" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
-    <TypeScriptCompile Include="wwwroot\TypeScripts\bbEditor.ts" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\BbEditor.ts" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\List.tsx" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\GreeterTsx.tsx" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\main.tsx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />
@@ -302,6 +302,7 @@
     <Compile Include="Services\TranslateErrorMessagesForPasswordValidatorService.cs" />
     <Compile Include="Services\HelpfulFunctionsService.cs" />
     <Compile Include="Startup.cs" />
+    <None Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config">
@@ -358,6 +359,7 @@
   <ItemGroup>
     <Folder Include="Views\Administration\" />
     <Folder Include="Views\Permissions\" />
+    <Folder Include="wwwroot\TypingsForTypeScript\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DEM_MVC_BL\DEM_MVC_BL.csproj">
@@ -374,15 +376,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="wwwroot\TypeScripts\AdminControlService.ts" />
-    <TypeScriptCompile Include="wwwroot\TypeScripts\BbCodeService.ts" />
-    <TypeScriptCompile Include="wwwroot\TypeScripts\CookiesService.ts" />
-    <TypeScriptCompile Include="wwwroot\TypeScripts\CollectionsLibrary.ts" />
-    <TypeScriptCompile Include="wwwroot\TypeScripts\OnDocumentReady.ts" />
-    <TypeScriptCompile Include="wwwroot\TypeScripts\PermissionService.ts" />
-    <TypeScriptCompile Include="wwwroot\TypeScripts\PostService.ts" />
-    <TypeScriptCompile Include="wwwroot\TypeScripts\UrlParametrService.ts" />
-    <TypeScriptCompile Include="wwwroot\TypeScripts\ScrollPageService.ts" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\AdminControlService.tsx" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\BbCodeService.tsx" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\CookiesService.tsx" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\Dictionary.tsx" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\PermissionService.tsx" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\PostService.tsx" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\UrlParametrService.tsx" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\ScrollPageService.tsx" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -417,6 +418,14 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
