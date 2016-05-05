@@ -18,15 +18,14 @@ var gulp = require("gulp"),
 
 	browserify = require('browserify'),
 	tsify = require('tsify'),
-	babelify = require('babelify'),
 	source = require('vinyl-source-stream'),
 	streamify = require('gulp-streamify');
 
 
 gulp.task("bundle:js", function () {
-	browserify()
+	browserify({ debug: true })
 		.add('./wwwroot/src/TypeScripts/main.tsx')
-		.plugin(tsify, { noImplicitAny: true })
+		.plugin(tsify)
 		.bundle()
 		.on('error', function (error) { console.error(error.toString()); })
 		.pipe(source('dem.min.js'))
@@ -36,7 +35,7 @@ gulp.task("bundle:js", function () {
 gulp.task("bundle-and-min:js", function () {
 	browserify()
 		.add('./wwwroot/src/TypeScripts/main.tsx')
-		.plugin(tsify, { noImplicitAny: true })
+		.plugin(tsify)
 		.bundle()
 		.on('error', function (error) { console.error(error.toString()); })
 		.pipe(source('dem.min.js'))

@@ -1,5 +1,7 @@
-﻿import * as $ from 'jquery';
-import UrlParametrService from './UrlParametrService';
+﻿/// <reference path="../../../TypingsForTypeScript/browser.d.ts" />
+
+import * as $ from "jquery";
+import UrlParametrService from "./UrlParametrService";
 
 
 export default class ScrollPageService {

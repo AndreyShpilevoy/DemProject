@@ -1,4 +1,6 @@
-﻿import * as $ from 'jquery';
+﻿/// <reference path="../../../TypingsForTypeScript/browser.d.ts" />
+
+import * as $ from "jquery";
 
 export default class Dictionary<T, TT> {
 	private keys: Array<T>;

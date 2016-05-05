@@ -1,4 +1,6 @@
-﻿export default class UrlParametrService {
+﻿/// <reference path="../../../TypingsForTypeScript/browser.d.ts" />
+
+export default class UrlParametrService {
 	pageUrl: string;
 	urlVariablesArray: string[];
 	searchingParamName: string;

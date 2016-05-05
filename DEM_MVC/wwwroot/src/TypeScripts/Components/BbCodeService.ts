@@ -1,5 +1,7 @@
-﻿import * as $ from 'jquery';
-import Dictionary from './Dictionary';
+﻿/// <reference path="../../../TypingsForTypeScript/browser.d.ts" />
+
+import * as $ from "jquery";
+import Dictionary from "./Dictionary";
 
 export default class BbCodeService {
 	private spoilerCssProcessedSelector: string;

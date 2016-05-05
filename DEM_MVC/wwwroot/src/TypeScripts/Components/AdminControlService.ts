@@ -1,5 +1,7 @@
-﻿import * as $ from 'jquery';
-import PermissionService from './PermissionService';
+﻿/// <reference path="../../../TypingsForTypeScript/browser.d.ts" />
+
+import * as $ from "jquery";
+import PermissionService from "./PermissionService";
 
 export default class AdminControlService {
 	private topicId: string;
@@ -31,7 +33,7 @@ export default class AdminControlService {
 function deletePost(postId: string) {
 	var data = { postId: postId };
 
-	$.post('/Administration/DeletePost/', data, returnedData => {
+	$.post("/Administration/DeletePost/", data, returnedData => {
 		if (returnedData.success) {
 			location.reload();
 		} else alert(returnedData.responseText);
@@ -42,9 +44,9 @@ function deletePost(postId: string) {
 function banUser(userId: string) {
 	var data = { userId: userId };
 
-	$.post('/Administration/BanUser/', data, returnedData => {
+	$.post("/Administration/BanUser/", data, returnedData => {
 		if (returnedData.success) {
-			alert('user banned');
+			alert("user banned");
 		} else alert(returnedData.responseText);
 	});
 
@@ -53,9 +55,9 @@ function banUser(userId: string) {
 function unbanUser(userId: string) {
 	var data = { userId: userId };
 
-	$.post('/Administration/UnbanUser/', data, returnedData => {
+	$.post("/Administration/UnbanUser/", data, returnedData => {
 		if (returnedData.success) {
-			alert('user unbanned');
+			alert("user unbanned");
 		} else alert(returnedData.responseText);
 	});
 

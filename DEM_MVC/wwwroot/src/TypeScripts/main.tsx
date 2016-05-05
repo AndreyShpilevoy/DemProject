@@ -3,8 +3,8 @@ import * as JQuery from 'jquery';
 import 'jquery-ui';
 
 
-import CookiesService  from './Components/CookiesService'; //todo delete global variable
-import doAddTags  from './Components/BbEditor'; //todo delete global variable
+import CookiesService  from './Components/CookiesService.ts'; //todo delete global variable
+import doAddTags  from './Components/BbEditor.ts'; //todo delete global variable
 
 interface Window {
 	jQuery: any;
@@ -31,11 +31,11 @@ render((
 ), document.getElementById('header'));
 
 
-import AdminControlService from './Components/AdminControlService';
-import BbCodeService from './Components/BbCodeService';
-import PostService from './Components/PostService';
-import ScrollPageService from './Components/ScrollPageService';
-import UrlParametrService from './Components/UrlParametrService';
+import AdminControlService from './Components/AdminControlService.ts';
+import BbCodeService from './Components/BbCodeService.ts';
+import PostService from './Components/PostService.ts';
+import ScrollPageService from './Components/ScrollPageService.ts';
+import UrlParametrService from './Components/UrlParametrService.ts';
 
 
 $(document).ready(() => {

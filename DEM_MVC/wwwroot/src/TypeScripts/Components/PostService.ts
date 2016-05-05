@@ -1,5 +1,7 @@
-﻿import * as $ from 'jquery';
-import PermissionService from './PermissionService';
+﻿/// <reference path="../../../TypingsForTypeScript/browser.d.ts" />
+
+import * as $ from "jquery";
+import PermissionService from "./PermissionService";
 
 export default class PostService {
 	private permissionService: PermissionService;
