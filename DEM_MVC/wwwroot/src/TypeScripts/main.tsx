@@ -1,7 +1,5 @@
 ﻿//register jQuery as global variable - start
 import * as JQuery from 'jquery';
-import 'jquery-ui';
-
 
 import CookiesService  from './Components/CookiesService.ts'; //todo delete global variable
 import doAddTags  from './Components/BbEditor.ts'; //todo delete global variable
@@ -21,7 +19,6 @@ window.CookiesService = CookiesService; //todo delete global variable
 window.doAddTags = doAddTags; //todo delete global variable
 
 
-
 import * as React from 'react';
 import { render } from 'react-dom';
 
@@ -30,6 +27,9 @@ render((
 	<GreeterTsx greeting="Hello, world!" />
 ), document.getElementById('header'));
 
+
+import * as bootstrap from 'bootstrap';
+[bootstrap];
 
 import AdminControlService from './Components/AdminControlService.ts';
 import BbCodeService from './Components/BbCodeService.ts';

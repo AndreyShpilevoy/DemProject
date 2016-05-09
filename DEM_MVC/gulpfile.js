@@ -1,175 +1,127 @@
-/// <binding />
-/*
-This file in the main entry point for defining Gulp tasks and using Gulp plugins.
-Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
-*/
-
 var gulp = require("gulp"),
-	typings = require("gulp-typings"),
 	sass = require("gulp-sass"),
-	del = require("del"),
+	autoprefixer = require("gulp-autoprefixer"),
 	concat = require("gulp-concat"),
 	cssmin = require("gulp-cssmin"),
 	uglify = require("gulp-uglify"),
+	typings = require("gulp-typings"),
 	gulpsync = require("gulp-sync")(gulp),
-	typeScript = require("gulp-typescript"),
-	autoprefixer = require("gulp-autoprefixer"),
+	del = require("del"),
 	Promise = require("es6-promise").Promise,
+	eventStream = require("event-stream"),
+	browserify = require("browserify"),
+	tsify = require("tsify"),
+	source = require("vinyl-source-stream"),
+	streamify = require("gulp-streamify");
 
-	browserify = require('browserify'),
-	tsify = require('tsify'),
-	source = require('vinyl-source-stream'),
-	streamify = require('gulp-streamify');
+var webroot = "./wwwroot/";
+
+var config = {
+	paths: {
+		css: [
+			"node_modules/bootstrap/dist/css/bootstrap.min.css",
+			"node_modules/bootstrap/dist/css/bootstrap-theme.min.css"
+		],
+		scss: {
+			src: webroot + "src/scss/**/",
+			dest: webroot + "dist/styles"
+		},
+		tsx: {
+			main: webroot + "src/TypeScripts/main.tsx",
+			dest: webroot + "dist/scripts/"
+		},
+		typings: {
+			src: "./typings",
+			dest: webroot + "TypingsForTypeScript",
+			config: "./typings.json"
+		}
+	},
+	autoprefixer: {
+		settings: {
+			browsers: ["> 1%", "last 2 versions"],
+			cascade: false
+		}
+	},
+	fileNames: {
+		jsBundle: "dem.min.js",
+		cssBundle: "dem.min.css"
+	},
+	fileSelectors: {
+		allTs: "/**/**.ts",
+		allScss: "/**/**.scss"
+	}
+}
 
 
 gulp.task("bundle:js", function () {
 	browserify({ debug: true })
-		.add('./wwwroot/src/TypeScripts/main.tsx')
+		.add(config.paths.tsx.main)
 		.plugin(tsify)
 		.bundle()
-		.on('error', function (error) { console.error(error.toString()); })
-		.pipe(source('dem.min.js'))
-		.pipe(gulp.dest("./wwwroot/dist/scripts/"));
+		.on("error", function (error) { console.error(error.toString()); })
+		.pipe(source(config.fileNames.jsBundle))
+		.pipe(gulp.dest(config.paths.tsx.dest));
 });
 
 gulp.task("bundle-and-min:js", function () {
 	browserify()
-		.add('./wwwroot/src/TypeScripts/main.tsx')
+		.add(config.paths.tsx.main)
 		.plugin(tsify)
 		.bundle()
-		.on('error', function (error) { console.error(error.toString()); })
-		.pipe(source('dem.min.js'))
+		.on("error", function (error) { console.error(error.toString()); })
+		.pipe(source(config.fileNames.jsBundle))
 		.pipe(streamify(uglify()))
-		.pipe(gulp.dest("./wwwroot/dist/scripts/"));
+		.pipe(gulp.dest(config.paths.tsx.dest));
+});
+
+gulp.task("bundle:css", function () {
+	var sassStream = gulp.src(config.paths.scss.src + config.fileSelectors.allScss)
+		.pipe(sass().on("error", sass.logError));
+	var cssStream = gulp.src(config.paths.css)
+		.pipe(concat("vendor.min.css"));
+
+	return eventStream.concat(cssStream, sassStream)
+		.pipe(autoprefixer({
+			browsers: config.autoprefixer.settings.browsers,
+			cascade: config.autoprefixer.settings.cascade
+		}))
+		.pipe(concat(config.fileNames.cssBundle))
+		.pipe(gulp.dest(config.paths.scss.dest));
+});
+
+gulp.task("bundle-and-min:css", function () {
+	var sassStream = gulp.src(config.paths.scss.src + config.fileSelectors.allScss)
+		.pipe(sass().on("error", sass.logError));
+	var cssStream = gulp.src(config.paths.css)
+		.pipe(concat("vendor.min.css"));
+
+	return eventStream.concat(cssStream, sassStream)
+		.pipe(autoprefixer({
+			browsers: config.autoprefixer.settings.browsers,
+			cascade: config.autoprefixer.settings.cascade
+		}))
+		.pipe(concat(config.fileNames.cssBundle))
+		.pipe(cssmin())
+		.pipe(gulp.dest(config.paths.scss.dest));
 });
 
 
-var fileSelectors = {
-	allTs: "/**/**.ts",
-	allJs: "/**/**.js",
-	allScss: "/**/**.scss",
-	allCss: "/**/**.css",
-	allFiles: "/**/*.*"
-}
-
-var paths = {
-	webroot: "./wwwroot/"
-};
-paths.cleanJsFiles = paths.webroot + "dist/scripts/**/**.js";
-paths.cleanJsFilesInTs = paths.webroot + "src/TypeScripts/**/**.js";
-paths.cleanJsFilesInTemp = paths.webroot + "dist/scripts/temp/**/**.js";
-paths.cleanCssFiles = paths.webroot + "dist/styles/**/**.css";
-paths.cleanCssFilesInTemp = paths.webroot + "dist/styles/temp/**/**.css";
-paths.typingsSrcFolder = "./typings";
-paths.typingsDestFolder = paths.webroot + "TypingsForTypeScript";
-paths.ts = paths.webroot + "src/TypeScripts/**/*.ts";
-paths.scss = paths.webroot + "src/scss/**/*.scss";
-paths.jsTempFolder = paths.webroot + "dist/scripts/temp";
-paths.cssTempFolder = paths.webroot + "dist/styles/temp";
-paths.jsFolder = paths.webroot + "dist/scripts";
-paths.cssFolder = paths.webroot + "dist/styles";
-paths.allTs = "/**/**.ts";
-
-
-
-gulp.task("clean:js", function () {
-	return del(paths.cleanJsFiles);
+gulp.task("typings-cleanDest", function () {
+	return del(config.paths.typings.dest);
 });
 
-gulp.task("clean:temp-js", function () {
-	return del(paths.cleanJsFilesInTemp);
-});
-
-gulp.task("clean:css", function () {
-	return del(paths.cleanCssFiles);
-});
-
-gulp.task("clean:temp-css", function () {
-	return del(paths.cleanCssFilesInTemp);
-});
-
-gulp.task("clean:typingsDest", function () {
-	return del(paths.typingsDestFolder);
-});
-
-gulp.task("clean:typingsSrc", function () {
-	return del(paths.typingsSrcFolder);
-});
-
-gulp.task("bild-clean:ts.js", function () {
-	return del(paths.cleanJsFilesInTs);
-});
-
-gulp.task("load:typings", function () {
-	return gulp.src("./typings.json")
+gulp.task("typings-load", function () {
+	return gulp.src(config.paths.typings.config)
 		.pipe(typings());
 });
 
-gulp.task("move:typings", function () {
-	return gulp.src(paths.typingsSrcFolder + fileSelectors.allTs)
-		.pipe(gulp.dest(paths.typingsDestFolder));
+gulp.task("typings-move", function () {
+	return gulp.src(config.paths.typings.src + config.fileSelectors.allTs)
+		.pipe(gulp.dest(config.paths.typings.dest));
 });
 
-gulp.task("procces:ts-to-js", function () {
-	var tsResult = gulp.src(paths.ts)
-		.pipe(typeScript({
-			noImplicitAny: true
-		}));
-	return tsResult.js.pipe(gulp.dest(paths.jsTempFolder));
+gulp.task("typings-cleanSrc", function () {
+	return del(config.paths.typings.src);
 });
 
-gulp.task("procces:sass-to-css", function () {
-	return gulp.src(paths.scss)
-		.pipe(sass().on("error", sass.logError))
-		.pipe(gulp.dest(paths.cssTempFolder));
-});
-
-gulp.task("concat-and-min:js", function () {
-	return gulp.src(paths.jsTempFolder + fileSelectors.allJs)
-		.pipe(concat("dem.min.js"))
-		.pipe(uglify())
-		.pipe(gulp.dest(paths.jsFolder));
-});
-
-gulp.task("concat-and-min:css", function () {
-	return gulp.src(paths.cssTempFolder + fileSelectors.allCss)
-		.pipe(autoprefixer({
-			browsers: ["> 1%", "last 2 versions"],
-			cascade: false
-		}))
-		.pipe(concat("dem.min.css"))
-		.pipe(cssmin())
-		.pipe(gulp.dest(paths.cssFolder));
-});
-
-gulp.task("concat:js", function() {
-	return gulp.src(paths.jsTempFolder + fileSelectors.allJs)
-		.pipe(concat("dem.min.js"))
-		.pipe(gulp.dest(paths.jsFolder));
-});
-
-gulp.task("concat:css", function () {
-	return gulp.src(paths.cssTempFolder + fileSelectors.allCss)
-		.pipe(autoprefixer({
-			browsers: ["> 1%", "last 2 versions"],
-			cascade: false
-		}))
-		.pipe(concat("dem.min.css"))
-		.pipe(gulp.dest(paths.cssFolder));
-});
-
-gulp.task("bild-debug", gulpsync.async(
-	[
-		["clean:js", "procces:ts-to-js", "concat:js", "clean:temp-js"],
-		["clean:css", "procces:sass-to-css", "concat:css", "clean:temp-css"]
-	]
-));
-
-gulp.task("bild-release", gulpsync.async(
-	[
-		["clean:js", "procces:ts-to-js", "concat-and-min:js", "clean:temp-js"],
-		["clean:css", "procces:sass-to-css", "concat-and-min:css", "clean:temp-css"]
-	]
-));
-
-gulp.task("bild-reload:typings", gulpsync.sync(["clean:typingsDest", "load:typings", "move:typings", "clean:typingsSrc"]));
+gulp.task("build:typings-reload", gulpsync.sync(["typings-cleanDest", "typings-load", "typings-move", "typings-cleanSrc"]));
