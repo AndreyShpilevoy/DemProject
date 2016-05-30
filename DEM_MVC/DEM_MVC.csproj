@@ -211,26 +211,11 @@
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
     <Content Include="typings.json" />
     <Content Include="DEM_MVC.ruleset" />
+    <Content Include="Views\Conference\Test.cshtml" />
     <None Include="wwwroot\src\scss\main-dem.scss" />
-    <Content Include="wwwroot\dist\images\DEM\footer.png" />
-    <Content Include="wwwroot\dist\images\DEM\head.png" />
-    <Content Include="wwwroot\dist\images\DEM\ui-poll-5c5c5c_1x100.png" />
-    <Content Include="wwwroot\dist\images\DEM\ui-poll-6c6c6c_1x100.png" />
-    <Content Include="wwwroot\dist\images\DEM\ui-poll-result-f1831f_1x100.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_0_464646_40x100.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_0_606060_40x100.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_0_f17c1c_40x100.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_100_707070_40x100.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_100_ecd5d8_40x100.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_30_343434_40x100.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_30_606060_40x100.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_50_606060_40x100.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-bg_flat_80_ffffff_40x100.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-icons_a83300_256x240.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-icons_f17c1c_256x240.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-icons_f5f4f1_256x240.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-icons_fbeab2_256x240.png" />
-    <Content Include="wwwroot\dist\images\jquery-ui\ui-icons_ffffff_256x240.png" />
+    <Content Include="wwwroot\dist\images\DEM\md_footer.png" />
+    <Content Include="wwwroot\dist\images\DEM\md_header.png" />
+    <Content Include="wwwroot\dist\images\DEM\xs_header.png" />
     <Content Include="wwwroot\dist\images\Smiles\forBbCode\think.gif" />
     <Content Include="wwwroot\dist\styles\dem.min.css" />
     <Content Include="ErrorPages\2000.html" />
@@ -244,12 +229,9 @@
     <Content Include="package.json" />
     <Content Include="wwwroot\dist\scripts\dem.min.js" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\BbEditor.ts" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\List.ts" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\GreeterTsx.tsx" />
     <TypeScriptCompile Include="wwwroot\src\TypeScripts\main.tsx" />
   </ItemGroup>
   <ItemGroup>
@@ -320,7 +302,6 @@
     <Content Include="Views\Conference\ViewTopic\ViewTopic.cshtml" />
     <Content Include="Views\Conference\ViewTopic\_ShowPostTableByTopicId.cshtml" />
     <Content Include="Views\Conference\ViewTopic\_ShowPollTableByTopicId.cshtml" />
-    <Content Include="Views\Conference\Chat\Chat.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -357,6 +338,7 @@
   <ItemGroup>
     <Folder Include="Views\Administration\" />
     <Folder Include="Views\Permissions\" />
+    <Folder Include="wwwroot\src\TypeScripts\Components\" />
     <Folder Include="wwwroot\TypingsForTypeScript\" />
   </ItemGroup>
   <ItemGroup>
@@ -372,16 +354,6 @@
       <Project>{CF38E358-5AA4-44D4-B0C0-A8AA098EFBEC}</Project>
       <Name>DEM_MVC_Infrastructure</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\AdminControlService.ts" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\BbCodeService.ts" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\CookiesService.ts" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\Dictionary.ts" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\PermissionService.ts" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\PostService.ts" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\UrlParametrService.ts" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\ScrollPageService.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

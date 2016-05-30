@@ -18,10 +18,10 @@ var webroot = "./wwwroot/";
 
 var config = {
 	paths: {
-		css: [
-			"node_modules/bootstrap/dist/css/bootstrap.min.css",
-			"node_modules/bootstrap/dist/css/bootstrap-theme.min.css"
-		],
+		css: {
+			dev: "node_modules/bootstrap/dist/css/bootstrap.css",
+			min: "node_modules/bootstrap/dist/css/bootstrap.min.css"
+		},
 		scss: {
 			src: webroot + "src/scss/**/",
 			dest: webroot + "dist/styles"
@@ -52,7 +52,6 @@ var config = {
 	}
 }
 
-
 gulp.task("bundle:js", function () {
 	browserify({ debug: true })
 		.add(config.paths.tsx.main)
@@ -77,7 +76,7 @@ gulp.task("bundle-and-min:js", function () {
 gulp.task("bundle:css", function () {
 	var sassStream = gulp.src(config.paths.scss.src + config.fileSelectors.allScss)
 		.pipe(sass().on("error", sass.logError));
-	var cssStream = gulp.src(config.paths.css)
+	var cssStream = gulp.src(config.paths.css.dev)
 		.pipe(concat("vendor.min.css"));
 
 	return eventStream.concat(cssStream, sassStream)
@@ -92,7 +91,7 @@ gulp.task("bundle:css", function () {
 gulp.task("bundle-and-min:css", function () {
 	var sassStream = gulp.src(config.paths.scss.src + config.fileSelectors.allScss)
 		.pipe(sass().on("error", sass.logError));
-	var cssStream = gulp.src(config.paths.css)
+	var cssStream = gulp.src(config.paths.css.min)
 		.pipe(concat("vendor.min.css"));
 
 	return eventStream.concat(cssStream, sassStream)
@@ -104,7 +103,6 @@ gulp.task("bundle-and-min:css", function () {
 		.pipe(cssmin())
 		.pipe(gulp.dest(config.paths.scss.dest));
 });
-
 
 gulp.task("typings-cleanDest", function () {
 	return del(config.paths.typings.dest);

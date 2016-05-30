@@ -168,10 +168,9 @@ namespace DEM_MVC.Controllers
 
 		#endregion
 
-		[HttpGet]
-		public ActionResult Chat()//todo Should be deleted in future
+		public ActionResult Test()
 		{
-			return PartialView("Chat/Chat");
+			return View();
 		}
 
 		protected override void OnException(ExceptionContext filterContext)
