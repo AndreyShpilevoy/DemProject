@@ -9,6 +9,7 @@ var gulp = require("gulp"),
 	del = require("del"),
 	Promise = require("es6-promise").Promise,
 	eventStream = require("event-stream"),
+	order = require("gulp-order"),
 	browserify = require("browserify"),
 	tsify = require("tsify"),
 	source = require("vinyl-source-stream"),
@@ -75,11 +76,16 @@ gulp.task("bundle-and-min:js", function () {
 
 gulp.task("bundle:css", function () {
 	var sassStream = gulp.src(config.paths.scss.src + config.fileSelectors.allScss)
-		.pipe(sass().on("error", sass.logError));
+		.pipe(sass().on("error", sass.logError))
+		.pipe(concat("dem.css"));
 	var cssStream = gulp.src(config.paths.css.dev)
-		.pipe(concat("vendor.min.css"));
+		.pipe(concat("bootstrap.css"));
 
 	return eventStream.concat(cssStream, sassStream)
+		.pipe(order([
+			"bootstrap.css",
+			"dem.css"
+		]))
 		.pipe(autoprefixer({
 			browsers: config.autoprefixer.settings.browsers,
 			cascade: config.autoprefixer.settings.cascade
@@ -90,11 +96,16 @@ gulp.task("bundle:css", function () {
 
 gulp.task("bundle-and-min:css", function () {
 	var sassStream = gulp.src(config.paths.scss.src + config.fileSelectors.allScss)
-		.pipe(sass().on("error", sass.logError));
+		.pipe(sass().on("error", sass.logError))
+		.pipe(concat("dem.css"));
 	var cssStream = gulp.src(config.paths.css.min)
-		.pipe(concat("vendor.min.css"));
+		.pipe(concat("bootstrap.css"));
 
 	return eventStream.concat(cssStream, sassStream)
+		.pipe(order([
+			"bootstrap.css",
+			"dem.css"
+		]))
 		.pipe(autoprefixer({
 			browsers: config.autoprefixer.settings.browsers,
 			cascade: config.autoprefixer.settings.cascade

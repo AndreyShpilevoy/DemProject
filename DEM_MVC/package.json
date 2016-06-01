@@ -17,7 +17,8 @@
 		"browserify": "^13.0.1",
 		"tsify": "^0.16.0",
 		"vinyl-source-stream": "^1.1.0",
-		"gulp-streamify": "^1.0.2"
+		"gulp-streamify": "^1.0.2",
+		"gulp-order": "^1.1.1"
 	},
 	"dependencies": {
 		"jquery": "^2.2.4",
