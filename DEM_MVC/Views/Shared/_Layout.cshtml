@@ -10,21 +10,27 @@
 	<div id="header" class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<img class="hidden-md-up img-fluid center-block nonClicable" src="../../wwwroot/dist/images/DEM/xs_header.png" alt="Header">
-				<img class="hidden-sm-down img-fluid center-block nonClicable" src="../../wwwroot/dist/images/DEM/md_header.png" style="pointer-events: none;" alt="Header">
+				<nav class="navbar navbar-full navbar-dark bg-dem-brown-sm">
+					<a class="navbar-brand padding-initial" href="#">
+						<img src="../../wwwroot/dist/images/DEM/Dem_Logo_SM.png" alt="DeusExMachina logo small"/>
+					</a>
+					<ul class="nav navbar-nav pull-xs-right">
+						<li class="nav-item">
+							<a class="nav-link" href="#">Link 1</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Link 2</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Link 3</a>
+						</li>
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>
 
 	@RenderBody()
-
-	<div id="footer" class="row navbar-fixed-bottom">
-		<div class="col-xs-12">
-			<div class="container">
-				<img class="hidden-sm-down img-fluid center-block nonClicable" src="../../wwwroot/dist/images/DEM/md_footer.png" style="pointer-events: none;" alt="Header">
-			</div>
-		</div>
-	</div>
 	<script src="~/wwwroot/dist/scripts/dem.min.js"></script>
 </body>
 </html>
