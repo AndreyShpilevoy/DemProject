@@ -12,7 +12,7 @@
 		"node_modules"
 	],
 	"files": [
-		"./wwwroot/TypingsForTypeScript/browser.d.ts",
+		"./wwwroot/TypingsForTypeScript/index.d.ts",
 		"./wwwroot/src/TypeScripts/main.tsx"
 	]
 }
