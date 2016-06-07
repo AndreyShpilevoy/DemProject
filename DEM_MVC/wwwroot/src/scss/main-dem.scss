@@ -1,4 +1,5 @@
 ﻿$body-background-color: #171717;
+$menu-xs-sm-mb-background-color: #252525;
 $header-xs-sm-background-color: #322c27;
 $orange-color: #ac6b37;
 $font-size: 16px; //1rem = 16px
@@ -17,23 +18,31 @@ body {
 	background-color: $header-xs-sm-background-color;
 }
 
-.padding-initial {
-	padding: initial;
-}
-
 .orange-text-color {
 	color: $orange-color;
 }
 
-.navbar-toggler .icon-bar {
-	background-color: $orange-color;
+
+.padding-initial {
+	padding: initial;
+}
+
+.menu-transform {
+	padding: initial;
+	min-height: initial;
+}
+
+.navbar-header-add-navbar-padding {
+	padding: .5rem 1rem;
 }
 
 //.icon-bar like in bootstrap 3
+
 .navbar-toggler .icon-bar {
+	background-color: $orange-color;
 	display: block;
-	width: 22px;
-	height: 2px;
+	width: 32px;
+	height: 3px;
 	border-radius: 1px;
 }
 
@@ -54,11 +63,45 @@ body {
 	margin-left: 0;
 }
 
+#nav-menu-content {
+	background-color: $menu-xs-sm-mb-background-color;
+
+	.nav-item {
+		.nav-link {
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+			color: $orange-color;
+			font-size: 1.3125rem;
+		}
+
+		.nav-link-separator {
+			background-color: $orange-color;
+			width: inherit;
+			height: 0.1875rem;
+		}
+	}
+}
+
 //lg+ screens
 @media (min-width: 992px) {
 
-	#nav-content {
+	#nav-menu-content {
 		float: right;
+		background-color: inherit;
+
+		.nav-item {
+			.nav-link {
+				padding-left: initial;
+				padding-right: initial;
+				line-height: initial;
+			}
+
+			.nav-link-separator {
+				background-color: inherit;
+				width: inherit;
+				height: initial;
+			}
+		}
 	}
 
 	.navbar-nav .nav-item {
@@ -69,6 +112,15 @@ body {
 	.navbar-nav .nav-item + .nav-item,
 	.navbar-nav .nav-link + .nav-link {
 		margin-left: 1rem;
+	}
+
+	.test {
+		background-color: white;
+	}
+
+	.menu-transform {
+		padding: .5rem 1rem;
+		min-height: initial;
 	}
 }
 //end
