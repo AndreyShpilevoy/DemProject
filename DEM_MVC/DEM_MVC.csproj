@@ -213,7 +213,7 @@
     <Content Include="DEM_MVC.ruleset" />
     <Content Include="Views\Conference\Test.cshtml" />
     <None Include="wwwroot\src\scss\main-dem.scss" />
-    <Content Include="wwwroot\dist\images\DEM\Dem_Logo_SM.png" />
+    <Content Include="wwwroot\dist\images\DEM\Dem_Logo.png" />
     <Content Include="wwwroot\dist\images\Smiles\forBbCode\think.gif" />
     <Content Include="wwwroot\dist\styles\dem.min.css" />
     <Content Include="ErrorPages\2000.html" />

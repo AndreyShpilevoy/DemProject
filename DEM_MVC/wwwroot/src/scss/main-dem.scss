@@ -32,6 +32,11 @@ body {
 	min-height: initial;
 }
 
+.navbar-brand-size > img {
+	width: 9.125rem;
+	height: 2.375rem;
+}
+
 .navbar-header-add-navbar-padding {
 	padding: .5rem 1rem;
 }
@@ -82,18 +87,44 @@ body {
 	}
 }
 
+//md+ screens
+@media (min-width: 768px) {
+
+	.navbar-brand-size > img {
+		width: 11rem;
+		height: 2.875rem;
+	}
+
+	#menu-toggle-button {
+		padding-top: .9rem;
+	}
+}
+//end
+
 //lg+ screens
 @media (min-width: 992px) {
+
+	.navbar-brand-size > img,
+	#nav-menu-content {
+		width: 15.8125rem;
+		height: 4.0625rem;
+	}
 
 	#nav-menu-content {
 		float: right;
 		background-color: inherit;
 
 		.nav-item {
+			height: 100%;
+
 			.nav-link {
 				padding-left: initial;
 				padding-right: initial;
 				line-height: initial;
+				text-align: center;
+				position: relative;
+				top: 50%;
+				transform: translateY(-50%);
 			}
 
 			.nav-link-separator {
