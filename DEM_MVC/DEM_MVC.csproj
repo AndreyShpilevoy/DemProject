@@ -233,6 +233,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\ShrinkingHeader.ts" />
     <TypeScriptCompile Include="wwwroot\src\TypeScripts\main.tsx" />
   </ItemGroup>
   <ItemGroup>
@@ -339,7 +340,6 @@
   <ItemGroup>
     <Folder Include="Views\Administration\" />
     <Folder Include="Views\Permissions\" />
-    <Folder Include="wwwroot\src\TypeScripts\Components\" />
     <Folder Include="wwwroot\TypingsForTypeScript\" />
   </ItemGroup>
   <ItemGroup>

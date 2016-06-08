@@ -14,6 +14,10 @@ body {
 	min-height: 480px;
 }
 
+nav{
+	min-width: 290px;
+}
+
 .bg-dem-brown-sm {
 	background-color: $header-xs-sm-background-color;
 }
@@ -114,23 +118,27 @@ body {
 
 //lg+ screens
 @media (min-width: 992px) {
+
+	$lg-header-logo-navmenu-height: 4.0625rem;
+	$lg-header-logo-navmenu-width: 15.9375rem;
+	$lg-navbar-height: 5rem;
+
 	.navbar-dem-logo-bg {
 		background-image: url(../../dist/images/DEM/Dem_Logo_bg_lg.png);
 	}
 
 	.navbar-height {
-		height: 5rem;
+		height: $lg-navbar-height;
 	}
 
-	$local-lg-xl-header-logo-navmenu-height: 4.0625rem;
 
 	.navbar-brand-size > img {
-		width: 15.9375rem;
-		height: $local-lg-xl-header-logo-navmenu-height;
+		width: $lg-header-logo-navmenu-width;
+		height: $lg-header-logo-navmenu-height;
 	}
 
 	#nav-menu-content {
-		height: $local-lg-xl-header-logo-navmenu-height !important;
+		height: $lg-header-logo-navmenu-height !important;
 	}
 
 	#nav-menu-content {
@@ -175,6 +183,29 @@ body {
 	.menu-transform {
 		padding: .5rem 1rem;
 		min-height: initial;
+	}
+
+	.shrink {
+		height: $lg-navbar-height/2;
+
+		.navbar-header-add-navbar-padding {
+			padding: .25rem 1rem;
+
+			.navbar-brand-size > img {
+				width: $lg-header-logo-navmenu-width/2;
+				height: $lg-header-logo-navmenu-height/2;
+			}
+		}
+
+
+		.menu-transform {
+			padding: .25rem 1rem;
+			min-height: initial;
+
+			#nav-menu-content {
+				height: $lg-header-logo-navmenu-height/2 !important;
+			}
+		}
 	}
 }
 //end

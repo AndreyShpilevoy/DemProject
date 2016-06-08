@@ -15,7 +15,8 @@ window.Tether = tether;
 
 import * as React from 'react';
 import { render } from 'react-dom';
+import * as ShrinkingHeader from './Components/ShrinkingHeader.ts';
 
 import * as bootstrap from 'bootstrap';
-[bootstrap];
+[bootstrap, ShrinkingHeader];
 
