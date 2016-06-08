@@ -33,8 +33,12 @@ body {
 }
 
 .navbar-brand-size > img {
-	width: 9.125rem;
-	height: 2.375rem;
+	width: 9.0625rem;
+	height: 2.3125rem;
+}
+
+.navbar-height {
+	height: 3.4375rem;
 }
 
 .navbar-header-add-navbar-padding {
@@ -42,7 +46,6 @@ body {
 }
 
 //.icon-bar like in bootstrap 3
-
 .navbar-toggler .icon-bar {
 	background-color: $orange-color;
 	display: block;
@@ -57,7 +60,6 @@ body {
 //end
 
 //navbar toggler
-//xs-md screens
 .navbar-nav .nav-item {
 	float: none;
 }
@@ -86,13 +88,22 @@ body {
 		}
 	}
 }
+//end
 
 //md+ screens
 @media (min-width: 768px) {
 
+	.navbar-dem-logo-bg {
+		background-image: url(../../dist/images/DEM/Dem_Logo_bg_md.png);
+	}
+
+	.navbar-height {
+		height: 3.75rem;
+	}
+
 	.navbar-brand-size > img {
-		width: 11rem;
-		height: 2.875rem;
+		width: 10.9375rem;
+		height: 2.8125rem;
 	}
 
 	#menu-toggle-button {
@@ -103,11 +114,23 @@ body {
 
 //lg+ screens
 @media (min-width: 992px) {
+	.navbar-dem-logo-bg {
+		background-image: url(../../dist/images/DEM/Dem_Logo_bg_lg.png);
+	}
 
-	.navbar-brand-size > img,
+	.navbar-height {
+		height: 5rem;
+	}
+
+	$local-lg-xl-header-logo-navmenu-height: 4.0625rem;
+
+	.navbar-brand-size > img {
+		width: 15.9375rem;
+		height: $local-lg-xl-header-logo-navmenu-height;
+	}
+
 	#nav-menu-content {
-		width: 15.8125rem;
-		height: 4.0625rem;
+		height: $local-lg-xl-header-logo-navmenu-height !important;
 	}
 
 	#nav-menu-content {
@@ -152,6 +175,14 @@ body {
 	.menu-transform {
 		padding: .5rem 1rem;
 		min-height: initial;
+	}
+}
+//end
+
+//xl screens
+@media (min-width: 1200px) {
+	.navbar-dem-logo-bg {
+		background-image: url(../../dist/images/DEM/Dem_Logo_bg_xl.png);
 	}
 }
 //end
