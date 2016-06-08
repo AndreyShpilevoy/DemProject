@@ -14,7 +14,7 @@ body {
 	min-height: 480px;
 }
 
-nav{
+nav {
 	min-width: 290px;
 }
 
@@ -98,7 +98,7 @@ nav{
 @media (min-width: 768px) {
 
 	.navbar-dem-logo-bg {
-		background-image: url(../../dist/images/DEM/Dem_Logo_bg_md.png);
+		background-image: url(../../dist/images/DEM/Dem_NavBar_bg_md.png);
 	}
 
 	.navbar-height {
@@ -124,7 +124,7 @@ nav{
 	$lg-navbar-height: 5rem;
 
 	.navbar-dem-logo-bg {
-		background-image: url(../../dist/images/DEM/Dem_Logo_bg_lg.png);
+		background-image: url(../../dist/images/DEM/Dem_NavBar_bg_lg.png);
 	}
 
 	.navbar-height {
@@ -197,7 +197,6 @@ nav{
 			}
 		}
 
-
 		.menu-transform {
 			padding: .25rem 1rem;
 			min-height: initial;
@@ -207,13 +206,19 @@ nav{
 			}
 		}
 	}
+
+	.navbar-dem-logo-bg {
+		&.shrink {
+			background-position-y: 50%;
+		}
+	}
 }
 //end
 
 //xl screens
 @media (min-width: 1200px) {
 	.navbar-dem-logo-bg {
-		background-image: url(../../dist/images/DEM/Dem_Logo_bg_xl.png);
+		background-image: url(../../dist/images/DEM/Dem_NavBar_bg_xl.png);
 	}
 }
 //end
