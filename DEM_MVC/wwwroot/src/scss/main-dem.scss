@@ -1,8 +1,12 @@
 ﻿$body-background-color: #171717;
-$menu-xs-sm-mb-background-color: #252525;
+$menu-button-background-color: #252525;
 $header-xs-sm-background-color: #322c27;
+$footer-xs-sm-background-color: #3e3025;
 $orange-color: #ac6b37;
 $font-size: 16px; //1rem = 16px
+$navbar-height-and-pageContent-margin-top-xs-sm: 3.4375rem;
+$navbar-height-and-pageContent-margin-top-md: 3.75rem;
+$navbar-height-and-pageContent-margin-top-lg: 5rem;
 
 html {
 	font-size: $font-size;
@@ -13,6 +17,17 @@ body {
 	min-width: 320px;
 	min-height: 480px;
 }
+
+//wrap
+html, body, #wrap {
+	height: 100%;
+}
+
+#wrap {
+	min-height: 100%;
+	margin: 0 auto -1.875rem;
+}
+//end
 
 nav {
 	min-width: 290px;
@@ -25,7 +40,6 @@ nav {
 .orange-text-color {
 	color: $orange-color;
 }
-
 
 .padding-initial {
 	padding: initial;
@@ -42,7 +56,7 @@ nav {
 }
 
 .navbar-height {
-	height: 3.4375rem;
+	height: $navbar-height-and-pageContent-margin-top-xs-sm;
 }
 
 .navbar-header-add-navbar-padding {
@@ -75,7 +89,7 @@ nav {
 }
 
 #nav-menu-content {
-	background-color: $menu-xs-sm-mb-background-color;
+	background-color: $menu-button-background-color;
 
 	.nav-item {
 		.nav-link {
@@ -94,6 +108,19 @@ nav {
 }
 //end
 
+//pageContent
+#pageContent {
+	padding-top: $navbar-height-and-pageContent-margin-top-xs-sm;
+}
+//end
+
+//footer
+.footer-style{
+	background-color: $footer-xs-sm-background-color;
+	height: 1.875rem;
+}
+//
+
 //md+ screens
 @media (min-width: 768px) {
 
@@ -102,7 +129,7 @@ nav {
 	}
 
 	.navbar-height {
-		height: 3.75rem;
+		height: $navbar-height-and-pageContent-margin-top-md;
 	}
 
 	.navbar-brand-size > img {
@@ -113,6 +140,12 @@ nav {
 	#menu-toggle-button {
 		margin-top: .3rem;
 	}
+
+	//pageContent
+	#pageContent {
+		padding-top: $navbar-height-and-pageContent-margin-top-md;
+	}
+	//end
 }
 //end
 
@@ -121,16 +154,14 @@ nav {
 
 	$lg-header-logo-navmenu-height: 4.0625rem;
 	$lg-header-logo-navmenu-width: 15.9375rem;
-	$lg-navbar-height: 5rem;
 
 	.navbar-dem-logo-bg {
 		background-image: url(../../dist/images/DEM/Dem_NavBar_bg_lg.png);
 	}
 
 	.navbar-height {
-		height: $lg-navbar-height;
+		height: $navbar-height-and-pageContent-margin-top-lg;
 	}
-
 
 	.navbar-brand-size > img {
 		width: $lg-header-logo-navmenu-width;
@@ -185,8 +216,14 @@ nav {
 		min-height: initial;
 	}
 
+	//pageContent
+	#pageContent {
+		padding-top: $navbar-height-and-pageContent-margin-top-lg;
+	}
+	//end
+
 	.shrink {
-		height: $lg-navbar-height/2;
+		height: $navbar-height-and-pageContent-margin-top-lg/2;
 
 		.navbar-header-add-navbar-padding {
 			padding: .25rem 1rem;
