@@ -8,23 +8,19 @@ var gulp = require("gulp"),
 	gulpsync = require("gulp-sync")(gulp),
 	del = require("del"),
 	Promise = require("es6-promise").Promise,
-	eventStream = require("event-stream"),
-	order = require("gulp-order"),
 	browserify = require("browserify"),
 	tsify = require("tsify"),
 	source = require("vinyl-source-stream"),
-	streamify = require("gulp-streamify");
+	streamify = require("gulp-streamify"),
+	gulpif = require("gulp-if");
 
 var webroot = "./wwwroot/";
+var debug = true;
 
 var config = {
 	paths: {
-		css: {
-			dev: "node_modules/bootstrap/dist/css/bootstrap.css",
-			min: "node_modules/bootstrap/dist/css/bootstrap.min.css"
-		},
 		scss: {
-			src: webroot + "src/scss/**/",
+			src: webroot + "src/scss/main-dem.scss",
 			dest: webroot + "dist/styles"
 		},
 		tsx: {
@@ -48,8 +44,7 @@ var config = {
 		cssBundle: "dem.min.css"
 	},
 	fileSelectors: {
-		allTs: "/**/**.ts",
-		allScss: "/**/**.scss"
+		allTs: "/**/**.ts"
 	}
 }
 
@@ -60,59 +55,20 @@ gulp.task("bundle:js", function () {
 		.bundle()
 		.on("error", function (error) { console.error(error.toString()); })
 		.pipe(source(config.fileNames.jsBundle))
-		.pipe(gulp.dest(config.paths.tsx.dest));
-});
-
-gulp.task("bundle-and-min:js", function () {
-	browserify()
-		.add(config.paths.tsx.main)
-		.plugin(tsify)
-		.bundle()
-		.on("error", function (error) { console.error(error.toString()); })
-		.pipe(source(config.fileNames.jsBundle))
-		.pipe(streamify(uglify()))
+		.pipe(gulpif(!debug, streamify(uglify())))
 		.pipe(gulp.dest(config.paths.tsx.dest));
 });
 
 gulp.task("bundle:css", function () {
-	var sassStream = gulp.src(config.paths.scss.src + config.fileSelectors.allScss)
-		.pipe(sass().on("error", sass.logError))
-		.pipe(concat("dem.css"));
-	var cssStream = gulp.src(config.paths.css.dev)
-		.pipe(concat("bootstrap.css"));
-
-	return eventStream.concat(cssStream, sassStream)
-		.pipe(order([
-			"bootstrap.css",
-			"dem.css"
-		]))
-		.pipe(autoprefixer({
-			browsers: config.autoprefixer.settings.browsers,
-			cascade: config.autoprefixer.settings.cascade
-		}))
-		.pipe(concat(config.fileNames.cssBundle))
-		.pipe(gulp.dest(config.paths.scss.dest));
-});
-
-gulp.task("bundle-and-min:css", function () {
-	var sassStream = gulp.src(config.paths.scss.src + config.fileSelectors.allScss)
-		.pipe(sass().on("error", sass.logError))
-		.pipe(concat("dem.css"));
-	var cssStream = gulp.src(config.paths.css.min)
-		.pipe(concat("bootstrap.css"));
-
-	return eventStream.concat(cssStream, sassStream)
-		.pipe(order([
-			"bootstrap.css",
-			"dem.css"
-		]))
-		.pipe(autoprefixer({
-			browsers: config.autoprefixer.settings.browsers,
-			cascade: config.autoprefixer.settings.cascade
-		}))
-		.pipe(concat(config.fileNames.cssBundle))
-		.pipe(cssmin())
-		.pipe(gulp.dest(config.paths.scss.dest));
+	gulp.src(config.paths.scss.src)
+	.pipe(sass().on("error", sass.logError))
+	.pipe(autoprefixer({
+		browsers: config.autoprefixer.settings.browsers,
+		cascade: config.autoprefixer.settings.cascade
+	}))
+	.pipe(concat(config.fileNames.cssBundle))
+	.pipe(gulpif(!debug, cssmin()))
+	.pipe(gulp.dest(config.paths.scss.dest));
 });
 
 gulp.task("typings-cleanDest", function () {

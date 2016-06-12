@@ -1,0 +1,23 @@
+﻿//var's declared in file: "../Common/sizes.scss":
+
+//$navbar-height-and-pageContent-margin-top-xs-sm
+//$navbar-height-and-pageContent-margin-top-md
+//$navbar-height-and-pageContent-margin-top-lg
+
+#pageContent {
+	padding-top: $navbar-height-and-pageContent-margin-top-xs-sm;
+}
+
+//md+ screens
+@media (min-width: 768px) {
+	#pageContent {
+		padding-top: $navbar-height-and-pageContent-margin-top-md;
+	}
+}
+
+//lg+ screens
+@media (min-width: 992px) {
+	#pageContent {
+		padding-top: $navbar-height-and-pageContent-margin-top-lg;
+	}
+}

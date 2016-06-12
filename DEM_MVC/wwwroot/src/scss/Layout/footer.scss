@@ -1,0 +1,61 @@
+﻿@import "Common/sizes.scss";
+@import "Common/colors.scss";
+@import "Common/backgrounds.scss";
+
+#wrap {
+	min-height: 100%;
+	margin: 0 auto -1*$footer-height-xs-sm-md;
+}
+
+.navbar-footer-style {
+	background-color: $footer-background-color;
+	display: table;
+	text-align: center;
+	width: 100%;
+	height: $footer-height-xs-sm-md;
+}
+
+.navbar-footer-style {
+	.footer-content {
+		color: $footer-content-color;
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	.footer-links-holder {
+		display: none;
+	}
+}
+
+@media (min-width: 992px) {
+	.navbar-footer-style {
+		height: $footer-height-lg-xl;
+		background-image: $footer-background-lg;
+
+		.footer-links-holder {
+			position: absolute;
+			display: flex;
+			right: 0.625rem;
+			top: 0.625rem;
+			display: initial;
+
+			.footer-link {
+				padding: 0 0.3125rem;
+
+				.footer-link-img {
+					opacity: 0.6;
+				}
+			}
+		}
+	}
+
+	#wrap {
+		margin: 0 auto -1*$footer-height-lg-xl;
+	}
+}
+
+@media (min-width: 1200px) {
+	.navbar-footer-style {
+		background-image: $footer-background-xl;
+	}
+}
