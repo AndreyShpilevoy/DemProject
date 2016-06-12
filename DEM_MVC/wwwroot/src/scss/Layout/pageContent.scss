@@ -1,8 +1,6 @@
-﻿//var's declared in file: "../Common/sizes.scss":
-
-//$navbar-height-and-pageContent-margin-top-xs-sm
-//$navbar-height-and-pageContent-margin-top-md
-//$navbar-height-and-pageContent-margin-top-lg
+﻿@import "../Common/sizes.scss";
+@import "../Common/colors.scss";
+@import "../Common/backgrounds.scss";
 
 #pageContent {
 	padding-top: $navbar-height-and-pageContent-margin-top-xs-sm;

@@ -1,6 +1,6 @@
-﻿@import "Common/sizes.scss";
-@import "Common/colors.scss";
-@import "Common/backgrounds.scss";
+﻿@import "../Common/sizes.scss";
+@import "../Common/colors.scss";
+@import "../Common/backgrounds.scss";
 
 nav {
 	min-width: 290px;
@@ -119,7 +119,7 @@ nav {
 	}
 
 	#nav-menu-content {
-		height: $lg-header-logo-navmenu-height !important;
+		height: $header-lg-logo-navmenu-height !important;
 		float: right;
 		background-color: inherit;
 
@@ -181,7 +181,7 @@ nav {
 			min-height: initial;
 
 			#nav-menu-content {
-				height: $lg-header-logo-navmenu-height/2 !important;
+				height: $header-lg-logo-navmenu-height/2 !important;
 			}
 		}
 
