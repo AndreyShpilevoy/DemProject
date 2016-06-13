@@ -42,20 +42,6 @@ nav {
 }
 //end
 
-//.icon-bar like in bootstrap 3
-.navbar-toggler .icon-bar {
-	background-color: $orange-color;
-	display: block;
-	width: 32px;
-	height: 3px;
-	border-radius: 1px;
-}
-
-.navbar-toggler .icon-bar + .icon-bar {
-	margin-top: 4px;
-}
-//end
-
 .navbar-header-add-navbar-padding {
 	padding: .5rem 1rem;
 }

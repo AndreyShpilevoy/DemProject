@@ -407,6 +407,8 @@
     <Content Include="wwwroot\src\scss\Common\colors.scss" />
     <Content Include="wwwroot\src\scss\Layout\footer.scss" />
     <Content Include="wwwroot\src\scss\Common\backgrounds.scss" />
+    <Content Include="wwwroot\src\scss\Common\buttons.scss" />
+    <Content Include="wwwroot\src\scss\Coference\Index.scss" />
     <None Include="wwwroot\src\scss\main-dem.scss" />
     <Content Include="wwwroot\dist\images\DEM\footer\ico\footer-ico-steam.png" />
     <Content Include="wwwroot\dist\images\DEM\footer\ico\footer-ico-vk.png" />

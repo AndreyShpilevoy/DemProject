@@ -1,0 +1,20 @@
+﻿@import "../Common/colors.scss";
+
+.forum-container {
+	width: 100%;
+	padding-top: 0.3125rem;
+
+	.forum-category-header {
+		width: 100%;
+		height: 2.5rem;
+		background-color: $forum-container-heder-color;
+		color: $orange-color;
+		font-size: 1.3125rem;
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+
+		.forum-category-name {
+			vertical-align: middle;
+		}
+	}
+}
