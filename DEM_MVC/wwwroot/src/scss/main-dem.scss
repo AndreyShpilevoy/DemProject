@@ -11,7 +11,7 @@
 @import "Layout/footer.scss";
 @import "Layout/pageContent.scss";
 
-@import "Conference/forum-container.scss";
+@import "Conference/category-container.scss";
 
 $font-size: 16px; //1rem = 16px
 
@@ -25,6 +25,16 @@ body {
 	min-height: 480px;
 }
 
+a:link,
+a:visited {
+	color: $link;
+	text-decoration: none;
+}
+
+a:link:hover {
+	color: $link-hovered;
+	text-decoration: underline;
+}
 
 html, body, #wrap {
 	height: 100%;

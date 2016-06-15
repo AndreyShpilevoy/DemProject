@@ -407,7 +407,7 @@
     <Content Include="wwwroot\src\scss\Layout\footer.scss" />
     <Content Include="wwwroot\src\scss\Common\image-backgrounds.scss" />
     <Content Include="wwwroot\src\scss\Common\Styles\buttons.scss" />
-    <Content Include="wwwroot\src\scss\Conference\forum-container.scss" />
+    <Content Include="wwwroot\src\scss\Conference\category-container.scss" />
     <Content Include="wwwroot\src\scss\Common\Styles\common.scss" />
     <None Include="wwwroot\src\scss\main-dem.scss" />
     <Content Include="wwwroot\dist\images\DEM\footer\ico\footer-ico-steam.png" />
