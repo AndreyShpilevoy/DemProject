@@ -1,25 +1,18 @@
 ﻿@import "../Common/sizes.scss";
 @import "../Common/colors.scss";
-@import "../Common/backgrounds.scss";
+@import "../Common/image-backgrounds.scss";
 
 #wrap {
-	min-height: 100%;
 	margin: 0 auto -1*$footer-height-xs-sm-md;
 }
 
 .navbar-footer-style {
 	background-color: $footer-background-color;
-	display: table;
-	text-align: center;
-	width: 100%;
 	height: $footer-height-xs-sm-md;
-}
 
-.navbar-footer-style {
 	.footer-content {
 		color: $footer-content-color;
-		display: table-cell;
-		vertical-align: middle;
+		text-align: center;
 	}
 
 	.footer-links-holder {
@@ -34,16 +27,18 @@
 
 		.footer-links-holder {
 			position: absolute;
-			display: flex;
-			right: 0.46875rem;
-			top: 0.46875rem;
+			right: 0%;
+			top: 50%;
+			transform: translateY(-50%);
 			display: initial;
+			padding-right: 0.46875rem;
 
 			.footer-link {
-				padding-left: 0.46875rem;
+				margin-left: 0.46875rem;
 
 				.footer-link-img {
 					opacity: 0.6;
+					height: $footer-link-img-height-lg-xl;
 				}
 			}
 		}

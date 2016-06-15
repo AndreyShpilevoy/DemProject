@@ -1,6 +1,6 @@
 ﻿@import "../Common/sizes.scss";
 @import "../Common/colors.scss";
-@import "../Common/backgrounds.scss";
+@import "../Common/image-backgrounds.scss";
 
 nav {
 	min-width: 290px;
@@ -19,7 +19,7 @@ nav {
 .navbar-divider,
 .navbar-nav .nav-item + .nav-item,
 .navbar-nav .nav-link + .nav-link {
-	margin-left: 0;
+	margin-left: initial;
 }
 
 #nav-menu-content {
@@ -30,29 +30,21 @@ nav {
 			padding-left: 0.5rem;
 			padding-right: 0.5rem;
 			color: $orange-text-color;
-			font-size: 1.3125rem;
+			font-size: $nav-link-font-size;
 		}
 
 		.nav-link-separator {
 			background-color: $orange-text-color;
-			width: inherit;
 			height: 0.1875rem;
 		}
 	}
 }
 //end
 
-.navbar-header-add-navbar-padding {
-	padding: .5rem 1rem;
-}
 
-.navbar-header {
-	.navbar-brand-size {
-		.navbar-logo {
-			width: $header-xs-sm-logo-navmenu-width;
-			height: $header-xs-sm-logo-navmenu-height;
-		}
-	}
+.navbar-logo {
+	width: $header-xs-sm-logo-navmenu-width;
+	height: $header-xs-sm-logo-navmenu-height;
 }
 
 .vertical-center {
@@ -63,6 +55,7 @@ nav {
 
 //md+ screens
 @media (min-width: 768px) {
+
 	.navbar-dem-logo-bg {
 		background-image: $navbar-background-md;
 	}
@@ -71,13 +64,9 @@ nav {
 		height: $navbar-height-and-pageContent-margin-top-md;
 	}
 
-	.navbar-header {
-		.navbar-brand-size {
-			.navbar-logo {
-				width: $header-md-logo-navmenu-width;
-				height: $header-md-logo-navmenu-height;
-			}
-		}
+	.navbar-logo {
+		width: $header-md-logo-navmenu-width;
+		height: $header-md-logo-navmenu-height;
 	}
 
 	#menu-toggle-button {
@@ -103,22 +92,17 @@ nav {
 		height: $navbar-height-and-pageContent-margin-top-lg;
 	}
 
-	.navbar-header {
-		.navbar-brand-size {
-			.navbar-logo {
-				width: $header-lg-logo-navmenu-width;
-				height: $header-lg-logo-navmenu-height;
-			}
-		}
+	.navbar-logo {
+		width: $header-lg-logo-navmenu-width;
+		height: $header-lg-logo-navmenu-height;
 	}
 
 	#nav-menu-content {
-		height: 100% !important;
+		height: initial !important;
 		float: right;
-		background-color: inherit;
+		background-color: initial;
 
 		.nav-item {
-			height: 100%;
 
 			.nav-link {
 				padding-left: initial;
@@ -126,8 +110,8 @@ nav {
 			}
 
 			.nav-link-separator {
-				background-color: inherit;
-				width: inherit;
+				background-color: initial;
+				width: initial;
 				height: initial;
 			}
 		}
@@ -146,17 +130,9 @@ nav {
 	.nav-shrink {
 		height: $navbar-height-and-pageContent-margin-top-lg/2;
 
-		.navbar-header-add-navbar-padding {
-			padding: .25rem 1rem;
-		}
-
-		.navbar-header {
-			.navbar-brand-size {
-				.navbar-logo {
-					width: $header-lg-logo-navmenu-width/2;
-					height: $header-lg-logo-navmenu-height/2;
-				}
-			}
+		.navbar-logo {
+			width: $header-lg-logo-navmenu-width/2;
+			height: $header-lg-logo-navmenu-height/2;
 		}
 
 		&.navbar-dem-logo-bg {

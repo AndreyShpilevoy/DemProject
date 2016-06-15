@@ -405,7 +405,7 @@
     <Content Include="wwwroot\src\scss\Common\sizes.scss" />
     <Content Include="wwwroot\src\scss\Common\colors.scss" />
     <Content Include="wwwroot\src\scss\Layout\footer.scss" />
-    <Content Include="wwwroot\src\scss\Common\backgrounds.scss" />
+    <Content Include="wwwroot\src\scss\Common\image-backgrounds.scss" />
     <Content Include="wwwroot\src\scss\Common\Styles\buttons.scss" />
     <Content Include="wwwroot\src\scss\Conference\forum-container.scss" />
     <Content Include="wwwroot\src\scss\Common\Styles\common.scss" />
