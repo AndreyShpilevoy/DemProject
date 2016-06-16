@@ -1,18 +1,56 @@
-﻿.full-width-container {
+﻿@mixin full-width-container {
 	width: 100%;
 }
 
-.padding-initial {
+@mixin padding-initial {
 	padding: initial;
 }
 
-.vertical-center-container {
+@mixin vertical-center-container {
 	min-height: 100%;
 	display: flex;
 	align-items: center;
 }
 
-.in-one-row-container {
+@mixin in-one-row-container {
 	display: flex;
 	flex-flow: row wrap;
+}
+
+@each $breakpoint, $size in $grid-breakpoints {
+	@media (min-width: $size) {
+		.full-width-container-#{$breakpoint}-up {
+			@include full-width-container;
+		}
+
+		.padding-initial-#{$breakpoint}-up {
+			@include padding-initial;
+		}
+
+		.vertical-center-container-#{$breakpoint}-up {
+			@include vertical-center-container;
+		}
+
+		.in-one-row-container-#{$breakpoint}-up {
+			@include in-one-row-container;
+		}
+	}
+
+	@media (max-width: $size) {
+		.full-width-container-#{$breakpoint}-down {
+			@include full-width-container;
+		}
+
+		.padding-initial-#{$breakpoint}-down {
+			@include padding-initial;
+		}
+
+		.vertical-center-container-#{$breakpoint}-down {
+			@include vertical-center-container;
+		}
+
+		.in-one-row-container-#{$breakpoint}-down {
+			@include in-one-row-container;
+		}
+	}
 }

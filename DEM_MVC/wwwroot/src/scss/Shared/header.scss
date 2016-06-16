@@ -47,7 +47,7 @@ nav {
 	height: $header-xs-sm-logo-navmenu-height;
 }
 
-.vertical-center-container {
+.vertical-center-container-xs-up {
 	&.menu-holder {
 		min-height: initial;
 	}
@@ -77,7 +77,7 @@ nav {
 //lg+ screens
 @media (min-width: 992px) {
 
-	.vertical-center-container {
+	.vertical-center-container-xs-up {
 		&.menu-holder {
 			min-height: 100%;
 			padding: 0 1rem;

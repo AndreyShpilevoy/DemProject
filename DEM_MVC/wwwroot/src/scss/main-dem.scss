@@ -4,18 +4,6 @@
 @import "Common/colors.scss";
 @import "Common/image-backgrounds.scss";
 
-@import "Common/Styles/common.scss";
-@import "Common/Styles/buttons.scss";
-
-@import "Shared/header.scss";
-@import "Shared/pageContent.scss";
-@import "Shared/footer.scss";
-
-@import "Conference/categories-container.scss";
-@import "Conference/forums-container.scss";
-
-$font-size: 16px; //1rem = 16px
-
 html {
 	font-size: $font-size;
 }
@@ -44,3 +32,13 @@ html, body, #wrap {
 #wrap {
 	min-height: 100%;
 }
+
+@import "Common/Styles/common.scss";
+@import "Common/Styles/buttons.scss";
+
+@import "Shared/header.scss";
+@import "Shared/pageContent.scss";
+@import "Shared/footer.scss";
+
+@import "Conference/categories-container.scss";
+@import "Conference/forums-container.scss";
