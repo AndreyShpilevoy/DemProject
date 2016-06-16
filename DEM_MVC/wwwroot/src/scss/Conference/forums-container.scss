@@ -1,0 +1,27 @@
+﻿@import "../Common/colors.scss";
+@import "../Common/sizes.scss";
+
+.forums-container {
+	padding: 0.46875rem 0.9375rem;
+}
+
+.forum-title {
+	font-size: $forum-container-title-font-size;
+}
+
+.forum-topics-count,
+.forum-posts-count,
+.forum-last-post-in-topic {
+	font-size: $forum-container-small-font-size;
+}
+
+.forum-topics-count,
+.forum-posts-count {
+	padding-right: 0.46875rem;
+}
+
+.forum-container-separator {
+	background-color: $forum-container-separator-color;
+	height: 0.1875rem;
+	margin: .3rem 0;
+}

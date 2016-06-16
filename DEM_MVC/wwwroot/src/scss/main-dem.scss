@@ -7,11 +7,12 @@
 @import "Common/Styles/common.scss";
 @import "Common/Styles/buttons.scss";
 
-@import "Layout/header.scss";
-@import "Layout/footer.scss";
-@import "Layout/pageContent.scss";
+@import "Shared/header.scss";
+@import "Shared/pageContent.scss";
+@import "Shared/footer.scss";
 
-@import "Conference/category-container.scss";
+@import "Conference/categories-container.scss";
+@import "Conference/forums-container.scss";
 
 $font-size: 16px; //1rem = 16px
 
