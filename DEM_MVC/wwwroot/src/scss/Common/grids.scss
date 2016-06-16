@@ -1,0 +1,26 @@
+﻿$grid-breakpoints-min: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 544px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+) !default;
+
+$grid-breakpoints-max: (
+  // Extra small screen / phone
+  xs: 543px,
+  // Small screen / phone
+  sm: 767px,
+  // Medium screen / tablet
+  md: 991px,
+  // Large screen / desktop
+  lg: 1199px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+) !default;
+

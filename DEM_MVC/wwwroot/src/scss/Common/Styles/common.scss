@@ -17,7 +17,7 @@
 	flex-flow: row wrap;
 }
 
-@each $breakpoint, $size in $grid-breakpoints {
+@each $breakpoint, $size in $grid-breakpoints-min {
 	@media (min-width: $size) {
 		.full-width-container-#{$breakpoint}-up {
 			@include full-width-container;
@@ -35,8 +35,29 @@
 			@include in-one-row-container;
 		}
 	}
+}
 
-	@media (max-width: $size) {
+@each $breakpoint, $size in $grid-breakpoints-max {
+	@if $breakpoint != 'xl' {
+		@media (max-width: $size) {
+			.full-width-container-#{$breakpoint}-down {
+				@include full-width-container;
+			}
+
+			.padding-initial-#{$breakpoint}-down {
+				@include padding-initial;
+			}
+
+			.vertical-center-container-#{$breakpoint}-down {
+				@include vertical-center-container;
+			}
+
+			.in-one-row-container-#{$breakpoint}-down {
+				@include in-one-row-container;
+			}
+		}
+	}
+	@else {
 		.full-width-container-#{$breakpoint}-down {
 			@include full-width-container;
 		}
