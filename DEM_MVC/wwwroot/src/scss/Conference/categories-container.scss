@@ -1,6 +1,10 @@
 ﻿@import "../Common/colors.scss";
 @import "../Common/sizes.scss";
 
+.categories-container {
+	overflow: hidden;
+}
+
 .category-container {
 	width: 100%;
 	padding-top: 0.3125rem;

@@ -1,77 +1,65 @@
-﻿@mixin full-width-container {
-	width: 100%;
+﻿@mixin float($breakpoint, $way, $floatParamList) {
+	@each $param in $floatParamList {
+		.float-#{$param}-#{$breakpoint}#{$way} {
+			float: $param;
+		}
+	}
 }
 
-@mixin padding-initial {
-	padding: initial;
+@mixin padding($breakpoint, $way, $paddingValueParamList, $paddingNamesParamList) {
+	@each $value in $paddingValueParamList {
+		@each $name in $paddingNamesParamList {
+			.padding-#{$name}-#{$value}-#{$breakpoint}#{$way} {
+				padding-#{$name}: $value;
+			}
+		}
+
+		.padding-#{$value}-#{$breakpoint}#{$way} {
+			padding: $value;
+		}
+	}
 }
 
-@mixin vertical-center-container {
-	min-height: 100%;
-	display: flex;
-	align-items: center;
-}
+@mixin common-bundle($breakpoint, $way) {
+	.full-width-container-#{$breakpoint}#{$way} {
+		width: 100%;
+	}
 
-@mixin in-one-row-container {
-	display: flex;
-	flex-flow: row wrap;
+	@include padding($breakpoint, $way, (inherit, initial), (bottom, left, right, top));
+
+	.vertical-center-container-#{$breakpoint}#{$way} {
+		min-height: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	.in-one-row-container-#{$breakpoint}#{$way} {
+		display: flex;
+		flex-flow: row wrap;
+	}
+
+	@include float($breakpoint, $way, (inherit, initial, left, right, none));
 }
 
 @each $breakpoint, $size in $grid-breakpoints-min {
 	@media (min-width: $size) {
-		.full-width-container-#{$breakpoint}-up {
-			@include full-width-container;
-		}
-
-		.padding-initial-#{$breakpoint}-up {
-			@include padding-initial;
-		}
-
-		.vertical-center-container-#{$breakpoint}-up {
-			@include vertical-center-container;
-		}
-
-		.in-one-row-container-#{$breakpoint}-up {
-			@include in-one-row-container;
-		}
+		@include common-bundle($breakpoint, "-up");
 	}
 }
 
 @each $breakpoint, $size in $grid-breakpoints-max {
 	@if $breakpoint != 'xl' {
 		@media (max-width: $size) {
-			.full-width-container-#{$breakpoint}-down {
-				@include full-width-container;
-			}
-
-			.padding-initial-#{$breakpoint}-down {
-				@include padding-initial;
-			}
-
-			.vertical-center-container-#{$breakpoint}-down {
-				@include vertical-center-container;
-			}
-
-			.in-one-row-container-#{$breakpoint}-down {
-				@include in-one-row-container;
-			}
+			@include common-bundle($breakpoint, "-down");
 		}
 	}
 	@else {
-		.full-width-container-#{$breakpoint}-down {
-			@include full-width-container;
-		}
+		@include common-bundle($breakpoint, "-down");
+	}
+}
 
-		.padding-initial-#{$breakpoint}-down {
-			@include padding-initial;
-		}
-
-		.vertical-center-container-#{$breakpoint}-down {
-			@include vertical-center-container;
-		}
-
-		.in-one-row-container-#{$breakpoint}-down {
-			@include in-one-row-container;
-		}
+@each $breakpoint, $size-min, $size-max in $grid-breakpoints-min-max {
+	@media (min-width: $size-min) and (min-width: $size-max) {
+		@include common-bundle($breakpoint, "");
 	}
 }
