@@ -1,23 +1,7 @@
-﻿$grid-breakpoints-min: (
-  xs: 0,
-  sm: 544px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px
-) !default;
-
-$grid-breakpoints-max: (
-  xs: 543px,
-  sm: 767px,
-  md: 991px,
-  lg: 1199px,
-  xl: 1200px
-) !default;
-
-$grid-breakpoints-min-max: (
+﻿$grid-breakpoints-min-max: (
   (xs, 0, 543px),
   (sm, 544px, 767px),
   (md, 767px, 991px),
   (lg, 992px, 1199px),
   (xl, 1200px, 9999999999px)
-) !default;
+);

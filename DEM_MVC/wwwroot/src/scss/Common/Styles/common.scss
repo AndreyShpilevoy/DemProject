@@ -41,25 +41,22 @@
 	@include float($breakpoint, $way, (inherit, initial, left, right, none));
 }
 
-@each $breakpoint, $size in $grid-breakpoints-min {
-	@media (min-width: $size) {
+@each $breakpoint, $size-min, $size-max in $grid-breakpoints-min-max {
+
+	@media (min-width: $size-min) and (max-width: $size-max) {
+		@include common-bundle($breakpoint, "");
+	}
+
+	@media (min-width: $size-min) {
 		@include common-bundle($breakpoint, "-up");
 	}
-}
 
-@each $breakpoint, $size in $grid-breakpoints-max {
 	@if $breakpoint != 'xl' {
-		@media (max-width: $size) {
+		@media (max-width: $size-max) {
 			@include common-bundle($breakpoint, "-down");
 		}
 	}
 	@else {
 		@include common-bundle($breakpoint, "-down");
-	}
-}
-
-@each $breakpoint, $size-min, $size-max in $grid-breakpoints-min-max {
-	@media (min-width: $size-min) and (min-width: $size-max) {
-		@include common-bundle($breakpoint, "");
 	}
 }
