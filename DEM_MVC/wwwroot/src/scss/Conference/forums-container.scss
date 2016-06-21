@@ -26,3 +26,12 @@
 	height: 0.1875rem;
 	margin: .3rem 0;
 }
+
+@media(min-width: 768px) and (max-width: 991px) {
+	.forum-container {
+		height: 3.125rem;
+	}
+}
+
+@media(min-width: 992px) {
+}
