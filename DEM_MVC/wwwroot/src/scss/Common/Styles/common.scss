@@ -25,12 +25,26 @@
 		width: 100%;
 	}
 
+	.full-height-container-#{$breakpoint}#{$way} {
+		height: 100%;
+	}
+
 	@include padding($breakpoint, $way, (inherit, initial), (bottom, left, right, top));
 
 	.vertical-center-container-#{$breakpoint}#{$way} {
 		min-height: 100%;
 		display: flex;
 		align-items: center;
+	}
+
+	.display-table-#{$breakpoint}#{$way} {
+		display: table;
+		width: 100%;
+	}
+
+	.display-table-cell-vertical-center-#{$breakpoint}#{$way} {
+		display: table-cell;
+		vertical-align: middle;
 	}
 
 	.in-one-row-container-#{$breakpoint}#{$way} {
@@ -44,7 +58,7 @@
 @each $breakpoint, $size-min, $size-max in $grid-breakpoints-min-max {
 
 	@media (min-width: $size-min) and (max-width: $size-max) {
-		@include common-bundle($breakpoint, "");
+		@include common-bundle($breakpoint, "-only");
 	}
 
 	@media (min-width: $size-min) {

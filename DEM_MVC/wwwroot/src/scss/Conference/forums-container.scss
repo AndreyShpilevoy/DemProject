@@ -10,14 +10,11 @@
 	font-size: $forum-container-title-font-size;
 }
 
-.forum-partial-container{
-	height: 100%;
-}
-
+.forum-description,
 .forum-topics-count,
 .forum-posts-count,
 .forum-last-post-in-topic {
-	font-size: $forum-container-small-font-size;
+	font-size: $forum-container-font-size-80;
 }
 
 .forum-topics-count,
@@ -35,7 +32,24 @@
 	.forum-container {
 		height: 3.125rem;
 	}
+
+	.forum-last-post-time-ago,
+	.forum-last-post-in-topic {
+		font-size: $forum-container-font-size-90;
+	}
 }
 
 @media(min-width: 992px) {
+	.forum-last-post-time-ago,
+	.forum-topics-count,
+	.forum-posts-count,
+	.forum-last-post-in-topic {
+		font-size: $forum-container-font-size-90;
+	}
+
+	.forum-topics-count,
+	.forum-posts-count {
+		padding-left: 0.46875rem;
+		padding-right: 0.46875rem;
+	}
 }
