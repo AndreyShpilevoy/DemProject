@@ -33,10 +33,10 @@ namespace DEM_MVC.Services.AutoMapper
 	{
 		public static void Initial()
 		{
-			ConfigureSomeMapping();
+			ConfigureMapping();
 		}
 
-		private static void ConfigureSomeMapping()
+		private static void ConfigureMapping()
 		{
 			Mapper.Initialize(cfg =>
 			{
