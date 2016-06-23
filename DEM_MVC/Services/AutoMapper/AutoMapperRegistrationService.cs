@@ -29,58 +29,141 @@ using Microsoft.AspNet.Identity;
 
 namespace DEM_MVC.Services.AutoMapper
 {
-    public static class AutoMapperRegistrationService
-    {
-        public static void Initial()
-        {
-            Mapper.AssertConfigurationIsValid();
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<BbCodeEntity, BbCodeModel>().ReverseMap();
-                cfg.CreateMap<ConfigEntity, ConfigModel>().ReverseMap();
-                cfg.CreateMap<ForumsViewEntity, ForumTableViewModel>().ReverseMap();
-                cfg.CreateMap<PollEntity, PollViewModel>().ReverseMap();
-                cfg.CreateMap<PollOptionEntity, PollOptionViewModel>().ReverseMap();
-                cfg.CreateMap<GroupIdentityEntity, IdentityGroupModel>().ReverseMap();
-                cfg.CreateMap<UserLoginInfoIdentityEntity, UserLoginInfo>().ReverseMap();
-                cfg.CreateMap<PermissionEntity, PermissionModel>().ReverseMap();
-                cfg.CreateMap<IdentityPermissionModel, IdentityPermissionEntity>().ReverseMap();
-                cfg.CreateMap<NewPostViewModel, NewPostModel>().ReverseMap();
-                cfg.CreateMap<NewPostModel, NewPostEntity>().ReverseMap();
+	public static class AutoMapperRegistrationService
+	{
+		private static bool _initialized;
+		public static void Initial()
+		{
+			if (_initialized) return;
+			_initialized = true;
+			ConfigureMapping();
+		}
 
-                cfg.CreateMap<ReadPostEntity, PostTableViewModel>()
-                      .ForMember(entity => entity.PostText, opt => opt.ResolveUsing<ReadPostEntityPostTextResolver>());
+		private static void ConfigureMapping()
+		{
+			Mapper.Initialize(cfg =>
+			{
+				cfg.CreateMap<BbCodeEntity, BbCodeModel>()
+					.ReverseMap();
 
-                cfg.CreateMap<PostTableViewModel, ReadPostEntity>();
+				cfg.CreateMap<ConfigEntity, ConfigModel>()
+					.ReverseMap();
 
-                cfg.CreateMap<UserForPostViewEntity, UserTableViewModelForPosts>()
-                      .ForMember(entity => entity.UserSignature, opt => opt.ResolveUsing<UserEntityUserSignatureResolver>());
-                cfg.CreateMap<UserTableViewModelForPosts, UserForPostViewEntity>();
+				cfg.CreateMap<ForumsViewEntity, ForumTableViewModel>()
+					.ForMember(dest => dest.SubForums, opts => opts.Ignore())
+					.ReverseMap();
 
-                cfg.CreateMap<UserIdentityEntity, IdentityUserModel>()
-                      .Include<UserIdentityEntity, AppMember>()
-                      .ForMember(entity => entity.UserSignature, opt => opt.ResolveUsing<UserIdentityEntityUserSignatureResolver>());
-                cfg.CreateMap<UserIdentityEntity, AppMember>();
+				cfg.CreateMap<PollEntity, PollViewModel>()
+					.ForMember(dest => dest.PollOptionList, opts => opts.Ignore())
+					.ReverseMap();
 
-                cfg.CreateMap<IdentityUserModel, UserIdentityEntity>()
-                    .Include<AppMember, UserIdentityEntity>();
-                cfg.CreateMap<AppMember, UserIdentityEntity>();
+				cfg.CreateMap<PollOptionEntity, PollOptionViewModel>()
+					.ForMember(dest => dest.PollOptionTotalPercent, opts => opts.Ignore())
+					.ReverseMap();
 
-                cfg.CreateMap<AppMember, IdentityUserModel>().ReverseMap();
+				cfg.CreateMap<GroupIdentityEntity, IdentityGroupModel>()
+					.ReverseMap();
 
+				cfg.CreateMap<UserLoginInfoIdentityEntity, UserLoginInfo>()
+					.ReverseMap();
 
+				cfg.CreateMap<PermissionEntity, PermissionModel>()
+					.ReverseMap();
 
-                cfg.CreateMap<TopicsViewEntity, TopicTableViewModel>()
-                      .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<TopicEntityPagesCountResolver>());
-                cfg.CreateMap<TopicTableViewModel, TopicsViewEntity>();
+				cfg.CreateMap<IdentityPermissionModel, IdentityPermissionEntity>()
+					.ReverseMap();
 
-                cfg.CreateMap<TopicsViewEntity, TopicInfoViewModel>()
-                      .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<TopicEntityPagesCountResolver>());
-                cfg.CreateMap<TopicInfoViewModel, TopicsViewEntity>();
+				cfg.CreateMap<NewPostViewModel, NewPostModel>()
+					.ReverseMap();
 
-                cfg.CreateMap<ForumsViewEntity, ForumInfoViewModel>()
-                      .ForMember(entity => entity.PagesCount, opt => opt.ResolveUsing<ForumEntityPagesCountResolver>());
-                cfg.CreateMap<ForumInfoViewModel, ForumsViewEntity>();
-            });
-        }
-    }
+				cfg.CreateMap<NewPostModel, NewPostEntity>()
+					.ForMember(dest => dest.PostId, opts => opts.Ignore())
+					.ForMember(dest => dest.PosterIp, opts => opts.Ignore())
+					.ForMember(dest => dest.PostMerged, opts => opts.Ignore())
+					.ForMember(dest => dest.PostReported, opts => opts.Ignore())
+					.ForMember(dest => dest.EnableBbcode, opts => opts.Ignore())
+					.ForMember(dest => dest.EnableSmilies, opts => opts.Ignore())
+					.ForMember(dest => dest.EnableMagicUrl, opts => opts.Ignore())
+					.ForMember(dest => dest.EnableSignature, opts => opts.Ignore())
+					.ForMember(dest => dest.PostAttachment, opts => opts.Ignore())
+					.ForMember(dest => dest.PostEditTime, opts => opts.Ignore())
+					.ForMember(dest => dest.PostEditReason, opts => opts.Ignore())
+					.ForMember(dest => dest.PostEditUser, opts => opts.Ignore())
+					.ForMember(dest => dest.PostEditCount, opts => opts.Ignore())
+					.ForMember(dest => dest.PostEditLocked, opts => opts.Ignore())
+					.ReverseMap();
+
+				cfg.CreateMap<ReadPostEntity, PostTableViewModel>()
+					.ForMember(dest => dest.PostText, opts => opts.ResolveUsing<ReadPostEntityPostTextResolver>())
+					.ForMember(dest => dest.PostWarning, opts => opts.Ignore())
+					.ForMember(dest => dest.User, opts => opts.Ignore())
+					.ForMember(dest => dest.EditUser, opts => opts.Ignore())
+					.ReverseMap();
+
+				cfg.CreateMap<UserForPostViewEntity, UserTableViewModelForPosts>()
+					.ForMember(dest => dest.UserSignature, opts => opts.ResolveUsing<UserEntityUserSignatureResolver>())
+					.ForMember(dest => dest.UserMedals, opts => opts.Ignore())
+					.ReverseMap();
+
+				cfg.CreateMap<UserIdentityEntity, IdentityUserModel>()
+					.Include<UserIdentityEntity, AppMember>()
+					.ForMember(dest => dest.UserSignature, opts => opts.ResolveUsing<UserIdentityEntityUserSignatureResolver>())
+					.ReverseMap();
+
+				cfg.CreateMap<UserIdentityEntity, AppMember>()
+					.ReverseMap();
+
+				cfg.CreateMap<IdentityUserModel, UserIdentityEntity>()
+					.Include<AppMember, UserIdentityEntity>()
+					.ReverseMap();
+
+				cfg.CreateMap<AppMember, UserIdentityEntity>()
+					.ReverseMap();
+
+				cfg.CreateMap<AppMember, IdentityUserModel>()
+					.ReverseMap();
+
+				cfg.CreateMap<TopicTableViewModel, TopicsViewEntity>()
+					.ForMember(dest => dest.ForumId, opts => opts.Ignore())
+					.ForMember(dest => dest.TopicFirstPostShow, opts => opts.Ignore())
+					.ForMember(dest => dest.PollsEnabled, opts => opts.Ignore())
+					.ForMember(dest => dest.PollsOnly, opts => opts.Ignore())
+					.ReverseMap()
+					.ForMember(dest => dest.PagesCount, opts => opts.ResolveUsing<TopicEntityPagesCountResolver>());
+
+				cfg.CreateMap<TopicInfoViewModel, TopicsViewEntity>()
+					.ForMember(dest => dest.TopicStarterUsername, opts => opts.Ignore())
+					.ForMember(dest => dest.TopicStarterUserId, opts => opts.Ignore())
+					.ForMember(dest => dest.TopicStarterGroupColor, opts => opts.Ignore())
+					.ForMember(dest => dest.TopicStartTime, opts => opts.Ignore())
+					.ForMember(dest => dest.TopicViews, opts => opts.Ignore())
+					.ForMember(dest => dest.LastPostTime, opts => opts.Ignore())
+					.ForMember(dest => dest.LastPostUserId, opts => opts.Ignore())
+					.ForMember(dest => dest.LastPostUsername, opts => opts.Ignore())
+					.ForMember(dest => dest.LastPostGroupColor, opts => opts.Ignore())
+					.ForMember(dest => dest.LastPostId, opts => opts.Ignore())
+					.ReverseMap()
+					.ForMember(dest => dest.PagesCount, opts => opts.ResolveUsing<TopicEntityPagesCountResolver>());
+
+				cfg.CreateMap<ForumInfoViewModel, ForumsViewEntity>()
+					.ForMember(dest => dest.ParentId, opts => opts.Ignore())
+					.ForMember(dest => dest.Title, opts => opts.Ignore())
+					.ForMember(dest => dest.Description, opts => opts.Ignore())
+					.ForMember(dest => dest.DisplaySubForums, opts => opts.Ignore())
+					.ForMember(dest => dest.DisplayOnIndex, opts => opts.Ignore())
+					.ForMember(dest => dest.PostsCount, opts => opts.Ignore())
+					.ForMember(dest => dest.LastPostTime, opts => opts.Ignore())
+					.ForMember(dest => dest.UserId, opts => opts.Ignore())
+					.ForMember(dest => dest.Username, opts => opts.Ignore())
+					.ForMember(dest => dest.GroupColor, opts => opts.Ignore())
+					.ForMember(dest => dest.LastTopicTitle, opts => opts.Ignore())
+					.ForMember(dest => dest.LastTopicId, opts => opts.Ignore())
+					.ForMember(dest => dest.ForumOrder, opts => opts.Ignore())
+					.ReverseMap()
+					.ForMember(dest => dest.PagesCount, opts => opts.ResolveUsing<ForumEntityPagesCountResolver>());
+			});
+
+			Mapper.AssertConfigurationIsValid();
+		}
+	}
 }
