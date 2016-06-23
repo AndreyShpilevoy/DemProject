@@ -31,8 +31,11 @@ namespace DEM_MVC.Services.AutoMapper
 {
 	public static class AutoMapperRegistrationService
 	{
+		private static bool _initialized;
 		public static void Initial()
 		{
+			if (_initialized) return;
+			_initialized = true;
 			ConfigureMapping();
 		}
 
