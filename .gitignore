@@ -201,3 +201,7 @@ FakesAssemblies/
 DEM_MVC/Web.Release.config
 /DEM_MVC/wwwroot/dist/scripts/dem.min.js
 /DEM_MVC/wwwroot/dist/styles/dem.min.css
+DEM_MVC/wwwroot/dist/dem.min.css
+DEM_MVC/wwwroot/dist/dem.min.js
+DEM_MVC/wwwroot/dist/dem.min.css.map
+DEM_MVC/wwwroot/dist/dem.min.js.map

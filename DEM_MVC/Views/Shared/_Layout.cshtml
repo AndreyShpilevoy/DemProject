@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 	<title>@ViewBag.Title</title>
-	<link type="text/css" rel="stylesheet" href="~/wwwroot/dist/styles/dem.min.css" />
+	<link type="text/css" rel="stylesheet" href="~/wwwroot/dist/dem.min.css" />
 </head>
 <body>
 	<div id="wrap">
@@ -15,7 +15,7 @@
 						<div class="navbar-header col-xs-12 col-lg-6 vertical-center-container-xs-up">
 							<div class="full-width-container-xs-up">
 								<a class="navbar-brand navbar-brand-size padding-initial-xs-up" href="#">
-									<img class="navbar-logo" src="../../wwwroot/dist/images/DEM/header/Dem_Logo.png" alt="DeusExMachina logo" />
+									<div class="navbar-logo"></div>
 								</a>
 								<!-- Toggle Button -->
 								<button type="button" class="navbar-toggler hidden-lg-up pull-xs-right" id="menu-toggle-button" data-toggle="collapse" data-target="#nav-menu-content">
@@ -69,17 +69,19 @@
 							</div>
 						</div>
 						<div class="footer-content footer-links-holder">
-							<a class="footer-link" href="#">
-								<img class="footer-link-img" src="../../wwwroot/dist/images/DEM/footer/ico/footer-ico-steam.png" alt="DeusExMachina on Steam" />
-							</a><a class="footer-link" href="#">
-								<img class="footer-link-img" src="../../wwwroot/dist/images/DEM/footer/ico/footer-ico-vk.png" alt="DeusExMachina on VK.com" />
-							</a>
+							<div class="in-one-row-container-lg-up">
+								<a class="footer-link" href="#">
+									<div class="footer-link-img footer-link-img-steam"></div>
+								</a><a class="footer-link" href="#">
+									<div class="footer-link-img footer-link-img-vk"></div>
+								</a>
+							</div>
 						</div>
 					</div>
 				</nav>
 			</div>
 		</div>
 	</div>
-	<script src="~/wwwroot/dist/scripts/dem.min.js"></script>
+	<script src="~/wwwroot/dist/dem.min.js"></script>
 </body>
 </html>

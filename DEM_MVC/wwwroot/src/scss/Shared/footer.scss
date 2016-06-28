@@ -38,7 +38,17 @@
 
 				.footer-link-img {
 					opacity: 0.6;
+					width: $footer-link-img-width-lg-xl;
 					height: $footer-link-img-height-lg-xl;
+					background-size: $footer-link-img-width-lg-xl $footer-link-img-height-lg-xl;
+				}
+
+				.footer-link-img-steam {
+					background: $footer-link-image-steam-lg-xl;
+				}
+
+				.footer-link-img-vk {
+					background: $footer-link-image-vk-lg-xl;
 				}
 			}
 		}

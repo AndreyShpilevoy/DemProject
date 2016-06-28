@@ -1,4 +1,7 @@
-﻿// register jQuery and Tether as global variable (require for Bootstrap)
+﻿//register css
+import "./../scss/main-dem.scss";
+
+// register jQuery and Tether as global variable (require for Bootstrap)
 import * as JQuery from "jquery";
 import * as tether from "tether";
 
