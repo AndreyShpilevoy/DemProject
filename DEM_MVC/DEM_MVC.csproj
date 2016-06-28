@@ -436,6 +436,8 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\Collapse.ts" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\Layout\Layout.tsx" />
     <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\ShrinkingHeader.ts" />
     <TypeScriptCompile Include="wwwroot\src\TypeScripts\main.tsx" />
   </ItemGroup>
@@ -543,6 +545,9 @@
   <ItemGroup>
     <Folder Include="Views\Administration\" />
     <Folder Include="Views\Permissions\" />
+    <Folder Include="wwwroot\src\TypeScripts\Components\Common\" />
+    <Folder Include="wwwroot\src\TypeScripts\Components\Layout\Footer\" />
+    <Folder Include="wwwroot\src\TypeScripts\Components\Layout\Header\" />
     <Folder Include="wwwroot\TypingsForTypeScript\" />
   </ItemGroup>
   <ItemGroup>
