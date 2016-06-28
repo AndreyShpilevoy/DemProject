@@ -20,7 +20,7 @@ import { Layout } from "./Components/Layout/Layout";
 
 ReactDOM.render(
     <Layout compiler="TypeScript" framework="React" />,
-    document.getElementById("wrap")
+    document.getElementById("reactTest")
 );
 
 
