@@ -3,7 +3,7 @@
 	"private": true,
 	"version": "1.0.0",
 	"scripts": {
-		"install": " node NpmScripts/removeTypingsDestFolder.js && typings install && node NpmScripts/copyTypingsToDestFolder.js && node NpmScripts/removeTypingsSrcFolder"
+		"install": "node NpmScripts/removeTypingsDestFolder.js && typings install && node NpmScripts/copyTypingsToDestFolder.js && node NpmScripts/removeTypingsSrcFolder"
 	},
 	"devDependencies": {
 		"webpack": "2.1.0-beta.9",

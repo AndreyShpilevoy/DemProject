@@ -31,13 +31,6 @@ module.exports = {
 				test: /\.png$/,
 				loader: "url-loader?limit=100000"
 			}
-		],
-
-		preLoaders: [
-			{
-				test: /\.js$/,
-				loader: "source-map-loader"
-			}
 		]
 	},
 	plugins: [
