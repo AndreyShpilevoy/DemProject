@@ -1,5 +1,6 @@
 ﻿{
 	"compilerOptions": {
+		"rootDir": "./wwwroot/src/TypeScripts",
 		"outDir": "./wwwroot/dist/scripts",
 		"noEmitOnError": true,
 		"removeComments": true,
@@ -12,10 +13,5 @@
 	"exclude": [
 		"node_modules"
 	],
-	"files": [
-		"./wwwroot/TypingsForTypeScript/index.d.ts",
-		"./wwwroot/src/TypeScripts/Components/Layout/Layout.tsx",
-		"./wwwroot/src/TypeScripts/Components/ShrinkingHeader.ts",
-		"./wwwroot/src/TypeScripts/main.tsx"
-	]
+	"file": "./wwwroot/TypingsForTypeScript/index.d.ts"
 }

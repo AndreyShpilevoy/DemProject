@@ -170,7 +170,12 @@ namespace DEM_MVC.Controllers
 
 		public ActionResult Test()
 		{
-			return View();
+			return View("Test");
+		}
+
+		public ActionResult Test2()
+		{
+			return View("Index");
 		}
 
 		protected override void OnException(ExceptionContext filterContext)

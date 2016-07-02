@@ -402,7 +402,7 @@
     <Content Include="NpmScripts\removeTypingsDestFolder.js" />
     <Content Include="typings.json" />
     <Content Include="DEM_MVC.ruleset" />
-    <Content Include="Views\Conference\Test.cshtml" />
+    <Content Include="Views\Shared\Test.cshtml" />
     <Content Include="webpack.config.js" />
     <Content Include="wwwroot\dist\dem.min.css" />
     <Content Include="wwwroot\dist\dem.min.js" />
@@ -419,6 +419,7 @@
     <Content Include="wwwroot\src\scss\Common\grids.scss" />
     <Content Include="wwwroot\dist\dem.min.css.map" />
     <Content Include="wwwroot\dist\dem.min.js.map" />
+    <Content Include="Views\Shared\Index.cshtml" />
     <None Include="wwwroot\src\scss\main-dem.scss" />
     <Content Include="wwwroot\src\images\DEM\footer\ico\footer-ico-steam.png" />
     <Content Include="wwwroot\src\images\DEM\footer\ico\footer-ico-vk.png" />
@@ -441,9 +442,10 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\Collapse.ts" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\Layout\Layout.tsx" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\ShrinkingHeader.ts" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\Layout.tsx" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Scripts\Collapse.ts" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\Common\Header.tsx" />
+    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Scripts\ShrinkingHeader.ts" />
     <TypeScriptCompile Include="wwwroot\src\TypeScripts\main.tsx" />
   </ItemGroup>
   <ItemGroup>
@@ -503,41 +505,6 @@
     <Content Include="packages.config" />
     <Content Include="App_Data\SQL_Diagramms\DEM_Project.dbs" />
     <Content Include="App_Data\SQL_Diagramms\Create_Tables_WithOut_FK.dbs" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Conference\Index\Index.cshtml" />
-    <Content Include="Views\Conference\Index\_ShowForumTable.cshtml" />
-    <Content Include="Views\Conference\ViewForum\ViewForum.cshtml" />
-    <Content Include="Views\Conference\ViewForum\_ShowForumTableById.cshtml" />
-    <Content Include="Views\Conference\ViewForum\_ShowTopicTableByForumId.cshtml" />
-    <Content Include="Views\Conference\ViewTopic\ViewTopic.cshtml" />
-    <Content Include="Views\Conference\ViewTopic\_ShowPostTableByTopicId.cshtml" />
-    <Content Include="Views\Conference\ViewTopic\_ShowPollTableByTopicId.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\Info.cshtml" />
-    <Content Include="Views\Conference\ViewTopic\_CreatePost.cshtml" />
-    <Content Include="Views\Conference\ViewTopic\_ShowTopicPaging.cshtml" />
-    <Content Include="Views\Conference\Index\_SiteUnderCostruction.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -548,11 +515,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Administration\" />
-    <Folder Include="Views\Permissions\" />
-    <Folder Include="wwwroot\src\TypeScripts\Components\Common\" />
-    <Folder Include="wwwroot\src\TypeScripts\Components\Layout\Footer\" />
-    <Folder Include="wwwroot\src\TypeScripts\Components\Layout\Header\" />
     <Folder Include="wwwroot\TypingsForTypeScript\" />
   </ItemGroup>
   <ItemGroup>

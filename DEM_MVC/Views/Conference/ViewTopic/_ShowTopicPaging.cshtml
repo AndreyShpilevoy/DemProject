@@ -1,9 +1,0 @@
-﻿@using DEM_MVC.Services.HtmlHelpers
-@model DEM_MVC_BL.Models.TopicModels.TopicInfoViewModel
-
-@{
-    var navigationBtnClasses = "ui-button ui-state-default ui-button-text-only nonDecoration demNavigationBtn";
-    var currentPageNavigationBtnClasses = "ui-button ui-state-default ui-button-text-only nonDecoration demNavigationSpan ui-state-active";
-}
-
-@Html.PostPagingForViewTopic(Model, "ViewTopic", "Conference", new { @class = navigationBtnClasses }, new { @class = currentPageNavigationBtnClasses })

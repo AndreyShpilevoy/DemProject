@@ -3,10 +3,11 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
-	<title>@ViewBag.Title</title>
+	<title>Test</title>
 	<link type="text/css" rel="stylesheet" href="~/wwwroot/dist/dem.min.css" />
 </head>
 <body>
+
 	<div id="wrap">
 		<div class="container navbar-fixed-top">
 			<div class="row">
@@ -51,11 +52,58 @@
 		</div>
 
 		<div id="pageContent">
-			@RenderBody()
-		</div>
-	</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="categories-container">
+							<div class="category-container">
+								<div class="category-header vertical-center-container-xs-up">
+									<div class="full-width-container-xs-up">
+										<div class="category-header-title">
+											Label
+										</div>
+									</div>
+								</div>
+								<div class="category-body">
+									<div class="forums-container">
+										<div class="forum-container col-xs-12 padding-initial-xs-up display-table-lg-up">
+											<div class="col-md-5 col-lg-9 padding-left-initial-xs-up display-table-cell-vertical-center-lg-up float-initial-lg-up full-height-container-xs-up">
+												<div class="display-table-lg-up">
+													<div class="col-lg-8 display-table-cell-vertical-center-lg-up float-initial-lg-up">
+														<div class="forum-title">
+															<a class="forum-title-link" href="#">Title</a>
+														</div>
+														<div class="forum-description hidden-md-down">
+															Some description for forum
+														</div>
+													</div>
+													<div class="forum-topics-count col-lg-2 display-table-cell-vertical-center-lg-up float-initial-lg-up float-left-md-down">
+														Topics: 10
+													</div>
+													<div class="forum-posts-count col-lg-2 display-table-cell-vertical-center-lg-up float-initial-lg-up">
+														Posts: 1250
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-3 padding-left-initial-lg-up display-table-cell-vertical-center-lg-up float-initial-lg-up full-height-container-xs-up">
+												<div class="forum-last-post-time-ago hidden-sm-down col-md-3 col-lg-12 padding-initial-sm-down vertical-center-container-md-down float-left-lg-up">
+													4 hours ago
+												</div>
+												<div class="forum-last-post-in-topic col-md-4 col-lg-12 padding-initial-sm-down vertical-center-container-md-down">
+													<span>Last message in <a href="#">topic</a></span>
+												</div>
+											</div>
+										</div>
+										<div class="forum-container-separator col-xs-12"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-	<div id="reactTest">
+		</div>
 	</div>
 
 	<div id="footer" class="container">
@@ -82,6 +130,6 @@
 			</div>
 		</div>
 	</div>
-	<script src="~/wwwroot/dist/dem.min.js"></script>
+
 </body>
 </html>
