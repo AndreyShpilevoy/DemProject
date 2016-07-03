@@ -6,12 +6,12 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace DEM_MVC.Services.AutoMapper.ValueResolvers
 {
-    public class UserIdentityEntityUserSignatureResolver : ValueResolver<UserIdentityEntity, String>
-    {
-        protected override string ResolveCore(UserIdentityEntity source)
-        {
-            var bbCodeReadService = ServiceLocator.Current.GetInstance<IBbCodeReadService>();
-            return bbCodeReadService.BbCodeReplacerToHtml(source.UserSignature);
-        }
-    }
+	public class UserIdentityEntityUserSignatureResolver : IValueResolver<UserIdentityEntity, String>
+	{
+		public string Resolve(UserIdentityEntity source, string destination, ResolutionContext context)
+		{
+			var bbCodeReadService = ServiceLocator.Current.GetInstance<IBbCodeReadService>();
+			return bbCodeReadService.BbCodeReplacerToHtml(source.UserSignature);
+		}
+	}
 }
