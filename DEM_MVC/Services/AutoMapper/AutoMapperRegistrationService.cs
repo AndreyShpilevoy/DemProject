@@ -163,7 +163,7 @@ namespace DEM_MVC.Services.AutoMapper
 					.ForMember(dest => dest.PagesCount, opts => opts.ResolveUsing<ForumEntityPagesCountResolver>());
 			});
 
-			Mapper.AssertConfigurationIsValid();
+			Mapper.Configuration.AssertConfigurationIsValid();
 		}
 	}
 }

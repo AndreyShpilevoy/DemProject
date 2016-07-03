@@ -49,7 +49,6 @@ namespace DEM_MVC
 
             // REGISTER WITH OWIN
             app.UseAutofacMiddleware(container);
-            app.UseAutofacMvc();
         }
     }
 }

@@ -6,12 +6,12 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace DEM_MVC.Services.AutoMapper.ValueResolvers
 {
-    public class ForumEntityPagesCountResolver : ValueResolver<ForumsViewEntity, int>
+    public class ForumEntityPagesCountResolver : IValueResolver<ForumsViewEntity, int>
     {
-        protected override int ResolveCore(ForumsViewEntity source)
-        {
-            var configReadService = ServiceLocator.Current.GetInstance<IConfigReadService>();
-            return (int)Math.Ceiling((double)source.TopicsCount / configReadService.GetTopicsOnPageCount());
-        }
+		public int Resolve(ForumsViewEntity source, int destination, ResolutionContext context)
+		{
+			var configReadService = ServiceLocator.Current.GetInstance<IConfigReadService>();
+			return (int)Math.Ceiling((double)source.TopicsCount / configReadService.GetTopicsOnPageCount());
+		}
     }
 }
