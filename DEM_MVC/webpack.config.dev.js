@@ -1,27 +1,24 @@
-﻿"use strict";
+﻿const webpack = require('webpack');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const Autoprefixer = require('autoprefixer');
 
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var Autoprefixer = require("autoprefixer");
-var Path = require("path");
-
-module.exports = {
-	devtool: "cheap-module-source-map",
+export default {
 	debug: true,
+	devtool: "cheap-module-eval-source-map",
 	noInfo: false,
+	entry: "./wwwroot/src/scripts/main",
 	target: "web",
-	entry: "./wwwroot/src/scripts/main.jsx",
 	output: {
-		path: Path.join(__dirname, "./wwwroot/dist"),
+		path: path.join(__dirname, "./wwwroot/dist"),
 		filename: "dem.min.js"
-	},
-	resolve: {
-		extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx"]
 	},
 	module: {
 		loaders: [
 			{
-				test: /\.jsx?$/,
-				loader: "ts-loader"
+				test: /\.js$/,
+				include: path.join(__dirname, "./wwwroot/src"),
+				loaders: "babel"
 			},
 			{
 				test: /\.scss$/,
