@@ -9,18 +9,18 @@ module.exports = {
 	debug: true,
 	noInfo: false,
 	target: "web",
-	entry: "./wwwroot/src/TypeScripts/main.tsx",
+	entry: "./wwwroot/src/scripts/main.jsx",
 	output: {
 		path: Path.join(__dirname, "./wwwroot/dist"),
 		filename: "dem.min.js"
 	},
 	resolve: {
-		extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+		extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx"]
 	},
 	module: {
 		loaders: [
 			{
-				test: /\.tsx?$/,
+				test: /\.jsx?$/,
 				loader: "ts-loader"
 			},
 			{

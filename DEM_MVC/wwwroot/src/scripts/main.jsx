@@ -1,4 +1,6 @@
-﻿//register css
+﻿import 'babel-polyfill';
+
+// register css
 import "./../scss/main-dem.scss";
 
 // register jQuery and Tether as global variable (require for Bootstrap)
@@ -23,7 +25,3 @@ import * as ShrinkingHeader from "./Scripts/ShrinkingHeader";
 import * as Layout from "./Components/Layout";
 
 [bootstrap, ShrinkingHeader, Layout];
-
-//render(
-
-//);

@@ -2,9 +2,6 @@
 	"name": "deus-ex-machina",
 	"private": true,
 	"version": "1.0.0",
-	"scripts": {
-		"reload-ts": "node NpmScripts/removeTypingsDestFolder.js && typings install && node NpmScripts/copyTypingsToDestFolder.js && node NpmScripts/removeTypingsSrcFolder"
-	},
 	"devDependencies": {
 		"autoprefixer": "^6.3.7",
 		"copy-dir": "^0.2.0",
@@ -17,17 +14,21 @@
 		"sass-loader": "^4.0.0",
 		"source-map-loader": "^0.1.5",
 		"style-loader": "^0.13.1",
-		"ts-loader": "^0.8.2",
-		"typings": "^1.3.1",
 		"url-loader": "^0.5.7",
 		"webpack": "^2.1.0-beta.15"
 	},
 	"dependencies": {
+		"babel-polyfill": "6.9.1",
 		"jquery": "^3.0.0",
 		"bootstrap": "^4.0.0-alpha.2",
 		"tether": "^1.3.2",
 		"react": "^15.1.0",
 		"react-dom": "^15.1.0",
-		"redux": "^3.5.2"
+		"redux": "^3.5.2",
+		"redux-thunk": "^2.1.0",
+		"react-redux": "^4.4.5",
+		"react-router": "^2.5.2",
+		"react-router-redux": "^4.0.5",
+		"toastr": "^2.1.2"
 	}
 }

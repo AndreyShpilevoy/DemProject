@@ -1,6 +1,6 @@
-﻿import * as React from "react";
+﻿import React from "react";
 
-const Header = (props:any) => {
+const Header = (props) => {
 	return (
 		<h1>Hello from {props.compiler} and {props.framework}!</h1>
 	);

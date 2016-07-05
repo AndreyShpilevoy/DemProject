@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
-    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -27,7 +24,6 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <UseGlobalApplicationHostFile />
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -393,10 +389,6 @@
     <Content Include="App_Data\SQL_Scripts\Create_TestUsersTables.sql" />
     <Content Include="App_Data\SQL_Scripts\Migrate_Script_From_adeusexm_phpbbex_To_DEM.sql" />
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
-    <Content Include="NpmScripts\removeTypingsSrcFolder.js" />
-    <Content Include="NpmScripts\copyTypingsToDestFolder.js" />
-    <Content Include="NpmScripts\removeTypingsDestFolder.js" />
-    <Content Include="typings.json" />
     <Content Include="DEM_MVC.ruleset" />
     <Content Include="Views\Shared\Test.cshtml" />
     <Content Include="webpack.config.js" />
@@ -438,11 +430,11 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\Layout.tsx" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Scripts\Collapse.ts" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Components\Common\Header.tsx" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\Scripts\ShrinkingHeader.ts" />
-    <TypeScriptCompile Include="wwwroot\src\TypeScripts\main.tsx" />
+    <None Include="wwwroot\src\scripts\Components\Layout.jsx" />
+    <Content Include="wwwroot\src\scripts\behaviour\Collapse.js" />
+    <None Include="wwwroot\src\scripts\Components\Common\Header.jsx" />
+    <Content Include="wwwroot\src\scripts\behaviour\ShrinkingHeader.js" />
+    <None Include="wwwroot\src\scripts\main.jsx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />
@@ -492,7 +484,6 @@
     <Compile Include="Services\TranslateErrorMessagesForPasswordValidatorService.cs" />
     <Compile Include="Services\HelpfulFunctionsService.cs" />
     <Compile Include="Startup.cs" />
-    <None Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config">
@@ -510,9 +501,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\TypingsForTypeScript\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DEM_MVC_BL\DEM_MVC_BL.csproj">
       <Project>{76d78273-6bf5-4915-8c70-c087a148609a}</Project>
@@ -540,21 +529,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <TypeScriptTarget>Unknown</TypeScriptTarget>
-    <TypeScriptJSXEmit>-1</TypeScriptJSXEmit>
-    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
-    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
-    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
-    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
-    <TypeScriptOutFile />
-    <TypeScriptOutDir />
-    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
-    <TypeScriptNoEmitOnError>False</TypeScriptNoEmitOnError>
-    <TypeScriptSourceMap>True</TypeScriptSourceMap>
-    <TypeScriptMapRoot />
-    <TypeScriptSourceRoot />
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
