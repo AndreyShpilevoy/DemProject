@@ -3,7 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "lint": "node_modules/.bin/esw webpack.config.* wwwroot/src/scripts"
+    "lint": "node_modules/.bin/esw webpack.config.* wwwroot/src/scripts/**",
+    "lint:watch": "npm run lint -- --watch",
+    "webpack:dev": "node_modules/.bin/webpack --config webpack.config.dev.babel.js"
   },
   "dependencies": {
     "babel-polyfill": "6.9.1",

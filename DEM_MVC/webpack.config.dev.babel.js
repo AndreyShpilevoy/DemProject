@@ -1,13 +1,13 @@
-﻿const webpack = require('webpack');
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const Autoprefixer = require('autoprefixer');
+﻿import webpack from 'webpack';
+import path from 'path';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import Autoprefixer from 'autoprefixer';
 
 export default {
 	debug: true,
 	devtool: "cheap-module-eval-source-map",
 	noInfo: false,
-	entry: "./wwwroot/src/scripts/main",
+	entry: "./wwwroot/src/scripts/index",
 	target: "web",
 	output: {
 		path: path.join(__dirname, "./wwwroot/dist"),
@@ -18,7 +18,7 @@ export default {
 			{
 				test: /\.js$/,
 				include: path.join(__dirname, "./wwwroot/src"),
-				loaders: "babel"
+				loader: "babel"
 			},
 			{
 				test: /\.scss$/,
