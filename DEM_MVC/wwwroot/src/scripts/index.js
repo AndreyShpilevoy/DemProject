@@ -10,15 +10,5 @@ render(
   document.getElementById('app')
 );
 
-
-// register jQuery and Tether as global variable (require for Bootstrap)
-import * as JQuery from "jquery";
-import * as tether from "tether";
-window.jQuery = window.$ = JQuery;
-window.Tether = tether;
-// register jQuery and Tether as global variable (require for Bootstrap) - end
-
-import * as bootstrap from "bootstrap";
 import { ShrinkingHeader } from './Behaviour/ShrinkingHeader';
-
-[bootstrap, ShrinkingHeader];
+ShrinkingHeader();

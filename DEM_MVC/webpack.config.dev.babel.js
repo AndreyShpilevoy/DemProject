@@ -33,7 +33,14 @@ export default {
 	plugins: [
 		new ExtractTextPlugin("dem.min.css", {
 			allChunks: true
-		})
+		}),
+		new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery",
+			Tether: "tether",
+			"window.Tether": "tether"
+   })
 	],
 	postcss: function () {
 		return [Autoprefixer({

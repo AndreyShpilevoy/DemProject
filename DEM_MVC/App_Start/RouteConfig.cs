@@ -12,19 +12,19 @@ namespace DEM_MVC
 			routes.MapRoute(
 				name: "Conference",
 				url: "Conference/{action}/{id}",
-				defaults: new { controller = "Conference", action = "Test", id = UrlParameter.Optional }//"Index", id = UrlParameter.Optional }
+				defaults: new { controller = "Conference", action = "Test2", id = UrlParameter.Optional }//"Index", id = UrlParameter.Optional }
 			);
 
 			routes.MapRoute(
 				name: "Forum",
 				url: "Forum/{action}/{id}",
-				defaults: new { controller = "Conference", action = "Test", id = UrlParameter.Optional }//"Index", id = UrlParameter.Optional }
+				defaults: new { controller = "Conference", action = "Test2", id = UrlParameter.Optional }//"Index", id = UrlParameter.Optional }
 			);
 
 			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
-				defaults: new {controller = "Conference", action = "Test", id = UrlParameter.Optional}//"Index", id = UrlParameter.Optional }
+				defaults: new {controller = "Conference", action = "Test2", id = UrlParameter.Optional}//"Index", id = UrlParameter.Optional }
 			);
 		}
 	}
