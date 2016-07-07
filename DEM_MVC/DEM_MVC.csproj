@@ -391,33 +391,11 @@
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
     <Content Include="DEM_MVC.ruleset" />
     <Content Include="Views\Shared\Test.cshtml" />
-    <Content Include="webpack.config.js" />
     <Content Include="wwwroot\dist\dem.min.css" />
     <Content Include="wwwroot\dist\dem.min.js" />
-    <Content Include="wwwroot\src\scss\Shared\header.scss" />
-    <Content Include="wwwroot\src\scss\Shared\pageContent.scss" />
-    <Content Include="wwwroot\src\scss\Common\sizes.scss" />
-    <Content Include="wwwroot\src\scss\Common\colors.scss" />
-    <Content Include="wwwroot\src\scss\Shared\footer.scss" />
-    <Content Include="wwwroot\src\scss\Common\image-backgrounds.scss" />
-    <Content Include="wwwroot\src\scss\Common\Styles\buttons.scss" />
-    <Content Include="wwwroot\src\scss\Conference\categories-container.scss" />
-    <Content Include="wwwroot\src\scss\Common\Styles\common.scss" />
-    <Content Include="wwwroot\src\scss\Conference\forums-container.scss" />
-    <Content Include="wwwroot\src\scss\Common\grids.scss" />
     <Content Include="wwwroot\dist\dem.min.css.map" />
     <Content Include="wwwroot\dist\dem.min.js.map" />
     <Content Include="Views\Shared\Index.cshtml" />
-    <None Include="wwwroot\src\scss\main-dem.scss" />
-    <Content Include="wwwroot\src\images\DEM\footer\ico\footer-ico-steam.png" />
-    <Content Include="wwwroot\src\images\DEM\footer\ico\footer-ico-vk.png" />
-    <Content Include="wwwroot\src\images\DEM\header\Dem_Logo.png" />
-    <Content Include="wwwroot\src\images\DEM\footer\Dem_Footer_bg_lg.png" />
-    <Content Include="wwwroot\src\images\DEM\header\Dem_NavBar_bg_lg.png" />
-    <Content Include="wwwroot\src\images\DEM\header\Dem_NavBar_bg_md.png" />
-    <Content Include="wwwroot\src\images\DEM\footer\Dem_Footer_bg_xl.png" />
-    <Content Include="wwwroot\src\images\DEM\header\Dem_NavBar_bg_xl.png" />
-    <Content Include="wwwroot\src\images\Smiles\forBbCode\think.gif" />
     <Content Include="ErrorPages\2000.html" />
     <Content Include="ErrorPages\400.shtml" />
     <Content Include="ErrorPages\401.shtml" />
@@ -425,16 +403,10 @@
     <Content Include="ErrorPages\404.shtml" />
     <Content Include="ErrorPages\500.shtml" />
     <Content Include="Global.asax" />
-    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="wwwroot\src\scripts\Components\Layout.jsx" />
-    <Content Include="wwwroot\src\scripts\behaviour\Collapse.js" />
-    <None Include="wwwroot\src\scripts\Components\Common\Header.jsx" />
-    <Content Include="wwwroot\src\scripts\behaviour\ShrinkingHeader.js" />
-    <None Include="wwwroot\src\scripts\main.jsx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />
