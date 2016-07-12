@@ -10,8 +10,11 @@
   "scripts": {
     "install:all":"npm install --only=prod && npm install --only=dev",
     "lint": "node_modules/.bin/esw webpack.config.* wwwroot/src/scripts/**",
+    "build:dev": "node_modules/.bin/webpack --config webpack.config.dev.babel.js",
     "lint:watch": "npm run lint -- --watch",
-    "build:dev": "node_modules/.bin/webpack --config webpack.config.dev.babel.js"
+    "build:watch": "npm run build:dev -- --watch",
+    "watchers": "npm-run-all --parallel lint:watch build:watch",
+    "start": "npm run install:all && npm run watchers"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
