@@ -1,10 +1,11 @@
 ﻿import React, {PropTypes} from "react";
+import Header from "./Common/Header";
 
 class Layout extends React.Component {
 	render() {
 		return (
 			<div>
-				<p>Header</p>
+				<Header/>
 				{this.props.children}
 			</div>
 		);

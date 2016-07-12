@@ -5,7 +5,7 @@ const TopicsPage  = () => {
   return(
     <div>
       <p>Test TopicsPage</p>
-      <Link to="Forums" className="btn">Forums</Link>
+      <Link to="forums" className="btn">Forums</Link>
     </div>
   );
 };
