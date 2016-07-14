@@ -3,7 +3,7 @@
 let initialized = false; // init flag
 
 // add shrink class for nav element on page scrolling
-export function ShrinkingHeader(){
+export function shrinkingHeader(){
 	if(!initialized){
 		$(window).scroll(() => {
 			if ($(document).scrollTop() > 50) {
