@@ -10,21 +10,9 @@ namespace DEM_MVC
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
-				name: "Conference",
-				url: "Conference/{action}/{id}",
-				defaults: new { controller = "Conference", action = "Test2", id = UrlParameter.Optional }//"Index", id = UrlParameter.Optional }
-			);
-
-			routes.MapRoute(
-				name: "Forum",
-				url: "Forum/{action}/{id}",
-				defaults: new { controller = "Conference", action = "Test2", id = UrlParameter.Optional }//"Index", id = UrlParameter.Optional }
-			);
-
-			routes.MapRoute(
-				name: "Default",
-				url: "{controller}/{action}/{id}",
-				defaults: new {controller = "Conference", action = "Test2", id = UrlParameter.Optional}//"Index", id = UrlParameter.Optional }
+				name: "API Default",
+				url: "api/{controller}/{id}",
+				defaults: new { id = UrlParameter.Optional }
 			);
 		}
 	}

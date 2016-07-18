@@ -379,23 +379,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\dem_permissions.sql" />
-    <Content Include="App_Data\dem_users.sql" />
-    <Content Include="App_Data\dem_user_claim.sql" />
-    <Content Include="App_Data\dem_user_external_login.sql" />
-    <Content Include="App_Data\dem_user_groups.sql" />
-    <Content Include="App_Data\SQL_Scripts\Create_SQL_Views.sql" />
-    <Content Include="App_Data\SQL_Scripts\Create_Tables_WithOut_FK_and_INDEX.sql" />
-    <Content Include="App_Data\SQL_Scripts\Create_TestUsersTables.sql" />
-    <Content Include="App_Data\SQL_Scripts\Migrate_Script_From_adeusexm_phpbbex_To_DEM.sql" />
-    <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
     <Content Include="DEM_MVC.ruleset" />
-    <Content Include="Views\Shared\Test.cshtml" />
     <Content Include="wwwroot\dist\dem.min.css" />
     <Content Include="wwwroot\dist\dem.min.js" />
-    <Content Include="wwwroot\dist\dem.min.css.map" />
-    <Content Include="wwwroot\dist\dem.min.js.map" />
-    <Content Include="Views\Shared\Index.cshtml" />
     <Content Include="ErrorPages\2000.html" />
     <Content Include="ErrorPages\400.shtml" />
     <Content Include="ErrorPages\401.shtml" />
@@ -403,6 +389,7 @@
     <Content Include="ErrorPages\404.shtml" />
     <Content Include="ErrorPages\500.shtml" />
     <Content Include="Global.asax" />
+    <Content Include="wwwroot\dist\index.html" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -458,12 +445,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="packages.config" />
-    <Content Include="App_Data\SQL_Diagramms\DEM_Project.dbs" />
-    <Content Include="App_Data\SQL_Diagramms\Create_Tables_WithOut_FK.dbs" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
