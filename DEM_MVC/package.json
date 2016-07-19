@@ -8,13 +8,8 @@
     "url": "git://github.com/AndreyShpilevoy/DemProject"
   },
   "scripts": {
-    "install:all":"npm install --only=prod && npm install --only=dev",
-    "lint": "node_modules/.bin/esw webpack.config.* wwwroot/src/scripts/**",
-    "build:dev": "node_modules/.bin/webpack --config webpack.config.dev.babel.js",
-    "lint:watch": "npm run lint -- --watch",
-    "build:watch": "npm run build:dev -- --watch",
-    "watchers": "npm-run-all --parallel lint:watch build:watch",
-    "start": "npm run install:all && npm run watchers"
+    "install:all": "npm install --only=prod && npm install --only=dev",
+    "start": "babel-node wwwroot/tools/srcServer.js"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
@@ -34,10 +29,11 @@
     "css-loader": "^0.23.1",
     "enzyme": "^2.3.0",
     "eslint": "^3.0.1",
+    "eslint-loader": "^1.4.1",
     "eslint-plugin-import": "^1.10.3",
     "eslint-plugin-react": "^5.2.2",
-    "eslint-watch": "^2.1.13",
     "expect": "^1.20.2",
+    "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "jsdom": "^9.4.1",
@@ -49,6 +45,7 @@
     "path": "^0.12.7",
     "postcss-loader": "^0.9.1",
     "react-addons-test-utils": "^15.2.0",
+    "react-hot-loader": "^1.3.0",
     "redux-immutable-state-invariant": "^1.2.3",
     "redux-mock-store": "^1.1.2",
     "rimraf": "^2.5.3",

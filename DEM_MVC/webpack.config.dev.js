@@ -1,28 +1,42 @@
 ﻿import webpack from 'webpack';
 import path from 'path';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import Autoprefixer from 'autoprefixer';
 
 export default {
 	debug: true,
 	devtool: "cheap-module-eval-source-map",
 	noInfo: false,
-	entry: "./wwwroot/src/scripts/index",
+	entry: [
+		"babel-polyfill",
+		"webpack-hot-middleware/client?reload=true",
+		"./wwwroot/src/scripts/index"
+	],
 	target: "web",
 	output: {
 		path: path.join(__dirname, "./wwwroot/dist"),
+		publicPath: '/',
 		filename: "dem.min.js"
 	},
+	devServer:{
+		contantBase: "./wwwroot/src"
+	},
 	module: {
+    preLoaders: [
+      {
+        test: /\.jsx$|\.js$/,
+        loader: 'eslint',
+				include: path.join(__dirname, "./wwwroot/src")
+      }
+    ],
 		loaders: [
 			{
 				test: /\.js$/,
 				include: path.join(__dirname, "./wwwroot/src"),
-				loader: "babel"
+				loaders: ['react-hot',"babel"]
 			},
 			{
 				test: /\.scss$/,
-				loader: ExtractTextPlugin.extract("style-loader", ["css-loader", "postcss-loader", "sass-loader"])
+				loaders: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
 			},
 			{
 				test: /\.png$/,
@@ -31,9 +45,8 @@ export default {
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin("dem.min.css", {
-			allChunks: true
-		}),
+		new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
 		new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
@@ -47,5 +60,9 @@ export default {
 			browsers: ["> 1%", "last 2 versions"],
 			cascade: false
 		})];
-	}
+	},
+  eslint: {
+      failOnWarning: false,
+      failOnError: true
+  }
 };
