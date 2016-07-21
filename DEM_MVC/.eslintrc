@@ -1,26 +1,31 @@
 {
+  "parser": "babel-eslint",
   "extends": [
-    "eslint:recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings"
-  ],
-  "plugins": [
-    "react"
-  ],
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
+      "airbnb-base",
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+      ],
   "env": {
-    "es6": true,
-    "browser": true,
-    "node": true,
-    "jquery": true,
-    "mocha": true
+      "es6": true,
+      "commonjs": false,
+      "browser": true,
+      "node": false,
+      "jquery": true,
+      "mocha": true,
+      "jasmine": true
   },
+  "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true
+      }
+  },
+  "plugins": [
+      "react"
+  ],
   "rules": {
     "quotes": 0,
     "no-console": 1,
@@ -29,9 +34,10 @@
     "semi": [1, "always"],
     "no-trailing-spaces": 0,
     "eol-last": 0,
-    "no-unused-vars": 0,
+    "no-unused-vars": 1,
     "no-underscore-dangle": 0,
     "no-alert": 0,
+    "no-undef": 1,
     "no-lone-blocks": 0,
     "jsx-quotes": 1,
     "react/display-name": [ 1, {"ignoreTranspilerName": false }],
