@@ -48,7 +48,7 @@ ForumsPage.propTypes = {
     actions: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state){//}, ownProps) {
     return {forums: state.forumReducer};
 }
 
