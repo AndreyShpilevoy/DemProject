@@ -7,24 +7,6 @@ class ForumsPage extends React.Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {
-            forum: {
-                title: ""
-            }
-        };
-
-        this.onTitleChange = this.onTitleChange.bind(this);
-        this.onClickSave = this.onClickSave.bind(this);
-    }
-
-    onTitleChange(event) {
-        const forum = this.state.forum;
-        forum.title = event.target.value;
-        this.setState({forum: forum});
-    }
-
-    onClickSave() {
-        this.props.actions.createForum(this.state.forum);
     }
 
     forumRow(forum, index) {
@@ -36,8 +18,6 @@ class ForumsPage extends React.Component {
             <div>
                 <h2>Test ForumsPage</h2>
                 {this.props.forums.map(this.forumRow)}
-                <input type="text" onChange={this.onTitleChange} value={this.state.forum.title}/>
-                <input type="submit" onClick={this.onClickSave} value="Save"/>
             </div>
         );
     }
