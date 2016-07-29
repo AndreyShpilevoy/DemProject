@@ -1,2 +1,2 @@
 export const CREATE_FORUM = "CREATE_FORUM";
-export const willBeAddedType = "willBeAddedType";
+export const GET_ALL_FORUMS_SUCCESS = "GET_ALL_FORUMS_SUCCESS";

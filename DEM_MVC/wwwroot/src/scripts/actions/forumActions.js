@@ -4,6 +4,6 @@ export function createForum(forum){
   return {type: types.CREATE_FORUM, forum};
 }
 
-export function willBeAddedAction(forum){
-  return {type: types.willBeAddedType, forum};
+export function getAllForumsSuccess(forums){
+  return {type: types.GET_ALL_FORUMS_SUCCESS, forums};
 }
