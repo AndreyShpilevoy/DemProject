@@ -2,22 +2,14 @@ import React, {PropTypes} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as forumActions from "../../actions/forumActions";
+import ForumList from "./presentation/ForumList";
 
 class ForumsPage extends React.Component {
-
-    constructor(props, context) {
-        super(props, context);
-    }
-
-    forumRow(forum, index) {
-        return <div key={index}>{forum.title}</div>;
-    }
-
     render() {
         return (
             <div>
                 <h2>Test ForumsPage</h2>
-                {this.props.forums.map(this.forumRow)}
+                <ForumList forums={this.props.forums}/>
             </div>
         );
     }

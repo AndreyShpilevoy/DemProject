@@ -1,4 +1,4 @@
-import * as types from "../actions/actionTypes.js";
+import * as types from "../actions/actionTypes";
 
 export default function forumReducer(state = [], action) {
     switch (action.type) {

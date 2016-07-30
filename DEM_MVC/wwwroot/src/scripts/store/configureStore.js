@@ -3,16 +3,16 @@ import createSagaMiddleware from 'redux-saga';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant'; //todo: only for development
 import rootReducer from "../reducers/rootReducer";
 
-export default function configureStore(initialState) {
-
+export default function configureStore() {
     const sagaMiddleware = createSagaMiddleware();
     const store = createStore(
         rootReducer,
-        initialState,
-        applyMiddleware(sagaMiddleware, reduxImmutableStateInvariant()) //todo: only for development
+        window.devToolsExtension && window.devToolsExtension(), //todo: only for development
+        applyMiddleware(
+          sagaMiddleware,
+          reduxImmutableStateInvariant() //todo: only for development
+        )
     );
-
     store.runSaga = sagaMiddleware.run;
-
     return store;
 }

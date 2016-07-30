@@ -42,7 +42,7 @@ const forums = [{
 
 class ForumApi {
     static getAllForums() {
-        return new Promise((resolve) => {//, reject) => {
+        return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(Object.assign([], forums));
             }, delay);

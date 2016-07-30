@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import forumReducer from "./forumReducer.js";
+import forumReducer from "./forumReducer";
 
 const rootReducer = combineReducers({
   forumReducer

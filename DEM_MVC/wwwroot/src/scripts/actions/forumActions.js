@@ -1,4 +1,4 @@
-import * as types from "./actionTypes.js";
+import * as types from "./actionTypes";
 
 export function createForum(forum){
   return {type: types.CREATE_FORUM, forum};
