@@ -1,26 +1,37 @@
-import React from "react";
+import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as forumActions from "../../actions/forumActions.js";
+import * as forumActions from "../../actions/forumActions";
+import ForumForm from "./presentation/ForumForm";
 
 class ManageeForumPage extends React.Component {
     constructor(props, context){
       super(props, context);
+
+      this.state = {
+        forum: Object.assign({}, this.props.forum),
+        errors: {}
+      };
     }
+
     render() {
         return (
-          <h1>ManageeForumPage</h1>
+          <ForumForm
+            forum={this.state.forum}
+            allAuthors={[]}
+            errors={this.state.errors}/>
         );
     }
 }
 
 ManageeForumPage.propTypes = {
-    //myProp: PropTypes.string.isRequired
+    forum: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(){//state) {
+    let forum = {id: "", watchHref: "", title: "", authorId: "", length: "", category: ""};
     return {
-      state: state
+      forum: forum
     };
 }
 

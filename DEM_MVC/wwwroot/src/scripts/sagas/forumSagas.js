@@ -1,6 +1,6 @@
 import { call, put } from "redux-saga/effects";
-import forumApi from "./../api/mockForumApi";
-import * as forumActions from "./../actions/forumActions";
+import forumApi from "../api/mockForumApi";
+import * as forumActions from "../actions/forumActions";
 
 export function* getAllForums() {
   const forums = yield call(forumApi.getAllForums);

@@ -9,10 +9,12 @@ class ForumsPage extends React.Component {
       super(props, context);
     }
     render() {
+        const { forums } = this.props;
+
         return (
             <div>
                 <h2>Test ForumsPage</h2>
-                <ForumList forums={this.props.forums}/>
+                <ForumList forums={forums}/>
             </div>
         );
     }
