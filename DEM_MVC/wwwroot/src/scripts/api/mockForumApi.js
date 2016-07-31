@@ -40,6 +40,15 @@ const forums = [{
     category: "HTML5"
 }];
 
+function replaceAll(str, find, replace) {
+  return str.replace(new RegExp(find, 'g'), replace);
+}
+
+//This would be performed on the server in a real app. Just stubbing in.
+const generateId = (forum) => {
+  return replaceAll(forum.title, ' ', '-');
+};
+
 class ForumApi {
     static getAllForums() {
         return new Promise((resolve) => {
@@ -48,7 +57,46 @@ class ForumApi {
             }, delay);
         });
     }
-  }
+
+    static saveforum(forum) {
+        forum = Object.assign({}, forum); // to avoid manipulating object passed in.
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // Simulate server-side validation
+                const minforumTitleLength = 1;
+                if (forum.title.length < minforumTitleLength) {
+                    reject(`Title must be at least ${minforumTitleLength} characters.`);
+                }
+
+                if (forum.id) {
+                    const existingforumIndex = forums.findIndex(a => a.id == forum.id);
+                    forums.splice(existingforumIndex, 1, forum);
+                } else {
+                    //Just simulating creation here.
+                    //The server would generate ids and watchHref's for new forums in a real app.
+                    //Cloning so copy returned is passed by value rather than by reference.
+                    forum.id = generateId(forum);
+                    forum.watchHref = `http://www.pluralsight.com/forums/${forum.id}`;
+                    forums.push(forum);
+                }
+
+                resolve(forum);
+            }, delay);
+        });
+    }
+
+    static deleteforum(forumId) {
+        return new Promise((resolve)=>{//, reject) => {
+            setTimeout(() => {
+                const indexOfforumToDelete = forums.findIndex(forum => {
+                    forum.forumId == forumId;
+                });
+                forums.splice(indexOfforumToDelete, 1);
+                resolve();
+            }, delay);
+        });
+    }
+}
 
 
 export default ForumApi;

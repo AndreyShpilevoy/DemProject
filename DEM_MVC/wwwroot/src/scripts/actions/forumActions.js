@@ -1,7 +1,7 @@
 import * as types from "./actionTypes";
 
-export function createForum(forum){
-  return {type: types.CREATE_FORUM, forum};
+export function getAllForums(){
+  return {type: types.GET_ALL_FORUMS};
 }
 
 export function getAllForumsSuccess(forums){

@@ -38,6 +38,7 @@
     "no-underscore-dangle": 0,
     "no-alert": 0,
     "no-undef": 1,
+    "no-constant-condition": 0,
     "no-lone-blocks": 0,
     "jsx-quotes": 1,
     "react/display-name": [ 1, {"ignoreTranspilerName": false }],
@@ -70,6 +71,7 @@
     "react/require-extension": 1,
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
-    "react/wrap-multilines": 1
+    "react/wrap-multilines": 1,
+    "import/prefer-default-export": 1
   }
 }

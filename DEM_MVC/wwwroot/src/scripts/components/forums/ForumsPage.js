@@ -8,6 +8,11 @@ class ForumsPage extends React.Component {
     constructor(props, context){
       super(props, context);
     }
+
+    componentDidMount() {
+       this.props.actions.getAllForums();
+    }
+
     render() {
         const { forums } = this.props;
 
