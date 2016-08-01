@@ -1,9 +1,14 @@
 import * as types from "./actionTypes";
 
-export function getAllAuthors(){
+function getAllAuthors(){
   return {type: types.GET_ALL_AUTHORS};
 }
 
-export function getAllAuthorsSuccess(authors){
+function getAllAuthorsSuccess(authors){
   return {type: types.GET_ALL_AUTHORS_SUCCESS, authors};
 }
+
+export {
+  getAllAuthors,
+  getAllAuthorsSuccess
+};
