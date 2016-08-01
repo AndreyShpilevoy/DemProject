@@ -3,7 +3,7 @@ import authorApi from "../api/../api/mockAuthorApi";
 import * as authorActions from "../actions/authorActions";
 import * as types from "../actions/actionTypes";
 
-export default function* getAllAuthors() {
+export function* getAllAuthors() {
   while(true){
     yield take(types.GET_ALL_AUTHORS);
     const authors = yield call(authorApi.getAllAuthors);

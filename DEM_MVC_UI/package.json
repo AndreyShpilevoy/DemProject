@@ -9,7 +9,7 @@
   },
   "scripts": {
     "install:all": "npm install --only=prod && npm install --only=dev",
-    "start": "babel-node wwwroot/tools/srcServer.js"
+    "start": "babel-node tools/srcServer.js"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",

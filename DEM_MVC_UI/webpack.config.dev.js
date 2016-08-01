@@ -9,29 +9,29 @@ export default {
 	entry: [
 		"babel-polyfill",
 		"webpack-hot-middleware/client?reload=true",
-		"./wwwroot/src/scripts/index"
+		"./src/scripts/index"
 	],
 	target: "web",
 	output: {
-		path: path.join(__dirname, "./wwwroot/dist"),
+		path: path.join(__dirname, "../DEM_MVC/wwwroot"),
 		publicPath: '/',
 		filename: "dem.min.js"
 	},
 	devServer:{
-		contantBase: "./wwwroot/src"
+		contantBase: "./src"
 	},
 	module: {
     preLoaders: [
       {
         test: /\.jsx$|\.js$/,
         loader: 'eslint',
-				include: path.join(__dirname, "./wwwroot/src")
+				include: path.join(__dirname, "./src")
       }
     ],
 		loaders: [
 			{
 				test: /\.js$/,
-				include: path.join(__dirname, "./wwwroot/src"),
+				include: path.join(__dirname, "./src"),
 				loaders: ['react-hot',"babel"]
 			},
 			{
