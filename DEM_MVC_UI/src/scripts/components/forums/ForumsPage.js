@@ -5,6 +5,11 @@ import * as forumActions from "../../actions/forumActions";
 import ForumList from "./presentation/ForumList";
 
 class ForumsPage extends React.Component {
+  static propTypes = {
+      forums: PropTypes.array.isRequired,
+      actions: PropTypes.object.isRequired
+  }
+
     constructor(props, context) {
         super(props, context);
     }
@@ -24,11 +29,6 @@ class ForumsPage extends React.Component {
         );
     }
 }
-
-ForumsPage.propTypes = {
-    forums: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
-};
 
 function mapStateToProps(state) { //}, ownProps) {
     return {forums: state.forumReducer};

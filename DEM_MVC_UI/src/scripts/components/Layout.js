@@ -2,6 +2,10 @@
 import Header from "./common/presentation/Header";
 
 class Layout extends React.Component {
+	static propTypes = {
+		children: PropTypes.object.isRequired
+	}
+
 	render() {
 		return (
 			<div>
@@ -11,9 +15,5 @@ class Layout extends React.Component {
 		);
 	}
 }
-
-Layout.propTypes = {
-	children: PropTypes.object.isRequired
-};
 
 export default Layout;
