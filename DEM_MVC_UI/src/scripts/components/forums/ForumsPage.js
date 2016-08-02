@@ -5,16 +5,16 @@ import * as forumActions from "../../actions/forumActions";
 import ForumList from "./presentation/ForumList";
 
 class ForumsPage extends React.Component {
-    constructor(props, context){
-      super(props, context);
+    constructor(props, context) {
+        super(props, context);
     }
 
     componentDidMount() {
-       this.props.actions.getAllForums();
+        this.props.actions.getAllForums();
     }
 
     render() {
-        const { forums } = this.props;
+        const {forums} = this.props;
 
         return (
             <div>
@@ -30,7 +30,7 @@ ForumsPage.propTypes = {
     actions: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state){//}, ownProps) {
+function mapStateToProps(state) { //}, ownProps) {
     return {forums: state.forumReducer};
 }
 
