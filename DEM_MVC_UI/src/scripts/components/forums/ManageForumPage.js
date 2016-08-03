@@ -53,27 +53,13 @@ class ManageForumPage extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  let forum = {
-    id: "",
-    watchHref: "",
-    title: "",
-    authorId: "",
-    length: "",
-    category: ""
-  };
+const mapStateToProps = (state) => ({//, ownProps) => ({
+  forum: {id: "", watchHref: "", title: "", authorId: "", length: "", category: ""},
+  authors: state.authorReducer
+});
 
-  return {
-    forum: forum,
-    authors: state.authorReducer
-  };
-}
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(Object.assign({}, forumActions, authorActions), dispatch)
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
-      actions: bindActionCreators(Object.assign({}, forumActions, authorActions), dispatch)
-  };
-}
-
-const connectedStateAndProps = connect(mapStateToProps, mapDispatchToProps);
-export default connectedStateAndProps(ManageForumPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ManageForumPage);
