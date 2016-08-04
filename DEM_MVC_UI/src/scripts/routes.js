@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import Layout from './components/Layout';
+import Layout from './components/common/Layout';
 import ForumsPage from './components/forums/ForumsPage';
 import TopicsPage from './components/topics/TopicsPage';
 import ManageForumPage from "./components/forums/ManageForumPage";
