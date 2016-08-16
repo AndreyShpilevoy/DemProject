@@ -1,3 +1,6 @@
+/* eslint no-undef: "off" */
+/* eslint import/no-extraneous-dependencies: "off" */
+
 import express from 'express';
 import webpack from 'webpack';
 import open from 'open';

@@ -3,15 +3,20 @@
 
 import webpack from 'webpack';
 import path from 'path';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import Autoprefixer from 'autoprefixer';
+
+const GLOBALS = {
+	'process.env.NODE_ENV': JSON.stringify('production')
+};
 
 export default {
 	debug: true,
-	devtool: "cheap-module-eval-source-map",
+	devtool: "source-map",
 	noInfo: false,
 	entry: [
 		"babel-polyfill",
-		"webpack-hot-middleware/client?reload=true",
 		"./src/scripts/index"
 	],
 	target: "web",
@@ -21,7 +26,7 @@ export default {
 		filename: "dem.min.js"
 	},
 	devServer:{
-		contantBase: "./src"
+		contantBase: "../DEM_MVC/wwwroot"
 	},
 	module: {
     preLoaders: [
@@ -39,7 +44,7 @@ export default {
 			},
 			{
 				test: /\.scss$/,
-				loaders: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
+				loader: ExtractTextPlugin.extract("style-loader", ["css-loader", "postcss-loader", "sass-loader"])
 			},
 			{
 				test: /\.png$/,
@@ -48,15 +53,24 @@ export default {
 		]
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
       "window.jQuery": "jquery",
 			Tether: "tether",
 			"window.Tether": "tether"
-   })
+		}),
+		new webpack.DefinePlugin(GLOBALS),
+		new ExtractTextPlugin('dem.min.css'),
+		new webpack.optimize.DedupePlugin(),
+		new webpack.optimize.UglifyJsPlugin(),
+		new CopyWebpackPlugin([
+			{ from: './node_modules/pace-progress/themes/orange/pace-theme-flash.css', to: 'pace.css' },
+			{ from: './node_modules/pace-progress/pace.min.js', to: 'pace.min.js' },
+		], {
+				copyUnmodified: false
+		})
 	],
 	postcss: function () {
 		return [Autoprefixer({
