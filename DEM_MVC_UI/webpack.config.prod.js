@@ -29,13 +29,6 @@ export default {
 		contantBase: "../DEM_MVC/wwwroot"
 	},
 	module: {
-    preLoaders: [
-      {
-        test: /\.jsx$|\.js$/,
-        loader: 'eslint',
-				include: path.join(__dirname, "./src")
-      }
-    ],
 		loaders: [
 			{
 				test: /\.js$/,
