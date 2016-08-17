@@ -380,8 +380,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DEM_MVC.ruleset" />
-    <Content Include="wwwroot\dist\dem.min.css" />
-    <Content Include="wwwroot\dist\dem.min.js" />
     <Content Include="ErrorPages\2000.html" />
     <Content Include="ErrorPages\400.shtml" />
     <Content Include="ErrorPages\401.shtml" />
@@ -389,11 +387,19 @@
     <Content Include="ErrorPages\404.shtml" />
     <Content Include="ErrorPages\500.shtml" />
     <Content Include="Global.asax" />
-    <Content Include="wwwroot\dist\index.html" />
+    <Content Include="wwwroot\dem.min.css" />
+    <Content Include="wwwroot\dem.min.js" />
+    <Content Include="wwwroot\index.html" />
+    <Content Include="wwwroot\pace.css" />
+    <Content Include="wwwroot\pace.min.js" />
     <None Include="Properties\PublishProfiles\DemForum.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="wwwroot\dem.min.css.gz" />
+    <Content Include="wwwroot\dem.min.css.map" />
+    <Content Include="wwwroot\dem.min.js.gz" />
+    <Content Include="wwwroot\dem.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />

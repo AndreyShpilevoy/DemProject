@@ -9,7 +9,7 @@ import path from 'path';
 const port = 60784;
 const app = express();
 
-app.use(express.static('../DEM_MVC/wwwroot'));
+app.use(express.static('../DEM_MVC'));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join( __dirname, '../../DEM_MVC/wwwroot/index.html'));

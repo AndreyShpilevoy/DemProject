@@ -43,7 +43,8 @@ namespace DEM_MVC.Controllers
 		[HttpGet]
 		public ActionResult Index()
 		{
-			return View("Index/Index");
+			var result = new FilePathResult("~/wwwroot/index.html", "text/html");
+			return result;
 		}
 
 		[HttpGet]

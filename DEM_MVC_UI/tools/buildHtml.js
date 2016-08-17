@@ -14,9 +14,10 @@ fs.readFile('src/index.html', 'utf8', (err, markup) => {
 
   const $ = cheerio.load(markup);
 
-  $('head').prepend('\n\t<link type="text/css" rel="stylesheet" href="dem.min.css">');
-  $('head').prepend('\n\t<link type="text/css" rel="stylesheet" href="pace.css">');
-  $('script').before('<script src="pace.min.js"></script>\n\t');
+  $('head').prepend('\n\t<link type="text/css" rel="stylesheet" href="/wwwroot/dem.min.css">');
+  $('head').prepend('\n\t<link type="text/css" rel="stylesheet" href="/wwwroot/pace.css">');
+  $('script').replaceWith('<script src="/wwwroot/dem.min.js"></script>\n\t');
+  $('script').before('<script src="/wwwroot/pace.min.js"></script>\n\t');
 
   fs.writeFile('../DEM_MVC/wwwroot/index.html', $.html(), 'utf8', function (err) {
     if(err){
