@@ -9,7 +9,6 @@
   },
   "scripts": {
     "lint": "node_modules/.bin/eslint --color webpack.config.* src tools",
-    "preinstall:all": "npm install --global --production windows-build-tools",
     "install:all": "npm install --only=prod && npm install --only=dev",
     "start": "babel-node tools/srcServer.js",
     "build:Html": "babel-node tools/buildHtml.js",
@@ -34,7 +33,6 @@
     "cheerio": "^0.20.0",
     "colors": "^1.1.2",
     "compression": "^1.6.2",
-    "compression-webpack-plugin": "^0.3.1",
     "copy-dir": "^0.3.0",
     "copy-webpack-plugin": "^3.0.1",
     "cross-env": "^2.0.0",

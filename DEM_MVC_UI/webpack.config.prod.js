@@ -5,7 +5,6 @@ import webpack from 'webpack';
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import CompressionPlugin from 'compression-webpack-plugin';
 import Autoprefixer from 'autoprefixer';
 
 const GLOBALS = {
@@ -64,13 +63,6 @@ export default {
 			{ from: './node_modules/pace-progress/pace.min.js', to: 'pace.min.js' },
 		], {
 				copyUnmodified: false
-		}),
-		new CompressionPlugin({
-			asset: "[path].gz[query]",
-			algorithm: "gzip",
-			test: /\.js$|\.css$/,
-			threshold: 10240,
-			minRatio: 0.8
 		})
 	],
 	postcss: function () {
