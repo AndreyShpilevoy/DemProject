@@ -10,11 +10,7 @@
   "env": {
       "es6": true,
       "commonjs": false,
-      "browser": true,
-      "node": false,
-      "jquery": true,
-      "mocha": true,
-      "jasmine": true
+      "node": false
   },
   "parserOptions": {
       "ecmaVersion": 6,

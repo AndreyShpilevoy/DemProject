@@ -49,14 +49,7 @@ export default {
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-		new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery",
-			Tether: "tether",
-			"window.Tether": "tether"
-   })
+    new webpack.NoErrorsPlugin()
 	],
 	postcss: function () {
 		return [Autoprefixer({
