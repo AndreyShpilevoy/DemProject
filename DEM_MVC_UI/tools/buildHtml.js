@@ -1,11 +1,11 @@
 /* eslint import/no-extraneous-dependencies: "off" */
 /* eslint no-unused-vars: "off" */
+/*eslint no-undef: "off"*/
+/*eslint no-console: "off"*/
 
 import fs from "fs";
 import cheerio from "cheerio";
 import colors from "colors";
-
-/* eslint-disable no-console */
 
 fs.readFile('src/index.html', 'utf8', (err, markup) => {
   if(err){

@@ -1,3 +1,5 @@
+/* eslint no-undef: "off" */
+
 import configureStoreProd from "./configureStore.prod";
 import configureStoreDev from "./configureStore.dev";
 

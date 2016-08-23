@@ -16,7 +16,7 @@ export default {
 	],
 	target: "web",
 	output: {
-		path: path.join(__dirname, "../DEM_MVC/wwwroot"),
+		path: '/',
 		publicPath: '/',
 		filename: "dem.min.js"
 	},
@@ -39,11 +39,15 @@ export default {
 			},
 			{
 				test: /\.scss$/,
-				loaders: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
+				loaders: ["style-loader", "css-loader", "postcss-loader", 'resolve-url-loader', "sass-loader"]
 			},
 			{
-				test: /\.png$/,
-				loader: "url-loader?limit=100000"
+				test: /\.(jpe?g|png|gif|svg)$/i,
+				loader: 'url-loader',
+				query: {
+					limit: 8192,
+					name: 'images/[name]-[hash].[ext]'
+				}
 			}
 		]
 	},

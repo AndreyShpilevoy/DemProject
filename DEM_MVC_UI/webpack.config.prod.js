@@ -22,7 +22,7 @@ export default {
 	target: "web",
 	output: {
 		path: path.join(__dirname, "../DEM_MVC/wwwroot"),
-		publicPath: '/',
+		publicPath: '/wwwroot/',
 		filename: "dem.min.js"
 	},
 	devServer:{
@@ -37,11 +37,15 @@ export default {
 			},
 			{
 				test: /\.scss$/,
-				loader: ExtractTextPlugin.extract("style-loader", ["css-loader", "postcss-loader", "sass-loader"])
+				loader: ExtractTextPlugin.extract("style-loader", ["css-loader", "postcss-loader", 'resolve-url-loader', 'sass-loader?sourceMap'])
 			},
 			{
-				test: /\.png$/,
-				loader: "url-loader?limit=100000"
+				test: /\.(jpe?g|png|gif|svg)$/i,
+				loader: 'url-loader',
+				query: {
+					limit: 8192,
+					name: 'images/[name]-[hash].[ext]'
+				}
 			}
 		]
 	},
