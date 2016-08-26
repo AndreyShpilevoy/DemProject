@@ -39,7 +39,7 @@ export default {
 			},
 			{
 				test: /\.scss$/,
-				loaders: ["style-loader", "css-loader", "postcss-loader", 'resolve-url-loader', "sass-loader"]
+				loaders: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
 			},
 			{
 				test: /\.(jpe?g|png|gif|svg)$/i,

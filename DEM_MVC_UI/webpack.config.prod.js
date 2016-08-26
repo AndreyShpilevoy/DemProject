@@ -37,7 +37,7 @@ export default {
 			},
 			{
 				test: /\.scss$/,
-				loader: ExtractTextPlugin.extract("style-loader", ["css-loader", "postcss-loader", 'resolve-url-loader', 'sass-loader?sourceMap'])
+				loader: ExtractTextPlugin.extract("style-loader", ["css-loader", "postcss-loader", 'sass-loader?sourceMap'])
 			},
 			{
 				test: /\.(jpe?g|png|gif|svg)$/i,
