@@ -4,6 +4,7 @@
 import webpack from 'webpack';
 import path from 'path';
 import Autoprefixer from 'autoprefixer';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
 	debug: true,
@@ -53,7 +54,12 @@ export default {
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+		new HtmlWebpackPlugin({
+			hash: false,
+			filename: 'index.html',
+			template: path.join(__dirname, "./src/index.html")
+		})
 	],
 	postcss: function () {
 		return [Autoprefixer({

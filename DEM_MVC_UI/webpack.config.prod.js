@@ -6,9 +6,14 @@ import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import Autoprefixer from 'autoprefixer';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import checksum from 'checksum';
 
 const GLOBALS = {
-	'process.env.NODE_ENV': JSON.stringify('production')
+	'process.env.NODE_ENV': JSON.stringify('production'),
+	'paceCssHash': checksum('./node_modules/pace-progress/themes/orange/pace-theme-flash.css'),
+	'paceJsHash': checksum('./node_modules/pace-progress/pace.min.js')
+
 };
 
 export default {
@@ -60,6 +65,15 @@ export default {
 			{ from: './node_modules/pace-progress/pace.min.js', to: 'pace.min.js' },
 		], {
 				copyUnmodified: false
+		}),
+		new HtmlWebpackPlugin({
+			hash: true,
+			path: path.join(__dirname, "../DEM_MVC/wwwroot"),
+			publicPath: '/wwwroot/',
+			filename: 'index.html',
+			template: path.join(__dirname, "./src/index.html"),
+			paceCss: '/wwwroot/pace.css?' + GLOBALS.paceCssHash,
+			paceJs: '/wwwroot/pace.min.js?' + GLOBALS.paceJsHash
 		})
 	],
 	postcss: function () {

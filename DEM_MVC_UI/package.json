@@ -10,18 +10,24 @@
   "scripts": {
     "lint": "node_modules/.bin/eslint --color webpack.config.* src tools",
     "install:all": "npm install --only=prod && npm install --only=dev",
-    "start": "babel-node tools/srcServer.js",
-    "build:Html": "babel-node tools/buildHtml.js",
+    "start": "npm run test && babel-node tools/srcServer.js",
     "clean-wwwroot": "node_modules/.bin/rimraf ../DEM_MVC/wwwroot && mkdirp ../DEM_MVC/wwwroot",
-    "prebuild": "npm-run-all clean-wwwroot lint build:Html",
+    "prebuild": "npm-run-all clean-wwwroot lint test",
     "build": "babel-node tools/build.js",
     "postbuild": "babel-node tools/distServer.js",
     "test": "jest"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "testFileExtensions": ["es6","js"],
-    "moduleFileExtensions": ["es6","json","js"],
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "es6",
+      "json",
+      "js"
+    ],
     "collectCoverage": true,
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react/",
@@ -45,7 +51,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.14.0",
-    "cheerio": "^0.22.0",
+    "checksum": "^0.1.1",
     "colors": "^1.1.2",
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.24.0",
@@ -57,6 +63,7 @@
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.22.0",
     "jest-cli": "^14.1.0",
     "jsdom": "^9.4.2",
     "node-sass": "^3.8.0",
