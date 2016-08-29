@@ -1,0 +1,57 @@
+@import "../../Common/colors.scss";
+@import "../../Common/sizes.scss";
+@import "../../Common/image-backgrounds.scss";
+
+nav {
+	min-width: 290px;
+	background-color: $header-background-color;
+}
+
+.navbar-height {
+	height: $navbar-height-and-pageContent-margin-top-xs-sm;
+}
+
+//md+ screens
+@media (min-width: 768px) {
+  .navbar-height {
+    height: $navbar-height-and-pageContent-margin-top-md;
+  }
+
+  .navbar-logo-bg {
+    background-image: $navbar-background-md;
+  }
+}
+
+//lg+ screens
+@media (min-width: 992px) {
+  .navbar-height {
+    height: $navbar-height-and-pageContent-margin-top-lg;
+  }
+
+  .navbar-logo-bg {
+    background-image: $navbar-background-lg;
+  }
+
+
+
+  .nav-shrink {
+    height: $navbar-height-and-pageContent-margin-top-lg/2;
+
+    // .navbar-logo {
+    //   width: $header-lg-logo-navmenu-width/2;
+    //   height: $header-lg-logo-navmenu-height/2;
+    //   background-size: $header-lg-logo-navmenu-width/2 $header-lg-logo-navmenu-height/2;
+    // }
+
+    &.navbar-logo-bg {
+      background-position-y: 50%;
+    }
+  }
+}
+
+//xl screens
+@media (min-width: 1200px) {
+  .navbar-logo-bg {
+    background-image: $navbar-background-xl;
+  }
+}

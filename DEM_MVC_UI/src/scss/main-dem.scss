@@ -1,1 +1,49 @@
-﻿
+@import "Common/sizes.scss";
+@import "Common/colors.scss";
+
+html {
+	font-size: $font-size;
+}
+
+body {
+	background-color: $body-background-color;
+	min-width: 320px;
+	min-height: 480px;
+}
+
+a:link,
+a:visited {
+	color: $link;
+	text-decoration: none;
+}
+
+a:link:hover {
+	color: $link-hovered;
+	text-decoration: underline;
+}
+
+html, body, #app {
+	height: 100%;
+}
+
+#app {
+	min-height: 100%;
+}
+
+// @media (min-width: 0){
+//   .vertical-center-container-xs-up {
+//     min-height: 100%;
+//     display: -webkit-box;
+//     display: -ms-flexbox;
+//     display: flex;
+//     -webkit-box-align: center;
+//     -ms-flex-align: center;
+//     align-items: center;
+//   }
+//
+//   .padding-initial-xs-up {
+//     padding: initial;
+//   }
+// }
+
+@import "./Components/Common/header.scss"
