@@ -1,0 +1,57 @@
+{
+	"bootstrapVersion": 4,
+	"useFlexbox": true,
+	"styleLoaders": [
+		"style",
+		"css",
+		"postcss",
+		"sass"
+	],
+	"extractStyles": false,
+	"styles": {
+		"mixins": true,
+
+		"normalize": false,
+		"print": false,
+
+		"reboot": false,
+		"type": false,
+		"images": false,
+		"code": false,
+		"grid": true,
+		"tables": false,
+		"forms": false,
+		"buttons": false,
+
+		"animation": false,
+		"dropdown": false,
+		"button-group": false,
+		"input-group": false,
+		"custom-forms": false,
+		"nav": false,
+		"navbar": true,
+		"card": false,
+		"breadcrumb": false,
+		"pagination": false,
+		"pager": false,
+		"labels": false,
+		"jumbotron": false,
+		"alert": false,
+		"progress": false,
+		"media": false,
+		"list-group": false,
+		"responsive-embed": false,
+		"close": false,
+
+		"modal": false,
+		"tooltip": false,
+		"popover": false,
+		"carousel": false,
+
+		"utilities": false,
+		"utilities-background": false,
+		"utilities-spacing": false,
+		"utilities-responsive": false
+	},
+	  "scripts": false
+}

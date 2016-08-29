@@ -16,12 +16,17 @@ const GLOBALS = {
 
 };
 
+const bootstrapDevEntryPoint = 'bootstrap-loader/lib/bootstrap.loader?' +
+          `configFilePath=${__dirname}/.bootstraprc` +
+          '!bootstrap-loader/no-op.js';
+
 export default {
 	debug: true,
 	devtool: "source-map",
 	noInfo: false,
 	entry: [
 		"babel-polyfill",
+		bootstrapDevEntryPoint,
 		"./src/scripts/index"
 	],
 	target: "web",
