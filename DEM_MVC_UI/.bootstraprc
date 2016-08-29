@@ -51,7 +51,7 @@
 		"utilities": false,
 		"utilities-background": false,
 		"utilities-spacing": false,
-		"utilities-responsive": false
+		"utilities-responsive": true
 	},
 	  "scripts": false
 }
