@@ -23,8 +23,7 @@ const Header = () => {
                   </button>
                 </div>
               </div>
-              <div className="col-xs-12 col-lg-6 padding-initial">
-
+              <div className="col-xs-12 col-lg-6 padding-initial flex-container-right-lg-up flex-container-top-center-lg-up">
               </div>
             </div>
           </nav>
