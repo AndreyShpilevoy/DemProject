@@ -1,0 +1,37 @@
+@import "../../Common/colors.scss";
+@import "../../Common/sizes.scss";
+
+#nav-menu-content {
+  background-color: $menu-button-background-color;
+  margin-top: 0;
+}
+
+#nav-menu-content {
+  .nav-item {
+    margin-left: initial;
+  }
+
+  .nav-link {
+    color: $orange-text-color;
+    font-size: $nav-link-font-size;
+    padding-left: $nav-link-padding-left-right;
+    padding-right: $nav-link-padding-left-right;
+  }
+
+  .nav-link-separator {
+    background-color: $orange-text-color;
+    height: $nav-link-separator-height;
+  }
+}
+
+
+//lg+ screens
+@media (min-width: 992px) {
+  #nav-menu-content {
+      background-color: initial;
+
+    .nav-link-separator {
+      background-color: initial;
+    }
+  }
+}

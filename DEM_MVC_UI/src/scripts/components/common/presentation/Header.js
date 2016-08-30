@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
+import NavigationLinks from "./NavigationLinks";
+import NavigationMenuToggleButton from "./NavigationMenuToggleButton";
 
 const Header = () => {
   return(
@@ -14,16 +15,12 @@ const Header = () => {
                     <div className="navbar-logo"/>
                   </a>
                 </div>
-                <div className="flex-element-1 flex-container-right flex-container-top-center">
-                  <button type="button" className="hidden-lg-up navbar-toggler" id="menu-toggle-button">
-                    <span className="sr-only">Toggle navigation</span>
-                    <span className="icon-bar"/>
-                    <span className="icon-bar"/>
-                    <span className="icon-bar"/>
-                  </button>
+                <div className="flex-element-1 flex-container-right flex-container-top-center navigation-menu-toggle-button-container">
+                  <NavigationMenuToggleButton/>
                 </div>
               </div>
               <div className="col-xs-12 col-lg-6 padding-initial flex-container-right-lg-up flex-container-top-center-lg-up">
+                <NavigationLinks />
               </div>
             </div>
           </nav>
@@ -32,9 +29,5 @@ const Header = () => {
     </div>
   );
 };
-
-// <IndexLink to="/" activeClassName="active">ForumsPage</IndexLink>
-// {" | "}
-// <Link to="/topics" activeClassName="active">TopicsPage</Link>
 
 export default Header;

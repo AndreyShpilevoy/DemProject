@@ -2,6 +2,11 @@
   display: flex;
 }
 
+.flex-container-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .flex-container-left {
   display: flex;
   flex-direction: column;
@@ -40,5 +45,13 @@
   .flex-container-top-center-lg-up {
     display: flex;
     justify-content: center;
+  }
+}
+
+//lg- screens
+@media (max-width: 991px) {  
+  .flex-container-column-lg-down {
+    display: flex;
+    flex-direction: column;
   }
 }

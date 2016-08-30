@@ -28,7 +28,7 @@
     "button-group": false,
     "input-group": false,
     "custom-forms": false,
-    "nav": false,
+    "nav": true,
     "navbar": true,
     "card": false,
     "breadcrumb": false,

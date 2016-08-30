@@ -1,26 +1,25 @@
 @import "../../Common/colors.scss";
 @import "../../Common/sizes.scss";
 @import "../../Common/image-backgrounds.scss";
-@import "./navbar-toggler.scss";
 
 nav {
-	min-width: 290px;
-	background-color: $header-background-color;
+  min-width: 290px;
+  background-color: $header-background-color;
 }
 
 .navbar-height {
-	height: $navbar-height-and-pageContent-margin-top-xs-sm;
+  height: $navbar-height-and-pageContent-margin-top-xs-sm;
 }
 
 .navbar-logo {
-	width: $header-xs-sm-logo-navmenu-width;
-	height: $header-xs-sm-logo-navmenu-height;
-	background: $navbar-logo;
-	background-size: $header-xs-sm-logo-navmenu-width $header-xs-sm-logo-navmenu-height;
+  width: $header-xs-sm-logo-navmenu-width;
+  height: $header-xs-sm-logo-navmenu-height;
+  background: $navbar-logo;
+  background-size: $header-xs-sm-logo-navmenu-width $header-xs-sm-logo-navmenu-height;
 }
 
 .navbar-brand {
-	padding-left: $navbar-logo-padding-left;
+  padding-left: $navbar-logo-padding-left;
 }
 
 //md+ screens
@@ -33,11 +32,11 @@ nav {
     background-image: $navbar-background-md;
   }
 
-	.navbar-logo {
-		width: $header-md-logo-navmenu-width;
-		height: $header-md-logo-navmenu-height;
-		background-size: $header-md-logo-navmenu-width $header-md-logo-navmenu-height;
-	}
+  .navbar-logo {
+    width: $header-md-logo-navmenu-width;
+    height: $header-md-logo-navmenu-height;
+    background-size: $header-md-logo-navmenu-width $header-md-logo-navmenu-height;
+  }
 }
 
 //lg+ screens
@@ -50,11 +49,11 @@ nav {
     background-image: $navbar-background-lg;
   }
 
-	.navbar-logo {
-		width: $header-lg-logo-navmenu-width;
-		height: $header-lg-logo-navmenu-height;
-		background-size: $header-lg-logo-navmenu-width $header-lg-logo-navmenu-height;
-	}
+  .navbar-logo {
+    width: $header-lg-logo-navmenu-width;
+    height: $header-lg-logo-navmenu-height;
+    background-size: $header-lg-logo-navmenu-width $header-lg-logo-navmenu-height;
+  }
 
 
   .nav-shrink {

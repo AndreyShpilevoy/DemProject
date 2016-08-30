@@ -2,6 +2,8 @@
 @import "Common/colors.scss";
 @import "Common/flex.scss";
 @import "Common/height-width.scss";
+@import "Common/paddings.scss";
+@import "Common/margins.scss";
 
 html {
   font-size: $font-size;
@@ -11,6 +13,9 @@ body {
   background-color: $body-background-color;
   min-width: 320px;
   min-height: 480px;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 a:link,
@@ -32,6 +37,6 @@ html, body, #app {
   min-height: 100%;
 }
 
-@import "./Components/Common/header.scss";
-@import "./Common/paddings.scss";
-@import "./Common/margins.scss";
+@import "Components/Common/header.scss";
+@import "Components/Common/navbar-toggler.scss";
+@import "Components/Common/navigation.scss";

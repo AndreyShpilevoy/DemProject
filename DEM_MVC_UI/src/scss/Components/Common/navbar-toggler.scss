@@ -1,15 +1,20 @@
 @import "../../Common/colors.scss";
+@import "../../Common/sizes.scss";
 
 //.icon-bar like in bootstrap 3
 .navbar-toggler .icon-bar {
-	background-color: $orange-text-color;
-	display: block;
-	width: 2rem;
-	height: 0.1875rem;
-	border-radius: 0.0625rem;
+  background-color: $orange-text-color;
+  display: block;
+  width: $navbar-toggler-icon-bar-width;
+  height: $navbar-toggler-icon-bar-height;
+  border-radius: $navbar-toggler-icon-bar-border-radius;
 }
 
 .navbar-toggler .icon-bar + .icon-bar {
-	margin-top: 0.25rem;
+  margin-top: $navbar-toggler-icon-bar-second-and-more;
 }
 //end
+
+.navigation-menu-toggle-button-container {
+  padding-right: $navbar-toggler-container-padding-right;
+}
