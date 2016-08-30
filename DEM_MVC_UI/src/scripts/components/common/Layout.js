@@ -1,25 +1,36 @@
 ﻿import React, {PropTypes} from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as navigationLinkActions from "../../actions/navigationLinkActions";
 import Header from "../common/presentation/Header";
 
 class Layout  extends React.Component {
   static propTypes = {
+    navigationLinks: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired,
     children: PropTypes.object.isRequired
-  };
+  }
+
+  componentDidMount() {
+    this.props.actions.getNavigationLinks();
+  }
 
   render(){
-    let navigationLinks = [
-      {id:"navigationLinks-1", content:'Forums',link:'/'},
-      {id:"navigationLinks-2", content:'Topics',link:'/topics'},
-      {id:"navigationLinks-3", content:'Link 3 autogen',link:'/'}
-    ];
-
     return (
       <div>
-        <Header navigationLinks = {navigationLinks} />
+        <Header navigationLinks = {this.props.navigationLinks} />
         {this.props.children}
       </div>
     );
   }
 }
 
-export default Layout;
+const mapStateToProps = (state) => ({
+  navigationLinks: state.navigationLinkReducer
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(navigationLinkActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);
