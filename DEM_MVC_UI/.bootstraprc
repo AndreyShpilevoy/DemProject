@@ -48,7 +48,7 @@
 		"popover": false,
 		"carousel": false,
 
-		"utilities": false,
+		"utilities": true,
 		"utilities-background": false,
 		"utilities-spacing": false,
 		"utilities-responsive": true
