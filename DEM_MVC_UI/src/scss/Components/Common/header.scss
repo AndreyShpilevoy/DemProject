@@ -11,17 +11,6 @@ nav {
   height: $navbar-height-and-pageContent-margin-top-xs-sm;
 }
 
-.navbar-logo {
-  width: $header-xs-sm-logo-navmenu-width;
-  height: $header-xs-sm-logo-navmenu-height;
-  background: $navbar-logo;
-  background-size: $header-xs-sm-logo-navmenu-width $header-xs-sm-logo-navmenu-height;
-}
-
-.navbar-brand {
-  padding-left: $navbar-logo-padding-left;
-}
-
 //md+ screens
 @media (min-width: 768px) {
   .navbar-height {

@@ -1,0 +1,39 @@
+@import "../../../Common/colors.scss";
+@import "../../../Common/sizes.scss";
+
+.navbar-logo {
+  width: $header-xs-sm-logo-navmenu-width;
+  height: $header-xs-sm-logo-navmenu-height;
+  background: $navbar-logo;
+  background-size: $header-xs-sm-logo-navmenu-width $header-xs-sm-logo-navmenu-height;
+}
+
+.navbar-brand {
+  padding-left: $navbar-logo-padding-left;
+}
+
+
+//md+ screens
+@media (min-width: 768px) {
+  .navbar-logo {
+    width: $header-md-logo-navmenu-width;
+    height: $header-md-logo-navmenu-height;
+    background-size: $header-md-logo-navmenu-width $header-md-logo-navmenu-height;
+  }
+}
+
+//lg+ screens
+@media (min-width: 992px) {
+  .navbar-logo {
+    width: $header-lg-logo-navmenu-width;
+    height: $header-lg-logo-navmenu-height;
+    background-size: $header-lg-logo-navmenu-width $header-lg-logo-navmenu-height;
+  }
+  .nav-shrink {
+    .navbar-logo {
+      width: $header-lg-logo-navmenu-width/2;
+      height: $header-lg-logo-navmenu-height/2;
+      background-size: $header-lg-logo-navmenu-width/2 $header-lg-logo-navmenu-height/2;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import "../../../Common/colors.scss";
+@import "../../../Common/sizes.scss";
+
+.navigation-toggler-button {
+  background-color: initial;
+  border-style: initial;
+  padding: $navigation-toggler-button-padding;
+}
+
+//.icon-bar like in bootstrap 3
+.navigation-toggler-button .icon-bar {
+  background-color: $orange-text-color;
+  display: block;
+  width: $navigation-toggler-button-icon-bar-width;
+  height: $navigation-toggler-button-icon-bar-height;
+  border-radius: $navigation-toggler-button-icon-bar-border-radius;
+}
+
+.navigation-toggler-button .icon-bar + .icon-bar {
+  margin-top: $navigation-toggler-button-icon-bar-second-and-more;
+}
+//end
+
+.navigation-menu-toggle-button-container {
+  padding-right: $navigation-toggler-button-container-padding-right;
+}

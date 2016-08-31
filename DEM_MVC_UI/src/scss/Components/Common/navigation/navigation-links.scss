@@ -1,0 +1,18 @@
+@import "../../../Common/colors.scss";
+@import "../../../Common/sizes.scss";
+
+.navbar-nav {
+  background-color: $menu-button-background-color;
+  margin-top: 0;
+}
+
+.navbar-nav .nav-item + .nav-item {
+  margin-left: initial;
+}
+
+//lg+ screens
+@media (min-width: 992px) {
+  .navbar-nav {
+      background-color: initial;
+  }
+}

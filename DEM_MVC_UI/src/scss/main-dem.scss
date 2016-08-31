@@ -38,5 +38,7 @@ html, body, #app {
 }
 
 @import "Components/Common/header.scss";
-@import "Components/Common/navbar-toggler.scss";
-@import "Components/Common/navigation.scss";
+@import "Components/Common/navigation/navigation-link-logo.scss";
+@import "Components/Common/navigation/navigation-link.scss";
+@import "Components/Common/navigation/navigation-links.scss";
+@import "Components/Common/navigation/navigation-menu-togglebutton.scss";

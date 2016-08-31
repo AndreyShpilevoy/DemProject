@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
-import NavigationLinks from "./NavigationLinks";
-import NavigationLinkLogo from "./NavigationLinkLogo";
-import NavigationMenuToggleButton from "./NavigationMenuToggleButton";
+import NavigationLinks from "./navigation/NavigationLinks";
+import NavigationLinkLogo from "./navigation/NavigationLinkLogo";
+import NavigationMenuToggleButton from "./navigation/NavigationMenuToggleButton";
 
 const Header = ({navigationLinks}) => {
   return(
@@ -14,9 +14,7 @@ const Header = ({navigationLinks}) => {
                 <div className="flex-element-1 flex-container-left flex-container-top-center">
                   <NavigationLinkLogo />
                 </div>
-                <div className="flex-element-1 flex-container-right flex-container-top-center navigation-menu-toggle-button-container">
-                  <NavigationMenuToggleButton/>
-                </div>
+                <NavigationMenuToggleButton/>
               </div>
               <div className="col-xs-12 col-lg-6 padding-initial flex-container-right-lg-up flex-container-top-center-lg-up">
                 <NavigationLinks navigationLinks={navigationLinks} />
