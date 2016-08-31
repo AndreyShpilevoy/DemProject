@@ -7,7 +7,6 @@
     "postcss",
     "sass"
   ],
-  "extractStyles": false,
   "styles": {
     "mixins": true,
 

@@ -17,7 +17,7 @@ const GLOBALS = {
 };
 
 const bootstrapDevEntryPoint = 'bootstrap-loader/lib/bootstrap.loader?' +
-          `configFilePath=${__dirname}/.bootstraprc` +
+          `extractStyles&configFilePath=${__dirname}/.bootstraprc` +
           '!bootstrap-loader/no-op.js';
 
 export default {

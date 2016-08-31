@@ -24,7 +24,7 @@ export default {
   target: "web",
   output: {
     path: '/',
-    publicPath: '/',
+    publicPath: 'http://localhost:60782/',
     filename: "dem.min.js"
   },
   devServer:{

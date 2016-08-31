@@ -5,17 +5,22 @@ import express from 'express';
 import webpack from 'webpack';
 import open from 'open';
 import path from 'path';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import fs from 'fs';
 import config from '../webpack.config.dev';
 
 /* eslint-disable no-console */
 
 const port = 60782;
+const host = 'localhost';
 const app = express();
 const compiler = webpack(config);
-
-app.use(require('webpack-dev-middleware')(compiler, {
+const middleware = webpackDevMiddleware(compiler, {
+  contentBase: `http://${host}:${port}`,
   quiet: false,
   noInfo: false,
+  hot: true,
   publicPath: config.output.publicPath,
   stats: {
     assets: true,
@@ -26,18 +31,26 @@ app.use(require('webpack-dev-middleware')(compiler, {
     chunks: false,
     chunkModules: false
   }
-}));
+});
 
-app.use(require('webpack-hot-middleware')(compiler));
+app.use(middleware);
+app.use(webpackHotMiddleware(compiler));
 
+// let content = fs.readFileSync(path.join( __dirname, '../src/index.html'), 'utf-8');
+// let newValue = content.replace(/(<%\s*if(?:(?:(?:.|\n)(?!head))*)}\s*%>)((?:.|\n)*)(<%\s*if(?:(?:(?:.|\n)(?!head))*)}\s*%>)/g, '$2<script type="text/javascript" src="/dem.min.js"></script>');
+// console.log(newValue);
+//
+// app.get('*', (req, res) => {
+//   res.send(newValue);
+// });
 app.get('*', (req, res) => {
-  res.sendFile(path.join( __dirname, '../src/index.html'));
+  res.send(path.join( __dirname, '../src/index.html'));
 });
 
 app.listen(port, function(err) {
   if (err) {
     console.log(err);
   } else {
-    open(`http://localhost:${port}`);
+    open(`http://${host}:${port}`);
   }
 });
