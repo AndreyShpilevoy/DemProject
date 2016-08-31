@@ -46,10 +46,20 @@
     display: flex;
     justify-content: center;
   }
+
+  .flex-container-column-lg-up {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 //lg- screens
-@media (max-width: 991px) {  
+@media (max-width: 991px) {
+  .flex-container-column-lg-down {
+    display: flex;
+    flex-direction: column;
+  }
+
   .flex-container-column-lg-down {
     display: flex;
     flex-direction: column;

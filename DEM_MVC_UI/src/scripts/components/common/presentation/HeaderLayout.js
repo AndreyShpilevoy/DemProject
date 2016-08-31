@@ -1,13 +1,13 @@
-import React, {PropTypes} from 'react';
-import NavigationLinks from "./navigation/NavigationLinks";
+import React from 'react';
+import NavigationLinks from "../NavigationLinks";
 import NavigationLinkLogo from "./navigation/NavigationLinkLogo";
 import NavigationMenuToggleButton from "./navigation/NavigationMenuToggleButton";
 
-const Header = ({navigationLinks}) => {
+const HeaderLayout = () => {
   return(
     <div className="container navbar-fixed-top">
       <div className="row margin-initial">
-        <div className="col-xs-12 padding-initial">
+        <div className="col-xs-12 padding-initial flex-container-column-lg-up">
           <nav id="header" className="navbar navbar-full navbar-height navbar-logo-bg padding-initial">
             <div className="row margin-initial heigth-inherit">
               <div className="flex-container col-xs-12 col-lg-6 padding-initial heigth-inherit">
@@ -16,8 +16,8 @@ const Header = ({navigationLinks}) => {
                 </div>
                 <NavigationMenuToggleButton/>
               </div>
-              <div className="col-xs-12 col-lg-6 padding-initial flex-container-right-lg-up flex-container-top-center-lg-up">
-                <NavigationLinks navigationLinks={navigationLinks} />
+              <div className="col-xs-12 col-lg-6 padding-initial flex-container-column-lg-down flex-container-right-lg-up flex-container-top-center-lg-up">
+                <NavigationLinks />
               </div>
             </div>
           </nav>
@@ -27,8 +27,4 @@ const Header = ({navigationLinks}) => {
   );
 };
 
-Header.propTypes = {
-  navigationLinks: PropTypes.array.isRequired
-};
-
-export default Header;
+export default HeaderLayout;

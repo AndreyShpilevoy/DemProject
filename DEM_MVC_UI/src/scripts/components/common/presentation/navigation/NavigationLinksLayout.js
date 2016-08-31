@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import NavigationLink from './NavigationLink';
 
-class NavigationLinks extends React.Component {
+class NavigationLinksLayout extends React.Component {
   static propTypes = {
     navigationLinks: PropTypes.array.isRequired
   }
@@ -15,11 +15,11 @@ class NavigationLinks extends React.Component {
       );
     }
     return (
-      <ul className="nav navbar-nav flex-container flex-container-column-lg-down" id="nav-menu-content">
-        {objectLinksArray}
-      </ul>
+        <ul className="nav navbar-nav flex-container flex-container-column-lg-down" id="nav-menu-content">
+          {objectLinksArray}
+        </ul>
     );
   }
 }
 
-export default NavigationLinks;
+export default NavigationLinksLayout;

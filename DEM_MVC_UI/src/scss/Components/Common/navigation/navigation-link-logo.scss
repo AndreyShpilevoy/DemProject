@@ -6,6 +6,9 @@
   height: $header-xs-sm-logo-navmenu-height;
   background: $navbar-logo;
   background-size: $header-xs-sm-logo-navmenu-width $header-xs-sm-logo-navmenu-height;
+  // next two row needed for smoothly change of size
+  flex: 1;
+  transition: all 400ms linear;
 }
 
 .navbar-brand {

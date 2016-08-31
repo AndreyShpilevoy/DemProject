@@ -5,6 +5,9 @@
 nav {
   min-width: 290px;
   background-color: $header-background-color;
+  // next two row needed for smoothly change of size
+  flex: 1;
+  transition: all 400ms linear;
 }
 
 .navbar-height {

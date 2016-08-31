@@ -10,9 +10,27 @@
   margin-left: initial;
 }
 
+//lg- screens
+@media (max-width: 991px) {
+  .navbar-nav {
+    // next three row needed for smoothly change of size (menu collapsed by default)
+    flex: 0.00001;
+    overflow: hidden;
+    transition: all 350ms linear;
+  }
+
+  .openCollapsedMenu {
+    flex: 1;
+  }
+}
+
 //lg+ screens
 @media (min-width: 992px) {
   .navbar-nav {
       background-color: initial;
+      .nav-link {
+        padding-top: initial;
+        padding-bottom: initial;
+      }
   }
 }
