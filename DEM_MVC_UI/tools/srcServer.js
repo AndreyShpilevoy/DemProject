@@ -36,15 +36,11 @@ const middleware = webpackDevMiddleware(compiler, {
 app.use(middleware);
 app.use(webpackHotMiddleware(compiler));
 
-// let content = fs.readFileSync(path.join( __dirname, '../src/index.html'), 'utf-8');
-// let newValue = content.replace(/(<%\s*if(?:(?:(?:.|\n)(?!head))*)}\s*%>)((?:.|\n)*)(<%\s*if(?:(?:(?:.|\n)(?!head))*)}\s*%>)/g, '$2<script type="text/javascript" src="/dem.min.js"></script>');
-// console.log(newValue);
-//
-// app.get('*', (req, res) => {
-//   res.send(newValue);
-// });
+let content = fs.readFileSync(path.join( __dirname, '../src/index.html'), 'utf-8');
+let newValue = content.replace(/(?:<%(.*)%>)/g, '').replace(/(<link (?:.*)>)/g, '').replace(/src=""/g, 'src="/dem.min.js"');
+
 app.get('*', (req, res) => {
-  res.send(path.join( __dirname, '../src/index.html'));
+  res.send(newValue);
 });
 
 app.listen(port, function(err) {
