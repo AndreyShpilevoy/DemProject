@@ -21,6 +21,10 @@
 }
 //end
 
-.navigation-menu-toggle-button-container {
-  padding-right: $navigation-toggler-button-container-padding-right;
+
+//lg- screens
+@media (max-width: 991px) {
+  .navigation-menu-toggle-button-container {
+    padding-right: $navigation-toggler-button-container-padding-right;
+  }
 }

@@ -3,9 +3,11 @@
 import delay from './delay';
 
 const navigationLinks  = [
-  {id:"navigationLinks-1", content:'Forums',link:'/'},
-  {id:"navigationLinks-2", content:'Topics',link:'/topics'},
-  {id:"navigationLinks-3", content:'Link 3 autogen',link:'/'}
+  {id:"navigationLinks-1", sequence: 0, title:'Forums', href:'/'},
+  {id:"navigationLinks-3", sequence: 2, title:'Link 3 autogen', href:'/'},
+  {id:"navigationLinks-4", sequence: 3, title:'Link 4 autogen', href:'/'},
+  {id:"navigationLinks-2", sequence: 1, title:'Topics', href:'/topics'},
+  {id:"navigationLinks-5", sequence: 4, title:'Link 5 autogen', href:'/'}
 ];
 
 class NavigationLinkApi {

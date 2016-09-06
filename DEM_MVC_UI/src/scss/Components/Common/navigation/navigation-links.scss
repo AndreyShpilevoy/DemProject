@@ -27,10 +27,11 @@
 //lg+ screens
 @media (min-width: 992px) {
   .navbar-nav {
-      background-color: initial;
+    background-color: initial;
+    padding-right: $navbar-padding-right;
       .nav-link {
         padding-top: initial;
         padding-bottom: initial;
-      }
+    }
   }
 }

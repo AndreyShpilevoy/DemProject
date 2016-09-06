@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import {sortBy} from 'lodash';
 import NavigationLink from './NavigationLink';
 
 class NavigationLinksLayout extends React.Component {
@@ -7,16 +8,12 @@ class NavigationLinksLayout extends React.Component {
   }
 
   render() {
-    let objectLinksArray = [];
-    let navigationLinksArray = this.props.navigationLinks;
-    for (let i=0; i < navigationLinksArray.length; i++) {
-      objectLinksArray.push(
-        <NavigationLink key={navigationLinksArray[i].id} navigationLink = {navigationLinksArray[i]} />
-      );
-    }
     return (
         <ul className="nav navbar-nav flex-container flex-container-column-lg-down" id="nav-menu-content">
-          {objectLinksArray}
+          {
+            sortBy(this.props.navigationLinks, "sequence").map(navigationLink =>
+            <NavigationLink key={navigationLink.id} navigationLink = {navigationLink} />)
+          }
         </ul>
     );
   }

@@ -23,6 +23,15 @@ ul {
 //lg+ screens
 @media (min-width: 992px) {
   ul {
+    .nav-link {
+      color: $link;
+      font-size: initial;
+    }
+
+    .nav-link:hover {
+      color: $link-hovered;
+    }
+
     .nav-link-separator {
       background-color: initial;
     }

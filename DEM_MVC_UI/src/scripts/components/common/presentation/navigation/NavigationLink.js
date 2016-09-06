@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const NavigationLink = ({navigationLink}) => {
   return (
     <li className="nav-item">
-      <Link className="nav-link" activeClassName="active" to={navigationLink.link}>{navigationLink.content}</Link>
+      <Link className="nav-link" to={navigationLink.href}>{navigationLink.title}</Link>
       <div className="nav-link-separator"/>
     </li>
   );

@@ -1,4 +1,4 @@
-import throttle from "lodash/throttle";
+import {throttle} from "lodash";
 import root from "lodash/_root";
 
 let initialized = false; // init flag
