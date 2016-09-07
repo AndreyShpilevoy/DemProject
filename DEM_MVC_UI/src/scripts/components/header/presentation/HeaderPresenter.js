@@ -1,9 +1,9 @@
 import React from 'react';
-import NavigationLinks from "../NavigationLinks";
-import NavigationLinkLogo from "./navigation/NavigationLinkLogo";
-import NavigationMenuToggleButton from "./navigation/NavigationMenuToggleButton";
+import NavigationLinks from "../../navigation/NavigationLinks";
+import NavigationLinkLogo from "../../navigation/presentation/NavigationLinkLogo";
+import NavigationMenuToggleButton from "../../navigation/presentation/NavigationMenuToggleButton";
 
-const HeaderLayout = () => {
+const HeaderPresenter = () => {
   return(
     <div className="container navbar-fixed-top">
       <div className="row margin-initial">
@@ -27,4 +27,4 @@ const HeaderLayout = () => {
   );
 };
 
-export default HeaderLayout;
+export default HeaderPresenter;

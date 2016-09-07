@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderLayout from "./presentation/HeaderLayout";
+import HeaderPresenter from "./presentation/HeaderPresenter";
 import shrinkingHeader from "../../other/shrinkingHeader";
 import collapseMenu from "../../other/collapseMenu";
 
@@ -11,7 +11,7 @@ class Header extends React.Component {
 
   render(){
     return(
-      <HeaderLayout />
+      <HeaderPresenter />
     );
   }
 }

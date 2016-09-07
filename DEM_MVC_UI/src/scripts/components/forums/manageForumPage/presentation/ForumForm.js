@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
-import TextInput from "../../common/presentation/TextInput";
-import SelectInput from "../../common/presentation/SelectInput";
+import TextInput from "../../../common/TextInput";
+import SelectInput from "../../../common/SelectInput";
 
 const ForumForm = ({forum, allAuthors, onSave, onChange, loading, errors}) => {
   return (

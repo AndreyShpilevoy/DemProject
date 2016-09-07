@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import {sortBy} from 'lodash';
 import NavigationLink from './NavigationLink';
 
-class NavigationLinksLayout extends React.Component {
+class NavigationLinksPresenter extends React.Component {
   static propTypes = {
     navigationLinks: PropTypes.array.isRequired
   }
@@ -19,4 +19,4 @@ class NavigationLinksLayout extends React.Component {
   }
 }
 
-export default NavigationLinksLayout;
+export default NavigationLinksPresenter;
