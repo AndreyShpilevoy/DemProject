@@ -1,8 +1,8 @@
 import React, {PropTypes} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import * as forumActions from "../../../actions/forumActions";
-import ForumList from "./presentation/ForumList";
+import * as forumActions from "../actions/forumActions";
+import { ForumList } from "../components/_all";
 
 class ForumsPage extends React.Component {
   static propTypes = {

@@ -1,9 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import Layout from './components/Layout';
-import ForumsPage from './components/forums/forumPage/ForumsPage';
-import TopicsPage from './components/topics/TopicsPage';
-import ManageForumPage from "./components/forums/manageForumPage/ManageForumPage";
+import { ForumsPage, ManageForumPage } from './containers/_all';
+import { TopicsPage } from './components/_all';
 
 export default (
   <Route path="/" component={Layout}>

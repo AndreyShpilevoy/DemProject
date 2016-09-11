@@ -1,9 +1,9 @@
 import React from "react";
 import {render} from "react-dom";
 import root from "lodash/_root";
+import {Root} from "./containers/_all";
 import configureStore from "./store/configureStore";
 import routes from "./routes";
-import Root from "./components/Root";
 import rootSaga from "./sagas/rootSaga";
 import "../scss/main-dem.scss";
 

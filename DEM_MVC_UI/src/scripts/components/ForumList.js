@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react";
-import ForumListRow from "./ForumListRow";
+import { ForumListRow } from "./_all";
 
 const ForumList = ({forums}) => {
   return (

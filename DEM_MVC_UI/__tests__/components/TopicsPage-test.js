@@ -2,12 +2,12 @@
 /* eslint import/no-extraneous-dependencies: "off" */
 /* eslint import/imports-first: "off" */
 
-jest.unmock("../../../src/scripts/components/topics/TopicsPage.js");
+jest.unmock("../../src/scripts/components/TopicsPage.js");
 
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import TopicsPage from "../../../src/scripts/components/topics/TopicsPage.js";
-import StatelessWrapper from "../../../testHelpers/StatelessWrapper";
+import { StatelessWrapper } from "../../testHelpers/_all";
+import TopicsPage from "../../src/scripts/components/TopicsPage";
 
 describe('TopicsPage', () => {
 

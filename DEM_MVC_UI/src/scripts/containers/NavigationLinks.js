@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import * as navigationLinkActions from "../../actions/navigationLinkActions";
-import NavigationLinksPresenter from "./presentation/NavigationLinksPresenter";
+import * as navigationLinkActions from "../actions/navigationLinkActions";
+import { NavigationLinks as NavigationLinksComponent } from "../components/_all";
 
 class NavigationLinks extends React.Component {
   static propTypes = {
@@ -16,7 +16,7 @@ class NavigationLinks extends React.Component {
 
   render(){
     return(
-      <NavigationLinksPresenter navigationLinks={this.props.navigationLinks}/>
+      <NavigationLinksComponent navigationLinks={this.props.navigationLinks}/>
     );
   }
 }
