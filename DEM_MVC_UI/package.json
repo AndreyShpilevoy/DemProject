@@ -9,10 +9,12 @@
   },
   "scripts": {
     "lint": "node_modules/.bin/eslint --color webpack.config.* src tools",
-    "install:all": "npm install --only=dev && npm install --only=prod",
+    "install:all": "npm install --only=dev && npm install --only=prod && npm run generateMapFiles",
+    "prestart": "npm run generateMapFiles",
     "start": "npm run test && babel-node tools/srcServer.js",
     "clean-wwwroot": "node_modules/.bin/rimraf ../DEM_MVC/wwwroot && mkdirp ../DEM_MVC/wwwroot",
-    "prebuild": "npm-run-all clean-wwwroot lint test",
+    "generateMapFiles": "babel-node tools/mapFilesGenerator.js",
+    "prebuild": "npm-run-all clean-wwwroot generateMapFiles lint test",
     "build": "babel-node tools/build.js",
     "postbuild": "babel-node tools/distServer.js",
     "test": "jest"
