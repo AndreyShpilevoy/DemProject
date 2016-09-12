@@ -37,8 +37,8 @@ html, body, #app {
   min-height: 100%;
 }
 
-@import "Components/header/header.scss";
-@import "Components/navigation/navigation-link-logo.scss";
-@import "Components/navigation/navigation-link.scss";
-@import "Components/navigation/navigation-links.scss";
-@import "Components/navigation/navigation-menu-togglebutton.scss";
+@import "Components/header.scss";
+@import "Components/navigation-link-item.scss";
+@import "Components/navigation-link-logo.scss";
+@import "Components/navigation-links.scss";
+@import "Components/navigation-menu-togglebutton.scss";

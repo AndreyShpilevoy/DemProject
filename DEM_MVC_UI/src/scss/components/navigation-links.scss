@@ -1,12 +1,12 @@
-@import "../../Common/colors.scss";
-@import "../../Common/sizes.scss";
+@import "../Common/colors.scss";
+@import "../Common/sizes.scss";
 
 .navbar-nav {
   background-color: $menu-button-background-color;
   margin-top: 0;
 }
 
-.navbar-nav .nav-item + .nav-item {
+.navbar-nav .nav-list-item + .nav-list-item {
   margin-left: initial;
 }
 
