@@ -1,13 +1,11 @@
-import ForumsPage from "./ForumsPage";
+import ConferencePage from "./ConferencePage";
 import Header from "./Header";
-import ManageForumPage from "./ManageForumPage";
 import NavigationLinks from "./NavigationLinks";
 import Root from "./Root";
 
 export {
-  ForumsPage,
+  ConferencePage,
   Header,
-  ManageForumPage,
   NavigationLinks,
   Root
 };

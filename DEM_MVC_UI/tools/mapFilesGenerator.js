@@ -27,21 +27,21 @@ const MapFilesGenerator = {
 
     return mapObjectDictionary;
   },
-  prepareFileContant: (mapObjectDictionary) => {
-    let contant = "";
+  prepareFileContent: (mapObjectDictionary) => {
+    let content = "";
     for (let mapObject of mapObjectDictionary) {
-      contant += `import ${mapObject} from "./${mapObject}";\n`;
+      content += `import ${mapObject} from "./${mapObject}";\n`;
     }
 
-    contant += "\n";
-    contant += "export {\n";
+    content += "\n";
+    content += "export {\n";
 
     for (let mapObject of mapObjectDictionary) {
-      contant += `  ${mapObject},\n`;
+      content += `  ${mapObject},\n`;
     }
-    contant = contant.replace(/,\s*$/, "");
-    contant += "\n};";
-    return contant;
+    content = content.replace(/,\s*$/, "");
+    content += "\n};";
+    return content;
   },
   saveMapFile: (pathToFolder, content) => {
     fs.writeFile(`${pathToFolder}/${MapFilesGenerator.fileName}`, content, function(err) {
@@ -54,8 +54,8 @@ const MapFilesGenerator = {
   generateMapFiles: () => {
     for(let path of MapFilesGenerator.pathToFolderArray){
       let mapObjectDictionary = MapFilesGenerator.getFileAndComponentNamesDictionary(path);
-      let fileContant = MapFilesGenerator.prepareFileContant(mapObjectDictionary);
-      MapFilesGenerator.saveMapFile(path, fileContant);
+      let fileContent = MapFilesGenerator.prepareFileContent(mapObjectDictionary);
+      MapFilesGenerator.saveMapFile(path, fileContent);
     }
   }
 };

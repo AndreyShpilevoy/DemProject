@@ -13,6 +13,7 @@
     "prestart": "npm run generateMapFiles",
     "start": "npm run test && babel-node tools/srcServer.js",
     "clean-wwwroot": "node_modules/.bin/rimraf ../DEM_MVC/wwwroot && mkdirp ../DEM_MVC/wwwroot",
+    "g": "npm run generateMapFiles",
     "generateMapFiles": "babel-node tools/mapFilesGenerator.js",
     "prebuild": "npm-run-all clean-wwwroot generateMapFiles lint test",
     "build": "babel-node tools/build.js",
