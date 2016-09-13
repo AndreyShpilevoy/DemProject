@@ -1,3 +1,4 @@
+import Chapter from "./Chapter";
 import ConferencePage from "./ConferencePage";
 import Header from "./Header";
 import Layout from "./Layout";
@@ -7,6 +8,7 @@ import NavigationLinks from "./NavigationLinks";
 import NavigationMenuToggleButton from "./NavigationMenuToggleButton";
 
 export {
+  Chapter,
   ConferencePage,
   Header,
   Layout,

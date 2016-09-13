@@ -1,12 +1,12 @@
 import {combineReducers} from "redux";
 import { routerReducer } from 'react-router-redux';
 import forumReducer from "./forumReducer";
-import authorReducer from "./authorReducer";
+import chapterReducer from "./chapterReducer";
 import navigationLinkReducer from "./navigationLinkReducer";
 
 const rootReducer = combineReducers({
   forumReducer,
-  authorReducer,
+  chapterReducer,
   navigationLinkReducer,
   routing: routerReducer
 });

@@ -1,11 +1,11 @@
 import * as forumSagas from "./forumSagas";
-import * as authorSagas from "./authorSagas";
+import * as chapterSagas from "./chapterSagas";
 import * as navigationLinkSagas from "./navigationLinkSagas.js";
 
 export default function* root() {
   yield [
     forumSagas.getAllForums(),
-    authorSagas.getAllAuthors(),
+    chapterSagas.getAllChapters(),
     navigationLinkSagas.getNavigationLinks()
   ];
 }
