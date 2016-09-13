@@ -3,16 +3,21 @@
 
 .chapter-container {
   padding-top: $chapter-container-padding-top;
-}
 
-.chapter-header {
-  width: 100%;
-  height: $chapter-header-height;
-  background-color: $chapter-header-color;
-  color: $orange-text-color;
-  font-size: $chapter-header-font-size;
-}
+  .chapter-header {
+    width: 100%;
+    height: $chapter-header-height;
+    background-color: $chapter-header-color;
+    color: $orange-text-color;
+    font-size: $chapter-header-font-size;
 
-.chapter-header-title {
-  padding: 0 $chapter-header-title-padding-horizontal;
+    .chapter-header-title {
+      padding: 0 $chapter-header-title-padding-horizontal;
+    }
+  }
+
+  .chapter-body {
+    background-color: #7b736b;
+    color: #48423d;
+  }
 }

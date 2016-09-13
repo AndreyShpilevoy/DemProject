@@ -6,95 +6,128 @@ import delay from './delay';
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
 const forums = [{
-    id: "react-flux-building-applications",
-    title: "Building Applications in React and Flux",
-    watchHref: "http://www.pluralsight.com/forums/react-flux-building-applications",
-    authorId: "cory-house",
-    length: "5:08",
-    category: "JavaScript"
+    id: 1,
+    order: 1,
+    title: "Общие вопросы",
+    description: "Все вопросы касательно геймплея и мира игры Ex Machina в целом.",
+    topicsCount: 26,
+    postsCount: 4113,
+    lastActiveTopicId: 1,
+    lastActiveTopic: "Идеи к Ex Machina -2 часть четвертая",
+    latesPostTimeCreation: new Date("2015/08/17 13:42:32"),
+    latesPostAutorId: 1,
+    latesPostAutorName: "kto",
+    latesPostAutorGroupColor: "ffa510",
+    subforums: [{
+        id: 11,
+        title: "Самопал",
+    },{
+        id: 12,
+        title: "Архив форумки",
+    }]
 }, {
-    id: "clean-code",
-    title: "Clean Code: Writing Code for Humans",
-    watchHref: "http://www.pluralsight.com/forums/writing-clean-code-humans",
-    authorId: "cory-house",
-    length: "3:10",
-    category: "Software Practices"
-}, {
-    id: "architecture",
-    title: "Architecting Applications for the Real World",
-    watchHref: "http://www.pluralsight.com/forums/architecting-applications-dotnet",
-    authorId: "cory-house",
-    length: "2:52",
-    category: "Software Architecture"
-}, {
-    id: "career-reboot-for-developer-mind",
-    title: "Becoming an Outlier: Reprogramming the Developer Mind",
-    watchHref: "http://www.pluralsight.com/forums/career-reboot-for-developer-mind",
-    authorId: "cory-house",
-    length: "2:30",
-    category: "Career"
-}, {
-    id: "web-components-shadow-dom",
-    title: "Web Component Fundamentals",
-    watchHref: "http://www.pluralsight.com/forums/web-components-shadow-dom",
-    authorId: "cory-house",
-    length: "5:10",
-    category: "HTML5"
+    id: 2,
+    order: 2,
+    title: "Технические вопросы",
+    description: "Вопросы технического характера по игре Ex Machina.",
+    topicsCount: 13,
+    postsCount: 857,
+    lastActiveTopicId: 2,
+    lastActiveTopic: "Проблемы с игрой",
+    latesPostTimeCreation: new Date("2015/07/20 12:53:09"),
+    latesPostAutorId: 2,
+    latesPostAutorName: "Bykawka",
+    latesPostAutorGroupColor: "fbeab2",
+    subforums: []
+},{
+    id: 3,
+    order: 3,
+    title: "Обсуждение модификаций",
+    description: "Раздел для общих и технических вопросов по модификациям.",
+    topicsCount: 37,
+    postsCount: 4328,
+    lastActiveTopicId: 3,
+    lastActiveTopic: "Hard Truck Apocalypse MOD 1.7SE",
+    latesPostTimeCreation: new Date("2015/07/02 23:11:31"),
+    latesPostAutorId: 3,
+    latesPostAutorName: "ololoid",
+    latesPostAutorGroupColor: "99ccff",
+    subforums: [{
+        id: 31,
+        title: "Багтрекер",
+    }]
+},{
+    id: 4,
+    order: 4,
+    title: "Вопросы по созданию моделей",
+    description: "Вопросы по созданию моделей, конвертированию в игру и всего что с этим связано.",
+    topicsCount: 4,
+    postsCount: 864,
+    lastActiveTopicId: 4,
+    lastActiveTopic: "Exporter Ex Machina for Maya",
+    latesPostTimeCreation: new Date("2016/09/06 22:33:09"),
+    latesPostAutorId: 4,
+    latesPostAutorName: "Buba",
+    latesPostAutorGroupColor: "00AA00",
+    subforums: []
+},{
+    id: 5,
+    order: 5,
+    title: "Системный раздел для главной",
+    description: "В разделе публикуются статьи, файлы, FAQ и другие полезности для Главной страницы.",
+    topicsCount: 93,
+    postsCount: 1576,
+    lastActiveTopicId: 5,
+    lastActiveTopic: "HD Textures",
+    latesPostTimeCreation: new Date("2016/07/12 14:24:11"),
+    latesPostAutorId: 5,
+    latesPostAutorName: "Agent005",
+    latesPostAutorGroupColor: "ff00ff",
+    subforums: [{
+        id: 51,
+        title: "FAQ",
+    },{
+        id: 52,
+        title: "Юзербары",
+    },{
+        id: 53,
+        title: "О игре",
+    },{
+        id: 54,
+        title: "Видео",
+    },{
+        id: 55,
+        title: "Рассказы",
+    },{
+        id: 56,
+        title: "Каталог файлов",
+    }]
 }];
 
-function replaceAll(str, find, replace) {
-  return str.replace(new RegExp(find, 'g'), replace);
-}
-
-//This would be performed on the server in a real app. Just stubbing in.
-const generateId = (forum) => {
-  return replaceAll(forum.title, ' ', '-');
-};
-
 class ForumApi {
-    static getAllForums() {
+    static getAllForums(chapterId) {
+      let result = [];
+      switch (chapterId) {
+        case 1:
+          result.push(forums[0]).push(forums[1]);
+          break;
+        case 2:
+          result.push(forums[2]);
+          break;
+        case 3:
+          result.push(forums[3]).push(forums[4]);
+          break;
+        case 4:
+          result.push(forums[0]).push(forums[2]).push(forums[1]);
+          break;
+        case 5:
+          result.push(forums[0]).push(forums[2]).push(forums[1]).push(forums[2]).push(forums[1]);
+          break;
+        default:
+      }
         return new Promise((resolve) => {
             setTimeout(() => {
-                resolve(Object.assign([], forums));
-            }, delay);
-        });
-    }
-
-    static saveforum(forum) {
-        forum = Object.assign({}, forum); // to avoid manipulating object passed in.
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                // Simulate server-side validation
-                const minforumTitleLength = 1;
-                if (forum.title.length < minforumTitleLength) {
-                    reject(`Title must be at least ${minforumTitleLength} characters.`);
-                }
-
-                if (forum.id) {
-                    const existingforumIndex = forums.findIndex(a => a.id == forum.id);
-                    forums.splice(existingforumIndex, 1, forum);
-                } else {
-                    //Just simulating creation here.
-                    //The server would generate ids and watchHref's for new forums in a real app.
-                    //Cloning so copy returned is passed by value rather than by reference.
-                    forum.id = generateId(forum);
-                    forum.watchHref = `http://www.pluralsight.com/forums/${forum.id}`;
-                    forums.push(forum);
-                }
-
-                resolve(forum);
-            }, delay);
-        });
-    }
-
-    static deleteforum(forumId) {
-        return new Promise((resolve)=>{//, reject) => {
-            setTimeout(() => {
-                const indexOfforumToDelete = forums.findIndex(forum => {
-                    forum.forumId == forumId;
-                });
-                forums.splice(indexOfforumToDelete, 1);
-                resolve();
+                resolve(Object.assign([], result));
             }, delay);
         });
     }
