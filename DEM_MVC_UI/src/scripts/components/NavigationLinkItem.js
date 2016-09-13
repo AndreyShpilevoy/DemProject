@@ -11,7 +11,12 @@ const NavigationLinkItem = ({navigationLinkItem}) => {
 };
 
 NavigationLinkItem.propTypes = {
-  navigationLinkItem: PropTypes.object.isRequired
+  navigationLinkItem: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
+    order: PropTypes.number.isRequired,
+  }).isRequired
 };
 
 export default NavigationLinkItem;

@@ -6,7 +6,13 @@ import { NavigationLinks as NavigationLinksComponent } from "../components/_all"
 
 class NavigationLinks extends React.Component {
   static propTypes = {
-    navigationLinks: PropTypes.array.isRequired,
+    navigationLinks: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        href: PropTypes.string.isRequired,
+        order: PropTypes.number.isRequired,
+      })).isRequired,
     actions: PropTypes.object.isRequired,
   };
 

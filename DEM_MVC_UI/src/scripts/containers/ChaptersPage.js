@@ -2,11 +2,16 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as chapterActions from "../actions/chapterActions";
-import { ConferencePage as ConferencePageComponent } from "../components/_all.js";
+import { ChaptersPage as ChaptersPageComponent } from "../components/_all.js";
 
-class ConferencePage extends React.Component {
+class ChaptersPage extends React.Component {
 	static propTypes = {
-    chapters: PropTypes.array.isRequired,
+    chapters: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        order: PropTypes.number.isRequired,
+      })).isRequired,
     actions: PropTypes.object.isRequired,
   };
 
@@ -16,7 +21,7 @@ class ConferencePage extends React.Component {
 
   render() {
     return (
-      <ConferencePageComponent chapters={this.props.chapters}/>
+      <ChaptersPageComponent chapters={this.props.chapters}/>
     );
   }
 
@@ -30,4 +35,4 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(chapterActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ConferencePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ChaptersPage);

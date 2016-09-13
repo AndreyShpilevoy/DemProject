@@ -1,5 +1,5 @@
-import Chapter from "./Chapter";
-import ConferencePage from "./ConferencePage";
+import ChapterItem from "./ChapterItem";
+import ChaptersPage from "./ChaptersPage";
 import Header from "./Header";
 import Layout from "./Layout";
 import NavigationLinkItem from "./NavigationLinkItem";
@@ -8,8 +8,8 @@ import NavigationLinks from "./NavigationLinks";
 import NavigationMenuToggleButton from "./NavigationMenuToggleButton";
 
 export {
-  Chapter,
-  ConferencePage,
+  ChapterItem,
+  ChaptersPage,
   Header,
   Layout,
   NavigationLinkItem,

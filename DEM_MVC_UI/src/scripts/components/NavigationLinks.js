@@ -4,16 +4,30 @@ import { NavigationLinkItem } from "./_all";
 
 class NavigationLinks extends React.Component {
   static propTypes = {
-    navigationLinks: PropTypes.array.isRequired
+    navigationLinks: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        href: PropTypes.string.isRequired,
+        order: PropTypes.number.isRequired,
+   })).isRequired
+  }
+
+  sortNavigationLinks = () => {
+    return  _.sortBy(this.props.navigationLinks, "order");
+  }
+
+  mapNavigationLinks = () => {
+    let mappedChapters = this.sortNavigationLinks().map(navigationLinkItem =>
+      <NavigationLinkItem key={navigationLinkItem.id} navigationLinkItem = {navigationLinkItem} />);
+    return mappedChapters;
   }
 
   render() {
+    let navigationLinks = this.mapNavigationLinks();
     return (
         <ul className="nav navbar-nav flex-container flex-container-column-lg-down" id="nav-menu-content">
-          {
-            _.sortBy(this.props.navigationLinks, "sequence").map(navigationLinkItem =>
-            <NavigationLinkItem key={navigationLinkItem.id} navigationLinkItem = {navigationLinkItem} />)
-          }
+          {navigationLinks}
         </ul>
     );
   }

@@ -1,12 +1,12 @@
-import Chapter from "./Chapter";
-import ConferencePage from "./ConferencePage";
+import ChapterItem from "./ChapterItem";
+import ChaptersPage from "./ChaptersPage";
 import Header from "./Header";
 import NavigationLinks from "./NavigationLinks";
 import Root from "./Root";
 
 export {
-  Chapter,
-  ConferencePage,
+  ChapterItem,
+  ChaptersPage,
   Header,
   NavigationLinks,
   Root

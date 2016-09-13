@@ -19,8 +19,9 @@
   align-items: flex-end;
 }
 
-.flex-container-top-center {
+.flex-container-column-center {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -42,7 +43,7 @@
     align-items: flex-end;
   }
 
-  .flex-container-top-center-lg-up {
+  .flex-container-column-center-lg-up {
     display: flex;
     justify-content: center;
   }
