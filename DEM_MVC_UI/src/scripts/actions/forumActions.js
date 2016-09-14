@@ -1,11 +1,11 @@
 import * as types from "./actionTypes";
 
-function getAllForums(){
-  return {type: types.GET_ALL_FORUMS};
+function getAllForums(chapterId){
+  return {type: types.GET_ALL_FORUMS, chapterId};
 }
 
-function getAllForumsSuccess(forums){
-  return {type: types.GET_ALL_FORUMS_SUCCESS, forums};
+function getAllForumsSuccess(chapterId, forums){
+  return {type: types.GET_ALL_FORUMS_SUCCESS, chapterId, forums};
 }
 
 export{

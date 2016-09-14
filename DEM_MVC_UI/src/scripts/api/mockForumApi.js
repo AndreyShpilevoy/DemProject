@@ -106,19 +106,27 @@ class ForumApi {
       let result = [];
       switch (chapterId) {
         case 1:
-          result.push(forums[0]).push(forums[1]);
+          result.push(forums[0]);
+          result.push(forums[1]);
           break;
         case 2:
           result.push(forums[2]);
           break;
         case 3:
-          result.push(forums[3]).push(forums[4]);
+          result.push(forums[3]);
+          result.push(forums[4]);
           break;
         case 4:
-          result.push(forums[0]).push(forums[2]).push(forums[1]);
+          result.push(forums[0]);
+          result.push(forums[2]);
+          result.push(forums[1]);
           break;
         case 5:
-          result.push(forums[0]).push(forums[2]).push(forums[1]).push(forums[2]).push(forums[1]);
+          result.push(forums[0]);
+          result.push(forums[2]);
+          result.push(forums[1]);
+          result.push(forums[4]);
+          result.push(forums[3]);
           break;
         default:
       }

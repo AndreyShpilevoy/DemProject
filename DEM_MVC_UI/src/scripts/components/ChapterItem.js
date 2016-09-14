@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import {ForumList} from '../containers/_all.js';
 
 class ChapterItem extends React.Component {
   static propTypes = {
@@ -19,7 +20,7 @@ class ChapterItem extends React.Component {
           </div>
         </div>
         <div className="chapter-body">
-          FORUMS
+          <ForumList chapterId={this.props.chapterItem.id}/>
         </div>
       </div>
     );

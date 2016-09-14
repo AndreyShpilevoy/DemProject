@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationLinks } from "../containers/_all";
+import { NavigationLinkList } from "../containers/_all";
 import { NavigationLinkLogo, NavigationMenuToggleButton } from "./_all";
 
 const Header = () => {
@@ -16,7 +16,7 @@ const Header = () => {
                 <NavigationMenuToggleButton/>
               </div>
               <div className="col-xs-12 col-lg-8 flex-container-column-lg-down flex-container-right-lg-up flex-container-column-center-lg-up">
-                <NavigationLinks />
+                <NavigationLinkList />
               </div>
             </div>
           </nav>

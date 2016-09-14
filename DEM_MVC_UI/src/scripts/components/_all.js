@@ -3,8 +3,8 @@ import ChaptersPage from "./ChaptersPage";
 import Header from "./Header";
 import Layout from "./Layout";
 import NavigationLinkItem from "./NavigationLinkItem";
+import NavigationLinkList from "./NavigationLinkList";
 import NavigationLinkLogo from "./NavigationLinkLogo";
-import NavigationLinks from "./NavigationLinks";
 import NavigationMenuToggleButton from "./NavigationMenuToggleButton";
 
 export {
@@ -13,7 +13,7 @@ export {
   Header,
   Layout,
   NavigationLinkItem,
+  NavigationLinkList,
   NavigationLinkLogo,
-  NavigationLinks,
   NavigationMenuToggleButton
 };
