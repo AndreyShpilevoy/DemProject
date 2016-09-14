@@ -15,9 +15,7 @@ const Header = () => {
                 </div>
                 <NavigationMenuToggleButton/>
               </div>
-              <div className="col-xs-12 col-lg-8 flex-container-column-lg-down flex-container-right-lg-up flex-container-column-center-lg-up">
-                <NavigationLinkList />
-              </div>
+              <NavigationLinkList />
             </div>
           </nav>
         </div>

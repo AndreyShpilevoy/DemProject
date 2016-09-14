@@ -12,14 +12,14 @@
 
 //lg- screens
 @media (max-width: 991px) {
-  .navbar-nav {
+  .close-links {
     // next three row needed for smoothly change of size (menu collapsed by default)
     flex: 0.00001;
     overflow: hidden;
     transition: all 350ms linear;
   }
 
-  .openCollapsedMenu {
+  .open-links {
     flex: 1;
   }
 }

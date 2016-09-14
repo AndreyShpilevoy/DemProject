@@ -26,9 +26,11 @@ class NavigationLinkList extends React.Component {
   render() {
     let navigationLinks = this.mapNavigationLinks();
     return (
-        <ul className="nav navbar-nav flex-container flex-container-column-lg-down" id="nav-menu-content">
-          {navigationLinks}
-        </ul>
+        <div className="col-xs-12 col-lg-8" id="nav-menu-content">
+          <ul className="nav navbar-nav">
+            {navigationLinks}
+          </ul>
+        </div>
     );
   }
 }

@@ -22,7 +22,7 @@ const CollapseMenu = {
   },
   toggle: () => {
     let navMenuContent = CollapseMenu.getNavMenuContent();
-    if(navMenuContent.classList.contains("openCollapsedMenu")){
+    if(navMenuContent.classList.contains("open-links")){
       CollapseMenu.hide();
     } else {
       CollapseMenu.show();
@@ -30,11 +30,11 @@ const CollapseMenu = {
   },
   show: () => {
     let navMenuContent = CollapseMenu.getNavMenuContent();
-    navMenuContent.classList.add("openCollapsedMenu");
+    navMenuContent.classList.add("open-links");
   },
   hide: () => {
     let navMenuContent = CollapseMenu.getNavMenuContent();
-    navMenuContent.classList.remove("openCollapsedMenu");
+    navMenuContent.classList.remove("open-links");
   }
 };
 
