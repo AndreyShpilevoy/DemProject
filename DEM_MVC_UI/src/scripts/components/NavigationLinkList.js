@@ -26,8 +26,8 @@ class NavigationLinkList extends React.Component {
   render() {
     let navigationLinks = this.mapNavigationLinks();
     return (
-        <div className="col-xs-12 col-lg-8" id="nav-menu-content">
-          <ul className="nav navbar-nav">
+        <div className="col-xs-12 col-lg-8 flex-container-right-lg-up flex-container-column-center-lg-up">
+          <ul className="nav navbar-nav flex-container close-links" id="nav-menu-content">
             {navigationLinks}
           </ul>
         </div>

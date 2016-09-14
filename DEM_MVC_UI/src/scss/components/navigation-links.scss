@@ -14,13 +14,15 @@
 @media (max-width: 991px) {
   .close-links {
     // next three row needed for smoothly change of size (menu collapsed by default)
-    flex: 0.00001;
+    height: 0;
+    display: flex;
+    flex-flow: column;
     overflow: hidden;
     transition: all 350ms linear;
   }
 
   .open-links {
-    flex: 1;
+    height: 100%;
   }
 }
 
