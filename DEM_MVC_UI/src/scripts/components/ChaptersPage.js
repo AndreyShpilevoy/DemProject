@@ -28,7 +28,7 @@ class ChaptersPage extends React.Component {
       <div className="pageContent">
         <div className="container">
           <div className="row">
-            <div className="col-xs-12">
+            <div className="col-xs-12 width-100-percent">
               {chapters}
             </div>
           </div>
