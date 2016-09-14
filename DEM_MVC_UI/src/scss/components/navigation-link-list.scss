@@ -12,28 +12,32 @@
 
 //lg- screens
 @media (max-width: 991px) {
-  .close-links {
+  .nav-links-default {
     // next three row needed for smoothly change of size (menu collapsed by default)
     height: 0;
+    width: 100%;
     display: flex;
     flex-flow: column;
     overflow: hidden;
     transition: all 350ms linear;
   }
 
-  .open-links {
+  .nav-links-default-opened {
     height: 100%;
   }
 }
 
 //lg+ screens
 @media (min-width: 992px) {
-  .navbar-nav {
-    background-color: initial;
-    padding-right: $navbar-padding-right;
-      .nav-link {
-        padding-top: initial;
-        padding-bottom: initial;
+  .nav-links-container{
+    align-items: flex-end;
+    .navbar-nav {
+      background-color: initial;
+      padding-right: $navbar-padding-right;
+        .nav-link {
+          padding-top: initial;
+          padding-bottom: initial;
+      }
     }
   }
 }

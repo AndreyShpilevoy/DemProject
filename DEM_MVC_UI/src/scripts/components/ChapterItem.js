@@ -14,7 +14,7 @@ class ChapterItem extends React.Component {
     let chapterItem = this.props.chapterItem;
     return(
       <div className="chapter-container">
-        <div className="chapter-header flex-container-column-center">
+        <div className="chapter-header flex flex-column-vertical-center">
           <div className="chapter-header-title">
             {chapterItem.title}
           </div>

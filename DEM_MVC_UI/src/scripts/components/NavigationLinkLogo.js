@@ -3,9 +3,11 @@ import { Link } from 'react-router';
 
 const NavigationLinkLogo = () => {
   return (
-    <Link className="navbar-brand flex-container-column-lg-up" to="/">
-      <div className="navbar-logo"/>
-    </Link>
+    <div className="navbar-logo-container flex flex-column-vertical-center">
+      <Link className="navbar-brand flex-container-column-lg-up" to="/">
+        <div className="navbar-logo"/>
+      </Link>
+    </div>
   );
 };
 

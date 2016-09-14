@@ -22,7 +22,7 @@ const CollapseMenu = {
   },
   toggle: () => {
     let navMenuContent = CollapseMenu.getNavMenuContent();
-    if(navMenuContent.classList.contains("open-links")){
+    if(navMenuContent.classList.contains("nav-links-default-opened")){
       CollapseMenu.hide();
     } else {
       CollapseMenu.show();
@@ -30,11 +30,11 @@ const CollapseMenu = {
   },
   show: () => {
     let navMenuContent = CollapseMenu.getNavMenuContent();
-    navMenuContent.classList.add("open-links");
+    navMenuContent.classList.add("nav-links-default-opened");
   },
   hide: () => {
     let navMenuContent = CollapseMenu.getNavMenuContent();
-    navMenuContent.classList.remove("open-links");
+    navMenuContent.classList.remove("nav-links-default-opened");
   }
 };
 

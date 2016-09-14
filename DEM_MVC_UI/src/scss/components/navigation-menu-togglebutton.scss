@@ -1,6 +1,11 @@
 @import "../Common/colors.scss";
 @import "../Common/sizes.scss";
 
+.navbar-button-container {
+  flex: 1 0 0;
+  align-items: flex-end;
+}
+
 .navigation-toggler-button {
   background-color: initial;
   border-style: initial;

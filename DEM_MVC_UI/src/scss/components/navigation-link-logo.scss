@@ -1,6 +1,10 @@
 @import "../Common/colors.scss";
 @import "../Common/sizes.scss";
 
+.navbar-logo-container {
+  flex: 1 0 0;
+}
+
 .navbar-logo {
   width: $header-xs-sm-logo-navmenu-width;
   height: $header-xs-sm-logo-navmenu-height;
