@@ -34,20 +34,20 @@ html, body, #app {
   min-height: 100%;
 }
 
-.pageContent {
+.page-content {
   padding-top: 3.4375rem;
 }
 
 @media (min-width: 768px)
   {
-  .pageContent  {
+  .page-content  {
     padding-top: 3.75rem;
   }
 }
 
 @media (min-width: 992px)
   {
-  .pageContent  {
+  .page-content  {
     padding-top: 5rem;
   }
 }

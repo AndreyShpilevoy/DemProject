@@ -11,13 +11,13 @@ nav {
 }
 
 .navbar-height {
-  height: $navbar-height-and-pageContent-margin-top-xs-sm;
+  height: $navbar-height-and-page-content-margin-top-xs-sm;
 }
 
 //md+ screens
 @media (min-width: 768px) {
   .navbar-height {
-    height: $navbar-height-and-pageContent-margin-top-md;
+    height: $navbar-height-and-page-content-margin-top-md;
   }
 
   .navbar-logo-bg {
@@ -34,7 +34,7 @@ nav {
 //lg+ screens
 @media (min-width: 992px) {
   .navbar-height {
-    height: $navbar-height-and-pageContent-margin-top-lg;
+    height: $navbar-height-and-page-content-margin-top-lg;
   }
 
   .navbar-logo-bg {
@@ -49,7 +49,7 @@ nav {
 
 
   .nav-shrink {
-    height: $navbar-height-and-pageContent-margin-top-lg/2;
+    height: $navbar-height-and-page-content-margin-top-lg/2;
 
     .navbar-logo {
       width: $header-lg-logo-navmenu-width/2;

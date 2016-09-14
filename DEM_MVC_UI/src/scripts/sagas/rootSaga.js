@@ -4,7 +4,7 @@ import * as navigationLinkSagas from "./navigationLinkSagas.js";
 
 export default function* root() {
   yield [
-    forumSagas.getAllForums(),
+    forumSagas.getForumsByChapterId(),
     chapterSagas.getAllChapters(),
     navigationLinkSagas.getNavigationLinks()
   ];

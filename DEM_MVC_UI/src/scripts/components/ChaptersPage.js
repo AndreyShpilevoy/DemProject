@@ -25,7 +25,7 @@ class ChaptersPage extends React.Component {
   render() {
     let chapters = this.mapChapters();
     return (
-      <div className="pageContent">
+      <div className="page-content">
         <div className="container">
           <div className="row">
             <div className="col-xs-12 width-100-percent">

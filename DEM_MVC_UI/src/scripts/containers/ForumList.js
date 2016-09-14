@@ -2,31 +2,37 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as forumActions from "../actions/forumActions";
+import {ForumList as ForumListComponent} from "../components/_all.js";
 
 class ForumList extends React.Component {
-  // static propTypes = {
-  //   navigationLinks: PropTypes.arrayOf(
-  //     PropTypes.shape({
-  //       id: PropTypes.number.isRequired,
-  //       title: PropTypes.string.isRequired,
-  //       href: PropTypes.string.isRequired,
-  //       order: PropTypes.number.isRequired,
-  //     })).isRequired,
-  //   actions: PropTypes.object.isRequired,
-  // };
   static propTypes = {
     chapterId: PropTypes.number.isRequired,
-    forumsContainer: PropTypes.object.isRequired,
+    forumList: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        order: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        topicsCount: PropTypes.number.isRequired,
+        postsCount: PropTypes.number.isRequired,
+        lastActiveTopicId: PropTypes.number.isRequired,
+        lastActiveTopic: PropTypes.string.isRequired,
+        latesPostTimeCreation: PropTypes.instanceOf(Date),
+        latesPostAutorId: PropTypes.number.isRequired,
+        latesPostAutorName: PropTypes.string.isRequired,
+        latesPostAutorGroupColor: PropTypes.string.isRequired,
+        subforums: PropTypes.array,
+      })).isRequired,
     actions: PropTypes.object.isRequired
   };
 
   componentDidMount() {
-    this.props.actions.getAllForums(this.props.chapterId);
+    this.props.actions.getForumsByChapterId(this.props.chapterId);
   }
 
   render(){
     return(
-      <div>forums {this.props.forumsContainer.forums.length}  {this.props.chapterId}</div>
+      <ForumListComponent forumList={this.props.forumList} />
     );
   }
 }
@@ -35,7 +41,7 @@ class ForumList extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   let forumsContainer = state.forumReducer.find(forumReducer => forumReducer.chapterId === ownProps.chapterId);
   return {
-    forumsContainer: forumsContainer ? forumsContainer : {forums:[]}
+    forumList: forumsContainer ? forumsContainer.forumList : []
   };
 };
 

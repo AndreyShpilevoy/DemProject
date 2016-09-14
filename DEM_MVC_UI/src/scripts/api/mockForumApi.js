@@ -102,7 +102,7 @@ const forums = [{
 }];
 
 class ForumApi {
-    static getAllForums(chapterId) {
+    static getForumsByChapterId(chapterId) {
       let result = [];
       switch (chapterId) {
         case 1:

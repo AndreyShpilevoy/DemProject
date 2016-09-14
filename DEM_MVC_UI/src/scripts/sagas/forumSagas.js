@@ -3,14 +3,14 @@ import forumApi from "../api/mockForumApi";
 import * as forumActions from "../actions/forumActions";
 import * as types from "../actions/actionTypes";
 
-export function* getAllForums() {
+export function* getForumsByChapterId() {
   while(true){
-    const { chapterId } = yield take(types.GET_ALL_FORUMS);
-    yield fork(getForumsByChapterId, chapterId);
+    const { chapterId } = yield take(types.GET_FORUMS_BY_CHAPTER_ID);
+    yield fork(getForumsByChapterIdNonBlock, chapterId);
   }
 }
 
-function* getForumsByChapterId(chapterId) {
-  const forums = yield call(forumApi.getAllForums, chapterId);
-  yield put(forumActions.getAllForumsSuccess(chapterId, forums));
+function* getForumsByChapterIdNonBlock(chapterId) {
+  const forums = yield call(forumApi.getForumsByChapterId, chapterId);
+  yield put(forumActions.getForumsByChapterIdSuccess(chapterId, forums));
 }
