@@ -1,7 +1,7 @@
-import CollapseMenu from "./CollapseMenu";
 import ShrinkingHeader from "./ShrinkingHeader";
+import ToggleClass from "./ToggleClass";
 
 export {
-  CollapseMenu,
-  ShrinkingHeader
+  ShrinkingHeader,
+  ToggleClass
 };

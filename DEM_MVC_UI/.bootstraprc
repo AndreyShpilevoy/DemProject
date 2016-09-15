@@ -32,8 +32,6 @@
     "card": false,
     "breadcrumb": false,
     "pagination": false,
-    "pager": false,
-    "labels": false,
     "jumbotron": false,
     "alert": false,
     "progress": false,
@@ -41,6 +39,7 @@
     "list-group": false,
     "responsive-embed": false,
     "close": false,
+    "tags":false,
 
     "modal": false,
     "tooltip": false,
@@ -48,9 +47,7 @@
     "carousel": false,
 
     "utilities": true,
-    "utilities-background": false,
-    "utilities-spacing": false,
-    "utilities-responsive": true
+    "utilities-background": false
   },
     "scripts": false
 }

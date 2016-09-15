@@ -1,5 +1,6 @@
 @import "../Common/colors.scss";
 @import "../Common/sizes.scss";
+@import "../Common/slideAnimation.scss";
 
 .navbar-nav {
   background-color: $menu-button-background-color;
@@ -12,18 +13,15 @@
 
 //lg- screens
 @media (max-width: 991px) {
-  .nav-links-default {
-    // next three row needed for smoothly change of size (menu collapsed by default)
-    height: 0;
+  .nav-links-default  {
     width: 100%;
     display: flex;
     flex-flow: column;
-    overflow: hidden;
-    transition: all 350ms linear;
+    @include element-closed;
   }
 
-  .nav-links-default-opened {
-    height: 100%;
+  .nav-links-opened {
+    @include element-opened;
   }
 }
 

@@ -1,5 +1,6 @@
 @import "../Common/colors.scss";
 @import "../Common/sizes.scss";
+@import "../Common/slideAnimation.scss";
 
 .chapter-container {
   padding-top: $chapter-container-padding-top;
@@ -22,5 +23,18 @@
   .chapter-body {
     background-color: #7b736b;
     color: #48423d;
+  }
+}
+
+//lg- screens
+@media (max-width: 991px) {
+  .chapter-container {
+    .chapter-body-default {
+      @include element-closed;
+    }
+
+    .chapter-body-opened {
+      @include element-opened;
+    }
   }
 }

@@ -47,7 +47,10 @@ export default {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract("style-loader", ["css-loader", "postcss-loader", 'sass-loader?sourceMap'])
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: { loader: "style-loader" },
+          loader: { loader: "css-loader!postcss-loader!sass-loader?sourceMap" }
+        })
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -60,7 +63,7 @@ export default {
     ]
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin(GLOBALS),
     new ExtractTextPlugin('dem.min.css'),
     new webpack.optimize.DedupePlugin(),
