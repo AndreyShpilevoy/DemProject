@@ -8,6 +8,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import Autoprefixer from 'autoprefixer';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import checksum from 'checksum';
+import cssnano from 'cssnano';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
@@ -42,14 +43,19 @@ export default {
     loaders: [
       {
         test: /\.js$/,
+        exclude: /(node_modules)/,
         include: path.join(__dirname, "./src"),
-        loaders: ['react-hot',"babel"]
+        loaders: ["babel"],
+        query: {
+          presets: ["react", "stage-1", "es2015"],
+          plugins: ["transform-class-properties"]
+        }
       },
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: { loader: "style-loader" },
-          loader: { loader: "css-loader!postcss-loader!sass-loader?sourceMap" }
+          loader: { loader: "css-loader?sourceMap!postcss-loader!sass-loader?sourceMap" }
         })
       },
       {
@@ -67,7 +73,11 @@ export default {
     new webpack.DefinePlugin(GLOBALS),
     new ExtractTextPlugin('dem.min.css'),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {warnings: false},
+      output: {comments: false},
+      sourceMap: true
+  }),
     new CopyWebpackPlugin([
       { from: './node_modules/pace-progress/themes/orange/pace-theme-flash.css', to: 'pace.css' },
       { from: './node_modules/pace-progress/pace.min.js', to: 'pace.min.js' },
@@ -85,10 +95,22 @@ export default {
     })
   ],
   postcss: function () {
-    return [Autoprefixer({
-      browsers: ["> 1%", "last 2 versions"],
-      cascade: false
-    })];
+    return [
+      Autoprefixer({
+        browsers: ["> 1%", "last 2 versions"],
+        cascade: false
+      }),
+      cssnano({
+        discardComments: {
+          removeAll: true
+        },
+        discardUnused: false,
+        mergeIdents: false,
+        reduceIdents: false,
+        safe: true,
+        sourcemap: true
+     })
+    ];
   },
   eslint: {
       failOnWarning: false,

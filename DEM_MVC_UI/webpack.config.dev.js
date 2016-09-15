@@ -41,8 +41,13 @@ export default {
     loaders: [
       {
         test: /\.js$/,
+        exclude: /(node_modules)/,
         include: path.join(__dirname, "./src"),
-        loaders: ['react-hot',"babel"]
+        loaders: ["babel"],
+        query: {
+          presets: ["react", "stage-1", "es2015"],
+          plugins: ["react-hot-loader/babel", "transform-class-properties"]
+        }
       },
       {
         test: /\.scss$/,
