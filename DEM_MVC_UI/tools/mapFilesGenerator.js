@@ -64,6 +64,7 @@ const MapFilesGenerator = {
 MapFilesGenerator.init([
   "./src/scripts/components",
   "./src/scripts/containers",
+  "./src/scripts/icons",
   "./src/scripts/reactLess",
   "./testHelpers",
 ]);
