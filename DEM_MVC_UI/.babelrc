@@ -1,4 +1,22 @@
 {
-  "presets": ["react", "stage-1", "es2015"],
-  "plugins": ["transform-class-properties"]
+  "presets": [
+    "react",
+    "stage-1",
+    "es2015"
+  ],
+  "plugins": [
+    "transform-class-properties"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types"
+      ]
+    }
+  }
 }

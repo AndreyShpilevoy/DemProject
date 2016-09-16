@@ -6,6 +6,10 @@ import path from 'path';
 import Autoprefixer from 'autoprefixer';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+const GLOBALS = {
+  'process.env.NODE_ENV': JSON.stringify('development')
+
+};
 
 const bootstrapDevEntryPoint = 'bootstrap-loader/lib/bootstrap.loader?' +
           `configFilePath=${__dirname}/.bootstraprc` +
@@ -43,11 +47,7 @@ export default {
         test: /\.js$/,
         exclude: /(node_modules)/,
         include: path.join(__dirname, "./src"),
-        loaders: ["babel"],
-        query: {
-          presets: ["react", "stage-1", "es2015"],
-          plugins: ["react-hot-loader/babel", "transform-class-properties"]
-        }
+        loaders: ["babel"]
       },
       {
         test: /\.scss$/,
@@ -64,8 +64,8 @@ export default {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin(GLOBALS),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       hash: false,
       filename: 'index.html',

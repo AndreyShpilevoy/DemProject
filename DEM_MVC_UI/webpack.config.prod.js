@@ -45,11 +45,7 @@ export default {
         test: /\.js$/,
         exclude: /(node_modules)/,
         include: path.join(__dirname, "./src"),
-        loaders: ["babel"],
-        query: {
-          presets: ["react", "stage-1", "es2015"],
-          plugins: ["transform-class-properties"]
-        }
+        loaders: ["babel"]
       },
       {
         test: /\.scss$/,
@@ -71,6 +67,7 @@ export default {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin(GLOBALS),
+    new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin('dem.min.css'),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
