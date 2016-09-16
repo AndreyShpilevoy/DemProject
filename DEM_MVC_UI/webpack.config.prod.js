@@ -7,7 +7,6 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import Autoprefixer from 'autoprefixer';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import LodashModuleReplacementPlugin from 'lodash-webpack-plugin';
 import checksum from 'checksum';
 import cssnano from 'cssnano';
 
@@ -66,10 +65,6 @@ export default {
     ]
   },
   plugins: [
-    new LodashModuleReplacementPlugin({
-      //aditional options: https://github.com/lodash/lodash-webpack-plugin#feature-sets
-      'shorthands':true
-    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin(GLOBALS),
     new webpack.NoErrorsPlugin(),
