@@ -11,6 +11,9 @@ ul {
     font-size: $nav-link-font-size;
     padding-left: $nav-link-padding-left-right;
     padding-right: $nav-link-padding-left-right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .nav-link-separator {
