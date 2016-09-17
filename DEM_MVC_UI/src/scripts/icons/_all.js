@@ -1,5 +1,5 @@
-import Umbrella from "./Umbrella";
+import ArrowLeft from "./ArrowLeft";
 
 export {
-  Umbrella
+  ArrowLeft
 };

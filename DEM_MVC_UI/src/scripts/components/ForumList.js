@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import { Umbrella } from "../icons/_all";
 
 class ForumList extends React.Component {
   static propTypes = {
@@ -24,7 +23,7 @@ class ForumList extends React.Component {
   render(){
     return(
       <div className="forums-container">
-        forums contant {this.props.forumList.length}  <Umbrella umbrellafill="#ffffff"/>
+        forums contant {this.props.forumList.length}
       </div>
     );
   }

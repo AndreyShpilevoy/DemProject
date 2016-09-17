@@ -12,11 +12,26 @@
     color: $orange-text-color;
     font-size: $chapter-header-font-size;
 
-    .chapter-header-title {
+    .chapter-header-wrapper {
       padding: 0 $chapter-header-title-padding-horizontal;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+
+      .chapter-header-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .icon-arrow-left-chapter-title {
+        display: none;
+        margin-left: auto;
+        .icon-arrow-left {
+          width: $icon-arrow-left-chapter-title;
+          height: $icon-arrow-left-chapter-title;
+          .icon-arrow-left-path {
+            fill: $orange-text-color;
+          }
+        }
+      }
     }
   }
 
@@ -29,12 +44,35 @@
 //lg- screens
 @media (max-width: 991px) {
   .chapter-container {
+
+    .icon-arrow-left {
+      @include element-rotate-center-to-0;
+    }
+
+    .icon-arrow-left-opened {
+      @include element-rotate-center-to--90;
+    }
+
     .chapter-body-default {
       @include element-closed;
     }
 
     .chapter-body-opened {
       @include element-opened;
+    }
+  }
+}
+
+
+//md screens only
+@media (min-width: 768px) and (max-width: 991px) {
+  .chapter-container {
+    .chapter-header {
+      .chapter-header-wrapper {
+        .icon-arrow-left-chapter-title {
+          display: initial;
+        }
+      }
     }
   }
 }

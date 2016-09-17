@@ -4,9 +4,11 @@ const ToggleClass = {
   init: (toggleButtonId, contentElementId, classForToggle, itsMenu = false) => {
     let button = root.document.getElementById(toggleButtonId);
     let contentElement = root.document.getElementById(contentElementId);
-    button.onclick = () => {
+    let toggleEvent = () => {
       ToggleClass.toggle(contentElement, classForToggle);
     };
+    button.addEventListener('click', toggleEvent);
+
     if(itsMenu){
       root.document.addEventListener("click", (event) => {
         let eventTarget = event.target;
