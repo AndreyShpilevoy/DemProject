@@ -110,23 +110,22 @@ class ForumApi {
           result.push(forums[1]);
           break;
         case 2:
-          result.push(forums[2]);
+          result.push(forums[1]);
+          result.push(forums[0]);
           break;
         case 3:
-          result.push(forums[3]);
-          result.push(forums[4]);
+          result.push(forums[1]);
           break;
         case 4:
           result.push(forums[0]);
-          result.push(forums[2]);
           result.push(forums[1]);
+          result.push(forums[2]);
+          result.push(forums[3]);
           break;
         case 5:
           result.push(forums[0]);
-          result.push(forums[2]);
           result.push(forums[1]);
           result.push(forums[4]);
-          result.push(forums[3]);
           break;
         default:
       }

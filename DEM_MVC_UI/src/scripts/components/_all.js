@@ -1,5 +1,6 @@
 import ChapterItem from "./ChapterItem";
 import ChaptersPage from "./ChaptersPage";
+import ForumItem from "./ForumItem";
 import ForumList from "./ForumList";
 import Header from "./Header";
 import Layout from "./Layout";
@@ -11,6 +12,7 @@ import NavigationMenuToggleButton from "./NavigationMenuToggleButton";
 export {
   ChapterItem,
   ChaptersPage,
+  ForumItem,
   ForumList,
   Header,
   Layout,

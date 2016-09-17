@@ -1,0 +1,6 @@
+@import "../Common/sizes.scss";
+
+.forums-container {
+    padding: $forums-container-padding-top-bottom $forums-container-padding-left-right;
+    overflow: hidden;
+}

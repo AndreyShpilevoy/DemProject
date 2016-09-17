@@ -1,0 +1,22 @@
+@import "../Common/colors.scss";
+@import "../Common/sizes.scss";
+
+.forum-container-separator {
+    background-color: $forum-container-separator-background-color;
+    height: $forum-container-separator-height;
+    margin: $forum-container-separator-margin-top-bottom $forum-container-separator-margin-left-right;
+}
+
+.forum-container-wrapper:last-child {
+  .forum-container-separator {
+    display: none;
+  }
+}
+
+.forum-topics-posts-count-container {
+  display: flex;
+  white-space: nowrap;
+  div {
+    justify-content: flex-start;
+  }
+}

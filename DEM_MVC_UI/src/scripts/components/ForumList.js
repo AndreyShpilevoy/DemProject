@@ -1,4 +1,6 @@
 import React, {PropTypes} from 'react';
+import _ from 'lodash';
+import {ForumItem} from './_all.js';
 
 class ForumList extends React.Component {
   static propTypes = {
@@ -20,10 +22,21 @@ class ForumList extends React.Component {
       })).isRequired
   };
 
+  sortForums = () => {
+    return  _.sortBy(this.props.forumList, "order");
+  }
+
+  mapForums = () => {
+    let mappedForums = this.sortForums().map(forumItem =>
+      <ForumItem key={forumItem.id} forumItem={forumItem} />);
+        return mappedForums;
+  }
+
   render(){
+    let forumItems = this.mapForums();
     return(
       <div className="forums-container">
-        forums contant {this.props.forumList.length}
+        {forumItems}
       </div>
     );
   }
