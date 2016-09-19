@@ -1,14 +1,14 @@
 const TranslationArray  = [
   {
-    key: 1,
+    id: 1,
     value: 'Topics'
   },
   {
-    key: 2,
+    id: 2,
     value: 'Posts'
   },
   {
-    key: 3,
+    id: 3,
     value: 'Last message in'
   }
 ];

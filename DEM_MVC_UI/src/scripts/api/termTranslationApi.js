@@ -5,9 +5,9 @@ class termTranslationApi {
   static getTermTranslation(term, locale) {
     let result = "";
       if (term) {
-        let translationArray = _.pick(rootTranslations, [locale]);
-        if (translationArray) {
-          let translation = _.pick(translationArray, [term.key]);
+        let localeObject = _.find(rootTranslations, 'locale', locale);
+        if (localeObject) {
+          let translation = _.find(localeObject.translationArray.default, 'id', term.id);
           if (translation) {
             result = translation.value;
           } else {
@@ -17,9 +17,7 @@ class termTranslationApi {
           result = term.value;
         }
       }
-    return new Promise((resolve)=>{
-      resolve(Object.assign([], result));
-    });
+    return {id: term.id, value: result};
   }
 }
 

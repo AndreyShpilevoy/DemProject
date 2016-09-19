@@ -5,21 +5,20 @@ import * as termTranslationActions from "../actions/termTranslationActions";
 
 class TermItem extends React.Component {
   static propTypes = {
-    termItem: PropTypes.shape({
-        key: PropTypes.number.isRequired,
+    term: PropTypes.shape({
+        id: PropTypes.number.isRequired,
         value: PropTypes.string.isRequired,
       }).isRequired,
     translatedTermItem: PropTypes.shape({
-        key: PropTypes.number.isRequired,
+        id: PropTypes.number.isRequired,
         value: PropTypes.string.isRequired,
       }).isRequired,
     actions: PropTypes.object.isRequired,
   };
 
   componentDidMount() {
-    if(this.props.termItem) {
-      debugger;
-      this.props.actions.getTermTranslation(this.props.termItem);
+    if(this.props.term) {
+      this.props.actions.getTermTranslation(this.props.term);
     }
   }
 

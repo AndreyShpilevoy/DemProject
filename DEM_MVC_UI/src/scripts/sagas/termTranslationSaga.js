@@ -11,6 +11,6 @@ export function* getTermTranslation() {
 }
 
 function* getTermTranslationNonBlock(term) {
-  const translaedTerm = yield call(termTranslationApi.getTermTranslation, term, "en");
+  const translaedTerm = termTranslationApi.getTermTranslation(term, "en");
   yield put(termTranslationActions.getTermTranslationSuccess(translaedTerm));
 }

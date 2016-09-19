@@ -46,12 +46,14 @@ class ForumItem extends React.Component {
             </div>
             <div className="col-lg-2 forum-topics-counter flex flex-column-vertical-center">
               <span className="hidden-lg-up">
-                <TermItem termItem={{key: 1, value: "Topics"}}/> 
+                <TermItem term={{id: 1, value: "Topics"}}/>
               </span>
               {forumItem.topicsCount}
             </div>
             <div className="col-lg-2 forum-posts-counter flex flex-column-vertical-center">
-              <span className="hidden-lg-up">Posts </span>
+              <span className="hidden-lg-up">
+                <TermItem term={{id: 2, value: "Posts"}}/>
+              </span>
               {forumItem.postsCount}
             </div>
           </div>

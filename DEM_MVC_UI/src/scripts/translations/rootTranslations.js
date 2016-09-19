@@ -1,7 +1,7 @@
 import * as en from "./en";
 
 const rootTranslations = [
-  {key: "en", value: en}
+  {locale: "en", translationArray: en}
 ];
 
 export default rootTranslations;
