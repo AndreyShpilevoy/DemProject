@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
+import {TermItem} from '../containers/_all.js';
 
 class ForumItem extends React.Component {
   static propTypes = {
@@ -44,7 +45,9 @@ class ForumItem extends React.Component {
               </div>
             </div>
             <div className="col-lg-2 forum-topics-counter flex flex-column-vertical-center">
-              <span className="hidden-lg-up">Topics </span>
+              <span className="hidden-lg-up">
+                <TermItem termItem={{key: 1, value: "Topics"}}/> 
+              </span>
               {forumItem.topicsCount}
             </div>
             <div className="col-lg-2 forum-posts-counter flex flex-column-vertical-center">

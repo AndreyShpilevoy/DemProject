@@ -3,7 +3,7 @@ import {Provider} from "react-redux";
 import {Router, browserHistory} from "react-router";
 import { syncHistoryWithStore } from 'react-router-redux';
 
-class Root  extends React.Component{
+class Root extends React.Component{
   static propTypes = {
     store: PropTypes.object.isRequired,
     routes: PropTypes.object.isRequired

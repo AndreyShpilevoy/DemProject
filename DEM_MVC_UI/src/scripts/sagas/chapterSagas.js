@@ -1,5 +1,5 @@
 import { call, put, take } from "redux-saga/effects";
-import chapterApi from "../api/mockChapterApi";
+import chapterApi from "../api/mocks/mockChapterApi";
 import * as authorActions from "../actions/chapterActions";
 import * as types from "../actions/actionTypes";
 

@@ -1,5 +1,5 @@
 import { call, put, take, fork } from "redux-saga/effects";
-import forumApi from "../api/mockForumApi";
+import forumApi from "../api/mocks/mockForumApi";
 import * as forumActions from "../actions/forumActions";
 import * as types from "../actions/actionTypes";
 
