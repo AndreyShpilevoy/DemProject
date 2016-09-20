@@ -2,7 +2,7 @@
 
 import delay from './delay';
 
-const locale = {locale: "en"};
+const locale = {locale: "ru"};
 
 class LocaleApi {
   static getLocale() {
