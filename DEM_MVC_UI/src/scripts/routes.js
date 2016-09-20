@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import Layout from './components/Layout';
-import { ChaptersPage } from './containers/_all';
+import { Layout, ChaptersPage } from './containers/_all';
 
 export default (
   <Route path="/" component={Layout}>

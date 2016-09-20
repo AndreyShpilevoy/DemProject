@@ -1,7 +1,4 @@
 import React, {PropTypes} from 'react';
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-import * as localeActions from "../actions/localeActions";
 import {TermItem as TermItemComponent} from "../components/_all.js";
 import {TermTranslation} from "../reactLess/_all.js";
 
@@ -11,20 +8,18 @@ class TermItem extends React.Component {
         id: PropTypes.number.isRequired,
         value: PropTypes.string.isRequired,
       }).isRequired,
-      locale: PropTypes.string.isRequired,
       className: PropTypes.string,
       spaceBefore: PropTypes.bool,
-      spaceAfter: PropTypes.bool,
-    actions: PropTypes.object.isRequired
+      spaceAfter: PropTypes.bool
   };
 
-  componentDidMount() {
-    this.props.actions.getLocale();
+  static contextTypes = {
+    locale: React.PropTypes.string
   }
 
   translate = () => {
-      if(this.props.locale && this.props.term){
-        return TermTranslation.getTermTranslation(this.props.term, this.props.locale);
+      if(this.context.locale && this.props.term){
+        return TermTranslation.getTermTranslation(this.props.term, this.context.locale);
       } else {
         return null;
       }
@@ -38,12 +33,4 @@ class TermItem extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  locale: state.localeReducer.locale
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(localeActions, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TermItem);
+export default TermItem;
