@@ -21,5 +21,6 @@ export {
   NavigationLinkList,
   NavigationLinkLogo,
   NavigationMenuToggleButton,
-  TermItem
+  TermItem,
+  test
 };

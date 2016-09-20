@@ -21,21 +21,13 @@
     "test": "jest"
   },
   "jest": {
-    "automock": true,
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.js|.jsx",
     "moduleFileExtensions": [
-      "jsx",
-      "js"
+      "js",
+      "json"
     ],
-    "collectCoverage": true,
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react/",
-      "<rootDir>/node_modules/react-dom/",
-      "<rootDir>/node_modules/react-test-renderer/",
-      "<rootDir>/node_modules/react-addons-test-utils/",
-      "<rootDir>/testHelpers/"
-    ]
+    "collectCoverage": true
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",
@@ -57,6 +49,7 @@
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.25.0",
     "cssnano": "^3.7.4",
+    "enzyme": "^2.4.1",
     "eslint": "^3.5.0",
     "eslint-config-airbnb-base": "^7.1.0",
     "eslint-loader": "^1.5.0",
@@ -92,6 +85,7 @@
     "lodash": "^4.15.0",
     "pace-progress": "^1.0.2",
     "react": "^15.3.1",
+    "react-cookie": "^0.4.8",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
