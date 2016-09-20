@@ -1,13 +1,13 @@
 import _ from "lodash";
 import rootTranslations from "../translations/rootTranslations";
 
-class termTranslationApi {
+class TermTranslation {
   static getTermTranslation(term, locale) {
     let result = "";
       if (term) {
-        let localeObject = _.find(rootTranslations, 'locale', locale);
+        let localeObject = _.find(rootTranslations, {locale: locale});
         if (localeObject) {
-          let translation = _.find(localeObject.translationArray.default, 'id', term.id);
+          let translation = _.find(localeObject.translationArray, {id: term.id});
           if (translation) {
             result = translation.value;
           } else {
@@ -17,8 +17,8 @@ class termTranslationApi {
           result = term.value;
         }
       }
-    return {id: term.id, value: result};
+    return result;
   }
 }
 
-export default termTranslationApi;
+export default TermTranslation;

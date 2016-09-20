@@ -1,41 +1,36 @@
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import * as termTranslationActions from "../actions/termTranslationActions";
+import * as localeActions from "../actions/localeActions";
+import {TermItem as TermItemComponent} from "../components/_all.js";
 
 class TermItem extends React.Component {
   static propTypes = {
-    term: PropTypes.shape({
+      term: PropTypes.shape({
         id: PropTypes.number.isRequired,
         value: PropTypes.string.isRequired,
       }).isRequired,
-    translatedTermItem: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        value: PropTypes.string.isRequired,
-      }).isRequired,
-    actions: PropTypes.object.isRequired,
+      locale: PropTypes.string.isRequired,
+    actions: PropTypes.object.isRequired
   };
 
   componentDidMount() {
-    if(this.props.term) {
-      this.props.actions.getTermTranslation(this.props.term);
-    }
+    this.props.actions.getLocale();
   }
 
   render(){
     return(
-      <span>{this.props.translatedTermItem}</span>
+      <TermItemComponent term={this.props.term} locale={this.props.locale}/>
     );
   }
 }
 
-
-const mapStateToProps = (state) => {
-  return {termItem: state.termTranslationReducer};
-};
+const mapStateToProps = (state) => ({
+  locale: state.localeReducer.locale
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(termTranslationActions, dispatch)
+  actions: bindActionCreators(localeActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TermItem);

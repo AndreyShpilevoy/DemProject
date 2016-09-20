@@ -1,7 +1,8 @@
-import * as en from "./en";
+import EnTranslationArray from "./en";
 
 const rootTranslations = [
-  {locale: "en", translationArray: en}
+  {locale: "en", translationArray: EnTranslationArray},
+  {locale: "ru", translationArray: EnTranslationArray}
 ];
 
 export default rootTranslations;

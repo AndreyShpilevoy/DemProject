@@ -8,6 +8,7 @@ import NavigationLinkItem from "./NavigationLinkItem";
 import NavigationLinkList from "./NavigationLinkList";
 import NavigationLinkLogo from "./NavigationLinkLogo";
 import NavigationMenuToggleButton from "./NavigationMenuToggleButton";
+import TermItem from "./TermItem";
 
 export {
   ChapterItem,
@@ -19,5 +20,6 @@ export {
   NavigationLinkItem,
   NavigationLinkList,
   NavigationLinkLogo,
-  NavigationMenuToggleButton
+  NavigationMenuToggleButton,
+  TermItem
 };

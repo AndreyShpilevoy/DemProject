@@ -1,4 +1,4 @@
-const TranslationArray  = [
+const EnTranslationArray  = [
   {
     id: 1,
     value: 'Topics'
@@ -13,4 +13,4 @@ const TranslationArray  = [
   }
 ];
 
-export default TranslationArray;
+export default EnTranslationArray;

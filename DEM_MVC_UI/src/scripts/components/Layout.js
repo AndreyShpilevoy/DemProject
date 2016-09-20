@@ -1,5 +1,5 @@
 ﻿import React, {PropTypes} from "react";
-import { Header } from "../containers/_all";
+import { Header } from "./_all";
 
 const Layout = ({children}) => {
     return (
