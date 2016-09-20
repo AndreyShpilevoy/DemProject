@@ -46,13 +46,13 @@ class ForumItem extends React.Component {
             </div>
             <div className="col-lg-2 forum-topics-counter flex flex-column-vertical-center">
               <span className="hidden-lg-up">
-                <TermItem term={{id: 1, value: "Topics"}}/>
+                <TermItem term={{id: 1, value: "Topics"}} spaceAfter/>
               </span>
               {forumItem.topicsCount}
             </div>
             <div className="col-lg-2 forum-posts-counter flex flex-column-vertical-center">
               <span className="hidden-lg-up">
-                <TermItem term={{id: 2, value: "Posts"}}/>
+                <TermItem term={{id: 2, value: "Posts"}} spaceAfter/>
               </span>
               {forumItem.postsCount}
             </div>
@@ -63,7 +63,9 @@ class ForumItem extends React.Component {
               {forumItem.latesPostTimeCreation.toString()}
             </div>
             <div className="col-md-7 col-lg-12 forum-last-active-topic">
-              <span className="hidden-lg-up">Last message in </span>
+              <span className="hidden-lg-up">
+                <TermItem term={{id: 3, value: "Last message in"}} spaceAfter/>
+              </span>
               <Link className="forum-last-active-topic-message" to={"/"}>{forumItem.lastActiveTopic}</Link>
             </div>
           </div>

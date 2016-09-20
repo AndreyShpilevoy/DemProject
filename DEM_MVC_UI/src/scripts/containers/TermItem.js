@@ -12,6 +12,9 @@ class TermItem extends React.Component {
         value: PropTypes.string.isRequired,
       }).isRequired,
       locale: PropTypes.string.isRequired,
+      className: PropTypes.string,
+      spaceBefore: PropTypes.bool,
+      spaceAfter: PropTypes.bool,
     actions: PropTypes.object.isRequired
   };
 
@@ -28,8 +31,9 @@ class TermItem extends React.Component {
   }
 
   render(){
+    let item = this.props;
     return(
-      <TermItemComponent term={this.translate()}/>
+      <TermItemComponent term={this.translate()} className={item.className} spaceBefore={item.spaceBefore} spaceAfter={item.spaceAfter}/>
     );
   }
 }
