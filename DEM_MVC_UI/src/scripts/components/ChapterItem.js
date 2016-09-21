@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
-import {ForumList} from '../containers/_all.js';
-import { ToggleClass } from "../reactLess/_all";
+import {ForumList} from '../containers/_all';
+import { ToggleClass } from "../utils/_all";
 import { ArrowLeft } from "../icons/_all";
 
 class ChapterItem extends React.Component {

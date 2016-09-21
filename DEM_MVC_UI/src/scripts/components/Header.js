@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationLinkList } from "../containers/_all";
 import { NavigationLinkLogo, NavigationMenuToggleButton } from "./_all";
-import { ShrinkingHeader, ToggleClass } from "../reactLess/_all";
+import { ShrinkingHeader, ToggleClass } from "../utils/_all";
 
 class Header extends React.Component {
   componentDidMount() {

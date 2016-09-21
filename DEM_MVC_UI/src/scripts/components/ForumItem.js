@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-import {TermItem} from '../containers/_all.js';
+import {TermItem} from '../containers/_all';
 
 class ForumItem extends React.Component {
   static propTypes = {

@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as forumActions from "../actions/forumActions";
-import {ForumList as ForumListComponent} from "../components/_all.js";
+import {ForumList as ForumListComponent} from "../components/_all";
 
 class ForumList extends React.Component {
   static propTypes = {

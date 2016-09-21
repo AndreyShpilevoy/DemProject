@@ -3,14 +3,14 @@ import _ from 'lodash';
 import {ChapterItem} from './_all';
 
 class ChaptersPage extends React.Component {
-	static propTypes = {
+  static propTypes = {
     chapters: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         order: PropTypes.number.isRequired,
    })).isRequired
-	};
+  };
 
   sortChapters = () => {
     return  _.sortBy(this.props.chapters, "order");

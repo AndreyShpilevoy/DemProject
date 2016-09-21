@@ -2,10 +2,10 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as chapterActions from "../actions/chapterActions";
-import { ChaptersPage as ChaptersPageComponent } from "../components/_all.js";
+import { ChaptersPage as ChaptersPageComponent } from "../components/_all";
 
 class ChaptersPage extends React.Component {
-	static propTypes = {
+  static propTypes = {
     chapters: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -15,9 +15,9 @@ class ChaptersPage extends React.Component {
     actions: PropTypes.object.isRequired,
   };
 
-	componentDidMount() {
-		this.props.actions.getAllChapters();
-	}
+  componentDidMount() {
+    this.props.actions.getAllChapters();
+  }
 
   render() {
     return (

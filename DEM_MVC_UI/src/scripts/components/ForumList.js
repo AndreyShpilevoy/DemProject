@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import {ForumItem} from './_all.js';
+import {ForumItem} from './_all';
 
 class ForumList extends React.Component {
   static propTypes = {
