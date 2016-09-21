@@ -26,7 +26,7 @@ class Layout extends React.Component {
     return {locale: this.props.locale};
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.actions.getLocale();
   }
 
