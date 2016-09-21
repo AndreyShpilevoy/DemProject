@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-import {TermItem} from '../containers/_all';
+import {TermItem, RelativeDateTime} from '../containers/_all';
 
 class ForumItem extends React.Component {
   static propTypes = {
@@ -60,7 +60,7 @@ class ForumItem extends React.Component {
           <div className="col-md-7 col-lg-3 row">
             <div className="hidden-sm-down col-md-5 col-lg-12">
               <Link activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{forumItem.latesPostAutorName}</Link>
-              {forumItem.latesPostTimeCreation.toString()}
+              <RelativeDateTime dateTime={forumItem.latesPostTimeCreation} />
             </div>
             <div className="col-md-7 col-lg-12 forum-last-active-topic">
               <span className="hidden-lg-up">
