@@ -1,4 +1,4 @@
-const uk  = [
+const ua  = [
   {id: 1,   value: 'Тем', description: 'for topics count in %ForumName% on forumItem component'},
   {id: 2,   value: 'Повідомлень', description: 'for posts count in %ForumName% on forumItem component'},
   {id: 3,   value: 'Останнє повідомлення в', description: 'for last message in %TopicName% on forumItem component'},
@@ -22,4 +22,4 @@ const uk  = [
   {id: 21,  value: 'років', description: 'several years for TransformDateTime'}
 ];
 
-export default uk;
+export default ua;
