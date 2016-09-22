@@ -1,10 +1,8 @@
-//Context ussed here!
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as localeActions from "../actions/localeActions";
 import {Layout as LayoutComponent} from "../components/_all";
-import {ReduxContextFix} from "../utils/_all";
 
 class Layout extends React.Component {
   static propTypes = {
@@ -13,20 +11,7 @@ class Layout extends React.Component {
     actions: PropTypes.object.isRequired
   };
 
-  static childContextTypes = {
-    locale: React.PropTypes.string
-  }
-
-  constructor(props, context) {
-    super(props, context);
-    ReduxContextFix.register(this);
-  }
-
-  getChildContext() {
-    return {locale: this.props.locale};
-  }
-
-  componentWillMount() {
+  componentDidMount() {
     this.props.actions.getLocale();
   }
 
@@ -37,11 +22,9 @@ class Layout extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  let newLocale = {locale: state.localeReducer.locale};
-  ReduxContextFix.notify(newLocale);
-  return newLocale;
-};
+const mapStateToProps = (state) => ({
+  locale: state.localeReducer.locale
+});
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(localeActions, dispatch)

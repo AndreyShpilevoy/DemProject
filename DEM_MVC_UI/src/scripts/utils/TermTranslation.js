@@ -15,6 +15,10 @@ class TermTranslation {
       }
     return result ? result : term.value;
   }
+  static getDateTimeDeclension(locale) {
+    let localeObject = _.find(rootTranslations, {locale: locale});
+    return localeObject ?  localeObject.dateTimeDeclension : null;
+  }
 }
 
 export default TermTranslation;

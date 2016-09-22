@@ -8,6 +8,7 @@ import NavigationLinkItem from "./NavigationLinkItem";
 import NavigationLinkList from "./NavigationLinkList";
 import NavigationLinkLogo from "./NavigationLinkLogo";
 import NavigationMenuToggleButton from "./NavigationMenuToggleButton";
+import RelativeDateTime from "./RelativeDateTime";
 import TermItem from "./TermItem";
 
 export {
@@ -21,5 +22,6 @@ export {
   NavigationLinkList,
   NavigationLinkLogo,
   NavigationMenuToggleButton,
+  RelativeDateTime,
   TermItem
 };

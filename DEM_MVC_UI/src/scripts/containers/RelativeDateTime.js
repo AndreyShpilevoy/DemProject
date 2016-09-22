@@ -1,34 +1,39 @@
-//Context ussed here!
 import React, {PropTypes} from 'react';
-import {TransformDateTime, ReduxContextFix} from "../utils/_all";
+import {connect} from "react-redux";
+import {TransformDateTime} from "../utils/_all";
+import {RelativeDateTime as RelativeDateTimeComponent} from "../components/_all";
 
 class RelativeDateTime extends React.Component {
   static propTypes = {
-      dateTime: PropTypes.instanceOf(Date)
+      relativeDateTime: PropTypes.instanceOf(Date).isRequired,
+      locale: PropTypes.object.isRequired,
+      className: PropTypes.string,
+      spaceBefore: PropTypes.bool,
+      spaceAfter: PropTypes.bool,
   };
 
-  static contextTypes = {
-    locale: React.PropTypes.string
-  }
-
-  constructor(props) {
-    super(props);
-    ReduxContextFix.connect(this);
-  }
-
   transform = () => {
-      if(this.props.dateTime && this.context.locale){
-        return TransformDateTime.GetRelative(this.props.dateTime, this.context.locale);
+      if(this.props.relativeDateTime && this.props.locale){
+        return TransformDateTime.GetRelative(this.props.relativeDateTime, this.props.locale);
       } else {
         return null;
       }
   }
 
   render(){
+    let item = this.props;
     return(
-      <span>{this.transform()}</span>
+      <RelativeDateTimeComponent
+        relativeDateTime={this.transform()} 
+        className={item.className}
+        spaceBefore={item.spaceBefore}
+        spaceAfter={item.spaceAfter}/>
     );
   }
 }
 
-export default RelativeDateTime;
+const mapStateToProps = (state) => ({
+  locale: state.localeReducer.locale
+});
+
+export default connect(mapStateToProps)(RelativeDateTime);

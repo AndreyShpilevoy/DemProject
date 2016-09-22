@@ -1,40 +1,67 @@
-const TransformDateTime = {
+import TermTranslation from "./TermTranslation";
+
+class TransformDateTime {
+  constructor(){
+    this.msPerMinute = 60 * 1000;
+    this.msPerHour = this.msPerMinute * 60;
+    this.msPerDay = this.msPerHour * 24;
+    this.msPerMonth = this.msPerDay * 30;
+    this.msPerYear = this.msPerDay * 365;
+  }
   GetRelative(date, locale) {
-    let msPerMinute = 60 * 1000;
-    let msPerHour = msPerMinute * 60;
-    let msPerDay = msPerHour * 24;
-    let msPerMonth = msPerDay * 30;
-    let msPerYear = msPerDay * 365;
+    let dateTimeDeclension = TermTranslation.getDateTimeDeclension(locale);
+    let suffixAgo = TermTranslation.getTermTranslation({id: 4, value: "ago"}, locale);
 
-    let elapsed = new Date() - date;
-    let result;
+    let msDeltaTime = new Date() - date;
+    let dateTime;
 
-    if (elapsed < msPerMinute) {
-         result = Math.round(elapsed/1000) + ' seconds ago';
+    if (msDeltaTime < this.msPerMinute) {
+      dateTime = TermTranslation.getTermTranslation({id: 5, value: "less than a minute"}, locale);
     }
 
-    else if (elapsed < msPerHour) {
-         result = Math.round(elapsed/msPerMinute) + ' minutes ago';
+    else if (msDeltaTime < this.msPerHour) {
+      let number = Math.round(msDeltaTime/this.msPerMinute);
+      let oneMinute = TermTranslation.getTermTranslation({id: 6, value: "about a minute"}, locale);
+      let firstForm = TermTranslation.getTermTranslation({id: 7, value: "minutes"}, locale);
+      let secondForm = TermTranslation.getTermTranslation({id: 8, value: "minutes"}, locale);
+      let thirdForm = TermTranslation.getTermTranslation({id: 9, value: "minutes"}, locale);
+      dateTime = dateTimeDeclension(number, firstForm, secondForm, thirdForm, oneMinute);
     }
 
-    else if (elapsed < msPerDay ) {
-        result = Math.round(elapsed/msPerHour ) + ' hours ago';
+    else if (msDeltaTime < this.msPerDay ) {
+      let number = Math.round(msDeltaTime/this.msPerHour);
+      let firstForm = TermTranslation.getTermTranslation({id: 10, value: "about an hour"}, locale);
+      let secondForm = TermTranslation.getTermTranslation({id: 11, value: "hours"}, locale);
+      let thirdForm = TermTranslation.getTermTranslation({id: 12, value: "hours"}, locale);
+      dateTime = dateTimeDeclension(number, firstForm, secondForm, thirdForm, firstForm);
     }
 
-    else if (elapsed < msPerMonth) {
-        result = 'approximately ' + Math.round(elapsed/msPerDay) + ' days ago';
+    else if (msDeltaTime < this.msPerMonth) {
+      let number = Math.round(msDeltaTime/this.msPerDay);
+      let firstForm = TermTranslation.getTermTranslation({id: 13, value: "a day"}, locale);
+      let secondForm = TermTranslation.getTermTranslation({id: 14, value: "days"}, locale);
+      let thirdForm = TermTranslation.getTermTranslation({id: 15, value: "days"}, locale);
+      dateTime = dateTimeDeclension(number, firstForm, secondForm, thirdForm, firstForm);
     }
 
-    else if (elapsed < msPerYear) {
-        result = 'approximately ' + Math.round(elapsed/msPerMonth) + ' months ago';
+    else if (msDeltaTime < this.msPerYear) {
+      let number = Math.round(msDeltaTime/this.msPerMonth);
+      let firstForm = TermTranslation.getTermTranslation({id: 16, value: "about a month"}, locale);
+      let secondForm = TermTranslation.getTermTranslation({id: 17, value: "months"}, locale);
+      let thirdForm = TermTranslation.getTermTranslation({id: 18, value: "months"}, locale);
+      dateTime = dateTimeDeclension(number, firstForm, secondForm, thirdForm, firstForm);
     }
 
     else {
-        result = 'approximately ' + Math.round(elapsed/msPerYear ) + ' years ago';
+      let number = Math.round(msDeltaTime/this.msPerYear );
+      let firstForm = TermTranslation.getTermTranslation({id: 19, value: "about a year"}, locale);
+      let secondForm = TermTranslation.getTermTranslation({id:20, value: "years"}, locale);
+      let thirdForm = TermTranslation.getTermTranslation({id: 21, value: "years"}, locale);
+      dateTime = dateTimeDeclension(number, firstForm, secondForm, thirdForm, firstForm);
     }
 
-    return result || "";
+    return `${dateTime} ${suffixAgo}`;
   }
-};
+}
 
-export default TransformDateTime;
+export default new TransformDateTime();
