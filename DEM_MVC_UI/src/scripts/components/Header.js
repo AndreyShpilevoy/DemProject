@@ -13,7 +13,7 @@ class Header extends React.Component {
       <div className="container navbar-fixed-top">
         <div className="row">
           <div className="col-xs-12">
-            <nav id="header" className="navbar navbar-full navbar-height navbar-logo-bg padding-initial">
+            <nav id="header" className="navbar navbar-full header-height header-logo-bg padding-initial">
               <div className="row heigth-inherit">
                 <div className="flex col-xs-12 col-lg-4 heigth-inherit">
                   <NavigationLinkLogo />

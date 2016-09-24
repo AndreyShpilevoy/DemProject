@@ -10,62 +10,44 @@ nav {
   transition: all 400ms linear;
 }
 
-.navbar-height {
-  height: $navbar-height-and-page-content-margin-top-xs-sm;
+.header-height {
+  height: $header-height-and-page-content-margin-top-xs-sm;
 }
 
-//md+ screens
+//md and bigger screens
 @media (min-width: 768px) {
-  .navbar-height {
-    height: $navbar-height-and-page-content-margin-top-md;
+  .header-height {
+    height: $header-height-and-page-content-margin-top-md;
   }
 
-  .navbar-logo-bg {
+  .header-logo-bg {
     background-image: $navbar-background-md;
   }
-
-  .navbar-logo {
-    width: $header-md-logo-navmenu-width;
-    height: $header-md-logo-navmenu-height;
-    background-size: $header-md-logo-navmenu-width $header-md-logo-navmenu-height;
-  }
 }
 
-//lg+ screens
+//lg and bigger screens
 @media (min-width: 992px) {
-  .navbar-height {
-    height: $navbar-height-and-page-content-margin-top-lg;
+  .header-height {
+    height: $header-height-and-page-content-margin-top-lg;
   }
 
-  .navbar-logo-bg {
+  .header-logo-bg {
     background-image: $navbar-background-lg;
-  }
-
-  .navbar-logo {
-    width: $header-lg-logo-navmenu-width;
-    height: $header-lg-logo-navmenu-height;
-    background-size: $header-lg-logo-navmenu-width $header-lg-logo-navmenu-height;
   }
 
 
   .nav-shrink {
-    height: $navbar-height-and-page-content-margin-top-lg/2;
+    height: $header-height-and-page-content-margin-top-lg/2;
 
-    .navbar-logo {
-      width: $header-lg-logo-navmenu-width/2;
-      height: $header-lg-logo-navmenu-height/2;
-      background-size: $header-lg-logo-navmenu-width/2 $header-lg-logo-navmenu-height/2;
-    }
-
-    &.navbar-logo-bg {
+    &.header-logo-bg {
       background-position-y: 50%;
     }
   }
 }
 
-//xl screens
+//xl and bigger screens
 @media (min-width: 1200px) {
-  .navbar-logo-bg {
+  .header-logo-bg {
     background-image: $navbar-background-xl;
   }
 }

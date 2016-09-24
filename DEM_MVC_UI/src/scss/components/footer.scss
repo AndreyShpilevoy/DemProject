@@ -1,0 +1,24 @@
+@import "../Common/colors.scss";
+@import "../Common/sizes.scss";
+@import "../Common/image-backgrounds.scss";
+
+.footer {
+  background-color: $footer-background-color;
+  height: $footer-height-md-down;
+  color: $footer-text-color;
+}
+
+//lg and bigger screens
+@media (min-width: 992px) {
+  .footer {
+    height: $footer-height-lg-up;
+    background-image: $footer-background-lg;
+  }
+}
+
+//xl and bigger screens
+@media (min-width: 1200px) {
+  .footer {
+    background-image: $footer-background-xl;
+  }
+}

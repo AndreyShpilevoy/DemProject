@@ -20,7 +20,7 @@
 }
 
 
-//md+ screens
+//md and bigger screens
 @media (min-width: 768px) {
   .navbar-logo {
     width: $header-md-logo-navmenu-width;
@@ -29,7 +29,7 @@
   }
 }
 
-//lg+ screens
+//lg and bigger screens
 @media (min-width: 992px) {
   .navbar-logo {
     width: $header-lg-logo-navmenu-width;

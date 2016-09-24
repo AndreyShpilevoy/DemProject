@@ -4,7 +4,7 @@ const ArrowLeft = ({color, height, width, viewBox, id, className, title}) => {
   return (
     <svg id={id} className={className} xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox={viewBox} aria-labelledby="title">
       <title>{title}</title>
-      <path className={className+"-path"} fill={color} d="M 22,2.001 8,16 22,30 z" />
+      <path className={className+"-path"} fill={color} d="M 22,2 8,16 22,30 z" />
     </svg>
   );
 };

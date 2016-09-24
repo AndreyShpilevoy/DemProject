@@ -61,12 +61,12 @@ class ForumItem extends React.Component {
               {forumItem.postsCount}
             </div>
           </div>
-          <div className="col-md-7 col-lg-3 row">
-            <div className="hidden-sm-down col-md-5 col-lg-12">
-              <Link activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{forumItem.latesPostAutorName}</Link>
+          <div className="col-md-7 col-lg-3 forum-last-post-wrapper">
+            <div className="hidden-sm-down padding-initial forum-last-post-autor-name-style">
+              <Link className="hidden-md-down" activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{forumItem.latesPostAutorName}</Link>
               <RelativeDateTime relativeDateTime={forumItem.latesPostTimeCreation} spaceBefore/>
             </div>
-            <div className="col-md-7 col-lg-12 forum-last-active-topic">
+            <div className="padding-initial forum-last-active-topic">
               <span className="hidden-lg-up">
                 <TermItem term={{id: 3, value: "Last message in"}} spaceAfter/>
               </span>

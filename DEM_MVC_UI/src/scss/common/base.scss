@@ -38,6 +38,7 @@ html, body, #app {
   padding-top: 3.4375rem;
 }
 
+//sm and bigger screens
 @media (min-width: 768px)
   {
   .page-content  {
@@ -45,6 +46,7 @@ html, body, #app {
   }
 }
 
+//lg and bigger screens
 @media (min-width: 992px)
   {
   .page-content  {
