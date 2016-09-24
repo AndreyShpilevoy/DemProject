@@ -7,6 +7,10 @@
   justify-content: center;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
 //lg+ screens
 @media (min-width: 992px) {
   .flex-column-vertical-center-lg-up {

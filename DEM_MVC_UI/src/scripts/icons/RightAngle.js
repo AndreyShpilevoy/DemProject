@@ -16,8 +16,8 @@ RightAngle.defaultProps = {
   height: defaultHeight,
   width: defaultWidth,
   viewBox: `0 0 ${defaultHeight} ${defaultWidth}`,
-  className: "icon-arrow-left",
-  title: "Arrow Left",
+  className: "icon-right-angle",
+  title: "Right Angle",
   color: "#ffffff"
 };
 

@@ -13,9 +13,9 @@ class SubForumItem extends React.Component {
 
   render(){
     return(
-      <div className="sub-forum-item-container">
-        <RightAngle className="icon-arrow-left" />
-        <Link to={"/"}>{this.props.subForumItem.title}</Link>
+      <div className="sub-forum-item-container flex flex-row">
+        <RightAngle className="sub-forum-icon-right-angle" />
+        <Link className="sub-forum-link" to={"/"}>{this.props.subForumItem.title}</Link>
       </div>
     );
   }
