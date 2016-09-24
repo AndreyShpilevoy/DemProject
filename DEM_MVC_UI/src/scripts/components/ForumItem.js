@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
 import {TermItem, RelativeDateTime} from '../containers/_all';
+import {SubForumList} from './_all';
 
 class ForumItem extends React.Component {
   static propTypes = {
@@ -17,7 +18,7 @@ class ForumItem extends React.Component {
       latesPostAutorId: PropTypes.number.isRequired,
       latesPostAutorName: PropTypes.string.isRequired,
       latesPostAutorGroupColor: PropTypes.string.isRequired,
-      subforums: PropTypes.array
+      subForums: PropTypes.array
     }).isRequired
   };
 
@@ -42,6 +43,9 @@ class ForumItem extends React.Component {
               </div>
               <div className="hidden-md-down forum-description">
                 {forumItem.description}
+              </div>
+              <div className="hidden-md-down">
+                <SubForumList subForums={forumItem.subForums}/>
               </div>
             </div>
             <div className="col-lg-2 forum-topics-counter flex flex-column-vertical-center">

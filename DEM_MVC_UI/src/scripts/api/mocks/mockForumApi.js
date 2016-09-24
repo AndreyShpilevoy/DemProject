@@ -15,12 +15,14 @@ const forums = [{
     latesPostAutorId: 1,
     latesPostAutorName: "kto",
     latesPostAutorGroupColor: "ffa510",
-    subforums: [{
+    subForums: [{
         id: 11,
         title: "Самопал",
+        order: 35
     },{
         id: 12,
         title: "Архив форумки",
+        order: 12
     }]
 }, {
     id: 2,
@@ -34,8 +36,7 @@ const forums = [{
     latesPostTimeCreation: new Date("2016/9/22 12:53:09"),
     latesPostAutorId: 2,
     latesPostAutorName: "Bykawka",
-    latesPostAutorGroupColor: "fbeab2",
-    subforums: []
+    latesPostAutorGroupColor: "fbeab2"
 },{
     id: 3,
     order: 3,
@@ -49,9 +50,10 @@ const forums = [{
     latesPostAutorId: 3,
     latesPostAutorName: "ololoid",
     latesPostAutorGroupColor: "99ccff",
-    subforums: [{
+    subForums: [{
         id: 31,
         title: "Багтрекер",
+        order: 27
     }]
 },{
     id: 4,
@@ -65,8 +67,7 @@ const forums = [{
     latesPostTimeCreation: new Date("2007/09/06 22:33:09"),
     latesPostAutorId: 4,
     latesPostAutorName: "Buba",
-    latesPostAutorGroupColor: "00AA00",
-    subforums: []
+    latesPostAutorGroupColor: "00AA00"
 },{
     id: 5,
     order: 5,
@@ -80,24 +81,30 @@ const forums = [{
     latesPostAutorId: 5,
     latesPostAutorName: "Agent005",
     latesPostAutorGroupColor: "ff00ff",
-    subforums: [{
+    subForums: [{
         id: 51,
         title: "FAQ",
+        order: 51
     },{
         id: 52,
         title: "Юзербары",
+        order: 52
     },{
         id: 53,
         title: "О игре",
+        order: 53
     },{
         id: 54,
         title: "Видео",
+        order: 54
     },{
         id: 55,
         title: "Рассказы",
+        order: 55
     },{
         id: 56,
         title: "Каталог файлов",
+        order: 56
     }]
 }];
 
