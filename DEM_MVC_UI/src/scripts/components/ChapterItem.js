@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import { Link } from 'react-router';
 import {ForumList, TermItem} from '../containers/_all';
 import { ToggleClass } from "../utils/_all";
 import { ArrowLeft } from "../icons/_all";
@@ -34,7 +35,7 @@ class ChapterItem extends React.Component {
         <div className="chapter-header flex flex-column-vertical-center container" id={this.state.chapterHeaderId}>
           <div className="flex chapter-header-wrapper row">
             <div className="chapter-header-title col-lg-6">
-              {chapterItem.title}
+              <Link to={"/"}>{chapterItem.title}</Link>
             </div>
             <div className="col-lg-6 row hidden-md-down">
               <div className="chapter-header-title-info-label col-lg-3 flex flex-column-vertical-center">

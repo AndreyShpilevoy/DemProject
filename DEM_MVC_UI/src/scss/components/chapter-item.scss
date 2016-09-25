@@ -20,6 +20,9 @@
         overflow: hidden;
         text-overflow: ellipsis;
         width: initial;
+        a {
+          color: $orange-text-color;
+        }
       }
 
       .chapter-header-title-info-label {
