@@ -1,7 +1,7 @@
 const en  = [
   {id: 1,   value: 'Topics', description: 'for topics count in %ForumName% on forumItem component'},
   {id: 2,   value: 'Posts', description: 'for posts count in %ForumName% on forumItem component'},
-  {id: 3,   value: 'Last message in', description: 'for last message in %TopicName% on forumItem component'},
+  {id: 3,   value: 'Last message', description: 'for last message in %TopicName% on forumItem component'},
   {id: 4,   value: 'ago', description: 'suffix Ago for TransformDateTime'},
   {id: 5,   value: 'less than a minute', description: 'for TransformDateTime'},
   {id: 6,   value: 'about a minute', description: 'single minute for TransformDateTime'},

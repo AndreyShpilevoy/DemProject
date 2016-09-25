@@ -19,6 +19,13 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        width: initial;
+      }
+
+      .chapter-header-title-info-label {
+        font-size: 1rem;
+        line-height: 1;
+        align-items: center;
       }
 
       .icon-arrow-left-chapter-title {

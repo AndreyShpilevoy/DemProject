@@ -63,7 +63,7 @@ class ForumItem extends React.Component {
           </div>
           <div className="col-md-7 col-lg-3 forum-last-post-wrapper">
             <div className="hidden-sm-down padding-initial forum-last-post-autor-name-style">
-              <Link className="hidden-md-down" activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{forumItem.latesPostAutorName}</Link>
+              <Link className="hidden-sm-down" activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{forumItem.latesPostAutorName}</Link>
               <RelativeDateTime relativeDateTime={forumItem.latesPostTimeCreation} spaceBefore/>
             </div>
             <div className="padding-initial forum-last-active-topic">

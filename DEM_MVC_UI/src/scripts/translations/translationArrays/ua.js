@@ -1,7 +1,7 @@
 const ua  = [
   {id: 1,   value: 'Тем', description: 'for topics count in %ForumName% on forumItem component'},
   {id: 2,   value: 'Повідомлень', description: 'for posts count in %ForumName% on forumItem component'},
-  {id: 3,   value: 'Останнє повідомлення в', description: 'for last message in %TopicName% on forumItem component'},
+  {id: 3,   value: 'Останнє повідомлення', description: 'for last message in %TopicName% on forumItem component'},
   {id: 4,   value: 'тому', description: 'suffix Ago for TransformDateTime'},
   {id: 5,   value: 'менше хвилини', description: 'for TransformDateTime'},
   {id: 6,   value: 'хвилина', description: 'single minute for TransformDateTime'},

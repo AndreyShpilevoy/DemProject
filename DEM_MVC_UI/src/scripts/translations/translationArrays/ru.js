@@ -1,7 +1,7 @@
 const ru  = [
   {id: 1,   value: 'Тем', description: 'for topics count in %ForumName% on forumItem component'},
   {id: 2,   value: 'Сообщений', description: 'for posts count in %ForumName% on forumItem component'},
-  {id: 3,   value: 'Последнее сообщение в', description: 'for last message in %TopicName% on forumItem component'},
+  {id: 3,   value: 'Последнее сообщение', description: 'for last message in %TopicName% on forumItem component'},
   {id: 4,   value: 'назад', description: 'suffix Ago for TransformDateTime'},
   {id: 5,   value: 'меньше минуты', description: 'for TransformDateTime'},
   {id: 6,   value: 'минуту', description: 'single minute for TransformDateTime'},
