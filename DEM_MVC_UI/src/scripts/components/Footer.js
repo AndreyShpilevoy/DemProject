@@ -1,13 +1,20 @@
 import React from 'react';
+import {SocialMediaLinkList} from '../containers/_all';
 
 class Footer extends React.Component {
     render() {
     return(
-      <div className="container">
+      <div className="container footer-container">
         <div className="row">
           <div className="col-xs-12">
-            <div id="footer" className="footer">
-              <span>DEM Team - 04.03.2007</span>
+            <div id="footer" className="footer flex">
+              <div className="hidden-md-down footer-empty-wrapper "/>
+              <div className="footer-copyright-wrapper flex flex-column-vertical-center">
+                DEM Team - 04.03.2007
+              </div>
+              <div className="hidden-md-down footer-social-media-link-wrapper flex flex-column-vertical-center">
+                <SocialMediaLinkList/>
+              </div>
             </div>
           </div>
         </div>

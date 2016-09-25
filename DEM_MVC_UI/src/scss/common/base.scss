@@ -7,11 +7,10 @@ html {
 
 body {
   background-color: $body-background-color;
-  min-width: 320px;
-  min-height: 480px;
+  min-width: $body-min-width;
   font-family: Arial,sans-serif;
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: $body-font-size;
+  line-height: $body-line-height;
   margin: initial;
 }
 
@@ -33,16 +32,22 @@ html, body, #app {
 #app {
   min-height: 100%;
 }
+#app > div {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
 .page-content {
-  padding-top: 3.4375rem;
+  flex: 1 0 auto;
+  padding-top: $page-content-padding-top-xs-sm;
 }
 
 //sm and bigger screens
 @media (min-width: 768px)
   {
   .page-content  {
-    padding-top: 3.75rem;
+    padding-top: $page-content-padding-top-md;
   }
 }
 
@@ -50,7 +55,7 @@ html, body, #app {
 @media (min-width: 992px)
   {
   .page-content  {
-    padding-top: 5rem;
+    padding-top: $page-content-padding-top-lg-xl;
   }
 }
 

@@ -18,9 +18,9 @@ class NavigationLinkList extends React.Component {
   }
 
   mapNavigationLinks = () => {
-    let mappedChapters = this.sortNavigationLinks().map(navigationLinkItem =>
+    let mappedNavigationLinks = this.sortNavigationLinks().map(navigationLinkItem =>
       <NavigationLinkItem key={navigationLinkItem.id} navigationLinkItem = {navigationLinkItem} />);
-    return mappedChapters;
+    return mappedNavigationLinks;
   }
 
   render() {

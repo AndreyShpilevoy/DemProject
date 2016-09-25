@@ -3,7 +3,7 @@
 @import "../Common/image-backgrounds.scss";
 
 nav {
-  min-width: 290px;
+  min-width: $body-min-width;
   background-color: $header-background-color;
   // next two row needed for smoothly change of size
   flex: 1;

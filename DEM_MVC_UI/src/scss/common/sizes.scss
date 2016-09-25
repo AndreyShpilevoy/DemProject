@@ -1,4 +1,11 @@
 $font-size: 16px; //1rem = 16px
+$body-min-width: 290px;
+
+$body-font-size: 1rem;
+$body-line-height: 1.5;
+$page-content-padding-top-xs-sm: 3.4375rem;
+$page-content-padding-top-md:  3.75rem;
+$page-content-padding-top-lg-xl: 5rem;
 
 $header-xs-sm-logo-navmenu-height: 2.3125rem;
 $header-xs-sm-logo-navmenu-width: 9.0625rem;
@@ -27,7 +34,7 @@ $navigation-toggler-button-icon-bar-second-and-more: 0.25rem;
 $footer-height-md-down: 1.875rem;
 $footer-height-lg-up: 2.5rem;
 
-$chapter-container-padding-top: 0.3125rem;
+$chapter-container-and-footer-padding-top: 0.3125rem;
 $chapter-header-height: 2.5rem;
 $chapter-header-font-size: 1.25rem;
 $chapter-header-title-padding-horizontal: 0.9375rem;
@@ -49,3 +56,7 @@ $sub-forum-list-container-padding-size: 0.625rem;
 
 $sub-forum-icon-right-angle-height-weight: 1.3125rem;
 $sub-forum-icon-right-angle-margin-top: -0.48046875rem;
+
+$social-media-link-height-weight: 2rem;
+$social-media-link-marging-left-right: 0.125rem;
+$social-media-link-last-child-marging-right: 0.25rem;

@@ -4,6 +4,7 @@ import Layout from "./Layout";
 import NavigationLinkList from "./NavigationLinkList";
 import RelativeDateTime from "./RelativeDateTime";
 import Root from "./Root";
+import SocialMediaLinkList from "./SocialMediaLinkList";
 import TermItem from "./TermItem";
 
 export {
@@ -13,5 +14,6 @@ export {
   NavigationLinkList,
   RelativeDateTime,
   Root,
+  SocialMediaLinkList,
   TermItem
 };

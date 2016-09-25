@@ -1,5 +1,5 @@
 import { call, put, take } from "redux-saga/effects";
-import navigationLinkApi from "../api/mocks/mockNavigationLinkApi.js";
+import navigationLinkApi from "../api/mocks/mockNavigationLinkApi";
 import * as navigationLinkActions from "../actions/navigationLinkActions";
 import * as types from "../actions/actionTypes";
 
