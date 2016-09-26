@@ -10,6 +10,10 @@ class TransformDateTime {
   }
   GetRelative(date, locale) {
     let dateTimeDeclension = TermTranslation.getDateTimeDeclension(locale);
+    if(!dateTimeDeclension)
+    {
+      return `${date.toLocaleDateString()} ${date.getHours()}:${date.getMinutes()}`;
+    }
     let suffixAgo = TermTranslation.getTermTranslation({id: 4, value: "ago"}, locale);
 
     let msDeltaTime = new Date() - date;

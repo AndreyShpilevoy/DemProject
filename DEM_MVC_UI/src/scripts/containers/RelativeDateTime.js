@@ -24,7 +24,7 @@ class RelativeDateTime extends React.Component {
     let item = this.props;
     return(
       <RelativeDateTimeComponent
-        relativeDateTime={this.transform()} 
+        relativeDateTime={this.transform()}
         className={item.className}
         spaceBefore={item.spaceBefore}
         spaceAfter={item.spaceAfter}/>
@@ -32,8 +32,12 @@ class RelativeDateTime extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  locale: state.localeReducer.locale
-});
+const mapStateToProps = (state) => {
+  let result = {};
+  if(state.localeReducer.currentLocale && state.localeReducer.currentLocale.locale){
+    result = {locale: state.localeReducer.currentLocale.locale};
+  }
+  return result;
+};
 
 export default connect(mapStateToProps)(RelativeDateTime);
