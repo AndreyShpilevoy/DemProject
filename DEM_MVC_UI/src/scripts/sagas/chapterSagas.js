@@ -1,12 +1,20 @@
 import { call, put, take } from "redux-saga/effects";
 import chapterApi from "../api/mocks/mockChapterApi";
-import * as authorActions from "../actions/chapterActions";
+import * as chapterActions from "../actions/chapterActions";
 import * as types from "../actions/actionTypes";
 
 export function* getAllChapters() {
   while(true){
     yield take(types.GET_ALL_CHAPTERS);
-    const chapters = yield call(chapterApi.getAllChapters);
-    yield put(authorActions.getAllChaptersSuccess(chapters));
+    const allChapters = yield call(chapterApi.getAllChapters);
+    yield put(chapterActions.getAllChaptersSuccess(allChapters));
+  }
+}
+
+export function* getChapterById() {
+  while(true){
+    const { chapterId } = yield take(types.GET_CHAPTER_BY_ID);
+    const chapterById = yield call(chapterApi.getChapterById, chapterId);
+    yield put(chapterActions.getChapterByIdSuccess(chapterById));
   }
 }

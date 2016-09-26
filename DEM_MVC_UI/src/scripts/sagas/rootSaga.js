@@ -8,6 +8,7 @@ export default function* root() {
   yield [
     forumSagas.getForumsByChapterId(),
     chapterSagas.getAllChapters(),
+    chapterSagas.getChapterById(),
     navigationLinkSagas.getNavigationLinks(),
     socialMediaLinkSagas.getSocialMediaLinks(),
     localeSagas.getLocale()

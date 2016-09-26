@@ -25,14 +25,18 @@ class ChapterByIdPage extends React.Component {
 
   render() {
     return (
-      <div>this.props.chapter.title}</div>
+      <div>{this.props.chapter ? this.props.chapter.title : null}</div>
     );
   }
 
 }
 
 const mapStateToProps = (state) => {
-  return {chapter: state.chapterReducer};
+  let result = {};
+  if(state.chapterReducer && state.chapterReducer.chapterById){
+    result = {chapter: state.chapterReducer.chapterById};
+  }
+  return result;
 };
 
 const mapDispatchToProps = (dispatch) => ({

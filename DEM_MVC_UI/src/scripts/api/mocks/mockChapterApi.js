@@ -10,6 +10,10 @@ const chapters = [
   {id: 5, title: "Административный раздел", order: 5}
 ];
 
+let chapter = (id) => {
+  return chapters.find(chapter => chapter.id == id);
+};
+
 class ChapterApi {
   static getAllChapters() {
     return new Promise((resolve) => {
@@ -19,10 +23,9 @@ class ChapterApi {
     });
   }
   static getChapterById(id) {
-    let chapter = chapters.find(chapter => chapter.id === id);
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(Object.assign({}, chapter ? chapter : undefined));
+        resolve(Object.assign({}, chapter(id)));
       }, delay);
     });
   }
