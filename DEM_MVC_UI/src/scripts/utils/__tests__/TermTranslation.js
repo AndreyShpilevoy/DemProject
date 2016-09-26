@@ -1,5 +1,4 @@
 /*eslint no-undef: "off"*/
-/*eslint import/imports-first: "off"*/
 
 import TermTranslation from "../TermTranslation";
 

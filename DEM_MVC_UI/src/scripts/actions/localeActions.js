@@ -4,8 +4,8 @@ function getLocale(){
   return {type: types.GET_LOCALE};
 }
 
-function getLocaleSuccess(locale){
-  return {type: types.GET_LOCALE_SUCCESS, locale};
+function getLocaleSuccess(currentLocale){
+  return {type: types.GET_LOCALE_SUCCESS, currentLocale};
 }
 
 export {
