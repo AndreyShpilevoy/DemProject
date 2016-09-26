@@ -29,7 +29,7 @@ class SocialMediaLinkList extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  sociaMediaLinkList: state.socialMediaLinkReducer
+  sociaMediaLinkList: state.socialMediaLinkReducer.socialMediaLinks
 });
 
 const mapDispatchToProps = (dispatch) => ({

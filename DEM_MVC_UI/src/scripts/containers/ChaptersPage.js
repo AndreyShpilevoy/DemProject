@@ -28,7 +28,7 @@ class ChaptersPage extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  chapters: state.chapterReducer
+  chapters: state.chapterReducer.allChapters
 });
 
 const mapDispatchToProps = (dispatch) => ({

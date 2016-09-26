@@ -39,9 +39,12 @@ class ForumList extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => {
-  let forumsContainer = state.forumReducer.find(forumReducer => forumReducer.chapterId === ownProps.chapterId);
+  let result;
+  if(state.forumReducer && state.forumReducer.allForums){
+    result = state.forumReducer.allForums.find(forumReducer => forumReducer.chapterId === ownProps.chapterId);
+  }
   return {
-    forumList: forumsContainer ? forumsContainer.forumList : []
+    forumList: result ? result.forumList : []
   };
 };
 

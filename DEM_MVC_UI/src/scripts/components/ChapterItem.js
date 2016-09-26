@@ -35,7 +35,7 @@ class ChapterItem extends React.Component {
         <div className="chapter-header flex flex-column-vertical-center container" id={this.state.chapterHeaderId}>
           <div className="flex chapter-header-wrapper row">
             <div className="chapter-header-title col-lg-6">
-              <Link to={"/"}>{chapterItem.title}</Link>
+              <Link to={`/Conference/${chapterItem.id}`}>{chapterItem.title}</Link>
             </div>
             <div className="col-lg-6 row hidden-md-down">
               <div className="chapter-header-title-info-label col-lg-3 flex flex-column-vertical-center">

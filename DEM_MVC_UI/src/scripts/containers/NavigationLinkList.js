@@ -29,7 +29,7 @@ class NavigationLinkList extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-  navigationLinkList: state.navigationLinkReducer
+  navigationLinkList: state.navigationLinkReducer.navigationLinks
 });
 
 const mapDispatchToProps = (dispatch) => ({

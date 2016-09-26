@@ -22,9 +22,13 @@ class Layout extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  locale: state.localeReducer.locale
-});
+const mapStateToProps = (state) => {
+  let result = {};
+  if(state.localeReducer.currentLocale && state.localeReducer.currentLocale.locale){
+    result = {locale: state.localeReducer.currentLocale.locale};
+  }
+  return result;
+};
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(localeActions, dispatch)

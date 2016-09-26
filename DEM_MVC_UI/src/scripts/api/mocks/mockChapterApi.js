@@ -18,6 +18,14 @@ class ChapterApi {
       }, delay);
     });
   }
+  static getChapterById(id) {
+    let chapter = chapters.find(chapter => chapter.id === id);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(Object.assign({}, chapter ? chapter : undefined));
+      }, delay);
+    });
+  }
 }
 
 export default ChapterApi;

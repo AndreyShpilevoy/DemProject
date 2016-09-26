@@ -1,3 +1,4 @@
+import ChapterByIdPage from "./ChapterByIdPage";
 import ChaptersPage from "./ChaptersPage";
 import ForumList from "./ForumList";
 import Layout from "./Layout";
@@ -8,6 +9,7 @@ import SocialMediaLinkList from "./SocialMediaLinkList";
 import TermItem from "./TermItem";
 
 export {
+  ChapterByIdPage,
   ChaptersPage,
   ForumList,
   Layout,
