@@ -11,7 +11,7 @@ const en  = [
   {id: 10,  value: 'about an hour', description: 'single hour for TransformDateTime'},
   {id: 11,  value: 'hours', description: 'several hours for TransformDateTime'},
   {id: 12,  value: 'hours', description: 'several hours for TransformDateTime'},
-  {id: 13,  value: 'a day', description: 'single day for TransformDateTime'},
+  {id: 13,  value: 'about a day', description: 'single day for TransformDateTime'},
   {id: 14,  value: 'days', description: 'several days for TransformDateTime'},
   {id: 15,  value: 'days', description: 'several days for TransformDateTime'},
   {id: 16,  value: 'about a month', description: 'single month for TransformDateTime'},
