@@ -14,10 +14,12 @@ const MapFilesGenerator = {
     MapFilesGenerator.fileName = fileName;
   },
   getFileAndComponentNamesDictionary: (pathToFolder) => {
-    let fileNamesInFolder = fs.readdirSync(pathToFolder);
-    let i = fileNamesInFolder.indexOf("_all.js");
-    if(i != -1) {
-      fileNamesInFolder.splice(i, 1);
+    let fileNamesInFolder = fs.readdirSync(pathToFolder).filter(function (file) {
+      return !fs.statSync(pathToFolder+'/'+file).isDirectory();
+    });
+    let mappedFileIndex = fileNamesInFolder.indexOf("_all.js");
+    if(mappedFileIndex != -1) {
+      fileNamesInFolder.splice(mappedFileIndex, 1);
     }
 
     let mapObjectDictionary = [];

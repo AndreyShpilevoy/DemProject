@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import NavigationLinkItem from "../../src/scripts/components/NavigationLinkItem";
+import NavigationLinkItem from "../NavigationLinkItem";
 
 describe('NavigationLinkItem', () => {
   function setup() {

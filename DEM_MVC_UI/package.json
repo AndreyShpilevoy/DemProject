@@ -22,7 +22,7 @@
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.js|.jsx",
+    "testRegex": "(.*/__tests__/.*|\\.(test|spec))\\.js|.jsx",
     "moduleFileExtensions": [
       "js",
       "json"
