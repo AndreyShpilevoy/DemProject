@@ -1,5 +1,5 @@
 import { call, put, take, fork } from "redux-saga/effects";
-import forumApi from "../api/mocks/mockForumApi";
+import ForumApi from "../api/__mocks__/ForumApi";
 import * as forumActions from "../actions/forumActions";
 import * as types from "../actions/actionTypes";
 
@@ -11,6 +11,6 @@ export function* getForumsByChapterId() {
 }
 
 function* getForumsByChapterIdNonBlock(chapterId) {
-  const forums = yield call(forumApi.getForumsByChapterId, chapterId);
+  const forums = yield call(ForumApi.getForumsByChapterId, chapterId);
   yield put(forumActions.getForumsByChapterIdSuccess(chapterId, forums));
 }

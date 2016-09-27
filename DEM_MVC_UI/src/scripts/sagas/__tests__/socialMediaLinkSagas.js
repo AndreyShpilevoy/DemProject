@@ -1,21 +1,25 @@
 /*eslint no-undef: "off"*/
 
 import { call, put, take } from "redux-saga/effects";
-import * as types from "../../actions/actionTypes";
 import * as socialMediaLinkSagas from "../socialMediaLinkSagas";
-import socialMediaLinkApi from "../../api/mocks/mockSocialMediaLinkApi";
+import SocialMediaLinkApi from "../../api/__mocks__/SocialMediaLinkApi";
 import * as socialMediaLinkAction from "../../actions/socialMediaLinkActions";
 
 describe('socialMediaLinkSagas', () => {
-  it('saga called with wrong type and shoud return underfined object in last call', () => {
+  it('getSocialMediaLinks generator should pass on three steps', () => {
     const socialMediaLinkSagaGenerator = socialMediaLinkSagas.getSocialMediaLinks();
     const action = {
-      type: types.GET_SOCIALMEDIALINKS
+      type: "GET_SOCIALMEDIALINKS"
     };
+    const socialMediaLinks = SocialMediaLinkApi.getSocialMediaLinks();
 
-    expect(socialMediaLinkSagaGenerator.next(action).value).toEqual(take(action.type));
-    expect(socialMediaLinkSagaGenerator.next().value).toEqual(call(socialMediaLinkApi.getSocialMediaLinks));
-    let socialMediaLinks = socialMediaLinkApi.getSocialMediaLinks();
-    expect(socialMediaLinkSagaGenerator.next(socialMediaLinks).value).toEqual(put(socialMediaLinkAction.getSocialMediaLinksSuccess(socialMediaLinks)));
+    expect(socialMediaLinkSagaGenerator.next(action).value)
+      .toEqual(take(action.type));
+
+    expect(socialMediaLinkSagaGenerator.next().value)
+      .toEqual(call(SocialMediaLinkApi.getSocialMediaLinks));
+
+    expect(socialMediaLinkSagaGenerator.next(socialMediaLinks).value)
+      .toEqual(put(socialMediaLinkAction.getSocialMediaLinksSuccess(socialMediaLinks)));
   });
 });

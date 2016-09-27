@@ -18,7 +18,7 @@ const socialMediaLinks  = [
     order: 2
   }];
 
-class SocialMediaLinksApi {
+class SocialMediaLinkApi {
   static getSocialMediaLinks() {
     return new Promise((resolve)=>{
       setTimeout(() => {
@@ -28,4 +28,4 @@ class SocialMediaLinksApi {
   }
 }
 
-export default SocialMediaLinksApi;
+export default SocialMediaLinkApi;
