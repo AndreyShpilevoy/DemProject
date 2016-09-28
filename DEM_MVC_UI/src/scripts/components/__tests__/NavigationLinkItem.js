@@ -13,12 +13,12 @@ describe('NavigationLinkItem', () => {
     return shallow(<NavigationLinkItem {...props}/>);
   }
 
-  it('should render top level li',() => {
+  it('should render top level li with className nav-list-item',() => {
     const liElement = setup().find('li');
     expect(liElement.hasClass("nav-list-item")).toBeTruthy();
   });
 
-  it('should render Link component',() => {
+  it('should render Link component with className nav-link',() => {
     const linkComponent = setup().find('Link');
     expect(linkComponent.hasClass("nav-link")).toBeTruthy();
   });
@@ -33,7 +33,7 @@ describe('NavigationLinkItem', () => {
     expect(linkComponent.prop("to")).toBe("http://testNavigationHref");
   });
 
-  it('should render div for Navigation Link Separator',() => {
+  it('should render div for Navigation Link Separator with className nav-link-separator',() => {
     const divElement = setup().find('div');
     expect(divElement.hasClass("nav-link-separator")).toBeTruthy();
   });

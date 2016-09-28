@@ -8,14 +8,25 @@ class TermItem extends React.Component {
       spaceAfter: PropTypes.bool,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      spaceBeforeTerm: this.props.spaceBefore ? " " : "",
+      termClassName: this.props.className ? `term ${this.props.className }`: 'term',
+      spaceAfterTerm: this.props.spaceAfter ? " " : "",
+    };
+  }
+
   render(){
-    return(
-      <span className={this.props.className ? `term ${this.props.className }`: 'term'}>
-        {this.props.spaceBefore ? " " : ""}
-        {this.props.term ? this.props.term : null}
-        {this.props.spaceAfter ? " " : ""}
-      </span>
-    );
+    if(this.props.term){
+      return(
+        <span className={this.state.termClassName}>
+          {`${this.state.spaceBeforeTerm}${this.props.term}${this.state.spaceAfterTerm}`}
+        </span>
+      );
+    } else {
+      return null;
+    }
   }
 }
 

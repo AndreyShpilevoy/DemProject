@@ -8,14 +8,25 @@ class RelativeDateTime extends React.Component {
       spaceAfter: PropTypes.bool,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      spaceBeforeTerm: this.props.spaceBefore ? " " : "",
+      termClassName: this.props.className ? `relativeDateTime ${this.props.className }`: 'relativeDateTime',
+      spaceAfterTerm: this.props.spaceAfter ? " " : "",
+    };
+  }
+
   render(){
-    return(
-      <span className={this.props.className ? `relativeDateTime ${this.props.className }`: 'relativeDateTime'}>
-        {this.props.spaceBefore ? " " : ""}
-        {this.props.relativeDateTime ? this.props.relativeDateTime : null}
-        {this.props.spaceAfter ? " " : ""}
-      </span>
-    );
+    if(this.props.relativeDateTime){
+      return(
+        <span className={this.state.termClassName}>
+          {`${this.state.spaceBeforeTerm}${this.props.relativeDateTime}${this.state.spaceAfterTerm}`}
+        </span>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
