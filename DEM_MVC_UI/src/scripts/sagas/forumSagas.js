@@ -10,7 +10,7 @@ export function* getForumsByChapterId() {
   }
 }
 
-function* getForumsByChapterIdNonBlock(chapterId) {
+export function* getForumsByChapterIdNonBlock(chapterId) {
   const forums = yield call(ForumApi.getForumsByChapterId, chapterId);
   yield put(forumActions.getForumsByChapterIdSuccess(chapterId, forums));
 }

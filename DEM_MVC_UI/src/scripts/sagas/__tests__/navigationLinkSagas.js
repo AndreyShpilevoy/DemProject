@@ -1,25 +1,45 @@
 /*eslint no-undef: "off"*/
 
-import { call, put, take } from "redux-saga/effects";
 import * as navigationLinkSagas from "../navigationLinkSagas";
 import NavigationLinkApi from "../../api/__mocks__/NavigationLinkApi";
-import * as navigationLinkActions from "../../actions/navigationLinkActions";
+import {CheckObject} from "../../../../testHelpers/_all";
 
 describe('navigationLinkSagas', () => {
-  it('getNavigationLinks generator should pass on three steps', () => {
-    const navigationLinkSagasGenerator = navigationLinkSagas.getNavigationLinks();
-    const action = {
-      type: "GET_NAVIGATIONLINKS"
-    };
+  it('getNavigationLinksGenerator first yeald should return TAKE pattern "GET_NAVIGATIONLINKS"', () => {
+    const getNavigationLinksGenerator = navigationLinkSagas.getNavigationLinks();
+
+    expect(getNavigationLinksGenerator.next().value.TAKE.pattern)
+      .toEqual('GET_NAVIGATIONLINKS');
+  });
+
+  it('getNavigationLinksGenerator second yeald should return CALL to function "NavigationLinkApi.getNavigationLinks"', () => {
+    const getNavigationLinksGenerator = navigationLinkSagas.getNavigationLinks();
+
+    getNavigationLinksGenerator.next();
+
+    expect(getNavigationLinksGenerator.next().value.CALL.fn)
+      .toEqual(NavigationLinkApi.getNavigationLinks);
+  });
+
+  it('getNavigationLinksGenerator third yeald should return PUT action.type "GET_NAVIGATIONLINKS_SUCCESS"', () => {
+    const getNavigationLinksGenerator = navigationLinkSagas.getNavigationLinks();
     const navigationLinks = NavigationLinkApi.getNavigationLinks();
 
-    expect(navigationLinkSagasGenerator.next(action).value)
-      .toEqual(take(action.type));
+    getNavigationLinksGenerator.next();
+    getNavigationLinksGenerator.next();
 
-    expect(navigationLinkSagasGenerator.next().value)
-      .toEqual(call(NavigationLinkApi.getNavigationLinks));
+    expect(getNavigationLinksGenerator.next(navigationLinks).value.PUT.action.type)
+      .toEqual('GET_NAVIGATIONLINKS_SUCCESS');
+  });
 
-    expect(navigationLinkSagasGenerator.next(navigationLinks).value)
-      .toEqual(put(navigationLinkActions.getNavigationLinksSuccess(navigationLinks)));
+  it('getNavigationLinksGenerator third yeald should return PUT action.navigationLinks that is a Promise', () => {
+    const getNavigationLinksGenerator = navigationLinkSagas.getNavigationLinks();
+    const navigationLinks = NavigationLinkApi.getNavigationLinks();
+
+    getNavigationLinksGenerator.next();
+    getNavigationLinksGenerator.next();
+
+    expect(CheckObject.IsPromise(getNavigationLinksGenerator.next(navigationLinks).value.PUT.action.navigationLinks))
+      .toBeTruthy();
   });
 });

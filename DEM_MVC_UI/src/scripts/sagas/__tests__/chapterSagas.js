@@ -1,43 +1,83 @@
 /*eslint no-undef: "off"*/
 
-import { call, put, take } from "redux-saga/effects";
 import * as chapterSagas from "../chapterSagas";
 import ChapterApi from "../../api/__mocks__/ChapterApi";
-import * as chapterActions from "../../actions/chapterActions";
+import {CheckObject} from "../../../../testHelpers/_all";
 
 describe('chapterSagas', () => {
-  it('getAllChapters generator should pass on three steps', () => {
-    const chapterSagasGenerator = chapterSagas.getAllChapters();
-    const action = {
-      type: "GET_ALL_CHAPTERS"
-    };
-    const allChapters = ChapterApi.getAllChapters();
+  it('getAllChaptersGenerator first yeald should return TAKE pattern "GET_ALL_CHAPTERS"', () => {
+    const getAllChaptersGenerator = chapterSagas.getAllChapters();
 
-    expect(chapterSagasGenerator.next(action).value)
-      .toEqual(take(action.type));
-
-    expect(chapterSagasGenerator.next().value)
-      .toEqual(call(ChapterApi.getAllChapters));
-
-    expect(chapterSagasGenerator.next(allChapters).value)
-      .toEqual(put(chapterActions.getAllChaptersSuccess(allChapters)));
+    expect(getAllChaptersGenerator.next().value.TAKE.pattern)
+      .toEqual('GET_ALL_CHAPTERS');
   });
 
-  it('getChapterById generator should pass on three steps', () => {
-    const chapterSagasGenerator = chapterSagas.getChapterById();
-    const action = {
-      type: "GET_CHAPTER_BY_ID",
-      chapterId: 1
-    };
-    const chapterById = ChapterApi.getChapterById(action.chapterId);
+  it('getAllChaptersGenerator second yeald should return CALL to function "ChapterApi.getAllChapters"', () => {
+    const getAllChaptersGenerator = chapterSagas.getAllChapters();
 
-    expect(chapterSagasGenerator.next(action).value)
-      .toEqual(take(action.type));
+    getAllChaptersGenerator.next();
 
-    expect(chapterSagasGenerator.next(action.chapterId).value)
-      .toEqual(call(ChapterApi.getChapterById, undefined));
+    expect(getAllChaptersGenerator.next().value.CALL.fn)
+      .toEqual(ChapterApi.getAllChapters);
+  });
 
-    expect(chapterSagasGenerator.next(chapterById).value)
-      .toEqual(put(chapterActions.getChapterByIdSuccess(chapterById)));
+  it('getAllChaptersGenerator third yeald should return PUT action.type "GET_ALL_CHAPTERS_SUCCESS"', () => {
+    const getAllChaptersGenerator = chapterSagas.getAllChapters();
+    const allChapters = ChapterApi.getAllChapters();
+
+    getAllChaptersGenerator.next();
+    getAllChaptersGenerator.next();
+
+    expect(getAllChaptersGenerator.next(allChapters).value.PUT.action.type)
+      .toEqual('GET_ALL_CHAPTERS_SUCCESS');
+  });
+
+  it('getAllChaptersGenerator third yeald should return PUT action.allChapters that is a Promise', () => {
+    const getAllChaptersGenerator = chapterSagas.getAllChapters();
+    const allChapters = ChapterApi.getAllChapters();
+
+    getAllChaptersGenerator.next();
+    getAllChaptersGenerator.next();
+
+    expect(CheckObject.IsPromise(getAllChaptersGenerator.next(allChapters).value.PUT.action.allChapters))
+      .toBeTruthy();
+  });
+
+  it('getChapterByIdGenerator first yeald should return TAKE pattern "GET_CHAPTER_BY_ID"', () => {
+    const getChapterByIdGenerator = chapterSagas.getChapterById();
+
+    expect(getChapterByIdGenerator.next().value.TAKE.pattern)
+      .toEqual('GET_CHAPTER_BY_ID');
+  });
+
+  it('getChapterByIdGenerator second yeald should return CALL to function "ChapterApi.getChapterById"', () => {
+    const getChapterByIdGenerator = chapterSagas.getChapterById();
+
+    getChapterByIdGenerator.next();
+
+    expect(getChapterByIdGenerator.next({}).value.CALL.fn)
+      .toEqual(ChapterApi.getChapterById);
+  });
+
+  it('getChapterByIdGenerator third yeald should return PUT action.type "GET_CHAPTER_BY_ID_SUCCESS"', () => {
+    const getChapterByIdGenerator = chapterSagas.getChapterById();
+    const chapterById = ChapterApi.getChapterById();
+
+    getChapterByIdGenerator.next();
+    getChapterByIdGenerator.next({});
+
+    expect(getChapterByIdGenerator.next(chapterById).value.PUT.action.type)
+      .toEqual('GET_CHAPTER_BY_ID_SUCCESS');
+  });
+
+  it('getChapterByIdGenerator third yeald should return PUT action.chapterById that is a Promise', () => {
+    const getChapterByIdGenerator = chapterSagas.getChapterById();
+    const chapterById = ChapterApi.getChapterById();
+
+    getChapterByIdGenerator.next();
+    getChapterByIdGenerator.next({});
+
+    expect(CheckObject.IsPromise(getChapterByIdGenerator.next(chapterById).value.PUT.action.chapterById))
+      .toBeTruthy();
   });
 });

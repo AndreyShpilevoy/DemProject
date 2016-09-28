@@ -1,25 +1,45 @@
 /*eslint no-undef: "off"*/
 
-import { call, put, take } from "redux-saga/effects";
 import * as localeSagas from "../localeSagas";
 import LocaleApi from "../../api/__mocks__/LocaleApi";
-import * as localeActions from "../../actions/localeActions";
+import {CheckObject} from "../../../../testHelpers/_all";
 
 describe('localeSagas', () => {
-  it('getLocale generator should pass on three steps', () => {
-    const socialMediaLinkSagaGenerator = localeSagas.getLocale();
-    const action = {
-      type: "GET_LOCALE"
-    };
-    const locale = LocaleApi.getLocale();
+  it('getLocaleGenerator first yeald should return TAKE pattern "GET_LOCALE"', () => {
+    const getLocaleGenerator = localeSagas.getLocale();
 
-    expect(socialMediaLinkSagaGenerator.next(action).value)
-      .toEqual(take(action.type));
+    expect(getLocaleGenerator.next().value.TAKE.pattern)
+      .toEqual('GET_LOCALE');
+  });
 
-    expect(socialMediaLinkSagaGenerator.next().value)
-      .toEqual(call(LocaleApi.getLocale));
+  it('getLocaleGenerator second yeald should return CALL to function "LocaleApi.getLocale"', () => {
+    const getLocaleGenerator = localeSagas.getLocale();
 
-    expect(socialMediaLinkSagaGenerator.next(locale).value)
-      .toEqual(put(localeActions.getLocaleSuccess(locale)));
+    getLocaleGenerator.next();
+
+    expect(getLocaleGenerator.next().value.CALL.fn)
+      .toEqual(LocaleApi.getLocale);
+  });
+
+  it('getLocaleGenerator third yeald should return PUT action.type "GET_LOCALE_SUCCESS"', () => {
+    const getLocaleGenerator = localeSagas.getLocale();
+    const currentLocale = LocaleApi.getLocale();
+
+    getLocaleGenerator.next();
+    getLocaleGenerator.next();
+
+    expect(getLocaleGenerator.next(currentLocale).value.PUT.action.type)
+      .toEqual('GET_LOCALE_SUCCESS');
+  });
+
+  it('getLocaleGenerator third yeald should return PUT action.currentLocale that is a Promise', () => {
+    const getLocaleGenerator = localeSagas.getLocale();
+    const currentLocale = LocaleApi.getLocale();
+
+    getLocaleGenerator.next();
+    getLocaleGenerator.next();
+
+    expect(CheckObject.IsPromise(getLocaleGenerator.next(currentLocale).value.PUT.action.currentLocale))
+      .toBeTruthy();
   });
 });

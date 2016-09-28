@@ -5,41 +5,41 @@ import SocialMediaLinkApi from "../../api/__mocks__/SocialMediaLinkApi";
 import {CheckObject} from "../../../../testHelpers/_all";
 
 describe('socialMediaLinkSagas', () => {
-  it('getSocialMediaLinks first yeald should return TAKE pattern "GET_SOCIALMEDIALINKS"', () => {
-    const socialMediaLinkSagaGenerator = socialMediaLinkSagas.getSocialMediaLinks();
+  it('getSocialMediaLinksGenerator first yeald should return TAKE pattern "GET_SOCIALMEDIALINKS"', () => {
+    const getNavigationLinksGenerator = socialMediaLinkSagas.getSocialMediaLinks();
 
-    expect(socialMediaLinkSagaGenerator.next().value.TAKE.pattern)
+    expect(getNavigationLinksGenerator.next().value.TAKE.pattern)
       .toEqual('GET_SOCIALMEDIALINKS');
   });
 
-  it('getSocialMediaLinks second yeald should return CALL to function "SocialMediaLinkApi.getSocialMediaLinks"', () => {
-    const socialMediaLinkSagaGenerator = socialMediaLinkSagas.getSocialMediaLinks();
+  it('getSocialMediaLinksGenerator second yeald should return CALL to function "SocialMediaLinkApi.getSocialMediaLinks"', () => {
+    const getNavigationLinksGenerator = socialMediaLinkSagas.getSocialMediaLinks();
 
-    socialMediaLinkSagaGenerator.next();
+    getNavigationLinksGenerator.next();
 
-    expect(socialMediaLinkSagaGenerator.next().value.CALL.fn)
+    expect(getNavigationLinksGenerator.next().value.CALL.fn)
       .toEqual(SocialMediaLinkApi.getSocialMediaLinks);
   });
 
-  it('getSocialMediaLinks third yeald should return PUT action.type "GET_SOCIALMEDIALINKS_SUCCESS"', () => {
-    const socialMediaLinkSagaGenerator = socialMediaLinkSagas.getSocialMediaLinks();
+  it('getSocialMediaLinksGenerator third yeald should return PUT action.type "GET_SOCIALMEDIALINKS_SUCCESS"', () => {
+    const getNavigationLinksGenerator = socialMediaLinkSagas.getSocialMediaLinks();
     const socialMediaLinks = SocialMediaLinkApi.getSocialMediaLinks();
 
-    socialMediaLinkSagaGenerator.next();
-    socialMediaLinkSagaGenerator.next();
+    getNavigationLinksGenerator.next();
+    getNavigationLinksGenerator.next();
 
-    expect(socialMediaLinkSagaGenerator.next(socialMediaLinks).value.PUT.action.type)
+    expect(getNavigationLinksGenerator.next(socialMediaLinks).value.PUT.action.type)
       .toEqual('GET_SOCIALMEDIALINKS_SUCCESS');
   });
 
-  it('getSocialMediaLinks third yeald should return PUT action.socialMediaLinks that is a Promise', () => {
-    const socialMediaLinkSagaGenerator = socialMediaLinkSagas.getSocialMediaLinks();
+  it('getSocialMediaLinksGenerator third yeald should return PUT action.socialMediaLinks that is a Promise', () => {
+    const getNavigationLinksGenerator = socialMediaLinkSagas.getSocialMediaLinks();
     const socialMediaLinks = SocialMediaLinkApi.getSocialMediaLinks();
 
-    socialMediaLinkSagaGenerator.next();
-    socialMediaLinkSagaGenerator.next();
+    getNavigationLinksGenerator.next();
+    getNavigationLinksGenerator.next();
 
-    expect(CheckObject.IsPromise(socialMediaLinkSagaGenerator.next(socialMediaLinks).value.PUT.action.socialMediaLinks))
+    expect(CheckObject.IsPromise(getNavigationLinksGenerator.next(socialMediaLinks).value.PUT.action.socialMediaLinks))
       .toBeTruthy();
   });
 });
