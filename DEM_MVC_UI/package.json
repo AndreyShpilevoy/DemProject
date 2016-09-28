@@ -27,7 +27,11 @@
       "js",
       "json"
     ],
-    "collectCoverage": true
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/testHelpers/", 
+      "<rootDir>/node_modules/"
+    ]
   },
   "devDependencies": {
     "autoprefixer": "6.4.1",
