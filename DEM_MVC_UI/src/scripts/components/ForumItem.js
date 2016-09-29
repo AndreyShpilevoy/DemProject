@@ -32,45 +32,45 @@ class ForumItem extends React.Component {
   }
 
   render(){
-    let forumItem = this.props.forumItem;
+    let {title, description, subForums, topicsCount, postsCount, latesPostAutorName, latesPostTimeCreation, lastActiveTopic} = this.props.forumItem;
     return(
       <div className="forum-container-wrapper row">
         <div className="forum-container col-xs-12 row">
           <div className="col-md-5 col-lg-9 row">
             <div className="col-lg-8 flex flex-column-vertical-center">
               <div className="forum-title">
-                <Link to={"/"}>{forumItem.title}</Link>
+                <Link to={"/"}>{title}</Link>
               </div>
               <div className="hidden-md-down forum-description">
-                {forumItem.description}
+                {description}
               </div>
               <div className="hidden-md-down">
-                <SubForumList subForums={forumItem.subForums}/>
+                <SubForumList subForums={subForums}/>
               </div>
             </div>
             <div className="col-lg-2 forum-topics-counter flex flex-column-vertical-center">
               <span className="hidden-lg-up">
                 <TermItem term={{id: 1, value: "Topics"}} spaceAfter/>
               </span>
-              {forumItem.topicsCount}
+              {topicsCount}
             </div>
             <div className="col-lg-2 forum-posts-counter flex flex-column-vertical-center">
               <span className="hidden-lg-up">
                 <TermItem term={{id: 2, value: "Posts"}} spaceAfter/>
               </span>
-              {forumItem.postsCount}
+              {postsCount}
             </div>
           </div>
           <div className="col-md-7 col-lg-3 forum-last-post-wrapper">
             <div className="hidden-sm-down padding-initial forum-last-post-autor-name-style">
-              <Link className="hidden-sm-down" activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{forumItem.latesPostAutorName}</Link>
-              <RelativeDateTime relativeDateTime={forumItem.latesPostTimeCreation} spaceBefore/>
+              <Link className="hidden-sm-down" activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{latesPostAutorName}</Link>
+              <RelativeDateTime relativeDateTime={latesPostTimeCreation} spaceBefore/>
             </div>
             <div className="padding-initial forum-last-active-topic">
               <span className="hidden-lg-up">
                 <TermItem term={{id: 3, value: "Last message in"}} spaceAfter/>
               </span>
-              <Link className="forum-last-active-topic-message" to={"/"}>{forumItem.lastActiveTopic}</Link>
+              <Link className="forum-last-active-topic-message" to={"/"}>{lastActiveTopic}</Link>
             </div>
           </div>
         </div>

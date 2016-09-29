@@ -36,10 +36,10 @@ describe('SocialMediaLinkItem', () => {
     expect(aElement.length).toEqual(1);
   });
 
-  // it('should contain 1 "Icon" element if Icon element is defined',() => {
-  //   const aElement = setup("Steam").find('Icon');
-  //   expect(aElement.length).toEqual(1);
-  // });
+  it('should contain 1 "Vk" element if Icon element is defined',() => {
+    const aElement = setup("Vk").find('Vk');
+    expect(aElement.length).toEqual(1);
+  });
 
   it('should contain 0 "Icon" element if Icon element is not defined',() => {
     const aElement = setup("Two").find('Icon');
