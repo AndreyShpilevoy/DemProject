@@ -2,9 +2,9 @@ import React, {PropTypes} from 'react';
 import _ from 'lodash';
 import {ChapterItem} from './_all';
 
-class ChaptersPage extends React.Component {
+class ChapterList extends React.Component {
   static propTypes = {
-    chapters: PropTypes.arrayOf(
+    chapterList: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -13,7 +13,7 @@ class ChaptersPage extends React.Component {
   };
 
   sortChapters = () => {
-    return  _.sortBy(this.props.chapters, "order");
+    return  _.sortBy(this.props.chapterList, "order");
   }
 
   mapChapters = () => {
@@ -23,13 +23,13 @@ class ChaptersPage extends React.Component {
   }
 
   render() {
-    let chapters = this.mapChapters();
+    let mappedChapterList = this.mapChapters();
     return (
       <div className="page-content">
         <div className="container">
           <div className="row">
             <div className="col-xs-12 width-100-percent">
-              {chapters}
+              {mappedChapterList}
             </div>
           </div>
         </div>
@@ -38,4 +38,4 @@ class ChaptersPage extends React.Component {
   }
 }
 
-export default ChaptersPage;
+export default ChapterList;

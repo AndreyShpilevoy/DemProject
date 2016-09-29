@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ChaptersPage from "../ChaptersPage";
+import ChapterList from "../ChapterList";
 
-describe('ChaptersPage', () => {
+describe('ChapterList', () => {
   function setup() {
     const props = {
       chapters: [{
@@ -25,7 +25,7 @@ describe('ChaptersPage', () => {
       }]
     };
 
-    return shallow(<ChaptersPage {...props}/>);
+    return shallow(<ChapterList {...props}/>);
   }
 
   it('should render top level div with className "page-content"',() => {

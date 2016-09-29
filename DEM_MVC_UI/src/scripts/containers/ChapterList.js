@@ -2,11 +2,11 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as chapterActions from "../actions/chapterActions";
-import { ChaptersPage as ChaptersPageComponent } from "../components/_all";
+import { ChapterList as ChapterListComponent } from "../components/_all";
 
-class ChaptersPage extends React.Component {
+class ChapterList extends React.Component {
   static propTypes = {
-    chapters: PropTypes.arrayOf(
+    chapterList: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -21,18 +21,18 @@ class ChaptersPage extends React.Component {
 
   render() {
     return (
-      <ChaptersPageComponent chapters={this.props.chapters}/>
+      <ChapterListComponent chapterList={this.props.chapterList}/>
     );
   }
 
 }
 
 const mapStateToProps = (state) => ({
-  chapters: state.chapterReducer.allChapters
+  chapterList: state.chapterReducer.allChapters
 });
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(chapterActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChaptersPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ChapterList);

@@ -1,5 +1,5 @@
 import ChapterByIdPage from "./ChapterByIdPage";
-import ChaptersPage from "./ChaptersPage";
+import ChapterList from "./ChapterList";
 import ForumList from "./ForumList";
 import Layout from "./Layout";
 import NavigationLinkList from "./NavigationLinkList";
@@ -10,7 +10,7 @@ import TermItem from "./TermItem";
 
 export {
   ChapterByIdPage,
-  ChaptersPage,
+  ChapterList,
   ForumList,
   Layout,
   NavigationLinkList,

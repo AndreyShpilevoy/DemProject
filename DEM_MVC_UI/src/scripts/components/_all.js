@@ -1,5 +1,5 @@
 import ChapterItem from "./ChapterItem";
-import ChaptersPage from "./ChaptersPage";
+import ChapterList from "./ChapterList";
 import Footer from "./Footer";
 import ForumItem from "./ForumItem";
 import ForumList from "./ForumList";
@@ -18,7 +18,7 @@ import TermItem from "./TermItem";
 
 export {
   ChapterItem,
-  ChaptersPage,
+  ChapterList,
   Footer,
   ForumItem,
   ForumList,
