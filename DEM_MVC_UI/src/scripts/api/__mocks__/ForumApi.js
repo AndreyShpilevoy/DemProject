@@ -15,7 +15,7 @@ const forums = [{
     latesPostAutorId: 1,
     latesPostAutorName: "kto",
     latesPostAutorGroupColor: "ffa510",
-    subForums: [{
+    subForumList: [{
         id: 11,
         title: "Самопал",
         order: 35
@@ -50,7 +50,7 @@ const forums = [{
     latesPostAutorId: 3,
     latesPostAutorName: "ololoid",
     latesPostAutorGroupColor: "99ccff",
-    subForums: [{
+    subForumList: [{
         id: 31,
         title: "Багтрекер",
         order: 27
@@ -81,7 +81,7 @@ const forums = [{
     latesPostAutorId: 5,
     latesPostAutorName: "Agent005",
     latesPostAutorGroupColor: "ff00ff",
-    subForums: [{
+    subForumList: [{
         id: 51,
         title: "FAQ",
         order: 51

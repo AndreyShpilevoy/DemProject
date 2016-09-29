@@ -21,7 +21,7 @@ describe('ForumItem', () => {
         latesPostAutorId: 2,
         latesPostAutorName: "kto",
         latesPostAutorGroupColor: "ffa510",
-        subForums: [{
+        subForumList: [{
             id: 11,
             title: "Самопал",
             order: 35

@@ -29,7 +29,7 @@ describe('forumActions', () => {
         latesPostAutorId: 1,
         latesPostAutorName: "kto",
         latesPostAutorGroupColor: "ffa510",
-        subForums: [{
+        subForumList: [{
             id: 11,
             title: "Самопал",
             order: 35

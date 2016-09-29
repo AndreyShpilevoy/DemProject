@@ -21,7 +21,7 @@ describe('ForumList', () => {
         latesPostAutorId: 2,
         latesPostAutorName: "kto",
         latesPostAutorGroupColor: "ffa510",
-        subForums: []
+        subForumList: []
       },
       {
         id: 3,
@@ -36,7 +36,7 @@ describe('ForumList', () => {
         latesPostAutorId: 23,
         latesPostAutorName: "kto 3",
         latesPostAutorGroupColor: "000000",
-        subForums: []
+        subForumList: []
       },
       {
         id: 2,
@@ -51,7 +51,7 @@ describe('ForumList', () => {
         latesPostAutorId: 22,
         latesPostAutorName: "kto 2",
         latesPostAutorGroupColor: "ffffff",
-        subForums: []
+        subForumList: []
       }]
     };
 

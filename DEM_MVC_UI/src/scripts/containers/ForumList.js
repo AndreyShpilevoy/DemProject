@@ -21,7 +21,7 @@ class ForumList extends React.Component {
         latesPostAutorId: PropTypes.number.isRequired,
         latesPostAutorName: PropTypes.string.isRequired,
         latesPostAutorGroupColor: PropTypes.string.isRequired,
-        subForums: PropTypes.array,
+        subForumList: PropTypes.array,
       })).isRequired,
     actions: PropTypes.object.isRequired
   };

@@ -4,7 +4,7 @@ import {SubForumItem} from './_all';
 
 class SubForumList extends React.Component {
   static propTypes = {
-    subForums: PropTypes.arrayof(
+    subForumList: PropTypes.arrayof(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -13,18 +13,18 @@ class SubForumList extends React.Component {
     ).isRequired
   };
 
-  sortSubforums = () => {
-    return  _.sortBy(this.props.subForums, "order");
+  sortSubForumList = () => {
+    return  _.sortBy(this.props.subForumList, "order");
   }
 
-  mapSubforums = () => {
-    let mappedSubforums = this.sortSubforums().map(subForumItem =>
+  mapSubForumList = () => {
+    let mappedSubforums = this.sortSubForumList().map(subForumItem =>
       <SubForumItem key={subForumItem.id} subForumItem={subForumItem} />);
         return mappedSubforums;
   }
 
   render(){
-    let subForumItems = this.mapSubforums();
+    let subForumItems = this.mapSubForumList();
     return(
       <div className="sub-forum-list-container">
         {subForumItems}
