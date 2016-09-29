@@ -22,7 +22,7 @@ describe('ChapterItem', () => {
 
     return shallow(<ChapterItem {...props}/>, { lifecycleExperimental: true });
   }
-  
+
   it('should render top level div with className "chapter-container"',() => {
     const divElement = setup().find('div').first();
     expect(divElement.hasClass("chapter-container")).toBeTruthy();
@@ -41,47 +41,24 @@ describe('ChapterItem', () => {
     expect(stateElement).toEqual(expectedState);
   });
 
-  it('should render top level div with className "chapter-container"',() => {
+  it('should call componentDidMount once',() => {
     sinon.spy(ChapterItem.prototype, 'componentDidMount');
     setup();
     expect(ChapterItem.prototype.componentDidMount.calledOnce).toBeTruthy();
   });
-  //
-  // it('should render top level span with className "term" and without "test-class-name"',() => {
-  //   const props = {
-  //     term: "term"
-  //   };
-  //
-  //   const spanElement = shallow(<ChapterItem {...props}/>).find('span');
-  //   expect(spanElement.hasClass("test-class-name")).toBeFalsy();
-  //   expect(spanElement.hasClass("term")).toBeTruthy();
-  // });
-  //
-  // it('span component has content equel to "term"',() => {
-  //   const props = {
-  //     term: "term",
-  //     spaceBefore: false,
-  //     spaceAfter: false,
-  //   };
-  //
-  //   const spanElement = shallow(<ChapterItem {...props}/>).find('span');
-  //   expect(spanElement.prop("children")).toBe("term");
-  // });
-  //
-  // it('span component has content equel to " term "',() => {
-  //   const props = {
-  //     term: "term",
-  //     spaceBefore: true,
-  //     spaceAfter: true,
-  //   };
-  //
-  //   const spanElement = shallow(<ChapterItem {...props}/>).find('span');
-  //   expect(spanElement.prop("children")).toBe(" term ");
-  // });
-  //
-  // it('span component is Empty',() => {
-  //   const spanElement = shallow(<ChapterItem />).find('span').isEmpty();
-  //   expect(spanElement).toBeTruthy();
-  // });
 
+  it('should contain 1 Link element',() => {
+    const linkElement = setup().find('Link');
+    expect(linkElement.length).toEqual(1);
+  });
+
+  it('should contain 3 TermItem element',() => {
+    const termItemElement = setup().find('Connect(TermItem)');
+    expect(termItemElement.length).toEqual(3);
+  });
+
+  it('should contain 1 ForumList element',() => {
+    const forumList = setup().find('Connect(ForumList)');
+    expect(forumList.length).toEqual(1);
+  });
 });
