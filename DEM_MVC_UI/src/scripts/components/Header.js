@@ -17,7 +17,7 @@ class Header extends React.Component {
               <div className="row heigth-inherit">
                 <div className="flex col-xs-12 col-lg-4 heigth-inherit">
                   <NavigationLinkLogo />
-                  <NavigationMenuToggleButton/>
+                  <NavigationMenuToggleButton />
                 </div>
                 <NavigationLinkList />
               </div>

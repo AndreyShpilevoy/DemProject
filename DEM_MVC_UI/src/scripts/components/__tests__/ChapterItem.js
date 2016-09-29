@@ -2,7 +2,6 @@
 /* eslint import/no-extraneous-dependencies: "off" */
 /* eslint import/imports-first: "off" */
 
-jest.mock('../../containers/_all');
 jest.mock('../../utils/_all');
 
 import React from 'react';
