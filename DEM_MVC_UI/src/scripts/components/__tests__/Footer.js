@@ -16,7 +16,7 @@ describe('Footer', () => {
   });
 
   it('should contain 1 SocialMediaLinkList element',() => {
-    const forumList = setup().find('Connect(SocialMediaLinkList)');
-    expect(forumList.length).toEqual(1);
+    const socialMediaLinkListElement = setup().find('Connect(SocialMediaLinkList)');
+    expect(socialMediaLinkListElement.length).toEqual(1);
   });
 });
