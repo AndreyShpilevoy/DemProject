@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import * as chapterActions from "../actions/chapterActions";
 import { ChapterList as ChapterListComponent } from "../components/_all";
 
-class ChapterList extends React.Component {
+export class ChapterList extends React.Component {
   static propTypes = {
     chapterList: PropTypes.arrayOf(
       PropTypes.shape({
