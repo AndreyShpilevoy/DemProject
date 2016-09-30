@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import * as localeActions from "../actions/localeActions";
 import {Layout as LayoutComponent} from "../components/_all";
 
-class Layout extends React.Component {
+export class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
     locale: PropTypes.string.isRequired,
@@ -24,7 +24,9 @@ class Layout extends React.Component {
 
 const mapStateToProps = (state) => {
   let result = {};
-  if(state.localeReducer.currentLocale && state.localeReducer.currentLocale.locale){
+  if(state.localeReducer &&
+    state.localeReducer.currentLocale &&
+    state.localeReducer.currentLocale.locale){
     result = {locale: state.localeReducer.currentLocale.locale};
   }
   return result;

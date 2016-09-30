@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import * as navigationLinkActions from "../actions/navigationLinkActions";
 import { NavigationLinkList as NavigationLinkListComponent } from "../components/_all";
 
-class NavigationLinkList extends React.Component {
+export class NavigationLinkList extends React.Component {
   static propTypes = {
     navigationLinkList: PropTypes.arrayOf(
       PropTypes.shape({

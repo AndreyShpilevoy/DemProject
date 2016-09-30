@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import * as chapterActions from "../actions/chapterActions";
 //import { ChaptersPage as ChaptersPageComponent } from "../components/_all";
 
-class ChapterByIdPage extends React.Component {
+export class ChapterByIdItem extends React.Component {
   static propTypes = {
     chapter: PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -18,9 +18,7 @@ class ChapterByIdPage extends React.Component {
   };
 
   componentDidMount() {
-    if(this.props.params.id){
-      this.props.actions.getChapterById(this.props.params.id);
-    }
+    this.props.actions.getChapterById(this.props.params.id);
   }
 
   render() {
@@ -43,4 +41,4 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(chapterActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChapterByIdPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ChapterByIdItem);

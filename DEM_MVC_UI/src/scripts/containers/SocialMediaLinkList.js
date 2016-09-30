@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import * as socialMediaLinkActions from "../actions/socialMediaLinkActions";
 import {SocialMediaLinkList as  SocialMediaLinkListComponent} from '../components/_all';
 
-class SocialMediaLinkList extends React.Component {
+export class SocialMediaLinkList extends React.Component {
   static propTypes = {
     sociaMediaLinkList: PropTypes.arrayOf(
       PropTypes.shape({

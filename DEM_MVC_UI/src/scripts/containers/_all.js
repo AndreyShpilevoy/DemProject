@@ -1,4 +1,4 @@
-import ChapterByIdPage from "./ChapterByIdPage";
+import ChapterByIdItem from "./ChapterByIdItem";
 import ChapterList from "./ChapterList";
 import ForumList from "./ForumList";
 import Layout from "./Layout";
@@ -8,7 +8,7 @@ import SocialMediaLinkList from "./SocialMediaLinkList";
 import TermItem from "./TermItem";
 
 export {
-  ChapterByIdPage,
+  ChapterByIdItem,
   ChapterList,
   ForumList,
   Layout,

@@ -9,7 +9,9 @@ function getAllChaptersSuccess(allChapters){
 }
 
 function getChapterById(chapterId){
-  return {type: types.GET_CHAPTER_BY_ID, chapterId};
+  if(chapterId){
+    return {type: types.GET_CHAPTER_BY_ID, chapterId};
+  }
 }
 
 function getChapterByIdSuccess(chapterById){

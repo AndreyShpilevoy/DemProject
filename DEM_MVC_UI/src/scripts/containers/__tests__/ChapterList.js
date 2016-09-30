@@ -45,7 +45,7 @@ describe('ChapterList', () => {
     const props = {
       store: mockStore(storeStateMock)
     };
-    return shallow(<ChapterListConnected {...props}/>).shallow();
+    return shallow(<ChapterListConnected {...props}/>);
   }
 
   it('should call "componentDidMount" once',() => {

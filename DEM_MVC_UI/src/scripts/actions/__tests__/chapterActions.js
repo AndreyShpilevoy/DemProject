@@ -27,6 +27,10 @@ describe('chapterActions', () => {
     expect(chapterActions.getChapterById(chapterId)).toEqual(expectedAction);
   });
 
+  it('should not create an action to get chapter by id', () => {
+    expect(chapterActions.getChapterById()).toEqual(undefined);
+  });
+
   it('should create an action to get chapter by id', () => {
     const chapterById = {id: 1, title: "Ex Machina", order: 1};
     const expectedAction = {
