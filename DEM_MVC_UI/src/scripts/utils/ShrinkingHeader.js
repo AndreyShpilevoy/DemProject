@@ -6,6 +6,7 @@ class ShrinkingHeader {
   init(){
     let header = root.document.getElementById("header");
     if(!root.document.onscroll && header){
+       /* istanbul ignore next */
        root.document.onscroll = _.throttle(() => {
         if(root.pageYOffset > 50) {
           header.classList.add("nav-shrink");
