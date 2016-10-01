@@ -10,22 +10,14 @@ jest.mock("../../utils/_all", ()=>({
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import configureMockStore from 'redux-mock-store';
 import TermItemConnected from "../TermItem";
+import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
 
-const mockStore = configureMockStore();
-const storeStateMock = {
-  localeReducer:{
-    currentLocale: {
-      locale: "ru"
-    }
-  }
-};
 
 describe('TermItem', () => {
   function setup(valid){
     const props = {
-      store: valid ? mockStore(storeStateMock) : mockStore(),
+      store: valid ? sharedFakeStore(true) : sharedFakeStore(false),
       term: {
         id: 1,
         value: "TestTermDefault"
@@ -35,7 +27,7 @@ describe('TermItem', () => {
   }
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve expected result', () => {
-    expect(setup(true).prop('locale')).toEqual(storeStateMock.localeReducer.currentLocale.locale);
+    expect(setup(true).prop('locale')).toEqual(sharedFakeStoreData.localeReducer.currentLocale.locale);
   });
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve "undefined"', () => {

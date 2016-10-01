@@ -1,13 +1,12 @@
 /*eslint no-undef: "off"*/
 /* eslint import/no-extraneous-dependencies: "off" */
-/* eslint import/imports-first: "off" */
-
-jest.mock('../../utils/_all');
 
 import React from 'react';
 import {shallow} from 'enzyme';
 import sinon from 'sinon';
 import ChapterItem from "../ChapterItem";
+
+jest.mock('../../utils/_all');
 
 describe('ChapterItem', () => {
   function setup() {

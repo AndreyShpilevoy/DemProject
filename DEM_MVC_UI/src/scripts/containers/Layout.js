@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import * as localeActions from "../actions/localeActions";
 import {Layout as LayoutComponent} from "../components/_all";
 
-export class Layout extends React.Component {
+class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
     locale: PropTypes.string.isRequired,

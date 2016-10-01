@@ -3,58 +3,43 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import configureMockStore from 'redux-mock-store';
 import sinon from 'sinon';
-import ChapterByIdItemConnected, {ChapterByIdItem} from "../ChapterByIdItem";
-
-const mockStore = configureMockStore();
-const storeStateMock = {
-  chapterReducer:{
-    chapterById: {
-      id: 4,
-      title: "Chapter title",
-      order: 4
-    }
-  }
-};
-const mockActions = {
-  getChapterById: function(){}
-};
+import ChapterByIdItem from "../ChapterByIdItem";
+import * as mockActions from "../../actions/__mocks__/sharedFakeActions";
+import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
 
 
 describe('ChapterByIdItem', () => {
-  function setup() {
+  function setup(valid) {
     const props = {
-      store: mockStore(storeStateMock),
+      store: sharedFakeStore(valid),
       actions: mockActions,
       params: {id: 4}
     };
     return shallow(<ChapterByIdItem {...props}/>, { lifecycleExperimental: true });
   }
 
-  function setupConnected(valid) {
-    const props = {
-      store: valid ? mockStore(storeStateMock) : mockStore()
-    };
-    return shallow(<ChapterByIdItemConnected {...props}/>);
-  }
-
   it('should call "componentDidMount" once',() => {
     sinon.spy(ChapterByIdItem.prototype, 'componentDidMount');
-    setup();
+    setup(true).shallow({ lifecycleExperimental: true });
     expect(ChapterByIdItem.prototype.componentDidMount.calledOnce).toBeTruthy();
   });
 
   it('should get "chapterById" from "chapterReducer" and recieve expected result', () => {
-    expect(setupConnected(true).prop('chapter')).toEqual(storeStateMock.chapterReducer.chapterById);
+    expect(setup(true).prop('chapter')).toEqual(sharedFakeStoreData.chapterReducer.chapterById);
   });
 
   it('should get "chapterById" from "chapterReducer" and recieve expected "undefined"', () => {
-    expect(setupConnected(false).prop('chapter')).toEqual(undefined);
+    expect(setup(false).prop('chapter')).toEqual(undefined);
   });
 
-  it('should get "chapterById" from "chapterReducer" and recieve expected "undefined"', () => {
-    const divElement = setupConnected(true).shallow();
+  it('should get "children" prop from "ChapterByIdItem" and recieve "Chapter title"', () => {
+    const divElement = setup(true).shallow();
     expect(divElement.prop("children")).toBe("Chapter title");
+  });
+
+  it('should get "children" prop from "ChapterByIdItem" and recieve "null"', () => {
+    const divElement = setup(false).shallow();
+    expect(divElement.prop("children")).toBe(null);
   });
 });

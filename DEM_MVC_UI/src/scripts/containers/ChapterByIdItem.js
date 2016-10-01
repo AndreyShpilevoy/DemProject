@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import * as chapterActions from "../actions/chapterActions";
 //import { ChaptersPage as ChaptersPageComponent } from "../components/_all";
 
-export class ChapterByIdItem extends React.Component {
+class ChapterByIdItem extends React.Component {
   static propTypes = {
     chapter: PropTypes.shape({
       id: PropTypes.number.isRequired,

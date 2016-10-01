@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import * as forumActions from "../actions/forumActions";
 import {ForumList as ForumListComponent} from "../components/_all";
 
-export class ForumList extends React.Component {
+class ForumList extends React.Component {
   static propTypes = {
     chapterId: PropTypes.number.isRequired,
     forumList: PropTypes.arrayOf(

@@ -5,7 +5,7 @@ import { ShrinkingHeader, ToggleClass } from "../utils/_all";
 
 class Header extends React.Component {
   componentDidMount() {
-    ShrinkingHeader();
+    ShrinkingHeader.init();
     ToggleClass.init("menu-toggle-button", "nav-menu-content", "nav-links-opened", true);
   }
     render() {

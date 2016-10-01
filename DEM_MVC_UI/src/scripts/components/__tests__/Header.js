@@ -1,14 +1,14 @@
 /*eslint no-undef: "off"*/
 /* eslint import/no-extraneous-dependencies: "off" */
-/* eslint import/imports-first: "off" */
 
-jest.mock('../../utils/_all');
-jest.mock('../_all');
 
 import React from 'react';
 import {shallow} from 'enzyme';
 import sinon from 'sinon';
 import Header from "../Header";
+
+jest.mock('../../utils/_all');
+jest.mock('../_all');
 
 describe('Header', () => {
   function setup() {

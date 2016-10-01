@@ -2,7 +2,7 @@ import _ from "lodash";
 import rootTranslations from "../translations/rootTranslations";
 
 class TermTranslation {
-  static getTermTranslation(term, locale) {
+  getTermTranslation(term, locale) {
     let result;
       if (term && locale) {
         let localeObject = _.find(rootTranslations, {locale: locale});
@@ -21,10 +21,10 @@ class TermTranslation {
       }
     return result;
   }
-  static getDateTimeDeclension(locale) {
+  getDateTimeDeclension(locale) {
     let localeObject = _.find(rootTranslations, {locale: locale});
     return localeObject ?  localeObject.dateTimeDeclension : null;
   }
 }
 
-export default TermTranslation;
+export default new TermTranslation();
