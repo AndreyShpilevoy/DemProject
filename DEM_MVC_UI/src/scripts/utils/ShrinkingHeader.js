@@ -5,15 +5,14 @@ import root from "lodash/_root";
 class ShrinkingHeader {
   init(){
     let header = root.document.getElementById("header");
-    if(!root.document.onscroll && header){
-       /* istanbul ignore next */
-       root.document.onscroll = _.throttle(() => {
+    if(header){
+       root.document.addEventListener("scroll", _.throttle(() => {
         if(root.pageYOffset > 50) {
           header.classList.add("nav-shrink");
         } else {
           header.classList.remove("nav-shrink");
         }
-      }, 250);
+      }, 250));
     }
   }
 }

@@ -17,6 +17,7 @@ class SocialMediaLinkList extends React.Component {
     actions: PropTypes.object.isRequired
   };
 
+  /* istanbul ignore next */
   componentDidMount() {
     this.props.actions.getSocialMediaLinks();
   }

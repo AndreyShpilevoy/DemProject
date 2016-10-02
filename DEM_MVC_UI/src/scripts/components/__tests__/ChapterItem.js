@@ -3,7 +3,6 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import sinon from 'sinon';
 import ChapterItem from "../ChapterItem";
 
 jest.mock('../../utils/_all');
@@ -37,12 +36,6 @@ describe('ChapterItem', () => {
 
     const stateElement = setup().state();
     expect(stateElement).toEqual(expectedState);
-  });
-
-  it('should call componentDidMount once',() => {
-    sinon.spy(ChapterItem.prototype, 'componentDidMount');
-    setup();
-    expect(ChapterItem.prototype.componentDidMount.calledOnce).toBeTruthy();
   });
 
   it('should contain 1 Link element',() => {

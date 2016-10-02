@@ -26,8 +26,17 @@ class ForumList extends React.Component {
     actions: PropTypes.object.isRequired
   };
 
+  /* istanbul ignore next */
   componentDidMount() {
     this.props.actions.getForumsByChapterId(this.props.chapterId);
+  }
+
+  /* istanbul ignore next */
+  componentWillReceiveProps(nextProps) {
+    let nextChapterId = nextProps.chapterId;
+    if (nextChapterId !== this.props.chapterId) {
+        this.props.actions.getForumsByChapterId(nextChapterId);
+    }
   }
 
   render(){

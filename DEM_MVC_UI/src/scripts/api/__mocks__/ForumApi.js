@@ -3,7 +3,7 @@
 import delay from './delay';
 
 const forums = [{
-    id: 1,
+    id: 10,
     order: 1,
     title: "Общие вопросы",
     description: "Все вопросы касательно геймплея и мира игры Ex Machina в целом.",
@@ -25,7 +25,7 @@ const forums = [{
         order: 12
     }]
 }, {
-    id: 2,
+    id: 20,
     order: 2,
     title: "Технические вопросы",
     description: "Вопросы технического характера по игре Ex Machina.",
@@ -38,7 +38,7 @@ const forums = [{
     latesPostAutorName: "Bykawka",
     latesPostAutorGroupColor: "fbeab2"
 },{
-    id: 3,
+    id: 30,
     order: 3,
     title: "Обсуждение модификаций",
     description: "Раздел для общих и технических вопросов по модификациям.",
@@ -56,7 +56,7 @@ const forums = [{
         order: 27
     }]
 },{
-    id: 4,
+    id: 40,
     order: 4,
     title: "Вопросы по созданию моделей",
     description: "Вопросы по созданию моделей, конвертированию в игру и всего что с этим связано.",
@@ -69,7 +69,7 @@ const forums = [{
     latesPostAutorName: "Buba",
     latesPostAutorGroupColor: "00AA00"
 },{
-    id: 5,
+    id: 50,
     order: 5,
     title: "Системный раздел для главной",
     description: "В разделе публикуются статьи, файлы, FAQ и другие полезности для Главной страницы.",
@@ -113,23 +113,37 @@ class ForumApi {
       let result = [];
       switch (chapterId) {
         case 1:
+        case 10:
+        case 11:
+        case 12:
           result.push(forums[0]);
           result.push(forums[1]);
           break;
         case 2:
+        case 20:
           result.push(forums[1]);
           result.push(forums[0]);
           break;
         case 3:
+        case 30:
+        case 31:
           result.push(forums[1]);
           break;
         case 4:
+        case 40:
           result.push(forums[0]);
           result.push(forums[1]);
           result.push(forums[2]);
           result.push(forums[3]);
           break;
         case 5:
+        case 50:
+        case 51:
+        case 52:
+        case 53:
+        case 54:
+        case 55:
+        case 56:
           result.push(forums[0]);
           result.push(forums[1]);
           result.push(forums[4]);

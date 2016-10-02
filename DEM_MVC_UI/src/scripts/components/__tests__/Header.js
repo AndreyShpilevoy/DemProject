@@ -4,11 +4,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import sinon from 'sinon';
 import Header from "../Header";
 
 jest.mock('../../utils/_all');
-jest.mock('../_all');
 
 describe('Header', () => {
   function setup() {
@@ -18,12 +16,6 @@ describe('Header', () => {
   it('should render top level div with className "navbar-fixed-top"',() => {
     const divElement = setup().find('div').first();
     expect(divElement.hasClass("navbar-fixed-top")).toBeTruthy();
-  });
-
-  it('should call componentDidMount once',() => {
-    sinon.spy(Header.prototype, 'componentDidMount');
-    setup();
-    expect(Header.prototype.componentDidMount.calledOnce).toBeTruthy();
   });
 
   it('should contain 1 NavigationLinkLogo element',() => {

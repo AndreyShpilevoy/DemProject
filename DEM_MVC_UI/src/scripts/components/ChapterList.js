@@ -25,14 +25,8 @@ class ChapterList extends React.Component {
   render() {
     let mappedChapterList = this.mapChapters();
     return (
-      <div className="page-content">
-        <div className="container">
-          <div className="row">
-            <div className="col-xs-12 width-100-percent">
-              {mappedChapterList}
-            </div>
-          </div>
-        </div>
+      <div>
+        {mappedChapterList}
       </div>
     );
   }

@@ -11,6 +11,7 @@ class Layout extends React.Component {
     actions: PropTypes.object.isRequired
   };
 
+  /* istanbul ignore next */
   componentDidMount() {
     this.props.actions.getLocale();
   }

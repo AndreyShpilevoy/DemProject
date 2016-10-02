@@ -6,6 +6,6 @@ export default (
   <Route path="/" component={Layout}>
     <IndexRoute component={ChapterList} />
     <Route path="/Conference" component={ChapterList}/>
-    <Route path="/Conference/:id" component={ChapterByIdItem}/>
+    <Route path="/Conference/:chapterId" component={ChapterByIdItem}/>
   </Route>
 );

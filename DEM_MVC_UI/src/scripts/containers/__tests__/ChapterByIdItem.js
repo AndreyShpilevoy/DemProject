@@ -3,7 +3,6 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import sinon from 'sinon';
 import ChapterByIdItem from "../ChapterByIdItem";
 import * as mockActions from "../../actions/__mocks__/sharedFakeActions";
 import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
@@ -19,27 +18,21 @@ describe('ChapterByIdItem', () => {
     return shallow(<ChapterByIdItem {...props}/>, { lifecycleExperimental: true });
   }
 
-  it('should call "componentDidMount" once',() => {
-    sinon.spy(ChapterByIdItem.prototype, 'componentDidMount');
-    setup(true).shallow({ lifecycleExperimental: true });
-    expect(ChapterByIdItem.prototype.componentDidMount.calledOnce).toBeTruthy();
-  });
-
   it('should get "chapterById" from "chapterReducer" and recieve expected result', () => {
-    expect(setup(true).prop('chapter')).toEqual(sharedFakeStoreData.chapterReducer.chapterById);
+    expect(setup(true).prop('chapterItem')).toEqual(sharedFakeStoreData.chapterReducer.chapterById);
   });
 
   it('should get "chapterById" from "chapterReducer" and recieve expected "undefined"', () => {
-    expect(setup(false).prop('chapter')).toEqual(undefined);
+    expect(setup(false).prop('chapterItem')).toEqual(undefined);
   });
 
-  it('should get "children" prop from "ChapterByIdItem" and recieve "Chapter title"', () => {
+  it('should find "ChapterItem" component', () => {
     const divElement = setup(true).shallow();
-    expect(divElement.prop("children")).toBe("Chapter title");
+    expect(divElement.find("ChapterItem")).toBeTruthy();
   });
 
-  it('should get "children" prop from "ChapterByIdItem" and recieve "null"', () => {
+  it('children prop should be false', () => {
     const divElement = setup(false).shallow();
-    expect(divElement.prop("children")).toBe(null);
+    expect(divElement.prop('children')).toBeFalsy();
   });
 });

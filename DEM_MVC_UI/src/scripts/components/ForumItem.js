@@ -32,14 +32,14 @@ class ForumItem extends React.Component {
   }
 
   render(){
-    let {title, description, subForumList, topicsCount, postsCount, latesPostAutorName, latesPostTimeCreation, lastActiveTopic} = this.props.forumItem;
+    let {id, title, description, subForumList, topicsCount, postsCount, latesPostAutorName, latesPostTimeCreation, lastActiveTopic} = this.props.forumItem;
     return(
       <div className="forum-container-wrapper row">
         <div className="forum-container col-xs-12 row">
           <div className="col-md-5 col-lg-9 row">
             <div className="col-lg-8 flex flex-column-vertical-center">
               <div className="forum-title">
-                <Link to={"/"}>{title}</Link>
+                <Link to={`/Conference/${id}`}>{title}</Link>
               </div>
               <div className="hidden-md-down forum-description">
                 {description}

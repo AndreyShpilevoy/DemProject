@@ -28,9 +28,8 @@ describe('ChapterList', () => {
     return shallow(<ChapterList {...props}/>);
   }
 
-  it('should render top level div with className "page-content"',() => {
-    const divElement = setup().find('div').first();
-    expect(divElement.hasClass("page-content")).toBeTruthy();
+  it('should render top level div',() => {
+    expect(setup().find('div').first()).toBeTruthy();
   });
 
   it('child contains 3 ChapterItem components',() => {
