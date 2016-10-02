@@ -6,6 +6,7 @@ import NavigationLinkList from "./NavigationLinkList";
 import RelativeDateTime from "./RelativeDateTime";
 import SocialMediaLinkList from "./SocialMediaLinkList";
 import TermItem from "./TermItem";
+import TopicList from "./TopicList";
 
 export {
   ChapterByIdItem,
@@ -15,5 +16,6 @@ export {
   NavigationLinkList,
   RelativeDateTime,
   SocialMediaLinkList,
-  TermItem
+  TermItem,
+  TopicList
 };

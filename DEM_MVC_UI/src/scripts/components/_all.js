@@ -15,6 +15,7 @@ import SocialMediaLinkList from "./SocialMediaLinkList";
 import SubForumItem from "./SubForumItem";
 import SubForumList from "./SubForumList";
 import TermItem from "./TermItem";
+import TopicList from "./TopicList";
 
 export {
   ChapterItem,
@@ -33,5 +34,6 @@ export {
   SocialMediaLinkList,
   SubForumItem,
   SubForumList,
-  TermItem
+  TermItem,
+  TopicList
 };

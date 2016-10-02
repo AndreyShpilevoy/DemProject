@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as chapterActions from "../actions/chapterActions";
 import { ChapterItem } from "../components/_all";
+import { TopicList } from "./_all";
 
 class ChapterByIdItem extends React.Component {
   static propTypes = {
@@ -32,7 +33,12 @@ class ChapterByIdItem extends React.Component {
 
   render() {
     return (
-      this.props.chapterItem ? <ChapterItem chapterItem={this.props.chapterItem}/> : null
+        this.props.chapterItem ?
+          <div>
+            <ChapterItem chapterItem={this.props.chapterItem}/>
+            <TopicList forumId={this.props.chapterItem.id}/>
+          </div> :
+          null
     );
   }
 

@@ -4,6 +4,8 @@ function getChapterById(){}
 function getChapterByIdSuccess(){}
 function getForumsByChapterId(){}
 function getForumsByChapterIdSuccess(){}
+function getTopicsByForumId(){}
+function getTopicsByForumIdSuccess(){}
 function getLocale(){}
 function getLocaleSuccess(){}
 function getNavigationLinks(){}
@@ -18,6 +20,8 @@ export {
   getChapterByIdSuccess,
   getForumsByChapterId,
   getForumsByChapterIdSuccess,
+  getTopicsByForumId,
+  getTopicsByForumIdSuccess,
   getLocale,
   getLocaleSuccess,
   getNavigationLinks,

@@ -91,25 +91,3 @@ describe('forumReducer', function(){
     ]});
   });
 });
-
-// export default function forumReducer(state = [], action) {
-//     switch (action.type) {
-//         case types.GET_FORUMS_BY_CHAPTER_ID_SUCCESS:
-//           if(state.allForums){
-//             return Object.assign({}, state, {
-//               allForums: [
-//                 ...state.allForums,
-//                 {chapterId: action.chapterId, forumList: action.forums}
-//               ]
-//             });
-//           }
-//           return Object.assign({}, state, {
-//             allForums: [
-//               {chapterId: action.chapterId, forumList: action.forums}
-//             ]
-//           });
-//
-//         default:
-//             return state;
-//     }
-// }
