@@ -11,9 +11,9 @@ class TermItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      spaceBeforeTerm: this.props.spaceBefore ? " " : "",
+      spaceBeforeTerm: this.props.spaceBefore ? ` ` : ``,
       termClassName: this.props.className ? `term ${this.props.className }`: 'term',
-      spaceAfterTerm: this.props.spaceAfter ? " " : "",
+      spaceAfterTerm: this.props.spaceAfter ? ` ` : ``
     };
   }
 

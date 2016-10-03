@@ -1,8 +1,7 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import { CollapsibleWrapper } from "./_all";
+import { CollapsibleWrapper, TopicItem } from "./_all";
 import {TermItem} from '../containers/_all';
-//import {TopicItem} from './_all';
 
 class TopicList extends React.Component {
   static propTypes = {
@@ -27,17 +26,16 @@ class TopicList extends React.Component {
 
   mapTopics = () => {
     let mappedTopics = this.sortTopics().map(topicItem =>
-      //<TopicItem key={topicItem.id} topicItem={topicItem} />);
-      <div key={topicItem.id}>{topicItem.title}</div>);
+      <TopicItem key={topicItem.id} topicItem={topicItem} />);
         return mappedTopics;
   }
 
   bindCollapsibleWrapperItem = () =>({
     uniquePrefix: `topic-list-with-forum-id-${this.props.forumId}`,
-    titleElement: <TermItem term={{id: 22, value: "Topics"}} />,
-    bodyElement: <div className="topics-container">{this.mapTopics()}</div>,
+    titleElement: <TermItem term={{id: 23, value: "Answers"}} />,
+    bodyElement: <div className="topics-container container">{this.mapTopics()}</div>,
     firstColumnTerm: <TermItem term={{id: 2, value: "Posts"}} />,
-    secondColumnTerm:<TermItem term={{id: 23, value: "Views"}} />,
+    secondColumnTerm:<TermItem term={{id: 22, value: "Views"}} />,
     thirdColumnTerm: <TermItem term={{id: 3, value: "Last message in"}} />
   })
 
