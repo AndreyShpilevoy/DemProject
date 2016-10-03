@@ -8,6 +8,7 @@ import TopicList from "../TopicList";
 describe('TopicList', () => {
   function setup() {
     const props = {
+      forumId: 1,
       topicList: [{
         id: 1,
         title: "Как деактивировать бомбу",
@@ -44,9 +45,9 @@ describe('TopicList', () => {
     return shallow(<TopicList {...props}/>);
   }
 
-  it('should render top level div with className "topics-container"',() => {
-    const divElement = setup().find('div').first();
-    expect(divElement.hasClass("topics-container")).toBeTruthy();
+  it('should render CollapsibleWrapper',() => {
+    const collapsibleWrapperElement = setup().find('CollapsibleWrapper').first();
+    expect(collapsibleWrapperElement).toBeTruthy();
   });
 
   // it('child contains 3 ForumItem components',() => {

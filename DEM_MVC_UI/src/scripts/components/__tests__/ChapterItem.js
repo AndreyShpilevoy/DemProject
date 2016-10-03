@@ -17,39 +17,55 @@ describe('ChapterItem', () => {
       }
     };
 
-    return shallow(<ChapterItem {...props}/>, { lifecycleExperimental: true });
+    return shallow(<ChapterItem {...props}/>);
   }
 
-  it('should render top level div with className "chapter-container"',() => {
-    const divElement = setup().find('div').first();
-    expect(divElement.hasClass("chapter-container")).toBeTruthy();
+  it('should render CollapsibleWrapper',() => {
+    const collapsibleWrapperElement = setup().find('CollapsibleWrapper').first();
+    expect(collapsibleWrapperElement).toBeTruthy();
   });
 
-  it('should have default state',() => {
-    const expectedState = {
-      chapterHeaderId: 'chapter-header-1',
-      chapterBodyId: 'chapter-body-1',
-      toggleBodyClass: 'chapter-body-opened',
-      iconArrowLeftId: 'icon-arrow-left-1',
-      toggleIconArrowClass: 'icon-arrow-left-opened'
-    };
-
-    const stateElement = setup().state();
-    expect(stateElement).toEqual(expectedState);
+  it('props should contain "collapsibleWrapperItem" object with "Id" equel to 1',() => {
+    expect(setup().prop("collapsibleWrapperItem").uniquePrefix).toEqual("chapter-item-with-id-1");
   });
 
-  it('should contain 1 Link element',() => {
-    const linkElement = setup().find('Link');
-    expect(linkElement.length).toEqual(1);
+  it('props should contain "collapsibleWrapperItem" object with ' +
+     '"titleElement.type.displayName" equel to "Link", with ' +
+     '"titleElement.props.to" equel to "/Conference/1"',() => {
+    const titleElement = setup().prop("collapsibleWrapperItem").titleElement;
+    expect(titleElement.type.displayName).toEqual("Link");
+    expect(titleElement.props.to).toEqual("/Conference/1");
   });
 
-  it('should contain 3 TermItem element',() => {
-    const termItemElement = setup().find('Connect(TermItem)');
-    expect(termItemElement.length).toEqual(3);
+  it('props should contain "collapsibleWrapperItem" object with ' +
+     '"bodyElement.type.displayName" equel to "Connect(ForumList)", with ' +
+     '"bodyElement.props.chapterId" equel to "1"',() => {
+    const titleElement = setup().prop("collapsibleWrapperItem").bodyElement;
+    expect(titleElement.type.displayName).toEqual("Connect(ForumList)");
+    expect(titleElement.props.chapterId).toEqual(1);
   });
 
-  it('should contain 1 ForumList element',() => {
-    const forumList = setup().find('Connect(ForumList)');
-    expect(forumList.length).toEqual(1);
+  it('props should contain "collapsibleWrapperItem" object with ' +
+     '"firstColumnTerm.type.displayName" equel to "Connect(TermItem)", with ' +
+     '"firstColumnTerm.props.term" equel to expected model',() => {
+    const titleElement = setup().prop("collapsibleWrapperItem").firstColumnTerm;
+    expect(titleElement.type.displayName).toEqual("Connect(TermItem)");
+    expect(titleElement.props.term).toEqual({id: 1, value: "Topics"});
+  });
+
+  it('props should contain "collapsibleWrapperItem" object with ' +
+     '"secondColumnTerm.type.displayName" equel to "Connect(TermItem)", with ' +
+     '"secondColumnTerm.props.term" equel to expected model',() => {
+    const titleElement = setup().prop("collapsibleWrapperItem").secondColumnTerm;
+    expect(titleElement.type.displayName).toEqual("Connect(TermItem)");
+    expect(titleElement.props.term).toEqual({id: 2, value: "Posts"});
+  });
+
+  it('props should contain "collapsibleWrapperItem" object with ' +
+     '"thirdColumnTerm.type.displayName" equel to "Connect(TermItem)", with ' +
+     '"thirdColumnTerm.props.term" equel to expected model',() => {
+    const titleElement = setup().prop("collapsibleWrapperItem").thirdColumnTerm;
+    expect(titleElement.type.displayName).toEqual("Connect(TermItem)");
+    expect(titleElement.props.term).toEqual({id: 3, value: "Last message in"});
   });
 });

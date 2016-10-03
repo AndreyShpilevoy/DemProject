@@ -32,7 +32,7 @@ class ChapterApi {
   static getAllChapters() {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(Object.assign([], chapters.slice(0, 6)));
+        resolve(Object.assign([], chapters.slice(0, 5)));
       }, delay);
     });
   }

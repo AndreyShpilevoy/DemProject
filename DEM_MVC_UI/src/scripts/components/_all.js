@@ -1,5 +1,6 @@
 import ChapterItem from "./ChapterItem";
 import ChapterList from "./ChapterList";
+import CollapsibleWrapper from "./CollapsibleWrapper";
 import Footer from "./Footer";
 import ForumItem from "./ForumItem";
 import ForumList from "./ForumList";
@@ -20,6 +21,7 @@ import TopicList from "./TopicList";
 export {
   ChapterItem,
   ChapterList,
+  CollapsibleWrapper,
   Footer,
   ForumItem,
   ForumList,

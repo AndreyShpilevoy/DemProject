@@ -2,20 +2,20 @@
 @import "../Common/sizes.scss";
 @import "../Common/slideAnimation.scss";
 
-.chapter-container {
-  padding-top: $chapter-container-and-footer-padding-top;
+.collapsible-wrapper-container {
+  padding-top: $collapsible-wrapper-container-and-footer-padding-top;
 
-  .chapter-header {
+  .collapsible-wrapper-header {
     width: 100%;
-    height: $chapter-header-height;
-    background-color: $chapter-header-color;
+    height: $collapsible-wrapper-header-height;
+    background-color: $collapsible-wrapper-header-color;
     color: $orange-text-color;
-    font-size: $chapter-header-font-size;
+    font-size: $collapsible-wrapper-header-font-size;
 
-    .chapter-header-wrapper {
-      padding: 0 $chapter-header-title-padding-horizontal;
+    .collapsible-wrapper-header-title-wrapper {
+      padding: 0 $collapsible-wrapper-header-title-padding-horizontal;
 
-      .chapter-header-title {
+      .collapsible-wrapper-header-title {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -25,18 +25,18 @@
         }
       }
 
-      .chapter-header-title-info-label {
+      .collapsible-wrapper-header-title-info-label {
         font-size: 1rem;
         line-height: 1;
         align-items: center;
       }
 
-      .icon-arrow-left-chapter-title {
+      .icon-arrow-left-collapsible-wrapper-title {
         display: none;
         margin-left: auto;
         .icon-arrow-left {
-          width: $icon-arrow-left-chapter-title;
-          height: $icon-arrow-left-chapter-title;
+          width: $icon-arrow-left-collapsible-wrapper-title;
+          height: $icon-arrow-left-collapsible-wrapper-title;
           .icon-arrow-left-path {
             fill: $orange-text-color;
           }
@@ -45,7 +45,7 @@
     }
   }
 
-  .chapter-body {
+  .collapsible-wrapper-body {
     background-color: #7b736b;
     color: #48423d;
   }
@@ -53,7 +53,7 @@
 
 //md and smaller screens
 @media (max-width: 991px) {
-  .chapter-container {
+  .collapsible-wrapper-container {
 
     .icon-arrow-left {
       @include element-rotate-center-to-0;
@@ -63,11 +63,11 @@
       @include element-rotate-center-to--90;
     }
 
-    .chapter-body-default {
+    .collapsible-wrapper-body-default {
       @include element-closed;
     }
 
-    .chapter-body-opened {
+    .collapsible-wrapper-body-opened {
       @include element-opened;
     }
   }
@@ -76,10 +76,10 @@
 
 //md screens only
 @media (min-width: 768px) and (max-width: 991px) {
-  .chapter-container {
-    .chapter-header {
-      .chapter-header-wrapper {
-        .icon-arrow-left-chapter-title {
+  .collapsible-wrapper-container {
+    .collapsible-wrapper-header {
+      .collapsible-wrapper-header-title-wrapper {
+        .icon-arrow-left-collapsible-wrapper-title {
           display: initial;
         }
       }

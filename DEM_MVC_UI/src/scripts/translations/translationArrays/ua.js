@@ -19,7 +19,9 @@ const ua  = [
   {id: 18,  value: 'місяців', description: 'several months for TransformDateTime'},
   {id: 19,  value: 'рік', description: 'single year for TransformDateTime'},
   {id: 20,  value: 'роки', description: 'several years for TransformDateTime'},
-  {id: 21,  value: 'років', description: 'several years for TransformDateTime'}
+  {id: 21,  value: 'років', description: 'several years for TransformDateTime'},
+  {id: 22,   value: 'Теми', description: 'for topics label on topicList component'},
+  {id: 23,   value: 'Переглядів', description: 'for topics label on topicList component'},
 ];
 
 export default ua;

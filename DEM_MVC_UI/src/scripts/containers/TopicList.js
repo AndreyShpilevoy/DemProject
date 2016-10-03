@@ -37,7 +37,7 @@ class TopicList extends React.Component {
 
   render(){
     return(
-      <TopicListComponent topicList={this.props.topicList} />
+      <TopicListComponent topicList={this.props.topicList} forumId={this.props.forumId} />
     );
   }
 }

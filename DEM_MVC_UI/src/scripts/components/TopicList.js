@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
+import { CollapsibleWrapper } from "./_all";
+import {TermItem} from '../containers/_all';
 //import {TopicItem} from './_all';
 
 class TopicList extends React.Component {
@@ -15,7 +17,8 @@ class TopicList extends React.Component {
         latesPostAutorName: PropTypes.string.isRequired,
         latesPostAutorAvatart: PropTypes.string.isRequired,
         latesPostAutorGroupColor: PropTypes.string.isRequired
-      })).isRequired
+      })).isRequired,
+    forumId: PropTypes.number.isRequired
   };
 
   sortTopics = () => {
@@ -29,12 +32,23 @@ class TopicList extends React.Component {
         return mappedTopics;
   }
 
+  bindCollapsibleWrapperItem = () =>({
+    uniquePrefix: `topic-list-with-forum-id-${this.props.forumId}`,
+    titleElement: <TermItem term={{id: 22, value: "Topics"}} />,
+    bodyElement: <div className="topics-container">{this.mapTopics()}</div>,
+    firstColumnTerm: <TermItem term={{id: 2, value: "Posts"}} />,
+    secondColumnTerm:<TermItem term={{id: 23, value: "Views"}} />,
+    thirdColumnTerm: <TermItem term={{id: 3, value: "Last message in"}} />
+  })
+
+  collapseSettings = () => ({
+    collapsable: true,
+    openedByDefault: true
+  })
+
   render(){
-    let topicItems = this.mapTopics();
     return(
-      <div className="topics-container">
-        {topicItems}
-      </div>
+      <CollapsibleWrapper collapsibleWrapperItem={this.bindCollapsibleWrapperItem()} collapseSettings={this.collapseSettings()} />
     );
   }
 }

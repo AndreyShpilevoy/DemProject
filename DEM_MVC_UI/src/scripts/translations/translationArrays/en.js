@@ -19,7 +19,9 @@ const en  = [
   {id: 18,  value: 'months', description: 'several months for TransformDateTime'},
   {id: 19,  value: 'about a year', description: 'single year for TransformDateTime'},
   {id: 20,  value: 'years', description: 'several years for TransformDateTime'},
-  {id: 21,  value: 'years', description: 'several years for TransformDateTime'}
+  {id: 21,  value: 'years', description: 'several years for TransformDateTime'},
+  {id: 22,   value: 'Topics', description: 'for topics label on topicList component'},
+  {id: 23,   value: 'Views', description: 'for topics label on topicList component'},
 ];
 
 export default en;
