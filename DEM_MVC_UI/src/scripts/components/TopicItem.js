@@ -34,7 +34,7 @@ class TopicItem extends React.Component {
           <Link to={`/`}>{title}</Link>
         </div>
         <div>
-          <TermItem term={{id: 24, value: "Answer"}} />
+          <TermItem term={{id: 2, value: "Posts"}} />
           {postsCount}
         </div>
         <div>

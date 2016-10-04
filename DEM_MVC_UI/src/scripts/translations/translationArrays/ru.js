@@ -21,8 +21,7 @@ const ru  = [
   {id: 20,  value: 'года', description: 'several years for TransformDateTime'},
   {id: 21,  value: 'лет', description: 'several years for TransformDateTime'},
   {id: 22,   value: 'Просмотров', description: 'for topics label on topicList component'},
-  {id: 23,   value: 'Ответы', description: 'for topics label on topicList component'},
-  {id: 24,   value: 'Ответов', description: 'for topics on topicList component'},
+  {id: 23,   value: 'Темы', description: 'for topics label on topicList component'},
 ];
 
 export default ru;
