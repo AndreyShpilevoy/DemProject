@@ -15,16 +15,25 @@
       margin: $forum-topic-container-separator-margin-top-bottom $forum-topic-container-separator-margin-left-right;
   }
 
-  .topic-last-post-author-avatar-container{
-    width: $topic-last-post-author-avatar-size;
-    height: $topic-last-post-author-avatar-size;
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
-    img {
-      flex: 1;
-      height: 100%;
+  .topic-last-post-wrapper{
+    .topic-last-post-author-avatar-container{
+      .topic-last-post-author-avatar {
+        width: $topic-last-post-author-avatar-size;
+        height: $topic-last-post-author-avatar-size;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        margin-left: auto;
+        img {
+          flex: 1;
+          height: 100%;
+        }
+      }
     }
+  }
+  .topic-last-post-wrapper>div{
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -51,12 +60,59 @@
   }
 }
 
+//sm and smaller screens
+@media (max-width: 757px){
+  .topic-container-wrapper {
+    .topic-last-message-time,
+    .topic-last-post-autor-name-style,
+    .topic-last-post-author-sm-separator {
+      font-size: $forum-description-topics-posts-counter-topics-views-counter-last-message-font-size;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
 //md screens only
 @media (min-width: 768px) and (max-width: 991px) {
   .topic-last-post-wrapper {
     margin: initial;
     display: flex;
     flex-wrap: wrap;
+  }
+
+    .topic-last-post-autor-name-style,
+    .topic-last-message-time {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+  .topic-last-post-autor-name-style {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .topic-last-message-time {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+//md and bigger screens
+@media (min-width: 768px) {
+  .topic-last-post-author {
+    display: flex;
+    flex: 1;
+    text-align: center;
   }
 }
 
@@ -70,6 +126,11 @@
 
   .topic-last-post-wrapper {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .topic-last-post-author {
     flex-direction: column;
     justify-content: center;
   }

@@ -28,12 +28,10 @@ class TopicItem extends React.Component {
 
   getUserAvatar = () => {
     return this.props.topicItem.latesPostAutorAvatart ?
-    <div className="topic-last-post-author-avatar-container">
-      <Link to={"/"}>
+      <Link className="topic-last-post-author-avatar" to={"/"}>
         <img src={this.props.topicItem.latesPostAutorAvatart} />
-      </Link>
-    </div> :
-    null;
+      </Link> :
+      <div className="topic-last-post-author-avatar"/>;
   }
 
   render(){
@@ -42,26 +40,27 @@ class TopicItem extends React.Component {
       <div className="topic-container-wrapper row">
         <div className="topic-container col-xs-12 row">
           <div className="col-md-5 col-lg-9 row">
-            <div className="topic-title col-lg-8 flex flex-column-vertical-center">
-              <Link to={`/`}>{title}</Link>
+            <div className="col-lg-8 flex flex-column-vertical-center">
+              <Link className="topic-title" to={`/`}>{title}</Link>
             </div>
             <div className="col-lg-2 topic-posts-counter flex flex-column-vertical-center">
               <TermItem className="hidden-lg-up" term={{id: 2, value: "Posts"}} spaceAfter />
               {postsCount}
             </div>
-            <div className="col-lg-2 topic-views-counter flex flex-column-vertical-center">
+            <div className="col-lg-2 topic-views-counter flex flex-column-vertical-center hidden-md-down">
               {topicViewsCount}
             </div>
           </div>
           <div className="col-md-7 col-lg-3 topic-last-post-wrapper">
             <div className="flex flex-row">
-              <div className="flex flex-column-vertical-center">
-                <Link activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{latesPostAutorName}</Link>
+              <div className="topic-last-post-author">
+                <RelativeDateTime className="topic-last-message-time" relativeDateTime={latesPostTimeCreation}/>
+                <TermItem className="hidden-md-up topic-last-post-author-sm-separator" term={{id: 24, value: ">>"}} spaceAfter spaceBefore />
+                <Link className="topic-last-post-autor-name-style" activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{latesPostAutorName}</Link>
               </div>
-              {this.getUserAvatar()}
-            </div>
-            <div>
-              <RelativeDateTime relativeDateTime={latesPostTimeCreation} spaceBefore/>
+                <div className="topic-last-post-author-avatar-container flex flex-column-vertical-center hidden-md-down">
+                  {this.getUserAvatar()}
+                </div>
             </div>
           </div>
         </div>

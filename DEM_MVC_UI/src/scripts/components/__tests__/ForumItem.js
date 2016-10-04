@@ -56,7 +56,7 @@ describe('ForumItem', () => {
     expect(relativeDateTimeElement.length).toEqual(1);
   });
 
-  it('should contain 1 Link element',() => {
+  it('should contain 3 Link element',() => {
     const linkElement = setup().find('Link');
     expect(linkElement.length).toEqual(3);
   });

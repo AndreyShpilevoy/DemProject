@@ -38,9 +38,7 @@ class ForumItem extends React.Component {
         <div className="forum-container col-xs-12 row">
           <div className="col-md-5 col-lg-9 row">
             <div className="col-lg-8 flex flex-column-vertical-center">
-              <div className="forum-title">
-                <Link to={`/Conference/${id}`}>{title}</Link>
-              </div>
+              <Link  className="forum-title" to={`/Conference/${id}`}>{title}</Link>
               <div className="hidden-md-down forum-description">
                 {description}
               </div>
