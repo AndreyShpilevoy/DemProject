@@ -12,10 +12,6 @@ class SocialMediaLinkItem extends React.Component {
     }).isRequired
   };
 
-  getImageComponent = () => {
-
-  }
-
   render(){
     let {svgName, href, title, id} = this.props.sociaMediaLinkItem;
     let IconComponentArray = Icons;
