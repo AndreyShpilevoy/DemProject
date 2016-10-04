@@ -11,19 +11,22 @@ class SocialMediaLinkItem extends React.Component {
       order: PropTypes.number.isRequired
     }).isRequired
   };
+
+  getImageComponent = () => {
+
+  }
+
   render(){
     let {svgName, href, title, id} = this.props.sociaMediaLinkItem;
     let IconComponentArray = Icons;
     let Icon = IconComponentArray[svgName];
-    return (
+    return Icon ?
       <div className="social-media-link">
         <a href={href} title={title} target="_blank">
-          {Icon ? <Icon id={id}
-                        title={title}
-                        className={`social-media-link-${svgName}`}/>: null}
+          <Icon id={id} title={title} className={`social-media-link-${svgName}`}/>
         </a>
-      </div>
-    );
+      </div>:
+    null;
   }
 }
 

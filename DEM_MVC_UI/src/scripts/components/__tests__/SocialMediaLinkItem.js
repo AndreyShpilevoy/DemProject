@@ -28,11 +28,11 @@ describe('SocialMediaLinkItem', () => {
   it('should contain 1 "a" element if Icon element is defined',() => {
     const aElement = setup("Steam").find('a');
     expect(aElement.length).toEqual(1);
+    expect(aElement.node.type).toEqual("a");
   });
 
-  it('should contain 1 "a" element if Icon element is not defined',() => {
-    const aElement = setup("Two").find('a');
-    expect(aElement.length).toEqual(1);
+  it('should nor contain any elements if Name of image is wrong',() => {
+    expect(setup("Two").node).toBeNull();
   });
 
   it('should contain 1 "Vk" element if Icon element is defined',() => {

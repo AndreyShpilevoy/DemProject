@@ -37,10 +37,31 @@ class CollapsibleWrapper extends React.Component {
     }
   }
 
-  render(){
-    let {titleElement, bodyElement, firstColumnTerm, secondColumnTerm, thirdColumnTerm} = this.props.collapsibleWrapperItem;
+  getImageComponent = () => {
     let {collapsable, openedByDefault} = this.props.collapseSettings;
     let shouldBeOpen = (collapsable && openedByDefault) || !collapsable;
+    return collapsable ?
+      <div className="icon-arrow-left-collapsible-wrapper-title">
+        <ArrowLeft className={shouldBeOpen ?
+          "icon-arrow-left icon-arrow-left-opened" :
+          "icon-arrow-left"} id={this.state.iconArrowLeftId} />
+      </div> :
+      null;
+  }
+
+  getBodyComponent = () => {
+    let {collapsable, openedByDefault} = this.props.collapseSettings;
+    let shouldBeOpen = (collapsable && openedByDefault) || !collapsable;
+    return (
+      <div className={shouldBeOpen ?
+          "collapsible-wrapper-body collapsible-wrapper-body-default collapsible-wrapper-body-opened" :
+          "collapsible-wrapper-body collapsible-wrapper-body-default"} id={this.state.collapsibleWrapperBodyId}>
+        {this.props.collapsibleWrapperItem.bodyElement}
+      </div>);
+  }
+
+  render(){
+    let {titleElement, firstColumnTerm, secondColumnTerm, thirdColumnTerm} = this.props.collapsibleWrapperItem;
     return(
       <div className="collapsible-wrapper-container">
         <div className="collapsible-wrapper-header flex flex-column-vertical-center container" id={this.state.collapsibleWrapperHeaderId}>
@@ -59,20 +80,10 @@ class CollapsibleWrapper extends React.Component {
                 {thirdColumnTerm}
               </div>
             </div>
-            <div className="icon-arrow-left-collapsible-wrapper-title">
-              {collapsable ?
-                  <ArrowLeft className={shouldBeOpen ?
-                    "icon-arrow-left icon-arrow-left-opened" :
-                    "icon-arrow-left"} id={this.state.iconArrowLeftId} /> :
-                  null}
-            </div>
+            {this.getImageComponent()}
           </div>
         </div>
-        <div className={shouldBeOpen ?
-            "collapsible-wrapper-body collapsible-wrapper-body-default collapsible-wrapper-body-opened" :
-            "collapsible-wrapper-body collapsible-wrapper-body-default"} id={this.state.collapsibleWrapperBodyId}>
-          {bodyElement}
-        </div>
+        {this.getBodyComponent()}
       </div>
     );
   }

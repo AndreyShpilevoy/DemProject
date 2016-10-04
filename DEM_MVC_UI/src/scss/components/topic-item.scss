@@ -1,0 +1,76 @@
+@import "../Common/colors.scss";
+@import "../Common/sizes.scss";
+
+.topic-container-wrapper {
+  .topic-title{
+    font-size: $forum-title-font-size;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .topic-container-separator {
+      background-color: $forum-sub-forum-topic-container-separator-background-color;
+      height: $forum-topic-container-separator-height;
+      margin: $forum-topic-container-separator-margin-top-bottom $forum-topic-container-separator-margin-left-right;
+  }
+
+  .topic-last-post-author-avatar-container{
+    width: $topic-last-post-author-avatar-size;
+    height: $topic-last-post-author-avatar-size;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    img {
+      flex: 1;
+      height: 100%;
+    }
+  }
+}
+
+.topic-container-wrapper:last-child {
+  .topic-container-separator {
+    display: none;
+  }
+}
+
+
+//md and smaller screens
+@media (max-width: 991px) {
+  .topic-container-wrapper {
+    .topic-views-counter,
+    .topic-posts-counter {
+      display: inline-block;
+      width: initial;
+      padding-right: $forum-topics-posts-counter-padding-right;
+      font-size: $forum-description-topics-posts-counter-topics-views-counter-last-message-font-size;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+//md screens only
+@media (min-width: 768px) and (max-width: 991px) {
+  .topic-last-post-wrapper {
+    margin: initial;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+//lg and bigger screens
+@media (min-width: 992px) {
+  .topic-views-counter,
+  .topic-posts-counter,
+  .topic-last-post-wrapper {
+    align-items: center;
+  }
+
+  .topic-last-post-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

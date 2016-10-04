@@ -26,29 +26,46 @@ class TopicItem extends React.Component {
     };
   }
 
+  getUserAvatar = () => {
+    return this.props.topicItem.latesPostAutorAvatart ?
+    <div className="topic-last-post-author-avatar-container">
+      <Link to={"/"}>
+        <img src={this.props.topicItem.latesPostAutorAvatart} />
+      </Link>
+    </div> :
+    null;
+  }
+
   render(){
-    let {title, postsCount, topicViewsCount, latesPostAutorName, latesPostTimeCreation, latesPostAutorAvatart} = this.props.topicItem;
+    let {title, postsCount, topicViewsCount, latesPostAutorName, latesPostTimeCreation} = this.props.topicItem;
     return(
       <div className="topic-container-wrapper row">
-        <div>
-          <Link to={`/`}>{title}</Link>
+        <div className="topic-container col-xs-12 row">
+          <div className="col-md-5 col-lg-9 row">
+            <div className="topic-title col-lg-8 flex flex-column-vertical-center">
+              <Link to={`/`}>{title}</Link>
+            </div>
+            <div className="col-lg-2 topic-posts-counter flex flex-column-vertical-center">
+              <TermItem className="hidden-lg-up" term={{id: 2, value: "Posts"}} spaceAfter />
+              {postsCount}
+            </div>
+            <div className="col-lg-2 topic-views-counter flex flex-column-vertical-center">
+              {topicViewsCount}
+            </div>
+          </div>
+          <div className="col-md-7 col-lg-3 topic-last-post-wrapper">
+            <div className="flex flex-row">
+              <div className="flex flex-column-vertical-center">
+                <Link activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{latesPostAutorName}</Link>
+              </div>
+              {this.getUserAvatar()}
+            </div>
+            <div>
+              <RelativeDateTime relativeDateTime={latesPostTimeCreation} spaceBefore/>
+            </div>
+          </div>
         </div>
-        <div>
-          <TermItem term={{id: 2, value: "Posts"}} />
-          {postsCount}
-        </div>
-        <div>
-          {topicViewsCount}
-        </div>
-        <div>
-          <RelativeDateTime relativeDateTime={latesPostTimeCreation} spaceBefore/>
-        </div>
-        <div>
-          <Link activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{latesPostAutorName}</Link>
-        </div>
-        <div>
-          <img src={latesPostAutorAvatart} />
-        </div>
+        <div className="topic-container-separator col-xs-12"/>
       </div>
     );
   }

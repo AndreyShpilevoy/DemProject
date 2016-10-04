@@ -10,14 +10,14 @@
   }
 
   .forum-description {
-    font-size: $forum-description-topics-posts-counter-last-message-font-size;
+    font-size: $forum-description-topics-posts-counter-topics-views-counter-last-message-font-size;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   .forum-last-active-topic {
-    font-size: $forum-description-topics-posts-counter-last-message-font-size;
+    font-size: $forum-description-topics-posts-counter-topics-views-counter-last-message-font-size;
     .forum-last-active-topic-message {
       white-space: nowrap;
       overflow: hidden;
@@ -26,9 +26,9 @@
   }
 
   .forum-container-separator {
-      background-color: $forum-sub-forum-container-separator-background-color;
-      height: $forum-container-separator-height;
-      margin: $forum-container-separator-margin-top-bottom $forum-container-separator-margin-left-right;
+      background-color: $forum-sub-forum-topic-container-separator-background-color;
+      height: $forum-topic-container-separator-height;
+      margin: $forum-topic-container-separator-margin-top-bottom $forum-topic-container-separator-margin-left-right;
   }
 }
 
@@ -47,7 +47,7 @@
       display: inline-block;
       width: initial;
       padding-right: $forum-topics-posts-counter-padding-right;
-      font-size: $forum-description-topics-posts-counter-last-message-font-size;
+      font-size: $forum-description-topics-posts-counter-topics-views-counter-last-message-font-size;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;

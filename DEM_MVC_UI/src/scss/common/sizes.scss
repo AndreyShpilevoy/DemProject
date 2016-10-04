@@ -40,15 +40,15 @@ $collapsible-wrapper-header-font-size: 1.25rem;
 $collapsible-wrapper-header-title-padding-horizontal: 0.9375rem;
 $icon-arrow-left-collapsible-wrapper-title: 1.2rem;
 
-$forums-container-padding-top-bottom: 0.46875rem;
-$forums-container-padding-left-right: 0.9375rem;
+$forums-topics-container-padding-top-bottom: 0.46875rem;
+$forums-topics-container-padding-left-right: 0.9375rem;
 
-$forum-container-separator-height: 0.125rem;
-$forum-container-separator-margin-top-bottom: 0.3rem;
-$forum-container-separator-margin-left-right: 0;
+$forum-topic-container-separator-height: 0.125rem;
+$forum-topic-container-separator-margin-top-bottom: 0.3rem;
+$forum-topic-container-separator-margin-left-right: 0;
 $forum-topics-posts-counter-padding-right: 0.46875rem;
 $forum-title-font-size: 1.3125rem;
-$forum-description-topics-posts-counter-last-message-font-size: 0.8rem;
+$forum-description-topics-posts-counter-topics-views-counter-last-message-font-size: 0.8rem;
 
 $sub-forum-link-font-size: 1rem;
 $sub-forum-link-line-height: 1.3;
@@ -60,3 +60,5 @@ $sub-forum-icon-right-angle-margin-top: -0.48046875rem;
 $social-media-link-height-weight: 2rem;
 $social-media-link-marging-left-right: 0.125rem;
 $social-media-link-last-child-marging-right: 0.25rem;
+
+$topic-last-post-author-avatar-size: 2.5rem;
