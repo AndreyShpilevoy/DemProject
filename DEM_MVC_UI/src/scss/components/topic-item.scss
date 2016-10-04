@@ -9,10 +9,18 @@
     text-overflow: ellipsis;
   }
 
+  .topic-parent-forum-wrapper {
+    display: none;
+  }
+
   .topic-container-separator {
       background-color: $forum-sub-forum-topic-container-separator-background-color;
       height: $forum-topic-container-separator-height;
       margin: $forum-topic-container-separator-margin-top-bottom $forum-topic-container-separator-margin-left-right;
+  }
+
+  .topic-parent-forum-title{
+    color: $orange-bright-text-color;
   }
 
   .topic-last-post-wrapper{
@@ -57,15 +65,23 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
+    .topic-posts-counter {
+      .topic-parent-forum-wrapper {
+        display: initial;
+        padding-left: $forum-topics-posts-counter-padding-right;
+      }
+    }
   }
 }
 
 //sm and smaller screens
-@media (max-width: 757px){
+@media (max-width: 767px){
   .topic-container-wrapper {
     .topic-last-message-time,
     .topic-last-post-autor-name-style,
-    .topic-last-post-author-sm-separator {
+    .topic-last-post-author-sm-separator,
+    .topic-last-post-wrapper {
       font-size: $forum-description-topics-posts-counter-topics-views-counter-last-message-font-size;
       white-space: nowrap;
       overflow: hidden;
@@ -133,5 +149,11 @@
   .topic-last-post-author {
     flex-direction: column;
     justify-content: center;
+  }
+
+  .topic-title-wrapper {
+    .topic-parent-forum-wrapper {
+      display: initial;
+    }
   }
 }

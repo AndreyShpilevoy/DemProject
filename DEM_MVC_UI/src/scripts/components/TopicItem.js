@@ -13,7 +13,9 @@ class TopicItem extends React.Component {
       latesPostAutorId: PropTypes.number.isRequired,
       latesPostAutorName: PropTypes.string.isRequired,
       latesPostAutorAvatart: PropTypes.string.isRequired,
-      latesPostAutorGroupColor: PropTypes.string.isRequired
+      latesPostAutorGroupColor: PropTypes.string.isRequired,
+      parentForumId: PropTypes.number,
+      parentForumTitle: PropTypes.string,
     }).isRequired
   };
 
@@ -34,18 +36,30 @@ class TopicItem extends React.Component {
       <div className="topic-last-post-author-avatar"/>;
   }
 
+  getParentForum = () => {
+    let {parentForumId, parentForumTitle} = this.props.topicItem;
+    return (parentForumId || parentForumTitle) ?
+    <span className="topic-parent-forum-wrapper">
+      <TermItem className="topic-parent-forum" term={{id: 25, value: "Forum:"}} spaceAfter />
+      <Link className="topic-parent-forum-title" to={`/Conference/${parentForumId}`}>{parentForumTitle}</Link>
+    </span> :
+    null;
+  }
+
   render(){
     let {title, postsCount, topicViewsCount, latesPostAutorName, latesPostTimeCreation} = this.props.topicItem;
     return(
       <div className="topic-container-wrapper row">
         <div className="topic-container col-xs-12 row">
           <div className="col-md-5 col-lg-9 row">
-            <div className="col-lg-8 flex flex-column-vertical-center">
+            <div className="col-lg-8 flex flex-column-vertical-center topic-title-wrapper">
               <Link className="topic-title" to={`/`}>{title}</Link>
+              {this.getParentForum()}
             </div>
             <div className="col-lg-2 topic-posts-counter flex flex-column-vertical-center">
               <TermItem className="hidden-lg-up" term={{id: 2, value: "Posts"}} spaceAfter />
               {postsCount}
+              {this.getParentForum()}
             </div>
             <div className="col-lg-2 topic-views-counter flex flex-column-vertical-center hidden-md-down">
               {topicViewsCount}
