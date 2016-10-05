@@ -22,12 +22,12 @@ class ForumList extends React.Component {
       })).isRequired
   };
 
-  sortForums = () => {
-    return  _.sortBy(this.props.forumList, "order");
+  orderForums = () => {
+    return  _.orderBy(this.props.forumList, "order");
   }
 
   mapForums = () => {
-    let mappedForums = this.sortForums().map(forumItem =>
+    let mappedForums = this.orderForums().map(forumItem =>
       <ForumItem key={forumItem.id} forumItem={forumItem} />);
         return mappedForums;
   }

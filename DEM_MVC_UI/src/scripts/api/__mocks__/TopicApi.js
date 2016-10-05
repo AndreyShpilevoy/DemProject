@@ -57,7 +57,7 @@ const topics = [{
 class TopicApi {
     static getTopicsByForumId(forumId) {
       let result = [];
-      switch (forumId) {
+      switch (parseInt(forumId)) {
         case 1:
         case 10:
         case 11:
@@ -96,11 +96,23 @@ class TopicApi {
           break;
         default:
       }
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(Object.assign([], result));
-            }, delay);
-        });
+      return new Promise((resolve) => {
+          setTimeout(() => {
+              resolve(Object.assign([], result));
+          }, delay);
+      });
+    }
+
+    static getLastActiveTopics() {
+      let result = [];
+      for (const topic of topics) {
+        result.push(Object.assign({}, {parentForumId: 1, parentForumTitle: "Самопал"}, topic));
+      }
+      return new Promise((resolve) => {
+          setTimeout(() => {
+              resolve(Object.assign([], result));
+          }, delay);
+      });
     }
 }
 

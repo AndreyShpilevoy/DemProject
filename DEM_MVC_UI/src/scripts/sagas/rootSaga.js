@@ -9,6 +9,7 @@ export default function* root() {
   yield [
     forumSagas.getForumsByChapterId(),
     topicSagas.getTopicsByForumId(),
+    topicSagas.getLastActiveTopics(),
     chapterSagas.getAllChapters(),
     chapterSagas.getChapterById(),
     navigationLinkSagas.getNavigationLinks(),

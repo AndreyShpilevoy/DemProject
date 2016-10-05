@@ -15,12 +15,12 @@ class SocialMediaLinkList extends React.Component {
     actions: PropTypes.object.isRequired
   };
 
-  sortSocialMediaLinks = () => {
-    return  _.sortBy(this.props.sociaMediaLinkList, "order");
+  orderSocialMediaLinks = () => {
+    return  _.orderBy(this.props.sociaMediaLinkList, "order");
   }
 
   mapSocialMediaLinks = () => {
-    let mappedSocialMediaLinks = this.sortSocialMediaLinks().map(sociaMediaLinkItem =>
+    let mappedSocialMediaLinks = this.orderSocialMediaLinks().map(sociaMediaLinkItem =>
       <SocialMediaLinkItem key={sociaMediaLinkItem.id} sociaMediaLinkItem = {sociaMediaLinkItem} />);
     return mappedSocialMediaLinks;
   }

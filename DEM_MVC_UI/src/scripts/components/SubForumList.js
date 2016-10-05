@@ -13,12 +13,12 @@ class SubForumList extends React.Component {
     ).isRequired
   };
 
-  sortSubForumList = () => {
-    return  _.sortBy(this.props.subForumList, "order");
+  orderSubForumList = () => {
+    return  _.orderBy(this.props.subForumList, "order");
   }
 
   mapSubForumList = () => {
-    let mappedSubforums = this.sortSubForumList().map(subForumItem =>
+    let mappedSubforums = this.orderSubForumList().map(subForumItem =>
       <SubForumItem key={subForumItem.id} subForumItem={subForumItem} />);
         return mappedSubforums;
   }

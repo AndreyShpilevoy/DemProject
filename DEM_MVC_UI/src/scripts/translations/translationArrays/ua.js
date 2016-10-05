@@ -24,6 +24,7 @@ const ua  = [
   {id: 23,   value: 'Теми', description: 'for topics label on topicList component'},
   {id: 24,   value: '>>', description: 'for topics body on topicList component'},
   {id: 25,   value: 'Форум:', description: 'for topics body on topicList component'},
+  {id: 26,   value: 'Останні повідомлення', description: 'title for lastActiveTopicList component'},
 ];
 
 export default ua;

@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import ForumItem from "./ForumItem";
 import ForumList from "./ForumList";
 import Header from "./Header";
+import LastActiveTopicsList from "./LastActiveTopicsList";
 import Layout from "./Layout";
 import NavigationLinkItem from "./NavigationLinkItem";
 import NavigationLinkList from "./NavigationLinkList";
@@ -27,6 +28,7 @@ export {
   ForumItem,
   ForumList,
   Header,
+  LastActiveTopicsList,
   Layout,
   NavigationLinkItem,
   NavigationLinkList,

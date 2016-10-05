@@ -44,7 +44,7 @@ describe('ChapterList', () => {
     expect(chapterItems.length).toEqual(3);
   });
 
-  it('child SocialMediaLinkItem components should be sorted by order property',() => {
+  it('child SocialMediaLinkItem components should be ordered by order property',() => {
     let socialMediaLinkItemOrder = [];
     setup().find("SocialMediaLinkItem").forEach(function (node) {
       socialMediaLinkItemOrder.push(node.props().sociaMediaLinkItem.order);

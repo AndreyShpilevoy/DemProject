@@ -13,12 +13,12 @@ class NavigationLinkList extends React.Component {
    })).isRequired
   }
 
-  sortNavigationLinks = () => {
-    return  _.sortBy(this.props.navigationLinkList, "order");
+  orderNavigationLinks = () => {
+    return  _.orderBy(this.props.navigationLinkList, "order");
   }
 
   mapNavigationLinks = () => {
-    let mappedNavigationLinks = this.sortNavigationLinks().map(navigationLinkItem =>
+    let mappedNavigationLinks = this.orderNavigationLinks().map(navigationLinkItem =>
       <NavigationLinkItem key={navigationLinkItem.id} navigationLinkItem = {navigationLinkItem} />);
     return mappedNavigationLinks;
   }

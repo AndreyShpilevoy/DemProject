@@ -38,7 +38,7 @@ describe('SubForumList', () => {
     expect(subForumItem.length).toEqual(3);
   });
 
-  it('child SubForumItem components should be sorted by order property',() => {
+  it('child SubForumItem components should be ordered by order property',() => {
     let subForumItemOrder = [];
     setup().find("SubForumItem").forEach(function (node) {
       subForumItemOrder.push(node.props().subForumItem.order);

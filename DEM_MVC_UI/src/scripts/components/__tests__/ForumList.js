@@ -68,7 +68,7 @@ describe('ForumList', () => {
     expect(forumItem.length).toEqual(3);
   });
 
-  it('child ForumItem components should be sorted by order property',() => {
+  it('child ForumItem components should be ordered by order property',() => {
     let forumItemOrder = [];
     setup().find("ForumItem").forEach(function (node) {
       forumItemOrder.push(node.props().forumItem.order);

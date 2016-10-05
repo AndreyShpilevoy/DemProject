@@ -24,6 +24,7 @@ const ru  = [
   {id: 23,   value: 'Темы', description: 'for topics label on topicList component'},
   {id: 24,   value: '>>', description: 'for topics body on topicList component'},
   {id: 25,   value: 'Форум:', description: 'for topics body on topicList component'},
+  {id: 26,   value: 'Последние сообщения', description: 'title for lastActiveTopicList component'},
 ];
 
 export default ru;

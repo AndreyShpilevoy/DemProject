@@ -24,6 +24,7 @@ const en  = [
   {id: 23,   value: 'Topics', description: 'for topics label on topicList component'},
   {id: 24,   value: '>>', description: 'for topics body on topicList component'},
   {id: 25,   value: 'Forum:', description: 'for topics body on topicList component'},
+  {id: 26,   value: 'Last messages', description: 'title for lastActiveTopicList component'},
 ];
 
 export default en;

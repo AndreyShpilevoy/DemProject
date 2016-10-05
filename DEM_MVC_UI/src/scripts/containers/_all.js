@@ -1,6 +1,7 @@
-import ChapterByIdItem from "./ChapterByIdItem";
+import ChapterItemById from "./ChapterItemById";
 import ChapterList from "./ChapterList";
 import ForumList from "./ForumList";
+import LastActiveTopicsList from "./LastActiveTopicsList";
 import Layout from "./Layout";
 import NavigationLinkList from "./NavigationLinkList";
 import RelativeDateTime from "./RelativeDateTime";
@@ -9,9 +10,10 @@ import TermItem from "./TermItem";
 import TopicList from "./TopicList";
 
 export {
-  ChapterByIdItem,
+  ChapterItemById,
   ChapterList,
   ForumList,
+  LastActiveTopicsList,
   Layout,
   NavigationLinkList,
   RelativeDateTime,

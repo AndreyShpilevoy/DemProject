@@ -12,12 +12,12 @@ class ChapterList extends React.Component {
    })).isRequired
   };
 
-  sortChapters = () => {
-    return  _.sortBy(this.props.chapterList, "order");
+  orderChapters = () => {
+    return  _.orderBy(this.props.chapterList, "order");
   }
 
   mapChapters = () => {
-    let mappedChapters = this.sortChapters().map(chapterItem =>
+    let mappedChapters = this.orderChapters().map(chapterItem =>
       <ChapterItem key={chapterItem.id} chapterItem={chapterItem} />);
         return mappedChapters;
   }

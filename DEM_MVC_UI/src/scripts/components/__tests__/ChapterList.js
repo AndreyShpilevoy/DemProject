@@ -37,7 +37,7 @@ describe('ChapterList', () => {
     expect(chapterItems.length).toEqual(3);
   });
 
-  it('child ChapterItem components should be sorted by order property',() => {
+  it('child ChapterItem components should be ordered by order property',() => {
     let chapterItemOrder = [];
     setup().find("ChapterItem").forEach(function (node) {
       chapterItemOrder.push(node.props().chapterItem.order);

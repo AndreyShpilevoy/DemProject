@@ -41,7 +41,7 @@ describe('NavigationLinkList', () => {
     expect(chapterItems.length).toEqual(3);
   });
 
-  it('child "NavigationLinkItem" components should be sorted by order property',() => {
+  it('child "NavigationLinkItem" components should be ordered by order property',() => {
     let navigationLinkItemOrder = [];
     setup().find("NavigationLinkItem").forEach(function (node) {
       navigationLinkItemOrder.push(node.props().navigationLinkItem.order);

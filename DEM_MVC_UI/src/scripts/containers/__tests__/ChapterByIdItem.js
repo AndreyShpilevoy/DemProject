@@ -3,19 +3,19 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ChapterByIdItem from "../ChapterByIdItem";
+import ChapterItemById from "../ChapterItemById";
 import * as mockActions from "../../actions/__mocks__/sharedFakeActions";
 import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
 
 
-describe('ChapterByIdItem', () => {
+describe('ChapterItemById', () => {
   function setup(valid) {
     const props = {
       store: sharedFakeStore(valid),
       actions: mockActions,
       params: {id: 4}
     };
-    return shallow(<ChapterByIdItem {...props}/>, { lifecycleExperimental: true });
+    return shallow(<ChapterItemById {...props}/>, { lifecycleExperimental: true });
   }
 
   it('should get "chapterById" from "chapterReducer" and recieve expected result', () => {
