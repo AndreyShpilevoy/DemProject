@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import TopicItem from "../TopicItem";
+import {TopicItem} from "../_all";
 
 describe('TopicItem', () => {
   function setup(hasAvatar=true, parentForum=true) {

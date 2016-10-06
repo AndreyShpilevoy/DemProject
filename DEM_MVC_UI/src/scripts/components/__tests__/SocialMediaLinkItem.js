@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import SocialMediaLinkItem from "../SocialMediaLinkItem";
+import {SocialMediaLinkItem} from "../_all";
 
 describe('SocialMediaLinkItem', () => {
   function setup(svgName) {

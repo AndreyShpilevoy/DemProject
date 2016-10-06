@@ -4,7 +4,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import { Link } from 'react-router';
-import CollapsibleWrapper from "../CollapsibleWrapper";
+import {CollapsibleWrapper} from "../_all";
 import {ForumList, TermItem} from '../../containers/_all';
 
 jest.mock('../../utils/_all');

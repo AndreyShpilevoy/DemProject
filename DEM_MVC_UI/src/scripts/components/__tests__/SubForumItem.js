@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import SubForumItem from "../SubForumItem";
+import {SubForumItem} from "../_all";
 
 describe('SubForumItem', () => {
   function setup() {

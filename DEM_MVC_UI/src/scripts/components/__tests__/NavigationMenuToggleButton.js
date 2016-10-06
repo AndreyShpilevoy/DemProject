@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import NavigationMenuToggleButton from "../NavigationMenuToggleButton";
+import {NavigationMenuToggleButton} from "../_all";
 
 describe('NavigationMenuToggleButton', () => {
   function setup() {

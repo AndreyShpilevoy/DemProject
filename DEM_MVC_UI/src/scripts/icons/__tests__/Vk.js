@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Vk from "../Vk";
+import {Vk} from "../_all";
 
 describe('Vk', () => {
   function setup() {

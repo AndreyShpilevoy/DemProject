@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Layout from "../Layout";
+import {Layout} from "../_all";
 
 describe('Layout', () => {
   function setup() {

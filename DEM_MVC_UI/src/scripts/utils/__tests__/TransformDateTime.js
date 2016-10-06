@@ -3,7 +3,7 @@
 
 jest.mock("../TermTranslation");
 
-import TransformDateTime from "../TransformDateTime";
+import {TransformDateTime} from "../_all";
 
 describe('TransformDateTime', () => {
 

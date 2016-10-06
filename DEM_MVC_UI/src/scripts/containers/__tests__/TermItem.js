@@ -1,18 +1,16 @@
 /*eslint no-undef: "off"*/
 /* eslint import/no-extraneous-dependencies: "off" */
-/* eslint import/imports-first: "off" */
+
+import React from 'react';
+import {shallow} from 'enzyme';
+import {TermItem} from "../_all";
+import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
 
 jest.mock("../../utils/_all", ()=>({
   TermTranslation: {
     getTermTranslation: ()=>("TestTerm")
   }
 }));
-
-import React from 'react';
-import {shallow} from 'enzyme';
-import TermItemConnected from "../TermItem";
-import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
-
 
 describe('TermItem', () => {
   function setup(valid){
@@ -23,7 +21,7 @@ describe('TermItem', () => {
         value: "TestTermDefault"
       }
     };
-    return shallow(<TermItemConnected {...props}/>);
+    return shallow(<TermItem {...props}/>);
   }
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve expected result', () => {

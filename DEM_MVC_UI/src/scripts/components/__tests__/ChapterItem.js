@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ChapterItem from "../ChapterItem";
+import {ChapterItem} from "../_all";
 
 jest.mock('../../utils/_all');
 

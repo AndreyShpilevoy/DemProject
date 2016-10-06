@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ChapterList from "../ChapterList";
+import {ChapterList} from "../_all";
 
 describe('ChapterList', () => {
   function setup() {

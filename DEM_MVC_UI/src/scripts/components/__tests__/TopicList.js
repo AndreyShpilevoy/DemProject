@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import TopicList from "../TopicList";
+import {TopicList} from "../_all";
 
 describe('TopicList', () => {
   function setup() {

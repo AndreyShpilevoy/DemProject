@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Footer from "../Footer";
+import {Footer} from "../_all";
 
 describe('Footer', () => {
   function setup() {

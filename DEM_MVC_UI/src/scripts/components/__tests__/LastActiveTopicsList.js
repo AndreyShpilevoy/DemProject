@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import LastActiveTopicsList from "../LastActiveTopicsList";
+import {LastActiveTopicsList} from "../_all";
 
 describe('LastActiveTopicsList', () => {
   function setup() {
