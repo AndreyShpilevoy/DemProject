@@ -6,7 +6,7 @@ import {SocialMediaLinkList as  SocialMediaLinkListComponent} from '../component
 
 class SocialMediaLinkList extends React.Component {
   static propTypes = {
-    sociaMediaLinkList: PropTypes.arrayOf(
+    socialMediaLinkList: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -24,13 +24,13 @@ class SocialMediaLinkList extends React.Component {
 
   render(){
     return(
-      <SocialMediaLinkListComponent sociaMediaLinkList={this.props.sociaMediaLinkList} />
+      <SocialMediaLinkListComponent socialMediaLinkList={this.props.socialMediaLinkList} />
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  sociaMediaLinkList: state.socialMediaLinkReducer.socialMediaLinks
+  socialMediaLinkList: state.socialMediaLinkReducer.socialMediaLinks
 });
 
 const mapDispatchToProps = (dispatch) => ({

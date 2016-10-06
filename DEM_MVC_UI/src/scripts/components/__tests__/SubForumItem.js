@@ -4,15 +4,12 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {SubForumItem} from "../_all";
+import {forums} from "../../api/__fakeData__/_all";
 
 describe('SubForumItem', () => {
   function setup() {
     const props = {
-      subForumItem: {
-        id: 1,
-        order: 1,
-        title: "Sub Forum Item Title"
-      }
+      subForumItem: forums[0].subForumList[0]
     };
 
     return shallow(<SubForumItem {...props}/>);

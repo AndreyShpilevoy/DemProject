@@ -4,11 +4,12 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {NavigationLinkItem} from "../_all";
+import {navigationLinks} from "../../api/__fakeData__/_all";
 
 describe('NavigationLinkItem', () => {
   function setup() {
     const props = {
-      navigationLinkItem: {id: 1, title: "testNavigationLink", href: "http://testNavigationHref", order: 0}
+      navigationLinkItem: navigationLinks[0]
     };
     return shallow(<NavigationLinkItem {...props}/>);
   }
@@ -23,14 +24,14 @@ describe('NavigationLinkItem', () => {
     expect(linkComponent.hasClass("nav-link")).toBeTruthy();
   });
 
-  it('Link component has title equel to "testNavigationLink"',() => {
+  it('Link component has title equel to "Conference"',() => {
     const linkComponent = setup().find('Link');
-    expect(linkComponent.prop("children")).toBe('testNavigationLink');
+    expect(linkComponent.prop("children")).toBe('Conference');
   });
 
-  it('Link component has prop "to" equel to "http://testNavigationHref"',() => {
+  it('Link component has prop "to" equel to "/"',() => {
     const linkComponent = setup().find('Link');
-    expect(linkComponent.prop("to")).toBe("http://testNavigationHref");
+    expect(linkComponent.prop("to")).toBe("/");
   });
 
   it('should render div for Navigation Link Separator with className nav-link-separator',() => {

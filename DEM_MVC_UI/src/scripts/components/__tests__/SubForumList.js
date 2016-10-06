@@ -4,25 +4,12 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {SubForumList} from "../_all";
+import {forums} from "../../api/__fakeData__/_all";
 
 describe('SubForumList', () => {
   function setup() {
     const props = {
-      subForumList: [{
-        id: 1,
-        order: 1,
-        title: "Forum Item Title"
-      },
-      {
-        id: 3,
-        order: 3,
-        title: "Forum Item Title 3"
-      },
-      {
-        id: 2,
-        order: 2,
-        title: "Forum Item Title 2"
-      }]
+      subForumList: forums[0].subForumList
     };
 
     return shallow(<SubForumList {...props}/>);
@@ -35,7 +22,7 @@ describe('SubForumList', () => {
 
   it('child contains 3 SubForumItem components',() => {
     const subForumItem = setup().find("SubForumItem");
-    expect(subForumItem.length).toEqual(3);
+    expect(subForumItem.length).toEqual(2);
   });
 
   it('child SubForumItem components should be ordered by order property',() => {
@@ -43,6 +30,6 @@ describe('SubForumList', () => {
     setup().find("SubForumItem").forEach(function (node) {
       subForumItemOrder.push(node.props().subForumItem.order);
     });
-    expect(subForumItemOrder).toEqual([ 1, 2, 3 ]);
+    expect(subForumItemOrder).toEqual([ 1, 2 ]);
   });
 });

@@ -2,6 +2,7 @@
 
 import * as types from "../actionTypes";
 import * as chapterActions from "../chapterActions";
+import {chapters} from "../../api/__fakeData__/_all";
 
 describe('chapterActions', () => {
   it('should create an action to get all chapters', () => {
@@ -10,7 +11,7 @@ describe('chapterActions', () => {
   });
 
   it('should create an action to get all chapters on success', () => {
-    const allChapters = [{id: 1, title: "Ex Machina", order: 1},{id: 2, title: "Ex Machina Меридиан 113", order: 2},];
+    const allChapters = chapters;
     const expectedAction = {
       type: types.GET_ALL_CHAPTERS_SUCCESS,
       allChapters
@@ -32,7 +33,7 @@ describe('chapterActions', () => {
   });
 
   it('should create an action to get chapter by id', () => {
-    const chapterById = {id: 1, title: "Ex Machina", order: 1};
+    const chapterById = chapters[0];
     const expectedAction = {
       type: types.GET_CHAPTER_BY_ID_SUCCESS,
       chapterById

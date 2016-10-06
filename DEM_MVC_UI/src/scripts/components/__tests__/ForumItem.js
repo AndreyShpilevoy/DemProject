@@ -4,33 +4,12 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {ForumItem} from "../_all";
+import {forums} from "../../api/__fakeData__/_all";
 
 describe('ForumItem', () => {
   function setup() {
     const props = {
-      forumItem: {
-        id: 1,
-        order: 1,
-        title: "Forum Item Title",
-        description: "Forum Item Description",
-        topicsCount: 10,
-        postsCount: 100,
-        lastActiveTopicId: 5,
-        lastActiveTopic: "Forum Item Last Active Topic",
-        latesPostTimeCreation: new Date(1990,0,10),
-        latesPostAutorId: 2,
-        latesPostAutorName: "kto",
-        latesPostAutorGroupColor: "ffa510",
-        subForumList: [{
-            id: 11,
-            title: "Самопал",
-            order: 35
-        },{
-            id: 12,
-            title: "Архив форумки",
-            order: 12
-        }]
-      }
+      forumItem: forums[0]
     };
 
     return shallow(<ForumItem {...props}/>);

@@ -4,23 +4,18 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {TopicItem} from "../_all";
+import {topics} from "../../api/__fakeData__/_all";
 
 describe('TopicItem', () => {
   function setup(hasAvatar=true, parentForum=true) {
     const props = {
-      topicItem: {
-          id: 1,
-          title: "Как деактивировать бомбу",
-          postsCount: 215,
-          topicViewsCount: 1315,
-          latesPostTimeCreation: new Date("2016/09/19 13:42:32"),
-          latesPostAutorId: 4,
-          latesPostAutorName: "kto",
+      topicItem: Object.assign({}, topics[0],
+        {
           latesPostAutorAvatart: hasAvatar ? "http://i70.fastpic.ru/big/2015/0628/36/ccbb1e2cb8ba8dbd379a6a12dc6b8336.jpg" : undefined,
-          latesPostAutorGroupColor: "ffa510",
           parentForumTitle: parentForum ? "Самопал" : undefined,
           parentForumId: parentForum ? 1 : undefined
-      }
+        }
+      )
     };
 
     return shallow(<TopicItem {...props}/>);
@@ -64,7 +59,7 @@ describe('TopicItem', () => {
   it('should have default state',() => {
     const expectedState = {
       latesPostAutorNameStyle: {
-        color: "#ffa510"
+        color: "#00AA00"
       }
     };
 

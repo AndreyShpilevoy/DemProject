@@ -4,28 +4,12 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {NavigationLinkList} from "../_all";
+import {navigationLinks} from "../../api/__fakeData__/_all";
 
 describe('NavigationLinkList', () => {
   function setup() {
     const props = {
-      navigationLinkList: [{
-        id: 1,
-        title: "navigationLink-1",
-        href: "http://1.ua",
-        order: 1,
-      },
-      {
-        id: 3,
-        title: "navigationLink-3",
-        href: "http://3.ua",
-        order: 3,
-      },
-      {
-        id: 2,
-        title: "navigationLink-2",
-        href: "http://2.ua",
-        order: 2,
-      }]
+      navigationLinkList: [navigationLinks[2], navigationLinks[0], navigationLinks[1]]
     };
 
     return shallow(<NavigationLinkList {...props}/>);

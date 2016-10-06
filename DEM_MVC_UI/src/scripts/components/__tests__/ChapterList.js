@@ -4,25 +4,12 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {ChapterList} from "../_all";
+import {chapters} from "../../api/__fakeData__/_all";
 
 describe('ChapterList', () => {
   function setup() {
     const props = {
-      chapterList: [{
-        id: 1,
-        title: "ChapteItemId-1",
-        order: 1,
-      },
-      {
-        id: 3,
-        title: "ChapteItemId-3",
-        order: 3,
-      },
-      {
-        id: 2,
-        title: "ChapteItemId-2",
-        order: 2,
-      }]
+      chapterList: [chapters[0], chapters[1], chapters[2]]
     };
 
     return shallow(<ChapterList {...props}/>);

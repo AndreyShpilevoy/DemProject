@@ -4,47 +4,12 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {LastActiveTopicsList} from "../_all";
+import {lastActiveTopics} from "../../api/__fakeData__/_all";
 
 describe('LastActiveTopicsList', () => {
   function setup() {
     const props = {
-      lastActiveTopics: [{
-          id: 1,
-          title: "Как деактивировать бомбу",
-          postsCount: 215,
-          topicViewsCount: 1315,
-          latesPostTimeCreation: new Date("2016/09/19 13:42:32"),
-          latesPostAutorId: 4,
-          latesPostAutorName: "Buba",
-          latesPostAutorAvatart: "http://i70.fastpic.ru/big/2015/0628/36/ccbb1e2cb8ba8dbd379a6a12dc6b8336.jpg",
-          latesPostAutorGroupColor: "00AA00",
-          parentForumId: 10,
-          parentForumTitle: "Общие вопросы"
-      }, {
-          id: 2,
-          title: "Как активировать бомбу.",
-          postsCount: 57,
-          topicViewsCount: 847,
-          latesPostTimeCreation: new Date("2016/09/22 12:53:09"),
-          latesPostAutorId: 2,
-          latesPostAutorName: "Bykawka",
-          latesPostAutorAvatart: undefined,
-          latesPostAutorGroupColor: "fbeab2",
-          parentForumId: 20,
-          parentForumTitle: "Технические вопросы"
-      },{
-          id: 3,
-          title: "Почему админы дебилы [закрыто намертво]",
-          postsCount: 218,
-          topicViewsCount: 82847,
-          latesPostTimeCreation: new Date("2016/07/12 14:24:11"),
-          latesPostAutorId: 5,
-          latesPostAutorName: "Agent005",
-          latesPostAutorAvatart: "https://pp.vk.me/c9558/u61600334/a_153d373f.jpg",
-          latesPostAutorGroupColor: "ff00ff",
-          parentForumId: 30,
-          parentForumTitle: "Обсуждение модификаций"
-      }]
+      lastActiveTopics: [lastActiveTopics[2], lastActiveTopics[0], lastActiveTopics[1]]
     };
 
     return shallow(<LastActiveTopicsList {...props}/>);
@@ -55,7 +20,7 @@ describe('LastActiveTopicsList', () => {
     expect(collapsibleWrapperElement).toBeTruthy();
   });
 
-  it('props should contain "collapsibleWrapperItem" object with "last-topic-list" equel to "last-topic-list"',() => {
+  it('props should contain "collapsibleWrapperItem" object with "uniquePrefix" equel to "last-topic-list"',() => {
     expect(setup().prop("collapsibleWrapperItem").uniquePrefix).toEqual("last-topic-list");
   });
 

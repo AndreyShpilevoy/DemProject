@@ -17,7 +17,7 @@ describe('SocialMediaLinkList', () => {
   }
 
   it('should get "allChapters" from "chapterReducer" and recieve expected result', () => {
-    expect(setup().prop('sociaMediaLinkList')).toEqual(sharedFakeStoreData.socialMediaLinkReducer.socialMediaLinks);
+    expect(setup().prop('socialMediaLinkList')).toEqual(sharedFakeStoreData.socialMediaLinkReducer.socialMediaLinks);
   });
 
   it('should find "SocialMediaLinkListComponent" component', () => {

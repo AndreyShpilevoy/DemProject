@@ -4,17 +4,12 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {SocialMediaLinkItem} from "../_all";
+import {socialMediaLinks} from "../../api/__fakeData__/_all";
 
 describe('SocialMediaLinkItem', () => {
   function setup(svgName) {
     const props = {
-      sociaMediaLinkItem: {
-        id: 1,
-        order: 1,
-        title: "Forum Item Title",
-        href: "http://1.ua",
-        svgName: svgName
-      }
+      sociaMediaLinkItem: Object.assign({}, socialMediaLinks[0], {svgName: svgName})
     };
 
     return shallow(<SocialMediaLinkItem {...props}/>);

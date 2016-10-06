@@ -4,17 +4,14 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {ChapterItem} from "../_all";
+import {chapters} from "../../api/__fakeData__/_all";
 
 jest.mock('../../utils/_all');
 
 describe('ChapterItem', () => {
   function setup() {
     const props = {
-      chapterItem: {
-        id: 1,
-        title: "ChapteItemId",
-        order: 1,
-      }
+      chapterItem: chapters[0]
     };
 
     return shallow(<ChapterItem {...props}/>);

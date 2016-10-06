@@ -13,8 +13,8 @@ const forums = [
     latesPostAutorName: "kto",
     latesPostAutorGroupColor: "ffa510",
     subForumList: [
-      {id: 11, title: "Самопал", order: 35},
-      {id: 12, title: "Архив форумки", order: 12}
+      {id: 11, title: "Самопал", order: 2},
+      {id: 12, title: "Архив форумки", order: 1}
     ]
   },
   {

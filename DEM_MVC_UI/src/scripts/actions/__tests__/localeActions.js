@@ -2,6 +2,7 @@
 
 import * as types from "../actionTypes";
 import * as localeActions from "../localeActions";
+import {locale} from "../../api/__fakeData__/_all";
 
 
 describe('localeActions', () => {
@@ -11,7 +12,7 @@ describe('localeActions', () => {
   });
 
   it('should create an action to get locale on success', () => {
-    const currentLocale = {locale: "ru"};
+    const currentLocale = locale;
     const expectedAction = {
       type: types.GET_LOCALE_SUCCESS,
       currentLocale

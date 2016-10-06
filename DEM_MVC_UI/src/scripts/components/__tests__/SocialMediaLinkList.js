@@ -4,31 +4,12 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {SocialMediaLinkList} from "../_all";
+import {socialMediaLinks} from "../../api/__fakeData__/_all";
 
-describe('ChapterList', () => {
+describe('SocialMediaLinkList', () => {
   function setup() {
     const props = {
-      sociaMediaLinkList: [{
-        id: 1,
-        title: "ChapteItemId-1",
-        href: "http://ChapteItemId-1",
-        svgName: "ChapteItemId-svgName-1",
-        order: 1,
-      },
-      {
-        id: 3,
-        title: "ChapteItemId-3",
-        href: "http://ChapteItemId-3",
-        svgName: "ChapteItemId-svgName-3",
-        order: 3,
-      },
-      {
-        id: 2,
-        title: "ChapteItemId-2",
-        href: "http://ChapteItemId-2",
-        svgName: "ChapteItemId-svgName-2",
-        order: 2,
-      }]
+      socialMediaLinkList: [socialMediaLinks[1], socialMediaLinks[0]]
     };
 
     return shallow(<SocialMediaLinkList {...props}/>);
@@ -39,9 +20,9 @@ describe('ChapterList', () => {
     expect(divElement.hasClass("social-media-link-wrapper")).toBeTruthy();
   });
 
-  it('child contains 3 SocialMediaLinkItem components',() => {
+  it('child contains 2 SocialMediaLinkItem components',() => {
     const chapterItems = setup().find("SocialMediaLinkItem");
-    expect(chapterItems.length).toEqual(3);
+    expect(chapterItems.length).toEqual(2);
   });
 
   it('child SocialMediaLinkItem components should be ordered by order property',() => {
@@ -49,6 +30,6 @@ describe('ChapterList', () => {
     setup().find("SocialMediaLinkItem").forEach(function (node) {
       socialMediaLinkItemOrder.push(node.props().sociaMediaLinkItem.order);
     });
-    expect(socialMediaLinkItemOrder).toEqual([ 1, 2, 3 ]);
+    expect(socialMediaLinkItemOrder).toEqual([ 1, 2 ]);
   });
 });

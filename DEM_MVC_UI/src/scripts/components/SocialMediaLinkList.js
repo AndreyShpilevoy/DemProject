@@ -4,7 +4,7 @@ import { SocialMediaLinkItem } from "./_all";
 
 class SocialMediaLinkList extends React.Component {
   static propTypes = {
-    sociaMediaLinkList: PropTypes.arrayOf(
+    socialMediaLinkList: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -16,7 +16,7 @@ class SocialMediaLinkList extends React.Component {
   };
 
   orderSocialMediaLinks = () => {
-    return  _.orderBy(this.props.sociaMediaLinkList, "order");
+    return  _.orderBy(this.props.socialMediaLinkList, "order");
   }
 
   mapSocialMediaLinks = () => {

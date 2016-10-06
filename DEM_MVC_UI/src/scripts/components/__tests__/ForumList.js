@@ -4,55 +4,12 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {ForumList} from "../_all";
+import {forums} from "../../api/__fakeData__/_all";
 
 describe('ForumList', () => {
   function setup() {
     const props = {
-      forumList: [{
-        id: 1,
-        order: 1,
-        title: "Forum Item Title",
-        description: "Forum Item Description",
-        topicsCount: 10,
-        postsCount: 100,
-        lastActiveTopicId: 5,
-        lastActiveTopic: "Forum Item Last Active Topic",
-        latesPostTimeCreation: new Date(1990,0,10),
-        latesPostAutorId: 2,
-        latesPostAutorName: "kto",
-        latesPostAutorGroupColor: "ffa510",
-        subForumList: []
-      },
-      {
-        id: 3,
-        order: 3,
-        title: "Forum Item Title 3",
-        description: "Forum Item Description 3",
-        topicsCount: 103,
-        postsCount: 1003,
-        lastActiveTopicId: 53,
-        lastActiveTopic: "Forum Item Last Active Topic 3",
-        latesPostTimeCreation: new Date(1990,0,13),
-        latesPostAutorId: 23,
-        latesPostAutorName: "kto 3",
-        latesPostAutorGroupColor: "000000",
-        subForumList: []
-      },
-      {
-        id: 2,
-        order: 2,
-        title: "Forum Item Title 2",
-        description: "Forum Item Description 2",
-        topicsCount: 102,
-        postsCount: 1002,
-        lastActiveTopicId: 52,
-        lastActiveTopic: "Forum Item Last Active Topic 2",
-        latesPostTimeCreation: new Date(1990,0,12),
-        latesPostAutorId: 22,
-        latesPostAutorName: "kto 2",
-        latesPostAutorGroupColor: "ffffff",
-        subForumList: []
-      }]
+      forumList: [forums[2], forums[0], forums[1]]
     };
 
     return shallow(<ForumList {...props}/>);
