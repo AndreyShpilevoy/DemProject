@@ -12,6 +12,8 @@ function getNavigationLinks(){}
 function getNavigationLinksSuccess(){}
 function getSocialMediaLinks(){}
 function getSocialMediaLinksSuccess(){}
+function getLastActiveTopics(){}
+function getLastActiveTopicsSuccess(){}
 
 export {
   getAllChapters,
@@ -27,5 +29,7 @@ export {
   getNavigationLinks,
   getNavigationLinksSuccess,
   getSocialMediaLinks,
-  getSocialMediaLinksSuccess
+  getSocialMediaLinksSuccess,
+  getLastActiveTopics,
+  getLastActiveTopicsSuccess
 };

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import * as topicActions from "../actions/topicActions";
+import * as lastActiveTopicActions from "../actions/lastActiveTopicActions";
 import {LastActiveTopicsList as LastActiveTopicsListComponent} from "../components/_all";
 
 class LastActiveTopicsList extends React.Component {
@@ -37,11 +37,11 @@ class LastActiveTopicsList extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-  lastActiveTopics: state.topicReducer.lastActiveTopics
+  lastActiveTopics: state.lastActiveTopicReducer.lastActiveTopics
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(topicActions, dispatch)
+  actions: bindActionCreators(lastActiveTopicActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LastActiveTopicsList);

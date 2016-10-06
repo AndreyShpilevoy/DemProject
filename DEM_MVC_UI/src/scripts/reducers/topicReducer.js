@@ -17,11 +17,6 @@ export default function topicReducer(state = [], action) {
             ]
           });
 
-        case types.GET_LAST_ACTIVE_TOPICS_SUCCESS:
-          return Object.assign({}, state, {
-            lastActiveTopics: action.lastActiveTopics
-          });
-
         default:
             return state;
     }

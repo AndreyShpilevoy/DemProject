@@ -1,5 +1,6 @@
 import * as forumSagas from "./forumSagas";
 import * as topicSagas from "./topicSagas";
+import * as lastActiveTopicSagas from "./lastActiveTopicSagas";
 import * as chapterSagas from "./chapterSagas";
 import * as navigationLinkSagas from "./navigationLinkSagas";
 import * as socialMediaLinkSagas from "./socialMediaLinkSagas";
@@ -9,7 +10,7 @@ export default function* root() {
   yield [
     forumSagas.getForumsByChapterId(),
     topicSagas.getTopicsByForumId(),
-    topicSagas.getLastActiveTopics(),
+    lastActiveTopicSagas.getLastActiveTopics(),
     chapterSagas.getAllChapters(),
     chapterSagas.getChapterById(),
     navigationLinkSagas.getNavigationLinks(),

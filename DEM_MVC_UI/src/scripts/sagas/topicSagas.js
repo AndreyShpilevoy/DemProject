@@ -14,11 +14,3 @@ export function* getTopicsByForumIdNonBlock(forumId) {
   const topics = yield call(TopicApi.getTopicsByForumId, forumId);
   yield put(topicActions.getTopicsByForumIdSuccess(forumId, topics));
 }
-
-export function* getLastActiveTopics() {
-  while(true){
-    yield take(types.GET_LAST_ACTIVE_TOPICS);
-    const lastActiveTopics = yield call(TopicApi.getLastActiveTopics);
-    yield put(topicActions.getLastActiveTopicsSuccess(lastActiveTopics));
-  }
-}

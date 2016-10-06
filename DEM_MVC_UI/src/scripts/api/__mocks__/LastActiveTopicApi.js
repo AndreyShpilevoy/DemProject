@@ -2,7 +2,7 @@
 
 import delay from './delay';
 
-const topics = [{
+const lastActiveTopics = [{
     id: 1,
     title: "Как деактивировать бомбу",
     postsCount: 215,
@@ -11,7 +11,9 @@ const topics = [{
     latesPostAutorId: 4,
     latesPostAutorName: "Buba",
     latesPostAutorAvatart: "http://i70.fastpic.ru/big/2015/0628/36/ccbb1e2cb8ba8dbd379a6a12dc6b8336.jpg",
-    latesPostAutorGroupColor: "00AA00"
+    latesPostAutorGroupColor: "00AA00",
+    parentForumId: 10,
+    parentForumTitle: "Общие вопросы"
 }, {
     id: 2,
     title: "Как активировать бомбу.",
@@ -21,7 +23,9 @@ const topics = [{
     latesPostAutorId: 2,
     latesPostAutorName: "Bykawka",
     latesPostAutorAvatart: undefined,
-    latesPostAutorGroupColor: "fbeab2"
+    latesPostAutorGroupColor: "fbeab2",
+    parentForumId: 20,
+    parentForumTitle: "Технические вопросы"
 },{
     id: 3,
     title: "Почему админы дебилы [закрыто намертво]",
@@ -31,7 +35,9 @@ const topics = [{
     latesPostAutorId: 5,
     latesPostAutorName: "Agent005",
     latesPostAutorAvatart: "https://pp.vk.me/c9558/u61600334/a_153d373f.jpg",
-    latesPostAutorGroupColor: "ff00ff"
+    latesPostAutorGroupColor: "ff00ff",
+    parentForumId: 30,
+    parentForumTitle: "Обсуждение модификаций"
 },{
     id: 4,
     title: "Какое ваше любимое оружие в Manhunt",
@@ -41,7 +47,9 @@ const topics = [{
     latesPostAutorId: 3,
     latesPostAutorName: "ololoid",
     latesPostAutorAvatart: "http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png",
-    latesPostAutorGroupColor: "99ccff"
+    latesPostAutorGroupColor: "99ccff",
+    parentForumId: 40,
+    parentForumTitle: "Вопросы по созданию моделей"
 },{
     id: 5,
     title: "Вопросы по созданию моделей",
@@ -51,57 +59,19 @@ const topics = [{
     latesPostAutorId: 1,
     latesPostAutorName: "kto",
     latesPostAutorAvatart: "http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif",
-    latesPostAutorGroupColor: "ffa510"
+    latesPostAutorGroupColor: "ffa510",
+    parentForumId: 50,
+    parentForumTitle: "Системный раздел для главной"
 }];
 
-class TopicApi {
-    static getTopicsByForumId(forumId) {
-      let result = [];
-      switch (parseInt(forumId)) {
-        case 1:
-        case 10:
-        case 11:
-        case 12:
-          result.push(topics[0]);
-          result.push(topics[1]);
-          break;
-        case 2:
-        case 20:
-          result.push(topics[1]);
-          result.push(topics[0]);
-          break;
-        case 3:
-        case 30:
-        case 31:
-          result.push(topics[1]);
-          break;
-        case 4:
-        case 40:
-          result.push(topics[0]);
-          result.push(topics[1]);
-          result.push(topics[2]);
-          result.push(topics[3]);
-          break;
-        case 5:
-        case 50:
-        case 51:
-        case 52:
-        case 53:
-        case 54:
-        case 55:
-        case 56:
-          result.push(topics[0]);
-          result.push(topics[1]);
-          result.push(topics[4]);
-          break;
-        default:
-      }
-      return new Promise((resolve) => {
-          setTimeout(() => {
-              resolve(Object.assign([], result));
-          }, delay);
-      });
-    }
+class LastActiveTopicApi {
+  static getLastActiveTopics() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(Object.assign([], lastActiveTopics));
+        }, delay);
+    });
+  }
 }
 
-export default TopicApi;
+export default LastActiveTopicApi;
