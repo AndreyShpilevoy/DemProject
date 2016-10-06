@@ -1,8 +1,7 @@
 /* eslint no-undef: "off" */
 
 import delay from './delay';
-
-const locale = {locale: "ru"};
+import {locale} from '../__fakeData__/_all';
 
 class LocaleApi {
   static getLocale() {
