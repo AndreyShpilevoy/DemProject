@@ -2,6 +2,7 @@
 
 import * as types from "../../actions/actionTypes";
 import socialMediaLinkReducer from "../socialMediaLinkReducer";
+import * as fakeData from "../../api/__fakeData__/_all";
 
 describe('socialMediaLinkReducer', function(){
   it('returns an empty array as default state', function(){
@@ -17,22 +18,7 @@ describe('socialMediaLinkReducer', function(){
     // setup
     let action = {
       type: types.GET_SOCIALMEDIALINKS_SUCCESS,
-      socialMediaLinks: [
-        {
-          id: 1,
-          title: 'Steam - Ex Machina Community',
-          svgName: 'Steam',
-          href: 'http://steamcommunity.com/groups/Ex_Machina',
-          order: 1
-        },
-        {
-          id: 2,
-          title: 'VK - Ex Machina group',
-          svgName: 'Vk',
-          href: 'https://vk.com/exmachina2',
-          order: 2
-        }
-      ]
+      socialMediaLinks: [fakeData.socialMediaLinks[1], fakeData.socialMediaLinks[0]]
     };
     // execute
     let newState = socialMediaLinkReducer(undefined, action);

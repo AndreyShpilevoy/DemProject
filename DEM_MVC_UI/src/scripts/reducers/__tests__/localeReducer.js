@@ -2,6 +2,7 @@
 
 import * as types from "../../actions/actionTypes";
 import localeReducer from "../localeReducer";
+import * as fakeData from "../../api/__fakeData__/_all";
 
 describe('localeReducer', function(){
   it('returns an empty array as default state', function(){
@@ -17,7 +18,7 @@ describe('localeReducer', function(){
     // setup
     let action = {
       type: types.GET_LOCALE_SUCCESS,
-      currentLocale: {locale: "ru"}
+      currentLocale: fakeData.locale[0]
     };
     // execute
     let newState = localeReducer(undefined, action);

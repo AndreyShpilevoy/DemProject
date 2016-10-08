@@ -2,6 +2,7 @@
 
 import * as types from "../../actions/actionTypes";
 import chapterReducer from "../chapterReducer";
+import * as fakeData from "../../api/__fakeData__/_all";
 
 describe('chapterReducer', function(){
   it('returns an empty array as default state', function(){
@@ -17,10 +18,7 @@ describe('chapterReducer', function(){
     // setup
     let action = {
       type: types.GET_ALL_CHAPTERS_SUCCESS,
-      allChapters: [
-        {id: 4, title: "Модификации для игр серии Ex Machina", order: 4},
-        {id: 1, title: "Ex Machina", order: 1}
-      ]
+      allChapters: [fakeData.chapters[2], fakeData.chapters[0], fakeData.chapters[1]]
     };
     // execute
     let newState = chapterReducer(undefined, action);
@@ -32,7 +30,7 @@ describe('chapterReducer', function(){
     // setup
     let action = {
       type: types.GET_CHAPTER_BY_ID_SUCCESS,
-      chapterById: {id: 1, title: "Ex Machina", order: 1}
+      chapterById: fakeData.chapters[0]
     };
     // execute
     let newState = chapterReducer(undefined, action);
@@ -40,22 +38,3 @@ describe('chapterReducer', function(){
     expect(newState).toEqual({chapterById:  action.chapterById});
   });
 });
-
-// import * as types from "../actions/actionTypes";
-//
-// export default function chapterReducer(state = [], action) {
-//     switch (action.type) {
-//         case types.GET_ALL_CHAPTERS_SUCCESS:
-//           return Object.assign({}, state, {
-//             allChapters: action.allChapters
-//           });
-//
-//         case types.GET_CHAPTER_BY_ID_SUCCESS:
-//           return Object.assign({}, state, {
-//             chapterById: action.chapterById
-//           });
-//
-//         default:
-//           return state;
-//     }
-// }

@@ -13,7 +13,7 @@ describe('ChapterItemById', () => {
     const props = {
       store: sharedFakeStore(valid),
       actions: mockActions,
-      params: {id: 4}
+      params: {id: 1}
     };
     return shallow(<ChapterItemById {...props}/>, { lifecycleExperimental: true });
   }

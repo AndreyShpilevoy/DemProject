@@ -2,6 +2,7 @@
 
 import * as types from "../../actions/actionTypes";
 import navigationLinkReducer from "../navigationLinkReducer";
+import * as fakeData from "../../api/__fakeData__/_all";
 
 describe('navigationLinkReducer', function(){
   it('returns an empty array as default state', function(){
@@ -17,10 +18,7 @@ describe('navigationLinkReducer', function(){
     // setup
     let action = {
       type: types.GET_NAVIGATIONLINKS_SUCCESS,
-      navigationLinks: [
-        {id: 1, title: 'Conference', href: '/', order: 1},
-        {id: 3, title: 'Link 3 autogen', href: '/', order: 3}
-      ]
+      navigationLinks: [[fakeData.navigationLinks[2], fakeData.navigationLinks[0], fakeData.navigationLinks[1]]]
     };
     // execute
     let newState = navigationLinkReducer(undefined, action);
