@@ -14,7 +14,7 @@ describe('CollapsibleWrapper', () => {
     const props = {
       collapsibleWrapperItem: {
         uniquePrefix: "chapter-item-with-id-1",
-        titleElement: <Link to={`/Conference/1`}>"Title"</Link>,
+        titleElement: <Link to={`/Conference/Forum/1`}>"Title"</Link>,
         bodyElement: <ForumList chapterId={1}/>,
         firstColumnTerm: <TermItem term={{id: 1, value: "Topics"}} />,
         secondColumnTerm:<TermItem term={{id: 2, value: "Posts"}} />,

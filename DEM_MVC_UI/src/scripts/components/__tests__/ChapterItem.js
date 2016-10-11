@@ -28,10 +28,10 @@ describe('ChapterItem', () => {
 
   it('props should contain "collapsibleWrapperItem" object with ' +
      '"titleElement.type.displayName" equel to "Link", with ' +
-     '"titleElement.props.to" equel to "/Conference/1"',() => {
+     '"titleElement.props.to" equel to "/Conference/Forum/1"',() => {
     const titleElement = setup().prop("collapsibleWrapperItem").titleElement;
     expect(titleElement.type.displayName).toEqual("Link");
-    expect(titleElement.props.to).toEqual("/Conference/1");
+    expect(titleElement.props.to).toEqual("/Conference/Forum/1");
   });
 
   it('props should contain "collapsibleWrapperItem" object with ' +

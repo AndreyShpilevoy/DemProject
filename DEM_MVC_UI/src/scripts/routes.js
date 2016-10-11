@@ -7,6 +7,6 @@ export default (
   <Route path="/" component={Layout}>
     <IndexRoute component={MainConferencePage} />
     <Route path="/Conference" component={MainConferencePage}/>
-    <Route path="/Conference/:forumId" component={ViewForumPage}/>
+    <Route path="/Conference/Forum/:forumId" component={ViewForumPage}/>
   </Route>
 );

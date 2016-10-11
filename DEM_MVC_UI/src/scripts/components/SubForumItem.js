@@ -16,7 +16,7 @@ class SubForumItem extends React.Component {
     return(
       <div className="sub-forum-item-container flex flex-row">
         <RightAngle className="sub-forum-icon-right-angle" />
-        <Link className="sub-forum-link" to={`/Conference/${id}`}>{title}</Link>
+        <Link className="sub-forum-link" to={`/Conference/Forum/${id}`}>{title}</Link>
       </div>
     );
   }

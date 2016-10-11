@@ -41,7 +41,7 @@ class TopicItem extends React.Component {
     return (parentForumId || parentForumTitle) ?
     <span className="topic-parent-forum-wrapper">
       <TermItem className="topic-parent-forum" term={{id: 25, value: "Forum:"}} spaceAfter />
-      <Link className="topic-parent-forum-title" to={`/Conference/${parentForumId}`}>{parentForumTitle}</Link>
+      <Link className="topic-parent-forum-title" to={`/Conference/Forum/${parentForumId}`}>{parentForumTitle}</Link>
     </span> :
     null;
   }
