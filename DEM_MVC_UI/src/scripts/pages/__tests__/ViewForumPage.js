@@ -3,16 +3,16 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {ChapterItemByIdPage} from "../_all";
+import {ViewForumPage} from "../_all";
 
-describe('ChapterItemByIdPage', () => {
+describe('ViewForumPage', () => {
   function setup() {
     let props={
       params: {
-        chapterId: 1
+        forumId: 1
       }
     };
-    return shallow(<ChapterItemByIdPage {...props}/>);
+    return shallow(<ViewForumPage {...props}/>);
   }
 
   it('should render "div"',() => {
