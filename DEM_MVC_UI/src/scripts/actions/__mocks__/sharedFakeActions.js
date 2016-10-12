@@ -14,6 +14,10 @@ function getSocialMediaLinks(){}
 function getSocialMediaLinksSuccess(){}
 function getLastActiveTopics(){}
 function getLastActiveTopicsSuccess(){}
+function showInfoNotification(){}
+function showSuccessNotification(){}
+function showWarningNotification(){}
+function showExceptionNotification(){}
 
 export {
   getAllChapters,
@@ -31,5 +35,9 @@ export {
   getSocialMediaLinks,
   getSocialMediaLinksSuccess,
   getLastActiveTopics,
-  getLastActiveTopicsSuccess
+  getLastActiveTopicsSuccess,
+  showInfoNotification,
+  showSuccessNotification,
+  showWarningNotification,
+  showExceptionNotification
 };

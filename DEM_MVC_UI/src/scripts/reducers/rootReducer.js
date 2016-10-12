@@ -7,6 +7,7 @@ import chapterReducer from "./chapterReducer";
 import localeReducer from "./localeReducer";
 import navigationLinkReducer from "./navigationLinkReducer";
 import socialMediaLinkReducer from "./socialMediaLinkReducer";
+import notificationReducer from "./notificationReducer";
 
 const rootReducer = combineReducers({
   forumReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   navigationLinkReducer,
   socialMediaLinkReducer,
   lastActiveTopicReducer,
+  notificationReducer,
   routing: routerReducer
 });
 

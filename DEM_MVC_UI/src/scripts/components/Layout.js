@@ -1,6 +1,6 @@
 ﻿import React, {PropTypes} from "react";
 import { Header, Footer } from "./_all";
-import { NotificationFactory } from "../containers/_all";
+import { NotificationCreator } from "../containers/_all";
 
 class Layout extends React.Component {
   static propTypes = {
@@ -21,7 +21,7 @@ class Layout extends React.Component {
             </div>
           </div>
         <Footer/>
-        <NotificationFactory/>
+        <NotificationCreator/>
       </div>
     );
   }

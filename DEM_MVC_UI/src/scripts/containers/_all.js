@@ -4,7 +4,7 @@ import ForumList from "./ForumList";
 import LastActiveTopicsList from "./LastActiveTopicsList";
 import Layout from "./Layout";
 import NavigationLinkList from "./NavigationLinkList";
-import NotificationFactory from "./NotificationFactory";
+import NotificationCreator from "./NotificationCreator";
 import RelativeDateTime from "./RelativeDateTime";
 import SocialMediaLinkList from "./SocialMediaLinkList";
 import TermItem from "./TermItem";
@@ -17,7 +17,7 @@ export {
   LastActiveTopicsList,
   Layout,
   NavigationLinkList,
-  NotificationFactory,
+  NotificationCreator,
   RelativeDateTime,
   SocialMediaLinkList,
   TermItem,
