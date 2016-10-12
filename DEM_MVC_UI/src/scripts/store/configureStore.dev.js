@@ -3,14 +3,10 @@
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from 'redux-saga';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-//import reduxCatch from 'redux-catch';
 import root from 'lodash/_root';
 import rootReducer from "../reducers/rootReducer";
-
-// function errorHandler(error, getState) {
-//   console.error(error);
-//   console.debug('current state', getState());
-// }
+import {errorHandler} from "../utils/_all";
+import reduxCatch from '../middlewares/errorNotificationsMiddleware';
 
 export default function configureStore() {
     const sagaMiddleware = createSagaMiddleware();
@@ -19,7 +15,7 @@ export default function configureStore() {
         root.devToolsExtension && root.devToolsExtension(),
         applyMiddleware(
           sagaMiddleware,
-          //reduxCatch(errorHandler),
+          reduxCatch(errorHandler),
           reduxImmutableStateInvariant()
         )
     );

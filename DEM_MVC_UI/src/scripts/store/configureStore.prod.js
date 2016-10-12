@@ -1,19 +1,15 @@
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from 'redux-saga';
-//import reduxCatch from 'redux-catch';
 import rootReducer from "../reducers/rootReducer";
-
-// function errorHandler(error, getState) {
-//   console.error(error);
-//   console.debug('current state', getState());
-// }
+import {errorHandler} from "../utils/_all";
+import reduxCatch from '../middlewares/errorNotificationsMiddleware';
 
 export default function configureStore() {
     const sagaMiddleware = createSagaMiddleware();
     const store = createStore(
         rootReducer,
         applyMiddleware(
-        //reduxCatch(errorHandler),
+        reduxCatch(errorHandler),
           sagaMiddleware
         )
     );

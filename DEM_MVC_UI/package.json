@@ -99,7 +99,6 @@
     "react-router": "2.8.1",
     "react-router-redux": "4.0.6",
     "redux": "3.6.0",
-    "redux-catch": "1.2.0",
     "redux-saga": "0.12.0"
   }
 }
