@@ -3,10 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {ChapterItem} from "../_all";
-import {chapters} from "../../api/__fakeData__/_all";
-
-jest.mock('../../utils/_all');
+import ChapterItem from "../ChapterItem";
+import chapters from "../../api/__fakeData__/chapters";
 
 describe('ChapterItem', () => {
   function setup() {

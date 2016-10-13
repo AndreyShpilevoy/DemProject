@@ -2,7 +2,7 @@
 
 import * as lastActiveTopicSagas from "../lastActiveTopicSagas";
 import LastActiveTopicApi from "../../api/__mocks__/LastActiveTopicApi";
-import {CheckObject} from "../../../../testHelpers/_all";
+import CheckObject from "../../../../testHelpers/CheckObject";
 
 describe('lastActiveTopicSagas', () => {
   it('getLastActiveTopicsGenerator first yeald should return TAKE pattern "GET_LAST_ACTIVE_TOPICS"', () => {

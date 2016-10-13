@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {TopicList} from "../_all";
-import {topics} from "../../api/__fakeData__/_all";
+import TopicList from "../TopicList";
+import topics from "../../api/__fakeData__/topics";
 
 describe('TopicList', () => {
   function setup() {

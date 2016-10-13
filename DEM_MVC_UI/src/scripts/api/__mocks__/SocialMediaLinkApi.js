@@ -1,7 +1,7 @@
 /* eslint no-undef: "off" */
 
 import delay from './delay';
-import {socialMediaLinks} from '../__fakeData__/_all';
+import socialMediaLinks from '../__fakeData__/socialMediaLinks';
 
 class SocialMediaLinkApi {
   static getSocialMediaLinks() {

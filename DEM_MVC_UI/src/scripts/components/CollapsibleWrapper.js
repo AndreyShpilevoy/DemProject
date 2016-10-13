@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
-import { ToggleClass } from "../utils/_all";
-import { ArrowLeft } from "../icons/_all";
+import ToggleClass from "../utils/ToggleClass";
+import ArrowLeft from "../icons/ArrowLeft";
 
 class CollapsibleWrapper extends React.Component {
   static propTypes = {

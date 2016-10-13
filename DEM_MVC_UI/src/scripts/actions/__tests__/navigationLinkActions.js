@@ -2,7 +2,7 @@
 
 import * as types from "../actionTypes";
 import * as navigationLinkActions from "../navigationLinkActions";
-import {navigationLinks} from "../../api/__fakeData__/_all";
+import navigationLinks from "../../api/__fakeData__/navigationLinks";
 
 
 describe('navigationLinkActions', () => {

@@ -3,13 +3,11 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {TermItem} from "../_all";
+import TermItem from "../TermItem";
 import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
 
-jest.mock("../../utils/_all", ()=>({
-  TermTranslation: {
-    getTermTranslation: ()=>("TestTerm")
-  }
+jest.mock("../../utils/TermTranslation", ()=>({
+  getTermTranslation: ()=>("TestTerm")
 }));
 
 describe('TermItem', () => {

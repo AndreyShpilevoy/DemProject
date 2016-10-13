@@ -2,7 +2,7 @@
 
 import * as socialMediaLinkSagas from "../socialMediaLinkSagas";
 import SocialMediaLinkApi from "../../api/__mocks__/SocialMediaLinkApi";
-import {CheckObject} from "../../../../testHelpers/_all";
+import CheckObject from "../../../../testHelpers/CheckObject";
 
 describe('socialMediaLinkSagas', () => {
   it('getSocialMediaLinksGenerator first yeald should return TAKE pattern "GET_SOCIALMEDIALINKS"', () => {

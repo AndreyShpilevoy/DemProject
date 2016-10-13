@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
-import {ChapterItemById, TopicList} from '../containers/_all';
+import ChapterItemById from '../containers/ChapterItemById';
+import TopicList from '../containers/TopicList';
 
 class ViewForumPage extends React.Component {
   static propTypes = {

@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {ViewForumPage} from "../_all";
+import ViewForumPage from "../ViewForumPage";
 
 describe('ViewForumPage', () => {
   function setup() {

@@ -2,7 +2,7 @@
 
 import * as types from "../../actions/actionTypes";
 import forumReducer from "../forumReducer";
-import * as fakeData from "../../api/__fakeData__/_all";
+import * as fakeData from "../../api/__fakeData__/index";
 
 describe('forumReducer', function(){
   it('returns an empty array as default state', function(){

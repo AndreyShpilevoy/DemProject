@@ -1,7 +1,7 @@
 /* eslint no-undef: "off" */
 
 import delay from './delay';
-import {navigationLinks} from '../__fakeData__/_all';
+import navigationLinks from '../__fakeData__/navigationLinks';
 
 class NavigationLinkApi {
   static getNavigationLinks() {

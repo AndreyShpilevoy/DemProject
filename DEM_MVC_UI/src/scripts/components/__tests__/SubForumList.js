@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {SubForumList} from "../_all";
-import {forums} from "../../api/__fakeData__/_all";
+import SubForumList from "../SubForumList";
+import forums from "../../api/__fakeData__/forums";
 
 describe('SubForumList', () => {
   function setup() {

@@ -2,7 +2,7 @@
 
 import * as types from "../actionTypes";
 import * as topicActions from "../topicActions";
-import {topics} from "../../api/__fakeData__/_all";
+import topics from "../../api/__fakeData__/topics";
 
 
 describe('topicActions', () => {

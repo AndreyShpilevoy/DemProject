@@ -1,5 +1,6 @@
 import React from 'react';
-import {ChapterList, LastActiveTopicsList} from '../containers/_all';
+import LastActiveTopicsList from '../containers/LastActiveTopicsList';
+import ChapterList from '../containers/ChapterList';
 
 class MainConferencePage extends React.Component {
   render() {

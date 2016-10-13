@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {Steam} from "../_all";
+import Steam from "../Steam";
 
 describe('Steam', () => {
   function setup() {

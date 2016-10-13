@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
-import { SocialMediaLinkItem } from "./_all";
+import SocialMediaLinkItem from "./SocialMediaLinkItem";
 
 class SocialMediaLinkList extends React.Component {
   static propTypes = {

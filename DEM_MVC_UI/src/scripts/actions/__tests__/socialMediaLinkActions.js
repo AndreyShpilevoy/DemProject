@@ -2,7 +2,7 @@
 
 import * as types from "../actionTypes";
 import * as socialMediaLinkActions from "../socialMediaLinkActions";
-import {socialMediaLinks} from "../../api/__fakeData__/_all";
+import socialMediaLinks from "../../api/__fakeData__/socialMediaLinks";
 
 
 describe('socialMediaLinkActions', () => {

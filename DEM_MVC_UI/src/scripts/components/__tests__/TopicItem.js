@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {TopicItem} from "../_all";
-import {topics} from "../../api/__fakeData__/_all";
+import TopicItem from "../TopicItem";
+import topics from "../../api/__fakeData__/topics";
 
 describe('TopicItem', () => {
   function setup(hasAvatar=true, parentForum=true) {

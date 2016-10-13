@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import { CollapsibleWrapper, TopicItem } from "./_all";
-import {TermItem} from '../containers/_all';
+import CollapsibleWrapper from "./CollapsibleWrapper";
+import TopicItem from "./TopicItem";
+import TermItem from '../containers/TermItem';
 
 class TopicList extends React.Component {
   static propTypes = {

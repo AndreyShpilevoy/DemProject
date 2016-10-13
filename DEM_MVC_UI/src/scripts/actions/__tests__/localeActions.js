@@ -2,7 +2,7 @@
 
 import * as types from "../actionTypes";
 import * as localeActions from "../localeActions";
-import {locale} from "../../api/__fakeData__/_all";
+import locale from "../../api/__fakeData__/locale";
 
 
 describe('localeActions', () => {

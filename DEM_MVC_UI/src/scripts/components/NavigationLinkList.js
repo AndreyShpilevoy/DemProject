@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
-import { NavigationLinkItem } from "./_all";
+import NavigationLinkItem from "./NavigationLinkItem";
 
 class NavigationLinkList extends React.Component {
   static propTypes = {

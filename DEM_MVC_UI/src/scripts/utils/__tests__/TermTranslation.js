@@ -1,6 +1,6 @@
 /*eslint no-undef: "off"*/
 
-import {TermTranslation} from "../_all";
+import TermTranslation from "../TermTranslation";
 
 describe('TermTranslation', () => {
 

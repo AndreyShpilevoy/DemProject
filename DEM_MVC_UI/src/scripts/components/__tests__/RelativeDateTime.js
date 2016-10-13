@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {RelativeDateTime} from "../_all";
+import RelativeDateTime from "../RelativeDateTime";
 
 describe('RelativeDateTime', () => {
   it('should render top level span with className "test-class-name" and "minute ago"',() => {

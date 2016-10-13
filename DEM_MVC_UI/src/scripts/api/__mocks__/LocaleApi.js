@@ -1,7 +1,7 @@
 /* eslint no-undef: "off" */
 
 import delay from './delay';
-import {locale} from '../__fakeData__/_all';
+import locale from '../__fakeData__/locale';
 
 class LocaleApi {
   static getLocale() {

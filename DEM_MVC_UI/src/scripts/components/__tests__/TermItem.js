@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {TermItem} from "../_all";
+import TermItem from "../TermItem";
 
 describe('TermItem', () => {
   it('should render top level span with className "test-class-name" and "term"',() => {

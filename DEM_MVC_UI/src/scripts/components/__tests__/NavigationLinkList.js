@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {NavigationLinkList} from "../_all";
-import {navigationLinks} from "../../api/__fakeData__/_all";
+import NavigationLinkList from "../NavigationLinkList";
+import navigationLinks from "../../api/__fakeData__/navigationLinks";
 
 describe('NavigationLinkList', () => {
   function setup() {

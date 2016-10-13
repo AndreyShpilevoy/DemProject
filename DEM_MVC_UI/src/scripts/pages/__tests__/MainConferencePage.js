@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {MainConferencePage} from "../_all";
+import MainConferencePage from "../MainConferencePage";
 
 describe('MainConferencePage', () => {
   function setup() {

@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-import {ForumList, TermItem} from '../containers/_all';
-import { CollapsibleWrapper } from "./_all";
+import ForumList from '../containers/ForumList';
+import TermItem from '../containers/TermItem';
+import CollapsibleWrapper from "./CollapsibleWrapper";
 
 class ChapterItem extends React.Component {
   static propTypes = {

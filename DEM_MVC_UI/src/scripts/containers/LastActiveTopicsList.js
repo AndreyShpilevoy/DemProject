@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as lastActiveTopicActions from "../actions/lastActiveTopicActions";
-import {LastActiveTopicsList as LastActiveTopicsListComponent} from "../components/_all";
+import LastActiveTopicsListComponent from "../components/LastActiveTopicsList";
 
 class LastActiveTopicsList extends React.Component {
   static propTypes = {

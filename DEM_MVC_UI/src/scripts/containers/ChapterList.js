@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as chapterActions from "../actions/chapterActions";
-import { ChapterList as ChapterListComponent } from "../components/_all";
+import ChapterListComponent from "../components/ChapterList";
 
 class ChapterList extends React.Component {
   static propTypes = {

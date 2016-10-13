@@ -2,8 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as chapterActions from "../actions/chapterActions";
-import * as notificationActions from "../actions/notificationActions";
-import { ChapterItem } from "../components/_all";
+import ChapterItem from "../components/ChapterItem";
 
 class ChapterItemById extends React.Component {
   static propTypes = {
@@ -50,7 +49,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators({...chapterActions, ...notificationActions}, dispatch)
+  actions: bindActionCreators(chapterActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChapterItemById);

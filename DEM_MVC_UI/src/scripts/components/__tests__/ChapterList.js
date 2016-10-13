@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {ChapterList} from "../_all";
-import {chapters} from "../../api/__fakeData__/_all";
+import ChapterList from "../ChapterList";
+import chapters from "../../api/__fakeData__/chapters";
 
 describe('ChapterList', () => {
   function setup() {

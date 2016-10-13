@@ -2,7 +2,7 @@
 
 import * as types from "../actionTypes";
 import * as chapterActions from "../chapterActions";
-import {chapters} from "../../api/__fakeData__/_all";
+import chapters from "../../api/__fakeData__/chapters";
 
 describe('chapterActions', () => {
   it('should create an action to get all chapters', () => {

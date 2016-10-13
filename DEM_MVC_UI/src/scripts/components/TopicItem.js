@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-import {TermItem, RelativeDateTime} from '../containers/_all';
+import TermItem from '../containers/TermItem';
+import RelativeDateTime from '../containers/RelativeDateTime';
 
 class TopicItem extends React.Component {
   static propTypes = {

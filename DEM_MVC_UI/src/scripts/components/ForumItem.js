@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-import {TermItem, RelativeDateTime} from '../containers/_all';
-import {SubForumList} from './_all';
+import RelativeDateTime from '../containers/RelativeDateTime';
+import TermItem from '../containers/TermItem';
+import SubForumList from './SubForumList';
 
 class ForumItem extends React.Component {
   static propTypes = {

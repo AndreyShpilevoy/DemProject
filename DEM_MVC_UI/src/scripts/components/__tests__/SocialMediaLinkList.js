@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {SocialMediaLinkList} from "../_all";
-import {socialMediaLinks} from "../../api/__fakeData__/_all";
+import SocialMediaLinkList from "../SocialMediaLinkList";
+import socialMediaLinks from "../../api/__fakeData__/socialMediaLinks";
 
 describe('SocialMediaLinkList', () => {
   function setup() {

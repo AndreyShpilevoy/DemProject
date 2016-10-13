@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {RightAngle} from "../_all";
+import RightAngle from "../RightAngle";
 
 describe('RightAngle', () => {
   function setup() {

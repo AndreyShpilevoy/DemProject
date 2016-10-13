@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as topicActions from "../actions/topicActions";
-import {TopicList as TopicListComponent} from "../components/_all";
+import TopicListComponent from "../components/TopicList";
 
 class TopicList extends React.Component {
   static propTypes = {

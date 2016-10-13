@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {ArrowLeft} from "../_all";
+import ArrowLeft from "../ArrowLeft";
 
 describe('ArrowLeft', () => {
   function setup() {

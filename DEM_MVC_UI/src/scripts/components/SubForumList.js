@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import {SubForumItem} from './_all';
+import SubForumItem from './SubForumItem';
 
 class SubForumList extends React.Component {
   static propTypes = {

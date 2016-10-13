@@ -1,7 +1,7 @@
 /* eslint no-undef: "off" */
 
 import delay from './delay';
-import {chapters} from '../__fakeData__/_all';
+import chapters from '../__fakeData__/chapters';
 
 let chapter = (id) => {
   return chapters.find(chapter => chapter.id == id);

@@ -2,7 +2,7 @@
 
 import * as types from "../actionTypes";
 import * as lastActiveTopicActions from "../lastActiveTopicActions";
-import {lastActiveTopics} from "../../api/__fakeData__/_all";
+import lastActiveTopics from "../../api/__fakeData__/lastActiveTopics";
 
 
 describe('lastActiveTopicActions', () => {

@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {LastActiveTopicsList} from "../_all";
+import LastActiveTopicsList from "../LastActiveTopicsList";
 import * as mockActions from "../../actions/__mocks__/sharedFakeActions";
 import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
 

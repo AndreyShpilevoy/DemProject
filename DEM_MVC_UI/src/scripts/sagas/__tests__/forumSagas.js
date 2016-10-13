@@ -2,7 +2,7 @@
 
 import * as forumSagas from "../forumSagas";
 import ForumApi from "../../api/__mocks__/ForumApi";
-import {CheckObject} from "../../../../testHelpers/_all";
+import CheckObject from "../../../../testHelpers/CheckObject";
 
 
 describe('forumSagas', () => {

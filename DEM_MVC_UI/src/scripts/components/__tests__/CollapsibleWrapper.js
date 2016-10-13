@@ -4,10 +4,9 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import { Link } from 'react-router';
-import {CollapsibleWrapper} from "../_all";
-import {ForumList, TermItem} from '../../containers/_all';
-
-jest.mock('../../utils/_all');
+import CollapsibleWrapper from "../CollapsibleWrapper";
+import ForumList from '../../containers/ForumList';
+import TermItem from '../../containers/TermItem';
 
 describe('CollapsibleWrapper', () => {
   function setup(collapseSettings) {

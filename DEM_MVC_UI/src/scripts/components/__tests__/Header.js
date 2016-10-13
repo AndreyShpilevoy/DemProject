@@ -4,9 +4,11 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {Header} from "../_all";
+import Header from "../Header";
 
-jest.mock('../../utils/_all');
+jest.mock('../../utils/ToggleClass');
+jest.mock('../../utils/ShrinkingHeader');
+
 
 describe('Header', () => {
   function setup() {

@@ -2,7 +2,7 @@
 
 import * as topicSagas from "../topicSagas";
 import TopicApi from "../../api/__mocks__/TopicApi";
-import {CheckObject} from "../../../../testHelpers/_all";
+import CheckObject from "../../../../testHelpers/CheckObject";
 
 
 describe('topicSagas', () => {

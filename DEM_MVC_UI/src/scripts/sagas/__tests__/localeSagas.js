@@ -2,7 +2,7 @@
 
 import * as localeSagas from "../localeSagas";
 import LocaleApi from "../../api/__mocks__/LocaleApi";
-import {CheckObject} from "../../../../testHelpers/_all";
+import CheckObject from "../../../../testHelpers/CheckObject";
 
 describe('localeSagas', () => {
   it('getLocaleGenerator first yeald should return TAKE pattern "GET_LOCALE"', () => {

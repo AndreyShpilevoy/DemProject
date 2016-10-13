@@ -3,13 +3,11 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import {RelativeDateTime} from "../_all";
+import RelativeDateTime from "../RelativeDateTime";
 import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
 
-jest.mock("../../utils/_all", ()=>({
-  TransformDateTime: {
-    GetRelative: ()=>("some time ago")
-  }
+jest.mock("../../utils/TransformDateTime", ()=>({
+  GetRelative: ()=>("some time ago")
 }));
 
 describe('RelativeDateTime', () => {

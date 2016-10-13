@@ -2,7 +2,7 @@
 
 import * as types from "../actionTypes";
 import * as forumActions from "../forumActions";
-import {forums} from "../../api/__fakeData__/_all";
+import forums from "../../api/__fakeData__/forums";
 
 
 describe('forumActions', () => {
