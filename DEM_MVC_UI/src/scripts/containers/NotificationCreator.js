@@ -48,8 +48,12 @@ class NotificationCreator extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  notification: state.notificationReducer.notification
-});
+const mapStateToProps = (state) => {
+  let result = {};
+  if(state.notificationReducer && state.notificationReducer.allNotifications){
+    result = {notification: state.notificationReducer.allNotifications[state.notificationReducer.allNotifications.length - 1]};
+  }
+  return result;
+};
 
 export default connect(mapStateToProps)(NotificationCreator);

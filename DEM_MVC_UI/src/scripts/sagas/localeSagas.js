@@ -1,3 +1,5 @@
+/* eslint import/prefer-default-export: "off" */
+
 import { call, put, take } from "redux-saga/effects";
 import LocaleApi from "../api/__mocks__/LocaleApi";
 import * as localeActions from "../actions/localeActions";

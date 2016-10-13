@@ -2,13 +2,23 @@ import * as types from "../actions/actionTypes";
 
 export default function notificationReducer(state = [], action) {
     switch (action.type) {
-        case types.SHOW_INFO_NOTIFICATION:
-        case types.SHOW_SUCCESS_NOTIFICATION:
-        case types.SHOW_WARNING_NOTIFICATION:
-        case types.SHOW_EXCEPTION_NOTIFICATION:
+      case types.SHOW_NOTIFICATION:
+        if(state.allNotifications){
           return Object.assign({}, state, {
-            notification: action.notification
+            allNotifications: [...state.allNotifications, action.notification]
           });
+        }
+        return Object.assign({}, state, {
+          allNotifications: [action.notification]
+        });
+
+      case types.HIDE_NOTIFICATION:
+        if(state.allNotifications){
+          return state.allNotifications.filter(notification => {
+            return notification.uid !== action.uid;
+          });
+        }
+        return state;
 
         default:
           return state;

@@ -29,6 +29,7 @@ class ChapterItemById extends React.Component {
   }
 
   render() {
+    //if(this.props.chapterItem) throw "tgt" + this.props.chapterItem.id;
     return (
       this.props.chapterItem ?
         <div>

@@ -1,3 +1,5 @@
+/* eslint import/prefer-default-export: "off" */
+
 import { call, put, take } from "redux-saga/effects";
 import SocialMediaLinkApi from "../api/__mocks__/SocialMediaLinkApi";
 import * as socialMediaLinkAction from "../actions/socialMediaLinkActions";
