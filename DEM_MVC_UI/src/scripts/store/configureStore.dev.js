@@ -5,8 +5,7 @@ import createSagaMiddleware from 'redux-saga';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import root from 'lodash/_root';
 import rootReducer from "../reducers/rootReducer";
-//import {logger, crashReporter} from '../middlewares/errorNotificationsMiddleware';
-import {crashReporter} from '../middlewares/errorNotificationsMiddleware';
+import crashReporter from '../middlewares/crashReporterMiddleware';
 
 export default function configureStore() {
     const sagaMiddleware = createSagaMiddleware();
@@ -15,7 +14,6 @@ export default function configureStore() {
         root.devToolsExtension && root.devToolsExtension(),
         applyMiddleware(
           sagaMiddleware,
-          //logger,
           crashReporter,
           reduxImmutableStateInvariant()
         )

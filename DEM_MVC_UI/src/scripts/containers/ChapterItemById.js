@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as chapterActions from "../actions/chapterActions";
+import * as notificationActions from "../actions/notificationActions";
 import { ChapterItem } from "../components/_all";
 
 class ChapterItemById extends React.Component {
@@ -29,7 +30,6 @@ class ChapterItemById extends React.Component {
   }
 
   render() {
-    //if(this.props.chapterItem) throw "tgt" + this.props.chapterItem.id;
     return (
       this.props.chapterItem ?
         <div>
@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(chapterActions, dispatch)
+  actions: bindActionCreators({...chapterActions, ...notificationActions}, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChapterItemById);
