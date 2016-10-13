@@ -14,10 +14,10 @@ function getSocialMediaLinks(){}
 function getSocialMediaLinksSuccess(){}
 function getLastActiveTopics(){}
 function getLastActiveTopicsSuccess(){}
-function showInfoNotification(){}
-function showSuccessNotification(){}
-function showWarningNotification(){}
-function showExceptionNotification(){}
+function addInfoNotification(){}
+function addSuccessNotification(){}
+function addWarningNotification(){}
+function addExceptionNotification(){}
 
 export {
   getAllChapters,
@@ -36,8 +36,8 @@ export {
   getSocialMediaLinksSuccess,
   getLastActiveTopics,
   getLastActiveTopicsSuccess,
-  showInfoNotification,
-  showSuccessNotification,
-  showWarningNotification,
-  showExceptionNotification
+  addInfoNotification,
+  addSuccessNotification,
+  addWarningNotification,
+  addExceptionNotification
 };

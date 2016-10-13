@@ -2,7 +2,7 @@ import * as types from "../actions/actionTypes";
 
 export default function notificationReducer(state = [], action) {
     switch (action.type) {
-      case types.SHOW_NOTIFICATION:
+      case types.ADD_NOTIFICATION:
         if(state.allNotifications){
           return Object.assign({}, state, {
             allNotifications: [...state.allNotifications, action.notification]
@@ -12,11 +12,11 @@ export default function notificationReducer(state = [], action) {
           allNotifications: [action.notification]
         });
 
-      case types.HIDE_NOTIFICATION:
+      case types.REMOVE_NOTIFICATION:
         if(state.allNotifications){
-          return state.allNotifications.filter(notification => {
+          return {allNotifications: state.allNotifications.filter(notification => {
             return notification.uid !== action.uid;
-          });
+          })};
         }
         return state;
 

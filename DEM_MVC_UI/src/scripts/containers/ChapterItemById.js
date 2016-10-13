@@ -24,7 +24,7 @@ class ChapterItemById extends React.Component {
   componentWillReceiveProps(nextProps) {
     let nextChapterId = nextProps.targetChapterId;
     if (nextChapterId !== this.props.targetChapterId) {
-        this.props.actions.getChapterById(nextChapterId);
+      this.props.actions.getChapterById(nextChapterId);
     }
   }
 

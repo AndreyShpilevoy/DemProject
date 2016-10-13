@@ -1,39 +1,37 @@
 import * as types from "./actionTypes";
 
-function showInfoNotification(message, title, params){
-  return showNotification(message, title, params, "info");
+function addInfoNotification(notification){
+  return addNotification(notification, "info");
 }
 
-function showSuccessNotification(message, title, params){
-  return showNotification(message, title, params, "success");
+function addSuccessNotification(notification){
+  return addNotification(notification, "success");
 }
 
-function showWarningNotification(message, title, params){
-  return showNotification(message, title, params, "warning");
+function addWarningNotification(notification){
+  return addNotification(notification, "warning");
 }
 
-function showExceptionNotification(message, title, params){
-  return showNotification(message, title, params, "error");
+function addExceptionNotification(notification){
+  return addNotification(notification, "error");
 }
 
-function showNotification(message, title, params, level) {
+function addNotification(notification, level) {
   return {
-    type: types.SHOW_NOTIFICATION,
-    notification:  Object.assign({}, {message, title, level, uid: Date.now()}, params)};
-}
-
-function hideNotification(uid) {
-  return {
-    type: types.HIDE_NOTIFICATION,
-    uid
+    type: types.ADD_NOTIFICATION,
+    notification:  Object.assign({}, notification, {level, uid: notification.uid || Date.now()})
   };
 }
 
+function removeNotification(uid) {
+  return {type: types.REMOVE_NOTIFICATION, uid};
+}
+
 export {
-  showInfoNotification,
-  showSuccessNotification,
-  showWarningNotification,
-  showExceptionNotification,
-  showNotification,
-  hideNotification
+  addInfoNotification,
+  addSuccessNotification,
+  addWarningNotification,
+  addExceptionNotification,
+  addNotification,
+  removeNotification
 };
