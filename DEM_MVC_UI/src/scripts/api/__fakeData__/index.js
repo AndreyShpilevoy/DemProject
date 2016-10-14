@@ -5,6 +5,7 @@ import locale from "./locale";
 import navigationLinks from "./navigationLinks";
 import socialMediaLinks from "./socialMediaLinks";
 import topics from "./topics";
+import notifications from "./notifications";
 
 export {
   chapters,
@@ -13,5 +14,6 @@ export {
   locale,
   navigationLinks,
   socialMediaLinks,
-  topics
+  topics,
+  notifications
 };

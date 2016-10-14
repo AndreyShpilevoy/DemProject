@@ -30,6 +30,7 @@ class NotificationCreator extends React.Component {
     actions: PropTypes.object.isRequired
   };
 
+  /* istanbul ignore next */
   componentWillReceiveProps(nextProps) {
     let notificationSystem = this.refs.notificationSystem;
     const notificationArray = nextProps.notificationArray ? nextProps.notificationArray : [];

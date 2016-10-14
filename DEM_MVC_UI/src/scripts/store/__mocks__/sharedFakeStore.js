@@ -34,6 +34,9 @@ export const sharedFakeStoreData = {
   },
   socialMediaLinkReducer:{
     socialMediaLinks: [fakeData.socialMediaLinks[1], fakeData.socialMediaLinks[0]]
+  },
+  notificationReducer:{
+    allNotifications: [fakeData.notifications[0]]
   }
 };
 export function sharedFakeStore(valid=true){
