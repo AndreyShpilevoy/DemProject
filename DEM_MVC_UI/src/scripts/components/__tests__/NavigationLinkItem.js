@@ -14,9 +14,9 @@ describe('NavigationLinkItem', () => {
     return shallow(<NavigationLinkItem {...props}/>);
   }
 
-  it('should render top level li with className nav-list-item',() => {
+  it('should render top level li with className nav-array-item',() => {
     const liElement = setup().find('li');
-    expect(liElement.hasClass("nav-list-item")).toBeTruthy();
+    expect(liElement.hasClass("nav-array-item")).toBeTruthy();
   });
 
   it('should render Link component with className nav-link',() => {

@@ -33,10 +33,10 @@ describe('ChapterItem', () => {
   });
 
   it('props should contain "collapsibleWrapperItem" object with ' +
-     '"bodyElement.type.displayName" equel to "Connect(ForumList)", with ' +
+     '"bodyElement.type.displayName" equel to "Connect(ForumArray)", with ' +
      '"bodyElement.props.chapterId" equel to "1"',() => {
     const bodyElement = setup().prop("collapsibleWrapperItem").bodyElement;
-    expect(bodyElement.type.displayName).toEqual("Connect(ForumList)");
+    expect(bodyElement.type.displayName).toEqual("Connect(ForumArray)");
     expect(bodyElement.props.chapterId).toEqual(1);
   });
 

@@ -24,7 +24,7 @@ describe('topicReducer', function(){
     let newState = topicReducer(undefined, action);
     // verify
     expect(newState).toEqual({allTopics:  [
-      {forumId: action.forumId, topicList: action.topics}
+      {forumId: action.forumId, topicArray: action.topics}
     ]});
   });
 
@@ -38,12 +38,12 @@ describe('topicReducer', function(){
     };
     // execute
     let newState = topicReducer({allTopics:  [
-      {forumId: preloadedTopic.forumId, topicList: preloadedTopic.topics}
+      {forumId: preloadedTopic.forumId, topicArray: preloadedTopic.topics}
     ]}, action);
     // verify
     expect(newState).toEqual({allTopics:  [
-      {forumId: preloadedTopic.forumId, topicList: preloadedTopic.topics},
-      {forumId: action.forumId, topicList: action.topics}
+      {forumId: preloadedTopic.forumId, topicArray: preloadedTopic.topics},
+      {forumId: action.forumId, topicArray: action.topics}
     ]});
   });
 });

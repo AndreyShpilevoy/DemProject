@@ -7,13 +7,13 @@ export default function topicReducer(state = [], action) {
             return Object.assign({}, state, {
               allTopics: [
                 ...state.allTopics,
-                {forumId: action.forumId, topicList: action.topics}
+                {forumId: action.forumId, topicArray: action.topics}
               ]
             });
           }
           return Object.assign({}, state, {
             allTopics: [
-              {forumId: action.forumId, topicList: action.topics}
+              {forumId: action.forumId, topicArray: action.topics}
             ]
           });
 

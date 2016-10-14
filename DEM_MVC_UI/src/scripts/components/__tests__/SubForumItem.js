@@ -9,7 +9,7 @@ import forums from "../../api/__fakeData__/forums";
 describe('SubForumItem', () => {
   function setup() {
     const props = {
-      subForumItem: forums[0].subForumList[0]
+      subForumItem: forums[0].subForumArray[0]
     };
 
     return shallow(<SubForumItem {...props}/>);

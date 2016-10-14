@@ -3,16 +3,16 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ForumList from "../ForumList";
+import ForumArray from "../ForumArray";
 import forums from "../../api/__fakeData__/forums";
 
-describe('ForumList', () => {
+describe('ForumArray', () => {
   function setup() {
     const props = {
-      forumList: [forums[2], forums[0], forums[1]]
+      forumArray: [forums[2], forums[0], forums[1]]
     };
 
-    return shallow(<ForumList {...props}/>);
+    return shallow(<ForumArray {...props}/>);
   }
 
   it('should render top level div with className "forums-container"',() => {

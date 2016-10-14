@@ -2,11 +2,11 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as socialMediaLinkActions from "../actions/socialMediaLinkActions";
-import SocialMediaLinkListComponent from '../components/SocialMediaLinkList';
+import SocialMediaLinkArrayComponent from '../components/SocialMediaLinkArray';
 
-class SocialMediaLinkList extends React.Component {
+class SocialMediaLinkArray extends React.Component {
   static propTypes = {
-    socialMediaLinkList: PropTypes.arrayOf(
+    socialMediaLinkArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -24,17 +24,17 @@ class SocialMediaLinkList extends React.Component {
 
   render(){
     return(
-      <SocialMediaLinkListComponent socialMediaLinkList={this.props.socialMediaLinkList} />
+      <SocialMediaLinkArrayComponent socialMediaLinkArray={this.props.socialMediaLinkArray} />
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  socialMediaLinkList: state.socialMediaLinkReducer.socialMediaLinks
+  socialMediaLinkArray: state.socialMediaLinkReducer.socialMediaLinks
 });
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(socialMediaLinkActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SocialMediaLinkList);
+export default connect(mapStateToProps, mapDispatchToProps)(SocialMediaLinkArray);

@@ -3,16 +3,16 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ChapterList from "../ChapterList";
+import ChapterArray from "../ChapterArray";
 import chapters from "../../api/__fakeData__/chapters";
 
-describe('ChapterList', () => {
+describe('ChapterArray', () => {
   function setup() {
     const props = {
-      chapterList: [chapters[0], chapters[1], chapters[2]]
+      chapterArray: [chapters[0], chapters[1], chapters[2]]
     };
 
-    return shallow(<ChapterList {...props}/>);
+    return shallow(<ChapterArray {...props}/>);
   }
 
   it('should render top level div',() => {

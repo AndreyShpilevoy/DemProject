@@ -2,11 +2,11 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as navigationLinkActions from "../actions/navigationLinkActions";
-import NavigationLinkListComponent from "../components/NavigationLinkList";
+import NavigationLinkArrayComponent from "../components/NavigationLinkArray";
 
-class NavigationLinkList extends React.Component {
+class NavigationLinkArray extends React.Component {
   static propTypes = {
-    navigationLinkList: PropTypes.arrayOf(
+    navigationLinkArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -23,18 +23,18 @@ class NavigationLinkList extends React.Component {
 
   render(){
     return(
-      <NavigationLinkListComponent navigationLinkList={this.props.navigationLinkList}/>
+      <NavigationLinkArrayComponent navigationLinkArray={this.props.navigationLinkArray}/>
     );
   }
 }
 
 
 const mapStateToProps = (state) => ({
-  navigationLinkList: state.navigationLinkReducer.navigationLinks
+  navigationLinkArray: state.navigationLinkReducer.navigationLinks
 });
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(navigationLinkActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavigationLinkList);
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationLinkArray);

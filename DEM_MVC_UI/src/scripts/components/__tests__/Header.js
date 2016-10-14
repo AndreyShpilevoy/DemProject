@@ -30,8 +30,8 @@ describe('Header', () => {
     expect(navigationMenuToggleButtonElement.length).toEqual(1);
   });
 
-  it('should contain 1 NavigationLinkList element',() => {
-    const NavigationLinkListElement = setup().find('Connect(NavigationLinkList)');
-    expect(NavigationLinkListElement.length).toEqual(1);
+  it('should contain 1 NavigationLinkArray element',() => {
+    const NavigationLinkArrayElement = setup().find('Connect(NavigationLinkArray)');
+    expect(NavigationLinkArrayElement.length).toEqual(1);
   });
 });

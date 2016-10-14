@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import NavigationLinkItem from "./NavigationLinkItem";
 
-class NavigationLinkList extends React.Component {
+class NavigationLinkArray extends React.Component {
   static propTypes = {
-    navigationLinkList: PropTypes.arrayOf(
+    navigationLinkArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -14,7 +14,7 @@ class NavigationLinkList extends React.Component {
   }
 
   orderNavigationLinks = () => {
-    return  _.orderBy(this.props.navigationLinkList, "order");
+    return  _.orderBy(this.props.navigationLinkArray, "order");
   }
 
   mapNavigationLinks = () => {
@@ -35,4 +35,4 @@ class NavigationLinkList extends React.Component {
   }
 }
 
-export default NavigationLinkList;
+export default NavigationLinkArray;

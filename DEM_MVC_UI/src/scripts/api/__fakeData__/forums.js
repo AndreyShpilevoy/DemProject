@@ -12,7 +12,7 @@ const forums = [
     latesPostAutorId: 1,
     latesPostAutorName: "kto",
     latesPostAutorGroupColor: "ffa510",
-    subForumList: [
+    subForumArray: [
       {id: 11, title: "Самопал", order: 2},
       {id: 12, title: "Архив форумки", order: 1}
     ]
@@ -44,7 +44,7 @@ const forums = [
     latesPostAutorId: 3,
     latesPostAutorName: "ololoid",
     latesPostAutorGroupColor: "99ccff",
-    subForumList: [
+    subForumArray: [
       {id: 31, title: "Багтрекер", order: 27}
     ]
   },
@@ -75,7 +75,7 @@ const forums = [
     latesPostAutorId: 5,
     latesPostAutorName: "Agent005",
     latesPostAutorGroupColor: "ff00ff",
-    subForumList: [
+    subForumArray: [
       {id: 51, title: "FAQ", order: 51},
       {id: 52, title: "Юзербары", order: 52},
       {id: 53, title: "О игре", order: 53},

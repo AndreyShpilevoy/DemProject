@@ -15,8 +15,8 @@ describe('Footer', () => {
     expect(divElement.hasClass("footer-container")).toBeTruthy();
   });
 
-  it('should contain 1 SocialMediaLinkList element',() => {
-    const socialMediaLinkListElement = setup().find('Connect(SocialMediaLinkList)');
-    expect(socialMediaLinkListElement.length).toEqual(1);
+  it('should contain 1 SocialMediaLinkArray element',() => {
+    const socialMediaLinkArrayElement = setup().find('Connect(SocialMediaLinkArray)');
+    expect(socialMediaLinkArrayElement.length).toEqual(1);
   });
 });

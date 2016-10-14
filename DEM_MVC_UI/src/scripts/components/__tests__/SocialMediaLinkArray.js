@@ -3,16 +3,16 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import SocialMediaLinkList from "../SocialMediaLinkList";
+import SocialMediaLinkArray from "../SocialMediaLinkArray";
 import socialMediaLinks from "../../api/__fakeData__/socialMediaLinks";
 
-describe('SocialMediaLinkList', () => {
+describe('SocialMediaLinkArray', () => {
   function setup() {
     const props = {
-      socialMediaLinkList: [socialMediaLinks[1], socialMediaLinks[0]]
+      socialMediaLinkArray: [socialMediaLinks[1], socialMediaLinks[0]]
     };
 
-    return shallow(<SocialMediaLinkList {...props}/>);
+    return shallow(<SocialMediaLinkArray {...props}/>);
   }
 
   it('should render top level div with className "social-media-link-wrapper"',() => {

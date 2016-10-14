@@ -3,25 +3,25 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import SocialMediaLinkList from "../SocialMediaLinkList";
+import SocialMediaLinkArray from "../SocialMediaLinkArray";
 import * as mockActions from "../../actions/__mocks__/sharedFakeActions";
 import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
 
-describe('SocialMediaLinkList', () => {
+describe('SocialMediaLinkArray', () => {
   function setup() {
     const props = {
       store: sharedFakeStore(),
       actions: mockActions
     };
-    return shallow(<SocialMediaLinkList {...props}/>, { lifecycleExperimental: true });
+    return shallow(<SocialMediaLinkArray {...props}/>, { lifecycleExperimental: true });
   }
 
   it('should get "allChapters" from "chapterReducer" and recieve expected result', () => {
-    expect(setup().prop('socialMediaLinkList')).toEqual(sharedFakeStoreData.socialMediaLinkReducer.socialMediaLinks);
+    expect(setup().prop('socialMediaLinkArray')).toEqual(sharedFakeStoreData.socialMediaLinkReducer.socialMediaLinks);
   });
 
-  it('should find "SocialMediaLinkListComponent" component', () => {
+  it('should find "SocialMediaLinkArrayComponent" component', () => {
     const divElement = setup().shallow();
-    expect(divElement.find("SocialMediaLinkListComponent")).toBeTruthy();
+    expect(divElement.find("SocialMediaLinkArrayComponent")).toBeTruthy();
   });
 });

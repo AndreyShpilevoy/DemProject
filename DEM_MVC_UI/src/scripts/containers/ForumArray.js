@@ -2,12 +2,12 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as forumActions from "../actions/forumActions";
-import ForumListComponent from "../components/ForumList";
+import ForumArrayComponent from "../components/ForumArray";
 
-class ForumList extends React.Component {
+class ForumArray extends React.Component {
   static propTypes = {
     chapterId: PropTypes.number.isRequired,
-    forumList: PropTypes.arrayOf(
+    forumArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         order: PropTypes.number.isRequired,
@@ -21,7 +21,7 @@ class ForumList extends React.Component {
         latesPostAutorId: PropTypes.number.isRequired,
         latesPostAutorName: PropTypes.string.isRequired,
         latesPostAutorGroupColor: PropTypes.string.isRequired,
-        subForumList: PropTypes.array,
+        subForumArray: PropTypes.array,
       })).isRequired,
     actions: PropTypes.object.isRequired
   };
@@ -41,7 +41,7 @@ class ForumList extends React.Component {
 
   render(){
     return(
-      <ForumListComponent forumList={this.props.forumList} />
+      <ForumArrayComponent forumArray={this.props.forumArray} />
     );
   }
 }
@@ -53,7 +53,7 @@ const mapStateToProps = (state, ownProps) => {
     result = state.forumReducer.allForums.find(forumReducer => forumReducer.chapterId === ownProps.chapterId);
   }
   return {
-    forumList: result ? result.forumList : []
+    forumArray: result ? result.forumArray : []
   };
 };
 
@@ -61,4 +61,4 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(forumActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ForumList);
+export default connect(mapStateToProps, mapDispatchToProps)(ForumArray);

@@ -3,16 +3,16 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import NavigationLinkList from "../NavigationLinkList";
+import NavigationLinkArray from "../NavigationLinkArray";
 import navigationLinks from "../../api/__fakeData__/navigationLinks";
 
-describe('NavigationLinkList', () => {
+describe('NavigationLinkArray', () => {
   function setup() {
     const props = {
-      navigationLinkList: [navigationLinks[2], navigationLinks[0], navigationLinks[1]]
+      navigationLinkArray: [navigationLinks[2], navigationLinks[0], navigationLinks[1]]
     };
 
-    return shallow(<NavigationLinkList {...props}/>);
+    return shallow(<NavigationLinkArray {...props}/>);
   }
 
   it('should render top level div with className "page-content"',() => {

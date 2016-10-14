@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import SocialMediaLinkItem from "./SocialMediaLinkItem";
 
-class SocialMediaLinkList extends React.Component {
+class SocialMediaLinkArray extends React.Component {
   static propTypes = {
-    socialMediaLinkList: PropTypes.arrayOf(
+    socialMediaLinkArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -16,7 +16,7 @@ class SocialMediaLinkList extends React.Component {
   };
 
   orderSocialMediaLinks = () => {
-    return  _.orderBy(this.props.socialMediaLinkList, "order");
+    return  _.orderBy(this.props.socialMediaLinkArray, "order");
   }
 
   mapSocialMediaLinks = () => {
@@ -35,4 +35,4 @@ class SocialMediaLinkList extends React.Component {
   }
 }
 
-export default SocialMediaLinkList;
+export default SocialMediaLinkArray;

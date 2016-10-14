@@ -25,14 +25,14 @@ describe('ViewForumPage', () => {
     expect(ChapterItemByIdElement.length).toEqual(1);
   });
 
-  it('should contain 3 TopicList element',() => {
-    const TopicListElement = setup().find('Connect(TopicList)');
-    expect(TopicListElement.length).toEqual(1);
+  it('should contain 3 TopicArray element',() => {
+    const TopicArrayElement = setup().find('Connect(TopicArray)');
+    expect(TopicArrayElement.length).toEqual(1);
   });
 
-  it('Connect(TopicList) props.forumId should be equel 1',() => {
-    const TopicListElement = setup().find('Connect(TopicList)');
-    expect(TopicListElement.props().forumId).toEqual(1);
+  it('Connect(TopicArray) props.forumId should be equel 1',() => {
+    const TopicArrayElement = setup().find('Connect(TopicArray)');
+    expect(TopicArrayElement.props().forumId).toEqual(1);
   });
 
   it('Connect(ChapterItemById) props.targetChapterId should be equel 1',() => {

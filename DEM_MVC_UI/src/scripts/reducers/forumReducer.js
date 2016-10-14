@@ -7,13 +7,13 @@ export default function forumReducer(state = [], action) {
             return Object.assign({}, state, {
               allForums: [
                 ...state.allForums,
-                {chapterId: action.chapterId, forumList: action.forums}
+                {chapterId: action.chapterId, forumArray: action.forums}
               ]
             });
           }
           return Object.assign({}, state, {
             allForums: [
-              {chapterId: action.chapterId, forumList: action.forums}
+              {chapterId: action.chapterId, forumArray: action.forums}
             ]
           });
 

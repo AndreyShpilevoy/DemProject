@@ -24,7 +24,7 @@ describe('forumReducer', function(){
     let newState = forumReducer(undefined, action);
     // verify
     expect(newState).toEqual({allForums:  [
-      {chapterId: action.chapterId, forumList: action.forums}
+      {chapterId: action.chapterId, forumArray: action.forums}
     ]});
   });
 
@@ -38,12 +38,12 @@ describe('forumReducer', function(){
     };
     // execute
     let newState = forumReducer({allForums:  [
-      {chapterId: preloadedForum.chapterId, forumList: preloadedForum.forums}
+      {chapterId: preloadedForum.chapterId, forumArray: preloadedForum.forums}
     ]}, action);
     // verify
     expect(newState).toEqual({allForums:  [
-      {chapterId: preloadedForum.chapterId, forumList: preloadedForum.forums},
-      {chapterId: action.chapterId, forumList: action.forums}
+      {chapterId: preloadedForum.chapterId, forumArray: preloadedForum.forums},
+      {chapterId: action.chapterId, forumArray: action.forums}
     ]});
   });
 });

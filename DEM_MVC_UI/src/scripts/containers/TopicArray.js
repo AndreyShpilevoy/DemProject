@@ -2,12 +2,12 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as topicActions from "../actions/topicActions";
-import TopicListComponent from "../components/TopicList";
+import TopicArrayComponent from "../components/TopicArray";
 
-class TopicList extends React.Component {
+class TopicArray extends React.Component {
   static propTypes = {
     forumId: PropTypes.number.isRequired,
-    topicList: PropTypes.arrayOf(
+    topicArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -37,7 +37,7 @@ class TopicList extends React.Component {
 
   render(){
     return(
-      <TopicListComponent topicList={this.props.topicList} forumId={this.props.forumId} />
+      <TopicArrayComponent topicArray={this.props.topicArray} forumId={this.props.forumId} />
     );
   }
 }
@@ -49,7 +49,7 @@ const mapStateToProps = (state, ownProps) => {
     result = state.topicReducer.allTopics.find(topicReducer => topicReducer.forumId === ownProps.forumId);
   }
   return {
-    topicList: result ? result.topicList : []
+    topicArray: result ? result.topicArray : []
   };
 };
 
@@ -57,4 +57,4 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(topicActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopicList);
+export default connect(mapStateToProps, mapDispatchToProps)(TopicArray);

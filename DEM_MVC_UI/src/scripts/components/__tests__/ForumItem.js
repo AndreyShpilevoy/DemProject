@@ -20,9 +20,9 @@ describe('ForumItem', () => {
     expect(divElement.hasClass("forum-container-wrapper")).toBeTruthy();
   });
 
-  it('should contain 1 SubForumList element',() => {
-    const subForumListElement = setup().find('SubForumList');
-    expect(subForumListElement.length).toEqual(1);
+  it('should contain 1 SubForumArray element',() => {
+    const subForumArrayElement = setup().find('SubForumArray');
+    expect(subForumArrayElement.length).toEqual(1);
   });
 
   it('should contain 3 TermItem element',() => {

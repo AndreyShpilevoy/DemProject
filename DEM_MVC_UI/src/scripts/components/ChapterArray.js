@@ -2,9 +2,9 @@ import React, {PropTypes} from 'react';
 import _ from 'lodash';
 import ChapterItem from './ChapterItem';
 
-class ChapterList extends React.Component {
+class ChapterArray extends React.Component {
   static propTypes = {
-    chapterList: PropTypes.arrayOf(
+    chapterArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -13,7 +13,7 @@ class ChapterList extends React.Component {
   };
 
   orderChapters = () => {
-    return  _.orderBy(this.props.chapterList, "order");
+    return  _.orderBy(this.props.chapterArray, "order");
   }
 
   mapChapters = () => {
@@ -23,13 +23,13 @@ class ChapterList extends React.Component {
   }
 
   render() {
-    let mappedChapterList = this.mapChapters();
+    let mappedChapterArray = this.mapChapters();
     return (
       <div>
-        {mappedChapterList}
+        {mappedChapterArray}
       </div>
     );
   }
 }
 
-export default ChapterList;
+export default ChapterArray;

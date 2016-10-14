@@ -20,11 +20,11 @@ const ua  = [
   {id: 19,  value: 'рік', description: 'single year for TransformDateTime'},
   {id: 20,  value: 'роки', description: 'several years for TransformDateTime'},
   {id: 21,  value: 'років', description: 'several years for TransformDateTime'},
-  {id: 22,   value: 'Переглядів', description: 'for topics label on topicList component'},
-  {id: 23,   value: 'Теми', description: 'for topics label on topicList component'},
-  {id: 24,   value: '>>', description: 'for topics body on topicList component'},
-  {id: 25,   value: 'Форум:', description: 'for topics body on topicList component'},
-  {id: 26,   value: 'Останні повідомлення', description: 'title for lastActiveTopicList component'},
+  {id: 22,   value: 'Переглядів', description: 'for topics label on topicArray component'},
+  {id: 23,   value: 'Теми', description: 'for topics label on topicArray component'},
+  {id: 24,   value: '>>', description: 'for topics body on topicArray component'},
+  {id: 25,   value: 'Форум:', description: 'for topics body on topicArray component'},
+  {id: 26,   value: 'Останні повідомлення', description: 'title for lastActiveTopicArray component'},
 ];
 
 export default ua;

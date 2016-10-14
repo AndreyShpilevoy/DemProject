@@ -3,16 +3,16 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import LastActiveTopicsList from "../LastActiveTopicsList";
+import LastActiveTopicsArray from "../LastActiveTopicsArray";
 import lastActiveTopics from "../../api/__fakeData__/lastActiveTopics";
 
-describe('LastActiveTopicsList', () => {
+describe('LastActiveTopicsArray', () => {
   function setup() {
     const props = {
       lastActiveTopics: [lastActiveTopics[2], lastActiveTopics[0], lastActiveTopics[1]]
     };
 
-    return shallow(<LastActiveTopicsList {...props}/>);
+    return shallow(<LastActiveTopicsArray {...props}/>);
   }
 
   it('should render CollapsibleWrapper',() => {
@@ -20,8 +20,8 @@ describe('LastActiveTopicsList', () => {
     expect(collapsibleWrapperElement).toBeTruthy();
   });
 
-  it('props should contain "collapsibleWrapperItem" object with "uniquePrefix" equel to "last-topic-list"',() => {
-    expect(setup().prop("collapsibleWrapperItem").uniquePrefix).toEqual("last-topic-list");
+  it('props should contain "collapsibleWrapperItem" object with "uniquePrefix" equel to "last-topic-array"',() => {
+    expect(setup().prop("collapsibleWrapperItem").uniquePrefix).toEqual("last-topic-array");
   });
 
   it('props should contain "collapsibleWrapperItem" object with ' +

@@ -1,13 +1,13 @@
 import React from 'react';
-import LastActiveTopicsList from '../containers/LastActiveTopicsList';
-import ChapterList from '../containers/ChapterList';
+import LastActiveTopicsArray from '../containers/LastActiveTopicsArray';
+import ChapterArray from '../containers/ChapterArray';
 
 class MainConferencePage extends React.Component {
   render() {
     return (
       <div>
-        <LastActiveTopicsList />
-        <ChapterList />
+        <LastActiveTopicsArray />
+        <ChapterArray />
       </div>
     );
   }

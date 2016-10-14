@@ -3,17 +3,17 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import TopicList from "../TopicList";
+import TopicArray from "../TopicArray";
 import topics from "../../api/__fakeData__/topics";
 
-describe('TopicList', () => {
+describe('TopicArray', () => {
   function setup() {
     const props = {
       forumId: 1,
-      topicList: [topics[2], topics[0], topics[1]]
+      topicArray: [topics[2], topics[0], topics[1]]
     };
 
-    return shallow(<TopicList {...props}/>);
+    return shallow(<TopicArray {...props}/>);
   }
 
   it('should render CollapsibleWrapper',() => {
@@ -22,8 +22,8 @@ describe('TopicList', () => {
   });
 
 
-  it('props should contain "collapsibleWrapperItem" object with "uniquePrefix" equel to "topic-list-with-forum-id-1"',() => {
-    expect(setup().prop("collapsibleWrapperItem").uniquePrefix).toEqual("topic-list-with-forum-id-1");
+  it('props should contain "collapsibleWrapperItem" object with "uniquePrefix" equel to "topic-array-with-forum-id-1"',() => {
+    expect(setup().prop("collapsibleWrapperItem").uniquePrefix).toEqual("topic-array-with-forum-id-1");
   });
 
   it('props should contain "collapsibleWrapperItem" object with ' +

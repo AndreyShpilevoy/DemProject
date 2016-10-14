@@ -11,7 +11,7 @@ export const sharedFakeStoreData = {
     allForums: [
       {
         chapterId: 3,
-        forumList: [fakeData.forums[2], fakeData.forums[0], fakeData.forums[1]]
+        forumArray: [fakeData.forums[2], fakeData.forums[0], fakeData.forums[1]]
       }
     ]
   },

@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import ChapterItemById from '../containers/ChapterItemById';
-import TopicList from '../containers/TopicList';
+import TopicArray from '../containers/TopicArray';
 
 class ViewForumPage extends React.Component {
   static propTypes = {
@@ -12,7 +12,7 @@ class ViewForumPage extends React.Component {
     return (
       <div>
         <ChapterItemById targetChapterId={this.props.params.forumId}/>
-        <TopicList forumId={this.props.params.forumId}/>
+        <TopicArray forumId={this.props.params.forumId}/>
       </div>
     );
   }

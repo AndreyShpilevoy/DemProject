@@ -1,5 +1,5 @@
 import React from 'react';
-import SocialMediaLinkList from '../containers/SocialMediaLinkList';
+import SocialMediaLinkArray from '../containers/SocialMediaLinkArray';
 
 class Footer extends React.Component {
     render() {
@@ -13,7 +13,7 @@ class Footer extends React.Component {
                 DEM Team - 04.03.2007
               </div>
               <div className="hidden-md-down footer-social-media-link-wrapper flex flex-column-vertical-center">
-                <SocialMediaLinkList/>
+                <SocialMediaLinkArray/>
               </div>
             </div>
           </div>

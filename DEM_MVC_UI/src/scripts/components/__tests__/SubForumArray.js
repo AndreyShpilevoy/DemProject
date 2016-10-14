@@ -3,21 +3,21 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import SubForumList from "../SubForumList";
+import SubForumArray from "../SubForumArray";
 import forums from "../../api/__fakeData__/forums";
 
-describe('SubForumList', () => {
+describe('SubForumArray', () => {
   function setup() {
     const props = {
-      subForumList: forums[0].subForumList
+      subForumArray: forums[0].subForumArray
     };
 
-    return shallow(<SubForumList {...props}/>);
+    return shallow(<SubForumArray {...props}/>);
   }
 
-  it('should render top level div with className "sub-forum-list-container"',() => {
+  it('should render top level div with className "sub-forum-array-container"',() => {
     const divElement = setup().find('div').first();
-    expect(divElement.hasClass("sub-forum-list-container")).toBeTruthy();
+    expect(divElement.hasClass("sub-forum-array-container")).toBeTruthy();
   });
 
   it('child contains 3 SubForumItem components',() => {

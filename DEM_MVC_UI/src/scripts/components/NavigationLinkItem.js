@@ -13,7 +13,7 @@ class NavigationLinkItem extends React.Component {
 
   render(){
     return (
-      <li className="nav-list-item">
+      <li className="nav-array-item">
         <Link className="nav-link" to={this.props.navigationLinkItem.href}>
           {this.props.navigationLinkItem.title}
         </Link>

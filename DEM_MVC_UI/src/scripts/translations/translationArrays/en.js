@@ -20,11 +20,11 @@ const en  = [
   {id: 19,  value: 'about a year', description: 'single year for TransformDateTime'},
   {id: 20,  value: 'years', description: 'several years for TransformDateTime'},
   {id: 21,  value: 'years', description: 'several years for TransformDateTime'},
-  {id: 22,   value: 'Views', description: 'for topics label on topicList component'},
-  {id: 23,   value: 'Topics', description: 'for topics label on topicList component'},
-  {id: 24,   value: '>>', description: 'for topics body on topicList component'},
-  {id: 25,   value: 'Forum:', description: 'for topics body on topicList component'},
-  {id: 26,   value: 'Last messages', description: 'title for lastActiveTopicList component'},
+  {id: 22,   value: 'Views', description: 'for topics label on topicArray component'},
+  {id: 23,   value: 'Topics', description: 'for topics label on topicArray component'},
+  {id: 24,   value: '>>', description: 'for topics body on topicArray component'},
+  {id: 25,   value: 'Forum:', description: 'for topics body on topicArray component'},
+  {id: 26,   value: 'Last messages', description: 'title for lastActiveTopicArray component'},
 ];
 
 export default en;

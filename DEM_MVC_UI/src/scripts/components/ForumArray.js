@@ -2,9 +2,9 @@ import React, {PropTypes} from 'react';
 import _ from 'lodash';
 import ForumItem from './ForumItem';
 
-class ForumList extends React.Component {
+class ForumArray extends React.Component {
   static propTypes = {
-    forumList: PropTypes.arrayOf(
+    forumArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         order: PropTypes.number.isRequired,
@@ -23,7 +23,7 @@ class ForumList extends React.Component {
   };
 
   orderForums = () => {
-    return  _.orderBy(this.props.forumList, "order");
+    return  _.orderBy(this.props.forumArray, "order");
   }
 
   mapForums = () => {
@@ -42,4 +42,4 @@ class ForumList extends React.Component {
   }
 }
 
-export default ForumList;
+export default ForumArray;

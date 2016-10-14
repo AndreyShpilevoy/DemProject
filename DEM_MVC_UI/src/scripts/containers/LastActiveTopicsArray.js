@@ -2,9 +2,9 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as lastActiveTopicActions from "../actions/lastActiveTopicActions";
-import LastActiveTopicsListComponent from "../components/LastActiveTopicsList";
+import LastActiveTopicsArrayComponent from "../components/LastActiveTopicsArray";
 
-class LastActiveTopicsList extends React.Component {
+class LastActiveTopicsArray extends React.Component {
   static propTypes = {
     lastActiveTopics: PropTypes.arrayOf(
       PropTypes.shape({
@@ -30,7 +30,7 @@ class LastActiveTopicsList extends React.Component {
 
   render(){
     return(
-      <LastActiveTopicsListComponent lastActiveTopics={this.props.lastActiveTopics} />
+      <LastActiveTopicsArrayComponent lastActiveTopics={this.props.lastActiveTopics} />
     );
   }
 }
@@ -44,4 +44,4 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(lastActiveTopicActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LastActiveTopicsList);
+export default connect(mapStateToProps, mapDispatchToProps)(LastActiveTopicsArray);

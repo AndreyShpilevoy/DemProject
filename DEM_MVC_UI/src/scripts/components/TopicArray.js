@@ -4,9 +4,9 @@ import CollapsibleWrapper from "./CollapsibleWrapper";
 import TopicItem from "./TopicItem";
 import TermItem from '../containers/TermItem';
 
-class LastActiveTopicsList extends React.Component {
+class TopicArray extends React.Component {
   static propTypes = {
-    lastActiveTopics: PropTypes.arrayOf(
+    topicArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -16,27 +16,25 @@ class LastActiveTopicsList extends React.Component {
         latesPostAutorId: PropTypes.number.isRequired,
         latesPostAutorName: PropTypes.string.isRequired,
         latesPostAutorAvatart: PropTypes.string.isRequired,
-        latesPostAutorGroupColor: PropTypes.string.isRequired,
-        parentForumId: PropTypes.number.isRequired,
-        parentForumTitle: PropTypes.string.isRequired,
+        latesPostAutorGroupColor: PropTypes.string.isRequired
       })).isRequired,
     forumId: PropTypes.number.isRequired
   };
 
-  orderLastActiveTopics = () => {
-    return  _.orderBy(this.props.lastActiveTopics, "latesPostTimeCreation", "desc");
+  orderTopics = () => {
+    return  _.orderBy(this.props.topicArray, "latesPostTimeCreation", "desc");
   }
 
-  mapLastActiveTopics = () => {
-    let mappedTopics = this.orderLastActiveTopics().map(lastActiveTopicsItem =>
-      <TopicItem key={lastActiveTopicsItem.id} topicItem={lastActiveTopicsItem} />);
+  mapTopics = () => {
+    let mappedTopics = this.orderTopics().map(topicItem =>
+      <TopicItem key={topicItem.id} topicItem={topicItem} />);
         return mappedTopics;
   }
 
   bindCollapsibleWrapperItem = () =>({
-    uniquePrefix: `last-topic-list`,
-    titleElement: <TermItem term={{id: 26, value: "Last messages"}} />,
-    bodyElement: <div className="topics-container container">{this.mapLastActiveTopics()}</div>,
+    uniquePrefix: `topic-array-with-forum-id-${this.props.forumId}`,
+    titleElement: <TermItem term={{id: 23, value: "Topics"}} />,
+    bodyElement: <div className="topics-container container">{this.mapTopics()}</div>,
     firstColumnTerm: <TermItem term={{id: 2, value: "Posts"}} />,
     secondColumnTerm:<TermItem term={{id: 22, value: "Views"}} />,
     thirdColumnTerm: <TermItem term={{id: 3, value: "Last message in"}} />
@@ -54,4 +52,4 @@ class LastActiveTopicsList extends React.Component {
   }
 }
 
-export default LastActiveTopicsList;
+export default TopicArray;

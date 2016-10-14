@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationLinkList from "../containers/NavigationLinkList";
+import NavigationLinkArray from "../containers/NavigationLinkArray";
 import NavigationMenuToggleButton from "./NavigationMenuToggleButton";
 import NavigationLinkLogo from "./NavigationLinkLogo";
 import ToggleClass from "../utils/ToggleClass";
@@ -21,7 +21,7 @@ class Header extends React.Component {
                   <NavigationLinkLogo />
                   <NavigationMenuToggleButton />
                 </div>
-                <NavigationLinkList />
+                <NavigationLinkArray />
               </div>
             </nav>
           </div>

@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-import ForumList from '../containers/ForumList';
+import ForumArray from '../containers/ForumArray';
 import TermItem from '../containers/TermItem';
 import CollapsibleWrapper from "./CollapsibleWrapper";
 
@@ -16,7 +16,7 @@ class ChapterItem extends React.Component {
   bindCollapsibleWrapperItem = () =>({
     uniquePrefix: `chapter-item-with-id-${this.props.chapterItem.id}`,
     titleElement: <Link to={`/Conference/Forum/${this.props.chapterItem.id}`}>{this.props.chapterItem.title}</Link>,
-    bodyElement: <ForumList chapterId={this.props.chapterItem.id}/>,
+    bodyElement: <ForumArray chapterId={this.props.chapterItem.id}/>,
     firstColumnTerm: <TermItem term={{id: 1, value: "Topics"}} />,
     secondColumnTerm:<TermItem term={{id: 2, value: "Posts"}} />,
     thirdColumnTerm: <TermItem term={{id: 3, value: "Last message in"}} />

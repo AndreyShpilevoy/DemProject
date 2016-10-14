@@ -2,9 +2,9 @@ import React, {PropTypes} from 'react';
 import _ from 'lodash';
 import SubForumItem from './SubForumItem';
 
-class SubForumList extends React.Component {
+class SubForumArray extends React.Component {
   static propTypes = {
-    subForumList: PropTypes.arrayof(
+    subForumArray: PropTypes.arrayof(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -13,24 +13,24 @@ class SubForumList extends React.Component {
     ).isRequired
   };
 
-  orderSubForumList = () => {
-    return  _.orderBy(this.props.subForumList, "order");
+  orderSubForumArray = () => {
+    return  _.orderBy(this.props.subForumArray, "order");
   }
 
-  mapSubForumList = () => {
-    let mappedSubforums = this.orderSubForumList().map(subForumItem =>
+  mapSubForumArray = () => {
+    let mappedSubforums = this.orderSubForumArray().map(subForumItem =>
       <SubForumItem key={subForumItem.id} subForumItem={subForumItem} />);
         return mappedSubforums;
   }
 
   render(){
-    let subForumItems = this.mapSubForumList();
+    let subForumItems = this.mapSubForumArray();
     return(
-      <div className="sub-forum-list-container">
+      <div className="sub-forum-array-container">
         {subForumItems}
       </div>
     );
   }
 }
 
-export default SubForumList;
+export default SubForumArray;
