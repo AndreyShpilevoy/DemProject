@@ -29,7 +29,9 @@ class ChapterItem extends React.Component {
 
   render(){
     return(
-      <CollapsibleWrapper collapsibleWrapperItem={this.bindCollapsibleWrapperItem()} collapseSettings={this.collapseSettings()} />
+      this.props.chapterItem.id ?
+      <CollapsibleWrapper collapsibleWrapperItem={this.bindCollapsibleWrapperItem()} collapseSettings={this.collapseSettings()} /> :
+      null
     );
   }
 }

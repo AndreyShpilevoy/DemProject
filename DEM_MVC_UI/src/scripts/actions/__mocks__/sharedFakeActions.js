@@ -18,6 +18,9 @@ function addInfoNotification(){}
 function addSuccessNotification(){}
 function addWarningNotification(){}
 function addExceptionNotification(){}
+function setTitleMainPart(){}
+function setTitleActionPart(){}
+function setTitleDescriptionPart(){}
 
 export {
   getAllChapters,
@@ -39,5 +42,8 @@ export {
   addInfoNotification,
   addSuccessNotification,
   addWarningNotification,
-  addExceptionNotification
+  addExceptionNotification,
+  setTitleMainPart,
+  setTitleActionPart,
+  setTitleDescriptionPart
 };

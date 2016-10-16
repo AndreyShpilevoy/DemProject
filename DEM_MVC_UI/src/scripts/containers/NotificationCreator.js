@@ -17,14 +17,14 @@ class NotificationCreator extends React.Component {
         dismissible: PropTypes.bool,
         action: PropTypes.object,
         children: PropTypes.oneOfType([
-          React.PropTypes.string,
-          React.PropTypes.element,
+          PropTypes.string,
+          PropTypes.element,
         ]),
         onAdd: PropTypes.func,
         onRemove: PropTypes.func,
         uid: PropTypes.oneOfType([
-          React.PropTypes.string,
-          React.PropTypes.number,
+          PropTypes.string,
+          PropTypes.number,
         ])
       })).isRequired,
     actions: PropTypes.object.isRequired

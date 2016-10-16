@@ -2,7 +2,9 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as chapterActions from "../actions/chapterActions";
+import * as titleActions from "../actions/titleActions";
 import ChapterItem from "../components/ChapterItem";
+import TermTranslation from "../utils/TermTranslation";
 
 class ChapterItemById extends React.Component {
   static propTypes = {
@@ -12,6 +14,7 @@ class ChapterItemById extends React.Component {
       order: PropTypes.number.isRequired,
     }).isRequired,
     targetChapterId: PropTypes.number.isRequired,
+    locale: PropTypes.string.isRequired,
     actions: PropTypes.object.isRequired,
   };
 
@@ -22,10 +25,24 @@ class ChapterItemById extends React.Component {
 
   /* istanbul ignore next */
   componentWillReceiveProps(nextProps) {
-    let nextChapterId = nextProps.targetChapterId;
-    if (nextChapterId !== this.props.targetChapterId) {
-      this.props.actions.getChapterById(nextChapterId);
+    if (nextProps.targetChapterId !== this.props.targetChapterId) {
+      this.props.actions.getChapterById(nextProps.targetChapterId);
     }
+
+    if(nextProps.locale){
+      let titleActionPart = TermTranslation.getTermTranslation({id: 28, value: "View Forum"}, nextProps.locale);
+      this.props.actions.setTitleActionPart(titleActionPart);
+    }
+
+    if(nextProps.chapterItem && nextProps.chapterItem.title){
+      this.props.actions.setTitleDescriptionPart(nextProps.chapterItem.title);
+    }
+  }
+
+  /* istanbul ignore next */
+  componentWillUnmount(){
+    this.props.actions.setTitleActionPart();
+    this.props.actions.setTitleDescriptionPart();
   }
 
   render() {
@@ -45,11 +62,16 @@ const mapStateToProps = (state) => {
   if(state.chapterReducer && state.chapterReducer.chapterById){
     result = {chapterItem: state.chapterReducer.chapterById};
   }
+  if(state.localeReducer &&
+    state.localeReducer.currentLocale &&
+    state.localeReducer.currentLocale.locale){
+    result = Object.assign({}, result, {locale: state.localeReducer.currentLocale.locale});
+  }
   return result;
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(chapterActions, dispatch)
+  actions: bindActionCreators({...chapterActions, ...titleActions}, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChapterItemById);

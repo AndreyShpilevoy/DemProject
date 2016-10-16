@@ -25,6 +25,9 @@ const ua  = [
   {id: 24,   value: '>>', description: 'for topics body on topicArray component'},
   {id: 25,   value: 'Форум:', description: 'for topics body on topicArray component'},
   {id: 26,   value: 'Останні повідомлення', description: 'title for lastActiveTopicArray component'},
+  {id: 27,   value: 'DeusExMachina', description: 'web site name for title'},
+  {id: 28,   value: 'Перегляд форума', description: 'action name for title'},
+  {id: 29,   value: 'Перегляд теми', description: 'action name for title'},
 ];
 
 export default ua;

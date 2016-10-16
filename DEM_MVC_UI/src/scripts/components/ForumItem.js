@@ -33,7 +33,9 @@ class ForumItem extends React.Component {
   }
 
   render(){
-    let {id, title, description, subForumArray, topicsCount, postsCount, latesPostAutorName, latesPostTimeCreation, lastActiveTopic} = this.props.forumItem;
+    let {id, title, description, subForumArray, topicsCount, postsCount,
+      latesPostAutorName, latesPostTimeCreation, lastActiveTopic,
+      lastActiveTopicId} = this.props.forumItem;
     return(
       <div className="forum-container-wrapper row">
         <div className="forum-container col-xs-12 row">
@@ -69,7 +71,7 @@ class ForumItem extends React.Component {
               <span className="hidden-lg-up">
                 <TermItem term={{id: 3, value: "Last message in"}} spaceAfter/>
               </span>
-              <Link className="forum-last-active-topic-message" to={"/"}>{lastActiveTopic}</Link>
+              <Link className="forum-last-active-topic-message" to={`/Conference/Topic/${lastActiveTopicId}`}>{lastActiveTopic}</Link>
             </div>
           </div>
         </div>

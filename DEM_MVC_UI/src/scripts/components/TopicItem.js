@@ -48,13 +48,14 @@ class TopicItem extends React.Component {
   }
 
   render(){
-    let {title, postsCount, topicViewsCount, latesPostAutorName, latesPostTimeCreation} = this.props.topicItem;
+    let {id, title, postsCount, topicViewsCount, latesPostAutorName,
+      latesPostTimeCreation} = this.props.topicItem;
     return(
       <div className="topic-container-wrapper row">
         <div className="topic-container col-xs-12 row">
           <div className="col-md-5 col-lg-9 row">
             <div className="col-lg-8 flex flex-column-vertical-center topic-title-wrapper">
-              <Link className="topic-title" to={`/`}>{title}</Link>
+              <Link className="topic-title" to={`/Conference/Topic/${id}`}>{title}</Link>
               {this.getParentForum()}
             </div>
             <div className="col-lg-2 topic-posts-counter flex flex-column-vertical-center">

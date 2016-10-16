@@ -25,6 +25,9 @@ const en  = [
   {id: 24,   value: '>>', description: 'for topics body on topicArray component'},
   {id: 25,   value: 'Forum:', description: 'for topics body on topicArray component'},
   {id: 26,   value: 'Last messages', description: 'title for lastActiveTopicArray component'},
+  {id: 27,   value: 'DeusExMachina', description: 'web site name for title'},
+  {id: 28,   value: 'View forum', description: 'action name for title'},
+  {id: 29,   value: 'View topic', description: 'action name for title'},
 ];
 
 export default en;
