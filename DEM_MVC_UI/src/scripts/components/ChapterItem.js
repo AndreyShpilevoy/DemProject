@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
 import ForumArray from '../containers/ForumArray';
 import TermItem from '../containers/TermItem';
-import CollapsibleWrapper from "./CollapsibleWrapper";
+import ContentHolder from "./ContentHolder";
 
 class ChapterItem extends React.Component {
   static propTypes = {
@@ -13,7 +13,7 @@ class ChapterItem extends React.Component {
     }).isRequired
   };
 
-  bindCollapsibleWrapperItem = () =>({
+  bindContentHolderItem = () =>({
     uniquePrefix: `chapter-item-with-id-${this.props.chapterItem.id}`,
     titleElement: <Link to={`/Conference/Forum/${this.props.chapterItem.id}`}>{this.props.chapterItem.title}</Link>,
     bodyElement: <ForumArray chapterId={this.props.chapterItem.id}/>,
@@ -30,7 +30,7 @@ class ChapterItem extends React.Component {
   render(){
     return(
       this.props.chapterItem.id ?
-      <CollapsibleWrapper collapsibleWrapperItem={this.bindCollapsibleWrapperItem()} collapseSettings={this.collapseSettings()} /> :
+      <ContentHolder contentHolderItem={this.bindContentHolderItem()} collapseSettings={this.collapseSettings()} /> :
       null
     );
   }

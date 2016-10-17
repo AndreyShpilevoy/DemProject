@@ -4,14 +4,14 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import { Link } from 'react-router';
-import CollapsibleWrapper from "../CollapsibleWrapper";
+import ContentHolder from "../ContentHolder";
 import ForumArray from '../../containers/ForumArray';
 import TermItem from '../../containers/TermItem';
 
-describe('CollapsibleWrapper', () => {
+describe('ContentHolder', () => {
   function setup(collapseSettings) {
     const props = {
-      collapsibleWrapperItem: {
+      contentHolderItem: {
         uniquePrefix: "chapter-item-with-id-1",
         titleElement: <Link to={`/Conference/Forum/1`}>"Title"</Link>,
         bodyElement: <ForumArray chapterId={1}/>,
@@ -22,24 +22,24 @@ describe('CollapsibleWrapper', () => {
       collapseSettings: collapseSettings
     };
 
-    return shallow(<CollapsibleWrapper {...props}/>);
+    return shallow(<ContentHolder {...props}/>);
   }
 
-  it('should render top level div with className "collapsible-wrapper-container" "collapsibleWrapperItem.openedByDefault" is "true"',() => {
+  it('should render top level div with className "content-holder-container" "contentHolderItem.openedByDefault" is "true"',() => {
     const divElement = setup({collapsable: true, openedByDefault: false}).find('div').first();
-    expect(divElement.hasClass("collapsible-wrapper-container")).toBeTruthy();
+    expect(divElement.hasClass("content-holder-container")).toBeTruthy();
   });
 
-  it('should render last div with className "collapsible-wrapper-body-opened" if ',() => {
+  it('should render last div with className "content-holder-body-opened" if ',() => {
     const divElement = setup({collapsable: true, openedByDefault: true}).find("div").last();
-    expect(divElement.hasClass("collapsible-wrapper-body-opened")).toBeTruthy();
+    expect(divElement.hasClass("content-holder-body-opened")).toBeTruthy();
   });
 
   it('should have default state',() => {
     const expectedState = {
-      collapsibleWrapperHeaderId: 'collapsible-wrapper-header-chapter-item-with-id-1',
-      collapsibleWrapperBodyId: 'collapsible-wrapper-body-chapter-item-with-id-1',
-      toggleBodyClass: 'collapsible-wrapper-body-opened',
+      contentHolderHeaderId: 'content-holder-header-chapter-item-with-id-1',
+      contentHolderBodyId: 'content-holder-body-chapter-item-with-id-1',
+      toggleBodyClass: 'content-holder-body-opened',
       iconArrowLeftId: 'icon-arrow-left-chapter-item-with-id-1',
       toggleIconArrowClass: 'icon-arrow-left-opened'
     };

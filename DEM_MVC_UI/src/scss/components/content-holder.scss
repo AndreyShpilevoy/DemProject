@@ -2,20 +2,20 @@
 @import "../Common/sizes.scss";
 @import "../Common/slideAnimation.scss";
 
-.collapsible-wrapper-container {
-  padding-top: $collapsible-wrapper-container-and-footer-padding-top;
+.content-holder-container {
+  padding-top: $content-holder-container-and-footer-padding-top;
 
-  .collapsible-wrapper-header {
+  .content-holder-header {
     width: 100%;
-    height: $collapsible-wrapper-header-height;
-    background-color: $collapsible-wrapper-header-color;
+    height: $content-holder-header-height;
+    background-color: $content-holder-header-color;
     color: $orange-text-color;
-    font-size: $collapsible-wrapper-header-font-size;
+    font-size: $content-holder-header-font-size;
 
-    .collapsible-wrapper-header-title-wrapper {
-      padding: 0 $collapsible-wrapper-header-title-padding-horizontal;
+    .content-holder-header-title-wrapper {
+      padding: 0 $content-holder-header-title-padding-horizontal;
 
-      .collapsible-wrapper-header-title {
+      .content-holder-header-title {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -25,18 +25,18 @@
         }
       }
 
-      .collapsible-wrapper-header-title-info-label {
+      .content-holder-header-title-info-label {
         font-size: 1rem;
         line-height: 1;
         align-items: center;
       }
 
-      .icon-arrow-left-collapsible-wrapper-title {
+      .icon-arrow-left-content-holder-title {
         display: none;
         margin-left: auto;
         .icon-arrow-left {
-          width: $icon-arrow-left-collapsible-wrapper-title;
-          height: $icon-arrow-left-collapsible-wrapper-title;
+          width: $icon-arrow-left-content-holder-title;
+          height: $icon-arrow-left-content-holder-title;
           .icon-arrow-left-path {
             fill: $orange-text-color;
           }
@@ -45,7 +45,7 @@
     }
   }
 
-  .collapsible-wrapper-body {
+  .content-holder-body {
     background-color: #7b736b;
     color: #48423d;
   }
@@ -53,7 +53,7 @@
 
 //md and smaller screens
 @media (max-width: 991px) {
-  .collapsible-wrapper-container {
+  .content-holder-container {
 
     .icon-arrow-left {
       @include element-rotate-center-to-0;
@@ -63,11 +63,11 @@
       @include element-rotate-center-to--90;
     }
 
-    .collapsible-wrapper-body-default {
+    .content-holder-body-default {
       @include element-closed;
     }
 
-    .collapsible-wrapper-body-opened {
+    .content-holder-body-opened {
       @include element-opened;
     }
   }
@@ -76,10 +76,10 @@
 
 //md screens only
 @media (min-width: 768px) and (max-width: 991px) {
-  .collapsible-wrapper-container {
-    .collapsible-wrapper-header {
-      .collapsible-wrapper-header-title-wrapper {
-        .icon-arrow-left-collapsible-wrapper-title {
+  .content-holder-container {
+    .content-holder-header {
+      .content-holder-header-title-wrapper {
+        .icon-arrow-left-content-holder-title {
           display: initial;
         }
       }

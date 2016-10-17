@@ -2,9 +2,9 @@ import React, {PropTypes} from 'react';
 import ToggleClass from "../utils/ToggleClass";
 import ArrowLeft from "../icons/ArrowLeft";
 
-class CollapsibleWrapper extends React.Component {
+class ContentHolder extends React.Component {
   static propTypes = {
-    collapsibleWrapperItem: PropTypes.shappe({
+    contentHolderItem: PropTypes.shappe({
       uniquePrefix: PropTypes.string.isRequired,
       titleElement: PropTypes.element.isRequired,
       bodyElement: PropTypes.element.isRequired,
@@ -21,10 +21,10 @@ class CollapsibleWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsibleWrapperHeaderId: "collapsible-wrapper-header-" + this.props.collapsibleWrapperItem.uniquePrefix,
-      collapsibleWrapperBodyId: "collapsible-wrapper-body-" + this.props.collapsibleWrapperItem.uniquePrefix,
-      toggleBodyClass: "collapsible-wrapper-body-opened",
-      iconArrowLeftId: "icon-arrow-left-" + this.props.collapsibleWrapperItem.uniquePrefix,
+      contentHolderHeaderId: "content-holder-header-" + this.props.contentHolderItem.uniquePrefix,
+      contentHolderBodyId: "content-holder-body-" + this.props.contentHolderItem.uniquePrefix,
+      toggleBodyClass: "content-holder-body-opened",
+      iconArrowLeftId: "icon-arrow-left-" + this.props.contentHolderItem.uniquePrefix,
       toggleIconArrowClass: "icon-arrow-left-opened"
     };
   }
@@ -32,8 +32,8 @@ class CollapsibleWrapper extends React.Component {
 /* istanbul ignore next */
   componentDidMount() {
     if(this.props.collapseSettings && this.props.collapseSettings.collapsable){
-      ToggleClass.init(this.state.collapsibleWrapperHeaderId, this.state.collapsibleWrapperBodyId, this.state.toggleBodyClass);
-      ToggleClass.init(this.state.collapsibleWrapperHeaderId, this.state.iconArrowLeftId, this.state.toggleIconArrowClass);
+      ToggleClass.init(this.state.contentHolderHeaderId, this.state.contentHolderBodyId, this.state.toggleBodyClass);
+      ToggleClass.init(this.state.contentHolderHeaderId, this.state.iconArrowLeftId, this.state.toggleIconArrowClass);
     }
   }
 
@@ -41,7 +41,7 @@ class CollapsibleWrapper extends React.Component {
     let {collapsable, openedByDefault} = this.props.collapseSettings;
     let shouldBeOpen = (collapsable && openedByDefault) || !collapsable;
     return collapsable ?
-      <div className="icon-arrow-left-collapsible-wrapper-title">
+      <div className="icon-arrow-left-content-holder-title">
         <ArrowLeft className={shouldBeOpen ?
           "icon-arrow-left icon-arrow-left-opened" :
           "icon-arrow-left"} id={this.state.iconArrowLeftId} />
@@ -54,29 +54,29 @@ class CollapsibleWrapper extends React.Component {
     let shouldBeOpen = (collapsable && openedByDefault) || !collapsable;
     return (
       <div className={shouldBeOpen ?
-          "collapsible-wrapper-body collapsible-wrapper-body-default collapsible-wrapper-body-opened" :
-          "collapsible-wrapper-body collapsible-wrapper-body-default"} id={this.state.collapsibleWrapperBodyId}>
-        {this.props.collapsibleWrapperItem.bodyElement}
+          "content-holder-body content-holder-body-default content-holder-body-opened" :
+          "content-holder-body content-holder-body-default"} id={this.state.contentHolderBodyId}>
+        {this.props.contentHolderItem.bodyElement}
       </div>);
   }
 
   render(){
-    let {titleElement, firstColumnTerm, secondColumnTerm, thirdColumnTerm} = this.props.collapsibleWrapperItem;
+    let {titleElement, firstColumnTerm, secondColumnTerm, thirdColumnTerm} = this.props.contentHolderItem;
     return(
-      <div className="collapsible-wrapper-container">
-        <div className="collapsible-wrapper-header flex flex-column-vertical-center container" id={this.state.collapsibleWrapperHeaderId}>
-          <div className="flex collapsible-wrapper-header-title-wrapper row">
-            <div className="collapsible-wrapper-header-title col-lg-6">
+      <div className="content-holder-container">
+        <div className="content-holder-header flex flex-column-vertical-center container" id={this.state.contentHolderHeaderId}>
+          <div className="flex content-holder-header-title-wrapper row">
+            <div className="content-holder-header-title col-lg-6">
               {titleElement}
             </div>
             <div className="col-lg-6 row hidden-md-down">
-              <div className="collapsible-wrapper-header-title-info-label col-lg-3 flex flex-column-vertical-center">
+              <div className="content-holder-header-title-info-label col-lg-3 flex flex-column-vertical-center">
                 {firstColumnTerm}
               </div>
-              <div className="collapsible-wrapper-header-title-info-label col-lg-3 flex flex-column-vertical-center">
+              <div className="content-holder-header-title-info-label col-lg-3 flex flex-column-vertical-center">
                 {secondColumnTerm}
               </div>
-              <div className="collapsible-wrapper-header-title-info-label col-lg-6 flex flex-column-vertical-center">
+              <div className="content-holder-header-title-info-label col-lg-6 flex flex-column-vertical-center">
                 {thirdColumnTerm}
               </div>
             </div>
@@ -89,4 +89,4 @@ class CollapsibleWrapper extends React.Component {
   }
 }
 
-export default CollapsibleWrapper;
+export default ContentHolder;

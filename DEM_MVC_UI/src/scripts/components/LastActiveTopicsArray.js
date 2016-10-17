@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import CollapsibleWrapper from "./CollapsibleWrapper";
+import ContentHolder from "./ContentHolder";
 import TopicItem from "./TopicItem";
 import TermItem from '../containers/TermItem';
 
@@ -33,7 +33,7 @@ class LastActiveTopicsArray extends React.Component {
         return mappedTopics;
   }
 
-  bindCollapsibleWrapperItem = () =>({
+  bindContentHolderItem = () =>({
     uniquePrefix: `last-topic-array`,
     titleElement: <TermItem term={{id: 26, value: "Last messages"}} />,
     bodyElement: <div className="topics-container container">{this.mapLastActiveTopics()}</div>,
@@ -49,7 +49,7 @@ class LastActiveTopicsArray extends React.Component {
 
   render(){
     return(
-      <CollapsibleWrapper collapsibleWrapperItem={this.bindCollapsibleWrapperItem()} collapseSettings={this.collapseSettings()} />
+      <ContentHolder contentHolderItem={this.bindContentHolderItem()} collapseSettings={this.collapseSettings()} />
     );
   }
 }

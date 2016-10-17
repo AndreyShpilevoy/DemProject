@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import CollapsibleWrapper from "./CollapsibleWrapper";
+import ContentHolder from "./ContentHolder";
 import TopicItem from "./TopicItem";
 import TermItem from '../containers/TermItem';
 
@@ -31,7 +31,7 @@ class TopicArray extends React.Component {
         return mappedTopics;
   }
 
-  bindCollapsibleWrapperItem = () =>({
+  bindContentHolderItem = () =>({
     uniquePrefix: `topic-array-with-forum-id-${this.props.forumId}`,
     titleElement: <TermItem term={{id: 23, value: "Topics"}} />,
     bodyElement: <div className="topics-container container">{this.mapTopics()}</div>,
@@ -47,7 +47,7 @@ class TopicArray extends React.Component {
 
   render(){
     return(
-      <CollapsibleWrapper collapsibleWrapperItem={this.bindCollapsibleWrapperItem()} collapseSettings={this.collapseSettings()} />
+      <ContentHolder contentHolderItem={this.bindContentHolderItem()} collapseSettings={this.collapseSettings()} />
     );
   }
 }
