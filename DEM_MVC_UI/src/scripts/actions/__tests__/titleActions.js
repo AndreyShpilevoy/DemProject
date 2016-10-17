@@ -2,11 +2,12 @@
 
 import * as types from "../actionTypes";
 import * as titleActions from "../titleActions";
+import title from "../../api/__fakeData__/title";
 
 
 describe('titleActions', () => {
   it('should create an action with expected mainPart', () => {
-    const mainPart = "mainPart";
+    const mainPart = title.mainPart;
     const expectedAction = {
       type: types.SET_TITLE_MAIN_PART,
       mainPart
@@ -15,7 +16,7 @@ describe('titleActions', () => {
   });
 
   it('should create an action with expected actionPart', () => {
-    const actionPart = "actionPart";
+    const actionPart = title.actionPart;
     const expectedAction = {
       type: types.SET_TITLE_ACTION_PART,
       actionPart
@@ -24,7 +25,7 @@ describe('titleActions', () => {
   });
 
   it('should create an action with expected descriptionPart', () => {
-    const descriptionPart = "descriptionPart";
+    const descriptionPart = title.descriptionPart;
     const expectedAction = {
       type: types.SET_TITLE_DESCRIPTION_PART,
       descriptionPart

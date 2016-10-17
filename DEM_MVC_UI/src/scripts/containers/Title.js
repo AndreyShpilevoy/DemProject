@@ -14,16 +14,12 @@ class Title extends React.Component {
     if(nextProps.mainPart !== this.props.mainPart ||
     nextProps.actionPart !== this.props.actionPart ||
     nextProps.descriptionPart !== this.props.descriptionPart){
-      this.updateTitle(nextProps);
+      let {mainPart, actionPart, descriptionPart} = nextProps;
+      let title = mainPart ? mainPart : "";
+      title += actionPart ? `${title.length > 0 ? " - " : ""}${actionPart}` : "";
+      title += descriptionPart ? `${title.length > 0 ? " - " : ""}${descriptionPart}` : "";
+      root.document.title = title;
     }
-  }
-
-  updateTitle = (props) => {
-    let {mainPart, actionPart, descriptionPart} = props;
-    let title = mainPart ? mainPart : "";
-    title += actionPart ? `${title.length > 0 ? " - " : ""}${actionPart}` : "";
-    title += descriptionPart ? `${title.length > 0 ? " - " : ""}${descriptionPart}` : "";
-    root.document.title = title;
   }
 
   render(){
@@ -32,8 +28,11 @@ class Title extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let {mainPart, actionPart, descriptionPart} = state.titleReducer;
-  return {mainPart, actionPart, descriptionPart};
+  if(state.titleReducer){
+    let {mainPart, actionPart, descriptionPart} = state.titleReducer;
+    return {mainPart, actionPart, descriptionPart};
+  }
+  return {};
 };
 
 export default connect(mapStateToProps)(Title);

@@ -6,6 +6,7 @@ import navigationLinks from "./navigationLinks";
 import socialMediaLinks from "./socialMediaLinks";
 import topics from "./topics";
 import notifications from "./notifications";
+import title from "./title";
 
 export {
   chapters,
@@ -15,5 +16,6 @@ export {
   navigationLinks,
   socialMediaLinks,
   topics,
-  notifications
+  notifications,
+  title
 };
