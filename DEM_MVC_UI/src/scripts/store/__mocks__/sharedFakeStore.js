@@ -37,11 +37,6 @@ export const sharedFakeStoreData = {
   },
   notificationReducer:{
     allNotifications: [fakeData.notifications[0]]
-  },
-  titleReducer:{
-    mainPart: fakeData.title.mainPart,
-    actionPart: fakeData.title.actionPart,
-    descriptionPart: fakeData.title.descriptionPart
   }
 };
 export function sharedFakeStore(valid=true){

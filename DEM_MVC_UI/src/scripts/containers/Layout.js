@@ -2,9 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as localeActions from "../actions/localeActions";
-import * as titleActions from "../actions/titleActions";
 import LayoutComponent from "../components/Layout";
-import TermTranslation from "../utils/TermTranslation";
 
 class Layout extends React.Component {
   static propTypes = {
@@ -16,19 +14,6 @@ class Layout extends React.Component {
   /* istanbul ignore next */
   componentDidMount() {
     this.props.actions.getLocale();
-  }
-
-  /* istanbul ignore next */
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.locale){
-      let titleMainPart = TermTranslation.getTermTranslation({id: 27, value: "DeusExMachina"}, nextProps.locale);
-      this.props.actions.setTitleMainPart(titleMainPart);
-    }
-  }
-
-  /* istanbul ignore next */
-  componentWillUnmount(){
-    this.props.actions.setTitleMainPart();
   }
 
   render(){
@@ -49,7 +34,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators({...localeActions, ...titleActions}, dispatch)
+  actions: bindActionCreators(localeActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout);

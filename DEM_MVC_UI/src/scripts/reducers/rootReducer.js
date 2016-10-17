@@ -8,7 +8,6 @@ import localeReducer from "./localeReducer";
 import navigationLinkReducer from "./navigationLinkReducer";
 import socialMediaLinkReducer from "./socialMediaLinkReducer";
 import notificationReducer from "./notificationReducer";
-import titleReducer from "./titleReducer";
 
 const rootReducer = combineReducers({
   forumReducer,
@@ -19,7 +18,6 @@ const rootReducer = combineReducers({
   socialMediaLinkReducer,
   lastActiveTopicReducer,
   notificationReducer,
-  titleReducer,
   routing: routerReducer
 });
 
