@@ -18,9 +18,9 @@ function addInfoNotification(){}
 function addSuccessNotification(){}
 function addWarningNotification(){}
 function addExceptionNotification(){}
-function setTitleMainPart(){}
-function setTitleActionPart(){}
-function setTitleDescriptionPart(){}
+function getForumBreadcrumbs(){}
+function getTopicBreadcrumbs(){}
+function getBreadcrumbsSuccess(){}
 
 export {
   getAllChapters,
@@ -43,7 +43,7 @@ export {
   addSuccessNotification,
   addWarningNotification,
   addExceptionNotification,
-  setTitleMainPart,
-  setTitleActionPart,
-  setTitleDescriptionPart
+  getForumBreadcrumbs,
+  getTopicBreadcrumbs,
+  getBreadcrumbsSuccess
 };

@@ -5,6 +5,7 @@ import * as chapterSagas from "./chapterSagas";
 import * as navigationLinkSagas from "./navigationLinkSagas";
 import * as socialMediaLinkSagas from "./socialMediaLinkSagas";
 import * as localeSagas from "./localeSagas";
+import * as breadcrumbsSagas from "./breadcrumbsSagas";
 
 export default function* root() {
   yield [
@@ -15,6 +16,8 @@ export default function* root() {
     chapterSagas.getChapterById(),
     navigationLinkSagas.getNavigationLinks(),
     socialMediaLinkSagas.getSocialMediaLinks(),
-    localeSagas.getLocale()
+    localeSagas.getLocale(),
+    breadcrumbsSagas.getForumBreadcrumbs(),
+    breadcrumbsSagas.getTopicBreadcrumbs()
   ];
 }

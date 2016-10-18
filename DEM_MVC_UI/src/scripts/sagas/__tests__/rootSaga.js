@@ -3,7 +3,7 @@
 import * as rootSaga from "../rootSaga";
 
 describe('rootSaga', () => {
-  it('should return 8 Sagas from default generator', () => {
-    expect(rootSaga.default().next().value.length).toEqual(8);
+  it('should return 10 Sagas from default generator', () => {
+    expect(rootSaga.default().next().value.length).toEqual(10);
   });
 });

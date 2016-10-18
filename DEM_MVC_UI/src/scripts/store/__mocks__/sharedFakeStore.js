@@ -37,6 +37,9 @@ export const sharedFakeStoreData = {
   },
   notificationReducer:{
     allNotifications: [fakeData.notifications[0]]
+  },
+  breadcrumbsReducer: {
+    breadcrumbs: [fakeData.breadcrumbs[0],fakeData.breadcrumbs[1],fakeData.breadcrumbs[2]]
   }
 };
 export function sharedFakeStore(valid=true){

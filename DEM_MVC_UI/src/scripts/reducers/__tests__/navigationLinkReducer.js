@@ -18,7 +18,7 @@ describe('navigationLinkReducer', function(){
     // setup
     let action = {
       type: types.GET_NAVIGATIONLINKS_SUCCESS,
-      navigationLinks: [[fakeData.navigationLinks[2], fakeData.navigationLinks[0], fakeData.navigationLinks[1]]]
+      navigationLinks: [fakeData.navigationLinks[2], fakeData.navigationLinks[0], fakeData.navigationLinks[1]]
     };
     // execute
     let newState = navigationLinkReducer(undefined, action);
