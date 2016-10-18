@@ -15,13 +15,13 @@ describe('MainConferencePage', () => {
     expect(divElement).toBeTruthy();
   });
 
-  it('should contain 3 LastActiveTopicsArray element',() => {
-    const LastActiveTopicsArrayElement = setup().find('Connect(LastActiveTopicsArray)');
-    expect(LastActiveTopicsArrayElement.length).toEqual(1);
+  it('should contain 3 LastActiveTopicArray element',() => {
+    const LastActiveTopicArrayElement = setup().find('Connect(LastActiveTopicArray)');
+    expect(LastActiveTopicArrayElement.length).toEqual(1);
   });
 
   it('should contain 3 ChapterArray element',() => {
-    const LastActiveTopicsArrayElement = setup().find('Connect(ChapterArray)');
-    expect(LastActiveTopicsArrayElement.length).toEqual(1);
+    const LastActiveTopicArrayElement = setup().find('Connect(ChapterArray)');
+    expect(LastActiveTopicArrayElement.length).toEqual(1);
   });
 });

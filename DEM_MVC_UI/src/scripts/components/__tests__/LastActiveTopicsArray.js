@@ -3,16 +3,16 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import LastActiveTopicsArray from "../LastActiveTopicsArray";
+import LastActiveTopicArray from "../LastActiveTopicArray";
 import lastActiveTopics from "../../api/__fakeData__/lastActiveTopics";
 
-describe('LastActiveTopicsArray', () => {
+describe('LastActiveTopicArray', () => {
   function setup() {
     const props = {
       lastActiveTopics: [lastActiveTopics[2], lastActiveTopics[0], lastActiveTopics[1]]
     };
 
-    return shallow(<LastActiveTopicsArray {...props}/>);
+    return shallow(<LastActiveTopicArray {...props}/>);
   }
 
   it('should render ContentHolder',() => {

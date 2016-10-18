@@ -1,21 +1,91 @@
 import React, {PropTypes} from 'react';
-import ChapterItemById from '../containers/ChapterItemById';
-import TopicArray from '../containers/TopicArray';
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as chapterActions from "../actions/chapterActions";
+import * as topicActions from "../actions/topicActions";
+import * as breadcrumbsActions from "../actions/breadcrumbsActions";
+import ChapterItem from "../components/ChapterItem";
+import TopicArray from "../components/TopicArray";
+import Breadcrumbs from "../containers/Breadcrumbs";
 
 class ViewForumPage extends React.Component {
   static propTypes = {
     params: PropTypes.shape({
       forumId: PropTypes.number.isRequired
-    }).isRequired
+    }).isRequired,
+    chapterItem: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      order: PropTypes.number.isRequired,
+    }).isRequired,
+    topicArray: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        postsCount: PropTypes.number.isRequired,
+        topicViewsCount: PropTypes.number.isRequired,
+        latesPostTimeCreation: PropTypes.instanceOf(Date),
+        latesPostAutorId: PropTypes.number.isRequired,
+        latesPostAutorName: PropTypes.string.isRequired,
+        latesPostAutorAvatart: PropTypes.string.isRequired,
+        latesPostAutorGroupColor: PropTypes.string.isRequired
+      })).isRequired,
+    locale: PropTypes.string.isRequired,
+    actions: PropTypes.object.isRequired
   };
+
+  /* istanbul ignore next */
+  componentDidMount() {
+    this.props.actions.getChapterById(this.props.params.forumId);
+    this.props.actions.getTopicsByForumId(this.props.params.forumId);
+    this.props.actions.getForumBreadcrumbs(this.props.params.forumId);
+  }
+
+  /* istanbul ignore next */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.params.forumId !== this.props.params.forumId) {
+      this.props.actions.getChapterById(nextProps.params.forumId);
+      this.props.actions.getTopicsByForumId(nextProps.params.forumId);
+      this.props.actions.getForumBreadcrumbs(this.props.params.forumId);
+    }
+  }
+
   render() {
     return (
       <div>
-        <ChapterItemById targetChapterId={this.props.params.forumId}/>
-        <TopicArray forumId={this.props.params.forumId}/>
+        <Breadcrumbs/>
+        {this.props.chapterItem ? <ChapterItem chapterItem={this.props.chapterItem}/> :  null}
+        <TopicArray topicArray={this.props.topicArray} forumId={this.props.params.forumId} />
       </div>
     );
   }
 }
 
-export default ViewForumPage;
+const mapStateToProps = (state, ownProps) => {
+  let result = {};
+  let {chapterReducer, localeReducer, topicReducer} = state;
+  if(chapterReducer.chapterById){
+    result = {chapterItem: chapterReducer.chapterById};
+  }
+  if(localeReducer.currentLocale && localeReducer.currentLocale.locale){
+    result = Object.assign({}, result, {locale: localeReducer.currentLocale.locale});
+  }
+  if(topicReducer.allTopics){
+    result = Object.assign(
+      {},
+      result,
+      {topicArray: topicReducer.allTopics.find(topicReducer => topicReducer.forumId === ownProps.params.forumId).topicArray});
+  }
+  return result;
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(
+    {
+      ...chapterActions,
+      ...topicActions,
+      ...breadcrumbsActions
+    }, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewForumPage);

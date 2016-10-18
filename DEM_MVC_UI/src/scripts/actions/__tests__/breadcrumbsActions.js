@@ -6,7 +6,7 @@ import breadcrumbs from "../../api/__fakeData__/breadcrumbs";
 
 
 describe('breadcrumbsActions', () => {
-  it('should create an action with type "GET_FORUM_BREADCRUMBS" and forumId', () => {
+  it('"getForumBreadcrumbs" should create an action with type "GET_FORUM_BREADCRUMBS" and forumId', () => {
     const forumId = 1;
     const expectedAction = {
       type: types.GET_FORUM_BREADCRUMBS,
@@ -15,7 +15,7 @@ describe('breadcrumbsActions', () => {
     expect(breadcrumbsActions.getForumBreadcrumbs(forumId)).toEqual(expectedAction);
   });
 
-  it('should create an action with type "GET_TOPIC_BREADCRUMBS" and topicId', () => {
+  it('"getTopicBreadcrumbs" should create an action with type "GET_TOPIC_BREADCRUMBS" and topicId', () => {
     const topicId = 1;
     const expectedAction = {
       type: types.GET_TOPIC_BREADCRUMBS,
@@ -24,7 +24,15 @@ describe('breadcrumbsActions', () => {
     expect(breadcrumbsActions.getTopicBreadcrumbs(topicId)).toEqual(expectedAction);
   });
 
-  it('should create an action with type "GET_BREADCRUMBS_SUCCESS" and expected model', () => {
+  it('"getConferenceBreadcrumbs" should create an action with type "GET_BREADCRUMBS_SUCCESS" and expected model', () => {
+    const expectedAction = {
+      type: types.GET_BREADCRUMBS_SUCCESS,
+      breadcrumbs: [breadcrumbs[0]]
+    };
+    expect(breadcrumbsActions.getConferenceBreadcrumbs()).toEqual(expectedAction);
+  });
+
+  it('"getBreadcrumbsSuccess" should create an action with type "GET_BREADCRUMBS_SUCCESS" and expected model', () => {
     const expectedAction = {
       type: types.GET_BREADCRUMBS_SUCCESS,
       breadcrumbs

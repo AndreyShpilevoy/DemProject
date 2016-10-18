@@ -4,7 +4,7 @@ import ContentHolder from "./ContentHolder";
 import TopicItem from "./TopicItem";
 import TermItem from '../containers/TermItem';
 
-class LastActiveTopicsArray extends React.Component {
+class LastActiveTopicArray extends React.Component {
   static propTypes = {
     lastActiveTopics: PropTypes.arrayOf(
       PropTypes.shape({
@@ -54,4 +54,4 @@ class LastActiveTopicsArray extends React.Component {
   }
 }
 
-export default LastActiveTopicsArray;
+export default LastActiveTopicArray;

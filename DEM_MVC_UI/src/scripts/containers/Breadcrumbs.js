@@ -16,7 +16,7 @@ class Breadcrumbs extends React.Component {
   /* istanbul ignore next */
   componentWillReceiveProps(nextProps) {
     if (nextProps.breadcrumbsArray !== this.props.breadcrumbsArray) {
-      root.document.title = "Test";
+      root.document.title = "Test" + nextProps.breadcrumbsArray.length;
     }
   }
 

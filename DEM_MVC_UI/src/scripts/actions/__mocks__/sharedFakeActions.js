@@ -20,6 +20,7 @@ function addWarningNotification(){}
 function addExceptionNotification(){}
 function getForumBreadcrumbs(){}
 function getTopicBreadcrumbs(){}
+function getConferenceBreadcrumbs(){}
 function getBreadcrumbsSuccess(){}
 
 export {
@@ -45,5 +46,6 @@ export {
   addExceptionNotification,
   getForumBreadcrumbs,
   getTopicBreadcrumbs,
+  getConferenceBreadcrumbs,
   getBreadcrumbsSuccess
 };

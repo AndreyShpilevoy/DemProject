@@ -8,6 +8,14 @@ function getTopicBreadcrumbs(topicId){
   return {type: types.GET_TOPIC_BREADCRUMBS, topicId};
 }
 
+function getConferenceBreadcrumbs(){
+  return getBreadcrumbsSuccess([{
+      path: "/Conference",
+      title: "Index Conference page",
+      level: 1
+    }]);
+}
+
 function getBreadcrumbsSuccess(breadcrumbs){
   return {
     type: types.GET_BREADCRUMBS_SUCCESS,
@@ -18,5 +26,6 @@ function getBreadcrumbsSuccess(breadcrumbs){
 export {
   getBreadcrumbsSuccess,
   getForumBreadcrumbs,
+  getConferenceBreadcrumbs,
   getTopicBreadcrumbs
 };
