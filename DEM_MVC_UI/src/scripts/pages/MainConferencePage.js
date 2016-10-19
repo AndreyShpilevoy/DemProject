@@ -47,6 +47,7 @@ class MainConferencePage extends React.Component {
         <Breadcrumbs/>
         <LastActiveTopicArray lastActiveTopics={this.props.lastActiveTopics} />
         <ChapterArray chapterArray={this.props.chapterArray}/>
+        <Breadcrumbs/>
       </div>
     );
   }

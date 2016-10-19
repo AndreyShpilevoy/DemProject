@@ -20,7 +20,8 @@ a:visited {
   text-decoration: none;
 }
 
-a:link:hover {
+a:link:hover,
+a:visited:hover {
   color: $link-hovered;
   text-decoration: underline;
 }

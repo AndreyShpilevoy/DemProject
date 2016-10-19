@@ -57,6 +57,7 @@ class ViewForumPage extends React.Component {
         <Breadcrumbs/>
         {this.props.chapterItem ? <ChapterItem chapterItem={this.props.chapterItem}/> :  null}
         <TopicArray topicArray={this.props.topicArray} forumId={this.props.params.forumId} />
+        <Breadcrumbs/>
       </div>
     );
   }

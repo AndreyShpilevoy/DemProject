@@ -19,7 +19,8 @@
       margin: $forum-topic-container-separator-margin-top-bottom $forum-topic-container-separator-margin-left-right;
   }
 
-  .topic-parent-forum-title{
+  .topic-parent-forum-title,
+  .topic-parent-forum-title:hover{
     color: $orange-bright-text-color;
   }
 

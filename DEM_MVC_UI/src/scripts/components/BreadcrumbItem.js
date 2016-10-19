@@ -8,18 +8,17 @@ class BreadcrumbItem extends React.Component {
       title: PropTypes.string.isRequired,
       level: PropTypes.number.isRequired
     }).isRequired,
-    setSeparator: PropTypes.bool.isRequired
+    setActive: PropTypes.bool.isRequired
   };
 
 
   render(){
     return(
-      <span>
+      <li className={this.props.setActive ? "breadcrumb-item active" : "breadcrumb-item"}>
         <Link to={this.props.breadcrumbItem.path}>
           {this.props.breadcrumbItem.title}
         </Link>
-        {this.props.setSeparator ? " >> " : ""}
-      </span>
+      </li>
     );
   }
 }

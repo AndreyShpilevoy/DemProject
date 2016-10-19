@@ -2,6 +2,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import NotificationCreator from "../containers/NotificationCreator";
+import Title from "../containers/Title";
 
 class Layout extends React.Component {
   static propTypes = {
@@ -11,6 +12,7 @@ class Layout extends React.Component {
   render(){
     return (
       <div>
+        <Title/>
         <Header/>
           <div className="page-content">
             <div className="container">

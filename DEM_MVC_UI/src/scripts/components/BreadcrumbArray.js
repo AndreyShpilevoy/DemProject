@@ -20,11 +20,11 @@ class BreadcrumbArray extends React.Component {
     let orderedBreadcrumbs = this.orderBreadcrumbs();
     let mappedBreadcrumbs = orderedBreadcrumbs.map(
       (breadcrumbItem, index) => {
-        let setSeparator = true;
+        let setActive = false;
         if(index == orderedBreadcrumbs.length-1){
-          setSeparator = false;
+          setActive = true;
         }
-        return <BreadcrumbItem key={breadcrumbItem.path} breadcrumbItem={breadcrumbItem} setSeparator={setSeparator}/>;
+        return <BreadcrumbItem key={breadcrumbItem.path} breadcrumbItem={breadcrumbItem} setActive={setActive}/>;
       }
     );
     return mappedBreadcrumbs;
@@ -33,9 +33,9 @@ class BreadcrumbArray extends React.Component {
   render() {
     let mappedBreadcrumbArray = this.mapBreadcrumbs();
     return (
-      <div>
+      <ul className="breadcrumb">
         {mappedBreadcrumbArray}
-      </div>
+      </ul>
     );
   }
 }

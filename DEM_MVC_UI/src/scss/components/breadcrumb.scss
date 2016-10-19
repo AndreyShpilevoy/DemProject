@@ -1,0 +1,80 @@
+@import "Common/sizes.scss";
+@import "Common/colors.scss";
+
+.breadcrumb {
+  list-style: none;
+  display: inline-table;
+  padding: 0;
+  margin: $breadcrumb-marging-top $breadcrumb-marging-left-right $breadcrumb-marging-bottom $breadcrumb-marging-left-right;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .breadcrumb-item {
+    display: inline;
+
+    a {
+      display: block;
+      height: 24px;
+      background: $breadcrumb-background-color;
+      text-align: center;
+      padding: 2px 5px 2px 20px;
+      position: relative;
+      margin: 0 5px 0 0;
+      text-decoration: none;
+    }
+
+    a:after,
+    a:before {
+      content: "";
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      position: absolute;
+      top: 0;
+    }
+
+    a:after {
+      border-left: 14px solid $breadcrumb-background-color;
+      right: -14px;
+      z-index: 1;
+    }
+
+    a:before {
+      border-left: 14px solid $body-background-color;
+      left: 0;
+    }
+
+    a:hover,
+    &.active a {
+      background: $breadcrumb-background-color-hovered;
+      text-decoration: none;
+    }
+
+    a:hover:after {
+      border-left-color: $breadcrumb-background-color-hovered;
+    }
+
+    &.active a{
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  .breadcrumb-item:first-child{
+
+    a:before {
+      display: none;
+    }
+  }
+
+  .breadcrumb-item:last-child{
+
+    a {
+      padding-right: 20px;
+    }
+
+    a:after {
+      display: none;
+    }
+  }
+}
