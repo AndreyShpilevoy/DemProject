@@ -43,10 +43,11 @@ class ViewForumPage extends React.Component {
 
   /* istanbul ignore next */
   componentWillReceiveProps(nextProps) {
-    if (nextProps.params.forumId !== this.props.params.forumId) {
-      this.props.actions.getChapterById(nextProps.params.forumId);
-      this.props.actions.getTopicsByForumId(nextProps.params.forumId);
-      this.props.actions.getForumBreadcrumbs(this.props.params.forumId);
+    let forumId = nextProps.params.forumId;
+    if (forumId !== this.props.params.forumId) {
+      this.props.actions.getChapterById(forumId);
+      this.props.actions.getTopicsByForumId(forumId);
+      this.props.actions.getForumBreadcrumbs(forumId);
     }
   }
 
