@@ -11,9 +11,9 @@ jest.mock("../../utils/TermTranslation", ()=>({
 }));
 
 describe('TermItem', () => {
-  function setup(valid){
+  function setup(mockConfigId){
     const props = {
-      store: valid ? sharedFakeStore(true) : sharedFakeStore(false),
+      store: sharedFakeStore(mockConfigId),
       term: {
         id: 1,
         value: "TestTermDefault"
@@ -23,18 +23,18 @@ describe('TermItem', () => {
   }
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve expected result', () => {
-    expect(setup(true).prop('locale')).toEqual(sharedFakeStoreData.localeReducer.currentLocale.locale);
+    expect(setup(1).prop('locale')).toEqual(sharedFakeStoreData.localeReducer.currentLocale.locale);
   });
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve "undefined"', () => {
-    expect(setup(false).prop('locale')).toEqual(undefined);
+    expect(setup(0).prop('locale')).toEqual(undefined);
   });
 
   it('should create TermItem component with props.term equal to "TestTerm"', () => {
-    expect(setup(true).shallow().prop('term')).toEqual("TestTerm");
+    expect(setup(1).shallow().prop('term')).toEqual("TestTerm");
   });
 
   it('should create TermItem component with props.term equal to "null"', () => {
-    expect(setup(false).shallow().prop('term')).toEqual(null);
+    expect(setup(0).shallow().prop('term')).toEqual(null);
   });
 });

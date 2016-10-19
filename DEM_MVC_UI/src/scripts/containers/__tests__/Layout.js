@@ -10,24 +10,24 @@ import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/shared
 
 
 describe('Layout', () => {
-  function setup(valid) {
+  function setup(mockConfigId) {
     const props = {
-      store: valid ? sharedFakeStore(true) : sharedFakeStore(false),
+      store: sharedFakeStore(mockConfigId),
       actions: mockActions
     };
     return shallow(<Layout {...props}/>, { lifecycleExperimental: true });
   }
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve expected result', () => {
-    expect(setup(true).prop('locale')).toEqual(sharedFakeStoreData.localeReducer.currentLocale.locale);
+    expect(setup(1).prop('locale')).toEqual(sharedFakeStoreData.localeReducer.currentLocale.locale);
   });
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve "undefined"', () => {
-    expect(setup(false).prop('locale')).toEqual(undefined);
+    expect(setup(0).prop('locale')).toEqual(undefined);
   });
 
   it('should find "LayoutComponent" component', () => {
-    const divElement = setup().shallow();
+    const divElement = setup(1).shallow();
     expect(divElement.find("LayoutComponent")).toBeTruthy();
   });
 });

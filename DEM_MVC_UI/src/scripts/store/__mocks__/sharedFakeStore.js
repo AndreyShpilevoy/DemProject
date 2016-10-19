@@ -19,7 +19,7 @@ export const sharedFakeStoreData = {
     allTopics: [
       {
         forumId: 3,
-        allTopics: [fakeData.topics[2], fakeData.topics[0], fakeData.topics[1]]
+        topicArray: [fakeData.topics[2], fakeData.topics[0], fakeData.topics[1]]
       }
     ]
   },
@@ -42,7 +42,15 @@ export const sharedFakeStoreData = {
     breadcrumbs: [fakeData.breadcrumbs[0],fakeData.breadcrumbs[1],fakeData.breadcrumbs[2]]
   }
 };
-export function sharedFakeStore(valid=true){
+export function sharedFakeStore(mockConfigId){
   const mockStore = configureMockStore();
-  return valid ? mockStore(sharedFakeStoreData) : mockStore();
+  switch (mockConfigId){
+    case 1:
+      return mockStore(sharedFakeStoreData);
+    case 2:
+    //change forumId for topicReducer.allTopics[0]
+      return mockStore(Object.assign({}, sharedFakeStoreData, {topicReducer: {allTopics: [{forumId: 1, topicArray: [fakeData.topics[2], fakeData.topics[0], fakeData.topics[1]]}]}}));
+    default:
+      return mockStore();
+    }
 }

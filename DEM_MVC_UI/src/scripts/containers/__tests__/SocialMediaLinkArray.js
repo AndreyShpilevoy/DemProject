@@ -8,20 +8,20 @@ import * as mockActions from "../../actions/__mocks__/sharedFakeActions";
 import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
 
 describe('SocialMediaLinkArray', () => {
-  function setup() {
+  function setup(mockConfigId) {
     const props = {
-      store: sharedFakeStore(),
+      store: sharedFakeStore(mockConfigId),
       actions: mockActions
     };
     return shallow(<SocialMediaLinkArray {...props}/>, { lifecycleExperimental: true });
   }
 
   it('should get "allChapters" from "chapterReducer" and recieve expected result', () => {
-    expect(setup().prop('socialMediaLinkArray')).toEqual(sharedFakeStoreData.socialMediaLinkReducer.socialMediaLinks);
+    expect(setup(1).prop('socialMediaLinkArray')).toEqual(sharedFakeStoreData.socialMediaLinkReducer.socialMediaLinks);
   });
 
   it('should find "SocialMediaLinkArrayComponent" component', () => {
-    const divElement = setup().shallow();
+    const divElement = setup(1).shallow();
     expect(divElement.find("SocialMediaLinkArrayComponent")).toBeTruthy();
   });
 });

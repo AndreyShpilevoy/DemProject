@@ -11,30 +11,30 @@ jest.mock("../../utils/TransformDateTime", ()=>({
 }));
 
 describe('RelativeDateTime', () => {
-  function setup(valid){
+  function setup(mockConfigId){
     let date = new Date();
     date.setMinutes(date.getMinutes() - 1);
 
     const props = {
-      store: valid ? sharedFakeStore(true) : sharedFakeStore(false),
+      store: sharedFakeStore(mockConfigId),
       relativeDateTime: date
     };
     return shallow(<RelativeDateTime {...props}/>);
   }
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve expected result', () => {
-    expect(setup(true).prop('locale')).toEqual(sharedFakeStoreData.localeReducer.currentLocale.locale);
+    expect(setup(1).prop('locale')).toEqual(sharedFakeStoreData.localeReducer.currentLocale.locale);
   });
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve "undefined"', () => {
-    expect(setup(false).prop('locale')).toEqual(undefined);
+    expect(setup(0).prop('locale')).toEqual(undefined);
   });
 
   it('should create RelativeDateTime component with props.term equal to "some time ago"', () => {
-    expect(setup(true).shallow().prop('relativeDateTime')).toEqual("some time ago");
+    expect(setup(1).shallow().prop('relativeDateTime')).toEqual("some time ago");
   });
 
   it('should create RelativeDateTime component with props.term equal to "null"', () => {
-    expect(setup(false).shallow().prop('relativeDateTime')).toEqual(null);
+    expect(setup(0).shallow().prop('relativeDateTime')).toEqual(null);
   });
 });

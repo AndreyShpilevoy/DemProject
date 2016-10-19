@@ -8,20 +8,20 @@ import * as mockActions from "../../actions/__mocks__/sharedFakeActions";
 import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
 
 describe('NavigationLinkArray', () => {
-  function setup() {
+  function setup(mockConfigId) {
     const props = {
-      store: sharedFakeStore(),
+      store: sharedFakeStore(mockConfigId),
       actions: mockActions
     };
     return shallow(<NavigationLinkArray {...props}/>, { lifecycleExperimental: true });
   }
 
   it('should get "navigationLinks" from "navigationLinkReducer" and recieve expected result', () => {
-    expect(setup().prop('navigationLinkArray')).toEqual(sharedFakeStoreData.navigationLinkReducer.navigationLinks);
+    expect(setup(1).prop('navigationLinkArray')).toEqual(sharedFakeStoreData.navigationLinkReducer.navigationLinks);
   });
 
   it('should find "NavigationLinkArrayComponent" component', () => {
-    const divElement = setup().shallow();
+    const divElement = setup(1).shallow();
     expect(divElement.find("NavigationLinkArrayComponent")).toBeTruthy();
   });
 });

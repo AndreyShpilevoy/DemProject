@@ -64,17 +64,18 @@ class ViewForumPage extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   let result = {};
   let {chapterReducer, localeReducer, topicReducer} = state;
-  if(chapterReducer.chapterById){
+  if(chapterReducer && chapterReducer.chapterById){
     result = {chapterItem: chapterReducer.chapterById};
   }
-  if(localeReducer.currentLocale && localeReducer.currentLocale.locale){
+  if(localeReducer && localeReducer.currentLocale && localeReducer.currentLocale.locale){
     result = Object.assign({}, result, {locale: localeReducer.currentLocale.locale});
   }
-  if(topicReducer.allTopics){
+  if(topicReducer && topicReducer.allTopics){
+    let allTopicsFiltered = topicReducer.allTopics.find(topicReducer => topicReducer.forumId === ownProps.params.forumId);
     result = Object.assign(
       {},
       result,
-      {topicArray: topicReducer.allTopics.find(topicReducer => topicReducer.forumId === ownProps.params.forumId).topicArray});
+      {topicArray: allTopicsFiltered ? allTopicsFiltered.topicArray : null});
   }
   return result;
 };

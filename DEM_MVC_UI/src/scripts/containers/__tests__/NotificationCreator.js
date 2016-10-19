@@ -9,22 +9,22 @@ import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/shared
 
 
 describe('NotificationCreator', () => {
-  function setup(valid) {
+  function setup(mockConfigId) {
     const props = {
-      store: sharedFakeStore(valid),
+      store: sharedFakeStore(mockConfigId),
       actions: mockActions
     };
     return shallow(<NotificationCreator {...props}/>, { lifecycleExperimental: true });
   }
     it('Should return "NotificationSystem" object', () => {
-      expect(setup(true).shallow().find("NotificationSystem")).toBeTruthy();
+      expect(setup(1).shallow().find("NotificationSystem")).toBeTruthy();
     });
 
   it('should return "notificationArray" from "notificationReducer" and recieve expected result', () => {
-      expect(setup(false).prop("notificationArray")).toEqual(sharedFakeStoreData.notificationArray);
+      expect(setup(0).prop("notificationArray")).toEqual(sharedFakeStoreData.notificationArray);
   });
 
     it('"notificationReducer" result should beFalsy', () => {
-    expect(setup(false).prop("notificationArray")).toBeFalsy();
+    expect(setup(0).prop("notificationArray")).toBeFalsy();
   });
 });
