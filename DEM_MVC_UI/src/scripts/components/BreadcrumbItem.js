@@ -16,7 +16,7 @@ class BreadcrumbItem extends React.Component {
     return(
       <li className={this.props.setActive ? "breadcrumb-item active" : "breadcrumb-item"}>
         <Link to={this.props.breadcrumbItem.path}>
-          {this.props.breadcrumbItem.title}
+          <div>{this.props.breadcrumbItem.title}</div>
         </Link>
       </li>
     );

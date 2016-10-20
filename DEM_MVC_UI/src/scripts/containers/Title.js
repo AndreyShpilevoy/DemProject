@@ -17,10 +17,10 @@ class Title extends React.Component {
   componentWillReceiveProps(nextProps) {
     let breadcrumbArray = nextProps.breadcrumbArray;
     if (breadcrumbArray !== this.props.breadcrumbArray) {
-      let title = "";
+      let title = "DeusExMachina";
       let orderedBreadcrumbs = this.orderBreadcrumbs(breadcrumbArray);
-      for(let breadcrumb of orderedBreadcrumbs){
-        title += `${title.length > 0 ? " >> " : ""}${breadcrumb.title}`;
+      if(orderedBreadcrumbs.length >= 1){
+        title += ` • ${orderedBreadcrumbs[orderedBreadcrumbs.length-1].title}`;
       }
       root.document.title = title;
     }

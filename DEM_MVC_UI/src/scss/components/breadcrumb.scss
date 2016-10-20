@@ -1,28 +1,34 @@
 @import "Common/sizes.scss";
 @import "Common/colors.scss";
 
+.breadcrumb-container{
+  max-width: 100%;
+}
+
 .breadcrumb {
   list-style: none;
-  display: inline-table;
-  padding: 0;
+  padding: $breadcrumb-padding;
   margin: $breadcrumb-marging-top $breadcrumb-marging-left-right $breadcrumb-marging-bottom $breadcrumb-marging-left-right;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border: 1px solid $breadcrumb-border-color;
+  table-layout: fixed;
+  background-color: $breadcrumb-background-color;
 
   .breadcrumb-item {
-    display: inline;
 
     a {
       display: block;
-      height: 24px;
-      background: $breadcrumb-background-color;
+      background: $breadcrumb-item-background-color;
       text-align: center;
       padding: 2px 5px 2px 20px;
       position: relative;
       margin: 0 5px 0 0;
       text-decoration: none;
+
+      div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
 
     a:after,
@@ -35,24 +41,28 @@
     }
 
     a:after {
-      border-left: 14px solid $breadcrumb-background-color;
+      border-left: 14px solid $breadcrumb-item-background-color;
       right: -14px;
       z-index: 1;
     }
 
     a:before {
-      border-left: 14px solid $body-background-color;
+      border-left: 14px solid $breadcrumb-background-color;
       left: 0;
     }
 
     a:hover,
     &.active a {
-      background: $breadcrumb-background-color-hovered;
+      background: $breadcrumb-item-background-color-hovered;
       text-decoration: none;
     }
 
+    &.active a:after  {
+      border-left-color: $breadcrumb-item-background-color-hovered;
+    }
+
     a:hover:after {
-      border-left-color: $breadcrumb-background-color-hovered;
+      border-left-color: $breadcrumb-item-background-color-hovered;
     }
 
     &.active a{
@@ -72,6 +82,7 @@
 
     a {
       padding-right: 20px;
+      margin-right: 0px;
     }
 
     a:after {

@@ -11,7 +11,7 @@ function getTopicBreadcrumbs(topicId){
 function getConferenceBreadcrumbs(){
   return getBreadcrumbsSuccess([{
       path: "/Conference",
-      title: "Index Conference page",
+      title: "Conference",
       level: 1
     }]);
 }

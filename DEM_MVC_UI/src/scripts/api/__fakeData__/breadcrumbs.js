@@ -1,6 +1,6 @@
 const breadcrumbs = [{
     path: "/Conference",
-    title: "Index Conference page",
+    title: "Conference",
     level: 1
   },
   {
