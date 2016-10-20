@@ -1,28 +1,31 @@
 @import "Common/sizes.scss";
 @import "Common/colors.scss";
 
-.breadcrumb-container{
-  max-width: 100%;
-}
-
 .breadcrumb {
-  list-style: none;
-  padding: $breadcrumb-padding;
-  margin: $breadcrumb-marging-top $breadcrumb-marging-left-right $breadcrumb-marging-bottom $breadcrumb-marging-left-right;
-  display: flex;
-  table-layout: fixed;
+  padding: $breadcrumb-padding-marging-left-right-bottom;
+  margin: $breadcrumb-padding-marging-left-right-bottom;
+  margin-top: $breadcrumb-marging-top;
   background-color: $breadcrumb-background-color;
+  display: flex;
+  flex-flow: row wrap;
 
   .breadcrumb-item {
+    max-width: 24%;
+    min-width: 4%;
 
-    a {
+    .breadcrumb-item-arrow {
       display: block;
       background: $breadcrumb-item-background-color;
       text-align: center;
-      padding: 2px 5px 2px 20px;
+      padding-right: $breadcrumb-item-arrow-padding-margin-right;
+      padding-left: $breadcrumb-item-arrow-padding-left;
       position: relative;
-      margin: 0 5px 0 0;
+      margin-right: $breadcrumb-item-arrow-padding-margin-right;
       text-decoration: none;
+      font-size: $breadcrumb-item-arrow-font-size;
+      line-height: $breadcrumb-item-arrow-line-height;
+      font-weight: bold;
+      height: $breadcrumb-item-arrow-height;
 
       div {
         white-space: nowrap;
@@ -31,61 +34,68 @@
       }
     }
 
-    a:after,
-    a:before {
+    .breadcrumb-item-arrow:after,
+    .breadcrumb-item-arrow:before {
       content: "";
-      border-top: 14px solid transparent;
-      border-bottom: 14px solid transparent;
+      border-top: $breadcrumb-item-arrow-height/2 solid transparent;
+      border-bottom: $breadcrumb-item-arrow-height/2 solid transparent;
       position: absolute;
       top: 0;
     }
 
-    a:after {
-      border-left: 14px solid $breadcrumb-item-background-color;
-      right: -14px;
+    .breadcrumb-item-arrow:after {
+      border-left: $breadcrumb-item-arrow-height/2 solid $breadcrumb-item-background-color;
+      right: -$breadcrumb-item-arrow-height/2;
       z-index: 1;
     }
 
-    a:before {
-      border-left: 14px solid $breadcrumb-background-color;
+    .breadcrumb-item-arrow:before {
+      border-left: $breadcrumb-item-arrow-height/2 solid $breadcrumb-background-color;
       left: 0;
     }
 
-    a:hover,
-    &.active a {
+    .breadcrumb-item-arrow:hover,
+    &.breadcrumb-item-active .breadcrumb-item-arrow {
       background: $breadcrumb-item-background-color-hovered;
-      text-decoration: none;
     }
 
-    &.active a:after  {
+    &.breadcrumb-item-active .breadcrumb-item-arrow:after,
+    .breadcrumb-item-arrow:hover:after  {
       border-left-color: $breadcrumb-item-background-color-hovered;
     }
 
-    a:hover:after {
-      border-left-color: $breadcrumb-item-background-color-hovered;
-    }
-
-    &.active a{
+    &.breadcrumb-item-active .breadcrumb-item-arrow,
+    &.breadcrumb-item-ignored .breadcrumb-item-arrow{
       pointer-events: none;
       cursor: default;
+    }
+
+
+    &.breadcrumb-item-ignored .breadcrumb-item-arrow:hover {
+      background: $breadcrumb-item-background-color;
+    }
+
+    &.breadcrumb-item-ignored .breadcrumb-item-arrow:after,
+    &.breadcrumb-item-ignored .breadcrumb-item-arrow:hover:after  {
+      border-left-color: $breadcrumb-item-background-color;
     }
   }
 
   .breadcrumb-item:first-child{
-
-    a:before {
+    .breadcrumb-item-arrow{
+      padding-left: $breadcrumb-item-arrow-height/2;
+    }
+    .breadcrumb-item-arrow:before {
       display: none;
     }
   }
 
   .breadcrumb-item:last-child{
-
-    a {
-      padding-right: 20px;
-      margin-right: 0px;
+    .breadcrumb-item-arrow {
+      padding-right: $breadcrumb-item-arrow-height/2;
     }
 
-    a:after {
+    .breadcrumb-item-arrow:after {
       display: none;
     }
   }
