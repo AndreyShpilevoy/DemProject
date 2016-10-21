@@ -13,12 +13,14 @@ class ForumItem extends React.Component {
       description: PropTypes.string.isRequired,
       topicsCount: PropTypes.number.isRequired,
       postsCount: PropTypes.number.isRequired,
-      lastActiveTopicId: PropTypes.number.isRequired,
-      lastActiveTopic: PropTypes.string.isRequired,
-      latesPostTimeCreation: PropTypes.instanceOf(Date),
-      latesPostAutorId: PropTypes.number.isRequired,
-      latesPostAutorName: PropTypes.string.isRequired,
-      latesPostAutorGroupColor: PropTypes.string.isRequired,
+      lastTopicInfo: PropTypes.shape({
+        lastActiveTopicId: PropTypes.number.isRequired,
+        lastActiveTopic: PropTypes.string.isRequired,
+        latesPostTimeCreation: PropTypes.instanceOf(Date),
+        latesPostAutorId: PropTypes.number.isRequired,
+        latesPostAutorName: PropTypes.string.isRequired,
+        latesPostAutorGroupColor: PropTypes.string.isRequired,
+      }).isRequired,
       subForumArray: PropTypes.array
     }).isRequired
   };
@@ -27,15 +29,13 @@ class ForumItem extends React.Component {
     super(props);
     this.state = {
       latesPostAutorNameStyle: {
-        color: `#${this.props.forumItem.latesPostAutorGroupColor}`
+        color: `#${this.props.forumItem.lastTopicInfo.latesPostAutorGroupColor}`
       }
     };
   }
 
   render(){
-    let {id, title, description, subForumArray, topicsCount, postsCount,
-      latesPostAutorName, latesPostTimeCreation, lastActiveTopic,
-      lastActiveTopicId} = this.props.forumItem;
+    let {id, title, description, subForumArray, topicsCount, postsCount, lastTopicInfo} = this.props.forumItem;
     return(
       <div className="forum-container-wrapper row">
         <div className="forum-container col-xs-12 row">
@@ -64,14 +64,14 @@ class ForumItem extends React.Component {
           </div>
           <div className="col-md-7 col-lg-3 forum-last-post-wrapper">
             <div className="hidden-sm-down padding-initial forum-last-post-autor-name-style">
-              <Link className="hidden-sm-down" activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{latesPostAutorName}</Link>
-              <RelativeDateTime relativeDateTime={latesPostTimeCreation} spaceBefore/>
+              <Link className="hidden-sm-down" activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{lastTopicInfo.latesPostAutorName}</Link>
+              <RelativeDateTime relativeDateTime={lastTopicInfo.latesPostTimeCreation} spaceBefore/>
             </div>
             <div className="padding-initial forum-last-active-topic">
               <span className="hidden-lg-up">
                 <TermItem term={{id: 3, value: "Last message in"}} spaceAfter/>
               </span>
-              <Link className="forum-last-active-topic-message" to={`/Conference/Topic/${lastActiveTopicId}`}>{lastActiveTopic}</Link>
+              <Link className="forum-last-active-topic-message" to={`/Conference/Topic/${lastTopicInfo.lastActiveTopicId}`}>{lastTopicInfo.lastActiveTopic}</Link>
             </div>
           </div>
         </div>

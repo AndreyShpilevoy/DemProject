@@ -12,12 +12,14 @@ class ForumArray extends React.Component {
         description: PropTypes.string.isRequired,
         topicsCount: PropTypes.number.isRequired,
         postsCount: PropTypes.number.isRequired,
-        lastActiveTopicId: PropTypes.number.isRequired,
-        lastActiveTopic: PropTypes.string.isRequired,
-        latesPostTimeCreation: PropTypes.instanceOf(Date),
-        latesPostAutorId: PropTypes.number.isRequired,
-        latesPostAutorName: PropTypes.string.isRequired,
-        latesPostAutorGroupColor: PropTypes.string.isRequired,
+        lastTopicInfo: PropTypes.shape({
+          lastActiveTopicId: PropTypes.number.isRequired,
+          lastActiveTopic: PropTypes.string.isRequired,
+          latesPostTimeCreation: PropTypes.instanceOf(Date),
+          latesPostAutorId: PropTypes.number.isRequired,
+          latesPostAutorName: PropTypes.string.isRequired,
+          latesPostAutorGroupColor: PropTypes.string.isRequired,
+        }).isRequired,
         subforums: PropTypes.array,
       })).isRequired
   };

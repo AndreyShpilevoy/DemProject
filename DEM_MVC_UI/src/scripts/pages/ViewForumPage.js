@@ -24,11 +24,13 @@ class ViewForumPage extends React.Component {
         title: PropTypes.string.isRequired,
         postsCount: PropTypes.number.isRequired,
         topicViewsCount: PropTypes.number.isRequired,
-        latesPostTimeCreation: PropTypes.instanceOf(Date),
-        latesPostAutorId: PropTypes.number.isRequired,
-        latesPostAutorName: PropTypes.string.isRequired,
-        latesPostAutorAvatart: PropTypes.string.isRequired,
-        latesPostAutorGroupColor: PropTypes.string.isRequired
+        lastPostInfo: PropTypes.shape({
+          latesPostTimeCreation: PropTypes.instanceOf(Date),
+          latesPostAutorId: PropTypes.number.isRequired,
+          latesPostAutorName: PropTypes.string.isRequired,
+          latesPostAutorAvatart: PropTypes.string.isRequired,
+          latesPostAutorGroupColor: PropTypes.string.isRequired
+        }).isRequired
       })).isRequired,
     locale: PropTypes.string.isRequired,
     actions: PropTypes.object.isRequired

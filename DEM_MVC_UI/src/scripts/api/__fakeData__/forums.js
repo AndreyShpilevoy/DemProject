@@ -6,12 +6,14 @@ const forums = [
     description: "Все вопросы касательно геймплея и мира игры Ex Machina в целом.",
     topicsCount: 26,
     postsCount: 4113,
-    lastActiveTopicId: 1,
-    lastActiveTopic: "Идеи к Ex Machina -2 часть четвертая",
-    latesPostTimeCreation: new Date("2015/08/17 13:42:32"),
-    latesPostAutorId: 1,
-    latesPostAutorName: "kto",
-    latesPostAutorGroupColor: "ffa510",
+    lastTopicInfo: {
+      lastActiveTopicId: 1,
+      lastActiveTopic: "Идеи к Ex Machina -2 часть четвертая",
+      latesPostTimeCreation: new Date("2015/08/17 13:42:32"),
+      latesPostAutorId: 1,
+      latesPostAutorName: "kto",
+      latesPostAutorGroupColor: "ffa510",
+    },
     subForumArray: [
       {id: 11, title: "Самопал", order: 2},
       {id: 12, title: "Архив форумки", order: 1}
@@ -24,12 +26,14 @@ const forums = [
     description: "Вопросы технического характера по игре Ex Machina.",
     topicsCount: 13,
     postsCount: 857,
-    lastActiveTopicId: 2,
-    lastActiveTopic: "Проблемы с игрой",
-    latesPostTimeCreation: new Date("2016/9/22 12:53:09"),
-    latesPostAutorId: 2,
-    latesPostAutorName: "Bykawka",
-    latesPostAutorGroupColor: "fbeab2"
+    lastTopicInfo: {
+      lastActiveTopicId: 2,
+      lastActiveTopic: "Проблемы с игрой",
+      latesPostTimeCreation: new Date("2016/9/22 12:53:09"),
+      latesPostAutorId: 2,
+      latesPostAutorName: "Bykawka",
+      latesPostAutorGroupColor: "fbeab2"
+    }
   },
   {
     id: 30,
@@ -38,12 +42,14 @@ const forums = [
     description: "Раздел для общих и технических вопросов по модификациям.",
     topicsCount: 37,
     postsCount: 4328,
-    lastActiveTopicId: 3,
-    lastActiveTopic: "Hard Truck Apocalypse MOD 1.7SE",
-    latesPostTimeCreation: new Date("2014/07/02 23:11:31"),
-    latesPostAutorId: 3,
-    latesPostAutorName: "ololoid",
-    latesPostAutorGroupColor: "99ccff",
+    lastTopicInfo: {
+      lastActiveTopicId: 3,
+      lastActiveTopic: "Hard Truck Apocalypse MOD 1.7SE",
+      latesPostTimeCreation: new Date("2014/07/02 23:11:31"),
+      latesPostAutorId: 3,
+      latesPostAutorName: "ololoid",
+      latesPostAutorGroupColor: "99ccff"
+    },
     subForumArray: [
       {id: 31, title: "Багтрекер", order: 27}
     ]
@@ -55,12 +61,14 @@ const forums = [
     description: "Вопросы по созданию моделей, конвертированию в игру и всего что с этим связано.",
     topicsCount: 4,
     postsCount: 864,
-    lastActiveTopicId: 4,
-    lastActiveTopic: "Exporter Ex Machina for Maya",
-    latesPostTimeCreation: new Date("2007/09/06 22:33:09"),
-    latesPostAutorId: 4,
-    latesPostAutorName: "Buba",
-    latesPostAutorGroupColor: "00AA00"
+    lastTopicInfo: {
+      lastActiveTopicId: 4,
+      lastActiveTopic: "Exporter Ex Machina for Maya",
+      latesPostTimeCreation: new Date("2007/09/06 22:33:09"),
+      latesPostAutorId: 4,
+      latesPostAutorName: "Buba",
+      latesPostAutorGroupColor: "00AA00"
+    }
   },
   {
     id: 50,
@@ -69,12 +77,14 @@ const forums = [
     description: "В разделе публикуются статьи, файлы, FAQ и другие полезности для Главной страницы.",
     topicsCount: 93,
     postsCount: 1576,
-    lastActiveTopicId: 5,
-    lastActiveTopic: "HD Textures",
-    latesPostTimeCreation: new Date("2016/07/12 14:24:11"),
-    latesPostAutorId: 5,
-    latesPostAutorName: "Agent005",
-    latesPostAutorGroupColor: "ff00ff",
+    lastTopicInfo: {
+      lastActiveTopicId: 5,
+      lastActiveTopic: "HD Textures",
+      latesPostTimeCreation: new Date("2016/07/12 14:24:11"),
+      latesPostAutorId: 5,
+      latesPostAutorName: "Agent005",
+      latesPostAutorGroupColor: "ff00ff"
+    },
     subForumArray: [
       {id: 51, title: "FAQ", order: 51},
       {id: 52, title: "Юзербары", order: 52},

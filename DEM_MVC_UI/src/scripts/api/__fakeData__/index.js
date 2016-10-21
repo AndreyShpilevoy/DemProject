@@ -7,6 +7,7 @@ import socialMediaLinks from "./socialMediaLinks";
 import topics from "./topics";
 import notifications from "./notifications";
 import breadcrumbs from "./breadcrumbs";
+import posts from "./posts";
 
 export {
   chapters,
@@ -17,5 +18,6 @@ export {
   socialMediaLinks,
   topics,
   notifications,
-  breadcrumbs
+  breadcrumbs,
+  posts
 };
