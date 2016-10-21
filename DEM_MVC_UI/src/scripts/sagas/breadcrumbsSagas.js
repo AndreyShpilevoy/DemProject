@@ -19,6 +19,6 @@ export function* getTopicBreadcrumbs() {
 }
 
 export function* getBreadcrumbsByIdNonBlock(func, id) {
-  const breadcrumbs = yield call(func, id);
-  yield put(breadcrumbsActions.getBreadcrumbsSuccess(breadcrumbs));
+  const breadcrumbArray = yield call(func, id);
+  yield put(breadcrumbsActions.getBreadcrumbsSuccess(breadcrumbArray));
 }

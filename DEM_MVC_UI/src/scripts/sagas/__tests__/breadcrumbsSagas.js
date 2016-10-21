@@ -55,13 +55,13 @@ describe('breadcrumbsSagas', () => {
       .toEqual('GET_BREADCRUMBS_SUCCESS');
   });
 
-  it('getBreadcrumbsByIdNonBlockGenerator third yeald should return PUT action.breadcrumbs that is a Promise if call from getForumBreadcrumbs', () => {
+  it('getBreadcrumbsByIdNonBlockGenerator third yeald should return PUT action.breadcrumbArray that is a Promise if call from getForumBreadcrumbs', () => {
     const testForumId = 1;
     const getBreadcrumbsByIdNonBlockGenerator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getForumBreadcrumbs, testForumId);
     const forumsByChapterId = BreadcrumbsApi.getForumBreadcrumbs(testForumId);
 
     getBreadcrumbsByIdNonBlockGenerator.next();
-    expect(CheckObject.IsPromise(getBreadcrumbsByIdNonBlockGenerator.next(forumsByChapterId).value.PUT.action.breadcrumbs))
+    expect(CheckObject.IsPromise(getBreadcrumbsByIdNonBlockGenerator.next(forumsByChapterId).value.PUT.action.breadcrumbArray))
       .toBeTruthy();
   });
 
@@ -86,13 +86,13 @@ describe('breadcrumbsSagas', () => {
       .toEqual('GET_BREADCRUMBS_SUCCESS');
   });
 
-  it('getBreadcrumbsByIdNonBlockGenerator third yeald should return PUT action.breadcrumbs that is a Promise if call from getTopicBreadcrumbs', () => {
+  it('getBreadcrumbsByIdNonBlockGenerator third yeald should return PUT action.breadcrumbArray that is a Promise if call from getTopicBreadcrumbs', () => {
     const testTopicId = 1;
     const getBreadcrumbsByIdNonBlockGenerator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getTopicBreadcrumbs, testTopicId);
     const topicsByChapterId = BreadcrumbsApi.getTopicBreadcrumbs(testTopicId);
 
     getBreadcrumbsByIdNonBlockGenerator.next();
-    expect(CheckObject.IsPromise(getBreadcrumbsByIdNonBlockGenerator.next(topicsByChapterId).value.PUT.action.breadcrumbs))
+    expect(CheckObject.IsPromise(getBreadcrumbsByIdNonBlockGenerator.next(topicsByChapterId).value.PUT.action.breadcrumbArray))
       .toBeTruthy();
   });
 });

@@ -12,12 +12,8 @@ class BreadcrumbArray extends React.Component {
       })).isRequired
   };
 
-  orderBreadcrumbs = () => {
-    return  _.orderBy(this.props.breadcrumbArray, "level");
-  }
-
   mapBreadcrumbs = () => {
-    let orderedBreadcrumbs = this.orderBreadcrumbs();
+    let orderedBreadcrumbs = _.orderBy(this.props.breadcrumbArray, "level");
     //if Breadcrumbs more then 4 - cut middle of array;
     let withEllipsis = orderedBreadcrumbs.length > 4;
     let filteredBreadcrumb = orderedBreadcrumbs.filter(

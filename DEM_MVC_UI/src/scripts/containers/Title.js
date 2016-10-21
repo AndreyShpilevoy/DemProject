@@ -13,30 +13,29 @@ class Title extends React.Component {
       })).isRequired
   };
 
+  state = {title: ""};
+
   /* istanbul ignore next */
   componentWillReceiveProps(nextProps) {
     let breadcrumbArray = nextProps.breadcrumbArray;
     if (breadcrumbArray !== this.props.breadcrumbArray) {
       let title = "DeusExMachina";
-      let orderedBreadcrumbs = this.orderBreadcrumbs(breadcrumbArray);
+      let orderedBreadcrumbs =  _.orderBy(breadcrumbArray, "level");
       if(orderedBreadcrumbs.length >= 1){
         title += ` • ${orderedBreadcrumbs[orderedBreadcrumbs.length-1].title}`;
       }
-      root.document.title = title;
+      this.setState({title: title});
     }
   }
 
-  orderBreadcrumbs = (breadcrumbArray) => {
-    return  _.orderBy(breadcrumbArray, "level");
-  }
-
   render(){
+    root.document.title = this.state.title;
     return null;
   }
 }
 
 const mapStateToProps = (state) => ({
-  breadcrumbArray: state.breadcrumbsReducer.breadcrumbs
+  breadcrumbArray: state.breadcrumbsReducer.breadcrumbArray
 });
 
 export default connect(mapStateToProps)(Title);

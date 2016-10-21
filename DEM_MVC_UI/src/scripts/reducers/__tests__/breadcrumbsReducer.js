@@ -14,15 +14,15 @@ describe('breadcrumbsReducer', function(){
     expect(newState).toEqual([]);
   });
 
-  it('returns the <code>breadcrumbs</code> in given action GET_BREADCRUMBS_SUCCESS', function(){
+  it('returns the <code>breadcrumbArray</code> in given action GET_BREADCRUMBS_SUCCESS', function(){
     // setup
     let action = {
       type: types.GET_BREADCRUMBS_SUCCESS,
-      breadcrumbs: [fakeData.breadcrumbs[0], fakeData.breadcrumbs[1], fakeData.breadcrumbs[2]]
+      breadcrumbArray: [fakeData.breadcrumbs[0], fakeData.breadcrumbs[1], fakeData.breadcrumbs[2]]
     };
     // execute
     let newState = breadcrumbsReducer(undefined, action);
     // verify
-    expect(newState).toEqual({breadcrumbs:  action.breadcrumbs});
+    expect(newState).toEqual({breadcrumbArray:  action.breadcrumbArray});
   });
 });

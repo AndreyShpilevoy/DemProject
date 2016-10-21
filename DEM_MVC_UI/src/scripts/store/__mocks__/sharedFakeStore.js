@@ -39,7 +39,7 @@ export const sharedFakeStoreData = {
     allNotifications: [fakeData.notifications[0]]
   },
   breadcrumbsReducer: {
-    breadcrumbs: [fakeData.breadcrumbs[0],fakeData.breadcrumbs[1],fakeData.breadcrumbs[2]]
+    breadcrumbArray: [fakeData.breadcrumbs[0],fakeData.breadcrumbs[1],fakeData.breadcrumbs[2]]
   }
 };
 export function sharedFakeStore(mockConfigId){

@@ -16,10 +16,10 @@ function getConferenceBreadcrumbs(){
     }]);
 }
 
-function getBreadcrumbsSuccess(breadcrumbs){
+function getBreadcrumbsSuccess(breadcrumbArray){
   return {
     type: types.GET_BREADCRUMBS_SUCCESS,
-    breadcrumbs
+    breadcrumbArray
   };
 }
 

@@ -27,7 +27,7 @@ describe('breadcrumbsActions', () => {
   it('"getConferenceBreadcrumbs" should create an action with type "GET_BREADCRUMBS_SUCCESS" and expected model', () => {
     const expectedAction = {
       type: types.GET_BREADCRUMBS_SUCCESS,
-      breadcrumbs: [breadcrumbs[0]]
+      breadcrumbArray: [breadcrumbs[0]]
     };
     expect(breadcrumbsActions.getConferenceBreadcrumbs()).toEqual(expectedAction);
   });
@@ -35,7 +35,7 @@ describe('breadcrumbsActions', () => {
   it('"getBreadcrumbsSuccess" should create an action with type "GET_BREADCRUMBS_SUCCESS" and expected model', () => {
     const expectedAction = {
       type: types.GET_BREADCRUMBS_SUCCESS,
-      breadcrumbs
+      breadcrumbArray: breadcrumbs
     };
     expect(breadcrumbsActions.getBreadcrumbsSuccess(breadcrumbs)).toEqual(expectedAction);
   });
