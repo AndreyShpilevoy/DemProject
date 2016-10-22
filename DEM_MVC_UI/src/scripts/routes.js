@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import Layout from './containers/Layout';
-import MainConferencePage from './pages/MainConferencePage';
-import ViewForumPage from './pages/ViewForumPage';
-import ViewTopicPage from './pages/ViewTopicPage';
+import MainConferencePage from './containers/pages/MainConferencePage';
+import ViewForumPage from './containers/pages/ViewForumPage';
+import ViewTopicPage from './containers/pages/ViewTopicPage';
 
 export default (
   <Route path="/" component={Layout}>

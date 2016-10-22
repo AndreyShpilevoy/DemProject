@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import * as breadcrumbsActions from "../actions/breadcrumbsActions";
-import Breadcrumbs from "../containers/Breadcrumbs";
+import * as breadcrumbsActions from "../../actions/breadcrumbsActions";
+import Breadcrumbs from "../../containers/Breadcrumbs";
 //import TopicArray from '../containers/TopicArray';
 
 class ViewTopicPage extends React.Component {

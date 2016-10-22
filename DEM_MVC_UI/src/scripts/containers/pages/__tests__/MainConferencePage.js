@@ -4,8 +4,8 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import MainConferencePage from "../MainConferencePage";
-import * as mockActions from "../../actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
+import * as mockActions from "../../../actions/__mocks__/sharedFakeActions";
+import {sharedFakeStore, sharedFakeStoreData} from "../../../store/__mocks__/sharedFakeStore";
 
 describe('MainConferencePage', () => {
   function setup(mockConfigId) {
