@@ -22,6 +22,9 @@ function getForumBreadcrumbs(){}
 function getTopicBreadcrumbs(){}
 function getConferenceBreadcrumbs(){}
 function getBreadcrumbsSuccess(){}
+function getPostsByTopicId(){}
+function getPostsByTopicIdSuccess(){}
+
 
 export {
   getAllChapters,
@@ -47,5 +50,7 @@ export {
   getForumBreadcrumbs,
   getTopicBreadcrumbs,
   getConferenceBreadcrumbs,
-  getBreadcrumbsSuccess
+  getBreadcrumbsSuccess,
+  getPostsByTopicId,
+  getPostsByTopicIdSuccess
 };
