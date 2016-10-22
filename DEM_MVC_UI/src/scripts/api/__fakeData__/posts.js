@@ -1,39 +1,142 @@
-const posts = [{
-  id: 1,
-  postTime: new Date("2016/09/19 13:42:32"),
-  subject: "subject 1",
-  message: "message 1",
-  rate: 0,
-  userInfo: {
+const posts =
+[
+  {
     id: 1,
-    name: "kto",
-    birthday: new Date("1990/10/01 0:0:0"),
-    avatar: "http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif",
-    signature: `__________!///_ _____
-_________( @@ )_____
-_______ooO-(_)-o o____
-Пришёл, увидел, забанил. Ещё вопросы?`,
-    from: "Киев",
-    steam: "http://steamcommunity.com/id/by_kto/",
-    skype: "___kto",
-    vk: "https://vk.com/demteam",
-    fb: "https://www.facebook.com/kto.deus",
-    webSite: "http://dem.org.ua/",
-
-    uniqueRank: "Официально сумасшедший",
-    commonRank: "Высший или типу того",
-    postsCount: 2482,
-
-    groupColor: "ffa510",
-    groupAvatar: "http://www.phpclasses.org/browse/view/flash/file/64364/name/noavatar.jpg",
+    postTime: new Date("2015/09/19 13:42:32"),
+    subject: "subject 2",
+    message: "Народ, кто может прислать скрины такого плана автомобилей из модов?\n[spoiler][img]http://cs615717.vk.me/v615717358/f843/NoO3LUHNbYE.jpg[/img][/spoiler]\nНу там &quot;Бульдога&quot; и прочих, которых не было в оригинале.\nНадо для настолки.",
+    rate: 5,
+    userInfo: {
+      id: 1,
+      name: "Buba",
+      birthday: new Date("1991/10/01 0:0:0"),
+      avatar: "http://i70.fastpic.ru/big/2015/0628/36/ccbb1e2cb8ba8dbd379a6a12dc6b8336.jpg",
+      from: "Киев",
+      steam: null,
+      skype: null,
+      vk: null,
+      fb: null,
+      webSite: null,
+      uniqueRank: null,
+      commonRank: "Белаз",
+      postsCount: 807,
+      groupColor: "00AA00",
+    },
+    editInfo: null,
+    signature: "[img]http://forums.euw.leagueoflegends.com/board/attachment.php?attachmentid=186257[/img]"
   },
-  editInfo: {
-    userId: 1,
-    userName: "kto",
-    userGroupColor: "ffa510",
-    editReason: "gust for lulz",
-    editCount: 1
-  }
-}];
+  {
+    id: 2,
+    postTime: new Date("2014/09/19 13:42:32"),
+    subject: "subject 3",
+    message: "Вот вам тема для &quot;беседы&quot;:\nЕсли кто пройдёт какой-нибудь рут [b]Clannad[/b] без использования подсказок хотя бы с трёх попыток, не слив его в &quot;Ничего нового не будет, ничто не изменится.&quot; - я сожру свои дырявые ботинки!",
+    rate: 2,
+    userInfo: {
+      id: 2,
+      name: "Bykawka",
+      birthday: new Date("1992/10/01 0:0:0"),
+      avatar: null,
+      from: "Улан-уды",
+      steam: null,
+      skype: null,
+      vk: null,
+      fb: null,
+      webSite: null,
+      uniqueRank: null,
+      commonRank: "Бублик",
+      postsCount: 10,
+      groupColor: "fbeab2",
+    },
+    editInfo: null,
+    signature: null
+  },
+  {
+    id: 3,
+    postTime: new Date("2011/09/19 13:42:32"),
+    subject: null,
+    message: "[b]Golden_Fox[/b], видимо некорректно отработала кнопка \n[code][url][/url][/code]\n\nВ итоге в БД ушло:\n[code]Хотите общаться с лисом - идите к нему в стим или вк:\n[url=http://]http://steamcommunity.com/profiles/76561198013411783/[/url]\n[url=http://]https://vk.com/asx1347[/url]\n\nКто не в курсе, ВК подвезли немножко допиленную версию, можно включить там, внизу страницы: [url]https://new.vk.com/blog[/url][/code]\n\nЭта кнопка, каки все остальные, будут переписаны при переезде на AngularJS или ReactJS.",
+    rate: 4,
+    userInfo: {
+      id: 3,
+      name: "Agent005",
+      birthday: new Date("1996/10/01 0:0:0"),
+      avatar: "https://pp.vk.me/c9558/u61600334/a_153d373f.jpg",
+      from: "Бирюлёво",
+      steam: null,
+      skype: null,
+      vk: null,
+      fb: null,
+      webSite: null,
+      uniqueRank: null,
+      commonRank: "хз",
+      postsCount: 2321,
+      groupColor: "ff00ff",
+    },
+    editInfo: {
+      userId: 5,
+      userName: "kto",
+      userGroupColor: "ffa510",
+      editReason: "Сосиска. П.п.2",
+      editCount: 1
+    },
+    signature: "Бла-бла-бла"
+  },
+  {
+    id: 4,
+    postTime: new Date("2006/09/19 13:42:32"),
+    subject: "subject 5",
+    message: "[h1][right][b]Ну[/b] [i]надо[/i] [u]же[/u], [s]работает[/s][/right][/h1]\n[spoiler][media]https://youtu.be/WHBbt-Qk6mk[/media][/spoiler]",
+    rate: 343,
+    userInfo: {
+      id: 4,
+      name: "ololoid",
+      birthday: new Date("2000/10/01 0:0:0"),
+      avatar: "http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png",
+      from: null,
+      steam: null,
+      skype: null,
+      vk: null,
+      fb: null,
+      webSite: null,
+      uniqueRank: null,
+      commonRank: "хз 2",
+      postsCount: 1,
+      groupColor: "99ccff",
+    },
+    editInfo: null,
+    signature: null
+  },
+  {
+    id: 5,
+    postTime: new Date("2016/09/19 13:42:32"),
+    subject: "subject 1",
+    message: "3% из всего задуманного)))\n\nПросто ещё много времени отъедает ремонт.\nСегодня вместо того, что бы пилить сайт 3 часа выбирал плитку в ванную...",
+    rate: 0,
+    userInfo: {
+      id: 5,
+      name: "kto",
+      birthday: new Date("1990/10/01 0:0:0"),
+      avatar: "http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif",
+      from: "Киев",
+      steam: "http://steamcommunity.com/id/by_kto/",
+      skype: "___kto",
+      vk: "https://vk.com/demteam",
+      fb: "https://www.facebook.com/kto.deus",
+      webSite: "http://dem.org.ua/",
+      uniqueRank: "Официально сумасшедший",
+      commonRank: "Высший или типу того",
+      postsCount: 2482,
+      groupColor: "ffa510",
+    },
+    editInfo: {
+      userId: 5,
+      userName: "kto",
+      userGroupColor: "ffa510",
+      editReason: "gust for lulz",
+      editCount: 1
+    },
+    signature: "__________!///_ _____\n_________( @@ )_____\n_______ooO-(_)-o o____\nПришёл, увидел, забанил. Ещё вопросы?"
+  },
+];
 
 export default posts;

@@ -11,7 +11,9 @@ describe('TopicItem', () => {
     const props = {
       topicItem: Object.assign({}, topics[0],
         {
-          latesPostAutorAvatart: hasAvatar ? "http://i70.fastpic.ru/big/2015/0628/36/ccbb1e2cb8ba8dbd379a6a12dc6b8336.jpg" : undefined,
+          lastPostInfo: Object.assign({}, topics[0].lastPostInfo, {
+            latesPostAutorAvatart: hasAvatar ? "http://i70.fastpic.ru/big/2015/0628/36/ccbb1e2cb8ba8dbd379a6a12dc6b8336.jpg" : null
+          }),
           parentForumTitle: parentForum ? "Самопал" : undefined,
           parentForumId: parentForum ? 1 : undefined
         }

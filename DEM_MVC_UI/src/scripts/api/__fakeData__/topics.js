@@ -20,7 +20,7 @@ const topics = [{
       latesPostTimeCreation: new Date("2016/09/22 12:53:09"),
       latesPostAutorId: 2,
       latesPostAutorName: "Bykawka",
-      latesPostAutorAvatart: undefined,
+      latesPostAutorAvatart: null,
       latesPostAutorGroupColor: "fbeab2"
     }
   },
