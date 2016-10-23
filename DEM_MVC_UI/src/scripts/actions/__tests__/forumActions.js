@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../actionTypes";
-import * as forumActions from "../forumActions";
-import forums from "../../api/__fakeData__/forums";
+import * as types from "actions/actionTypes";
+import * as forumActions from "actions/forumActions";
+import forums from "api/__fakeData__/forums";
 
 
 describe('forumActions', () => {

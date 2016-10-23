@@ -1,7 +1,7 @@
 /*eslint no-undef: "off"*/
 /*eslint import/imports-first: "off"*/
 
-import TransformDateTime from "../TransformDateTime";
+import TransformDateTime from "utils/TransformDateTime";
 
 jest.mock("../TermTranslation");
 

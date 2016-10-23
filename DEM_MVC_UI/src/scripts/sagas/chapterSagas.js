@@ -1,7 +1,7 @@
 import { call, put, take } from "redux-saga/effects";
-import ChapterApi from "../api/__mocks__/ChapterApi";
-import * as chapterActions from "../actions/chapterActions";
-import * as types from "../actions/actionTypes";
+import ChapterApi from "api/__mocks__/ChapterApi";
+import * as chapterActions from "actions/chapterActions";
+import * as types from "actions/actionTypes";
 
 export function* getAllChapters() {
   while(true){

@@ -1,5 +1,5 @@
 import _ from "lodash";
-import rootTranslations from "../translations/rootTranslations";
+import rootTranslations from "translations/rootTranslations";
 
 class TermTranslation {
   getTermTranslation(term, locale) {

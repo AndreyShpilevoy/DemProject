@@ -1,9 +1,9 @@
 /* eslint import/prefer-default-export: "off" */
 
 import { call, put, take, fork } from "redux-saga/effects";
-import BreadcrumbsApi from "../api/__mocks__/BreadcrumbsApi";
-import * as breadcrumbsActions from "../actions/breadcrumbsActions";
-import * as types from "../actions/actionTypes";
+import BreadcrumbsApi from "api/__mocks__/BreadcrumbsApi";
+import * as breadcrumbsActions from "actions/breadcrumbsActions";
+import * as types from "actions/actionTypes";
 
 export function* getForumBreadcrumbs() {
   while(true){

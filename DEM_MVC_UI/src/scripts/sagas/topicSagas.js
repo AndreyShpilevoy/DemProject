@@ -1,7 +1,7 @@
 import { call, put, take, fork } from "redux-saga/effects";
-import TopicApi from "../api/__mocks__/TopicApi";
-import * as topicActions from "../actions/topicActions";
-import * as types from "../actions/actionTypes";
+import TopicApi from "api/__mocks__/TopicApi";
+import * as topicActions from "actions/topicActions";
+import * as types from "actions/actionTypes";
 
 export function* getTopicsByForumId() {
   while(true){

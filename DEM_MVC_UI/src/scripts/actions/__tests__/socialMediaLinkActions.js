@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../actionTypes";
-import * as socialMediaLinkActions from "../socialMediaLinkActions";
-import socialMediaLinks from "../../api/__fakeData__/socialMediaLinks";
+import * as types from "actions/actionTypes";
+import * as socialMediaLinkActions from "actions/socialMediaLinkActions";
+import socialMediaLinks from "api/__fakeData__/socialMediaLinks";
 
 
 describe('socialMediaLinkActions', () => {

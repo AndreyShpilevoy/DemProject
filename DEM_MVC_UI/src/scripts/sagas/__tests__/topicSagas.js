@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as topicSagas from "../topicSagas";
-import TopicApi from "../../api/__mocks__/TopicApi";
-import CheckObject from "../../../../testHelpers/CheckObject";
+import * as topicSagas from "sagas/topicSagas";
+import TopicApi from "api/__mocks__/TopicApi";
+import CheckObject from "testHelpers/CheckObject";
 
 
 describe('topicSagas', () => {

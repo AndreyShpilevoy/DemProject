@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ViewForumPage from "../ViewForumPage";
-import * as mockActions from "../../../actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, sharedFakeStoreData} from "../../../store/__mocks__/sharedFakeStore";
+import ViewForumPage from "pages/ViewForumPage";
+import * as mockActions from "actions/__mocks__/sharedFakeActions";
+import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
 describe('ViewForumPage', () => {
   function setup(mockConfigId) {

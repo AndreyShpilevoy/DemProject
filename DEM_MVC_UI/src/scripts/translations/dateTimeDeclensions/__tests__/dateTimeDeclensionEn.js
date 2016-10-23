@@ -1,6 +1,6 @@
 /*eslint no-undef: "off"*/
 
-import dateTimeDeclensionEn from "../dateTimeDeclensionEn";
+import dateTimeDeclensionEn from "translations/dateTimeDeclensions/dateTimeDeclensionEn";
 
 describe('dateTimeDeclensionEn', () => {
 

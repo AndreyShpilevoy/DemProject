@@ -1,12 +1,12 @@
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import * as lastActiveTopicActions from "../../actions/lastActiveTopicActions";
-import * as chapterActions from "../../actions/chapterActions";
-import * as breadcrumbsActions from "../../actions/breadcrumbsActions";
-import LastActiveTopicArray from "../../components/LastActiveTopicArray";
-import ChapterArray from "../../components/ChapterArray";
-import Breadcrumbs from "../../containers/Breadcrumbs";
+import * as lastActiveTopicActions from "actions/lastActiveTopicActions";
+import * as chapterActions from "actions/chapterActions";
+import * as breadcrumbsActions from "actions/breadcrumbsActions";
+import LastActiveTopicArray from "components/LastActiveTopicArray";
+import ChapterArray from "components/ChapterArray";
+import Breadcrumbs from "containers/Breadcrumbs";
 
 
 class MainConferencePage extends React.Component {

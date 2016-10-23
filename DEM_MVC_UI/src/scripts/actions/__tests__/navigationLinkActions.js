@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../actionTypes";
-import * as navigationLinkActions from "../navigationLinkActions";
-import navigationLinks from "../../api/__fakeData__/navigationLinks";
+import * as types from "actions/actionTypes";
+import * as navigationLinkActions from "actions/navigationLinkActions";
+import navigationLinks from "api/__fakeData__/navigationLinks";
 
 
 describe('navigationLinkActions', () => {

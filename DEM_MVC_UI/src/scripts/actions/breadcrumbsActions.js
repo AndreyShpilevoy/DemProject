@@ -1,4 +1,4 @@
-import * as types from "./actionTypes";
+import * as types from "actions/actionTypes";
 
 function getForumBreadcrumbs(forumId){
   return {type: types.GET_FORUM_BREADCRUMBS, forumId};

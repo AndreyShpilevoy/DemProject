@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-import RightAngle from "./icons/RightAngle";
+import RightAngle from "components/icons/RightAngle";
 
 class SubForumItem extends React.Component {
   static propTypes = {

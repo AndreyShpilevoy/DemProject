@@ -1,6 +1,6 @@
 /*eslint no-undef: "off"*/
 
-import * as rootReducer from "../rootReducer";
+import * as rootReducer from "reducers/rootReducer";
 
 function mockFuncs() {
   return {

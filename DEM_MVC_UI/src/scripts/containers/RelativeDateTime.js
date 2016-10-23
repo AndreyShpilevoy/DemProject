@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
-import TransformDateTime from "../utils/TransformDateTime";
-import RelativeDateTimeComponent from "../components/RelativeDateTime";
+import TransformDateTime from "utils/TransformDateTime";
+import RelativeDateTimeComponent from "components/RelativeDateTime";
 
 class RelativeDateTime extends React.Component {
   static propTypes = {

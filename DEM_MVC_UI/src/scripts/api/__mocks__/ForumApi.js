@@ -1,7 +1,7 @@
 /* eslint no-undef: "off" */
 
-import delay from './delay';
-import forums from '../__fakeData__/forums';
+import delay from 'api/__mocks__/delay';
+import forums from 'api/__fakeData__/forums';
 
 class ForumApi {
     static getForumsByChapterId(chapterId) {

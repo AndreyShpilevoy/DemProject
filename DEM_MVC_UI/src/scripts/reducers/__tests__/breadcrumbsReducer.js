@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../../actions/actionTypes";
-import breadcrumbsReducer from "../breadcrumbsReducer";
-import * as fakeData from "../../api/__fakeData__/index";
+import * as types from "actions/actionTypes";
+import breadcrumbsReducer from "reducers/breadcrumbsReducer";
+import * as fakeData from "api/__fakeData__/index";
 
 describe('breadcrumbsReducer', function(){
   it('returns an empty array as default state', function(){

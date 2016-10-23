@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../../actions/actionTypes";
-import chapterReducer from "../chapterReducer";
-import * as fakeData from "../../api/__fakeData__/index";
+import * as types from "actions/actionTypes";
+import chapterReducer from "reducers/chapterReducer";
+import * as fakeData from "api/__fakeData__/index";
 
 describe('chapterReducer', function(){
   it('returns an empty array as default state', function(){

@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import TopicArray from "../TopicArray";
-import topics from "../../api/__fakeData__/topics";
+import TopicArray from "components/TopicArray";
+import topics from "api/__fakeData__/topics";
 
 describe('TopicArray', () => {
   function setup() {

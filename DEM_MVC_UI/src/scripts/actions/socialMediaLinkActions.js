@@ -1,4 +1,4 @@
-import * as types from "./actionTypes";
+import * as types from "actions/actionTypes";
 
 function getSocialMediaLinks(){
   return {type: types.GET_SOCIALMEDIALINKS};

@@ -1,4 +1,4 @@
-import * as types from "./actionTypes";
+import * as types from "actions/actionTypes";
 
 function addInfoNotification(notification){
   return addNotification(notification, "info");

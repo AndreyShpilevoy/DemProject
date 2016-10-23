@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../../actions/actionTypes";
-import topicReducer from "../topicReducer";
-import * as fakeData from "../../api/__fakeData__/index";
+import * as types from "actions/actionTypes";
+import topicReducer from "reducers/topicReducer";
+import * as fakeData from "api/__fakeData__/index";
 
 describe('topicReducer', function(){
   it('returns an empty array as default state', function(){

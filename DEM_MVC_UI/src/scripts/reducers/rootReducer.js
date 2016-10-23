@@ -1,14 +1,14 @@
 import {combineReducers} from "redux";
 import { routerReducer } from 'react-router-redux';
-import forumReducer from "./forumReducer";
-import topicReducer from "./topicReducer";
-import lastActiveTopicReducer from "./lastActiveTopicReducer";
-import chapterReducer from "./chapterReducer";
-import localeReducer from "./localeReducer";
-import navigationLinkReducer from "./navigationLinkReducer";
-import socialMediaLinkReducer from "./socialMediaLinkReducer";
-import notificationReducer from "./notificationReducer";
-import breadcrumbsReducer from "./breadcrumbsReducer";
+import forumReducer from "reducers/forumReducer";
+import topicReducer from "reducers/topicReducer";
+import lastActiveTopicReducer from "reducers/lastActiveTopicReducer";
+import chapterReducer from "reducers/chapterReducer";
+import localeReducer from "reducers/localeReducer";
+import navigationLinkReducer from "reducers/navigationLinkReducer";
+import socialMediaLinkReducer from "reducers/socialMediaLinkReducer";
+import notificationReducer from "reducers/notificationReducer";
+import breadcrumbsReducer from "reducers/breadcrumbsReducer";
 
 const rootReducer = combineReducers({
   forumReducer,

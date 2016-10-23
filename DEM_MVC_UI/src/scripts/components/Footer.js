@@ -1,5 +1,5 @@
 import React from 'react';
-import SocialMediaLinkArray from '../containers/SocialMediaLinkArray';
+import SocialMediaLinkArray from 'containers/SocialMediaLinkArray';
 
 class Footer extends React.Component {
     render() {

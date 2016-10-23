@@ -1,7 +1,7 @@
 /* eslint no-undef: "off" */
 
-import delay from './delay';
-import lastActiveTopics from '../__fakeData__/lastActiveTopics';
+import delay from 'api/__mocks__/delay';
+import lastActiveTopics from 'api/__fakeData__/lastActiveTopics';
 
 class LastActiveTopicApi {
   static getLastActiveTopics() {

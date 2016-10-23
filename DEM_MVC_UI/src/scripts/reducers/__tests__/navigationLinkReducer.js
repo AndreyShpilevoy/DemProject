@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../../actions/actionTypes";
-import navigationLinkReducer from "../navigationLinkReducer";
-import * as fakeData from "../../api/__fakeData__/index";
+import * as types from "actions/actionTypes";
+import navigationLinkReducer from "reducers/navigationLinkReducer";
+import * as fakeData from "api/__fakeData__/index";
 
 describe('navigationLinkReducer', function(){
   it('returns an empty array as default state', function(){

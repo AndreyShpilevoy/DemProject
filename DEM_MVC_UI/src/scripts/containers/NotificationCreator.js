@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import NotificationSystem from 'react-notification-system';
-import * as notificationActions from "../actions/notificationActions";
+import * as notificationActions from "actions/notificationActions";
 
 class NotificationCreator extends React.Component {
   static _notificationSystem = null;

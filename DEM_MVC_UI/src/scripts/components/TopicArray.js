@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import ContentHolder from "./ContentHolder";
-import TopicItem from "./TopicItem";
-import TermItem from '../containers/TermItem';
+import ContentHolder from "components/ContentHolder";
+import TopicItem from "components/TopicItem";
+import TermItem from 'containers/TermItem';
 
 class TopicArray extends React.Component {
   static propTypes = {

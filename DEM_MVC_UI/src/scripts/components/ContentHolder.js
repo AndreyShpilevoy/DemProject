@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
-import ToggleClass from "../utils/ToggleClass";
-import ArrowLeft from "./icons/ArrowLeft";
+import ToggleClass from "utils/ToggleClass";
+import ArrowLeft from "components/icons/ArrowLeft";
 
 class ContentHolder extends React.Component {
   static propTypes = {

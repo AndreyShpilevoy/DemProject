@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../actionTypes";
-import * as postActions from "../postActions";
-import posts from "../../api/__fakeData__/posts";
+import * as types from "actions/actionTypes";
+import * as postActions from "actions/postActions";
+import posts from "api/__fakeData__/posts";
 
 
 describe('postActions', () => {

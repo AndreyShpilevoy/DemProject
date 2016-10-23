@@ -1,9 +1,9 @@
 /* eslint import/prefer-default-export: "off" */
 
 import { call, put, take } from "redux-saga/effects";
-import NavigationLinkApi from "../api/__mocks__/NavigationLinkApi";
-import * as navigationLinkActions from "../actions/navigationLinkActions";
-import * as types from "../actions/actionTypes";
+import NavigationLinkApi from "api/__mocks__/NavigationLinkApi";
+import * as navigationLinkActions from "actions/navigationLinkActions";
+import * as types from "actions/actionTypes";
 
 export function* getNavigationLinks() {
   while(true){

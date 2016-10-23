@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import BreadcrumbItem from './BreadcrumbItem';
+import BreadcrumbItem from 'components/BreadcrumbItem';
 
 class BreadcrumbArray extends React.Component {
   static propTypes = {

@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../actionTypes";
-import * as chapterActions from "../chapterActions";
-import chapters from "../../api/__fakeData__/chapters";
+import * as types from "actions/actionTypes";
+import * as chapterActions from "actions/chapterActions";
+import chapters from "api/__fakeData__/chapters";
 
 describe('chapterActions', () => {
   it('should create an action to get all chapters', () => {

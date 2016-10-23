@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../../actions/actionTypes";
-import socialMediaLinkReducer from "../socialMediaLinkReducer";
-import * as fakeData from "../../api/__fakeData__/index";
+import * as types from "actions/actionTypes";
+import socialMediaLinkReducer from "reducers/socialMediaLinkReducer";
+import * as fakeData from "api/__fakeData__/index";
 
 describe('socialMediaLinkReducer', function(){
   it('returns an empty array as default state', function(){

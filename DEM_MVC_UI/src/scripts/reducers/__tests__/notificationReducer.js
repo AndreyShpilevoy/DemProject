@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../../actions/actionTypes";
-import notificationReducer from "../notificationReducer";
-import * as fakeData from "../../api/__fakeData__/index";
+import * as types from "actions/actionTypes";
+import notificationReducer from "reducers/notificationReducer";
+import * as fakeData from "api/__fakeData__/index";
 
 describe('notificationReducer', function(){
   it('returns an empty array as default state', function(){

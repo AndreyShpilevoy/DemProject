@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
-import TermItemComponent from "../components/TermItem";
-import TermTranslation from "../utils/TermTranslation";
+import TermItemComponent from "components/TermItem";
+import TermTranslation from "utils/TermTranslation";
 
 class TermItem extends React.Component {
   static propTypes = {

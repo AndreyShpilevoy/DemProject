@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import NavigationLinkArray from "../NavigationLinkArray";
-import * as mockActions from "../../actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
+import NavigationLinkArray from "containers/NavigationLinkArray";
+import * as mockActions from "actions/__mocks__/sharedFakeActions";
+import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
 describe('NavigationLinkArray', () => {
   function setup(mockConfigId) {

@@ -69,5 +69,10 @@
     "react/sort-comp": 1,
     "react/wrap-multilines": 0,
     "import/prefer-default-export": 1
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
   }
 }

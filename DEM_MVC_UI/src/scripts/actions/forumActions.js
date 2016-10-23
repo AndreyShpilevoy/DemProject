@@ -1,4 +1,4 @@
-import * as types from "./actionTypes";
+import * as types from "actions/actionTypes";
 
 function getForumsByChapterId(chapterId){
   return {type: types.GET_FORUMS_BY_CHAPTER_ID, chapterId};

@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-import RelativeDateTime from '../containers/RelativeDateTime';
-import TermItem from '../containers/TermItem';
-import SubForumArray from './SubForumArray';
+import RelativeDateTime from 'containers/RelativeDateTime';
+import TermItem from 'containers/TermItem';
+import SubForumArray from 'components/SubForumArray';
 
 class ForumItem extends React.Component {
   static propTypes = {

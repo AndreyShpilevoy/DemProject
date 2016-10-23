@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ForumArray from "../ForumArray";
-import * as mockActions from "../../actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
+import ForumArray from "containers/ForumArray";
+import * as mockActions from "actions/__mocks__/sharedFakeActions";
+import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
 describe('ForumArray', () => {
   function setup(mockConfigId) {

@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import BreadcrumbArray from "../BreadcrumbArray";
-import breadcrumbs from "../../api/__fakeData__/breadcrumbs";
+import BreadcrumbArray from "components/BreadcrumbArray";
+import breadcrumbs from "api/__fakeData__/breadcrumbs";
 
 describe('BreadcrumbArray', () => {
   function setup(moreThenFour) {

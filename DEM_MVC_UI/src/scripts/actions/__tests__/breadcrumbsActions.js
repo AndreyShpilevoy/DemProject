@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../actionTypes";
-import * as breadcrumbsActions from "../breadcrumbsActions";
-import breadcrumbs from "../../api/__fakeData__/breadcrumbs";
+import * as types from "actions/actionTypes";
+import * as breadcrumbsActions from "actions/breadcrumbsActions";
+import breadcrumbs from "api/__fakeData__/breadcrumbs";
 
 
 describe('breadcrumbsActions', () => {

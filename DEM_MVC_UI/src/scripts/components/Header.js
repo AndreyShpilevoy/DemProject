@@ -1,9 +1,9 @@
 import React from 'react';
-import NavigationLinkArray from "../containers/NavigationLinkArray";
-import NavigationMenuToggleButton from "./NavigationMenuToggleButton";
-import NavigationLinkLogo from "./NavigationLinkLogo";
-import ToggleClass from "../utils/ToggleClass";
-import ShrinkingHeader from "../utils/ShrinkingHeader";
+import NavigationLinkArray from "containers/NavigationLinkArray";
+import NavigationMenuToggleButton from "components/NavigationMenuToggleButton";
+import NavigationLinkLogo from "components/NavigationLinkLogo";
+import ToggleClass from "utils/ToggleClass";
+import ShrinkingHeader from "utils/ShrinkingHeader";
 
 class Header extends React.Component {
   componentDidMount() {

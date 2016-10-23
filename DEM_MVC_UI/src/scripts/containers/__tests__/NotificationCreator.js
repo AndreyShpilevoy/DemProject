@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import NotificationCreator from "../NotificationCreator";
-import * as mockActions from "../../actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
+import NotificationCreator from "containers/NotificationCreator";
+import * as mockActions from "actions/__mocks__/sharedFakeActions";
+import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
 
 describe('NotificationCreator', () => {

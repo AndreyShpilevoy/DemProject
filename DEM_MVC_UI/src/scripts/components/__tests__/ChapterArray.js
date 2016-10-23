@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ChapterArray from "../ChapterArray";
-import chapters from "../../api/__fakeData__/chapters";
+import ChapterArray from "components/ChapterArray";
+import chapters from "api/__fakeData__/chapters";
 
 describe('ChapterArray', () => {
   function setup() {

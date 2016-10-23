@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import * as socialMediaLinkActions from "../actions/socialMediaLinkActions";
-import SocialMediaLinkArrayComponent from '../components/SocialMediaLinkArray';
+import * as socialMediaLinkActions from "actions/socialMediaLinkActions";
+import SocialMediaLinkArrayComponent from 'components/SocialMediaLinkArray';
 
 class SocialMediaLinkArray extends React.Component {
   static propTypes = {

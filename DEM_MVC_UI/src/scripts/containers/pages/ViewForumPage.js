@@ -1,12 +1,12 @@
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import * as chapterActions from "../../actions/chapterActions";
-import * as topicActions from "../../actions/topicActions";
-import * as breadcrumbsActions from "../../actions/breadcrumbsActions";
-import ChapterItem from "../../components/ChapterItem";
-import TopicArray from "../../components/TopicArray";
-import Breadcrumbs from "../../containers/Breadcrumbs";
+import * as chapterActions from "actions/chapterActions";
+import * as topicActions from "actions/topicActions";
+import * as breadcrumbsActions from "actions/breadcrumbsActions";
+import ChapterItem from "components/ChapterItem";
+import TopicArray from "components/TopicArray";
+import Breadcrumbs from "containers/Breadcrumbs";
 
 class ViewForumPage extends React.Component {
   static propTypes = {

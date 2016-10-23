@@ -1,4 +1,4 @@
-import * as types from "./actionTypes";
+import * as types from "actions/actionTypes";
 
 function getAllChapters(){
   return {type: types.GET_ALL_CHAPTERS};

@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-import ForumArray from '../containers/ForumArray';
-import TermItem from '../containers/TermItem';
-import ContentHolder from "./ContentHolder";
+import ForumArray from 'containers/ForumArray';
+import TermItem from 'containers/TermItem';
+import ContentHolder from "components/ContentHolder";
 
 class ChapterItem extends React.Component {
   static propTypes = {

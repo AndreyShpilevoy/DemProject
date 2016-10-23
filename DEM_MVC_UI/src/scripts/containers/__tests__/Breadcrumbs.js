@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Breadcrumbs from "../Breadcrumbs";
-import * as mockActions from "../../actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, sharedFakeStoreData} from "../../store/__mocks__/sharedFakeStore";
+import Breadcrumbs from "containers/Breadcrumbs";
+import * as mockActions from "actions/__mocks__/sharedFakeActions";
+import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
 
 

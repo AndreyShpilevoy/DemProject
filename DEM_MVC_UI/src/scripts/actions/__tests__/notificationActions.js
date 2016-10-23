@@ -1,7 +1,7 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../actionTypes";
-import * as notificationActions from "../notificationActions";
+import * as types from "actions/actionTypes";
+import * as notificationActions from "actions/notificationActions";
 
 
 describe('notificationActions', () => {

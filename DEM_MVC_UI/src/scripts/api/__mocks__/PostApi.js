@@ -1,8 +1,8 @@
 /* eslint no-undef: "off" */
 /*eslint no-unused-vars: "off"*/
 
-import delay from './delay';
-import posts from '../__fakeData__/posts';
+import delay from 'api/__mocks__/delay';
+import posts from 'api/__fakeData__/posts';
 
 class PostApi {
     static getTopicsByForumId(topicId) {

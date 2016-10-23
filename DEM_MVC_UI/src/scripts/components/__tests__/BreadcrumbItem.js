@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import BreadcrumbItem from "../BreadcrumbItem";
-import breadcrumbs from "../../api/__fakeData__/breadcrumbs";
+import BreadcrumbItem from "components/BreadcrumbItem";
+import breadcrumbs from "api/__fakeData__/breadcrumbs";
 
 describe('BreadcrumbItem', () => {
   function setup(currentPage) {

@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import LastActiveTopicArray from "../LastActiveTopicArray";
-import lastActiveTopics from "../../api/__fakeData__/lastActiveTopics";
+import LastActiveTopicArray from "components/LastActiveTopicArray";
+import lastActiveTopics from "api/__fakeData__/lastActiveTopics";
 
 describe('LastActiveTopicArray', () => {
   function setup() {

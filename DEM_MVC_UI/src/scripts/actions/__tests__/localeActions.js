@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../actionTypes";
-import * as localeActions from "../localeActions";
-import locale from "../../api/__fakeData__/locale";
+import * as types from "actions/actionTypes";
+import * as localeActions from "actions/localeActions";
+import locale from "api/__fakeData__/locale";
 
 
 describe('localeActions', () => {

@@ -5,7 +5,16 @@
     "es2015"
   ],
   "plugins": [
-    "transform-class-properties"
+    "transform-class-properties",
+    ["module-resolver", {
+      "root": ["./src/scripts"],
+      "alias": {
+        "pages": "./src/scripts/containers/pages",
+        "icons": "./src/scripts/components/icons",
+        "testHelpers": "./testHelpers",
+        "scss": "./src/scss"
+      }
+    }]
   ],
   "env": {
     "development": {

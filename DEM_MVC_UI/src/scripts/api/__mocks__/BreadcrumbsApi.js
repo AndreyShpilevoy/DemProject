@@ -1,7 +1,7 @@
 /* eslint no-undef: "off" */
 
-import delay from './delay';
-import breadcrumbs from '../__fakeData__/breadcrumbs';
+import delay from 'api/__mocks__/delay';
+import breadcrumbs from 'api/__fakeData__/breadcrumbs';
 
 class BreadcrumbsApi {
   static getForumBreadcrumbs(forumId) {

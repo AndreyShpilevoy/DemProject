@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as navigationLinkSagas from "../navigationLinkSagas";
-import NavigationLinkApi from "../../api/__mocks__/NavigationLinkApi";
-import CheckObject from "../../../../testHelpers/CheckObject";
+import * as navigationLinkSagas from "sagas/navigationLinkSagas";
+import NavigationLinkApi from "api/__mocks__/NavigationLinkApi";
+import CheckObject from "testHelpers/CheckObject";
 
 describe('navigationLinkSagas', () => {
   it('getNavigationLinksGenerator first yeald should return TAKE pattern "GET_NAVIGATIONLINKS"', () => {

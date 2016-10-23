@@ -1,8 +1,8 @@
 ﻿import React, {PropTypes} from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import NotificationCreator from "../containers/NotificationCreator";
-import Title from "../containers/Title";
+import Header from "components/Header";
+import Footer from "components/Footer";
+import NotificationCreator from "containers/NotificationCreator";
+import Title from "containers/Title";
 
 class Layout extends React.Component {
   static propTypes = {

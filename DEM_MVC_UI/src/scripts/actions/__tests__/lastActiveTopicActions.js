@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "../actionTypes";
-import * as lastActiveTopicActions from "../lastActiveTopicActions";
-import lastActiveTopics from "../../api/__fakeData__/lastActiveTopics";
+import * as types from "actions/actionTypes";
+import * as lastActiveTopicActions from "actions/lastActiveTopicActions";
+import lastActiveTopics from "api/__fakeData__/lastActiveTopics";
 
 
 describe('lastActiveTopicActions', () => {

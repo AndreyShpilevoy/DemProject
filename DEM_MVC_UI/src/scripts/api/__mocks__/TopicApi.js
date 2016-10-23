@@ -1,7 +1,7 @@
 /* eslint no-undef: "off" */
 
-import delay from './delay';
-import topics from '../__fakeData__/topics';
+import delay from 'api/__mocks__/delay';
+import topics from 'api/__fakeData__/topics';
 
 class TopicApi {
     static getTopicsByForumId(forumId) {

@@ -1,11 +1,11 @@
-import * as forumSagas from "./forumSagas";
-import * as topicSagas from "./topicSagas";
-import * as lastActiveTopicSagas from "./lastActiveTopicSagas";
-import * as chapterSagas from "./chapterSagas";
-import * as navigationLinkSagas from "./navigationLinkSagas";
-import * as socialMediaLinkSagas from "./socialMediaLinkSagas";
-import * as localeSagas from "./localeSagas";
-import * as breadcrumbsSagas from "./breadcrumbsSagas";
+import * as forumSagas from "sagas/forumSagas";
+import * as topicSagas from "sagas/topicSagas";
+import * as lastActiveTopicSagas from "sagas/lastActiveTopicSagas";
+import * as chapterSagas from "sagas/chapterSagas";
+import * as navigationLinkSagas from "sagas/navigationLinkSagas";
+import * as socialMediaLinkSagas from "sagas/socialMediaLinkSagas";
+import * as localeSagas from "sagas/localeSagas";
+import * as breadcrumbsSagas from "sagas/breadcrumbsSagas";
 
 export default function* root() {
   yield [

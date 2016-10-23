@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import NavigationLinkLogo from "../NavigationLinkLogo";
+import NavigationLinkLogo from "components/NavigationLinkLogo";
 
 describe('NavigationLinkLogo', () => {
   function setup() {
