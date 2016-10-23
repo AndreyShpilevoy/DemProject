@@ -32,7 +32,6 @@ class ViewForumPage extends React.Component {
           latesPostAutorGroupColor: PropTypes.string.isRequired
         }).isRequired
       })).isRequired,
-    locale: PropTypes.string.isRequired,
     actions: PropTypes.object.isRequired
   };
 
@@ -67,12 +66,9 @@ class ViewForumPage extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   let result = {};
-  let {chapterReducer, localeReducer, topicReducer} = state;
+  let {chapterReducer, topicReducer} = state;
   if(chapterReducer && chapterReducer.chapterById){
     result = {chapterItem: chapterReducer.chapterById};
-  }
-  if(localeReducer && localeReducer.currentLocale && localeReducer.currentLocale.locale){
-    result = Object.assign({}, result, {locale: localeReducer.currentLocale.locale});
   }
   if(topicReducer && topicReducer.allTopics){
     let allTopicsFiltered = topicReducer.allTopics.find(topicReducer => topicReducer.forumId === ownProps.params.forumId);

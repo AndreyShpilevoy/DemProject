@@ -5,7 +5,7 @@ import delay from 'api/__mocks__/delay';
 import posts from 'api/__fakeData__/posts';
 
 class PostApi {
-    static getTopicsByForumId(topicId) {
+    static getPostsByTopicId(topicId) {
       let result = [
         posts[0],
         posts[1],

@@ -10,7 +10,7 @@ function mockFuncs() {
 jest.mock('redux', () => mockFuncs());
 
 describe('rootReducer', () => {
-  it('should return 10 reducers from default', () => {
-    expect(Object.keys(rootReducer.default).length).toEqual(10);
+  it('should return 11 reducers from default', () => {
+    expect(Object.keys(rootReducer.default).length).toEqual(11);
   });
 });

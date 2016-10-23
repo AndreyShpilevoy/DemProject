@@ -34,9 +34,9 @@ const posts =
     userInfo: {
       id: 2,
       name: "Bykawka",
-      birthday: new Date("1992/10/01 0:0:0"),
+      birthday: null,
       avatar: null,
-      from: "Улан-уды",
+      from: null,
       steam: null,
       skype: null,
       vk: null,
