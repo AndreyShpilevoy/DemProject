@@ -28,6 +28,7 @@ const ua  = [
   {id: 27,   value: 'DeusExMachina', description: 'web site name for title'},
   {id: 28,   value: 'Перегляд форума', description: 'action name for title'},
   {id: 29,   value: 'Перегляд теми', description: 'action name for title'},
+  {id: 30,   value: 'Повідомлення', description: 'action name for title'},
 ];
 
 export default ua;

@@ -28,6 +28,7 @@ const ru  = [
   {id: 27,   value: 'DeusExMachina', description: 'web site name for title'},
   {id: 28,   value: 'Просмотр форума', description: 'action name for title'},
   {id: 29,   value: 'Просмотр темы', description: 'action name for title'},
+  {id: 30,   value: 'Сообщения', description: 'action name for title'},
 ];
 
 export default ru;

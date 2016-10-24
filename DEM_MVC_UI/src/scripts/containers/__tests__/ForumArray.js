@@ -25,8 +25,8 @@ describe('ForumArray', () => {
     expect(setup(0).prop('forumArray')).toEqual([]);
   });
 
-  it('should find "ForumArrayComponent" component', () => {
+  it('should find "ForumArray" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("ForumArrayComponent")).toBeTruthy();
+    expect(divElement.find("ForumArray").node.type.name).toEqual("ForumArray");
   });
 });

@@ -24,6 +24,6 @@ describe('Breadcrumbs', () => {
 
   it('should find "BreadcrumbArray" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("BreadcrumbArray")).toBeTruthy();
+    expect(divElement.find("BreadcrumbArray").node.type.name).toEqual("BreadcrumbArray");
   });
 });

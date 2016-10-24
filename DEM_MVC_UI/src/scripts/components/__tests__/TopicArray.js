@@ -18,7 +18,7 @@ describe('TopicArray', () => {
 
   it('should render ContentHolder',() => {
     const contentHolderElement = setup().find('ContentHolder').first();
-    expect(contentHolderElement).toBeTruthy();
+    expect(contentHolderElement.node.type.name).toEqual("ContentHolder");
   });
 
 

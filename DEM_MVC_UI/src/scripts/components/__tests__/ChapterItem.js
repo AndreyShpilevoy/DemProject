@@ -17,7 +17,7 @@ describe('ChapterItem', () => {
 
   it('should render ContentHolder',() => {
     const contentHolderElement = setup(true).find('ContentHolder').first();
-    expect(contentHolderElement).toBeTruthy();
+    expect(contentHolderElement.node.type.name).toEqual("ContentHolder");
   });
 
   it('props should contain "contentHolderItem" object with "Id" equel to 1',() => {

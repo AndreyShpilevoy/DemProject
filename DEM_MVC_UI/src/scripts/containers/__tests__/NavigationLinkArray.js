@@ -20,8 +20,8 @@ describe('NavigationLinkArray', () => {
     expect(setup(1).prop('navigationLinkArray')).toEqual(sharedFakeStoreData.navigationLinkReducer.navigationLinks);
   });
 
-  it('should find "NavigationLinkArrayComponent" component', () => {
+  it('should find "NavigationLinkArray" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("NavigationLinkArrayComponent")).toBeTruthy();
+    expect(divElement.find("NavigationLinkArray").node.type.name).toEqual("NavigationLinkArray");
   });
 });

@@ -27,7 +27,7 @@ describe('MainConferencePage', () => {
 
   it('should find "ChapterArray" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("ChapterArray")).toBeTruthy();
+    expect(divElement.find("ChapterArray").first()).toBeTruthy();
   });
 
   it('should get "lastActiveTopics" from "lastActiveTopicReducer" and recieve expected result', () => {
@@ -36,7 +36,7 @@ describe('MainConferencePage', () => {
 
   it('should find "LastActiveTopicArray" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("LastActiveTopicArray")).toBeTruthy();
+    expect(divElement.find("LastActiveTopicArray").node.type.name).toEqual("LastActiveTopicArray");
   });
 
 });

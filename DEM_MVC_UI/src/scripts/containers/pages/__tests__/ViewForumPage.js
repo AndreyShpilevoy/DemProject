@@ -34,7 +34,7 @@ describe('ViewForumPage', () => {
 
   it('should find "ChapterItem" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("ChapterItem")).toBeTruthy();
+    expect(divElement.find("ChapterItem").node.type.name).toEqual("ChapterItem");
   });
 
   it('should get "allTopics" from "topicReducer" and recieve expected result', () => {
@@ -49,8 +49,8 @@ describe('ViewForumPage', () => {
     expect(setup(0).prop('topicArray')).toEqual(undefined);
   });
 
-  it('should find "TopicArrayComponent" component', () => {
+  it('should find "TopicArray" component', () => {
     const divElement = setup(0).shallow();
-    expect(divElement.find("TopicArrayComponent")).toBeTruthy();
+    expect(divElement.find("TopicArray").node.type.name).toEqual("TopicArray");
   });
 });

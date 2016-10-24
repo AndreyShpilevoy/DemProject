@@ -17,7 +17,7 @@ describe('LastActiveTopicArray', () => {
 
   it('should render ContentHolder',() => {
     const contentHolderElement = setup().find('ContentHolder').first();
-    expect(contentHolderElement).toBeTruthy();
+    expect(contentHolderElement.node.type.name).toEqual("ContentHolder");
   });
 
   it('props should contain "contentHolderItem" object with "uniquePrefix" equel to "last-topic-array"',() => {

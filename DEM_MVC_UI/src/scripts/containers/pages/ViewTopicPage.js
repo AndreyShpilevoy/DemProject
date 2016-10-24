@@ -4,6 +4,7 @@ import {bindActionCreators} from "redux";
 import * as breadcrumbsActions from "actions/breadcrumbsActions";
 import * as postActions from "actions/postActions";
 import Breadcrumbs from "containers/Breadcrumbs";
+import PostArray from "components/PostArray";
 
 class ViewTopicPage extends React.Component {
   static propTypes = {
@@ -64,8 +65,7 @@ class ViewTopicPage extends React.Component {
     return (
       <div>
         <Breadcrumbs/>
-        View Topic Page {this.props.params.topicId}
-        {this.props.postArray ? `Posts count: ${this.props.postArray.length}` : null}
+        <PostArray postArray={this.props.postArray} topicId={this.props.params.topicId}/>
         <Breadcrumbs/>
       </div>
     );

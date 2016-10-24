@@ -26,8 +26,8 @@ describe('Layout', () => {
     expect(setup(0).prop('locale')).toEqual(undefined);
   });
 
-  it('should find "LayoutComponent" component', () => {
+  it('should find "Layout" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("LayoutComponent")).toBeTruthy();
+    expect(divElement.find("Layout").node.type.name).toEqual("Layout");
   });
 });

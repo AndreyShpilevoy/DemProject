@@ -20,8 +20,8 @@ describe('SocialMediaLinkArray', () => {
     expect(setup(1).prop('socialMediaLinkArray')).toEqual(sharedFakeStoreData.socialMediaLinkReducer.socialMediaLinks);
   });
 
-  it('should find "SocialMediaLinkArrayComponent" component', () => {
+  it('should find "SocialMediaLinkArray" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("SocialMediaLinkArrayComponent")).toBeTruthy();
+    expect(divElement.find("SocialMediaLinkArray").node.type.name).toEqual("SocialMediaLinkArray");
   });
 });

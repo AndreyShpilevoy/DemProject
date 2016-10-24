@@ -23,6 +23,14 @@ export const sharedFakeStoreData = {
       }
     ]
   },
+  postReducer:{
+    allPosts: [
+      {
+        topicId: 1,
+        postArray: [fakeData.posts[2], fakeData.posts[0], fakeData.posts[1]]
+      }
+    ]
+  },
   localeReducer:{
     currentLocale: fakeData.locale
   },
@@ -48,8 +56,11 @@ export function sharedFakeStore(mockConfigId){
     case 1:
       return mockStore(sharedFakeStoreData);
     case 2:
-    //change forumId for topicReducer.allTopics[0]
-      return mockStore(Object.assign({}, sharedFakeStoreData, {topicReducer: {allTopics: [{forumId: 1, topicArray: [fakeData.topics[2], fakeData.topics[0], fakeData.topics[1]]}]}}));
+    //change forumId for topicReducer.allTopics[0] and for topicId for postReducer.allPosts
+      return mockStore(Object.assign({}, sharedFakeStoreData,
+        {topicReducer: {allTopics: [{forumId: 1, topicArray: [fakeData.topics[2], fakeData.topics[0], fakeData.topics[1]]}]}},
+        {postReducer: {allPosts: [{topicId: 2, postArray: [fakeData.posts[2], fakeData.posts[0], fakeData.posts[1]]}]}}
+      ));
     default:
       return mockStore();
     }
