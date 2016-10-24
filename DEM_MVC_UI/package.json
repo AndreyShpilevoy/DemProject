@@ -8,10 +8,9 @@
     "url": "git://github.com/AndreyShpilevoy/DemProject"
   },
   "scripts": {
+    "f": "npm i -g yarn && yarn",
     "lint": "node_modules/.bin/eslint --color webpack.config.* src tools",
-    "install:all": "npm install --only=dev && npm install --only=prod",
-    "ia": "npm run install:all",
-    "start": "npm run test && babel-node tools/srcServer.js",
+    "start": "yarn test && babel-node tools/srcServer.js",
     "clean-wwwroot": "node_modules/.bin/rimraf ../DEM_MVC/wwwroot && mkdirp ../DEM_MVC/wwwroot",
     "prebuild": "npm-run-all clean-wwwroot lint test",
     "build": "babel-node tools/build.js",
@@ -36,6 +35,7 @@
   "devDependencies": {
     "autoprefixer": "6.5.1",
     "babel-cli": "6.16.0",
+    "babel-core": "6.17.0",
     "babel-eslint": "7.0.0",
     "babel-jest": "16.0.0",
     "babel-loader": "6.2.5",
@@ -51,7 +51,7 @@
     "bootstrap-loader": "2.0.0-beta.12",
     "checksum": "0.1.1",
     "colors": "1.1.2",
-    "copy-webpack-plugin": "3.0.1",
+    "copy-webpack-plugin": "4.0.0",
     "css-loader": "0.25.0",
     "cssnano": "3.8.0",
     "enzyme": "2.5.1",
