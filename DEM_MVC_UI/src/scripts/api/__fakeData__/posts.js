@@ -2,7 +2,7 @@ const posts =
 [
   {
     id: 1,
-    postTime: new Date("2015/09/19 13:42:32"),
+    postTime: new Date("2015/01/01 10:10:10"),
     subject: "subject 2",
     message: "Народ, кто может прислать скрины такого плана автомобилей из модов?\n[spoiler][img]http://cs615717.vk.me/v615717358/f843/NoO3LUHNbYE.jpg[/img][/spoiler]\nНу там &quot;Бульдога&quot; и прочих, которых не было в оригинале.\nНадо для настолки.",
     rate: 5,
@@ -18,7 +18,7 @@ const posts =
   },
   {
     id: 2,
-    postTime: new Date("2014/09/19 13:42:32"),
+    postTime: new Date("2015/01/02 10:10:10"),
     subject: "subject 3",
     message: "Вот вам тема для &quot;беседы&quot;:\nЕсли кто пройдёт какой-нибудь рут [b]Clannad[/b] без использования подсказок хотя бы с трёх попыток, не слив его в &quot;Ничего нового не будет, ничто не изменится.&quot; - я сожру свои дырявые ботинки!",
     rate: 2,
@@ -34,7 +34,7 @@ const posts =
   },
   {
     id: 3,
-    postTime: new Date("2011/09/19 13:42:32"),
+    postTime: new Date("2015/01/03 10:10:10"),
     subject: null,
     message: "[b]Golden_Fox[/b], видимо некорректно отработала кнопка \n[code][url][/url][/code]\n\nВ итоге в БД ушло:\n[code]Хотите общаться с лисом - идите к нему в стим или вк:\n[url=http://]http://steamcommunity.com/profiles/76561198013411783/[/url]\n[url=http://]https://vk.com/asx1347[/url]\n\nКто не в курсе, ВК подвезли немножко допиленную версию, можно включить там, внизу страницы: [url]https://new.vk.com/blog[/url][/code]\n\nЭта кнопка, каки все остальные, будут переписаны при переезде на AngularJS или ReactJS.",
     rate: 4,
@@ -56,7 +56,7 @@ const posts =
   },
   {
     id: 4,
-    postTime: new Date("2006/09/19 13:42:32"),
+    postTime: new Date("2015/01/04 10:10:10"),
     subject: "subject 5",
     message: "[h1][right][b]Ну[/b] [i]надо[/i] [u]же[/u], [s]работает[/s][/right][/h1]\n[spoiler][media]https://youtu.be/WHBbt-Qk6mk[/media][/spoiler]",
     rate: 343,
@@ -72,7 +72,7 @@ const posts =
   },
   {
     id: 5,
-    postTime: new Date("2016/09/19 13:42:32"),
+    postTime: new Date("2015/01/05 10:10:10"),
     subject: "subject 1",
     message: "3% из всего задуманного)))\n\nПросто ещё много времени отъедает ремонт.\nСегодня вместо того, что бы пилить сайт 3 часа выбирал плитку в ванную...",
     rate: 0,

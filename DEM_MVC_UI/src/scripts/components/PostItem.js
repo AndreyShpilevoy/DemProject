@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-// import { Link } from 'react-router';
+import { Link } from 'react-router';
 // import TermItem from 'containers/TermItem';
 // import RelativeDateTime from 'containers/RelativeDateTime';
 
@@ -38,10 +38,23 @@ class PostItem extends React.Component {
     };
   }
 
+  getUserAvatar = () => {
+    return this.props.postItem.userInfo.avatar ?
+      <Link className="post-avatar" to={"/"}>
+        <img src={this.props.postItem.userInfo.avatar} />
+      </Link> :
+      <div className="post-avatar"/>;
+  }
+
   render(){
+    let {userInfo} = this.props.postItem;
     return(
-      <div>
-        {this.props.postItem.id}
+      <div className="post-container-wrapper row">
+        <div className="post-avatar-container flex flex-column-vertical-center">
+          {this.getUserAvatar()}
+        </div>
+        <Link className="post-autor-name-style" activeStyle={this.state.userNameStyle} to={"/"}>{userInfo.name}</Link>
+        <div className="post-container-separator col-xs-12"/>
       </div>
     );
   }

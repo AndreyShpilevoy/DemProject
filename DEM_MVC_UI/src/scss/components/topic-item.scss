@@ -26,16 +26,22 @@
 
   .topic-last-post-wrapper{
     .topic-last-post-author-avatar-container{
+      width: $topic-last-post-author-avatar-size;
       .topic-last-post-author-avatar {
-        width: $topic-last-post-author-avatar-size;
         height: $topic-last-post-author-avatar-size;
         justify-content: center;
         display: flex;
         flex-direction: row;
         margin-left: auto;
+        margin-right: auto;
         img {
-          flex: 1;
-          height: 100%;
+          flex: 0 0 auto;
+          max-width: 100%;
+          max-height: 100%;
+          align-self: center;
+          -webkit-align-self: center;
+          margin: auto;
+          object-fit: scale-down;
         }
       }
     }

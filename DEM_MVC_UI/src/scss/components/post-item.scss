@@ -1,0 +1,42 @@
+@import "../Common/sizes.scss";
+@import "../Common/colors.scss";
+
+
+.post-container-wrapper {
+  .post-container-separator {
+      background-color: $forum-sub-forum-topic-container-separator-background-color;
+      height: $forum-topic-container-separator-height;
+      margin: $forum-topic-container-separator-margin-top-bottom $forum-topic-container-separator-margin-left-right;
+  }
+
+  .post-autor-name-style{
+    
+  }
+
+  .post-avatar-container{
+    width: $post-avatar-size;
+    .post-avatar {
+      height: $post-avatar-size;
+      justify-content: center;
+      display: flex;
+      flex-direction: row;
+      margin-left: auto;
+      margin-right: auto;
+      img {
+        flex: 0 0 auto;
+        max-width: 100%;
+        max-height: 100%;
+        align-self: center;
+        -webkit-align-self: center;
+        margin: auto;
+        object-fit: scale-down;
+      }
+    }
+  }
+}
+
+.post-container-wrapper:last-child {
+  .post-container-separator {
+    display: none;
+  }
+}
