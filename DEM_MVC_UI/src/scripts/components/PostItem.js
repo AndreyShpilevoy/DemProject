@@ -14,17 +14,8 @@ class PostItem extends React.Component {
       userInfo: PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
-        birthday: PropTypes.instanceOf(Date),
         avatar: PropTypes.string,
-        from: PropTypes.string,
-        steam: PropTypes.string,
-        skype: PropTypes.string,
-        vk: PropTypes.string,
-        fb: PropTypes.string,
-        webSite: PropTypes.string,
-        uniqueRank: PropTypes.string,
-        commonRank: PropTypes.string.isRequired,
-        postsCount: PropTypes.number.isRequired,
+        rank: PropTypes.string.isRequired,
         groupColor: PropTypes.string.isRequired
       }).isRequired,
       editInfo: PropTypes.shape({
