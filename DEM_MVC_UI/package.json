@@ -9,13 +9,13 @@
   },
   "scripts": {
     "f": "npm i -g yarn && yarn",
-    "lint": "node_modules/.bin/eslint --color webpack.config.* src tools",
-    "start": "yarn test && babel-node tools/srcServer.js",
     "clean-wwwroot": "node_modules/.bin/rimraf ../DEM_MVC/wwwroot && mkdirp ../DEM_MVC/wwwroot",
+    "lint": "node_modules/.bin/eslint --color webpack.config.* src tools",
+    "test": "jest",
     "prebuild": "npm-run-all clean-wwwroot lint test",
     "build": "babel-node tools/build.js",
     "postbuild": "babel-node tools/distServer.js",
-    "test": "jest"
+    "start": "yarn test && babel-node tools/srcServer.js"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
@@ -67,6 +67,7 @@
     "html-webpack-plugin": "2.24.0",
     "jest-cli": "16.0.2",
     "jsdom": "9.8.3",
+    "mkdirp": "0.5.1",
     "node-sass": "3.10.1",
     "npm-run-all": "3.1.1",
     "open": "0.0.5",
