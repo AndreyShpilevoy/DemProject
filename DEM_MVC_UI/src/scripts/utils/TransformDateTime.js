@@ -66,6 +66,9 @@ class TransformDateTime {
 
     return `${dateTime} ${suffixAgo}`;
   }
+  GetLocaleDateTime(date, locale, options){
+    return date.toLocaleTimeString(locale, options);
+  }
 }
 
 export default new TransformDateTime();

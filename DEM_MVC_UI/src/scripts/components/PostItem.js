@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-// import TermItem from 'containers/TermItem';
-// import RelativeDateTime from 'containers/RelativeDateTime';
+import LocaleDateTime from 'containers/LocaleDateTime';
+import TermItem from 'containers/TermItem';
 
 class PostItem extends React.Component {
   static propTypes = {
@@ -46,14 +46,46 @@ class PostItem extends React.Component {
       <div className="post-avatar"/>;
   }
 
+  getEditInfo = () => {
+    let {editInfo} = this.props.postItem;
+    return editInfo ?
+      <div>
+        <TermItem term={{id: -1, value: "Последний раз отредактировано"}} spaceAfter/>
+        <Link to={"/"}>
+          {editInfo.userName}
+        </Link>
+        <LocaleDateTime localeDateTime={new Date()} spaceBefore/>
+      </div> :
+      null;
+  }
+
   render(){
-    let {userInfo} = this.props.postItem;
+    let {userInfo, postTime, subject, message} = this.props.postItem;
     return(
       <div className="post-container-wrapper row">
-        <div className="post-avatar-container flex flex-column-vertical-center">
-          {this.getUserAvatar()}
+        <div className="flex flex-row-vertical-center">
+          <div className="post-avatar-container">
+            {this.getUserAvatar()}
+          </div>
+          <Link className="post-user-name" activeStyle={this.state.userNameStyle} to={"/"}>
+            {userInfo.name}
+          </Link>
+          <div className="post-user-rank">
+            {userInfo.rank}
+          </div>
+          <div className="post-time">
+            <LocaleDateTime localeDateTime={postTime}/>
+          </div>
         </div>
-        <Link className="post-autor-name-style" activeStyle={this.state.userNameStyle} to={"/"}>{userInfo.name}</Link>
+        <div className="post-content-container">
+          <div>
+            {subject}
+          </div>
+          <div>
+            {message}
+          </div>
+          {this.getEditInfo()}
+        </div>
         <div className="post-container-separator col-xs-12"/>
       </div>
     );

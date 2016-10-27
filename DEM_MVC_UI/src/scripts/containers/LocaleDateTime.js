@@ -3,18 +3,31 @@ import {connect} from "react-redux";
 import TransformDateTime from "utils/TransformDateTime";
 import SpanWrapper from "components/SpanWrapper";
 
-class RelativeDateTime extends React.Component {
+class LocaleDateTime extends React.Component {
   static propTypes = {
-      relativeDateTime: PropTypes.instanceOf(Date).isRequired,
+      localeDateTime: PropTypes.instanceOf(Date).isRequired,
       locale: PropTypes.object.isRequired,
       className: PropTypes.string,
       spaceBefore: PropTypes.bool,
       spaceAfter: PropTypes.bool,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      options: {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+      }
+    };
+  }
+
   transform = () => {
-      if(this.props.relativeDateTime && this.props.locale){
-        return TransformDateTime.GetRelative(this.props.relativeDateTime, this.props.locale);
+      if(this.props.localeDateTime && this.props.locale){
+        return TransformDateTime.GetLocaleDateTime(this.props.localeDateTime, this.props.locale, this.state.options);
       } else {
         return null;
       }
@@ -42,4 +55,4 @@ const mapStateToProps = (state) => {
   return result;
 };
 
-export default connect(mapStateToProps)(RelativeDateTime);
+export default connect(mapStateToProps)(LocaleDateTime);

@@ -62,7 +62,10 @@ $social-media-link-marging-left-right: 0.125rem;
 $social-media-link-last-child-marging-right: 0.25rem;
 
 $topic-last-post-author-avatar-size: 2.5rem;
+
 $post-avatar-size: 3rem;
+$post-user-name-rank-padding-left: 0.625rem;
+$post-content-container-padding-left: $post-avatar-size + $post-user-name-rank-padding-left;
 
 $breadcrumb-padding-marging-left-right-bottom: 0;
 $breadcrumb-marging-top: $content-holder-container-and-footer-padding-top;

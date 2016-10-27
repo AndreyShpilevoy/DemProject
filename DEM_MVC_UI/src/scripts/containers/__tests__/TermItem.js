@@ -31,10 +31,10 @@ describe('TermItem', () => {
   });
 
   it('should create TermItem component with props.term equal to "TestTerm"', () => {
-    expect(setup(1).shallow().prop('term')).toEqual("TestTerm");
+    expect(setup(1).shallow().prop('spanContent')).toEqual("TestTerm");
   });
 
   it('should create TermItem component with props.term equal to "null"', () => {
-    expect(setup(0).shallow().prop('term')).toEqual(null);
+    expect(setup(0).shallow().prop('spanContent')).toEqual(null);
   });
 });

@@ -31,10 +31,10 @@ describe('RelativeDateTime', () => {
   });
 
   it('should create RelativeDateTime component with props.term equal to "some time ago"', () => {
-    expect(setup(1).shallow().prop('relativeDateTime')).toEqual("some time ago");
+    expect(setup(1).shallow().prop('spanContent')).toEqual("some time ago");
   });
 
   it('should create RelativeDateTime component with props.term equal to "null"', () => {
-    expect(setup(0).shallow().prop('relativeDateTime')).toEqual(null);
+    expect(setup(0).shallow().prop('spanContent')).toEqual(null);
   });
 });

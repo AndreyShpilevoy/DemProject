@@ -11,6 +11,11 @@
   flex-direction: row;
 }
 
+.flex-row-vertical-center {
+  flex-direction: row;
+  align-items: center;
+}
+
 //lg and bigger screens
 @media (min-width: 992px) {
   .flex-column-vertical-center-lg-up {

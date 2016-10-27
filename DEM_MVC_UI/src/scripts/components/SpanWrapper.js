@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 
-class RelativeDateTime extends React.Component {
+class SpanWrapper extends React.Component {
   static propTypes = {
-      relativeDateTime: PropTypes.string.isRequired,
+      spanContent: PropTypes.string.isRequired,
       className: PropTypes.string,
       spaceBefore: PropTypes.bool,
       spaceAfter: PropTypes.bool,
@@ -12,18 +12,18 @@ class RelativeDateTime extends React.Component {
     super(props);
     this.state = {
       spaceBeforeTerm: this.props.spaceBefore ? " " : "",
-      termClassName: this.props.className ? `relativeDateTime ${this.props.className }`: 'relativeDateTime',
+      termClassName: this.props.className,
       spaceAfterTerm: this.props.spaceAfter ? " " : "",
     };
   }
 
   render(){
-    return this.props.relativeDateTime ?
+    return this.props.spanContent ?
       <span className={this.state.termClassName}>
-        {`${this.state.spaceBeforeTerm}${this.props.relativeDateTime}${this.state.spaceAfterTerm}`}
+        {`${this.state.spaceBeforeTerm}${this.props.spanContent}${this.state.spaceAfterTerm}`}
       </span> :
       null;
   }
 }
 
-export default RelativeDateTime;
+export default SpanWrapper;
