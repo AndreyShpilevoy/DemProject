@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import ToggleClass from "utils/ToggleClass";
+import ToggleClass from "services/domScripts/ToggleClass";
 import ArrowLeft from "components/icons/ArrowLeft";
 
 class ContentHolder extends React.Component {

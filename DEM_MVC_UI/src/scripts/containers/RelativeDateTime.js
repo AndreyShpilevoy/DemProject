@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from "react-redux";
-import TransformDateTime from "utils/TransformDateTime";
+import TransformDateTime from "services/dateTime/TransformDateTime";
 import SpanWrapper from "components/SpanWrapper";
 
 class RelativeDateTime extends React.Component {

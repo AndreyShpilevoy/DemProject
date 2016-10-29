@@ -1,4 +1,4 @@
-import TermTranslation from "utils/TermTranslation";
+import TermTranslation from "services/translations/TermTranslation";
 
 class TransformDateTime {
   constructor(){

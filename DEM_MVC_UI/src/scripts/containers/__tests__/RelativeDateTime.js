@@ -6,7 +6,7 @@ import {shallow} from 'enzyme';
 import RelativeDateTime from "containers/RelativeDateTime";
 import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
-jest.mock("../../utils/TransformDateTime", ()=>({
+jest.mock("../../services/dateTime/TransformDateTime", ()=>({
   GetRelative: ()=>("some time ago")
 }));
 

@@ -15,7 +15,6 @@ class PostItem extends React.Component {
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         avatar: PropTypes.string,
-        rank: PropTypes.string.isRequired,
         groupColor: PropTypes.string.isRequired
       }).isRequired,
       editInfo: PropTypes.shape({
@@ -70,20 +69,15 @@ class PostItem extends React.Component {
           <Link className="post-user-name" activeStyle={this.state.userNameStyle} to={"/"}>
             {userInfo.name}
           </Link>
-          <div className="post-user-rank">
-            {userInfo.rank}
-          </div>
           <div className="post-time">
             <LocaleDateTime localeDateTime={postTime}/>
           </div>
-        </div>
-        <div className="post-content-container">
-          <div>
+          <div className="post-subject">
             {subject}
           </div>
-          <div>
-            {message}
-          </div>
+        </div>
+        <div className="post-message">
+          {message}
           {this.getEditInfo()}
         </div>
         <div className="post-container-separator col-xs-12"/>

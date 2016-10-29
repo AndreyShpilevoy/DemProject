@@ -1,6 +1,6 @@
 /*eslint no-undef: "off"*/
 
-import dateTimeDeclensionRuUa from "translations/dateTimeDeclensions/dateTimeDeclensionRuUa";
+import dateTimeDeclensionRuUa from "services/translations/dateTimeDeclensions/dateTimeDeclensionRuUa";
 
 describe('dateTimeDeclensionRuUa', () => {
 

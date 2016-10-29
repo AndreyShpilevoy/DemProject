@@ -6,7 +6,7 @@ import {shallow} from 'enzyme';
 import TermItem from "containers/TermItem";
 import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
-jest.mock("../../utils/TermTranslation", ()=>({
+jest.mock("../../services/translations/TermTranslation", ()=>({
   getTermTranslation: ()=>("TestTerm")
 }));
 

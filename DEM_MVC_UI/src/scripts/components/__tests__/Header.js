@@ -6,8 +6,8 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import Header from "components/Header";
 
-jest.mock('../../utils/ToggleClass');
-jest.mock('../../utils/ShrinkingHeader');
+jest.mock('../../services/domScripts/ToggleClass');
+jest.mock('../../services/domScripts/ShrinkingHeader');
 
 
 describe('Header', () => {

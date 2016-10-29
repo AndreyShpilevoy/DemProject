@@ -27,8 +27,8 @@
     "collectCoverage": true,
     "coveragePathIgnorePatterns": [
       "<rootDir>/testHelpers/",
-      "<rootDir>/src/scripts/utils/ShrinkingHeader.js",
-      "<rootDir>/src/scripts/utils/ToggleClass.js",
+      "<rootDir>/src/scripts/services/domScripts/ShrinkingHeader.js",
+      "<rootDir>/src/scripts/services/domScripts/ToggleClass.js",
       "<rootDir>/node_modules/"
     ]
   },
@@ -38,7 +38,7 @@
     "babel-core": "6.18.0",
     "babel-eslint": "7.1.0",
     "babel-jest": "16.0.0",
-    "babel-loader": "6.2.6",
+    "babel-loader": "6.2.7",
     "babel-plugin-lodash": "3.2.9",
     "babel-plugin-module-resolver": "2.2.0",
     "babel-plugin-transform-class-properties": "6.18.0",
@@ -55,7 +55,7 @@
     "css-loader": "0.25.0",
     "cssnano": "3.8.0",
     "enzyme": "2.5.1",
-    "eslint": "3.8.1",
+    "eslint": "3.9.0",
     "eslint-config-airbnb-base": "9.0.0",
     "eslint-import-resolver-babel-module": "2.0.1",
     "eslint-loader": "1.6.0",
@@ -71,7 +71,7 @@
     "node-sass": "3.10.1",
     "npm-run-all": "3.1.1",
     "open": "0.0.5",
-    "postcss-loader": "1.0.0",
+    "postcss-loader": "1.1.0",
     "react-addons-test-utils": "15.3.2",
     "react-hot-loader": "3.0.0-beta.6",
     "redux-immutable-state-invariant": "1.2.4",
@@ -83,7 +83,7 @@
     "url-loader": "0.5.7",
     "webpack": "2.1.0-beta.22",
     "webpack-dev-middleware": "1.8.4",
-    "webpack-hot-middleware": "2.13.0"
+    "webpack-hot-middleware": "2.13.1"
   },
   "dependencies": {
     "babel-polyfill": "6.16.0",

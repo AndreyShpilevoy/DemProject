@@ -22,7 +22,6 @@ class ViewTopicPage extends React.Component {
           id: PropTypes.number.isRequired,
           name: PropTypes.string.isRequired,
           avatar: PropTypes.string,
-          rank: PropTypes.string.isRequired,
           groupColor: PropTypes.string.isRequired
         }).isRequired,
         editInfo: PropTypes.shape({

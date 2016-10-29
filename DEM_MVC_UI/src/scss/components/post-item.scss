@@ -9,13 +9,16 @@
       margin: $forum-topic-container-separator-margin-top-bottom $forum-topic-container-separator-margin-left-right;
   }
 
-  .post-user-name,
-  .post-user-rank,
-  .post-time{
+  .post-user-name{
     padding-left: $post-user-name-rank-padding-left;
   }
 
-  .post-content-container{
+  .post-time,
+  .post-subject{
+    padding-left: $post-user-name-rank-padding-left*2;
+  }
+
+  .post-message{
     padding-left: $post-content-container-padding-left;
   }
 

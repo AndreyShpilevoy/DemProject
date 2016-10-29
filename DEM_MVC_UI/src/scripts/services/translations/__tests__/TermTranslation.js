@@ -1,6 +1,6 @@
 /*eslint no-undef: "off"*/
 
-import TermTranslation from "utils/TermTranslation";
+import TermTranslation from "services/translations/TermTranslation";
 
 describe('TermTranslation', () => {
 
