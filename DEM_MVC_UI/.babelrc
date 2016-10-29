@@ -11,6 +11,7 @@
       "alias": {
         "pages": "./src/scripts/containers/pages",
         "icons": "./src/scripts/components/icons",
+        "bbCodes": "./src/scripts/components/bbCodes",
         "testHelpers": "./testHelpers",
         "scss": "./src/scss"
       }
