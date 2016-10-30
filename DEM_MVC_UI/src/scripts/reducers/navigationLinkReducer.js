@@ -1,4 +1,4 @@
-import * as types from "actions/actionTypes";
+import * as types from "enums/actionTypes";
 
 export default function navigationLinkReducer(state = [], action) {
     switch (action.type) {

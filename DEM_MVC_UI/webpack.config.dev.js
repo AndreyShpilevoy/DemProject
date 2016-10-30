@@ -17,7 +17,7 @@ const bootstrapDevEntryPoint = 'bootstrap-loader/lib/bootstrap.loader?' +
 
 export default {
   debug: true,
-  devtool: "cheap-module-eval-source-map",
+  devtool: "cheap-eval-source-map",
   noInfo: false,
   entry: [
     "babel-polyfill",

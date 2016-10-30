@@ -1,4 +1,4 @@
-import * as types from "actions/actionTypes";
+import * as types from "enums/actionTypes";
 
 export default function forumReducer(state = [], action) {
     switch (action.type) {

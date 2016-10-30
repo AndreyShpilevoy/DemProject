@@ -1,4 +1,4 @@
-import * as types from "actions/actionTypes";
+import * as types from "enums/actionTypes";
 
 function getLastActiveTopics(){
   return {type: types.GET_LAST_ACTIVE_TOPICS};

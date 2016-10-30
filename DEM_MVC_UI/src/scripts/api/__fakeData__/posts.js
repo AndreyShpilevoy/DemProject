@@ -4,7 +4,7 @@ const posts =
     id: 1,
     postTime: new Date("2015/01/01 10:10:10"),
     subject: "subject 2",
-    message: "Народ, кто может прислать скрины такого плана автомобилей из модов?\n[spoiler][img]http://cs615717.vk.me/v615717358/f843/NoO3LUHNbYE.jpg[/img][/spoiler]\nНу там &quot;Бульдога&quot; и прочих, которых не было в оригинале.\nНадо для настолки.",
+    message: "Народ, кто может прислать скрины такого плана автомобилей из модов?\r\n[spoiler][img]http://cs615717.vk.me/v615717358/f843/NoO3LUHNbYE.jpg[/img][/spoiler]\r\nНу там &quot;Бульдога&quot; и прочих, которых не было в оригинале.\r\nНадо для настолки.",
     rate: 5,
     userInfo: {
       id: 1,
@@ -19,7 +19,7 @@ const posts =
     id: 2,
     postTime: new Date("2015/01/02 10:10:10"),
     subject: "subject 3",
-    message: "Вот вам тема для &quot;беседы&quot;:\nЕсли кто пройдёт какой-нибудь рут [b]Clannad[/b] без использования подсказок хотя бы с трёх попыток, не слив его в &quot;Ничего нового не будет, ничто не изменится.&quot; - я сожру свои дырявые ботинки!",
+    message: "Вот вам тема для &quot;беседы&quot;:\r\nЕсли кто пройдёт какой-нибудь рут [b]Clannad[/b] без использования подсказок хотя бы с трёх попыток, не слив его в &quot;Ничего нового не будет, ничто не изменится.&quot; - я сожру свои дырявые ботинки!",
     rate: 2,
     userInfo: {
       id: 2,
@@ -34,7 +34,7 @@ const posts =
     id: 3,
     postTime: new Date("2015/01/03 10:10:10"),
     subject: null,
-    message: "[b]Golden_Fox[/b], видимо некорректно отработала кнопка \n[code][url][/url][/code]\n\nВ итоге в БД ушло:\n[code]Хотите общаться с лисом - идите к нему в стим или вк:\n[url=http://]http://steamcommunity.com/profiles/76561198013411783/[/url]\n[url=http://]https://vk.com/asx1347[/url]\n\nКто не в курсе, ВК подвезли немножко допиленную версию, можно включить там, внизу страницы: [url]https://new.vk.com/blog[/url][/code]\n\nЭта кнопка, каки все остальные, будут переписаны при переезде на AngularJS или ReactJS.",
+    message: "[b]Golden_Fox[/b], видимо некорректно отработала кнопка \r\n[code][url][/url][/code]\r\n\r\nВ итоге в БД ушло:\r\n[code]Хотите общаться с лисом - идите к нему в стим или вк:\r\n[url=http://]http://steamcommunity.com/profiles/76561198013411783/[/url]\r\n[url=http://]https://vk.com/asx1347[/url]\r\n\r\nКто не в курсе, ВК подвезли немножко допиленную версию, можно включить там, внизу страницы: [url]https://new.vk.com/blog[/url][/code]\r\n\r\nЭта кнопка, каки все остальные, будут переписаны при переезде на AngularJS или ReactJS.",
     rate: 4,
     userInfo: {
       id: 3,
@@ -55,7 +55,7 @@ const posts =
     id: 4,
     postTime: new Date("2015/01/04 10:10:10"),
     subject: "subject 5",
-    message: "[h1][right][b]Ну[/b] [i]надо[/i] [u]же[/u], [s]работает[/s][/right][/h1]\n[spoiler][media]https://youtu.be/WHBbt-Qk6mk[/media][/spoiler]",
+    message: "[h1][right][b]Ну[/b] [i]надо[/i] [u]же[/u], [s]работает[/s][/right][/h1]\r\n[spoiler][media]https://youtu.be/WHBbt-Qk6mk[/media][/spoiler]",
     rate: 343,
     userInfo: {
       id: 4,
@@ -70,7 +70,7 @@ const posts =
     id: 5,
     postTime: new Date("2015/01/05 10:10:10"),
     subject: "subject 1",
-    message: "3% из всего задуманного)))\n\nПросто ещё много времени отъедает ремонт.\nСегодня вместо того, что бы пилить сайт 3 часа выбирал плитку в ванную...",
+    message: "t[h1]est [b=color]bold[/b] [h1]tata[/h1]\r\nta [b]blah[/b] [/h1] [code]function(){}[/code] tar [quote]blah blah [quote]blah  blah [i]ta[i]r[/i]am[/i] param[/quote] [i]ta[i]r[/i]am[/i] param[/quote]",
     rate: 0,
     userInfo: {
       id: 5,
@@ -85,7 +85,7 @@ const posts =
       editReason: "gust for lulz",
       editCount: 1
     },
-    signature: "__________!///_ _____\n_________( @@ )_____\n_______ooO-(_)-o o____\nПришёл, увидел, забанил. Ещё вопросы?"
+    signature: "__________!///_ _____\r\n_________( @@ )_____\r\n_______ooO-(_)-o o____\r\nПришёл, увидел, забанил. Ещё вопросы?"
   },
 ];
 

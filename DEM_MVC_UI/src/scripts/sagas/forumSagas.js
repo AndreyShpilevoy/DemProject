@@ -1,7 +1,7 @@
 import { call, put, take, fork } from "redux-saga/effects";
 import ForumApi from "api/__mocks__/ForumApi";
 import * as forumActions from "actions/forumActions";
-import * as types from "actions/actionTypes";
+import * as types from "enums/actionTypes";
 
 export function* getForumsByChapterId() {
   while(true){

@@ -1,6 +1,6 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "actions/actionTypes";
+import * as types from "enums/actionTypes";
 import * as forumActions from "actions/forumActions";
 import forums from "api/__fakeData__/forums";
 

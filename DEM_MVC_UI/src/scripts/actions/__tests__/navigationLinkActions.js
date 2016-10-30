@@ -1,6 +1,6 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "actions/actionTypes";
+import * as types from "enums/actionTypes";
 import * as navigationLinkActions from "actions/navigationLinkActions";
 import navigationLinks from "api/__fakeData__/navigationLinks";
 

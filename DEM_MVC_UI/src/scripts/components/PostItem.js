@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
 import LocaleDateTime from 'containers/LocaleDateTime';
 import TermItem from 'containers/TermItem';
+import BbCodeParser from 'services/bbCodes/BbCodeParser';
 
 class PostItem extends React.Component {
   static propTypes = {
@@ -77,7 +78,7 @@ class PostItem extends React.Component {
           </div>
         </div>
         <div className="post-message">
-          {message}
+          {BbCodeParser.getParsedTree(message)}
           {this.getEditInfo()}
         </div>
         <div className="post-container-separator col-xs-12"/>

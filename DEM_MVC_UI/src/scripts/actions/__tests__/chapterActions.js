@@ -1,6 +1,6 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "actions/actionTypes";
+import * as types from "enums/actionTypes";
 import * as chapterActions from "actions/chapterActions";
 import chapters from "api/__fakeData__/chapters";
 

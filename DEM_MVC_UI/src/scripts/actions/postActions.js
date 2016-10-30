@@ -1,4 +1,4 @@
-import * as types from "actions/actionTypes";
+import * as types from "enums/actionTypes";
 
 function getPostsByTopicId(topicId){
   return {type: types.GET_POSTS_BY_TOPIC_ID, topicId};

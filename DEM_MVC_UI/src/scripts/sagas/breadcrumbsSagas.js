@@ -3,7 +3,7 @@
 import { call, put, take, fork } from "redux-saga/effects";
 import BreadcrumbsApi from "api/__mocks__/BreadcrumbsApi";
 import * as breadcrumbsActions from "actions/breadcrumbsActions";
-import * as types from "actions/actionTypes";
+import * as types from "enums/actionTypes";
 
 export function* getForumBreadcrumbs() {
   while(true){

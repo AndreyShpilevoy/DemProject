@@ -1,6 +1,6 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "actions/actionTypes";
+import * as types from "enums/actionTypes";
 import postReducer from "reducers/postReducer";
 import * as fakeData from "api/__fakeData__/index";
 

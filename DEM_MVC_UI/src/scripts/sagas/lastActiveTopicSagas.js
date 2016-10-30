@@ -3,7 +3,7 @@
 import { call, put, take } from "redux-saga/effects";
 import LastActiveTopicApi from "api/__mocks__/LastActiveTopicApi";
 import * as lastActiveTopicActions from "actions/lastActiveTopicActions";
-import * as types from "actions/actionTypes";
+import * as types from "enums/actionTypes";
 
 export function* getLastActiveTopics() {
   while(true){

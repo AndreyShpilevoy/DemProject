@@ -1,6 +1,6 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "actions/actionTypes";
+import * as types from "enums/actionTypes";
 import navigationLinkReducer from "reducers/navigationLinkReducer";
 import * as fakeData from "api/__fakeData__/index";
 
