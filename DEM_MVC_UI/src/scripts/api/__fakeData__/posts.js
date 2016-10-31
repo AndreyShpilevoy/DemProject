@@ -55,7 +55,7 @@ const posts =
     id: 4,
     postTime: new Date("2015/01/04 10:10:10"),
     subject: "subject 5",
-    message: "[h1][right][b]Ну[/b] [i]надо[/i] [u]же[/u], [s]работает[/s][/right][/h1]\r\n[spoiler][media]https://youtu.be/WHBbt-Qk6mk[/media][/spoiler]",
+    message: "[u][right][b]Ну[/b] [i]надо[/i] [u]же[/u], [s]работает[/s][/right][/u]\r\n[spoiler][media]https://youtu.be/WHBbt-Qk6mk[/media][/spoiler]",
     rate: 343,
     userInfo: {
       id: 4,
@@ -70,7 +70,7 @@ const posts =
     id: 5,
     postTime: new Date("2015/01/05 10:10:10"),
     subject: "subject 1",
-    message: "t[h1]est [b=color]bold[/b] [h1]tata[/h1]\r\nta [b]blah[/b] [/h1][code]function(){}[/code] tar [quote]blah blah [quote]blah  blah [i]ta[i]r[/i]am[/i] param[/quote] [i]ta[i]r[/i]am[/i] param[/quote]",
+    message: "text before tag 01 [u]text in tag 11 [b]text in tag 21[/b] [u]text in tag 22[/u]\r\ntext beetwin tags 12 [b]text in tag 23[/b] [/u][code]ssgfsfdgdfg[/code] tar [quote]blah blah [quote]blah  blah [i]ta[u]r[/u]am[/i] param[/quote] [b]ta[i]r[/i]am[/b] param[/quote]",
     rate: 0,
     userInfo: {
       id: 5,

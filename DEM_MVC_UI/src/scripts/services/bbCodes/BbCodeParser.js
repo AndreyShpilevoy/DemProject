@@ -3,7 +3,7 @@ import * as bbCodeTypes from "enums/bbCodeTypes";
 class BbCodeParser{
   getParsedTree = (text) => {
     let allTags = this.getAllTags(text);
-    this.buildTree(allTags);
+    return this.buildTree(allTags);
   }
 
   getAllTags = (text) => {
@@ -17,30 +17,40 @@ class BbCodeParser{
         break;
       }
 
-      let matchResult = {
+      let matchedResult = {
         type: match[1] ? bbCodeTypes.NEW_LINE : match[2] ? bbCodeTypes.OPEN_TAG : bbCodeTypes.CLOSE_TAG,
         match: match[0],
         tag: match[2] ? match[2] : match[4],
         options: match[3],
         firstIndex: match.index,
-        lastIndex: regex.lastIndex,
+        lastIndex: regex.lastIndex
       };
 
-      result.push(matchResult);
+      if(result.length > 0 && result[result.length-1].lastIndex !== matchedResult.firstIndex ){
+        let calculatedTextPart = {
+          type: bbCodeTypes.TEXT,
+          match: text.substring(result[result.length-1].lastIndex, matchedResult.firstIndex),
+          firstIndex: result[result.length-1].lastIndex,
+          lastIndex: matchedResult.firstIndex
+        };
+        result.push(calculatedTextPart);
+      }
+
+      result.push(matchedResult);
     }
     return result;
   }
 
   buildTree = (tagsArray) => {
-    let nodeTree = [];
+    let rootNode = {};
     for(let index = 0; index < tagsArray.length;){
       let resultObject = this.getNode(tagsArray[index], index+1, tagsArray);
       index = resultObject.index;
       if(resultObject.node) {
-        nodeTree.push(resultObject.node);
+        rootNode = resultObject.node;
       }
     }
-    debugger;
+    return rootNode;
   }
 
   getNode = (tagItem, index, tagsArray) => {
@@ -65,13 +75,29 @@ class BbCodeParser{
           i = childNodeResultObject.index;
         }
       }
+      else if(tagsArray[i].type === bbCodeTypes.TEXT){
+        let textNode = {
+          firstIndex: tagsArray[i].firstIndex,
+          lastIndex: tagsArray[i].lastIndex,
+          content: tagsArray[i].match
+        };
+        if(tagsArray[i+1].type === bbCodeTypes.NEW_LINE){
+          textNode.type = "textLine";
+        }
+        else {
+          textNode.type = "textPart";
+        }
+        node.children.push(textNode);
+        i++;
+      }
       else{
         i++;
       }
     }
     if(node.lastIndex) {
       return {node, index:i};
-    } else {
+    }
+    else {
       return {node:null, index: index+1};
     }
   }

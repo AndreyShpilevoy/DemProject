@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import * as Icons from "components/icons/_index";
+import Icons from "components/icons/_index";
 
 class SocialMediaLinkItem extends React.Component {
   static propTypes = {
@@ -14,8 +14,7 @@ class SocialMediaLinkItem extends React.Component {
 
   render(){
     let {svgName, href, title, id} = this.props.sociaMediaLinkItem;
-    let IconComponentArray = Icons;
-    let Icon = IconComponentArray[svgName];
+    let Icon = Icons[svgName];
     return Icon ?
       <div className="social-media-link">
         <a href={href} title={title} target="_blank">

@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import LocaleDateTime from 'containers/LocaleDateTime';
 import TermItem from 'containers/TermItem';
 import BbCodeParser from 'services/bbCodes/BbCodeParser';
+import a from 'bbCodes/_index'
 
 class PostItem extends React.Component {
   static propTypes = {
@@ -60,6 +61,8 @@ class PostItem extends React.Component {
   }
 
   render(){
+    let o = a;
+    debugger;
     let {userInfo, postTime, subject, message} = this.props.postItem;
     return(
       <div className="post-container-wrapper row">
@@ -78,7 +81,7 @@ class PostItem extends React.Component {
           </div>
         </div>
         <div className="post-message">
-          {BbCodeParser.getParsedTree(message)}
+          {BbCodeParser.getParsedTree(`[root]${message}[/root]`)}
           {this.getEditInfo()}
         </div>
         <div className="post-container-separator col-xs-12"/>

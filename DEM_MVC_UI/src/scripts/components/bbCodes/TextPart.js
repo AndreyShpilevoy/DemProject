@@ -1,15 +1,15 @@
 import React from 'react';
 
-class Fragment extends React.Component {
+class TextPart extends React.Component {
   static propTypes = {
     children: React.PropTypes.node,
   };
 
   render() {
-    return <span className="bbCode-fragment">
+    return <span className="bbCode-text-part">
       {this.props.children}
     </span>;
   }
 }
 
-export default Fragment;
+export default TextPart;
