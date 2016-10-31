@@ -70,7 +70,7 @@ const posts =
     id: 5,
     postTime: new Date("2015/01/05 10:10:10"),
     subject: "subject 1",
-    message: "t[h1]est [b=color]bold[/b] [h1]tata[/h1]\r\nta [b]blah[/b] [/h1] [code]function(){}[/code] tar [quote]blah blah [quote]blah  blah [i]ta[i]r[/i]am[/i] param[/quote] [i]ta[i]r[/i]am[/i] param[/quote]",
+    message: "t[h1]est [b=color]bold[/b] [h1]tata[/h1]\r\nta [b]blah[/b] [/h1][code]function(){}[/code] tar [quote]blah blah [quote]blah  blah [i]ta[i]r[/i]am[/i] param[/quote] [i]ta[i]r[/i]am[/i] param[/quote]",
     rate: 0,
     userInfo: {
       id: 5,

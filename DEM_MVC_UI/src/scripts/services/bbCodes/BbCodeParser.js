@@ -40,20 +40,21 @@ class BbCodeParser{
         nodeTree.push(resultObject.node);
       }
     }
+    debugger;
   }
 
-  getNode = (tag, index, tagsArray) => {
+  getNode = (tagItem, index, tagsArray) => {
     let node = {
-      openTag: tag,
-      closeTag: null,
+      tag: tagItem.tag,
+      firstIndex: tagItem.firstIndex,
+      lastIndex: null,
       children: []
     };
 
     let i = index;
     for(; i < tagsArray.length;){
-      if(tagsArray[i].type === bbCodeTypes.CLOSE_TAG &&
-        tagsArray[i].tag === tag.tag){
-        node.closeTag = tagsArray[i];
+      if(tagsArray[i].type === bbCodeTypes.CLOSE_TAG && tagsArray[i].tag === tagItem.tag){
+        node.lastIndex = tagsArray[i].lastIndex;
         i++;
         break;
       }
@@ -68,7 +69,7 @@ class BbCodeParser{
         i++;
       }
     }
-    if(node.closeTag) {
+    if(node.lastIndex) {
       return {node, index:i};
     } else {
       return {node:null, index: index+1};
