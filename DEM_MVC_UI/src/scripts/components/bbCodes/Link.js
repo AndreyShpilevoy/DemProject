@@ -1,16 +1,26 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class Link extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node,
-    url: React.PropTypes.string,
+    children: PropTypes.node,
+    attributes: PropTypes.shape({
+      url: PropTypes.string,
+      className: PropTypes.string,
+      style: PropTypes.object,
+    })
   };
 
   render() {
-    const { children, url } = this.props;
-    return <a className="bbCode-link" href={url}>
-      {children}
-    </a>;
+    const { children } = this.props;
+    const { url, className, style } = this.props.attributes;
+    return (
+      <a
+        className = {className ? `bbCode-link ${className}` : "bbCode-link"}
+        style = {style ? style : null}
+        href={url}>
+        {children}
+      </a>
+    );
   }
 }
 

@@ -2,8 +2,17 @@ import * as bbCodeTypes from "enums/bbCodeTypes";
 
 class BbCodeParser{
   getParsedTree = (text) => {
+    text = this.wrappToRootNodeIfNecessary(text);
     let allTags = this.getAllTags(text);
     return this.buildTree(allTags);
+  }
+
+  wrappToRootNodeIfNecessary = (text) => {
+    let result = text;
+    if(result.substring(0, 6)!=="[root]"){
+      result = `[root]${text}[/root]`;
+    }
+    return result;
   }
 
   getAllTags = (text) => {
@@ -55,9 +64,10 @@ class BbCodeParser{
 
   getNode = (tagItem, index, tagsArray) => {
     let node = {
-      tag: tagItem.tag,
+      type: tagItem.tag,
       firstIndex: tagItem.firstIndex,
       lastIndex: null,
+      content: null,
       children: []
     };
 
@@ -79,7 +89,8 @@ class BbCodeParser{
         let textNode = {
           firstIndex: tagsArray[i].firstIndex,
           lastIndex: tagsArray[i].lastIndex,
-          content: tagsArray[i].match
+          content: tagsArray[i].match,
+          children: []
         };
         if(tagsArray[i+1].type === bbCodeTypes.NEW_LINE){
           textNode.type = "textLine";

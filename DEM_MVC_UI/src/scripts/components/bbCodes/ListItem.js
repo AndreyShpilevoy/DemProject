@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class ListItem extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node,
+    children: PropTypes.node,
+    attributes: PropTypes.shape({
+      className: PropTypes.string,
+      style: PropTypes.object,
+    })
   }
   render() {
     const { children } = this.props;
-    return <li className="bbCode-list-item">
-      {children}
-    </li>;
+    const { className, style } = this.props.attributes;
+    return (
+      <li 
+        className = {className ? `bbCode-list-item ${className}` : "bbCode-list-item"}
+        style = {style ? style : null}>
+        {children}
+      </li>
+    );
   }
 }
 

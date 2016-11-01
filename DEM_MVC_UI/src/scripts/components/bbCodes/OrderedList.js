@@ -1,14 +1,24 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class OrderedList extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node,
+    children: PropTypes.node,
+    attributes: PropTypes.shape({
+      className: PropTypes.string,
+      style: PropTypes.object,
+    })
   }
+
   render() {
     const { children } = this.props;
-    return <ol className="bbCode-unordered-list">
-      {children}
-    </ol>;
+    const { className, style } = this.props.attributes;
+    return (
+      <ol
+        className = {className ? `bbCode-ordered-list ${className}` : "bbCode-ordered-list"}
+        style = {style ? style : null}>
+        {children}
+      </ol>
+    );
   }
 }
 

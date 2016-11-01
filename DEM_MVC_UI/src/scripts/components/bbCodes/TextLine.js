@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class TextLine extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node,
-  };
-
+    children: PropTypes.node,
+    attributes: PropTypes.shape({
+      className: PropTypes.string,
+      style: PropTypes.object,
+    })
+  }
   render() {
-    return <div className="bbCode-text-line">
-      {this.props.children}
-    </div>;
+    const { children } = this.props;
+    const { className, style } = this.props.attributes;
+    return (
+      <span
+        className = {className ? `bbCode-text-line ${className}` : "bbCode-text-line"}
+        style = {style ? style : null}>
+        {children}
+      </span>
+    );
   }
 }
 

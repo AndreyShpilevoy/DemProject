@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class Code extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node,
+    children: PropTypes.node,
+    attributes: PropTypes.shape({
+      className: PropTypes.string,
+      style: PropTypes.object,
+    })
   }
   render() {
     const { children } = this.props;
-    return <pre className="bbCode-code">
-      {children}
-    </pre>;
+    const { className, style } = this.props.attributes;
+    return (
+      <pre
+        className = {className ? `bbCode-code ${className}` : "bbCode-code"}
+        style = {style ? style : null}>
+        {children}
+      </pre>
+    );
   }
 }
 

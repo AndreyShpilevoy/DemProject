@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class LineThrough extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node,
+    children: PropTypes.node,
+    attributes: PropTypes.shape({
+      className: PropTypes.string,
+      style: PropTypes.object,
+    })
   }
   render() {
     const { children } = this.props;
-    return <span className="bbCode-line-through" style={{ textDecoration: 'line-through' }}>
-      {children}
-    </span>;
+    const { className, style } = this.props.attributes;
+    return (
+      <span
+        className={className ? `bbCode-line-through ${className}` : "bbCode-line-through"}
+        style={style ? Object.assign({}, style, { textDecoration: 'line-through' }) : { textDecoration: 'line-through' }}>
+        {children}
+      </span>
+    );
   }
 }
 

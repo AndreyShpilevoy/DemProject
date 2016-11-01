@@ -1,14 +1,22 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class Image extends React.Component {
   static propTypes = {
-    label: React.PropTypes.string,
-    url: React.PropTypes.string,
+    attributes: PropTypes.shape({
+      className: PropTypes.string,
+      style: PropTypes.object,
+      label: PropTypes.string,
+      url: PropTypes.string,
+    })
   };
 
   render() {
-    const { label, url } = this.props;
-    return <img alt={label} className="bbCode-image" src={url} />;
+    const { label, url, className, style } = this.props.attributes;
+    return <img
+      alt={label}
+      className={className ? `bbCode-image ${className}` : "bbCode-image"}
+      style={style ? style : null}
+      src={url} />;
   }
 }
 

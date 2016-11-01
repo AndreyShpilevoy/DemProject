@@ -1,14 +1,24 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class Root extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node,
-  };
-
+    children: PropTypes.node,
+    attributes: PropTypes.shape({
+      className: PropTypes.string,
+      style: PropTypes.object,
+    })
+  }
   render() {
-    return <span className="bbCode-root">
-      {this.props.children}
-    </span>;
+    const { children } = this.props;
+    const { className, style } = this.props.attributes;
+
+    return (
+      <span
+        className = {className ? `bbCode-root ${className}` : "bbCode-root"}
+        style = {style ? style : null}>
+        {children}
+      </span>
+    );
   }
 }
 

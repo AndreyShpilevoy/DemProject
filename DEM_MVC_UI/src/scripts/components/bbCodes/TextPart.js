@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class TextPart extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node,
-  };
-
+    children: PropTypes.node,
+    attributes: PropTypes.shape({
+      className: PropTypes.string,
+      style: PropTypes.object,
+    })
+  }
   render() {
-    return <span className="bbCode-text-part">
-      {this.props.children}
-    </span>;
+    const { children } = this.props;
+    const { className, style } = this.props.attributes;
+    return (
+      <span
+        className = {className ? `bbCode-text-part ${className}` : "bbCode-text-part"}
+        style = {style ? style : null}>
+        {children}
+      </span>
+    );
   }
 }
 

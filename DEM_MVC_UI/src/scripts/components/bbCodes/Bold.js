@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class Bold extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node,
+    children: PropTypes.node,
+    attributes: PropTypes.shape({
+      className: PropTypes.string,
+      style: PropTypes.object,
+    })
   }
   render() {
     const { children } = this.props;
-    return <span className="bbCode-bold" style={{ fontWeight: 'bold' }}>
-      {children}
-    </span>;
+    const { className, style } = this.props.attributes;
+    return (
+      <span
+        className={className ? `bbCode-bold ${className}` : "bbCode-bold"}
+        style={style ? Object.assign({}, style, { fontWeight: 'bold' }) : { fontWeight: 'bold' }}>
+        {children}
+      </span>
+    );
   }
 }
 
