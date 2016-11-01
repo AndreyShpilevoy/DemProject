@@ -1,4 +1,5 @@
 import * as bbCodeTypes from "enums/bbCodeTypes";
+import BbCodesMap from 'services/bbCodes/BbCodesMap';
 
 class BbCodeParser{
   getParsedTree = (text) => {
@@ -19,6 +20,7 @@ class BbCodeParser{
     let result = [];
     let regex = /([\r\n])|(?:\[([a-z0-9\*]{1,16})(?:=(?:"|'|)([^\x00-\x1F"'\(\)<>\[\]]{1,256}))?(?:"|'|)\])|(?:\[\/([a-z0-9\*]{1,16})\])/gi;
     let textParsed = false;
+    let codeIndex = 0;
     while (!textParsed) {
       let match = regex.exec(text);
       if(!match){
@@ -35,17 +37,33 @@ class BbCodeParser{
         lastIndex: regex.lastIndex
       };
 
-      if(result.length > 0 && result[result.length-1].lastIndex !== matchedResult.firstIndex ){
-        let calculatedTextPart = {
-          type: bbCodeTypes.TEXT,
-          match: text.substring(result[result.length-1].lastIndex, matchedResult.firstIndex),
-          firstIndex: result[result.length-1].lastIndex,
-          lastIndex: matchedResult.firstIndex
-        };
-        result.push(calculatedTextPart);
+      //if tag is not exist in avaliable maps - skip step
+      if((matchedResult.type !== bbCodeTypes.NEW_LINE && !BbCodesMap.getMaps[matchedResult.tag.toLowerCase()])){
+        continue;
       }
 
-      result.push(matchedResult);
+      //if open tag 'code' - codeIndex++
+      if(matchedResult.type === bbCodeTypes.OPEN_TAG && matchedResult.tag.toLowerCase() == 'code'){
+        codeIndex++;
+      //if close tag 'code' - codeIndex--
+      } else if (matchedResult.type === bbCodeTypes.CLOSE_TAG && matchedResult.tag.toLowerCase() == 'code'){
+        codeIndex--;
+      }
+
+      //if codeIndex != null or tag != 'code' - dont add any items to array
+      if(codeIndex == 0 || matchedResult.tag &&  matchedResult.tag.toLowerCase() == 'code'){
+        //get text beetwin two tags
+        if(result.length > 0 && result[result.length-1].lastIndex !== matchedResult.firstIndex ){
+          let calculatedTextPart = {
+            type: bbCodeTypes.TEXT,
+            match: text.substring(result[result.length-1].lastIndex, matchedResult.firstIndex),
+            firstIndex: result[result.length-1].lastIndex,
+            lastIndex: matchedResult.firstIndex
+          };
+          result.push(calculatedTextPart);
+        }
+        result.push(matchedResult);
+      }
     }
     return result;
   }
@@ -65,6 +83,7 @@ class BbCodeParser{
   getNode = (tagItem, index, tagsArray) => {
     let node = {
       type: tagItem.tag,
+      options: tagItem.options,
       firstIndex: tagItem.firstIndex,
       lastIndex: null,
       content: null,
@@ -73,11 +92,13 @@ class BbCodeParser{
 
     let i = index;
     for(; i < tagsArray.length;){
+      //if we found closed tag for current tagItem
       if(tagsArray[i].type === bbCodeTypes.CLOSE_TAG && tagsArray[i].tag === tagItem.tag){
         node.lastIndex = tagsArray[i].lastIndex;
         i++;
         break;
       }
+      //if we found another opened tag
       else if(tagsArray[i].type === bbCodeTypes.OPEN_TAG){
         let childNodeResultObject = this.getNode(tagsArray[i], i+1,tagsArray);
         if(childNodeResultObject){
@@ -85,18 +106,20 @@ class BbCodeParser{
           i = childNodeResultObject.index;
         }
       }
+      //if we found text that should be contained in current tag
       else if(tagsArray[i].type === bbCodeTypes.TEXT){
         let textNode = {
+          options: null,
           firstIndex: tagsArray[i].firstIndex,
           lastIndex: tagsArray[i].lastIndex,
           content: tagsArray[i].match,
           children: []
         };
         if(tagsArray[i+1].type === bbCodeTypes.NEW_LINE){
-          textNode.type = "textLine";
+          textNode.type = "textline";
         }
         else {
-          textNode.type = "textPart";
+          textNode.type = "textpart";
         }
         node.children.push(textNode);
         i++;

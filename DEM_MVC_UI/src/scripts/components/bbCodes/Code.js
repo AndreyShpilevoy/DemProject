@@ -3,20 +3,25 @@ import React, {PropTypes} from 'react';
 class Code extends React.Component {
   static propTypes = {
     children: PropTypes.node,
-    attributes: PropTypes.shape({
-      className: PropTypes.string,
-      style: PropTypes.object,
-    })
+    options: PropTypes.string
   }
+
+  getAuthorNameFromOption = () => {
+    return this.props.options ?
+      <div className = "bbCode-code-author">
+        this.props.options
+      </div> :
+      null;
+  }
+
   render() {
     const { children } = this.props;
-    const { className, style } = this.props.attributes;
     return (
-      <pre
-        className = {className ? `bbCode-code ${className}` : "bbCode-code"}
-        style = {style ? style : null}>
+      <span
+        className = "bbCode-code">
+        {this.getAuthorNameFromOption()}
         {children}
-      </pre>
+      </span>
     );
   }
 }
