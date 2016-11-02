@@ -6,7 +6,7 @@ import React from 'react';
 import Bold from 'bbCodes/Bold';
 import Code from 'bbCodes/Code';
 import Color from 'bbCodes/Color';
-//import Image from 'bbCodes/Image';
+import Image from 'bbCodes/Image';
 import Italic from 'bbCodes/Italic';
 import LineThrough from 'bbCodes/LineThrough';
 //import Link from 'bbCodes/Link';
@@ -19,6 +19,7 @@ import TextLine from 'bbCodes/TextLine';
 import TextPart from 'bbCodes/TextPart';
 import Underline from 'bbCodes/Underline';
 import UnorderedList from 'bbCodes/UnorderedList';
+import StringHelper from 'services/helpers/StringHelper';
 
 class BbCodesMap {
   getMaps = {
@@ -73,6 +74,22 @@ class BbCodesMap {
     //   }
     //   return null;
     // },
+    'img': (children) =>{
+      let result= [];
+      if(children)
+      {
+        for(let child of children)
+        {
+          if (typeof(child.props['children']) === 'string' && StringHelper.stringIsLink(child.props['children'])){
+            let url = child.props['children'];
+            result.push(<Image key={Math.random()} url={url}/>);
+          } else {
+            continue;
+          }
+        }
+      }
+      return result;
+    },
     'ol': (children) =>
       <OrderedList key={Math.random()}>{children}</OrderedList>,
     'ul': (children) =>
