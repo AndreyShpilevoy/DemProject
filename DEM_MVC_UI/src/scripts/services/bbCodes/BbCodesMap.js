@@ -3,13 +3,13 @@
 
 import React from 'react';
 //import _ from 'lodash';
-import Bold from 'bbCodes/Bold';
+import SpanBasedBbCode from 'bbCodes/SpanBasedBbCode';
 import Code from 'bbCodes/Code';
 import Color from 'bbCodes/Color';
 import Image from 'bbCodes/Image';
 import Italic from 'bbCodes/Italic';
 import LineThrough from 'bbCodes/LineThrough';
-//import Link from 'bbCodes/Link';
+import Link from 'bbCodes/Link';
 import ListItem from 'bbCodes/ListItem';
 import OrderedList from 'bbCodes/OrderedList';
 import Paragraph from 'bbCodes/Paragraph';
@@ -24,7 +24,7 @@ import StringHelper from 'services/helpers/StringHelper';
 class BbCodesMap {
   getMaps = {
     'b': (children) =>
-      <Bold key={Math.random()}>{children}</Bold>,
+      <SpanBasedBbCode key={Math.random()} className="bbCode-bold">{children}</SpanBasedBbCode>,
     'i': (children) =>
       <Italic key={Math.random()}>{children}</Italic>,
     'u': (children) =>
@@ -58,22 +58,25 @@ class BbCodesMap {
     //   }
     //   return null;
     // },
-    // 'image': ({ url }, children) => {
-    //   if(typeof url === 'string') {
-    //     if(_.every(children, ({ type }) => type === 'text')) {
-    //       return <Image label={children.map(({ data }) => data).join('')} url={url} />;
-    //     }
-    //     return <Image label={url} url={url} />;
-    //   }
-    //   if(children.length === 0) {
-    //     return null;
-    //   }
-    //   const [{ type, data }] = children;
-    //   if(type === 'text') {
-    //     return <Image label={data} url={data} />;
-    //   }
-    //   return null;
-    // },
+    'url': (children, options) =>{
+      let result= [];
+      if(typeof(options) === 'string' && StringHelper.stringIsLink(options)){
+        let url = options;
+        result.push(<Link key={Math.random()} url={url}>{children}</Link>);
+      }
+      else if(children){
+        for(let child of children)
+        {
+          if (typeof(child.props['children']) === 'string' && StringHelper.stringIsLink(child.props['children'])){
+            let url = child.props['children'];
+            result.push(<Link key={Math.random()} url={url}>{url}</Link>);
+          } else {
+            continue;
+          }
+        }
+      }
+      return result;
+    },
     'img': (children) =>{
       let result= [];
       if(children)

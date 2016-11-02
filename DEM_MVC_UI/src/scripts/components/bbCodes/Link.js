@@ -2,22 +2,17 @@ import React, {PropTypes} from 'react';
 
 class Link extends React.Component {
   static propTypes = {
+    url: PropTypes.string.isRequired,
     children: PropTypes.node,
-    attributes: PropTypes.shape({
-      url: PropTypes.string,
-      className: PropTypes.string,
-      style: PropTypes.object,
-    })
-  };
+  }
 
   render() {
-    const { children } = this.props;
-    const { url, className, style } = this.props.attributes;
+    const { url, children } = this.props;
     return (
       <a
-        className = {className ? `bbCode-link ${className}` : "bbCode-link"}
-        style = {style ? style : null}
-        href={url}>
+        className = "bbCode-link"
+        href={url}
+        target="_blank">
         {children}
       </a>
     );
