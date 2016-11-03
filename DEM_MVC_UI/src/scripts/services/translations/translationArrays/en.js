@@ -29,6 +29,9 @@ const en  = [
   {id: 28,   value: 'View forum', description: 'action name for title'},
   {id: 29,   value: 'View topic', description: 'action name for title'},
   {id: 30,   value: 'Posts', description: 'action name for title'},
+  {id: 31,   value: 'Offtopic:', description: 'header for Offtopic bbCode'},
+  {id: 32,   value: 'wrote:', description: 'header for Quote bbCode'},
+  {id: 33,   value: 'Quote:', description: 'header for Quote bbCode'},
 ];
 
 export default en;

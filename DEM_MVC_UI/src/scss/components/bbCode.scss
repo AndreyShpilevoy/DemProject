@@ -1,6 +1,9 @@
+@import "Common/colors.scss";
+@import "Common/image-backgrounds";
+
 .bbCode-root{
   width: 100%;
-    word-break: break-word;
+  word-break: break-word;
 }
 
 .bbCode-bold{
@@ -21,4 +24,44 @@
 
 .bbCode-line-through{
   text-decoration: line-through;
+}
+
+.bbCode-offtopic{
+  .bbCode-offtopic-content{
+    color: $bbCode-offtopic-color;
+  }
+}
+
+.bbCode-code-header,
+.bbCode-quote-author,
+.bbCode-offtopic > .bbCode-offtopic-header{
+  font-weight: bold;
+}
+
+.bbCode-quote,
+.bbCode-code {
+  border: 0.0625rem solid #FFFFFF;
+  padding: 0.4rem;
+}
+
+.bbCode-code-content{
+  font-family: monospace;
+  white-space: pre;
+}
+
+.bbCode-think{
+padding: 0.4rem;
+  .bbCode-think-content{
+     background-color: #FFEBD5;
+     border-radius: 1rem;
+     border: 0.0625rem solid #FFFFFF;
+     padding: 0.4rem;
+     font-size: 1rem;
+  }
+  .bbCode-think-image{
+    background-image: $bbCode-think-smile;
+    background-size: 2rem 2rem;
+    background-repeat: no-repeat;
+    padding-top: 2rem;
+  }
 }

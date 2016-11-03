@@ -29,6 +29,9 @@ const ua  = [
   {id: 28,   value: 'Перегляд форума', description: 'action name for title'},
   {id: 29,   value: 'Перегляд теми', description: 'action name for title'},
   {id: 30,   value: 'Повідомлення', description: 'action name for title'},
+  {id: 31,   value: 'Оффтоп:', description: 'header for Offtopic bbCode'},
+  {id: 32,   value: 'писав(ла):', description: 'header for Quote bbCode'},
+  {id: 33,   value: 'Цитата:', description: 'header for Quote bbCode'},
 ];
 
 export default ua;

@@ -9,11 +9,13 @@ import Color from 'bbCodes/Color';
 import Image from 'bbCodes/Image';
 import Link from 'bbCodes/Link';
 import ListItem from 'bbCodes/ListItem';
+import OffTopic  from 'bbCodes/OffTopic';
 import OrderedList from 'bbCodes/OrderedList';
 import Paragraph from 'bbCodes/Paragraph';
 import Root from 'bbCodes/Root';
 import Quote from 'bbCodes/Quote';
 import TextLine from 'bbCodes/TextLine';
+import Think from 'bbCodes/Think';
 import UnorderedList from 'bbCodes/UnorderedList';
 import StringHelper from 'services/helpers/StringHelper';
 
@@ -27,8 +29,10 @@ class BbCodesMap {
       <BaseSpan key={Math.random()} className="bbCode-underline">{children}</BaseSpan>,
     's': (children) =>
       <BaseSpan key={Math.random()} className="bbCode-line-through">{children}</BaseSpan>,
-    //offtopic
-    //think
+    'offtopic': (children) =>
+      <OffTopic key={Math.random()}>{children}</OffTopic>,
+    'think': (children) =>
+      <Think key={Math.random()}>{children}</Think>,
     'color': (children, options) =>
       <Color key={Math.random()} options={options}>{children}</Color>,
     //center

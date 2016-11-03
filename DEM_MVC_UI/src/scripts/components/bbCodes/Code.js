@@ -6,10 +6,10 @@ class Code extends React.Component {
     options: PropTypes.string
   }
 
-  getAuthorNameFromOption = () => {
+  getHeaderFromOption = () => {
     return this.props.options ?
-      <div className = "bbCode-code-author">
-        this.props.options
+      <div className = "bbCode-code-header">
+        {this.props.options}:
       </div> :
       null;
   }
@@ -17,11 +17,14 @@ class Code extends React.Component {
   render() {
     const { children } = this.props;
     return (
-      <span
+      <div
         className = "bbCode-code">
-        {this.getAuthorNameFromOption()}
-        {children}
-      </span>
+        {this.getHeaderFromOption()}
+        <span
+          className = "bbCode-code-content">
+          {children}
+        </span>
+      </div>
     );
   }
 }

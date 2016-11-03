@@ -29,6 +29,9 @@ const ru  = [
   {id: 28,   value: 'Просмотр форума', description: 'action name for title'},
   {id: 29,   value: 'Просмотр темы', description: 'action name for title'},
   {id: 30,   value: 'Сообщения', description: 'action name for title'},
+  {id: 31,   value: 'Оффтоп:', description: 'header for Offtopic bbCode'},
+  {id: 32,   value: 'писал(а):', description: 'header for Quote bbCode'},
+  {id: 33,   value: 'Цитата:', description: 'header for Quote bbCode'},
 ];
 
 export default ru;

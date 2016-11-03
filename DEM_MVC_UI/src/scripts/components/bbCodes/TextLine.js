@@ -16,7 +16,7 @@ class TextLine extends React.Component {
     const { children } = this.props;
     return (
       <span
-        className = "bbCode-text-line-with-break">
+        className = "bbCode-text-line">
         {children}
         {this.addBreak()}
       </span>

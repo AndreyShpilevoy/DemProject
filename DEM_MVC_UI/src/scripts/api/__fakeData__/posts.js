@@ -4,7 +4,7 @@ const posts =
     id: 1,
     postTime: new Date("2015/01/01 10:10:10"),
     subject: "subject 2",
-    message: "Народ, кто может прислать скрины такого плана автомобилей из модов?\r\n[spoiler][img]http://cs615717.vk.me/v615717358/f843/NoO3LUHNbYE.jpg[/img][/spoiler]\r\nНу там &quot;Бульдога&quot; и прочих, которых не было в оригинале.\r\nНадо для настолки.",
+    message: "Народ, кто [think]может[/think] прислать скрины [offtopic]такого[/offtopic] плана автомобилей из модов?\r\n[spoiler][img]http://cs615717.vk.me/v615717358/f843/NoO3LUHNbYE.jpg[/img][/spoiler]\r\nНу там &quot;Бульдога&quot; и прочих, которых не было в оригинале.\r\nНадо для настолки.",
     rate: 5,
     userInfo: {
       id: 1,
@@ -70,7 +70,7 @@ const posts =
     id: 5,
     postTime: new Date("2015/01/05 10:10:10"),
     subject: "subject 1",
-    message: "text [url]http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png[/url] [url=http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png]Link[/url] [url=http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png][img]http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif[/img][/url] tag 01 [U]text in [color='red']tag[/color] 11 [b]text in tag 21[/b] [u]text in tag 22[/u]\r\ntext beetwin tags 12 [b]text in tag 23[/b] [/U][code]ss[b]g[/b]fsfdgdfg[/code] tar\r\n [img]http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif[/img] [url]http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif [/url][quote]blah blah [quote]blah  blah [i]ta[u]r[/u]am[/i] param[/quote] [b]ta[i]r[/i]am[/b] param[/quote]",
+    message: "text [url]http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png[/url] [url=http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png]Link[/url] [url=http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png][img]http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif[/img][/url] tag 01 [U]text in [color='red']tag[/color] 11 [b]text in tag 21[/b] [u]text in tag 22[/u]\r\ntext beetwin tags 12 [b]text in tag 23[/b] [/U][code=\"kto\"]ss[b]g[/b]fsfdgdfg[/code] tar\r\n [img]http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif[/img] [url]http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif [/url][quote]blah blah [quote='kto']blah  blah [i]ta[u]r[/u]am[/i] param[/quote] [b]ta[i]r[/i]am[/b] param[/quote]",
     rate: 0,
     userInfo: {
       id: 5,
