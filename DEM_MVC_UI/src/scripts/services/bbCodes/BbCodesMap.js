@@ -3,12 +3,10 @@
 
 import React from 'react';
 //import _ from 'lodash';
-import SpanBasedBbCode from 'bbCodes/SpanBasedBbCode';
+import BaseSpan from 'bbCodes/BaseSpan';
 import Code from 'bbCodes/Code';
 import Color from 'bbCodes/Color';
 import Image from 'bbCodes/Image';
-import Italic from 'bbCodes/Italic';
-import LineThrough from 'bbCodes/LineThrough';
 import Link from 'bbCodes/Link';
 import ListItem from 'bbCodes/ListItem';
 import OrderedList from 'bbCodes/OrderedList';
@@ -16,21 +14,19 @@ import Paragraph from 'bbCodes/Paragraph';
 import Root from 'bbCodes/Root';
 import Quote from 'bbCodes/Quote';
 import TextLine from 'bbCodes/TextLine';
-import TextPart from 'bbCodes/TextPart';
-import Underline from 'bbCodes/Underline';
 import UnorderedList from 'bbCodes/UnorderedList';
 import StringHelper from 'services/helpers/StringHelper';
 
 class BbCodesMap {
   getMaps = {
     'b': (children) =>
-      <SpanBasedBbCode key={Math.random()} className="bbCode-bold">{children}</SpanBasedBbCode>,
+      <BaseSpan key={Math.random()} className="bbCode-bold">{children}</BaseSpan>,
     'i': (children) =>
-      <Italic key={Math.random()}>{children}</Italic>,
+      <BaseSpan key={Math.random()} className="bbCode-italic">{children}</BaseSpan>,
     'u': (children) =>
-      <Underline key={Math.random()}>{children}</Underline>,
+      <BaseSpan key={Math.random()} className="bbCode-underline">{children}</BaseSpan>,
     's': (children) =>
-      <LineThrough key={Math.random()}>{children}</LineThrough>,
+      <BaseSpan key={Math.random()} className="bbCode-line-through">{children}</BaseSpan>,
     //offtopic
     //think
     'color': (children, options) =>
@@ -45,31 +41,19 @@ class BbCodesMap {
     'quote': (children, options) =>
       <Quote key={Math.random()} options={options}>{children}</Quote>,
     //email
-    // 'url': ({ url }, children, transformChildren) => {
-    //   if(typeof url === 'string') {
-    //     return <Link url={url}>{transformChildren(children)}</Link>;
-    //   }
-    //   if(children.length === 0) {
-    //     return null;
-    //   }
-    //   const [{ type, data }] = children;
-    //   if(type === 'text') {
-    //     return <Link url={data}>{data}</Link>;
-    //   }
-    //   return null;
-    // },
     'url': (children, options) =>{
       let result= [];
       if(typeof(options) === 'string' && StringHelper.stringIsLink(options)){
         let url = options;
         result.push(<Link key={Math.random()} url={url}>{children}</Link>);
       }
-      else if(children){
+      else{
+        let addBreak = children.length > 1;
         for(let child of children)
         {
           if (typeof(child.props['children']) === 'string' && StringHelper.stringIsLink(child.props['children'])){
             let url = child.props['children'];
-            result.push(<Link key={Math.random()} url={url}>{url}</Link>);
+            result.push(<Link key={Math.random()} url={url} addBreak={addBreak}>{url}</Link>);
           } else {
             continue;
           }
@@ -79,16 +63,14 @@ class BbCodesMap {
     },
     'img': (children) =>{
       let result= [];
-      if(children)
+      let addBreak = children.length > 1;
+      for(let child of children)
       {
-        for(let child of children)
-        {
-          if (typeof(child.props['children']) === 'string' && StringHelper.stringIsLink(child.props['children'])){
-            let url = child.props['children'];
-            result.push(<Image key={Math.random()} url={url}/>);
-          } else {
-            continue;
-          }
+        if (typeof(child.props['children']) === 'string' && StringHelper.stringIsLink(child.props['children'])){
+          let url = child.props['children'];
+          result.push(<Image key={Math.random()} url={url} addBreak={addBreak}/>);
+        } else {
+          continue;
         }
       }
       return result;
@@ -113,8 +95,8 @@ class BbCodesMap {
       <Paragraph key={Math.random()}>{children}</Paragraph>,
     'textline': (children) =>
       <TextLine key={Math.random()}>{children}</TextLine>,
-    'textpart': (children) =>
-      <TextPart key={Math.random()}>{children}</TextPart>,
+    'textlinewithbreak': (children) =>
+      <TextLine key={Math.random()} addBreak>{children}</TextLine>,
     'root': (children) =>
       <Root key={Math.random()}>{children}</Root>
   };

@@ -116,10 +116,10 @@ class BbCodeParser{
           children: []
         };
         if(tagsArray[i+1].type === bbCodeTypes.NEW_LINE){
-          textNode.type = "textline";
+          textNode.type = "textlinewithbreak";
         }
         else {
-          textNode.type = "textpart";
+          textNode.type = "textline";
         }
         node.children.push(textNode);
         i++;

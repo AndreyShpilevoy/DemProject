@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-class SpanBasedBbCode extends React.Component {
+class BaseSpan extends React.Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string.isRequired
@@ -16,4 +16,4 @@ class SpanBasedBbCode extends React.Component {
   }
 }
 
-export default SpanBasedBbCode;
+export default BaseSpan;
