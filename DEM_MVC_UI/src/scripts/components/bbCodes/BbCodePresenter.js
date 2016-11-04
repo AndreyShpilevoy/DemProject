@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import BbCodeParser from 'services/bbCodes/BbCodeParser';
-import BbCodesMap from 'services/bbCodes/BbCodesMap';
+import BbCodesMap from 'bbCodes/BbCodesMap';
 
 
 class BbCodePresenter extends React.Component {

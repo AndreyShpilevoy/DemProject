@@ -2,14 +2,7 @@ import React, {PropTypes} from 'react';
 
 class TextLine extends React.Component {
   static propTypes = {
-    children: PropTypes.node,
-    addBreak: PropTypes.bool
-  }
-
-  addBreak = () => {
-    return this.props.addBreak ?
-    <br /> :
-    null;
+    children: PropTypes.node
   }
 
   render() {
@@ -18,7 +11,6 @@ class TextLine extends React.Component {
       <span
         className = "bbCode-text-line">
         {children}
-        {this.addBreak()}
       </span>
     );
   }

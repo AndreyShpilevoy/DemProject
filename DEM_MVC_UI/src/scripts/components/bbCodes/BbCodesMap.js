@@ -2,7 +2,6 @@
 /* eslint react/display-name: 0 */
 
 import React from 'react';
-//import _ from 'lodash';
 import BaseSpan from 'bbCodes/BaseSpan';
 import Code from 'bbCodes/Code';
 import Color from 'bbCodes/Color';
@@ -14,6 +13,7 @@ import OrderedList from 'bbCodes/OrderedList';
 import Paragraph from 'bbCodes/Paragraph';
 import Root from 'bbCodes/Root';
 import Quote from 'bbCodes/Quote';
+import NewLine from 'bbCodes/NewLine';
 import TextLine from 'bbCodes/TextLine';
 import Think from 'bbCodes/Think';
 import UnorderedList from 'bbCodes/UnorderedList';
@@ -35,9 +35,12 @@ class BbCodesMap {
       <Think key={Math.random()}>{children}</Think>,
     'color': (children, options) =>
       <Color key={Math.random()} options={options}>{children}</Color>,
-    //center
-    //left
-    //right
+    'center': (children) =>
+      <BaseSpan key={Math.random()} className="bbCode-position bbCode-center">{children}</BaseSpan>,
+    'left': (children) =>
+      <BaseSpan key={Math.random()} className="bbCode-position bbCode-left">{children}</BaseSpan>,
+    'right': (children) =>
+      <BaseSpan key={Math.random()} className="bbCode-position bbCode-right">{children}</BaseSpan>,
     //size
     'code': (children, options) =>
       <Code key={Math.random()} options={options}>{children}</Code>,
@@ -85,22 +88,13 @@ class BbCodesMap {
       <UnorderedList key={Math.random()}>{children}</UnorderedList>,
     'li': (children) =>
       <ListItem key={Math.random()}>{children}</ListItem>,
-    //table
-    //tr
-    //td
-    //th
-    //h1
-    //h2
-    //h3
-    //h4
-    //h5
     //media
     'p': (children) =>
       <Paragraph key={Math.random()}>{children}</Paragraph>,
+    'br': () =>
+      <NewLine key={Math.random()}/>,
     'textline': (children) =>
       <TextLine key={Math.random()}>{children}</TextLine>,
-    'textlinewithbreak': (children) =>
-      <TextLine key={Math.random()} addBreak>{children}</TextLine>,
     'root': (children) =>
       <Root key={Math.random()}>{children}</Root>
   };

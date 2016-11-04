@@ -34,7 +34,7 @@ const posts =
     id: 3,
     postTime: new Date("2015/01/03 10:10:10"),
     subject: null,
-    message: "[b]Golden_Fox[/b], видимо некорректно отработала кнопка \r\n[code][url][/url][/code]\r\n\r\nВ итоге в БД ушло:\r\n[code][b]Хотите[/b] общаться с лисом - идите к нему в стим или вк:\r\n[url=http://]http://steamcommunity.com/profiles/76561198013411783/[/url]\r\n[url=http://]https://vk.com/asx1347[/url]\r\n\r\nКто не в курсе, ВК подвезли немножко допиленную версию, можно включить там, внизу страницы: [url]https://new.vk.com/blog[/url][/code]\r\n\r\nЭта кнопка, каки все остальные, будут переписаны при переезде на AngularJS или ReactJS.",
+    message: "[b]Golden_Fox[/b], видимо \r\n[center]некорректно[/center]\r\n[right]некорректно[/right]\r\n[left]некорректно[/left] отработала кнопка \r\n[code][url][/url][/code]\r\n\r\nВ итоге в БД ушло:\r\n[code][b]Хотите[/b] общаться с лисом - идите к нему в стим или вк:\r\n[url=http://]http://steamcommunity.com/profiles/76561198013411783/[/url]\r\n[url=http://]https://vk.com/asx1347[/url]\r\n\r\nКто не в курсе, ВК подвезли немножко допиленную версию, можно включить там, внизу страницы: [url]https://new.vk.com/blog[/url][/code]\r\n\r\nЭта кнопка, каки все остальные, будут переписаны при переезде на AngularJS или ReactJS.",
     rate: 4,
     userInfo: {
       id: 3,
@@ -55,7 +55,7 @@ const posts =
     id: 4,
     postTime: new Date("2015/01/04 10:10:10"),
     subject: "subject 5",
-    message: "[u][right][b]Ну[/b] [i]надо[/i] [u]же[/u], [s]работает[/s][/right][/u]\r\n[spoiler][media]https://youtu.be/WHBbt-Qk6mk[/media][/spoiler]",
+    message: "[u][center][b]Ну[/b] [i]надо[/i] [u]же[/u], [s]работает[/s][/center][/u]\r\n[spoiler][media]https://youtu.be/WHBbt-Qk6mk[/media][/spoiler]",
     rate: 343,
     userInfo: {
       id: 4,
@@ -70,7 +70,7 @@ const posts =
     id: 5,
     postTime: new Date("2015/01/05 10:10:10"),
     subject: "subject 1",
-    message: "text [url]http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png[/url] [url=http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png]Link[/url] [url=http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png][img]http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif[/img][/url] tag 01 [U]text in [color='red']tag[/color] 11 [b]text in tag 21[/b] [u]text in tag 22[/u]\r\ntext beetwin tags 12 [b]text in tag 23[/b] [/U][code=\"kto\"]ss[b]g[/b]fsfdgdfg[/code] tar\r\n [img]http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif[/img] [url]http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif [/url][quote]blah blah [quote='kto']blah  blah [i]ta[u]r[/u]am[/i] param[/quote] [b]ta[i]r[/i]am[/b] param[/quote]",
+    message: "text [url]http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png[/url]\r\n[url=http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png]Link[/url] [url=http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png][img]http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif[/img][/url] tag 01 [U]text in [color='red']tag[/color] 11 [b]text in tag 21[/b] [u]text in tag 22[/u]\r\ntext beetwin tags 12 [b]text in tag 23[/b] [/U][code=\"kto\"]ss[b]g[/b]fsfdgdfg[/code] tar\r\n [img]http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif[/img] [url]http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png\r\nhttp://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif [/url][quote]blah blah [quote='kto']blah  blah [i]ta[u]r[/u]am[/i] param[/quote] [b]ta[i]r[/i]am[/b] param[/quote]",
     rate: 0,
     userInfo: {
       id: 5,

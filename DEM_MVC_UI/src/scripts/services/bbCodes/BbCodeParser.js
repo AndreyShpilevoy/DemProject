@@ -1,9 +1,9 @@
 import * as bbCodeTypes from "enums/bbCodeTypes";
-import BbCodesMap from 'services/bbCodes/BbCodesMap';
+import BbCodesMap from 'bbCodes/BbCodesMap';
 
 class BbCodeParser{
   getParsedTree = (text) => {
-    text = this.wrappToRootNodeIfNecessary(text);
+    text = this.wrappToRootNodeIfNecessary(text).replace(/\r\n|\n|\r/g, '[br][/br]');
     let allTags = this.getAllTags(text);
     return this.buildTree(allTags);
   }
@@ -18,7 +18,7 @@ class BbCodeParser{
 
   getAllTags = (text) => {
     let result = [];
-    let regex = /([\r\n])|(?:\[([a-z0-9\*]{1,16})(?:=(?:"|'|)([^\x00-\x1F"'\(\)<>\[\]]{1,256}))?(?:"|'|)\])|(?:\[\/([a-z0-9\*]{1,16})\])/gi;
+    let regex = /(?:\[([a-z0-9\*]{1,16})(?:=(?:"|'|)([^\x00-\x1F"'\(\)<>\[\]]{1,256}))?(?:"|'|)\])|(?:\[\/([a-z0-9\*]{1,16})\])/gi;
     let textParsed = false;
     let codeIndex = 0;
     while (!textParsed) {
@@ -29,16 +29,16 @@ class BbCodeParser{
       }
 
       let matchedResult = {
-        type: match[1] ? bbCodeTypes.NEW_LINE : match[2] ? bbCodeTypes.OPEN_TAG : bbCodeTypes.CLOSE_TAG,
+        type: match[1] ? bbCodeTypes.OPEN_TAG : bbCodeTypes.CLOSE_TAG,
         match: match[0],
-        tag: match[2] ? match[2] : match[4],
-        options: match[3],
+        tag: match[1] ? match[1] : match[3],
+        options: match[2],
         firstIndex: match.index,
         lastIndex: regex.lastIndex
       };
 
       //if tag is not exist in avaliable maps - skip step
-      if((matchedResult.type !== bbCodeTypes.NEW_LINE && !BbCodesMap.getMaps[matchedResult.tag.toLowerCase()])){
+      if(!BbCodesMap.getMaps[matchedResult.tag.toLowerCase()]){
         continue;
       }
 
@@ -109,18 +109,13 @@ class BbCodeParser{
       //if we found text that should be contained in current tag
       else if(tagsArray[i].type === bbCodeTypes.TEXT){
         let textNode = {
+          type: "textline",
           options: null,
           firstIndex: tagsArray[i].firstIndex,
           lastIndex: tagsArray[i].lastIndex,
           content: tagsArray[i].match,
           children: []
         };
-        if(tagsArray[i+1].type === bbCodeTypes.NEW_LINE){
-          textNode.type = "textlinewithbreak";
-        }
-        else {
-          textNode.type = "textline";
-        }
         node.children.push(textNode);
         i++;
       }

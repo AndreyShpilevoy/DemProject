@@ -76,3 +76,18 @@
     padding-top: $bbCode-think-image-size;
   }
 }
+
+.bbCode-position {
+  display: inline-flex;
+  width: 100%;
+}
+
+.bbCode-position.bbCode-center > *:first-child,
+.bbCode-position.bbCode-right > *:first-child {
+  margin-left: auto;
+}
+
+.bbCode-position.bbCode-center > *:last-child,
+.bbCode-position.bbCode-left > *:last-child {
+  margin-right: auto;
+}
