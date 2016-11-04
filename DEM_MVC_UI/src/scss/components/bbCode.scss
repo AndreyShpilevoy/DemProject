@@ -38,30 +38,41 @@
   font-weight: bold;
 }
 
-.bbCode-quote,
-.bbCode-code {
-  border: 0.0625rem solid #FFFFFF;
-  padding: 0.4rem;
+.bbCode-quote {
+  border: $bbCode-border-size solid $bbCode-quote-border-color;
+  background-color: $bbCode-quote-background-color;
+  padding: $bbCode-padding;
+  margin: $bbCode-quote-margin-vertical $bbCode-quote-margin-horisontal;
 }
 
-.bbCode-code-content{
-  font-family: monospace;
-  white-space: pre;
+.bbCode-code {
+  border: $bbCode-border-size solid $bbCode-code-border-color;
+  background-color: $bbCode-code-background-color;
+  padding: $bbCode-padding;
+
+  .bbCode-code-header{
+    color: $bbCode-code-header-color;
+  }
+
+  .bbCode-code-content{
+    font-family: monospace;
+    white-space: pre;
+    color: $bbCode-code-content-color;
+  }
 }
 
 .bbCode-think{
-padding: 0.4rem;
+  padding: $bbCode-padding;
   .bbCode-think-content{
-     background-color: #FFEBD5;
-     border-radius: 1rem;
-     border: 0.0625rem solid #FFFFFF;
-     padding: 0.4rem;
-     font-size: 1rem;
+     background-color: #d4c5b6;
+     border-radius: $bbCode-think-content-border-radius;
+     border: $bbCode-border-size solid #FFFFFF;
+     padding: $bbCode-padding;
   }
   .bbCode-think-image{
     background-image: $bbCode-think-smile;
-    background-size: 2rem 2rem;
+    background-size: $bbCode-think-image-size;
     background-repeat: no-repeat;
-    padding-top: 2rem;
+    padding-top: $bbCode-think-image-size;
   }
 }
