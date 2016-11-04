@@ -56,7 +56,7 @@
 
   .bbCode-code-content{
     font-family: monospace;
-    white-space: pre;
+    white-space: pre-wrap;
     color: $bbCode-code-content-color;
   }
 }
