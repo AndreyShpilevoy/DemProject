@@ -32,7 +32,6 @@
   }
 }
 
-.bbCode-code-header,
 .bbCode-quote-author,
 .bbCode-offtopic > .bbCode-offtopic-header{
   font-weight: bold;
@@ -52,6 +51,13 @@
 
   .bbCode-code-header{
     color: $bbCode-code-header-color;
+    display: flex;
+    .bbCode-code-header-left{
+      margin-right: auto;
+    }
+    .bbCode-code-header-right{
+      margin-left: auto;
+    }
   }
 
   .bbCode-code-content{
@@ -59,14 +65,22 @@
     white-space: pre-wrap;
     color: $bbCode-code-content-color;
   }
+
+  .bbCode-code-select-button{
+    color: $link;
+    cursor: pointer;
+  }
+  .bbCode-code-select-button:hover{
+    color: $link-hovered;
+  }
 }
 
 .bbCode-think{
   padding: $bbCode-padding;
   .bbCode-think-content{
-     background-color: #d4c5b6;
+     background-color: $bbCode-think-background-color;
      border-radius: $bbCode-think-content-border-radius;
-     border: $bbCode-border-size solid #FFFFFF;
+     border: $bbCode-border-size solid $bbCode-think-border-color;
      padding: $bbCode-padding;
   }
   .bbCode-think-image{

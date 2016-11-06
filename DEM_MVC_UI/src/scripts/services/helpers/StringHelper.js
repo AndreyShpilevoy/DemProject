@@ -8,9 +8,13 @@ class StringHelper {
   }
 
   stringIsLink = (string) => {
-    this.stringFormat('adgdfg{0}xghfgh','1233');
     let regex = /^(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]$/i;
-    return regex.exec(string.trim()) ? true : false;
+    return regex.test(string.trim());
+  }
+
+  stringIsEmail = (string) => {
+    let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(string.trim());
   }
 }
 

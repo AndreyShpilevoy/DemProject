@@ -32,6 +32,8 @@ const en  = [
   {id: 31,   value: 'Offtopic:', description: 'header for Offtopic bbCode'},
   {id: 32,   value: 'wrote:', description: 'header for Quote bbCode'},
   {id: 33,   value: 'Quote:', description: 'header for Quote bbCode'},
+  {id: 34,   value: 'Code:', description: 'header for Code bbCode'},
+  {id: 35,   value: 'Ctrl+A, Ctrl+C', description: 'header for Code bbCode'},
 ];
 
 export default en;

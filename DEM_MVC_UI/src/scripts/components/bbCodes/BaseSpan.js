@@ -3,13 +3,15 @@ import React, {PropTypes} from 'react';
 class BaseSpan extends React.Component {
   static propTypes = {
     children: PropTypes.node,
-    className: PropTypes.string.isRequired
+    className: PropTypes.string.isRequired,
+    styleObject: PropTypes.object
   }
   render() {
-    const { children, className } = this.props;
+    const { children, className, styleObject } = this.props;
     return (
       <span
-        className = {className}>
+        className = {className}
+        style={styleObject}>
         {children}
       </span>
     );

@@ -6,6 +6,7 @@ import BaseSpan from 'bbCodes/BaseSpan';
 import Code from 'bbCodes/Code';
 import Color from 'bbCodes/Color';
 import Image from 'bbCodes/Image';
+import Email from 'bbCodes/Email';
 import Link from 'bbCodes/Link';
 import ListItem from 'bbCodes/ListItem';
 import OffTopic  from 'bbCodes/OffTopic';
@@ -41,13 +42,33 @@ class BbCodesMap {
       <BaseSpan key={Math.random()} className="bbCode-position bbCode-left">{children}</BaseSpan>,
     'right': (children) =>
       <BaseSpan key={Math.random()} className="bbCode-position bbCode-right">{children}</BaseSpan>,
-    //size
-    'code': (children, options) =>
-      <Code key={Math.random()} options={options}>{children}</Code>,
+    'size': (children, options) =>{
+      let fontSizeByDefault = 16;
+      return (options <= 150 && options > 0) ?
+      <BaseSpan key={Math.random()} className="bbCode-size" styleObject={{fontSize: `${options/fontSizeByDefault}rem`}}>{children}</BaseSpan> :
+      <BaseSpan key={Math.random()} className="bbCode-size" styleObject={{fontSize: "1rem"}}>{children}</BaseSpan>;
+    },
+    'code': (children, options) =>{
+      let key = Math.random();
+      return <Code key={key} id={key} options={options}>{children}</Code>;
+    },
     //spoiler
     'quote': (children, options) =>
       <Quote key={Math.random()} options={options}>{children}</Quote>,
-    //email
+    'email': (children) =>{
+      let result= [];
+      let addBreak = children.length > 1;
+      for(let child of children)
+      {
+        if (typeof(child.props['children']) === 'string' && StringHelper.stringIsEmail(child.props['children'])){
+          let email = child.props['children'];
+          result.push(<Email key={Math.random()} email={email} addBreak={addBreak}>{email}</Email>);
+        } else {
+          continue;
+        }
+      }
+      return result;
+    },
     'url': (children, options) =>{
       let result= [];
       if(typeof(options) === 'string' && StringHelper.stringIsLink(options)){
