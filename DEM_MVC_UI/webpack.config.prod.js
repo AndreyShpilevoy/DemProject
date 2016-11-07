@@ -19,16 +19,16 @@ const GLOBALS = {
 
 const loaders = [
   {
-    loader: 'css-loader',
-    options: {
-      modules: true
-    }
+    loader: 'css-loader?sourceMap'//,
+    // options: {
+    //   modules: true
+    // }
   },
   {
     loader: 'postcss-loader'
   },
   {
-    loader: 'sass-loader'
+    loader: 'sass-loader?sourceMap'
   }
 ];
 
@@ -63,7 +63,7 @@ export default {
       {
         test: /\.scss$/,
         include: path.join(__dirname, "./src"),
-        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
+        use: ["style-loader", "css-loader?sourceMap", "postcss-loader", "sass-loader?sourceMap"]
       },
       {
         test: /\.scss$/,
@@ -74,11 +74,7 @@ export default {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        use: 'url-loader',
-        options: {
-          limit: 8192,
-          name: 'images/[name]-[hash].[ext]'
-        }
+        use: 'url-loader?limit=8192&name=images/[name].[ext]'
       }
     ]
   },
@@ -104,8 +100,8 @@ export default {
               discardUnused: false,
               mergeIdents: false,
               reduceIdents: false,
-              safe: true,
-              sourcemap: true
+              safe: true//,
+              //sourcemap: true
            })
           ];
         },
