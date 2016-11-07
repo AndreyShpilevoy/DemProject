@@ -3,7 +3,6 @@
 /* eslint-disable no-console */
 
 process.env.NODE_ENV = 'development'; // this assures React is built in development mode and that the Babel prod config doesn't apply.
-console.log(process.env.NODE_ENV);
 
 const express = require('express');
 const webpack = require('webpack');

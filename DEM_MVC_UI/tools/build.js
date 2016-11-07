@@ -3,11 +3,11 @@
 /* eslint no-unused-vars: "off" */
 /* eslint import/no-extraneous-dependencies: "off" */
 
+process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.
+
 const webpack = require('webpack');
 const colors = require('colors');
 const webpackConfig = require('../webpack.config.prod');
-
-process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.
 
 console.log('Generating minified bundle for production via Webpack. This will take a moment...'.green);
 
