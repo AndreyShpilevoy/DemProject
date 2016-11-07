@@ -3,9 +3,9 @@
 /* eslint no-unused-vars: "off" */
 /* eslint import/no-extraneous-dependencies: "off" */
 
-import webpack from 'webpack';
-import colors from 'colors';
-import webpackConfig from '../webpack.config.prod';
+const webpack = require('webpack');
+const colors = require('colors');
+const webpackConfig = require('../webpack.config.prod');
 
 process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.
 
@@ -30,6 +30,5 @@ webpack(webpackConfig).run((error, stats) => {
 
   // if we got this far, the build succeeded.
   console.log('Your app is compiled in production mode in ../DEM_MVC/wwwroot. It\'s ready to roll!'.green);
-
   return 0;
 });

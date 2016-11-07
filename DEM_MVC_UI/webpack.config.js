@@ -6,10 +6,7 @@ const path = require('path');
 const Autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify('development')
-
-};
+console.log(process.env.NODE_ENV);
 
 const bootstrapDevEntryPoint = 'bootstrap-loader/lib/bootstrap.loader?' +
           `configFilePath=${__dirname}/.bootstraprc` +
@@ -78,7 +75,6 @@ module.exports = {
         }
       }
     }),
-    new webpack.DefinePlugin(GLOBALS),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       hash: false,

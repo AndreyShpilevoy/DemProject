@@ -1,14 +1,14 @@
 /*eslint no-undef: "off"*/
 /* eslint import/no-extraneous-dependencies: "off" */
 
-import webpack from 'webpack';
-import path from 'path';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import Autoprefixer from 'autoprefixer';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import checksum from 'checksum';
-import cssnano from 'cssnano';
+const webpack = require('webpack');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const checksum = require('checksum');
+const cssnano = require('cssnano');
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
@@ -36,7 +36,7 @@ const bootstrapDevEntryPoint = 'bootstrap-loader/lib/bootstrap.loader?' +
           `extractStyles&configFilePath=${__dirname}/.bootstraprc` +
           '!bootstrap-loader/no-op.js';
 
-export default {
+module.exports = {
   devtool: "source-map",
   entry: [
     "babel-polyfill",
@@ -117,7 +117,6 @@ export default {
       disable: false,
       allChunks: true
     }),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {warnings: false},
       output: {comments: false},

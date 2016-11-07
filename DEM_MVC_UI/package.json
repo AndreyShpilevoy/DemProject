@@ -12,7 +12,7 @@
     "clean-wwwroot": "node_modules/.bin/rimraf ../DEM_MVC/wwwroot && mkdirp ../DEM_MVC/wwwroot",
     "lint": "node_modules/.bin/eslint --color webpack.config.* src tools",
     "test": "jest",
-    "oprebuild": "npm-run-all clean-wwwroot lint test",
+    "prebuild": "npm-run-all clean-wwwroot lint test",
     "build": "babel-node tools/build.js",
     "postbuild": "babel-node tools/distServer.js",
     "start": "yarn test && babel-node tools/srcServer.js"

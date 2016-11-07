@@ -4,7 +4,7 @@ import ArrowLeft from "components/icons/ArrowLeft";
 
 class ContentHolder extends React.Component {
   static propTypes = {
-    contentHolderItem: PropTypes.shappe({
+    contentHolderItem: PropTypes.shape({
       uniquePrefix: PropTypes.string.isRequired,
       titleElement: PropTypes.element.isRequired,
       bodyElement: PropTypes.element.isRequired,
@@ -12,7 +12,7 @@ class ContentHolder extends React.Component {
       secondColumnTerm: PropTypes.element,
       thirdColumnTerm: PropTypes.element
     }).isRequired,
-    collapseSettings:  PropTypes.shappe({
+    collapseSettings:  PropTypes.shape({
       collapsable: PropTypes.bool.isRequired,
       openedByDefault: PropTypes.bool.isRequired
     }).isRequired

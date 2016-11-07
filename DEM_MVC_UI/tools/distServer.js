@@ -1,10 +1,10 @@
 /* eslint no-undef: "off" */
-/* eslint no-console: "off" */
 /* eslint import/no-extraneous-dependencies: "off" */
+/* eslint-disable no-console */
 
-import express from 'express';
-import open from 'open';
-import path from 'path';
+const express = require('express');
+const open = require('open');
+const path = require('path');
 
 const port = 60784;
 const app = express();
