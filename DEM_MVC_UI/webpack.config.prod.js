@@ -17,14 +17,27 @@ const GLOBALS = {
 
 };
 
+const loaders = [
+  {
+    loader: 'css-loader',
+    options: {
+      modules: true
+    }
+  },
+  {
+    loader: 'postcss-loader'
+  },
+  {
+    loader: 'sass-loader'
+  }
+];
+
 const bootstrapDevEntryPoint = 'bootstrap-loader/lib/bootstrap.loader?' +
           `extractStyles&configFilePath=${__dirname}/.bootstraprc` +
           '!bootstrap-loader/no-op.js';
 
 export default {
-  debug: true,
   devtool: "source-map",
-  noInfo: false,
   entry: [
     "babel-polyfill",
     bootstrapDevEntryPoint,
@@ -40,24 +53,29 @@ export default {
     contantBase: "../DEM_MVC/wwwroot"
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
         include: path.join(__dirname, "./src"),
-        loaders: ["babel"]
+        use: ["babel-loader"]
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: { loader: "style-loader" },
-          loader: { loader: "css-loader?sourceMap!postcss-loader!sass-loader?sourceMap" }
+        include: path.join(__dirname, "./src"),
+        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallbackLoader: "style-loader",
+          loader: loaders
         })
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader: 'url-loader',
-        query: {
+        use: 'url-loader',
+        options: {
           limit: 8192,
           name: 'images/[name]-[hash].[ext]'
         }
@@ -65,10 +83,44 @@ export default {
     ]
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      debug: true,
+      noInfo: false,
+      options: {
+        context: __dirname,
+        output: {
+            path: "./"
+        },
+        postcss: function () {
+          return [
+            Autoprefixer({
+              browsers: ["> 1%", "last 2 versions"],
+              cascade: false
+            }),
+            cssnano({
+              discardComments: {
+                removeAll: true
+              },
+              discardUnused: false,
+              mergeIdents: false,
+              reduceIdents: false,
+              safe: true,
+              sourcemap: true
+           })
+          ];
+        },
+        eslint: {
+            failOnWarning: false,
+            failOnError: true
+        }
+      }
+    }),
     new webpack.DefinePlugin(GLOBALS),
-    new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin('dem.min.css'),
+    new ExtractTextPlugin({
+      filename: 'dem.min.css',
+      disable: false,
+      allChunks: true
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {warnings: false},
@@ -90,27 +142,5 @@ export default {
       paceCss: '/wwwroot/pace.css?' + GLOBALS.paceCssHash,
       paceJs: '/wwwroot/pace.min.js?' + GLOBALS.paceJsHash
     })
-  ],
-  postcss: function () {
-    return [
-      Autoprefixer({
-        browsers: ["> 1%", "last 2 versions"],
-        cascade: false
-      }),
-      cssnano({
-        discardComments: {
-          removeAll: true
-        },
-        discardUnused: false,
-        mergeIdents: false,
-        reduceIdents: false,
-        safe: true,
-        sourcemap: true
-     })
-    ];
-  },
-  eslint: {
-      failOnWarning: false,
-      failOnError: true
-  }
+  ]
 };

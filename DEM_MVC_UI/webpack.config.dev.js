@@ -16,9 +16,7 @@ const bootstrapDevEntryPoint = 'bootstrap-loader/lib/bootstrap.loader?' +
           '!bootstrap-loader/no-op.js';
 
 export default {
-  debug: true,
   devtool: "cheap-eval-source-map",
-  noInfo: false,
   entry: [
     "babel-polyfill",
     bootstrapDevEntryPoint,
@@ -35,28 +33,28 @@ export default {
     contantBase: "./src"
   },
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.jsx$|\.js$/,
-        loader: 'eslint',
+        use: 'eslint-loader',
+        enforce: "pre",
         include: path.join(__dirname, "./src")
-      }
-    ],
-    loaders: [
+      },
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
         include: path.join(__dirname, "./src"),
-        loaders: ["babel"]
+        use: ["babel-loader"]
       },
       {
         test: /\.scss$/,
-        loaders: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
+        include: path.join(__dirname, "./src"),
+        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader: 'url-loader',
-        query: {
+        use: 'url-loader',
+        options: {
           limit: 8192,
           name: 'images/[name]-[hash].[ext]'
         }
@@ -64,6 +62,26 @@ export default {
     ]
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      debug: true,
+      noInfo: false,
+      options: {
+        context: __dirname,
+        output: {
+            path: "./"
+        },
+        postcss: function () {
+          return [Autoprefixer({
+            browsers: ["> 1%", "last 2 versions"],
+            cascade: false
+          })];
+        },
+        eslint: {
+          failOnWarning: false,
+          failOnError: true
+        }
+      }
+    }),
     new webpack.DefinePlugin(GLOBALS),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
@@ -71,15 +89,5 @@ export default {
       filename: 'index.html',
       template: path.join(__dirname, "./src/index.html")
     })
-  ],
-  postcss: function () {
-    return [Autoprefixer({
-      browsers: ["> 1%", "last 2 versions"],
-      cascade: false
-    })];
-  },
-  eslint: {
-      failOnWarning: false,
-      failOnError: true
-  }
+  ]
 };
