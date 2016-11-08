@@ -7,7 +7,7 @@ process.env.NODE_ENV = 'production'; // this assures React is built in prod mode
 
 const webpack = require('webpack');
 const colors = require('colors');
-const webpackConfig = require('../webpack.config.prod');
+const webpackConfig = require('../webpack.config');
 
 console.log('Generating minified bundle for production via Webpack. This will take a moment...'.green);
 

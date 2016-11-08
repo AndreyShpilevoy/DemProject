@@ -11,7 +11,7 @@ const path = require('path');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const fs = require('fs');
-const config = require('../webpack.config.dev');
+const config = require('../webpack.config');
 
 const port = 60782;
 const host = 'localhost';
