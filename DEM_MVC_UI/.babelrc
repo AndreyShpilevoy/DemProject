@@ -2,7 +2,7 @@
   "presets": [
     "react",
     "stage-1",
-    ["es2015", { "modules": false }]
+    ["es2015", { "modules": false, "loose": true }]
   ],
   "plugins": [
     "transform-class-properties",
@@ -29,6 +29,11 @@
         "transform-react-remove-prop-types",
         "transform-react-router-optimize",
         "lodash"
+      ]
+    },
+    "test": {
+      "plugins": [
+        "transform-es2015-modules-commonjs"
       ]
     }
   }

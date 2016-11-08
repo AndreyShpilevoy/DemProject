@@ -7,19 +7,15 @@ const Autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify('development')
+  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
 
 };
-
-const bootstrapDevEntryPoint = 'bootstrap-loader/lib/bootstrap.loader?' +
-          `configFilePath=${__dirname}/.bootstraprc` +
-          '!bootstrap-loader/no-op.js';
 
 module.exports = {
   devtool: "cheap-eval-source-map",
   entry: [
     "babel-polyfill",
-    bootstrapDevEntryPoint,
+    `bootstrap-loader/lib/bootstrap.loader?configFilePath=${__dirname}/.bootstraprc!bootstrap-loader/no-op.js`,
     "webpack-hot-middleware/client?reload=true",
     "./src/scripts/index"
   ],
@@ -27,10 +23,7 @@ module.exports = {
   output: {
     path: '/',
     publicPath: 'http://localhost:60782/',
-    filename: "dem.min.js"
-  },
-  devServer:{
-    contantBase: "./src"
+    filename: "dem.min.js?[hash]"
   },
   module: {
     rules: [
@@ -53,7 +46,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        use: 'url-loader?limit=8192&name=images/[name].[ext]'
+        use: 'url-loader?limit=8192&name=images/[name]-[hash].[ext]'
       }
     ]
   },

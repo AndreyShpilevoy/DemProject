@@ -11,46 +11,24 @@ const checksum = require('checksum');
 const cssnano = require('cssnano');
 
 const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify('production'),
+  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
   'paceCssHash': checksum('./node_modules/pace-progress/themes/orange/pace-theme-flash.css'),
   'paceJsHash': checksum('./node_modules/pace-progress/pace.min.js')
 
 };
 
-const loaders = [
-  {
-    loader: 'css-loader?sourceMap'//,
-    // options: {
-    //   modules: true
-    // }
-  },
-  {
-    loader: 'postcss-loader'
-  },
-  {
-    loader: 'sass-loader?sourceMap'
-  }
-];
-
-const bootstrapDevEntryPoint = 'bootstrap-loader/lib/bootstrap.loader?' +
-          `extractStyles&configFilePath=${__dirname}/.bootstraprc` +
-          '!bootstrap-loader/no-op.js';
-
 module.exports = {
   devtool: "source-map",
   entry: [
     "babel-polyfill",
-    bootstrapDevEntryPoint,
+    `bootstrap-loader/lib/bootstrap.loader?extractStyles&configFilePath=${__dirname}/.bootstraprc!bootstrap-loader/no-op.js`,
     "./src/scripts/index"
   ],
   target: "web",
   output: {
     path: path.join(__dirname, "../DEM_MVC/wwwroot"),
     publicPath: '/wwwroot/',
-    filename: "dem.min.js"
-  },
-  devServer:{
-    contantBase: "../DEM_MVC/wwwroot"
+    filename: "dem.min.js?[hash]"
   },
   module: {
     rules: [
@@ -62,19 +40,14 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: path.join(__dirname, "./src"),
-        use: ["style-loader", "css-loader?sourceMap", "postcss-loader", "sass-loader?sourceMap"]
-      },
-      {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
+        loader: ExtractTextPlugin.extract({
           fallbackLoader: "style-loader",
-          loader: loaders
+          loader: "css-loader?sourceMap!postcss-loader!sass-loader?sourceMap"
         })
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        use: 'url-loader?limit=8192&name=images/[name].[ext]'
+        use: 'url-loader?limit=8192&name=images/[name]-[hash].[ext]'
       }
     ]
   },
@@ -111,11 +84,10 @@ module.exports = {
         }
       }
     }),
+    new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin(GLOBALS),
     new ExtractTextPlugin({
-      filename: 'dem.min.css',
-      disable: false,
-      allChunks: true
+      filename: 'dem.min.css?[hash]'
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {warnings: false},

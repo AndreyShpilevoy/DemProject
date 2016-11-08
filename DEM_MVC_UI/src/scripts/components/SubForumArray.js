@@ -4,7 +4,7 @@ import SubForumItem from 'components/SubForumItem';
 
 class SubForumArray extends React.Component {
   static propTypes = {
-    subForumArray: PropTypes.arrayof(
+    subForumArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
