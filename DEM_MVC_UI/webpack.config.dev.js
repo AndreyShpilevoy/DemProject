@@ -6,11 +6,6 @@ const path = require('path');
 const Autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-
-};
-
 module.exports = {
   devtool: "cheap-eval-source-map",
   entry: [
@@ -71,7 +66,11 @@ module.exports = {
         }
       }
     }),
-    new webpack.DefinePlugin(GLOBALS),
+    new webpack.DefinePlugin({
+      'process.env':{
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       hash: false,

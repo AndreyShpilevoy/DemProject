@@ -10,13 +10,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const checksum = require('checksum');
 const cssnano = require('cssnano');
 
-const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-  'paceCssHash': checksum('./node_modules/pace-progress/themes/orange/pace-theme-flash.css'),
-  'paceJsHash': checksum('./node_modules/pace-progress/pace.min.js')
-
-};
-
 module.exports = {
   devtool: "source-map",
   entry: [
@@ -53,8 +46,8 @@ module.exports = {
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({
-      debug: true,
-      noInfo: false,
+      debug: false,
+      noInfo: true,
       options: {
         context: __dirname,
         output: {
@@ -73,8 +66,7 @@ module.exports = {
               discardUnused: false,
               mergeIdents: false,
               reduceIdents: false,
-              safe: true//,
-              //sourcemap: true
+              safe: true
            })
           ];
         },
@@ -85,7 +77,11 @@ module.exports = {
       }
     }),
     new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin(GLOBALS),
+    new webpack.DefinePlugin({
+      'process.env':{
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
     new ExtractTextPlugin({
       filename: 'dem.min.css?[hash]'
     }),
@@ -106,8 +102,8 @@ module.exports = {
       publicPath: '/wwwroot/',
       filename: 'index.html',
       template: path.join(__dirname, "./src/index.html"),
-      paceCss: '/wwwroot/pace.css?' + GLOBALS.paceCssHash,
-      paceJs: '/wwwroot/pace.min.js?' + GLOBALS.paceJsHash
+      paceCss: '/wwwroot/pace.css?' + checksum('./node_modules/pace-progress/themes/orange/pace-theme-flash.css'),
+      paceJs: '/wwwroot/pace.min.js?' + checksum('./node_modules/pace-progress/pace.min.js')
     })
   ]
 };
