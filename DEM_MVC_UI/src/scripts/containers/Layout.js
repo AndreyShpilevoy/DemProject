@@ -7,7 +7,6 @@ import LayoutComponent from "components/Layout";
 class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
-    locale: PropTypes.string.isRequired,
     actions: PropTypes.object.isRequired
   };
 
@@ -24,13 +23,7 @@ class Layout extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let result = {};
-  if(state.localeReducer &&
-    state.localeReducer.currentLocale &&
-    state.localeReducer.currentLocale.locale){
-    result = {locale: state.localeReducer.currentLocale.locale};
-  }
-  return result;
+  return state;
 };
 
 const mapDispatchToProps = (dispatch) => ({

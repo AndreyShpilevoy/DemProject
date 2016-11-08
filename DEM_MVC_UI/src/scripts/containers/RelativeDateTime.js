@@ -6,7 +6,7 @@ import SpanWrapper from "components/SpanWrapper";
 class RelativeDateTime extends React.Component {
   static propTypes = {
       relativeDateTime: PropTypes.instanceOf(Date).isRequired,
-      locale: PropTypes.object.isRequired,
+      locale: PropTypes.string.isRequired,
       className: PropTypes.string,
       spaceBefore: PropTypes.bool,
       spaceAfter: PropTypes.bool,
@@ -33,13 +33,7 @@ class RelativeDateTime extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let result = {};
-  if(state.localeReducer &&
-    state.localeReducer.currentLocale &&
-    state.localeReducer.currentLocale.locale){
-    result = {locale: state.localeReducer.currentLocale.locale};
-  }
-  return result;
+  return (state.localeReducer && state.localeReducer.currentLocale) ? state.localeReducer.currentLocale : {locale:"eng"};
 };
 
 export default connect(mapStateToProps)(RelativeDateTime);
