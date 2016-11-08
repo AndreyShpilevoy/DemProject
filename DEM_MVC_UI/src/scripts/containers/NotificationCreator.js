@@ -63,11 +63,9 @@ class NotificationCreator extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let result = {};
-  if(state.notificationReducer && state.notificationReducer.allNotifications){
-    result = {notificationArray: state.notificationReducer.allNotifications};
-  }
-  return result;
+  return (state.notificationReducer && state.notificationReducer.allNotifications) ?
+    {notificationArray: state.notificationReducer.allNotifications} :
+    {notificationArray: []};
 };
 
 const mapDispatchToProps = (dispatch) => ({

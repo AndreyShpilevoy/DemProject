@@ -21,7 +21,7 @@ class MainConferencePage extends React.Component {
           latesPostTimeCreation: PropTypes.instanceOf(Date),
           latesPostAutorId: PropTypes.number.isRequired,
           latesPostAutorName: PropTypes.string.isRequired,
-          latesPostAutorAvatart: PropTypes.string.isRequired,
+          latesPostAutorAvatart: PropTypes.string,
           latesPostAutorGroupColor: PropTypes.string.isRequired
         }).isRequired,
         parentForumId: PropTypes.number.isRequired,
@@ -57,8 +57,8 @@ class MainConferencePage extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-  lastActiveTopics: state.lastActiveTopicReducer.lastActiveTopics,
-  chapterArray: state.chapterReducer.allChapters
+  lastActiveTopics: state.lastActiveTopicReducer.lastActiveTopics ? state.lastActiveTopicReducer.lastActiveTopics : [],
+  chapterArray: state.chapterReducer.allChapters ? state.chapterReducer.allChapters : []
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -33,7 +33,11 @@ class RelativeDateTime extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return (state.localeReducer && state.localeReducer.currentLocale) ? state.localeReducer.currentLocale : {locale:"eng"};
+  let result = {locale:"eng"};
+  if(state.localeReducer && state.localeReducer.currentLocale && state.localeReducer.currentLocale.locale){
+    result = {locale:state.localeReducer.currentLocale.locale};
+  }
+  return result;
 };
 
 export default connect(mapStateToProps)(RelativeDateTime);

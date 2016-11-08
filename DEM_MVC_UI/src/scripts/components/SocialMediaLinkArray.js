@@ -11,8 +11,7 @@ class SocialMediaLinkArray extends React.Component {
         href: PropTypes.string.isRequired,
         svgName: PropTypes.string.isRequired,
         order: PropTypes.number.isRequired
-      })).isRequired,
-    actions: PropTypes.object.isRequired
+      })).isRequired
   };
 
   orderSocialMediaLinks = () => {

@@ -14,7 +14,7 @@ class TopicItem extends React.Component {
         latesPostTimeCreation: PropTypes.instanceOf(Date),
         latesPostAutorId: PropTypes.number.isRequired,
         latesPostAutorName: PropTypes.string.isRequired,
-        latesPostAutorAvatart: PropTypes.string.isRequired,
+        latesPostAutorAvatart: PropTypes.string,
         latesPostAutorGroupColor: PropTypes.string.isRequired
       }).isRequired,
       parentForumId: PropTypes.number,

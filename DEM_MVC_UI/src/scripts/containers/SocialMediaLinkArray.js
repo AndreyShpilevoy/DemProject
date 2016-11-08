@@ -30,7 +30,7 @@ class SocialMediaLinkArray extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  socialMediaLinkArray: state.socialMediaLinkReducer.socialMediaLinks
+  socialMediaLinkArray: state.socialMediaLinkReducer.socialMediaLinks ? state.socialMediaLinkReducer.socialMediaLinks : []
 });
 
 const mapDispatchToProps = (dispatch) => ({

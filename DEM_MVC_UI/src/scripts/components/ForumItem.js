@@ -34,8 +34,14 @@ class ForumItem extends React.Component {
     };
   }
 
+  getSubForumArray = () => {
+    return this.props.forumItem.subForumArray ?
+      <SubForumArray subForumArray={this.props.forumItem.subForumArray}/> :
+      null;
+  }
+
   render(){
-    let {id, title, description, subForumArray, topicsCount, postsCount, lastTopicInfo} = this.props.forumItem;
+    let {id, title, description, topicsCount, postsCount, lastTopicInfo} = this.props.forumItem;
     return(
       <div className="forum-container-wrapper row">
         <div className="forum-container col-xs-12 row">
@@ -46,7 +52,7 @@ class ForumItem extends React.Component {
                 {description}
               </div>
               <div className="hidden-md-down">
-                <SubForumArray subForumArray={subForumArray}/>
+                {this.getSubForumArray()}
               </div>
             </div>
             <div className="col-lg-2 forum-topics-counter flex flex-column-vertical-center">

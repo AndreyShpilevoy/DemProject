@@ -30,7 +30,7 @@ class NavigationLinkArray extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-  navigationLinkArray: state.navigationLinkReducer.navigationLinks
+  navigationLinkArray: state.navigationLinkReducer.navigationLinks ? state.navigationLinkReducer.navigationLinks : []
 });
 
 const mapDispatchToProps = (dispatch) => ({

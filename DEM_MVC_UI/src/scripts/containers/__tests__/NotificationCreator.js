@@ -21,10 +21,10 @@ describe('NotificationCreator', () => {
     });
 
   it('should return "notificationArray" from "notificationReducer" and recieve expected result', () => {
-      expect(setup(0).prop("notificationArray")).toEqual(sharedFakeStoreData.notificationArray);
+      expect(setup(1).prop("notificationArray")).toEqual(sharedFakeStoreData.notificationReducer.allNotifications);
   });
 
-    it('"notificationReducer" result should beFalsy', () => {
-    expect(setup(0).prop("notificationArray")).toBeFalsy();
+    it('should return "notificationArray" from "notificationReducer" and recieve expected result - []', () => {
+    expect(setup(0).prop("notificationArray")).toEqual([]);
   });
 });

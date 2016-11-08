@@ -18,7 +18,7 @@ class Breadcrumbs extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  breadcrumbArray: state.breadcrumbsReducer.breadcrumbArray
+  breadcrumbArray: state.breadcrumbsReducer.breadcrumbArray ? state.breadcrumbsReducer.breadcrumbArray : []
 });
 
 export default connect(mapStateToProps)(Breadcrumbs);
