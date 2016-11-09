@@ -6,93 +6,77 @@ import CheckObject from "testHelpers/CheckObject";
 
 
 describe('breadcrumbsSagas', () => {
-  it('getForumBreadcrumbsGenerator first yeald should return TAKE pattern "GET_FORUM_BREADCRUMBS"', () => {
-    const getForumBreadcrumbsGenerator = breadcrumbsSagas.getForumBreadcrumbs();
 
-    expect(getForumBreadcrumbsGenerator.next({}).value.TAKE.pattern)
-      .toEqual('GET_FORUM_BREADCRUMBS');
+  it('getForumBreadcrumbs first yeald should return TAKE pattern "GET_FORUM_BREADCRUMBS"', () => {
+    const generator = breadcrumbsSagas.getForumBreadcrumbs();
+
+    expect(generator.next({}).value.TAKE.pattern).toEqual('GET_FORUM_BREADCRUMBS');
+  });
+  it('getForumBreadcrumbs second yeald should return FORK to function "getBreadcrumbsByIdNonBlock"', () => {
+    const generator = breadcrumbsSagas.getForumBreadcrumbs();
+    generator.next({});
+
+    expect(generator.next({}).value.FORK.fn).toEqual(breadcrumbsSagas.getBreadcrumbsByIdNonBlock);
   });
 
-  it('getForumBreadcrumbsGenerator second yeald should return FORK to function "getBreadcrumbsByIdNonBlock"', () => {
-    const getForumBreadcrumbsGenerator = breadcrumbsSagas.getForumBreadcrumbs();
 
-    getForumBreadcrumbsGenerator.next({});
-    expect(getForumBreadcrumbsGenerator.next({}).value.FORK.fn)
-      .toEqual(breadcrumbsSagas.getBreadcrumbsByIdNonBlock);
+  it('getTopicBreadcrumbs first yeald should return TAKE pattern "GET_TOPIC_BREADCRUMBS"', () => {
+    const generator = breadcrumbsSagas.getTopicBreadcrumbs();
+
+    expect(generator.next({}).value.TAKE.pattern).toEqual('GET_TOPIC_BREADCRUMBS');
+  });
+  it('getTopicBreadcrumbs second yeald should return FORK to function "getBreadcrumbsByIdNonBlock"', () => {
+    const generator = breadcrumbsSagas.getTopicBreadcrumbs();
+    generator.next({});
+
+    expect(generator.next({}).value.FORK.fn).toEqual(breadcrumbsSagas.getBreadcrumbsByIdNonBlock);
   });
 
-  it('getTopicBreadcrumbsGenerator first yeald should return TAKE pattern "GET_TOPIC_BREADCRUMBS"', () => {
-    const getTopicBreadcrumbsGenerator = breadcrumbsSagas.getTopicBreadcrumbs();
 
-    expect(getTopicBreadcrumbsGenerator.next({}).value.TAKE.pattern)
-      .toEqual('GET_TOPIC_BREADCRUMBS');
-  });
-
-  it('getTopicBreadcrumbsGenerator second yeald should return FORK to function "getBreadcrumbsByIdNonBlock"', () => {
-    const getTopicBreadcrumbsGenerator = breadcrumbsSagas.getTopicBreadcrumbs();
-
-    getTopicBreadcrumbsGenerator.next({});
-    expect(getTopicBreadcrumbsGenerator.next({}).value.FORK.fn)
-      .toEqual(breadcrumbsSagas.getBreadcrumbsByIdNonBlock);
-  });
-
-  it('getBreadcrumbsByIdNonBlockGenerator second yeald should return CALL to function "BreadcrumbsApi.getForumBreadcrumbs" if call from getForumBreadcrumbs', () => {
+  it('getBreadcrumbsByIdNonBlock second yeald should return CALL to function "BreadcrumbsApi.getForumBreadcrumbs" if call from getForumBreadcrumbs', () => {
     const testForumId = 1;
-    const getBreadcrumbsByIdNonBlockGenerator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getForumBreadcrumbs, testForumId);
+    const generator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getForumBreadcrumbs, testForumId);
 
-    expect(getBreadcrumbsByIdNonBlockGenerator.next().value.CALL.fn)
-      .toEqual(BreadcrumbsApi.getForumBreadcrumbs);
+    expect(generator.next().value.CALL.fn).toEqual(BreadcrumbsApi.getForumBreadcrumbs);
   });
-
-  it('getBreadcrumbsByIdNonBlockenerator third yeald should return PUT action.type "GET_BREADCRUMBS_SUCCESS" if call from getForumBreadcrumbs', () => {
+  it('getBreadcrumbsByIdNonBlock third yeald should return PUT action.type "GET_BREADCRUMBS_SUCCESS" if call from getForumBreadcrumbs', () => {
     const testForumId = 1;
-    const getBreadcrumbsByIdNonBlockGenerator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getForumBreadcrumbs, testForumId);
+    const generator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getForumBreadcrumbs, testForumId);
     const forumsByChapterId = BreadcrumbsApi.getForumBreadcrumbs(testForumId);
 
-    getBreadcrumbsByIdNonBlockGenerator.next();
-
-    expect(getBreadcrumbsByIdNonBlockGenerator.next(forumsByChapterId).value.PUT.action.type)
-      .toEqual('GET_BREADCRUMBS_SUCCESS');
+    generator.next();
+    expect(generator.next(forumsByChapterId).value.PUT.action.type).toEqual('GET_BREADCRUMBS_SUCCESS');
   });
-
-  it('getBreadcrumbsByIdNonBlockGenerator third yeald should return PUT action.breadcrumbArray that is a Promise if call from getForumBreadcrumbs', () => {
+  it('getBreadcrumbsByIdNonBlock third yeald should return PUT action.breadcrumbArray that is a Promise if call from getForumBreadcrumbs', () => {
     const testForumId = 1;
-    const getBreadcrumbsByIdNonBlockGenerator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getForumBreadcrumbs, testForumId);
+    const generator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getForumBreadcrumbs, testForumId);
     const forumsByChapterId = BreadcrumbsApi.getForumBreadcrumbs(testForumId);
 
-    getBreadcrumbsByIdNonBlockGenerator.next();
-    expect(CheckObject.IsPromise(getBreadcrumbsByIdNonBlockGenerator.next(forumsByChapterId).value.PUT.action.breadcrumbArray))
-      .toBeTruthy();
+    generator.next();
+    expect(CheckObject.IsPromise(generator.next(forumsByChapterId).value.PUT.action.breadcrumbArray)).toBeTruthy();
+  });
+  it('getBreadcrumbsByIdNonBlock second yeald should return CALL to function "BreadcrumbsApi.getTopicBreadcrumbs" if call from getTopicBreadcrumbs', () => {
+    const testTopicId = 1;
+    const generator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getTopicBreadcrumbs, testTopicId);
+
+    expect(generator.next().value.CALL.fn).toEqual(BreadcrumbsApi.getTopicBreadcrumbs);
   });
 
-
-
-  it('getBreadcrumbsByIdNonBlockGenerator second yeald should return CALL to function "BreadcrumbsApi.getTopicBreadcrumbs" if call from getTopicBreadcrumbs', () => {
+  it('getBreadcrumbsByIdNonBlock third yeald should return PUT action.type "GET_BREADCRUMBS_SUCCESS" if call from getTopicBreadcrumbs', () => {
     const testTopicId = 1;
-    const getBreadcrumbsByIdNonBlockGenerator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getTopicBreadcrumbs, testTopicId);
-
-    expect(getBreadcrumbsByIdNonBlockGenerator.next().value.CALL.fn)
-      .toEqual(BreadcrumbsApi.getTopicBreadcrumbs);
-  });
-
-  it('getBreadcrumbsByIdNonBlockenerator third yeald should return PUT action.type "GET_BREADCRUMBS_SUCCESS" if call from getTopicBreadcrumbs', () => {
-    const testTopicId = 1;
-    const getBreadcrumbsByIdNonBlockGenerator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getTopicBreadcrumbs, testTopicId);
+    const generator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getTopicBreadcrumbs, testTopicId);
     const topicsByChapterId = BreadcrumbsApi.getTopicBreadcrumbs(testTopicId);
 
-    getBreadcrumbsByIdNonBlockGenerator.next();
-
-    expect(getBreadcrumbsByIdNonBlockGenerator.next(topicsByChapterId).value.PUT.action.type)
-      .toEqual('GET_BREADCRUMBS_SUCCESS');
+    generator.next();
+    expect(generator.next(topicsByChapterId).value.PUT.action.type).toEqual('GET_BREADCRUMBS_SUCCESS');
   });
 
-  it('getBreadcrumbsByIdNonBlockGenerator third yeald should return PUT action.breadcrumbArray that is a Promise if call from getTopicBreadcrumbs', () => {
+  it('getBreadcrumbsByIdNonBlock third yeald should return PUT action.breadcrumbArray that is a Promise if call from getTopicBreadcrumbs', () => {
     const testTopicId = 1;
-    const getBreadcrumbsByIdNonBlockGenerator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getTopicBreadcrumbs, testTopicId);
+    const generator = breadcrumbsSagas.getBreadcrumbsByIdNonBlock(BreadcrumbsApi.getTopicBreadcrumbs, testTopicId);
     const topicsByChapterId = BreadcrumbsApi.getTopicBreadcrumbs(testTopicId);
 
-    getBreadcrumbsByIdNonBlockGenerator.next();
-    expect(CheckObject.IsPromise(getBreadcrumbsByIdNonBlockGenerator.next(topicsByChapterId).value.PUT.action.breadcrumbArray))
-      .toBeTruthy();
+    generator.next();
+    expect(CheckObject.IsPromise(generator.next(topicsByChapterId).value.PUT.action.breadcrumbArray)).toBeTruthy();
   });
 });
