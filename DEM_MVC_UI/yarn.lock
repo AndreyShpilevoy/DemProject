@@ -2142,11 +2142,10 @@ eslint-config-airbnb-base@10.0.1:
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-10.0.1.tgz#f17d4e52992c1d45d1b7713efbcd5ecd0e7e0506"
 
-eslint-import-resolver-babel-module@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/eslint-import-resolver-babel-module/-/eslint-import-resolver-babel-module-2.1.1.tgz#77af239c522eddd996e307f29770aa1a4d2092c0"
+eslint-import-resolver-babel-module@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-babel-module/-/eslint-import-resolver-babel-module-2.2.0.tgz#1c31e5bd6f03b5c987b441e7c536916d99e211ba"
   dependencies:
-    find-babel-config "^1.0.0"
     resolve "^1.1.7"
 
 eslint-import-resolver-node@^0.2.0:
@@ -2464,7 +2463,7 @@ finalhandler@0.5.0:
     statuses "~1.3.0"
     unpipe "~1.0.0"
 
-find-babel-config@^1.0.0, find-babel-config@^1.0.1:
+find-babel-config@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/find-babel-config/-/find-babel-config-1.0.1.tgz#179fa7b36bf3e94b487410855df448b6f853b9ec"
   dependencies:
