@@ -4,7 +4,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import TermItem from "containers/TermItem";
-import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
 jest.mock("../../services/translations/TermTranslation", ()=>({
   getTermTranslation: ()=>("TestTerm")
@@ -23,7 +23,7 @@ describe('TermItem', () => {
   }
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve expected result', () => {
-    expect(setup(1).prop('locale')).toEqual(sharedFakeStoreData.localeReducer.currentLocale.locale);
+    expect(setup(1).prop('locale')).toEqual(validFakeStoreData.localeReducer.currentLocale.locale);
   });
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve "eng"', () => {

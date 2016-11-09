@@ -5,7 +5,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import SocialMediaLinkArray from "containers/SocialMediaLinkArray";
 import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
 describe('SocialMediaLinkArray', () => {
   function setup(mockConfigId) {
@@ -17,7 +17,7 @@ describe('SocialMediaLinkArray', () => {
   }
 
   it('should get "allChapters" from "chapterReducer" and recieve expected result', () => {
-    expect(setup(1).prop('socialMediaLinkArray')).toEqual(sharedFakeStoreData.socialMediaLinkReducer.socialMediaLinks);
+    expect(setup(1).prop('socialMediaLinkArray')).toEqual(validFakeStoreData.socialMediaLinkReducer.socialMediaLinks);
   });
 
   it('should find "SocialMediaLinkArray" component', () => {

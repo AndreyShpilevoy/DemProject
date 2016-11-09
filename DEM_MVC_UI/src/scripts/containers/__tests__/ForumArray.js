@@ -5,7 +5,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import ForumArray from "containers/ForumArray";
 import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
 describe('ForumArray', () => {
   function setup(mockConfigId) {
@@ -18,7 +18,7 @@ describe('ForumArray', () => {
   }
 
   it('should get "allForums" from "forumReducer" and recieve expected result', () => {
-    expect(setup(1).prop('forumArray')).toEqual(sharedFakeStoreData.forumReducer.allForums[0].forumArray);
+    expect(setup(1).prop('forumArray')).toEqual(validFakeStoreData.forumReducer.allForums[0].forumArray);
   });
 
   it('should get "allForums" from "forumReducer" and recieve empty array', () => {

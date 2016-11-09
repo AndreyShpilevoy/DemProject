@@ -8,7 +8,7 @@ function getTermTranslation (term, locale) {
 }
 
 function getDateTimeDeclension (locale) {
-  if(locale === null){
+  if(locale === "en"){
     return (
       function (number, firstForm, secondForm, trirdForm, singleForm) {
         return `${singleForm}`;

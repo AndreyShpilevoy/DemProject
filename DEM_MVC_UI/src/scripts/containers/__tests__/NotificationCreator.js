@@ -5,7 +5,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import NotificationCreator from "containers/NotificationCreator";
 import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
 
 describe('NotificationCreator', () => {
@@ -21,7 +21,7 @@ describe('NotificationCreator', () => {
     });
 
   it('should return "notificationArray" from "notificationReducer" and recieve expected result', () => {
-      expect(setup(1).prop("notificationArray")).toEqual(sharedFakeStoreData.notificationReducer.allNotifications);
+      expect(setup(1).prop("notificationArray")).toEqual(validFakeStoreData.notificationReducer.allNotifications);
   });
 
     it('should return "notificationArray" from "notificationReducer" and recieve expected result - []', () => {

@@ -9,6 +9,8 @@ class TransformDateTime {
     this.msPerYear = this.msPerDay * 365;
   }
   GetRelative(date, locale) {
+    if(!date) return undefined;
+
     let dateTimeDeclension = TermTranslation.getDateTimeDeclension(locale);
     if(!dateTimeDeclension)
     {
@@ -67,6 +69,7 @@ class TransformDateTime {
     return `${dateTime} ${suffixAgo}`;
   }
   GetLocaleDateTime(date, locale, options){
+    if(!date) return undefined;
     return date.toLocaleTimeString(locale, options);
   }
 }

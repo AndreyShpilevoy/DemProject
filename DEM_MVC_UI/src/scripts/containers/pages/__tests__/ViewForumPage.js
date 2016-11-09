@@ -5,7 +5,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import ViewForumPage from "pages/ViewForumPage";
 import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
 describe('ViewForumPage', () => {
   function setup(mockConfigId) {
@@ -25,7 +25,7 @@ describe('ViewForumPage', () => {
   });
 
   it('should get "chapterById" from "chapterReducer" and recieve expected result', () => {
-    expect(setup(1).prop('chapterItem')).toEqual(sharedFakeStoreData.chapterReducer.chapterById);
+    expect(setup(1).prop('chapterItem')).toEqual(validFakeStoreData.chapterReducer.chapterById);
   });
 
   it('should get "chapterById" from "chapterReducer" and recieve expected "null"', () => {
@@ -38,7 +38,7 @@ describe('ViewForumPage', () => {
   });
 
   it('should get "allTopics" from "topicReducer" and recieve expected result', () => {
-    expect(setup(1).prop('topicArray')).toEqual(sharedFakeStoreData.topicReducer.allTopics[0].topicArray);
+    expect(setup(1).prop('topicArray')).toEqual(validFakeStoreData.topicReducer.allTopics[0].topicArray);
   });
 
   it('should get "allTopics" from "topicReducer" and recieve "[]"', () => {

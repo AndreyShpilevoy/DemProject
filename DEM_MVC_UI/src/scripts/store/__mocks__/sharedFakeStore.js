@@ -2,7 +2,7 @@
 import configureMockStore from 'redux-mock-store';
 import * as fakeData from "api/__fakeData__/index";
 
-export const sharedFakeStoreData = {
+export const validFakeStoreData = {
   chapterReducer: {
     chapterById: fakeData.chapters[0],
     allChapters: [fakeData.chapters[2], fakeData.chapters[0], fakeData.chapters[1]]
@@ -54,10 +54,10 @@ export function sharedFakeStore(mockConfigId){
   const mockStore = configureMockStore();
   switch (mockConfigId){
     case 1:
-      return mockStore(sharedFakeStoreData);
+      return mockStore(validFakeStoreData);
     case 2:
     //change forumId for topicReducer.allTopics[0] and for topicId for postReducer.allPosts
-      return mockStore(Object.assign({}, sharedFakeStoreData,
+      return mockStore(Object.assign({}, validFakeStoreData,
         {topicReducer: {allTopics: [{forumId: 1, topicArray: [fakeData.topics[2], fakeData.topics[0], fakeData.topics[1]]}]}},
         {postReducer: {allPosts: [{topicId: 2, postArray: [fakeData.posts[2], fakeData.posts[0], fakeData.posts[1]]}]}}
       ));

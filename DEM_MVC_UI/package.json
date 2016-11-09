@@ -27,6 +27,7 @@
     "collectCoverage": true,
     "coveragePathIgnorePatterns": [
       "<rootDir>/testHelpers/",
+      "<rootDir>/src/scripts/services/domScripts/SelectTextFromContainerById.js",
       "<rootDir>/src/scripts/services/domScripts/ShrinkingHeader.js",
       "<rootDir>/src/scripts/services/domScripts/ToggleClass.js",
       "<rootDir>/node_modules/"

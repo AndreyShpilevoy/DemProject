@@ -5,7 +5,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import Breadcrumbs from "containers/Breadcrumbs";
 import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
 
 
@@ -19,7 +19,7 @@ describe('Breadcrumbs', () => {
   }
 
   it('should get "breadcrumbs" from "breadcrumbsReducer" and recieve expected result', () => {
-    expect(setup(1).prop('breadcrumbArray')).toEqual(sharedFakeStoreData.breadcrumbsReducer.breadcrumbArray);
+    expect(setup(1).prop('breadcrumbArray')).toEqual(validFakeStoreData.breadcrumbsReducer.breadcrumbArray);
   });
 
   it('should find "BreadcrumbArray" component', () => {

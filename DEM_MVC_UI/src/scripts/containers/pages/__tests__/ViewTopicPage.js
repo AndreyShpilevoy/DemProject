@@ -5,7 +5,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import ViewTopicPage from "pages/ViewTopicPage";
 import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, sharedFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
 
 describe('ViewTopicPage', () => {
   function setup(mockConfigId) {
@@ -25,7 +25,7 @@ describe('ViewTopicPage', () => {
   });
 
   it('should get "allPosts" from "postReducer" and recieve expected result', () => {
-    expect(setup(1).prop('postArray')).toEqual(sharedFakeStoreData.postReducer.allPosts[0].postArray);
+    expect(setup(1).prop('postArray')).toEqual(validFakeStoreData.postReducer.allPosts[0].postArray);
   });
 
   it('should get "allPosts" from "postReducer" and recieve {"postArray": []}', () => {
