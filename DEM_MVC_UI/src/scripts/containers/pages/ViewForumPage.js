@@ -11,13 +11,13 @@ import Breadcrumbs from "containers/Breadcrumbs";
 class ViewForumPage extends React.Component {
   static propTypes = {
     params: PropTypes.shape({
-      forumId: PropTypes.number.isRequired
+      forumId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
     }).isRequired,
     chapterItem: PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       order: PropTypes.number.isRequired,
-    }).isRequired,
+    }),
     topicArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -28,10 +28,10 @@ class ViewForumPage extends React.Component {
           latesPostTimeCreation: PropTypes.instanceOf(Date),
           latesPostAutorId: PropTypes.number.isRequired,
           latesPostAutorName: PropTypes.string.isRequired,
-          latesPostAutorAvatart: PropTypes.string.isRequired,
+          latesPostAutorAvatart: PropTypes.string,
           latesPostAutorGroupColor: PropTypes.string.isRequired
         }).isRequired
-      })).isRequired,
+      })),
     actions: PropTypes.object.isRequired
   };
 
@@ -57,7 +57,7 @@ class ViewForumPage extends React.Component {
       <div>
         <Breadcrumbs/>
         {this.props.chapterItem ? <ChapterItem chapterItem={this.props.chapterItem}/> :  null}
-        <TopicArray topicArray={this.props.topicArray} forumId={this.props.params.forumId} />
+        {this.props.topicArray ? <TopicArray topicArray={this.props.topicArray} forumId={this.props.params.forumId} /> :  null}
         <Breadcrumbs/>
       </div>
     );
@@ -65,17 +65,19 @@ class ViewForumPage extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let result = {};
   let {chapterReducer, topicReducer} = state;
-  if(chapterReducer && chapterReducer.chapterById){
-    result = {chapterItem: chapterReducer.chapterById};
+  let result = {
+    chapterItem: null,
+    topicArray: []
+  };
+
+  if(chapterReducer){
+    result = Object.assign({}, result, {chapterItem: chapterReducer.chapterById});
   }
+
   if(topicReducer && topicReducer.allTopics){
     let allTopicsFiltered = topicReducer.allTopics.find(topicReducer => topicReducer.forumId === ownProps.params.forumId);
-    result = Object.assign(
-      {},
-      result,
-      {topicArray: allTopicsFiltered ? allTopicsFiltered.topicArray : null});
+    result = Object.assign({}, result, {topicArray: allTopicsFiltered ? allTopicsFiltered.topicArray : []});
   }
   return result;
 };

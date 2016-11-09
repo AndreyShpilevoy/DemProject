@@ -36,7 +36,9 @@ class TopicItem extends React.Component {
       <Link className="topic-last-post-author-avatar" to={"/"}>
         <img src={this.props.topicItem.lastPostInfo.latesPostAutorAvatart} />
       </Link> :
-      <div className="topic-last-post-author-avatar"/>;
+      <div className="topic-last-post-author-avatar">
+        <div className="topic-last-post-author-avatar-default"/>
+      </div>;
   }
 
   getParentForum = () => {

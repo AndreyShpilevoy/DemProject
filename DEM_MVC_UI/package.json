@@ -11,7 +11,7 @@
     "f": "npm i -g yarn && yarn",
     "clean-wwwroot": "node_modules/.bin/rimraf ../DEM_MVC/wwwroot && mkdirp ../DEM_MVC/wwwroot",
     "lint": "node_modules/.bin/eslint --color webpack.config.* src tools",
-    "test": "cross-env BABEL_ENV=test jest --no-cache --verbose",
+    "test": "cross-env BABEL_ENV=test jest --no-cache",
     "prebuild": "npm-run-all clean-wwwroot lint test",
     "build": "cross-env BABEL_ENV=production babel-node tools/build.js",
     "postbuild": "babel-node tools/distServer.js",

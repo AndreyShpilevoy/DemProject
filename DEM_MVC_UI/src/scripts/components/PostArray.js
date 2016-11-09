@@ -10,7 +10,7 @@ class PostArray extends React.Component {
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         postTime: PropTypes.instanceOf(Date).isRequired,
-        subject: PropTypes.string.isRequired,
+        subject: PropTypes.string,
         message: PropTypes.string.isRequired,
         rate: PropTypes.number.isRequired,
         userInfo: PropTypes.shape({
@@ -29,7 +29,7 @@ class PostArray extends React.Component {
         signature: PropTypes.string
       }).isRequired
     ).isRequired,
-    topicId: PropTypes.number.isRequired
+    topicId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
   };
 
   orderPosts = () => {

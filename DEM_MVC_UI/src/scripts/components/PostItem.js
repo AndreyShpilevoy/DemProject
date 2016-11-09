@@ -9,7 +9,7 @@ class PostItem extends React.Component {
     postItem: PropTypes.shape({
       id: PropTypes.number.isRequired,
       postTime: PropTypes.instanceOf(Date).isRequired,
-      subject: PropTypes.string.isRequired,
+      subject: PropTypes.string,
       message: PropTypes.string.isRequired,
       rate: PropTypes.number.isRequired,
       userInfo: PropTypes.shape({
@@ -43,7 +43,9 @@ class PostItem extends React.Component {
       <Link className="post-avatar" to={"/"}>
         <img src={this.props.postItem.userInfo.avatar} />
       </Link> :
-      <div className="post-avatar"/>;
+      <div className="post-avatar">
+        <div className="post-avatar-default"/>
+      </div>;
   }
 
   getEditInfo = () => {

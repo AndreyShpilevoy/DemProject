@@ -28,12 +28,12 @@ describe('ViewTopicPage', () => {
     expect(setup(1).prop('postArray')).toEqual(sharedFakeStoreData.postReducer.allPosts[0].postArray);
   });
 
-  it('should get "allPosts" from "postReducer" and recieve "null"', () => {
-    expect(setup(2).prop('postArray')).toEqual(null);
+  it('should get "allPosts" from "postReducer" and recieve {"postArray": []}', () => {
+    expect(setup(2).prop('postArray')).toEqual({"postArray": []});
   });
 
-  it('should get "allPosts" from "postReducer" and recieve undefined', () => {
-    expect(setup(0).prop('postArray')).toEqual(undefined);
+  it('should get "allPosts" from "postReducer" and recieve []', () => {
+    expect(setup(0).prop('postArray')).toEqual([]);
   });
 
   it('should find "PostArray" component', () => {

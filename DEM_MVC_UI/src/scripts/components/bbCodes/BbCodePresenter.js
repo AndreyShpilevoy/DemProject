@@ -5,7 +5,7 @@ import BbCodesMap from 'bbCodes/BbCodesMap';
 
 class BbCodePresenter extends React.Component {
   static propTypes = {
-    text: PropTypes.object.isRequired
+    text: PropTypes.string.isRequired
   };
 
   state = {

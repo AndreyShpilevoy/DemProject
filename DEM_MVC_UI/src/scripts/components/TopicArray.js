@@ -16,11 +16,11 @@ class TopicArray extends React.Component {
           latesPostTimeCreation: PropTypes.instanceOf(Date),
           latesPostAutorId: PropTypes.number.isRequired,
           latesPostAutorName: PropTypes.string.isRequired,
-          latesPostAutorAvatart: PropTypes.string.isRequired,
+          latesPostAutorAvatart: PropTypes.string,
           latesPostAutorGroupColor: PropTypes.string.isRequired
         }).isRequired
       })).isRequired,
-    forumId: PropTypes.number.isRequired
+    forumId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
   };
 
   orderTopics = () => {

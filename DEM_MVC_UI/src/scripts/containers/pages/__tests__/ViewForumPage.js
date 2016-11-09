@@ -28,8 +28,8 @@ describe('ViewForumPage', () => {
     expect(setup(1).prop('chapterItem')).toEqual(sharedFakeStoreData.chapterReducer.chapterById);
   });
 
-  it('should get "chapterById" from "chapterReducer" and recieve expected "undefined"', () => {
-    expect(setup(0).prop('chapterItem')).toEqual(undefined);
+  it('should get "chapterById" from "chapterReducer" and recieve expected "null"', () => {
+    expect(setup(0).prop('chapterItem')).toEqual(null);
   });
 
   it('should find "ChapterItem" component', () => {
@@ -41,12 +41,12 @@ describe('ViewForumPage', () => {
     expect(setup(1).prop('topicArray')).toEqual(sharedFakeStoreData.topicReducer.allTopics[0].topicArray);
   });
 
-  it('should get "allTopics" from "topicReducer" and recieve "null"', () => {
-    expect(setup(2).prop('topicArray')).toEqual(null);
+  it('should get "allTopics" from "topicReducer" and recieve "[]"', () => {
+    expect(setup(2).prop('topicArray')).toEqual([]);
   });
 
-  it('should get "allTopics" from "topicReducer" and recieve undefined', () => {
-    expect(setup(0).prop('topicArray')).toEqual(undefined);
+  it('should get "allTopics" from "topicReducer" and recieve []', () => {
+    expect(setup(0).prop('topicArray')).toEqual([]);
   });
 
   it('should find "TopicArray" component', () => {

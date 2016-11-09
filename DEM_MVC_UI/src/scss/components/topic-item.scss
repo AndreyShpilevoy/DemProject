@@ -1,5 +1,6 @@
 @import "../Common/colors.scss";
 @import "../Common/sizes.scss";
+@import "../Common/image-backgrounds.scss";
 
 .topic-container-wrapper {
   .topic-title{
@@ -27,13 +28,17 @@
   .topic-last-post-wrapper{
     .topic-last-post-author-avatar-container{
       width: $topic-last-post-author-avatar-size;
+
       .topic-last-post-author-avatar {
         height: $topic-last-post-author-avatar-size;
+        width: 100%;
         justify-content: center;
         display: flex;
         flex-direction: row;
         margin-left: auto;
         margin-right: auto;
+
+        .topic-last-post-author-avatar-default,
         img {
           flex: 0 0 auto;
           max-width: 100%;
@@ -42,6 +47,13 @@
           -webkit-align-self: center;
           margin: auto;
           object-fit: scale-down;
+        }
+
+        .topic-last-post-author-avatar-default{
+          background-image: $user-avatar-default;
+          min-width: 100%;
+          min-height: 100%;
+          background-size: contain;
         }
       }
     }

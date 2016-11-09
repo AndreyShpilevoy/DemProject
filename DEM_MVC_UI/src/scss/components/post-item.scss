@@ -1,5 +1,6 @@
 @import "../Common/sizes.scss";
 @import "../Common/colors.scss";
+@import "../Common/image-backgrounds.scss";
 
 
 .post-container-wrapper {
@@ -25,13 +26,17 @@
 
   .post-avatar-container{
     width: $post-avatar-size;
+
     .post-avatar {
       height: $post-avatar-size;
+      width: 100%;
       justify-content: center;
       display: flex;
       flex-direction: row;
       margin-left: auto;
       margin-right: auto;
+
+      .post-avatar-default,
       img {
         flex: 0 0 auto;
         max-width: 100%;
@@ -40,6 +45,13 @@
         -webkit-align-self: center;
         margin: auto;
         object-fit: scale-down;
+      }
+
+      .post-avatar-default{
+        background-image: $user-avatar-default;
+        min-width: 100%;
+        min-height: 100%;
+        background-size: contain;
       }
     }
   }
