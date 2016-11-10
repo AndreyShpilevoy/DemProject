@@ -23,7 +23,7 @@
       "react"
   ],
   "rules": {
-    "quotes": [1, "backtick", { "avoidEscape": true }],
+    "quotes": 0,
     "no-console": 1,
     "no-debugger": 1,
     "no-var": 1,
