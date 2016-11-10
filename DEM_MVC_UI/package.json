@@ -34,7 +34,7 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "6.5.2",
+    "autoprefixer": "6.5.3",
     "babel-cli": "6.18.0",
     "babel-core": "6.18.2",
     "babel-eslint": "7.1.0",
@@ -58,7 +58,7 @@
     "copy-webpack-plugin": "4.0.0",
     "css-loader": "0.25.0",
     "cssnano": "3.8.0",
-    "enzyme": "2.5.1",
+    "enzyme": "2.6.0",
     "eslint": "3.9.1",
     "eslint-config-airbnb-base": "10.0.1",
     "eslint-import-resolver-babel-module": "2.2.0",
@@ -75,7 +75,7 @@
     "node-sass": "3.11.2",
     "npm-run-all": "3.1.1",
     "open": "0.0.5",
-    "postcss-loader": "1.1.0",
+    "postcss-loader": "1.1.1",
     "react-addons-test-utils": "15.3.2",
     "react-hot-loader": "3.0.0-beta.6",
     "redux-immutable-state-invariant": "1.2.4",
