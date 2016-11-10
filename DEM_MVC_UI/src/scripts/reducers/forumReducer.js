@@ -7,17 +7,24 @@ export default function forumReducer(state = [], action) {
       //if localState.allForums already contains element with the same chapterId - replace this element
       if(localState.allForums && localState.allForums.findIndex(forum => forum.chapterId === action.chapterId)!==-1) {
         let index = localState.allForums.findIndex(forum => forum.chapterId === action.chapterId);//get index of element
-        localState.allForums.splice(index, 1, {chapterId: action.chapterId, forumArray: action.forums});//replace element in localState
+        //replace element in localState without mutation
+        localState = Object.assign({}, localState, {
+          allForums: [
+            ...localState.allForums.slice(0, index),
+            {chapterId: action.chapterId, forumArray: action.forums},
+            ...localState.allForums.slice(index+1),
+          ]
+        });
       }
       //if localState.allForums is not empty but dont contains  element with the same chapterId - add new element to array
-      else if(state.allForums) {
-        return Object.assign({}, state, {
-          allForums: [...state.allForums, {chapterId: action.chapterId, forumArray: action.forums}]
+      else if(localState.allForums) {
+        localState = Object.assign({}, localState, {
+          allForums: [...localState.allForums, {chapterId: action.chapterId, forumArray: action.forums}]
         });
       }
       //if localState.allForums is not initilized - initialize and add new element to array
       else {
-        return Object.assign({}, state, {
+        localState = Object.assign({}, localState, {
           allForums: [{chapterId: action.chapterId, forumArray: action.forums}]
         });
       }

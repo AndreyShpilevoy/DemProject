@@ -56,17 +56,21 @@ describe('forumReducer', function(){
     let action = {
       type: types.GET_FORUMS_BY_CHAPTER_ID_SUCCESS,
       forums: [fakeData.forums[0], fakeData.forums[1]],
-      chapterId: 1
+      chapterId: 2
     };
 
     let state = {
       allForums:  [
-        {chapterId: 1, forumArray: [fakeData.forums[2]]}
+        {chapterId: 1, forumArray: [fakeData.forums[2]]},
+        {chapterId: 2, forumArray: [fakeData.forums[2]]},
+        {chapterId: 3, forumArray: [fakeData.forums[2]]}
       ]
     };
 
     expect(forumReducer(state, action)).toEqual({allForums: [
-      {chapterId: action.chapterId, forumArray: action.forums}
+      {chapterId: 1, forumArray: [fakeData.forums[2]]},
+      {chapterId: action.chapterId, forumArray: action.forums},
+      {chapterId: 3, forumArray: [fakeData.forums[2]]}
     ]});
   });
 });
