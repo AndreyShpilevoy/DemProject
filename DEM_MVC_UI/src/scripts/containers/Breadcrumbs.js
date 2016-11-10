@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import BreadcrumbArray from 'components/BreadcrumbArray';
 
 class Breadcrumbs extends React.Component {

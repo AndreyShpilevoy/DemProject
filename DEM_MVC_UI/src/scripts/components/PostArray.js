@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import ContentHolder from "components/ContentHolder";
-import PostItem from "components/PostItem";
+import ContentHolder from 'components/ContentHolder';
+import PostItem from 'components/PostItem';
 import TermItem from 'containers/TermItem';
 
 class PostArray extends React.Component {
@@ -33,7 +33,7 @@ class PostArray extends React.Component {
   };
 
   orderPosts = () => {
-    return  _.orderBy(this.props.postArray, "postTime", "desc");
+    return  _.orderBy(this.props.postArray, 'postTime', 'desc');
   }
 
   mapPosts = () => {
@@ -44,7 +44,7 @@ class PostArray extends React.Component {
 
   bindContentHolderItem = () =>({
     uniquePrefix: `post-array-with-topic-id-${this.props.topicId}`,
-    titleElement: <TermItem term={{id: 30, value: "Posts"}} />,
+    titleElement: <TermItem term={{id: 30, value: 'Posts'}} />,
     bodyElement: <div className="posts-container container">{this.mapPosts()}</div>
   })
 

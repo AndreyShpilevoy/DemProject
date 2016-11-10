@@ -13,11 +13,11 @@ class Quote extends React.Component {
         <span className = "bbCode-quote-author">
           {this.props.options}
         </span>
-        <TermItem spaceBefore term={{id: 32, value: "wrote:"}} />
+        <TermItem spaceBefore term={{id: 32, value: 'wrote:'}} />
       </div> :
       <div>
         <span className = "bbCode-quote-author">
-          <TermItem term={{id: 33, value: "Quote:"}} />
+          <TermItem term={{id: 33, value: 'Quote:'}} />
         </span>
       </div>;
   }

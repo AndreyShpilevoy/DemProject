@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
-import SocialMediaLinkItem from "components/SocialMediaLinkItem";
+import SocialMediaLinkItem from 'components/SocialMediaLinkItem';
 
 class SocialMediaLinkArray extends React.Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class SocialMediaLinkArray extends React.Component {
   };
 
   orderSocialMediaLinks = () => {
-    return  _.orderBy(this.props.socialMediaLinkArray, "order");
+    return  _.orderBy(this.props.socialMediaLinkArray, 'order');
   }
 
   mapSocialMediaLinks = () => {

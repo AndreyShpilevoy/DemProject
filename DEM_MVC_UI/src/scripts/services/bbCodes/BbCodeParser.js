@@ -1,4 +1,4 @@
-import * as bbCodeTypes from "enums/bbCodeTypes";
+import * as bbCodeTypes from 'enums/bbCodeTypes';
 import BbCodesMap from 'bbCodes/BbCodesMap';
 
 class BbCodeParser{
@@ -10,7 +10,7 @@ class BbCodeParser{
 
   wrappToRootNodeIfNecessary = (text) => {
     let result = text;
-    if(result.substring(0, 6)!=="[root]"){
+    if(result.substring(0, 6)!=='[root]'){
       result = `[root]${text}[/root]`;
     }
     return result;
@@ -109,7 +109,7 @@ class BbCodeParser{
       //if we found text that should be contained in current tag
       else if(tagsArray[i].type === bbCodeTypes.TEXT){
         let textNode = {
-          type: "textline",
+          type: 'textline',
           options: null,
           firstIndex: tagsArray[i].firstIndex,
           lastIndex: tagsArray[i].lastIndex,

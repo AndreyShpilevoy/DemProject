@@ -1,4 +1,4 @@
-import * as types from "enums/actionTypes";
+import * as types from 'enums/actionTypes';
 
 function getForumsByChapterId(chapterId){
   return {type: types.GET_FORUMS_BY_CHAPTER_ID, chapterId};

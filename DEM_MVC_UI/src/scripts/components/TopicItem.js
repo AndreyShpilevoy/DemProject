@@ -33,7 +33,7 @@ class TopicItem extends React.Component {
 
   getUserAvatar = () => {
     return this.props.topicItem.lastPostInfo.latesPostAutorAvatart ?
-      <Link className="topic-last-post-author-avatar" to={"/"}>
+      <Link className="topic-last-post-author-avatar" to={'/'}>
         <img src={this.props.topicItem.lastPostInfo.latesPostAutorAvatart} />
       </Link> :
       <div className="topic-last-post-author-avatar">
@@ -45,7 +45,7 @@ class TopicItem extends React.Component {
     let {parentForumId, parentForumTitle} = this.props.topicItem;
     return (parentForumId || parentForumTitle) ?
     <span className="topic-parent-forum-wrapper">
-      <TermItem className="topic-parent-forum" term={{id: 25, value: "Forum:"}} spaceAfter />
+      <TermItem className="topic-parent-forum" term={{id: 25, value: 'Forum:'}} spaceAfter />
       <Link className="topic-parent-forum-title" to={`/Conference/Forum/${parentForumId}`}>{parentForumTitle}</Link>
     </span> :
     null;
@@ -62,7 +62,7 @@ class TopicItem extends React.Component {
               {this.getParentForum()}
             </div>
             <div className="col-lg-2 topic-posts-counter flex flex-column-vertical-center">
-              <TermItem className="hidden-lg-up" term={{id: 2, value: "Posts"}} spaceAfter />
+              <TermItem className="hidden-lg-up" term={{id: 2, value: 'Posts'}} spaceAfter />
               {postsCount}
               {this.getParentForum()}
             </div>
@@ -74,8 +74,11 @@ class TopicItem extends React.Component {
             <div className="flex flex-row">
               <div className="topic-last-post-author">
                 <RelativeDateTime className="topic-last-message-time" relativeDateTime={lastPostInfo.latesPostTimeCreation}/>
-                <TermItem className="hidden-md-up topic-last-post-author-sm-separator" term={{id: 24, value: ">>"}} spaceAfter spaceBefore />
-                <Link className="topic-last-post-autor-name-style" activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{lastPostInfo.latesPostAutorName}</Link>
+                <TermItem className="hidden-md-up topic-last-post-author-sm-separator"
+                  term={{id: 24, value: '>>'}} spaceAfter spaceBefore />
+                <Link className="topic-last-post-autor-name-style" activeStyle={this.state.latesPostAutorNameStyle} to={'/'}>
+                  {lastPostInfo.latesPostAutorName}
+                </Link>
               </div>
                 <div className="topic-last-post-author-avatar-container flex flex-column-vertical-center hidden-md-down">
                   {this.getUserAvatar()}

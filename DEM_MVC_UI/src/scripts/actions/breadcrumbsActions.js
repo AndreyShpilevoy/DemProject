@@ -1,4 +1,4 @@
-import * as types from "enums/actionTypes";
+import * as types from 'enums/actionTypes';
 
 function getForumBreadcrumbs(forumId){
   return {type: types.GET_FORUM_BREADCRUMBS, forumId};
@@ -10,8 +10,8 @@ function getTopicBreadcrumbs(topicId){
 
 function getConferenceBreadcrumbs(){
   return getBreadcrumbsSuccess([{
-      path: "/Conference",
-      title: "Conference",
+      path: '/Conference',
+      title: 'Conference',
       level: 1
     }]);
 }

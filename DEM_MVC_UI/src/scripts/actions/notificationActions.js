@@ -1,19 +1,19 @@
-import * as types from "enums/actionTypes";
+import * as types from 'enums/actionTypes';
 
 function addInfoNotification(notification){
-  return addNotification(notification, "info");
+  return addNotification(notification, 'info');
 }
 
 function addSuccessNotification(notification){
-  return addNotification(notification, "success");
+  return addNotification(notification, 'success');
 }
 
 function addWarningNotification(notification){
-  return addNotification(notification, "warning");
+  return addNotification(notification, 'warning');
 }
 
 function addExceptionNotification(notification){
-  return addNotification(notification, "error");
+  return addNotification(notification, 'error');
 }
 
 function addNotification(notification, level) {

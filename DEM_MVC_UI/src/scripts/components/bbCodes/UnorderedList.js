@@ -14,7 +14,7 @@ class UnorderedList extends React.Component {
     const { className, style } = this.props.attributes;
     return (
       <ul
-        className = {className ? `bbCode-unordered-list ${className}` : "bbCode-unordered-list"}
+        className = {className ? `bbCode-unordered-list ${className}` : 'bbCode-unordered-list'}
         style = {style ? style : null}>
         {children}
       </ul>

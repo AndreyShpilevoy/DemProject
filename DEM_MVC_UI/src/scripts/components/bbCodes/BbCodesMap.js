@@ -44,9 +44,19 @@ class BbCodesMap {
       <BaseSpan key={Math.random()} className="bbCode-position bbCode-right">{children}</BaseSpan>,
     'size': (children, options) =>{
       let fontSizeByDefault = 16;
-      return (options <= 150 && options > 0) ?
-      <BaseSpan key={Math.random()} className="bbCode-size" styleObject={{fontSize: `${options/fontSizeByDefault}rem`}}>{children}</BaseSpan> :
-      <BaseSpan key={Math.random()} className="bbCode-size" styleObject={{fontSize: "1rem"}}>{children}</BaseSpan>;
+      if(options <= 150 && options > 0){
+        return (
+          <BaseSpan key={Math.random()} className="bbCode-size" styleObject={{fontSize: `${options/fontSizeByDefault}rem`}}>
+            {children}
+          </BaseSpan>
+        );
+      } else {
+        return (
+          <BaseSpan key={Math.random()} className="bbCode-size" styleObject={{fontSize: '1rem'}}>
+            {children}
+          </BaseSpan>
+        );
+      }
     },
     'code': (children, options) =>{
       let key = Math.random();

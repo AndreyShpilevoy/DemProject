@@ -10,7 +10,7 @@ class OffTopic extends React.Component {
     return (
       <div className = "bbCode-offtopic">
         <div className = "bbCode-offtopic-header">
-          <TermItem term={{id: 31, value: "Offtopic:"}} />
+          <TermItem term={{id: 31, value: 'Offtopic:'}} />
         </div>
         <div className = "bbCode-offtopic-content">
           {children}

@@ -10,7 +10,7 @@ class Footer extends React.Component {
             <div id="footer" className="footer flex">
               <div className="hidden-md-down footer-empty-wrapper "/>
               <div className="footer-copyright-wrapper flex flex-column-vertical-center">
-                DEM Team - 04.03.2007
+                {'DEM Team - 04.03.2007'}
               </div>
               <div className="hidden-md-down footer-social-media-link-wrapper flex flex-column-vertical-center">
                 <SocialMediaLinkArray/>

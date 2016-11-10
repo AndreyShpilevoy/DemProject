@@ -25,7 +25,7 @@ class ForumArray extends React.Component {
   };
 
   orderForums = () => {
-    return  _.orderBy(this.props.forumArray, "order");
+    return  _.orderBy(this.props.forumArray, 'order');
   }
 
   mapForums = () => {

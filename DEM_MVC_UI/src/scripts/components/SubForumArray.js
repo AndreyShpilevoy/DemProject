@@ -14,7 +14,7 @@ class SubForumArray extends React.Component {
   };
 
   orderSubForumArray = () => {
-    return  _.orderBy(this.props.subForumArray, "order");
+    return  _.orderBy(this.props.subForumArray, 'order');
   }
 
   mapSubForumArray = () => {

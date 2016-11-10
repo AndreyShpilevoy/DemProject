@@ -57,27 +57,31 @@ class ForumItem extends React.Component {
             </div>
             <div className="col-lg-2 forum-topics-counter flex flex-column-vertical-center">
               <span className="hidden-lg-up">
-                <TermItem term={{id: 1, value: "Topics"}} spaceAfter/>
+                <TermItem term={{id: 1, value: 'Topics'}} spaceAfter/>
               </span>
               {topicsCount}
             </div>
             <div className="col-lg-2 forum-posts-counter flex flex-column-vertical-center">
               <span className="hidden-lg-up">
-                <TermItem term={{id: 2, value: "Posts"}} spaceAfter/>
+                <TermItem term={{id: 2, value: 'Posts'}} spaceAfter/>
               </span>
               {postsCount}
             </div>
           </div>
           <div className="col-md-7 col-lg-3 forum-last-post-wrapper">
             <div className="hidden-sm-down padding-initial forum-last-post-autor-name-style">
-              <Link className="hidden-sm-down" activeStyle={this.state.latesPostAutorNameStyle} to={"/"}>{lastTopicInfo.latesPostAutorName}</Link>
+              <Link className="hidden-sm-down" activeStyle={this.state.latesPostAutorNameStyle} to={'/'}>
+                {lastTopicInfo.latesPostAutorName}
+              </Link>
               <RelativeDateTime relativeDateTime={lastTopicInfo.latesPostTimeCreation} spaceBefore/>
             </div>
             <div className="padding-initial forum-last-active-topic">
               <span className="hidden-lg-up">
-                <TermItem term={{id: 3, value: "Last message in"}} spaceAfter/>
+                <TermItem term={{id: 3, value: 'Last message in'}} spaceAfter/>
               </span>
-              <Link className="forum-last-active-topic-message" to={`/Conference/Topic/${lastTopicInfo.lastActiveTopicId}`}>{lastTopicInfo.lastActiveTopic}</Link>
+              <Link className="forum-last-active-topic-message" to={`/Conference/Topic/${lastTopicInfo.lastActiveTopicId}`}>
+                {lastTopicInfo.lastActiveTopic}
+              </Link>
             </div>
           </div>
         </div>

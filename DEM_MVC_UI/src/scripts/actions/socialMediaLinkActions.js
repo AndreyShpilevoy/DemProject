@@ -1,4 +1,4 @@
-import * as types from "enums/actionTypes";
+import * as types from 'enums/actionTypes';
 
 function getSocialMediaLinks(){
   return {type: types.GET_SOCIALMEDIALINKS};

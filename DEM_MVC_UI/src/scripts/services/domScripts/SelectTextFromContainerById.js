@@ -1,10 +1,10 @@
-import root from "lodash/_root";
+import root from 'lodash/_root';
 
 class SelectTextFromContainerById {
   init(toggleButtonId, contentElementId) {
     let button = root.document.getElementById(toggleButtonId);
     let contentElement = root.document.getElementById(contentElementId);
-    button.addEventListener("click", ()=>{this.selectText(contentElement);});
+    button.addEventListener('click', ()=>{this.selectText(contentElement);});
   }
 
   selectText(contentElement){
@@ -20,7 +20,7 @@ class SelectTextFromContainerById {
     root.getSelection().addRange(range);
     }
   }
-  
+
   unSelectText() {
     if (root.document.selection) {
       root.document.selection.empty();

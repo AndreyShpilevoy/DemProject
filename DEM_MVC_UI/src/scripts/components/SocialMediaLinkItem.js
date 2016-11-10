@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Icons from "components/icons/_index";
+import Icons from 'components/icons/_index';
 
 class SocialMediaLinkItem extends React.Component {
   static propTypes = {

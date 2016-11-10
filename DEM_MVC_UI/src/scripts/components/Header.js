@@ -1,14 +1,14 @@
 import React from 'react';
-import NavigationLinkArray from "containers/NavigationLinkArray";
-import NavigationMenuToggleButton from "components/NavigationMenuToggleButton";
-import NavigationLinkLogo from "components/NavigationLinkLogo";
-import ToggleClass from "services/domScripts/ToggleClass";
-import ShrinkingHeader from "services/domScripts/ShrinkingHeader";
+import NavigationLinkArray from 'containers/NavigationLinkArray';
+import NavigationMenuToggleButton from 'components/NavigationMenuToggleButton';
+import NavigationLinkLogo from 'components/NavigationLinkLogo';
+import ToggleClass from 'services/domScripts/ToggleClass';
+import ShrinkingHeader from 'services/domScripts/ShrinkingHeader';
 
 class Header extends React.Component {
   componentDidMount() {
     ShrinkingHeader.init();
-    ToggleClass.init("menu-toggle-button", "nav-menu-content", "nav-links-opened", true);
+    ToggleClass.init('menu-toggle-button', 'nav-menu-content', 'nav-links-opened', true);
   }
     render() {
     return(

@@ -1,7 +1,7 @@
-import { call, put, take, fork } from "redux-saga/effects";
-import PostApi from "api/__mocks__/PostApi";
-import * as postActions from "actions/postActions";
-import * as types from "enums/actionTypes";
+import { call, put, take, fork } from 'redux-saga/effects';
+import PostApi from 'api/__mocks__/PostApi';
+import * as postActions from 'actions/postActions';
+import * as types from 'enums/actionTypes';
 
 export function* getPostsByTopicId() {
   while(true){

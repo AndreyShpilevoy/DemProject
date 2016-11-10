@@ -13,7 +13,7 @@ class ChapterArray extends React.Component {
   };
 
   orderChapters = () => {
-    return  _.orderBy(this.props.chapterArray, "order");
+    return  _.orderBy(this.props.chapterArray, 'order');
   }
 
   mapChapters = () => {

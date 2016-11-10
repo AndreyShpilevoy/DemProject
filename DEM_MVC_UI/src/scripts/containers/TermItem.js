@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
-import {connect} from "react-redux";
-import SpanWrapper from "components/SpanWrapper";
-import TermTranslation from "services/translations/TermTranslation";
+import {connect} from 'react-redux';
+import SpanWrapper from 'components/SpanWrapper';
+import TermTranslation from 'services/translations/TermTranslation';
 
 class TermItem extends React.Component {
   static propTypes = {
@@ -37,7 +37,7 @@ class TermItem extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  let result = {locale:"eng"};
+  let result = {locale:'eng'};
   if(state.localeReducer && state.localeReducer.currentLocale && state.localeReducer.currentLocale.locale){
     result = {locale:state.localeReducer.currentLocale.locale};
   }

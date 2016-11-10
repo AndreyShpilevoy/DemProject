@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
-import {connect} from "react-redux";
-import root from "lodash/_root";
+import {connect} from 'react-redux';
+import root from 'lodash/_root';
 import _ from 'lodash';
 
 class Title extends React.Component {
@@ -13,14 +13,14 @@ class Title extends React.Component {
       })).isRequired
   };
 
-  state = {title: ""};
+  state = {title: ''};
 
   /* istanbul ignore next */
   componentWillReceiveProps(nextProps) {
     let breadcrumbArray = nextProps.breadcrumbArray;
     if (breadcrumbArray !== this.props.breadcrumbArray) {
-      let title = "DeusExMachina";
-      let orderedBreadcrumbs =  _.orderBy(breadcrumbArray, "level");
+      let title = 'DeusExMachina';
+      let orderedBreadcrumbs =  _.orderBy(breadcrumbArray, 'level');
       if(orderedBreadcrumbs.length >= 1){
         title += ` • ${orderedBreadcrumbs[orderedBreadcrumbs.length-1].title}`;
       }

@@ -1,4 +1,4 @@
-import * as types from "enums/actionTypes";
+import * as types from 'enums/actionTypes';
 
 export default function localeReducer(state = [], action) {
     switch (action.type) {

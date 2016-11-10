@@ -15,9 +15,9 @@ class ArrowLeft extends React.Component {
     height: 32,
     width: 32,
     viewBox: `0 0 ${32} ${32}`,
-    className: "icon-arrow-left",
-    title: "Arrow Left",
-    color: "#ffffff"
+    className: 'icon-arrow-left',
+    title: 'Arrow Left',
+    color: '#ffffff'
   };
 
   render(){
@@ -25,7 +25,7 @@ class ArrowLeft extends React.Component {
     return (
       <svg id={id} className={className} xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox={viewBox} aria-labelledby="title">
         <title>{title}</title>
-        <path className={className.split(" ")[0]+"-path"} fill={color} d="M 22,2 8,16 22,30 z" />
+        <path className={className.split(' ')[0]+'-path'} fill={color} d="M 22,2 8,16 22,30 z" />
       </svg>
     );
   }

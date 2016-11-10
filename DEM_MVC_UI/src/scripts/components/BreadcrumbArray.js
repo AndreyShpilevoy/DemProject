@@ -13,7 +13,7 @@ class BreadcrumbArray extends React.Component {
   };
 
   mapBreadcrumbs = () => {
-    let orderedBreadcrumbs = _.orderBy(this.props.breadcrumbArray, "level");
+    let orderedBreadcrumbs = _.orderBy(this.props.breadcrumbArray, 'level');
     //if Breadcrumbs more then 4 - cut middle of array;
     let withEllipsis = orderedBreadcrumbs.length > 4;
     let filteredBreadcrumb = orderedBreadcrumbs.filter(
@@ -28,7 +28,10 @@ class BreadcrumbArray extends React.Component {
     );
     //if cut middle of Breadcrumbs array - add EllipsisArrow element;
     if (withEllipsis) {
-      mappedBreadcrumbs.splice(1, 0, <div key="..." className="breadcrumb-item breadcrumb-item-ignored"><div className="breadcrumb-item-arrow">...</div></div>);
+      mappedBreadcrumbs.splice(1, 0,
+        <div key="..." className="breadcrumb-item breadcrumb-item-ignored">
+          <div className="breadcrumb-item-arrow">{'...'}</div>
+        </div>);
     }
     return mappedBreadcrumbs;
   }

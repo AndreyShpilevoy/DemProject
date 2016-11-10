@@ -1,10 +1,10 @@
 import React, {PropTypes} from 'react';
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-import * as breadcrumbsActions from "actions/breadcrumbsActions";
-import * as postActions from "actions/postActions";
-import Breadcrumbs from "containers/Breadcrumbs";
-import PostArray from "components/PostArray";
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as breadcrumbsActions from 'actions/breadcrumbsActions';
+import * as postActions from 'actions/postActions';
+import Breadcrumbs from 'containers/Breadcrumbs';
+import PostArray from 'components/PostArray';
 
 class ViewTopicPage extends React.Component {
   static propTypes = {

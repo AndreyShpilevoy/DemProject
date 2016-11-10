@@ -1,5 +1,5 @@
 const locale = {
-  locale: "ru"
+  locale: 'ru'
 };
 
 export default locale;

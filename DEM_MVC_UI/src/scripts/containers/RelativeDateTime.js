@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
-import {connect} from "react-redux";
-import TransformDateTime from "services/dateTime/TransformDateTime";
-import SpanWrapper from "components/SpanWrapper";
+import {connect} from 'react-redux';
+import TransformDateTime from 'services/dateTime/TransformDateTime';
+import SpanWrapper from 'components/SpanWrapper';
 
 class RelativeDateTime extends React.Component {
   static propTypes = {
@@ -33,7 +33,7 @@ class RelativeDateTime extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  let result = {locale:"eng"};
+  let result = {locale:'eng'};
   if(state.localeReducer && state.localeReducer.currentLocale && state.localeReducer.currentLocale.locale){
     result = {locale:state.localeReducer.currentLocale.locale};
   }

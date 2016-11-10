@@ -40,7 +40,7 @@ class PostItem extends React.Component {
 
   getUserAvatar = () => {
     return this.props.postItem.userInfo.avatar ?
-      <Link className="post-avatar" to={"/"}>
+      <Link className="post-avatar" to={'/'}>
         <img src={this.props.postItem.userInfo.avatar} />
       </Link> :
       <div className="post-avatar">
@@ -52,8 +52,8 @@ class PostItem extends React.Component {
     let {editInfo} = this.props.postItem;
     return editInfo ?
       <div>
-        <TermItem term={{id: -1, value: "Последний раз отредактировано"}} spaceAfter/>
-        <Link to={"/"}>
+        <TermItem term={{id: -1, value: 'Последний раз отредактировано'}} spaceAfter/>
+        <Link to={'/'}>
           {editInfo.userName}
         </Link>
         <LocaleDateTime localeDateTime={new Date()} spaceBefore/>
@@ -69,7 +69,7 @@ class PostItem extends React.Component {
           <div className="post-avatar-container">
             {this.getUserAvatar()}
           </div>
-          <Link className="post-user-name" activeStyle={this.state.userNameStyle} to={"/"}>
+          <Link className="post-user-name" activeStyle={this.state.userNameStyle} to={'/'}>
             {userInfo.name}
           </Link>
           <div className="post-time">

@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
-import ToggleClass from "services/domScripts/ToggleClass";
-import ArrowLeft from "components/icons/ArrowLeft";
+import ToggleClass from 'services/domScripts/ToggleClass';
+import ArrowLeft from 'components/icons/ArrowLeft';
 
 class ContentHolder extends React.Component {
   static propTypes = {
@@ -21,11 +21,11 @@ class ContentHolder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      contentHolderHeaderId: "content-holder-header-" + this.props.contentHolderItem.uniquePrefix,
-      contentHolderBodyId: "content-holder-body-" + this.props.contentHolderItem.uniquePrefix,
-      toggleBodyClass: "content-holder-body-opened",
-      iconArrowLeftId: "icon-arrow-left-" + this.props.contentHolderItem.uniquePrefix,
-      toggleIconArrowClass: "icon-arrow-left-opened"
+      contentHolderHeaderId: 'content-holder-header-' + this.props.contentHolderItem.uniquePrefix,
+      contentHolderBodyId: 'content-holder-body-' + this.props.contentHolderItem.uniquePrefix,
+      toggleBodyClass: 'content-holder-body-opened',
+      iconArrowLeftId: 'icon-arrow-left-' + this.props.contentHolderItem.uniquePrefix,
+      toggleIconArrowClass: 'icon-arrow-left-opened'
     };
   }
 
@@ -43,8 +43,8 @@ class ContentHolder extends React.Component {
     return collapsable ?
       <div className="icon-arrow-left-content-holder-title">
         <ArrowLeft className={shouldBeOpen ?
-          "icon-arrow-left icon-arrow-left-opened" :
-          "icon-arrow-left"} id={this.state.iconArrowLeftId} />
+          'icon-arrow-left icon-arrow-left-opened' :
+          'icon-arrow-left'} id={this.state.iconArrowLeftId} />
       </div> :
       null;
   }
@@ -54,8 +54,8 @@ class ContentHolder extends React.Component {
     let shouldBeOpen = (collapsable && openedByDefault) || !collapsable;
     return (
       <div className={shouldBeOpen ?
-          "content-holder-body content-holder-body-default content-holder-body-opened" :
-          "content-holder-body content-holder-body-default"} id={this.state.contentHolderBodyId}>
+          'content-holder-body content-holder-body-default content-holder-body-opened' :
+          'content-holder-body content-holder-body-default'} id={this.state.contentHolderBodyId}>
         {this.props.contentHolderItem.bodyElement}
       </div>);
   }

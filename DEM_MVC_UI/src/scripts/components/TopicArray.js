@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import ContentHolder from "components/ContentHolder";
-import TopicItem from "components/TopicItem";
+import ContentHolder from 'components/ContentHolder';
+import TopicItem from 'components/TopicItem';
 import TermItem from 'containers/TermItem';
 
 class TopicArray extends React.Component {
@@ -24,7 +24,7 @@ class TopicArray extends React.Component {
   };
 
   orderTopics = () => {
-    return  _.orderBy(this.props.topicArray, "latesPostTimeCreation", "desc");
+    return  _.orderBy(this.props.topicArray, 'latesPostTimeCreation', 'desc');
   }
 
   mapTopics = () => {
@@ -35,11 +35,11 @@ class TopicArray extends React.Component {
 
   bindContentHolderItem = () =>({
     uniquePrefix: `topic-array-with-forum-id-${this.props.forumId}`,
-    titleElement: <TermItem term={{id: 23, value: "Topics"}} />,
+    titleElement: <TermItem term={{id: 23, value: 'Topics'}} />,
     bodyElement: <div className="topics-container container">{this.mapTopics()}</div>,
-    firstColumnTerm: <TermItem term={{id: 2, value: "Posts"}} />,
-    secondColumnTerm:<TermItem term={{id: 22, value: "Views"}} />,
-    thirdColumnTerm: <TermItem term={{id: 3, value: "Last message in"}} />
+    firstColumnTerm: <TermItem term={{id: 2, value: 'Posts'}} />,
+    secondColumnTerm:<TermItem term={{id: 22, value: 'Views'}} />,
+    thirdColumnTerm: <TermItem term={{id: 3, value: 'Last message in'}} />
   })
 
   collapseSettings = () => ({

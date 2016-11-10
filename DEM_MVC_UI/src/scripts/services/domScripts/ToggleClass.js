@@ -1,14 +1,14 @@
-import root from "lodash/_root";
+import root from 'lodash/_root';
 
 class ToggleClass {
   init(toggleButtonId, contentElementId, classForToggle, itsMenu = false) {
     let button = root.document.getElementById(toggleButtonId);
     let contentElement = root.document.getElementById(contentElementId);
-    button.addEventListener("click", ()=>{this.toggle(contentElement, classForToggle);});
+    button.addEventListener('click', ()=>{this.toggle(contentElement, classForToggle);});
 
     if(itsMenu){
-      root.document.addEventListener("click", (event) => {
-        //second param in "if" statement needed if we click by items that contains in button
+      root.document.addEventListener('click', (event) => {
+        //second param in 'if' statement needed if we click by items that contains in button
         if (event.target.id !== toggleButtonId && event.target.parentNode.id !== toggleButtonId)
         {
           this.hide(contentElement, classForToggle);

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
-import NavigationLinkItem from "components/NavigationLinkItem";
+import NavigationLinkItem from 'components/NavigationLinkItem';
 
 class NavigationLinkArray extends React.Component {
   static propTypes = {
@@ -14,7 +14,7 @@ class NavigationLinkArray extends React.Component {
   }
 
   orderNavigationLinks = () => {
-    return  _.orderBy(this.props.navigationLinkArray, "order");
+    return  _.orderBy(this.props.navigationLinkArray, 'order');
   }
 
   mapNavigationLinks = () => {

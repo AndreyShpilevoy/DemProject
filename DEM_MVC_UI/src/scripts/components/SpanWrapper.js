@@ -11,9 +11,9 @@ class SpanWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      spaceBeforeTerm: this.props.spaceBefore ? " " : "",
+      spaceBeforeTerm: this.props.spaceBefore ? ' ' : '',
       termClassName: this.props.className,
-      spaceAfterTerm: this.props.spaceAfter ? " " : "",
+      spaceAfterTerm: this.props.spaceAfter ? ' ' : '',
     };
   }
 
