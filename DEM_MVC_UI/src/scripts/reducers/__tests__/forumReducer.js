@@ -1,8 +1,8 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as types from "enums/actionTypes";
-import forumReducer from "reducers/forumReducer";
-import * as fakeData from "api/__fakeData__/index";
+import * as types from 'enums/actionTypes';
+import forumReducer from 'reducers/forumReducer';
+import * as fakeData from 'api/__fakeData__/index';
 
 describe('forumReducer', function(){
   it('returns an empty array as default state', function(){

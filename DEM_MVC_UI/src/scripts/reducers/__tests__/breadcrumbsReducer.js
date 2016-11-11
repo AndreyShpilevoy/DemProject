@@ -1,8 +1,8 @@
 /*eslint no-undef: "off"*/
 
-import * as types from "enums/actionTypes";
-import breadcrumbsReducer from "reducers/breadcrumbsReducer";
-import * as fakeData from "api/__fakeData__/index";
+import * as types from 'enums/actionTypes';
+import breadcrumbsReducer from 'reducers/breadcrumbsReducer';
+import * as fakeData from 'api/__fakeData__/index';
 
 describe('breadcrumbsReducer', function(){
   it('should return empty array if Action Type wasnt handled and Store is empty', function(){
