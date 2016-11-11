@@ -48,8 +48,8 @@ class NotificationCreator extends React.Component {
       notificationSystem.addNotification({
         ...notification,
         onRemove: () => {
-        removeNotification(uid);
-        if(notification.onRemove) notification.onRemove();
+          removeNotification(uid);
+          if(notification.onRemove) notification.onRemove();
         }
       });
     });

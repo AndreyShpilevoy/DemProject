@@ -1,49 +1,76 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as types from "enums/actionTypes";
-import postReducer from "reducers/postReducer";
-import * as fakeData from "api/__fakeData__/index";
+import * as types from 'enums/actionTypes';
+import postReducer from 'reducers/postReducer';
+import * as fakeData from 'api/__fakeData__/index';
 
 describe('postReducer', function(){
   it('returns an empty array as default state', function(){
-    // setup
     let action = { type: 'unknown' };
-    // execute
-    let newState = postReducer(undefined, action);
-    // verify
-    expect(newState).toEqual([]);
+
+    expect(postReducer(undefined, action)).toEqual([]);
   });
 
-  it('returns the <code>allPosts</code> in given action GET_POSTS_BY_TOPIC_ID_SUCCESS when state is empty.allPosts array', function(){
-    // setup
+  it('should return "state" without changes if Action Type wasnt handled and "state" has predifined data', function(){
+    let action = { type: 'unknown' };
+    let state = {
+      allPosts:  [
+        {topicId: 2, postArray: [fakeData.posts[2]]}
+      ]
+    };
+    expect(postReducer(state, action)).toEqual(state);
+  });
+
+  it('should return "state" with "allPosts" array, that contain one expected element. ActionType "GET_POSTS_BY_TOPIC_ID_SUCCESS", "state" is empty', function(){
     let action = {
       type: types.GET_POSTS_BY_TOPIC_ID_SUCCESS,
-      allPosts: [fakeData.posts[2],fakeData.posts[0],fakeData.posts[1]]
+      posts: [fakeData.posts[2], fakeData.posts[0], fakeData.posts[1]],
+      topicId: 1
     };
-    // execute
-    let newState = postReducer(undefined, action);
-    // verify
-    expect(newState).toEqual({allPosts:  [
+
+    expect(postReducer(undefined, action)).toEqual({allPosts: [
       {topicId: action.topicId, postArray: action.posts}
     ]});
   });
 
-
-  it('returns the <code>allPosts</code> in given action GET_POSTS_BY_TOPIC_ID_SUCCESS when state.allPosts is not empty ', function(){
-    // setup
-    let preloadedPost = fakeData.posts[3];
+  it('should return "state" with "allPosts" array, that contain two elements - one prefilled and second is expected. ActionType "GET_POSTS_BY_TOPIC_ID_SUCCESS", "state" has prefilled data with diferent topicId', function(){
     let action = {
       type: types.GET_POSTS_BY_TOPIC_ID_SUCCESS,
-      allPosts: [fakeData.posts[2],fakeData.posts[0],fakeData.posts[1]]
+      posts: [fakeData.posts[0], fakeData.posts[1]],
+      topicId: 1
     };
-    // execute
-    let newState = postReducer({allPosts:  [
-      {topicId: preloadedPost.topicId, postArray: preloadedPost.posts}
-    ]}, action);
-    // verify
-    expect(newState).toEqual({allPosts:  [
-      {topicId: preloadedPost.topicId, postArray: preloadedPost.posts},
+
+    let state = {
+      allPosts:  [
+        {topicId: 2, postArray: [fakeData.posts[2]]}
+      ]
+    };
+
+    expect(postReducer(state, action)).toEqual({allPosts: [
+      state.allPosts[0],
       {topicId: action.topicId, postArray: action.posts}
+    ]});
+  });
+
+  it('should return "state" with "allPosts" array, that contain one expected element that replaced prefilled data. ActionType "GET_POSTS_BY_TOPIC_ID_SUCCESS", "state" has prefilled data with same topicId', function(){
+    let action = {
+      type: types.GET_POSTS_BY_TOPIC_ID_SUCCESS,
+      posts: [fakeData.posts[0], fakeData.posts[1]],
+      topicId: 2
+    };
+
+    let state = {
+      allPosts:  [
+        {topicId: 1, postArray: [fakeData.posts[2]]},
+        {topicId: 2, postArray: [fakeData.posts[2]]},
+        {topicId: 3, postArray: [fakeData.posts[2]]}
+      ]
+    };
+
+    expect(postReducer(state, action)).toEqual({allPosts: [
+      {topicId: 1, postArray: [fakeData.posts[2]]},
+      {topicId: action.topicId, postArray: action.posts},
+      {topicId: 3, postArray: [fakeData.posts[2]]}
     ]});
   });
 });

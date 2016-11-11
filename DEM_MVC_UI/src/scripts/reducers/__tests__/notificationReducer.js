@@ -1,102 +1,88 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as types from "enums/actionTypes";
-import notificationReducer from "reducers/notificationReducer";
-import * as fakeData from "api/__fakeData__/index";
+import * as types from 'enums/actionTypes';
+import notificationReducer from 'reducers/notificationReducer';
+import * as fakeData from 'api/__fakeData__/index';
 
 describe('notificationReducer', function(){
   it('returns an empty array as default state', function(){
-    // setup
     let action = { type: 'unknown' };
-    // execute
-    let newState = notificationReducer(undefined, action);
-    // verify
-    expect(newState).toEqual([]);
+
+    expect(notificationReducer(undefined, action)).toEqual([]);
   });
 
-  it('returns the <code>allNotifications</code> in given action ADD_NOTIFICATION when state is empty allNotifications array', function(){
-    // setup
+  it('should return "state" without changes if Action Type wasnt handled and "state" has predifined data', function(){
+    let action = { type: 'unknown' };
+    let state = {
+      allNotifications: [fakeData.notifications[0]]
+    };
+
+    expect(notificationReducer(state, action)).toEqual(state);
+  });
+
+  it('should return "state" with "allNotifications" array, that contain three expected elements. ActionType "ADD_NOTIFICATION", "state" is empty', function(){
     let action = {
       type: types.ADD_NOTIFICATION,
       notification: fakeData.notifications[0]
     };
-    // execute
-    let newState = notificationReducer(undefined, action);
-    // verify
-    expect(newState).toEqual({
-        allNotifications: [fakeData.notifications[0]]
-      });
+
+    expect(notificationReducer(undefined, action)).toEqual({ allNotifications: [fakeData.notifications[0]]});
   });
 
-
-  it('returns the <code>allNotifications</code> in given action ADD_NOTIFICATION when state is not empty allNotifications array', function(){
-    // setup
-    let preloadedNotification = fakeData.notifications[0];
+  it('should return "state" with "allNotifications" array, that contain three expected elements. ActionType "ADD_NOTIFICATION", "state" has prefilled data', function(){
       let action = {
         type: types.ADD_NOTIFICATION,
         notification: fakeData.notifications[1]
       };
-    // execute
-    let newState = notificationReducer({
+      let state = {
         allNotifications: [fakeData.notifications[0]]
-      }, action);
-    // verify
-    expect(newState).toEqual({allNotifications:  [
-      preloadedNotification, action.notification
-    ]});
+      };
+
+    expect(notificationReducer(state, action)).toEqual({allNotifications:  [...state.allNotifications, action.notification]});
   });
 
-  it('return empty array on REMOVE_NOTIFICATION action if state is empty', function(){
-    // setup
+  it('should return "state" with empty "allNotifications" array. ActionType "REMOVE_NOTIFICATION", "state" is empty', function(){
     let action = {
       type: types.REMOVE_NOTIFICATION,
       uid: 1
     };
-    // execute
-    let newState = notificationReducer(undefined, action);
-    // verify
-    expect(newState).toEqual([]);
+
+    expect(notificationReducer(undefined, action)).toEqual([]);
   });
 
-  it('return object with empty "allNotifications" array on REMOVE_NOTIFICATION action if state is contains one notification', function(){
-    // setup
+  it('should return "state" with empty "allNotifications" array. ActionType "REMOVE_NOTIFICATION", "state" has prefilled data', function(){
     let action = {
       type: types.REMOVE_NOTIFICATION,
       uid: 1
     };
-    // execute
-    let newState = notificationReducer({
-        allNotifications: [fakeData.notifications[0]]
-      }, action);
-    // verify
-    expect(newState).toEqual({"allNotifications": []});
+    let state = {
+      allNotifications: [fakeData.notifications[0]]
+    };
+
+    expect(notificationReducer(state, action)).toEqual({allNotifications:[]});
   });
 
-  it('return object with "allNotifications" array that contains expected object on REMOVE_NOTIFICATION action if state is contains one notification', function(){
-    // setup
+  it('should return "state" with "allNotifications" array, that contains prefilled data. ActionType "REMOVE_NOTIFICATION", "uid" of item that is not present in preffiled data, "state" has prefilled data', function(){
     let action = {
       type: types.REMOVE_NOTIFICATION,
       uid: 1
     };
-    // execute
-    let newState = notificationReducer({
+    let state = {
         allNotifications: [fakeData.notifications[1]]
-      }, action);
-    // verify
-    expect(newState).toEqual({"allNotifications": [fakeData.notifications[1]]});
+    };
+
+    expect(notificationReducer(state, action)).toEqual({allNotifications: [fakeData.notifications[1]]});
   });
 
-  it('return object with "allNotifications" array that contains expected object on REMOVE_NOTIFICATION action if state is contains two notification', function(){
-    // setup
+  it('should return "state" with "allNotifications" array, that contains expected element. ActionType "REMOVE_NOTIFICATION", "uid" of item that is present in preffiled data, "state" has prefilled data', function(){
     let action = {
       type: types.REMOVE_NOTIFICATION,
       uid: 1
     };
-    // execute
-    let newState = notificationReducer({
+    let state = {
         allNotifications: [fakeData.notifications[0],fakeData.notifications[1]]
-      }, action);
-    // verify
-    expect(newState).toEqual({"allNotifications": [fakeData.notifications[1]]});
+    };
+
+    expect(notificationReducer(state, action)).toEqual({allNotifications: [fakeData.notifications[1]]});
   });
 });

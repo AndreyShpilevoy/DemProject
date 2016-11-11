@@ -24,9 +24,7 @@ export default function forumReducer(state = [], action) {
       }
       //if localState.allForums is not initilized - initialize and add new element to array
       else {
-        localState = Object.assign({}, localState, {
-          allForums: [{chapterId: action.chapterId, forumArray: action.forums}]
-        });
+        localState = Object.assign({}, localState, {allForums: [{chapterId: action.chapterId, forumArray: action.forums}]});
       }
       break;
   }
