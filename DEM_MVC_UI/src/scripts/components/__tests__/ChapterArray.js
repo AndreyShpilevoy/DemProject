@@ -1,10 +1,10 @@
-/*eslint no-undef: "off"*/
-/* eslint import/no-extraneous-dependencies: "off" */
+/*eslint no-undef: 'off'*/
+/* eslint import/no-extraneous-dependencies: 'off' */
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ChapterArray from "components/ChapterArray";
-import chapters from "api/__fakeData__/chapters";
+import ChapterArray from 'components/ChapterArray';
+import chapters from 'api/__fakeData__/chapters';
 
 describe('ChapterArray', () => {
   function setup() {
@@ -20,13 +20,13 @@ describe('ChapterArray', () => {
   });
 
   it('child contains 3 ChapterItem components',() => {
-    const chapterItems = setup().find("ChapterItem");
+    const chapterItems = setup().find('ChapterItem');
     expect(chapterItems.length).toEqual(3);
   });
 
   it('child ChapterItem components should be ordered by order property',() => {
     let chapterItemOrder = [];
-    setup().find("ChapterItem").forEach(function (node) {
+    setup().find('ChapterItem').forEach(function (node) {
       chapterItemOrder.push(node.props().chapterItem.order);
     });
     expect(chapterItemOrder).toEqual([ 1, 2, 3 ]);

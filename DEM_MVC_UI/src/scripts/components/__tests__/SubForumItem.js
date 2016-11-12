@@ -1,10 +1,10 @@
-/*eslint no-undef: "off"*/
-/* eslint import/no-extraneous-dependencies: "off" */
+/*eslint no-undef: 'off'*/
+/* eslint import/no-extraneous-dependencies: 'off' */
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import SubForumItem from "components/SubForumItem";
-import forums from "api/__fakeData__/forums";
+import SubForumItem from 'components/SubForumItem';
+import forums from 'api/__fakeData__/forums';
 
 describe('SubForumItem', () => {
   function setup() {
@@ -17,7 +17,7 @@ describe('SubForumItem', () => {
 
   it('should render top level div with className "sub-forum-item-container"',() => {
     const divElement = setup().find('div').first();
-    expect(divElement.hasClass("sub-forum-item-container")).toBeTruthy();
+    expect(divElement.hasClass('sub-forum-item-container')).toBeTruthy();
   });
 
   it('should contain 1 "Link" element',() => {

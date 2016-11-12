@@ -1,9 +1,9 @@
-/*eslint no-undef: "off"*/
-/* eslint import/no-extraneous-dependencies: "off" */
+/*eslint no-undef: 'off'*/
+/* eslint import/no-extraneous-dependencies: 'off' */
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Footer from "components/Footer";
+import Footer from 'components/Footer';
 
 describe('Footer', () => {
   function setup() {
@@ -12,7 +12,7 @@ describe('Footer', () => {
 
   it('should render top level div with className "footer-container"',() => {
     const divElement = setup().find('div').first();
-    expect(divElement.hasClass("footer-container")).toBeTruthy();
+    expect(divElement.hasClass('footer-container')).toBeTruthy();
   });
 
   it('should contain 1 SocialMediaLinkArray element',() => {

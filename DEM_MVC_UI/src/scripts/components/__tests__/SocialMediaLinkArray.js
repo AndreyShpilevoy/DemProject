@@ -1,10 +1,10 @@
-/*eslint no-undef: "off"*/
-/* eslint import/no-extraneous-dependencies: "off" */
+/*eslint no-undef: 'off'*/
+/* eslint import/no-extraneous-dependencies: 'off' */
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import SocialMediaLinkArray from "components/SocialMediaLinkArray";
-import socialMediaLinks from "api/__fakeData__/socialMediaLinks";
+import SocialMediaLinkArray from 'components/SocialMediaLinkArray';
+import socialMediaLinks from 'api/__fakeData__/socialMediaLinks';
 
 describe('SocialMediaLinkArray', () => {
   function setup() {
@@ -17,17 +17,17 @@ describe('SocialMediaLinkArray', () => {
 
   it('should render top level div with className "social-media-link-wrapper"',() => {
     const divElement = setup().find('div').first();
-    expect(divElement.hasClass("social-media-link-wrapper")).toBeTruthy();
+    expect(divElement.hasClass('social-media-link-wrapper')).toBeTruthy();
   });
 
   it('child contains 2 SocialMediaLinkItem components',() => {
-    const chapterItems = setup().find("SocialMediaLinkItem");
+    const chapterItems = setup().find('SocialMediaLinkItem');
     expect(chapterItems.length).toEqual(2);
   });
 
   it('child SocialMediaLinkItem components should be ordered by order property',() => {
     let socialMediaLinkItemOrder = [];
-    setup().find("SocialMediaLinkItem").forEach(function (node) {
+    setup().find('SocialMediaLinkItem').forEach(function (node) {
       socialMediaLinkItemOrder.push(node.props().sociaMediaLinkItem.order);
     });
     expect(socialMediaLinkItemOrder).toEqual([ 1, 2 ]);

@@ -1,10 +1,10 @@
-/*eslint no-undef: "off"*/
-/* eslint import/no-extraneous-dependencies: "off" */
+/*eslint no-undef: 'off'*/
+/* eslint import/no-extraneous-dependencies: 'off' */
 
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Header from "components/Header";
+import Header from 'components/Header';
 
 jest.mock('../../services/domScripts/ToggleClass');
 jest.mock('../../services/domScripts/ShrinkingHeader');
@@ -17,7 +17,7 @@ describe('Header', () => {
 
   it('should render top level div with className "navbar-fixed-top"',() => {
     const divElement = setup().find('div').first();
-    expect(divElement.hasClass("navbar-fixed-top")).toBeTruthy();
+    expect(divElement.hasClass('navbar-fixed-top')).toBeTruthy();
   });
 
   it('should contain 1 NavigationLinkLogo element',() => {

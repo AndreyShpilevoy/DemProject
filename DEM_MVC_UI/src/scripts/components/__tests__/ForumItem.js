@@ -1,10 +1,10 @@
-/*eslint no-undef: "off"*/
-/* eslint import/no-extraneous-dependencies: "off" */
+/*eslint no-undef: 'off'*/
+/* eslint import/no-extraneous-dependencies: 'off' */
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ForumItem from "components/ForumItem";
-import forums from "api/__fakeData__/forums";
+import ForumItem from 'components/ForumItem';
+import forums from 'api/__fakeData__/forums';
 
 describe('ForumItem', () => {
   function setup() {
@@ -17,7 +17,7 @@ describe('ForumItem', () => {
 
   it('should render top level div with className "forum-container-wrapper"',() => {
     const divElement = setup().find('div').first();
-    expect(divElement.hasClass("forum-container-wrapper")).toBeTruthy();
+    expect(divElement.hasClass('forum-container-wrapper')).toBeTruthy();
   });
 
   it('should contain 1 SubForumArray element',() => {
@@ -43,7 +43,7 @@ describe('ForumItem', () => {
   it('should have default state',() => {
     const expectedState = {
       latesPostAutorNameStyle: {
-        color: "#ffa510"
+        color: '#ffa510'
       }
     };
 

@@ -1,10 +1,10 @@
-/*eslint no-undef: "off"*/
-/* eslint import/no-extraneous-dependencies: "off" */
+/*eslint no-undef: 'off'*/
+/* eslint import/no-extraneous-dependencies: 'off' */
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import TopicItem from "components/TopicItem";
-import topics from "api/__fakeData__/topics";
+import TopicItem from 'components/TopicItem';
+import topics from 'api/__fakeData__/topics';
 
 describe('TopicItem', () => {
   function setup(hasAvatar=true, parentForum=true) {
@@ -12,9 +12,9 @@ describe('TopicItem', () => {
       topicItem: Object.assign({}, topics[0],
         {
           lastPostInfo: Object.assign({}, topics[0].lastPostInfo, {
-            latesPostAutorAvatart: hasAvatar ? "http://i70.fastpic.ru/big/2015/0628/36/ccbb1e2cb8ba8dbd379a6a12dc6b8336.jpg" : null
+            latesPostAutorAvatart: hasAvatar ? 'http://i70.fastpic.ru/big/2015/0628/36/ccbb1e2cb8ba8dbd379a6a12dc6b8336.jpg' : null
           }),
-          parentForumTitle: parentForum ? "Самопал" : undefined,
+          parentForumTitle: parentForum ? 'Самопал' : undefined,
           parentForumId: parentForum ? 1 : undefined
         }
       )
@@ -25,7 +25,7 @@ describe('TopicItem', () => {
 
   it('should render top level div with className "topic-container-wrapper"',() => {
     const divElement = setup().find('div').first();
-    expect(divElement.hasClass("topic-container-wrapper")).toBeTruthy();
+    expect(divElement.hasClass('topic-container-wrapper')).toBeTruthy();
   });
 
   it('should contain 1 RelativeDateTime element',() => {
@@ -61,7 +61,7 @@ describe('TopicItem', () => {
   it('should have default state',() => {
     const expectedState = {
       latesPostAutorNameStyle: {
-        color: "#00AA00"
+        color: '#00AA00'
       }
     };
 

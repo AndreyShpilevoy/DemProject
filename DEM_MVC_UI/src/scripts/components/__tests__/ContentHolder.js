@@ -1,10 +1,10 @@
-/*eslint no-undef: "off"*/
-/* eslint import/no-extraneous-dependencies: "off" */
+/*eslint no-undef: 'off'*/
+/* eslint import/no-extraneous-dependencies: 'off' */
 
 import React from 'react';
 import {shallow} from 'enzyme';
 import { Link } from 'react-router';
-import ContentHolder from "components/ContentHolder";
+import ContentHolder from 'components/ContentHolder';
 import ForumArray from 'containers/ForumArray';
 import TermItem from 'containers/TermItem';
 
@@ -12,12 +12,12 @@ describe('ContentHolder', () => {
   function setup(collapseSettings) {
     const props = {
       contentHolderItem: {
-        uniquePrefix: "chapter-item-with-id-1",
-        titleElement: <Link to={`/Conference/Forum/1`}>"Title"</Link>,
+        uniquePrefix: 'chapter-item-with-id-1',
+        titleElement: <Link to={'/Conference/Forum/1'}>{'Title'}</Link>,
         bodyElement: <ForumArray chapterId={1}/>,
-        firstColumnTerm: <TermItem term={{id: 1, value: "Topics"}} />,
-        secondColumnTerm:<TermItem term={{id: 2, value: "Posts"}} />,
-        thirdColumnTerm: <TermItem term={{id: 3, value: "Last message in"}} />
+        firstColumnTerm: <TermItem term={{id: 1, value: 'Topics'}} />,
+        secondColumnTerm:<TermItem term={{id: 2, value: 'Posts'}} />,
+        thirdColumnTerm: <TermItem term={{id: 3, value: 'Last message in'}} />
       },
       collapseSettings: collapseSettings
     };
@@ -27,12 +27,12 @@ describe('ContentHolder', () => {
 
   it('should render top level div with className "content-holder-container" "contentHolderItem.openedByDefault" is "true"',() => {
     const divElement = setup({collapsable: true, openedByDefault: false}).find('div').first();
-    expect(divElement.hasClass("content-holder-container")).toBeTruthy();
+    expect(divElement.hasClass('content-holder-container')).toBeTruthy();
   });
 
   it('should render last div with className "content-holder-body-opened" if ',() => {
-    const divElement = setup({collapsable: true, openedByDefault: true}).find("div").last();
-    expect(divElement.hasClass("content-holder-body-opened")).toBeTruthy();
+    const divElement = setup({collapsable: true, openedByDefault: true}).find('div').last();
+    expect(divElement.hasClass('content-holder-body-opened')).toBeTruthy();
   });
 
   it('should have default state',() => {

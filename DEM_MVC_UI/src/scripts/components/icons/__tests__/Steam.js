@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Steam from "icons/Steam";
+import Steam from 'icons/Steam';
 
 describe('Steam', () => {
   function setup() {
@@ -12,12 +12,12 @@ describe('Steam', () => {
 
   it('should render top level svg with default class "icon-steam"',() => {
     const svgElement = setup().find('svg');
-    expect(svgElement.hasClass("icon-steam")).toBeTruthy();
+    expect(svgElement.hasClass('icon-steam')).toBeTruthy();
   });
 
   it('should render title with default "Steam"',() => {
     const titleElement = setup().find('title');
-    expect(titleElement.prop("children")).toBe('Steam');
+    expect(titleElement.prop('children')).toBe('Steam');
   });
 
   it('should render two "g" elements',() => {
@@ -27,13 +27,13 @@ describe('Steam', () => {
 
   it('should render path with default class "icon-steam-path-bacground" and contains in g element',() => {
     const pathElement = setup().find('path').first();
-    expect(pathElement.hasClass("icon-steam-path-bacground")).toBeTruthy();
+    expect(pathElement.hasClass('icon-steam-path-bacground')).toBeTruthy();
     expect(pathElement.parent().is('g')).toBeTruthy();
   });
 
   it('should render path with default class "icon-steam-path-image" and contains in g element',() => {
     const pathElement = setup().find('path').last();
-    expect(pathElement.hasClass("icon-steam-path-image")).toBeTruthy();
+    expect(pathElement.hasClass('icon-steam-path-image')).toBeTruthy();
     expect(pathElement.parent().is('g')).toBeTruthy();
   });
 });

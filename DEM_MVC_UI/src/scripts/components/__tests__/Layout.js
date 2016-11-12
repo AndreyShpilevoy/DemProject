@@ -1,13 +1,13 @@
-/*eslint no-undef: "off"*/
-/* eslint import/no-extraneous-dependencies: "off" */
+/*eslint no-undef: 'off'*/
+/* eslint import/no-extraneous-dependencies: 'off' */
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Layout from "components/Layout";
+import Layout from 'components/Layout';
 
 describe('Layout', () => {
   function setup() {
-    return shallow(<Layout><span>test</span></Layout>);
+    return shallow(<Layout><span>{'test'}</span></Layout>);
   }
 
   it('should render one "div"',() => {
@@ -28,6 +28,6 @@ describe('Layout', () => {
   it('should contain 1 children element - "span"',() => {
     const footerElement = setup().find('span');
     expect(footerElement.length).toEqual(1);
-    expect(footerElement.prop("children")).toBe("test");
+    expect(footerElement.prop('children')).toBe('test');
   });
 });
