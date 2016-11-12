@@ -1,7 +1,7 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as types from "enums/actionTypes";
-import * as notificationActions from "actions/notificationActions";
+import * as types from 'enums/actionTypes';
+import * as notificationActions from 'actions/notificationActions';
 
 
 describe('notificationActions', () => {
@@ -9,16 +9,16 @@ describe('notificationActions', () => {
     const expectedAction = {
       type: types.ADD_NOTIFICATION,
       notification: {
-        message: "message",
-        title: "title",
-        level: "info",
+        message: 'message',
+        title: 'title',
+        level: 'info',
         autoDismiss: 5,
         uid: 1
       }
     };
     expect(
       notificationActions.addNotification(
-        {message: "message", title: "title", autoDismiss: 5, uid: 1}, "info"
+        {message: 'message', title: 'title', autoDismiss: 5, uid: 1}, 'info'
       )
     ).toEqual(expectedAction);
   });
@@ -33,59 +33,59 @@ describe('notificationActions', () => {
 
   it('should create action with and expected "info" notification model', () => {
     const expectedParams = {
-      message: "message",
-      title: "title",
-      level: "info",
+      message: 'message',
+      title: 'title',
+      level: 'info',
       autoDismiss: 5,
       uid: 1
     };
     expect(notificationActions.addInfoNotification(
-      {message: "message", title: "title", autoDismiss: 5, uid: 1}
+      {message: 'message', title: 'title', autoDismiss: 5, uid: 1}
     ).notification).toEqual(expectedParams);
   });
 
   it('should create action with and expected "success" notification model', () => {
     const expectedParams = {
-      message: "message",
-      title: "title",
-      level: "success",
+      message: 'message',
+      title: 'title',
+      level: 'success',
       autoDismiss: 5,
       uid: 1
     };
     expect(notificationActions.addSuccessNotification(
-      {message: "message", title: "title", autoDismiss: 5, uid: 1}
+      {message: 'message', title: 'title', autoDismiss: 5, uid: 1}
     ).notification).toEqual(expectedParams);
   });
 
   it('should create action with and expected "warning" notification model', () => {
     const expectedParams = {
-      message: "message",
-      title: "title",
-      level: "warning",
+      message: 'message',
+      title: 'title',
+      level: 'warning',
       autoDismiss: 5,
       uid: 1
     };
     expect(notificationActions.addWarningNotification(
-      {message: "message", title: "title", autoDismiss: 5, uid: 1}
+      {message: 'message', title: 'title', autoDismiss: 5, uid: 1}
     ).notification).toEqual(expectedParams);
   });
 
   it('should create action with and expected "error" notification model', () => {
     const expectedParams = {
-      message: "message",
-      title: "title",
-      level: "error",
+      message: 'message',
+      title: 'title',
+      level: 'error',
       autoDismiss: 5,
       uid: 1
     };
     expect(notificationActions.addExceptionNotification(
-      {message: "message", title: "title", autoDismiss: 5, uid: 1}
+      {message: 'message', title: 'title', autoDismiss: 5, uid: 1}
     ).notification).toEqual(expectedParams);
   });
 
   it('should create action with notification model that has Truthy uid', () => {
     expect(notificationActions.addExceptionNotification(
-      {message: "message", title: "title", autoDismiss: 5}
+      {message: 'message', title: 'title', autoDismiss: 5}
     ).notification.uid).toBeTruthy();
   });
 });

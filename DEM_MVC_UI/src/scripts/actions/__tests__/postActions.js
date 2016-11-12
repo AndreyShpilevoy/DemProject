@@ -1,12 +1,12 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as types from "enums/actionTypes";
-import * as postActions from "actions/postActions";
-import posts from "api/__fakeData__/posts";
+import * as types from 'enums/actionTypes';
+import * as postActions from 'actions/postActions';
+import posts from 'api/__fakeData__/posts';
 
 
 describe('postActions', () => {
-  it('should create an action to get post by topic id', () => {
+  it('should create an action with type "GET_POSTS_BY_TOPIC_ID" to get post by topic id', () => {
     const topicId = 1;
     const expectedAction = {
       type: types.GET_POSTS_BY_TOPIC_ID,
@@ -15,7 +15,7 @@ describe('postActions', () => {
     expect(postActions.getPostsByTopicId(topicId)).toEqual(expectedAction);
   });
 
-  it('should create an action to get post by topic id on success', () => {
+  it('should create an action with type "GET_POSTS_BY_TOPIC_ID_SUCCESS" to get post by topic id on success', () => {
     const topicId = 1;
     const expectedAction = {
       type: types.GET_POSTS_BY_TOPIC_ID_SUCCESS,

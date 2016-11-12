@@ -1,12 +1,12 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as types from "enums/actionTypes";
-import * as forumActions from "actions/forumActions";
-import forums from "api/__fakeData__/forums";
+import * as types from 'enums/actionTypes';
+import * as forumActions from 'actions/forumActions';
+import forums from 'api/__fakeData__/forums';
 
 
 describe('forumActions', () => {
-  it('should create an action to get forum by chapter id', () => {
+  it('should create an action with type "GET_FORUMS_BY_CHAPTER_ID" to get forum by chapter id', () => {
     const chapterId = 1;
     const expectedAction = {
       type: types.GET_FORUMS_BY_CHAPTER_ID,
@@ -15,7 +15,7 @@ describe('forumActions', () => {
     expect(forumActions.getForumsByChapterId(chapterId)).toEqual(expectedAction);
   });
 
-  it('should create an action to get forum by chapter id on success', () => {
+  it('should create an action with type "GET_FORUMS_BY_CHAPTER_ID_SUCCESS" to get forum by chapter id on success', () => {
     const chapterId = 1;
     const expectedAction = {
       type: types.GET_FORUMS_BY_CHAPTER_ID_SUCCESS,
