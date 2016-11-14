@@ -11,6 +11,7 @@ const PostcssSmartImport = require('postcss-smart-import');
 const PostcssMixins = require('postcss-mixins');
 const PostcssSimpleVars = require('postcss-simple-vars');
 const PostcssNested = require('postcss-nested');
+const PostcssUrl = require('postcss-url');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const checksum = require('checksum');
 const cssnano = require('cssnano');
@@ -54,13 +55,25 @@ if(debug){
     enforce: 'pre',
     include: path.join(__dirname, './src')
   },{
+    test: /\.css$/,
+    use: [
+      'style-loader',
+      'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+      'postcss-loader'
+    ]
+  },{
     test: /\.scss$/,
-    include: path.join(__dirname, './src'),
     use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
   });
 } else {
   // PRODUCTION
   rules.push({
+    test: /\.css$/,
+    loader: ExtractTextPlugin.extract({
+      fallbackLoader: 'style-loader',
+      loader: 'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]&sourceMap!postcss-loader'
+    })
+  },{
     test: /\.scss$/,
     loader: ExtractTextPlugin.extract({
       fallbackLoader: 'style-loader',
@@ -85,10 +98,11 @@ let postcss = [
     reset: 'inherited' // reset only inherited rules
   }),
   PostcssMixins({
-    mixinsFiles: path.join(__dirname, 'mixins', '!(*.spec.js)')
+   mixinsFiles: path.join(__dirname, 'src/scripts/common/mixins', '!(*.test.js)')
   }),
   PostcssSimpleVars,
-  PostcssNested
+  PostcssNested,
+  PostcssUrl
 ];
 
 if(!debug){

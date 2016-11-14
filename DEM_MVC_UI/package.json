@@ -19,6 +19,7 @@
   },
   "jest": {
     "transform": {
+      ".css": "<rootDir>/node_modules/jest-css-modules",
       ".*": "<rootDir>/node_modules/babel-jest"
     },
     "testRegex": "(.*/__tests__/.*|\\.(test|spec))\\.js|.jsx",
@@ -72,6 +73,7 @@
     "file-loader": "0.9.0",
     "html-webpack-plugin": "2.24.1",
     "jest-cli": "17.0.1",
+    "jest-css-modules": "1.1.0",
     "jsdom": "9.8.3",
     "mkdirp": "0.5.1",
     "node-sass": "3.12.2",
@@ -83,6 +85,7 @@
     "postcss-nested": "1.0.0",
     "postcss-simple-vars": "3.0.0",
     "postcss-smart-import": "0.5.1",
+    "postcss-url": "5.1.2",
     "react-addons-test-utils": "15.3.2",
     "react-hot-loader": "3.0.0-beta.6",
     "redux-immutable-state-invariant": "1.2.4",
