@@ -1,6 +1,6 @@
-/* eslint import/no-extraneous-dependencies: "off" */
+/* eslint import/no-extraneous-dependencies: 'off' */
 import configureMockStore from 'redux-mock-store';
-import * as fakeData from "api/__fakeData__/index";
+import * as fakeData from 'api/__fakeData__/index';
 
 export const validFakeStoreData = {
   chapterReducer: {

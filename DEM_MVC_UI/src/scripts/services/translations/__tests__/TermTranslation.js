@@ -1,22 +1,22 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import TermTranslation from "services/translations/TermTranslation";
+import TermTranslation from 'services/translations/TermTranslation';
 
 describe('TermTranslation', () => {
 
   it('getDateTimeDeclension should return not "null" if locale is valid',() => {
-    let result = TermTranslation.getDateTimeDeclension("en");
+    let result = TermTranslation.getDateTimeDeclension('en');
     expect(result).toBeTruthy();
   });
 
   it('getDateTimeDeclension should return "null" if locale is not valid',() => {
-    let result = TermTranslation.getDateTimeDeclension("fake local");
+    let result = TermTranslation.getDateTimeDeclension('fake local');
     expect(result).toBeNull();
   });
 
   it('getTermTranslation should return default value if locale is not valid',() => {
     let term = {id: 1, value: 'Topics'};
-    let result = TermTranslation.getTermTranslation(term, "fake local");
+    let result = TermTranslation.getTermTranslation(term, 'fake local');
     expect(result).toBe(term.value);
   });
 
@@ -28,18 +28,18 @@ describe('TermTranslation', () => {
 
   it('getTermTranslation should return default value if translation ID is wrong',() => {
     let term = {id: -1, value: 'Topics'};
-    let result = TermTranslation.getTermTranslation(term, "en");
+    let result = TermTranslation.getTermTranslation(term, 'en');
     expect(result).toBe(term.value);
   });
 
   it('getTermTranslation should return ru translated value "Тем"',() => {
     let term = {id: 1, value: 'Topics'};
-    let result = TermTranslation.getTermTranslation(term, "ru");
-    expect(result).toBe("Тем");
+    let result = TermTranslation.getTermTranslation(term, 'ru');
+    expect(result).toBe('Тем');
   });
 
   it('getTermTranslation should return "undefined" if term is undefined',() => {
-    let result = TermTranslation.getTermTranslation(undefined, "ru");
+    let result = TermTranslation.getTermTranslation(undefined, 'ru');
     expect(result).toBeUndefined();
   });
 

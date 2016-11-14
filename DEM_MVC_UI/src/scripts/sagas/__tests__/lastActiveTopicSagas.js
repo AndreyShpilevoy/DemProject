@@ -1,8 +1,8 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as lastActiveTopicSagas from "sagas/lastActiveTopicSagas";
-import LastActiveTopicApi from "api/__mocks__/LastActiveTopicApi";
-import CheckObject from "testHelpers/CheckObject";
+import * as lastActiveTopicSagas from 'sagas/lastActiveTopicSagas';
+import LastActiveTopicApi from 'api/__mocks__/LastActiveTopicApi';
+import CheckObject from 'testHelpers/CheckObject';
 
 describe('lastActiveTopicSagas', () => {
   it('getLastActiveTopics first yeald should return TAKE pattern "GET_LAST_ACTIVE_TOPICS"', () => {

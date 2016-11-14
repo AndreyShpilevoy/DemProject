@@ -1,8 +1,8 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as socialMediaLinkSagas from "sagas/socialMediaLinkSagas";
-import SocialMediaLinkApi from "api/__mocks__/SocialMediaLinkApi";
-import CheckObject from "testHelpers/CheckObject";
+import * as socialMediaLinkSagas from 'sagas/socialMediaLinkSagas';
+import SocialMediaLinkApi from 'api/__mocks__/SocialMediaLinkApi';
+import CheckObject from 'testHelpers/CheckObject';
 
 describe('socialMediaLinkSagas', () => {
   it('getSocialMediaLinks first yeald should return TAKE pattern "GET_SOCIALMEDIALINKS"', () => {

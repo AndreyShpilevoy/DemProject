@@ -1,8 +1,8 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as chapterSagas from "sagas/chapterSagas";
-import ChapterApi from "api/__mocks__/ChapterApi";
-import CheckObject from "testHelpers/CheckObject";
+import * as chapterSagas from 'sagas/chapterSagas';
+import ChapterApi from 'api/__mocks__/ChapterApi';
+import CheckObject from 'testHelpers/CheckObject';
 
 describe('chapterSagas', () => {
   it('getAllChapters first yeald should return TAKE pattern "GET_ALL_CHAPTERS"', () => {

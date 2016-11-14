@@ -1,8 +1,8 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as forumSagas from "sagas/forumSagas";
-import ForumApi from "api/__mocks__/ForumApi";
-import CheckObject from "testHelpers/CheckObject";
+import * as forumSagas from 'sagas/forumSagas';
+import ForumApi from 'api/__mocks__/ForumApi';
+import CheckObject from 'testHelpers/CheckObject';
 
 
 describe('forumSagas', () => {

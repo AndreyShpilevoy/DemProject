@@ -14,27 +14,27 @@ let debug = process.env.NODE_ENV==='production' ? false : true;
 
 //For all environments
 let entry = [
-  "babel-polyfill",                   // {debug ? DEVELOPMENT : PRODUCTION}
+  'babel-polyfill',                   // {debug ? DEVELOPMENT : PRODUCTION}
   `bootstrap-loader/lib/bootstrap.loader?${debug?'':'extractStyles&'}configFilePath=${__dirname}/.bootstraprc!bootstrap-loader/no-op.js`
 ];
 if(debug){
   // DEVELOPMENT
-  entry.push("webpack-hot-middleware/client?reload=true");
+  entry.push('webpack-hot-middleware/client?reload=true');
 }
-entry.push("./src/scripts/index");
+entry.push('./src/scripts/index');
 
 //For all environments
-let output = {filename: "dem.min.js?[hash]"};
+let output = {filename: 'dem.min.js?[hash]'};
             // {debug ? DEVELOPMENT : PRODUCTION}
-output.path = debug ? "/" : path.join(__dirname, "../DEM_MVC/wwwroot");
-output.publicPath = debug ? "/" : '/wwwroot/';
+output.path = debug ? '/' : path.join(__dirname, '../DEM_MVC/wwwroot');
+output.publicPath = debug ? '/' : '/wwwroot/';
 
 //For all environments
 let rules = [{
     test: /\.js$/,
     exclude: /(node_modules)/,
-    include: path.join(__dirname, "./src"),
-    use: ["babel-loader"]
+    include: path.join(__dirname, './src'),
+    use: ['babel-loader']
   },
   {
     test: /\.(jpe?g|png|gif|svg)$/i,
@@ -46,20 +46,20 @@ if(debug){
   rules.push({
     test: /\.jsx$|\.js$/,
     use: 'eslint-loader',
-    enforce: "pre",
-    include: path.join(__dirname, "./src")
+    enforce: 'pre',
+    include: path.join(__dirname, './src')
   },{
     test: /\.scss$/,
-    include: path.join(__dirname, "./src"),
-    use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
+    include: path.join(__dirname, './src'),
+    use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
   });
 } else {
   // PRODUCTION
   rules.push({
     test: /\.scss$/,
     loader: ExtractTextPlugin.extract({
-      fallbackLoader: "style-loader",
-      loader: "css-loader?sourceMap!postcss-loader!sass-loader?sourceMap"
+      fallbackLoader: 'style-loader',
+      loader: 'css-loader?sourceMap!postcss-loader!sass-loader?sourceMap'
     })
   });
 }
@@ -72,7 +72,7 @@ let eslint = {
 
 let postcss = [
   Autoprefixer({
-    browsers: ["> 1%", "last 2 versions"],
+    browsers: ['> 1%', 'last 2 versions'],
     cascade: false
   })
 ];
@@ -96,11 +96,11 @@ if(!debug){
 let htmlWebpackPluginSettings = {
   hash: !debug,
   filename: 'index.html',
-  template: path.join(__dirname, "./src/index.html"),
+  template: path.join(__dirname, './src/index.html'),
 };
 if(!debug){
   // PRODUCTION
-  htmlWebpackPluginSettings.path = path.join(__dirname, "../DEM_MVC/wwwroot");
+  htmlWebpackPluginSettings.path = path.join(__dirname, '../DEM_MVC/wwwroot');
   htmlWebpackPluginSettings.publicPath = '/wwwroot/';
   htmlWebpackPluginSettings.paceCss = '/wwwroot/pace.css?' + checksum('./node_modules/pace-progress/themes/orange/pace-theme-flash.css');
   htmlWebpackPluginSettings.paceJs = '/wwwroot/pace.min.js?' + checksum('./node_modules/pace-progress/pace.min.js');
@@ -119,7 +119,7 @@ let plugins = [
     noInfo: !debug,
     options: {
       context: __dirname,
-      output: {path: "./"},
+      output: {path: './'},
       postcss: function () {
         return postcss;
       },
@@ -157,9 +157,9 @@ if(debug){
 
 //For all environments
 module.exports = {
-  devtool: debug ? "cheap-eval-source-map" : "source-map",
+  devtool: debug ? 'cheap-eval-source-map' : 'source-map',
   entry: entry,
-  target: "web",
+  target: 'web',
   output: output,
   module: {
     rules: rules

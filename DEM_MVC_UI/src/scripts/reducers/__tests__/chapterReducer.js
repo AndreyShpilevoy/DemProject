@@ -1,8 +1,8 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as types from "enums/actionTypes";
-import chapterReducer from "reducers/chapterReducer";
-import * as fakeData from "api/__fakeData__/index";
+import * as types from 'enums/actionTypes';
+import chapterReducer from 'reducers/chapterReducer';
+import * as fakeData from 'api/__fakeData__/index';
 
 describe('chapterReducer', function(){
   it('should return empty array if Action Type wasnt handled and Store is empty', function(){

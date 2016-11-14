@@ -1,8 +1,8 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as postSagas from "sagas/postSagas";
-import PostApi from "api/__mocks__/PostApi";
-import CheckObject from "testHelpers/CheckObject";
+import * as postSagas from 'sagas/postSagas';
+import PostApi from 'api/__mocks__/PostApi';
+import CheckObject from 'testHelpers/CheckObject';
 
 
 describe('postSagas', () => {

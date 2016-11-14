@@ -1,8 +1,8 @@
-/*eslint no-undef: "off"*/
+/*eslint no-undef: 'off'*/
 
-import * as breadcrumbsSagas from "sagas/breadcrumbsSagas";
-import BreadcrumbsApi from "api/__mocks__/BreadcrumbsApi";
-import CheckObject from "testHelpers/CheckObject";
+import * as breadcrumbsSagas from 'sagas/breadcrumbsSagas';
+import BreadcrumbsApi from 'api/__mocks__/BreadcrumbsApi';
+import CheckObject from 'testHelpers/CheckObject';
 
 
 describe('breadcrumbsSagas', () => {
