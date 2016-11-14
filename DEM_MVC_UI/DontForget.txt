@@ -1,3 +1,7 @@
 Add tests for services/bbCodes/BbCodeParser.js
 
-next test for refactoring - postReducer
+next test for refactoring - containers
+https://www.youtube.com/watch?v=AwofAAThsx0
+webpack chunk
+webpack-svgstore-plugin
+jsdoc

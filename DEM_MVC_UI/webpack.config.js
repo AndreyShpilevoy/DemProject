@@ -6,6 +6,11 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Autoprefixer = require('autoprefixer');
+const PostcssInitial = require('postcss-initial');
+const PostcssSmartImport = require('postcss-smart-import');
+const PostcssMixins = require('postcss-mixins');
+const PostcssSimpleVars = require('postcss-simple-vars');
+const PostcssNested = require('postcss-nested');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const checksum = require('checksum');
 const cssnano = require('cssnano');
@@ -74,7 +79,16 @@ let postcss = [
   Autoprefixer({
     browsers: ['> 1%', 'last 2 versions'],
     cascade: false
-  })
+  }),
+  PostcssSmartImport,
+  PostcssInitial({
+    reset: 'inherited' // reset only inherited rules
+  }),
+  PostcssMixins({
+    mixinsFiles: path.join(__dirname, 'mixins', '!(*.spec.js)')
+  }),
+  PostcssSimpleVars,
+  PostcssNested
 ];
 
 if(!debug){
