@@ -4,6 +4,7 @@ import NavigationMenuToggleButton from 'components/NavigationMenuToggleButton';
 import NavigationLinkLogo from 'components/NavigationLinkLogo';
 import ToggleClass from 'services/domScripts/ToggleClass';
 import ShrinkingHeader from 'services/domScripts/ShrinkingHeader';
+import styles from './index.scss';
 
 class Header extends React.Component {
   componentDidMount() {

@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './PostcssTest.css';
+import styles from './index.scss';
 
 class PostcssTest extends React.Component {
   render(){
-    return <div className={styles.container}>{'LOL'}</div>;
+    return <div className={styles.c0ntainer}>{'LOL'}</div>;
   }
 }
 

@@ -28,6 +28,10 @@
       "json"
     ],
     "collectCoverage": true,
+    "testPathIgnorePatterns":[
+      "<rootDir>/node_modules/",
+      "<rootDir>/tempTestFolder/"
+    ],
     "coveragePathIgnorePatterns": [
       "<rootDir>/testHelpers/",
       "<rootDir>/src/scripts/services/domScripts/SelectTextFromContainerById.js",
@@ -81,11 +85,6 @@
     "open": "0.0.5",
     "postcss-initial": "1.5.2",
     "postcss-loader": "1.1.1",
-    "postcss-mixins": "5.4.0",
-    "postcss-nested": "1.0.0",
-    "postcss-simple-vars": "3.0.0",
-    "postcss-smart-import": "0.5.1",
-    "postcss-url": "5.1.2",
     "react-addons-test-utils": "15.3.2",
     "react-hot-loader": "3.0.0-beta.6",
     "redux-immutable-state-invariant": "1.2.4",

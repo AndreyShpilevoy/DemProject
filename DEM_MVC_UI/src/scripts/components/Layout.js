@@ -3,7 +3,7 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import NotificationCreator from 'containers/NotificationCreator';
 import Title from 'containers/Title';
-import PostcssTest from 'components/PostcssTest/PostcssTest';
+import PostcssTest from 'components/PostcssTest';
 
 class Layout extends React.Component {
   static propTypes = {

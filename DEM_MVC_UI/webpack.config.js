@@ -7,11 +7,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Autoprefixer = require('autoprefixer');
 const PostcssInitial = require('postcss-initial');
-const PostcssSmartImport = require('postcss-smart-import');
-const PostcssMixins = require('postcss-mixins');
-const PostcssSimpleVars = require('postcss-simple-vars');
-const PostcssNested = require('postcss-nested');
-const PostcssUrl = require('postcss-url');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const checksum = require('checksum');
 const cssnano = require('cssnano');
@@ -55,29 +50,24 @@ if(debug){
     enforce: 'pre',
     include: path.join(__dirname, './src')
   },{
-    test: /\.css$/,
+    test: /\.scss$/,
     use: [
       'style-loader',
-      'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-      'postcss-loader'
+      'css-loader?modules&importLoaders=1&localIdentName=[local]',
+      //'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+      'postcss-loader',
+      'resolve-url-loader',
+      'sass-loader?sourceMap'
     ]
-  },{
-    test: /\.scss$/,
-    use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
   });
 } else {
   // PRODUCTION
   rules.push({
-    test: /\.css$/,
-    loader: ExtractTextPlugin.extract({
-      fallbackLoader: 'style-loader',
-      loader: 'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]&sourceMap!postcss-loader'
-    })
-  },{
     test: /\.scss$/,
     loader: ExtractTextPlugin.extract({
       fallbackLoader: 'style-loader',
-      loader: 'css-loader?sourceMap!postcss-loader!sass-loader?sourceMap'
+      loader: 'css-loader?modules&importLoaders=1&localIdentName=[local]&sourceMap!postcss-loader!resolve-url-loader!sass-loader?sourceMap'
+      //loader: 'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]&sourceMap!postcss-loader!resolve-url-loader!sass-loader?sourceMap'
     })
   });
 }
@@ -93,16 +83,9 @@ let postcss = [
     browsers: ['> 1%', 'last 2 versions'],
     cascade: false
   }),
-  PostcssSmartImport,
   PostcssInitial({
     reset: 'inherited' // reset only inherited rules
-  }),
-  PostcssMixins({
-   mixinsFiles: path.join(__dirname, 'src/scripts/common/mixins', '!(*.test.js)')
-  }),
-  PostcssSimpleVars,
-  PostcssNested,
-  PostcssUrl
+  })
 ];
 
 if(!debug){
@@ -148,6 +131,14 @@ let plugins = [
     options: {
       context: __dirname,
       output: {path: './'},
+      resolveLoader: {
+        alias: {
+          'images': __dirname + './src/images',
+        },
+      },
+      sassLoader: {
+        includePaths: [path.resolve(__dirname, './src/scripts/_commonScss')]
+      },
       postcss: function () {
         return postcss;
       },
