@@ -1,6 +1,6 @@
 import React from 'react';
 import NavigationLinkArray from 'containers/NavigationLinkArray';
-import NavigationMenuToggleButton from 'components/NavigationMenuToggleButton';
+import MenuButton from 'components/MenuButton';
 import Logotype from 'components/Logotype';
 import ToggleClass from 'services/domScripts/ToggleClass';
 import ShrinkingHeader from 'services/domScripts/ShrinkingHeader';
@@ -8,11 +8,19 @@ import commonStyles from 'commonScss/common.scss';
 import styles from './index.scss';
 
 class Header extends React.Component {
+  state = {
+    menuButtonId: 'menu-toggle-button',
+    menuContentId: 'nav-menu-content',
+    menuToggleClass: 'nav-links-opened'
+  }
+
   componentDidMount() {
+    const {menuButtonId, menuContentId, menuToggleClass} = this.state;
     ShrinkingHeader.init(styles.headerShrink);
-    ToggleClass.init('menu-toggle-button', 'nav-menu-content', 'nav-links-opened', true);
+    ToggleClass.init(menuButtonId, menuContentId, menuToggleClass, true);
   }
   render() {
+    const {menuButtonId, menuContentId} = this.state;
     return(
       <div className="container navbar-fixed-top">
         <div className="row">
@@ -25,9 +33,11 @@ class Header extends React.Component {
                       <Logotype />
                     </div>
                   </div>
-                  <NavigationMenuToggleButton />
+                  <div className={`hidden-lg-up ${commonStyles.flexColumnVerticalCenter} ${styles.headerNavigationMenuButtomContainer}`}>
+                    <MenuButton id={menuButtonId}/>
+                  </div>
                 </div>
-                <NavigationLinkArray />
+                <NavigationLinkArray id={menuContentId} />
               </div>
             </nav>
           </div>

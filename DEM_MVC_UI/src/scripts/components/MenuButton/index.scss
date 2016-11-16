@@ -1,0 +1,22 @@
+@import "colors.scss";
+@import "sizes.scss";
+
+.menuButton {
+  background-color: initial;
+  border-style: initial;
+  padding: $navigation-toggler-button-padding;
+}
+
+//.menuButtonLine like in bootstrap 3
+.menuButton .menuButtonLine {
+  background-color: $orange-text-color;
+  display: block;
+  width: $navigation-toggler-button-icon-bar-width;
+  height: $navigation-toggler-button-icon-bar-height;
+  border-radius: $navigation-toggler-button-icon-bar-border-radius;
+}
+
+.menuButton .menuButtonLine + .menuButtonLine {
+  margin-top: $navigation-toggler-button-icon-bar-second-and-more;
+}
+//end

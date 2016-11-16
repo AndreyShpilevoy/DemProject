@@ -23,6 +23,13 @@
   transition: all 400ms linear;
 }
 
+//md and smaller screens
+@media (max-width: 991px) {
+  .headerNavigationMenuButtomContainer {
+    padding-right: $navigation-toggler-button-container-padding-right;
+  }
+}
+
 //md and bigger screens
 @media (min-width: 768px) {
   .headerNavigationBase {

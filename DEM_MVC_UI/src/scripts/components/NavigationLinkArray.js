@@ -4,6 +4,7 @@ import NavigationLinkItem from 'components/NavigationLinkItem';
 
 class NavigationLinkArray extends React.Component {
   static propTypes = {
+    id: PropTypes.string.isRequired,
     navigationLinkArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -27,7 +28,7 @@ class NavigationLinkArray extends React.Component {
     let navigationLinks = this.mapNavigationLinks();
     return (
         <div className="col-xs-12 col-lg-8 flex nav-links-container flex-column-vertical-center-lg-up">
-          <ul className="nav navbar-nav flex nav-links-default" id="nav-menu-content">
+          <ul className="nav navbar-nav flex nav-links-default" id={this.props.id}>
             {navigationLinks}
           </ul>
         </div>

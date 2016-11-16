@@ -3,11 +3,11 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import NavigationMenuToggleButton from 'components/NavigationMenuToggleButton';
+import MenuButton from 'components/MenuButton';
 
-describe('NavigationMenuToggleButton', () => {
+describe('MenuButton', () => {
   function setup() {
-    return shallow(<NavigationMenuToggleButton />);
+    return shallow(<MenuButton />);
   }
 
   it('should render top level div with className "navigation-menu-toggle-button-container"',() => {

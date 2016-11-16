@@ -25,8 +25,8 @@ describe('Header', () => {
     expect(navigationLinkLogoElement.length).toEqual(1);
   });
 
-  it('should contain 1 NavigationMenuToggleButton element',() => {
-    const navigationMenuToggleButtonElement = setup().find('NavigationMenuToggleButton');
+  it('should contain 1 MenuButton element',() => {
+    const navigationMenuToggleButtonElement = setup().find('MenuButton');
     expect(navigationMenuToggleButtonElement.length).toEqual(1);
   });
 

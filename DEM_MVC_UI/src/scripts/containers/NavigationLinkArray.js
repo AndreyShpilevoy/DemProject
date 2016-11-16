@@ -6,6 +6,7 @@ import NavigationLinkArrayComponent from 'components/NavigationLinkArray';
 
 class NavigationLinkArray extends React.Component {
   static propTypes = {
+    id: PropTypes.string.isRequired,
     navigationLinkArray: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -22,8 +23,9 @@ class NavigationLinkArray extends React.Component {
   }
 
   render(){
+    const {id, navigationLinkArray} = this.props;
     return(
-      <NavigationLinkArrayComponent navigationLinkArray={this.props.navigationLinkArray}/>
+      <NavigationLinkArrayComponent id={id} navigationLinkArray={navigationLinkArray}/>
     );
   }
 }
