@@ -9,9 +9,10 @@
     ["module-resolver", {
       "root": ["./src/scripts"],
       "alias": {
-        "pages": "./src/scripts/containers/pages",
+        "Grid": "./src/scripts/components/Grid",
         "icons": "./src/scripts/components/icons",
         "bbCodes": "./src/scripts/components/bbCodes",
+        "pages": "./src/scripts/containers/pages",
         "testHelpers": "./testHelpers",
         "scss": "./src/scss",
         "commonScss": "./src/scripts/_commonScss"

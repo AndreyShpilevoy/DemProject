@@ -1,0 +1,40 @@
+@import "../gridSizes.scss";
+
+.container,
+.containerFluid {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.containerFluid {
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.container{
+  max-width: 100%;
+}
+
+@media (min-width: $min-sm){
+  .container {
+    width: 540px;
+  }
+}
+
+@media (min-width: $min-md){
+  .container {
+    width: 720px;
+  }
+}
+
+@media (min-width: $min-lg){
+  .container {
+    width: 960px;
+  }
+}
+
+@media (min-width: $min-xl){
+  .container {
+    width: 1140px;
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Container, Row, Column} from 'Grid';
 import NavigationLinkArray from 'containers/NavigationLinkArray';
 import MenuButton from 'components/MenuButton';
 import Logotype from 'components/Logotype';
@@ -23,12 +24,12 @@ class Header extends React.Component {
   render() {
     const {navigationMenuButtonId, navigationMenuContentId, navigationMenuLinksDefaultClassName} = this.state;
     return(
-      <div className="container navbar-fixed-top">
-        <div className="row">
-          <div className="col-xs-12">
+      <Container className="navbar-fixed-top">
+        <Row>
+          <Column xs={12}>
             <nav id="header" className={`navbar navbar-full ${styles.headerNavigationBase} ${styles.headerBackgroundImage}`}>
-              <div className={`row ${commonStyles.heigthInherit}`}>
-                <div className={`col-xs-12 col-lg-4 ${commonStyles.heigthInherit} ${commonStyles.flex}`}>
+              <Row className={commonStyles.heigthInherit}>
+                <Column xs={12} lg={4} className={`${commonStyles.heigthInherit} ${commonStyles.flex}`}>
                   <div className={`${styles.headerLogoWrapper} ${commonStyles.flexColumnVerticalCenter}`}>
                     <div className={styles.headerLogoContainer}>
                       <Logotype />
@@ -37,16 +38,16 @@ class Header extends React.Component {
                   <div className={`hidden-lg-up ${commonStyles.flexColumnVerticalCenter} ${styles.headerNavigationMenuButtomContainer}`}>
                     <MenuButton id={navigationMenuButtonId}/>
                   </div>
-                </div>
-                <div id={navigationMenuContentId}
-                  className={`col-xs-12 col-lg-8 ${commonStyles.flexColumnVerticalCenterLgUp} ${navigationMenuLinksDefaultClassName}`}>
+                </Column>
+                <Column xs={12} lg={8} id={navigationMenuContentId}
+                  className={`${commonStyles.flexColumnVerticalCenterLgUp} ${navigationMenuLinksDefaultClassName}`}>
                   <NavigationLinkArray/>
-                </div>
-              </div>
+                </Column>
+              </Row>
             </nav>
-          </div>
-        </div>
-      </div>
+          </Column>
+        </Row>
+      </Container>
     );
   }
 }
