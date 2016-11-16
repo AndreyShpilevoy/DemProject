@@ -13,7 +13,8 @@
         "icons": "./src/scripts/components/icons",
         "bbCodes": "./src/scripts/components/bbCodes",
         "testHelpers": "./testHelpers",
-        "scss": "./src/scss"
+        "scss": "./src/scss",
+        "commonScss": "./src/scripts/_commonScss"
       }
     }]
   ],

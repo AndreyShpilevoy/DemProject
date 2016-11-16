@@ -3,7 +3,6 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import NotificationCreator from 'containers/NotificationCreator';
 import Title from 'containers/Title';
-import PostcssTest from 'components/PostcssTest';
 
 class Layout extends React.Component {
   static propTypes = {
@@ -15,7 +14,6 @@ class Layout extends React.Component {
       <div>
         <Title/>
         <Header/>
-        <PostcssTest/>
           <div className="page-content">
             <div className="container">
               <div className="row">
