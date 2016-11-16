@@ -1,0 +1,46 @@
+$headerTransition: all 400ms linear;
+
+@keyframes slideDown {
+  from {
+    max-height: 0vh;
+  }
+  to {
+    max-height: 100vh;
+  }
+}
+@keyframes slideUp {
+  from {
+    max-height: 100vh;
+  }
+  to {
+    max-height: 0vh;
+  }
+}
+
+@mixin element-closed {
+  max-height:0px;
+  animation: slideUp 0.5s ease-in;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.5s ease-in;
+  overflow: hidden;
+}
+
+@mixin element-opened {
+  max-height: initial;
+  transform: scaleY(1);
+  transition: transform 0.5s ease-out;
+  animation: slideDown 0.5s ease-out;
+}
+
+@mixin element-rotate-center-to--90 {
+  transform: rotate(-90deg);
+  transform-origin: center center;
+  transition: transform 0.5s linear;
+}
+
+@mixin element-rotate-center-to-0 {
+  transform: rotate(0deg);
+  transform-origin: center center;
+  transition: transform 0.5s linear;
+}

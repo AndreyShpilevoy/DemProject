@@ -1,0 +1,27 @@
+@import "colors.scss";
+@import "sizes.scss";
+
+.navigationLinksArray {
+  background-color: $navigationLinksArrayBackgroundColor;
+  margin: initial;
+  padding: initial;
+  list-style-type: none;
+}
+
+//md and smaller screens
+@media (max-width: 991px) {
+  .navigationLinksArray  {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+  }
+}
+
+//lg and bigger screens
+@media (min-width: 992px) {
+  .navigationLinksArray {
+    background-color: initial;
+    padding-right: $navigationLinksArrayPaddingRight;
+    margin-left: auto;
+  }
+}

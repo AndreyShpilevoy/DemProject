@@ -6,8 +6,33 @@
   display: flex;
 }
 
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
 .flexColumnVerticalCenter {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.flexRowVerticalCenter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+//lg and bigger screens
+@media (min-width: 992px) {
+  .flexColumnVerticalCenterLgUp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .flexRowLgUp {
+    display: flex;
+    flex-direction: row;
+  }
 }

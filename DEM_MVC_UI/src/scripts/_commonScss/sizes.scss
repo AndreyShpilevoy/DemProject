@@ -1,3 +1,29 @@
+$headerHeightXsSm: 3.4375rem;
+$headerHeightMd: 3.75rem;
+$headerHeightLg: 5rem;
+$headerLogoContainerPaddingLeft: 0.9375rem;
+$headerNavigationMenuButtomContainerPaddingRight: $headerLogoContainerPaddingLeft;
+
+$navigationLinksArrayPaddingRight: $headerLogoContainerPaddingLeft;
+$navigationLinkItemFontSize: 1.3125rem;
+$navigationLinkItemPadding: 0.5rem;
+$navigationLinkItemSeparatorHeight: 0.1875rem;
+
+$headerLogoContainerWidthXsSm: 9.0625rem;
+$headerLogoContainerHeightXsSm: 2.3125rem;
+$headerLogoContainerHeightMd: 2.8125rem;
+$headerLogoContainerWidthMd: 10.9375rem;
+$headerLogoContainerHeightLgXl: 4.0625rem;
+$headerLogoContainerWidthLgXl: 15.9375rem;
+
+$menuButtonPadding: 0.5rem;
+$menuButtonLineWidth: 2rem;
+$menuButtonLineHeight: 0.1875rem;
+$menuButtonLineBorderRadius: 0.0625rem;
+$menuButtonLineSecondAndMore: 0.25rem;
+
+
+
 $font-size: 16px; //1rem = 16px
 $body-min-width: 290px;
 
@@ -6,30 +32,6 @@ $body-line-height: 1.5;
 $page-content-padding-top-xs-sm: 3.4375rem;
 $page-content-padding-top-md:  3.75rem;
 $page-content-padding-top-lg-xl: 5rem;
-
-$header-xs-sm-logo-navmenu-height: 2.3125rem;
-$header-xs-sm-logo-navmenu-width: 9.0625rem;
-$header-md-logo-navmenu-height: 2.8125rem;
-$header-md-logo-navmenu-width: 10.9375rem;
-$header-lg-logo-navmenu-height: 4.0625rem;
-$header-lg-logo-navmenu-width: 15.9375rem;
-$navbar-logo-padding-left: 0.9375rem;
-
-$header-height-and-page-content-margin-top-xs-sm: 3.4375rem;
-$header-height-and-page-content-margin-top-md: 3.75rem;
-$header-height-and-page-content-margin-top-lg: 5rem;
-$navbar-padding-right: 0.9375rem;
-
-$nav-link-font-size: 1.3125rem;
-$nav-link-separator-height: 0.1875rem;
-$nav-link-padding-left-right: 0.5rem;
-
-$navigation-toggler-button-padding: 0.5rem;
-$navigation-toggler-button-container-padding-right: 0.9375rem;
-$navigation-toggler-button-icon-bar-width: 2rem;
-$navigation-toggler-button-icon-bar-height: 0.1875rem;
-$navigation-toggler-button-icon-bar-border-radius: 0.0625rem;
-$navigation-toggler-button-icon-bar-second-and-more: 0.25rem;
 
 $footer-height-md-down: 1.875rem;
 $footer-height-lg-up: 2.5rem;

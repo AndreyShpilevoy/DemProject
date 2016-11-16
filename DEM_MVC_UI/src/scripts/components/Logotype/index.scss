@@ -1,8 +1,8 @@
 @import "image-backgrounds.scss";
 
-.logo {
+.logotype {
   height: 100%;
   width: 100%;
-  background: $header-logo;
-  background-size: contain;
+  background: $logotypeBackgroundImage;
+  background-size: cover;
 }

@@ -1,0 +1,39 @@
+@import "colors.scss";
+@import "sizes.scss";
+
+.navigationLinkItemContainer {
+  .navigationLinkItem {
+    display: block;
+    color: $orangeTextColor;
+    font-size: $navigationLinkItemFontSize;
+    padding: $navigationLinkItemPadding;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .navigationLinkItem:hover{
+    color: $orangeTextColorHovered;
+  }
+
+  .navigationLinkItemSeparator {
+    background-color: $orangeTextColor;
+    height: $navigationLinkItemSeparatorHeight;
+  }
+
+  //lg and bigger screens
+  @media (min-width: 992px) {
+    .navigationLinkItem {
+      color: $yellowTextColor;
+      font-size: initial;
+    }
+
+    .navigationLinkItem:hover {
+      color: $yellowTextColorHovered;
+    }
+
+    .navigationLinkItemSeparator {
+      display: none;
+    }
+  }
+}

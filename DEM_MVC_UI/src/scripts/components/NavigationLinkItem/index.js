@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import styles from './index.scss';
 
 class NavigationLinkItem extends React.Component {
   static propTypes = {
@@ -13,11 +14,11 @@ class NavigationLinkItem extends React.Component {
 
   render(){
     return (
-      <li className="nav-array-item">
-        <Link className="nav-link" to={this.props.navigationLinkItem.href}>
+      <li className={styles.navigationLinkItemContainer}>
+        <Link className={styles.navigationLinkItem} to={this.props.navigationLinkItem.href}>
           {this.props.navigationLinkItem.title}
         </Link>
-        <div className="nav-link-separator"/>
+        <div className={styles.navigationLinkItemSeparator}/>
       </li>
     );
   }

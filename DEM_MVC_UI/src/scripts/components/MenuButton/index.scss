@@ -4,19 +4,23 @@
 .menuButton {
   background-color: initial;
   border-style: initial;
-  padding: $navigation-toggler-button-padding;
+  padding: $menuButtonPadding;
+
+  //.menuButtonLine like in bootstrap 3
+  .menuButtonLine {
+    background-color: $orangeTextColor;
+    display: block;
+    width: $menuButtonLineWidth;
+    height: $menuButtonLineHeight;
+    border-radius: $menuButtonLineBorderRadius;
+  }
+
+  .menuButtonLine + .menuButtonLine {
+    margin-top: $menuButtonLineSecondAndMore;
+  }
 }
 
-//.menuButtonLine like in bootstrap 3
-.menuButton .menuButtonLine {
-  background-color: $orange-text-color;
-  display: block;
-  width: $navigation-toggler-button-icon-bar-width;
-  height: $navigation-toggler-button-icon-bar-height;
-  border-radius: $navigation-toggler-button-icon-bar-border-radius;
-}
-
-.menuButton .menuButtonLine + .menuButtonLine {
-  margin-top: $navigation-toggler-button-icon-bar-second-and-more;
+.menuButton:hover .menuButtonLine {
+  background-color: $orangeTextColorHovered;
 }
 //end

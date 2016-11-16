@@ -1,12 +1,14 @@
-$link: #cbc065;
-$link-hovered: #fff495;
+$headerBackgroundColor: #322c27;
+$orangeTextColor: #ac6b37;
+$orangeTextColorHovered: #ef9853;
+$yellowTextColor: #cbc065;
+$yellowTextColorHovered: #fff495;
+$navigationLinksArrayBackgroundColor: #252525;
+
 $body-background-color: #171717;
-$header-background-color: #322c27;
 $footer-background-color: #3e3025;
 $footer-text-color: #cfb095;
-$orange-text-color: #ac6b37;
 $orange-bright-text-color: #e4991c;
-$menu-button-background-color: #252525;
 $content-holder-header-color: #564b41;
 $forum-sub-forum-topic-container-separator-background-color: #9c877c;
 $content-holder-body-color: #48423d;
@@ -14,7 +16,7 @@ $content-holder-body-background-color: #7b736b;
 $breadcrumb-background-color: $body-background-color;
 $breadcrumb-item-background-color-hovered: $content-holder-header-color;
 $breadcrumb-item-background-color: #5d5956;
-$breadcrumb-border-color: $header-background-color;
+$breadcrumb-border-color: $headerBackgroundColor;
 $bbCode-offtopic-color: #67605a;
 $bbCode-quote-border-color: #d4c5b6;
 $bbCode-think-border-color: #ffffff;

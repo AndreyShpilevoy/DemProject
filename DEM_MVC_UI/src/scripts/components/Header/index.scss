@@ -1,15 +1,13 @@
 @import "colors.scss";
 @import "sizes.scss";
 @import "image-backgrounds.scss";
+@import "slideAnimation.scss";
 
 .headerNavigationBase {
-  min-width: $body-min-width;
-  background-color: $header-background-color;
+  background-color: $headerBackgroundColor;
   padding: initial;
-  height: $header-height-and-page-content-margin-top-xs-sm;
-  // next two row needed for smoothly change of size
-  flex: 1;
-  transition: all 400ms linear;
+  height: $headerHeightXsSm;
+  transition: $headerTransition;
 }
 
 .headerLogoWrapper {
@@ -17,57 +15,67 @@
 }
 
 .headerLogoContainer {
-  width: $header-xs-sm-logo-navmenu-width;
-  height: $header-xs-sm-logo-navmenu-height;
-  padding-left: $navbar-logo-padding-left;
-  transition: all 400ms linear;
+  width: $headerLogoContainerWidthXsSm;
+  height: $headerLogoContainerHeightXsSm;
+  padding-left: $headerLogoContainerPaddingLeft;
+  transition: $headerTransition;
 }
 
 //md and smaller screens
 @media (max-width: 991px) {
   .headerNavigationMenuButtomContainer {
-    padding-right: $navigation-toggler-button-container-padding-right;
+    padding-right: $headerNavigationMenuButtomContainerPaddingRight;
+  }
+
+  .NavigationMenuLinksDefault  {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    @include element-closed;
+  }
+
+  .NavigationMenuLinksOpened {
+    @include element-opened;
   }
 }
 
 //md and bigger screens
 @media (min-width: 768px) {
   .headerNavigationBase {
-    height: $header-height-and-page-content-margin-top-md;
+    height: $headerHeightMd;
   }
 
   .headerBackgroundImage {
-    background-image: $navbar-background-md;
+    background-image: $headerBackgroundImageMd;
   }
 
   .headerLogoContainer {
-    width: $header-md-logo-navmenu-width;
-    height: $header-md-logo-navmenu-height;
+    width: $headerLogoContainerWidthMd;
+    height: $headerLogoContainerHeightMd;
   }
 }
 
 //lg and bigger screens
 @media (min-width: 992px) {
   .headerNavigationBase {
-    height: $header-height-and-page-content-margin-top-lg;
+    height: $headerHeightLg;
   }
 
   .headerBackgroundImage {
-    background-image: $navbar-background-lg;
+    background-image: $headerBackgroundImageLg;
   }
 
   .headerLogoContainer {
-    width: $header-lg-logo-navmenu-width;
-    height: $header-lg-logo-navmenu-height;
+    width: $headerLogoContainerWidthLgXl;
+    height: $headerLogoContainerHeightLgXl;
   }
 
 
   .headerShrink {
-    height: $header-height-and-page-content-margin-top-lg/2;
-
+    height: $headerHeightLg/2;
     .headerLogoContainer {
-      width: $header-lg-logo-navmenu-width/2;
-      height: $header-lg-logo-navmenu-height/2;
+      width: $headerLogoContainerWidthLgXl/2;
+      height: $headerLogoContainerHeightLgXl/2;
     }
 
     &.headerBackgroundImage {
@@ -79,6 +87,6 @@
 //xl and bigger screens
 @media (min-width: 1200px) {
   .headerBackgroundImage {
-    background-image: $navbar-background-xl;
+    background-image: $headerBackgroundImageXl;
   }
 }

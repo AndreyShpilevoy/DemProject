@@ -6,7 +6,7 @@ class Logotype extends React.Component {
   render(){
     return (
       <Link to="/">
-        <div className={styles.logo}/>
+        <div className={styles.logotype}/>
       </Link>
     );
   }

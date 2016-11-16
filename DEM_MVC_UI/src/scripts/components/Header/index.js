@@ -9,18 +9,19 @@ import styles from './index.scss';
 
 class Header extends React.Component {
   state = {
-    menuButtonId: 'menu-toggle-button',
-    menuContentId: 'nav-menu-content',
-    menuToggleClass: 'nav-links-opened'
+    navigationMenuButtonId: 'navigationMenuToggleButton',
+    navigationMenuContentId: 'navigationMenuContent',
+    navigationMenuLinksOpenedClassName: styles.NavigationMenuLinksOpened,
+    navigationMenuLinksDefaultClassName: styles.NavigationMenuLinksDefault
   }
 
   componentDidMount() {
-    const {menuButtonId, menuContentId, menuToggleClass} = this.state;
+    const {navigationMenuButtonId, navigationMenuContentId, navigationMenuLinksOpenedClassName} = this.state;
     ShrinkingHeader.init(styles.headerShrink);
-    ToggleClass.init(menuButtonId, menuContentId, menuToggleClass, true);
+    ToggleClass.init(navigationMenuButtonId, navigationMenuContentId, navigationMenuLinksOpenedClassName, true);
   }
   render() {
-    const {menuButtonId, menuContentId} = this.state;
+    const {navigationMenuButtonId, navigationMenuContentId, navigationMenuLinksDefaultClassName} = this.state;
     return(
       <div className="container navbar-fixed-top">
         <div className="row">
@@ -34,10 +35,13 @@ class Header extends React.Component {
                     </div>
                   </div>
                   <div className={`hidden-lg-up ${commonStyles.flexColumnVerticalCenter} ${styles.headerNavigationMenuButtomContainer}`}>
-                    <MenuButton id={menuButtonId}/>
+                    <MenuButton id={navigationMenuButtonId}/>
                   </div>
                 </div>
-                <NavigationLinkArray id={menuContentId} />
+                <div id={navigationMenuContentId}
+                  className={`col-xs-12 col-lg-8 ${commonStyles.flexColumnVerticalCenterLgUp} ${navigationMenuLinksDefaultClassName}`}>
+                  <NavigationLinkArray/>
+                </div>
               </div>
             </nav>
           </div>
