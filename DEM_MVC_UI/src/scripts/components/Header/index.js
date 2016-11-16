@@ -1,7 +1,7 @@
 import React from 'react';
 import NavigationLinkArray from 'containers/NavigationLinkArray';
 import NavigationMenuToggleButton from 'components/NavigationMenuToggleButton';
-import NavigationLinkLogo from 'components/NavigationLinkLogo';
+import Logotype from 'components/Logotype';
 import ToggleClass from 'services/domScripts/ToggleClass';
 import ShrinkingHeader from 'services/domScripts/ShrinkingHeader';
 import commonStyles from 'commonScss/common.scss';
@@ -22,7 +22,7 @@ class Header extends React.Component {
                 <div className={`col-xs-12 col-lg-4 ${commonStyles.heigthInherit} ${commonStyles.flex}`}>
                   <div className={`${styles.headerLogoWrapper} ${commonStyles.flexColumnVerticalCenter}`}>
                     <div className={styles.headerLogoContainer}>
-                      <NavigationLinkLogo />
+                      <Logotype />
                     </div>
                   </div>
                   <NavigationMenuToggleButton />

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import styles from './index.scss';
 
-class NavigationLinkLogo extends React.Component {
+class Logotype extends React.Component {
   render(){
     return (
       <Link to="/">
@@ -12,4 +12,4 @@ class NavigationLinkLogo extends React.Component {
   }
 }
 
-export default NavigationLinkLogo;
+export default Logotype;

@@ -3,11 +3,11 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import NavigationLinkLogo from 'components/NavigationLinkLogo';
+import Logotype from 'components/Logotype';
 
-describe('NavigationLinkLogo', () => {
+describe('Logotype', () => {
   function setup() {
-    return shallow(<NavigationLinkLogo />);
+    return shallow(<Logotype />);
   }
 
   it('should render top level div with className "navbar-logo-container"',() => {

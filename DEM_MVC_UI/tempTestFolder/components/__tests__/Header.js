@@ -20,8 +20,8 @@ describe('Header', () => {
     expect(divElement.hasClass('navbar-fixed-top')).toBeTruthy();
   });
 
-  it('should contain 1 NavigationLinkLogo element',() => {
-    const navigationLinkLogoElement = setup().find('NavigationLinkLogo');
+  it('should contain 1 Logotype element',() => {
+    const navigationLinkLogoElement = setup().find('Logotype');
     expect(navigationLinkLogoElement.length).toEqual(1);
   });
 
