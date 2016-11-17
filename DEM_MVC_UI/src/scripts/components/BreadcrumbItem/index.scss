@@ -1,0 +1,93 @@
+@import "sizes.scss";
+@import "colors.scss";
+
+.breadcrumbItem {
+  max-width: 24%;
+  min-width: 4%;
+
+  .breadcrumbItemArrow {
+    display: block;
+    background: $breadcrumbItemBackgroundColor;
+    text-align: center;
+    padding-right: $breadcrumbItemArrowPaddingMarginRight;
+    padding-left: $breadcrumbItemArrowPaddingLeft;
+    position: relative;
+    margin-right: $breadcrumbItemArrowPaddingMarginRight;
+    text-decoration: none;
+    font-size: $breadcrumbItemArrowFontSize;
+    line-height: $breadcrumbItemArrowLineHeight;
+    font-weight: bold;
+    height: $breadcrumbItemArrowHeight;
+
+    div {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .breadcrumbItemArrow:after,
+  .breadcrumbItemArrow:before {
+    content: "";
+    border-top: $breadcrumbItemArrowHeight/2 solid transparent;
+    border-bottom: $breadcrumbItemArrowHeight/2 solid transparent;
+    position: absolute;
+    top: 0;
+  }
+
+  .breadcrumbItemArrow:after {
+    border-left: $breadcrumbItemArrowHeight/2 solid $breadcrumbItemBackgroundColor;
+    right: -$breadcrumbItemArrowHeight/2;
+    z-index: 1;
+  }
+
+  .breadcrumbItemArrow:before {
+    border-left: $breadcrumbItemArrowHeight/2 solid $breadcrumbBackgroundColor;
+    left: 0;
+  }
+
+  .breadcrumbItemArrow:hover,
+  &.breadcrumbItemActive .breadcrumbItemArrow {
+    background: $breadcrumbItemBackgroundColorHovered;
+  }
+
+  &.breadcrumbItemActive .breadcrumbItemArrow:after,
+  .breadcrumbItemArrow:hover:after  {
+    border-left-color: $breadcrumbItemBackgroundColorHovered;
+  }
+
+  &.breadcrumbItemActive .breadcrumbItemArrow,
+  &.breadcrumbItemIgnored .breadcrumbItemArrow{
+    pointer-events: none;
+    cursor: default;
+  }
+
+
+  &.breadcrumbItemIgnored .breadcrumbItemArrow:hover {
+    background: $breadcrumbItemBackgroundColor;
+  }
+
+  &.breadcrumbItemIgnored .breadcrumbItemArrow:after,
+  &.breadcrumbItemIgnored .breadcrumbItemArrow:hover:after  {
+    border-left-color: $breadcrumbItemBackgroundColor;
+  }
+}
+
+.breadcrumbItem:first-child{
+  .breadcrumbItemArrow{
+    padding-left: $breadcrumbItemArrowHeight/2;
+  }
+  .breadcrumbItemArrow:before {
+    display: none;
+  }
+}
+
+.breadcrumbItem:last-child{
+  .breadcrumbItemArrow {
+    padding-right: $breadcrumbItemArrowHeight/2;
+  }
+
+  .breadcrumbItemArrow:after {
+    display: none;
+  }
+}

@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
 import BreadcrumbItem from 'components/BreadcrumbItem';
+import styles from './index.scss';
 
 class BreadcrumbArray extends React.Component {
   static propTypes = {
@@ -28,10 +29,7 @@ class BreadcrumbArray extends React.Component {
     );
     //if cut middle of Breadcrumbs array - add EllipsisArrow element;
     if (withEllipsis) {
-      mappedBreadcrumbs.splice(1, 0,
-        <div key="..." className="breadcrumb-item breadcrumb-item-ignored">
-          <div className="breadcrumb-item-arrow">{'...'}</div>
-        </div>);
+      mappedBreadcrumbs.splice(1, 0, <BreadcrumbItem key={'...'} ellipsis setActive={false}/>);
     }
     return mappedBreadcrumbs;
   }
@@ -39,7 +37,7 @@ class BreadcrumbArray extends React.Component {
   render() {
     let mappedBreadcrumbArray = this.mapBreadcrumbs();
     return (
-      <div  className="breadcrumb">
+      <div  className={styles.breadcrumb}>
         {mappedBreadcrumbArray}
       </div>
     );

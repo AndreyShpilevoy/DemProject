@@ -37,6 +37,12 @@ $footerMarginTop: $marginBetweenBlocks;
 $footerHeightMdDown: 1.875rem;
 $footerHeightLgUp: 2.5rem;
 
+$breadcrumbMargingTop: $marginBetweenBlocks;
+$breadcrumbItemArrowPaddingMarginRight: 0.1875rem;
+$breadcrumbItemArrowPaddingLeft: 0.9375rem;
+$breadcrumbItemArrowFontSize: 0.9rem;
+$breadcrumbItemArrowLineHeight: 1.4;
+$breadcrumbItemArrowHeight: 1.25rem;
 
 
 
@@ -79,13 +85,6 @@ $post-avatar-size: 3rem;
 $post-user-name-rank-padding-left: 0.625rem;
 $post-content-container-padding-left: $post-avatar-size + $post-user-name-rank-padding-left;
 
-$breadcrumb-padding-marging-left-right-bottom: 0;
-$breadcrumb-marging-top: $marginBetweenBlocks;
-$breadcrumb-item-arrow-padding-margin-right: 0.1875rem;
-$breadcrumb-item-arrow-padding-left: 0.9375rem;
-$breadcrumb-item-arrow-font-size: 0.9rem;
-$breadcrumb-item-arrow-line-height: 1.4;
-$breadcrumb-item-arrow-height: 1.25rem;
 
 $bbCode-border-size: 0.0625rem;
 $bbCode-padding: 0.4rem;
