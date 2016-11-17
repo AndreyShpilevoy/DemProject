@@ -33,7 +33,7 @@
 }
 
 @each $breakpoint, $size-min, $size-max in $grid-breakpoints-min-max-container {
-  @media (min-width: $size-min) {
+  @media ($size-min) {
     @each $col-num, $col-size in $grid-col-size {
       .col-#{$breakpoint}-#{$col-num}{
         flex-basis: $col-size;

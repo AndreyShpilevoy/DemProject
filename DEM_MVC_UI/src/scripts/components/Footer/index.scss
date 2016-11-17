@@ -1,3 +1,4 @@
+@import "common.scss";
 @import "colors.scss";
 @import "sizes.scss";
 @import "image-backgrounds.scss";
@@ -20,7 +21,7 @@
 }
 
 //lg and bigger screens
-@media (min-width: 992px) {
+@media ($lg-min) {
   .footer {
     height: $footerHeightLgUp;
     background-image: $footerBackgroundImageLg;
@@ -28,7 +29,7 @@
 }
 
 //xl and bigger screens
-@media (min-width: 1200px) {
+@media ($xl-min) {
   .footer {
     background-image: $footerBackgroundImageXl;
   }

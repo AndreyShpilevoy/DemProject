@@ -2,12 +2,12 @@
 
 
 @each $breakpoint, $size-min, $size-max in $grid-breakpoints-min-max-container {
-  @media (min-width: $size-min) {
+  @media ($size-min) {
     .hidden-#{$breakpoint}-up{
       display: none !important;
     }
   }
-  @media (max-width: $size-max) {
+  @media ($size-max) {
     .hidden-#{$breakpoint}-down{
       display: none !important;
     }

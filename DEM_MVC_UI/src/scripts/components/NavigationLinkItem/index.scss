@@ -1,3 +1,4 @@
+@import "common.scss";
 @import "colors.scss";
 @import "sizes.scss";
 
@@ -22,7 +23,7 @@
   }
 
   //lg and bigger screens
-  @media (min-width: 992px) {
+  @media ($lg-min) {
     .navigationLinkItem {
       color: $yellowTextColor;
       font-size: initial;

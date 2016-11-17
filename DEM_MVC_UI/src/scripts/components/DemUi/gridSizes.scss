@@ -17,11 +17,11 @@ $lg-container: 960px;
 $xl-container: 1140px;
 
 $grid-breakpoints-min-max-container: (
-  (xs, $xs-min, $xs-max, $xs-container),
-  (sm, $sm-min, $sm-max, $sm-container),
-  (md, $md-min, $md-max, $md-container),
-  (lg, $lg-min, $lg-max, $lg-container),
-  (xl, $xl-min, $xl-max, $xl-container)
+  (xs, 'min-width: #{$xs-min}', 'max-width: #{$xs-max}', $xs-container),
+  (sm, 'min-width: #{$sm-min}', 'max-width: #{$sm-max}', $sm-container),
+  (md, 'min-width: #{$md-min}', 'max-width: #{$md-max}', $md-container),
+  (lg, 'min-width: #{$lg-min}', 'max-width: #{$lg-max}', $lg-container),
+  (xl, 'min-width: #{$xl-min}', 'max-width: #{$xl-max}', $xl-container)
 );
 
 $grid-col-size: (

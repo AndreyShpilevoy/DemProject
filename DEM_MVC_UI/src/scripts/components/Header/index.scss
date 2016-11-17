@@ -1,3 +1,4 @@
+@import "common.scss";
 @import "colors.scss";
 @import "sizes.scss";
 @import "image-backgrounds.scss";
@@ -32,7 +33,7 @@
 }
 
 //md and smaller screens
-@media (max-width: 991px) {
+@media ($md-max) {
   .headerNavigationMenuButtomContainer {
     padding-right: $headerNavigationMenuButtomContainerPaddingRight;
   }
@@ -50,7 +51,7 @@
 }
 
 //md and bigger screens
-@media (min-width: 768px) {
+@media ($md-min) {
   .headerNavigationBase {
     height: $headerHeightMd;
   }
@@ -66,7 +67,7 @@
 }
 
 //lg and bigger screens
-@media (min-width: 992px) {
+@media ($lg-min) {
   .headerNavigationBase {
     height: $headerHeightLg;
   }
@@ -95,7 +96,7 @@
 }
 
 //xl and bigger screens
-@media (min-width: 1200px) {
+@media ($xl-min) {
   .headerBackgroundImage {
     background-image: $headerBackgroundImageXl;
   }

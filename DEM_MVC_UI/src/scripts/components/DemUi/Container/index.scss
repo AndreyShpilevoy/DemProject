@@ -12,7 +12,7 @@
 }
 
 @each $breakpoint, $size-min, $size-max, $container in $grid-breakpoints-min-max-container {
-  @media (min-width: $size-min) {
+  @media ($size-min) {
     .container {
       width: $container;
     }

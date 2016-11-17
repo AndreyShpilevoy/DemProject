@@ -1,3 +1,4 @@
+@import "common.scss";
 @import "colors.scss";
 @import "sizes.scss";
 
@@ -9,7 +10,7 @@
 }
 
 //md and smaller screens
-@media (max-width: 991px) {
+@media ($md-max) {
   .navigationLinksArray  {
     width: 100%;
     display: flex;
@@ -18,7 +19,7 @@
 }
 
 //lg and bigger screens
-@media (min-width: 992px) {
+@media ($lg-min) {
   .navigationLinksArray {
     background-color: initial;
     padding-right: $navigationLinksArrayPaddingRight;

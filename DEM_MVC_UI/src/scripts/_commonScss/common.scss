@@ -1,3 +1,15 @@
+$xs-min: 'min-width: 0px';
+$sm-min: 'min-width: 576px';
+$md-min: 'min-width: 768px';
+$lg-min: 'min-width: 992px';
+$xl-min: 'min-width: 1200px';
+
+$xs-max: 'max-width: 575px';
+$sm-max: 'max-width: 767px';
+$md-max: 'max-width: 991px';
+$lg-max: 'max-width: 1199px';
+$xl-max: 'max-width: 9999999999px';
+
 .heigthInherit {
   height: inherit;
 }
@@ -24,7 +36,7 @@
 }
 
 //lg and bigger screens
-@media (min-width: 992px) {
+@media ($lg-min) {
   .flexColumnVerticalCenterLgUp {
     display: flex;
     flex-direction: column;
