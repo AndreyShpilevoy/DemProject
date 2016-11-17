@@ -1,0 +1,16 @@
+@import "sizes.scss";
+@import "image-backgrounds.scss";
+
+.socialMediaLink{
+  height: $social-media-link-height-weight;
+  width: $social-media-link-height-weight;
+  margin: 0 $social-media-link-marging-left-right;
+}
+
+.socialMediaLink:last-child{
+  margin-right: $social-media-link-last-child-marging-right;
+}
+
+svg {
+    opacity: 0.4;
+}

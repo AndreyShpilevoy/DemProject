@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import SocialMediaLinkItem from 'components/SocialMediaLinkItem';
+import commonStyles from 'commonScss/common.scss';
+import styles from './index.scss';
 
 class SocialMediaLinkArray extends React.Component {
   static propTypes = {
@@ -27,7 +29,7 @@ class SocialMediaLinkArray extends React.Component {
   render() {
     let socialMediaLinks = this.mapSocialMediaLinks();
     return (
-      <div className="flex social-media-link-wrapper">
+      <div className={`${commonStyles.flex} ${styles.socialMediaLinkWrapper}`}>
         {socialMediaLinks}
       </div>
     );
