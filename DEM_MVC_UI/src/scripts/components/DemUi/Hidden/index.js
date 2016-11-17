@@ -11,7 +11,7 @@ class Hidden extends React.Component {
     md: PropTypes.string,
     lg: PropTypes.string,
     xl: PropTypes.string,
-    children: PropTypes.node.isRequired
+    children: PropTypes.node
   }
 
   static defaultProps = {

@@ -16,7 +16,7 @@ class Column extends React.Component {
     lgOffset: PropTypes.number,
     xl: PropTypes.number,
     xlOffset: PropTypes.number,
-    children: PropTypes.node.isRequired
+    children: PropTypes.node
   }
 
   static defaultProps = {

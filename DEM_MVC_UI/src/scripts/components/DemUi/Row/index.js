@@ -7,7 +7,12 @@ class Row extends React.Component {
     className: PropTypes.string,
     reverse : PropTypes.bool,
     style: PropTypes.object,
-    children: PropTypes.node.isRequired
+    children: PropTypes.node
+  }
+
+  static defaultProps = {
+    className: '',
+    style: {},
   }
 
   state = {

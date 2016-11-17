@@ -7,7 +7,7 @@ class Container extends React.Component {
     className: PropTypes.string,
     fluid: PropTypes.bool,
     style: PropTypes.object,
-    children: PropTypes.node.isRequired
+    children: PropTypes.node
   }
 
   state = {
