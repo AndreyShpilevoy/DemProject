@@ -8,18 +8,16 @@ $footerBackgroundColor: #3e3025;
 $footerTextColor: #cfb095;
 $bodyBackgroundColor: #171717;
 $breadcrumbBackgroundColor: $bodyBackgroundColor;
-
-$content-holder-header-color: #564b41;
-
-$breadcrumbItemBackgroundColorHovered: $content-holder-header-color;
+$contentHolderHeaderBackgroundColor: #564b41;
+$breadcrumbItemBackgroundColorHovered: $contentHolderHeaderBackgroundColor;
 $breadcrumbItemBackgroundColor: #5d5956;
+$contentHolderBodyTextColor: #48423d;
+$contentHolderBodyBackgroundColor: #7b736b;
 
 
 
 $orange-bright-text-color: #e4991c;
 $forum-sub-forum-topic-container-separator-background-color: #9c877c;
-$content-holder-body-color: #48423d;
-$content-holder-body-background-color: #7b736b;
 $breadcrumb-border-color: $headerBackgroundColor;
 $bbCode-offtopic-color: #67605a;
 $bbCode-quote-border-color: #d4c5b6;

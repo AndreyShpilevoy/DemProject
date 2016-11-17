@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import SpanWrapper from 'components/SpanWrapper';
+import TextWrapper from 'components/TextWrapper';
 import TermTranslation from 'services/translations/TermTranslation';
 
 class TermItem extends React.Component {
@@ -26,7 +26,7 @@ class TermItem extends React.Component {
   render(){
     let item = this.props;
     return(
-      <SpanWrapper
+      <TextWrapper
         spanContent={this.translate()}
         className={item.className}
         spaceBefore={item.spaceBefore}

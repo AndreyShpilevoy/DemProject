@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import TransformDateTime from 'services/dateTime/TransformDateTime';
-import SpanWrapper from 'components/SpanWrapper';
+import TextWrapper from 'components/TextWrapper';
 
 class RelativeDateTime extends React.Component {
   static propTypes = {
@@ -23,7 +23,7 @@ class RelativeDateTime extends React.Component {
   render(){
     let item = this.props;
     return(
-      <SpanWrapper
+      <TextWrapper
         spanContent={this.transform()}
         className={item.className}
         spaceBefore={item.spaceBefore}

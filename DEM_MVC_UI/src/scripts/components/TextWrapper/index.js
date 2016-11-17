@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-class SpanWrapper extends React.Component {
+class TextWrapper extends React.Component {
   static propTypes = {
       spanContent: PropTypes.string.isRequired,
       className: PropTypes.string,
@@ -26,4 +26,4 @@ class SpanWrapper extends React.Component {
   }
 }
 
-export default SpanWrapper;
+export default TextWrapper;
