@@ -1,8 +1,18 @@
+$mainFontSize: 16px; //1rem = 16px
+
+$bodyMinWidth: 290px;
+$bodyFontSize: 1rem;
+$bodyLineHeight: 1.5;
+
 $headerHeightXsSm: 3.4375rem;
 $headerHeightMd: 3.75rem;
 $headerHeightLg: 5rem;
 $headerLogoContainerPaddingLeft: 0.9375rem;
 $headerNavigationMenuButtomContainerPaddingRight: $headerLogoContainerPaddingLeft;
+
+$pageContentPaddingTopXsSm: $headerHeightXsSm;
+$pageContentPaddingTopMd:  $headerHeightMd;
+$pageContentPaddingTopLgXl: $headerHeightLg;
 
 $navigationLinksArrayPaddingRight: $headerLogoContainerPaddingLeft;
 $navigationLinkItemFontSize: 1.3125rem;
@@ -29,14 +39,12 @@ $footerHeightLgUp: 2.5rem;
 
 
 
-$font-size: 16px; //1rem = 16px
-$body-min-width: 290px;
 
-$body-font-size: 1rem;
-$body-line-height: 1.5;
-$page-content-padding-top-xs-sm: 3.4375rem;
-$page-content-padding-top-md:  3.75rem;
-$page-content-padding-top-lg-xl: 5rem;
+
+
+
+
+
 
 
 $content-holder-header-height: 2.5rem;

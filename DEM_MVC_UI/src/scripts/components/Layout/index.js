@@ -1,8 +1,10 @@
 ﻿import React, {PropTypes} from 'react';
+import {Container, Row, Column} from 'DemUi';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import NotificationCreator from 'containers/NotificationCreator';
 import Title from 'containers/Title';
+import styles from './index.scss';
 
 class Layout extends React.Component {
   static propTypes = {
@@ -11,18 +13,16 @@ class Layout extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className={styles.pageContentWrapper}>
         <Title/>
         <Header/>
-          <div className="page-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-xs-12 width-100-percent">
-                  {this.props.children}
-                </div>
-              </div>
-            </div>
-          </div>
+          <Container className={styles.pageContent}>
+            <Row>
+              <Column xs={12}>
+                {this.props.children}
+              </Column>
+            </Row>
+          </Container>
         <Footer/>
         <NotificationCreator/>
       </div>

@@ -8,6 +8,7 @@ import configureStore from 'store/configureStore';
 import routes from 'routes';
 import rootSaga from 'sagas/rootSaga';
 import 'scss/main-dem.scss';
+import './index.scss';
 
 const store = configureStore()();
 store.runSaga(rootSaga);

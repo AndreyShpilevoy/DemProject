@@ -6,14 +6,16 @@ $yellowTextColorHovered: #fff495;
 $navigationLinksArrayBackgroundColor: #252525;
 $footerBackgroundColor: #3e3025;
 $footerTextColor: #cfb095;
+$bodyBackgroundColor: #171717;
 
-$body-background-color: #171717;
+
+
 $orange-bright-text-color: #e4991c;
 $content-holder-header-color: #564b41;
 $forum-sub-forum-topic-container-separator-background-color: #9c877c;
 $content-holder-body-color: #48423d;
 $content-holder-body-background-color: #7b736b;
-$breadcrumb-background-color: $body-background-color;
+$breadcrumb-background-color: $bodyBackgroundColor;
 $breadcrumb-item-background-color-hovered: $content-holder-header-color;
 $breadcrumb-item-background-color: #5d5956;
 $breadcrumb-border-color: $headerBackgroundColor;

@@ -1,0 +1,35 @@
+@import "sizes.scss";
+@import "colors.scss";
+
+html, body, #app {
+  height: 100%;
+}
+
+#app {
+  min-height: 100%;
+}
+
+html {
+  font-size: $mainFontSize;
+}
+
+body {
+  background-color: $bodyBackgroundColor;
+  font-family: Arial,sans-serif;
+  font-size: $bodyFontSize;
+  line-height: $bodyLineHeight;
+  min-width: $bodyMinWidth;
+  margin: initial;
+}
+
+a:link,
+a:visited {
+  color: $yellowTextColor;
+  text-decoration: none;
+}
+
+a:link:hover,
+a:visited:hover {
+  color: $yellowTextColorHovered;
+  text-decoration: underline;
+}
