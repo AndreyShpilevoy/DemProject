@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Column} from 'Grid';
+import {Container, Row, Column, Hidden} from 'DemUi';
 import NavigationLinkArray from 'containers/NavigationLinkArray';
 import MenuButton from 'components/MenuButton';
 import Logotype from 'components/Logotype';
@@ -24,10 +24,10 @@ class Header extends React.Component {
   render() {
     const {navigationMenuButtonId, navigationMenuContentId, navigationMenuLinksDefaultClassName} = this.state;
     return(
-      <Container className="navbar-fixed-top">
+      <Container className={styles.headerContainerFixOnTheTop}>
         <Row>
           <Column xs={12}>
-            <nav id="header" className={`navbar navbar-full ${styles.headerNavigationBase} ${styles.headerBackgroundImage}`}>
+            <nav id="header" className={`${styles.headerNavigationBase} ${styles.headerBackgroundImage}`}>
               <Row className={commonStyles.heigthInherit}>
                 <Column xs={12} lg={4} className={`${commonStyles.heigthInherit} ${commonStyles.flex}`}>
                   <div className={`${styles.headerLogoWrapper} ${commonStyles.flexColumnVerticalCenter}`}>
@@ -35,9 +35,9 @@ class Header extends React.Component {
                       <Logotype />
                     </div>
                   </div>
-                  <div className={`hidden-lg-up ${commonStyles.flexColumnVerticalCenter} ${styles.headerNavigationMenuButtomContainer}`}>
+                  <Hidden lg={'up'} className={`${commonStyles.flexColumnVerticalCenter} ${styles.headerNavigationMenuButtomContainer}`}>
                     <MenuButton id={navigationMenuButtonId}/>
-                  </div>
+                  </Hidden>
                 </Column>
                 <Column xs={12} lg={8} id={navigationMenuContentId}
                   className={`${commonStyles.flexColumnVerticalCenterLgUp} ${navigationMenuLinksDefaultClassName}`}>

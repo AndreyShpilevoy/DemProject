@@ -1,0 +1,20 @@
+@import "../gridSizes.scss";
+
+.container,
+.containerFluid {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.containerFluid {
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+@each $breakpoint, $size-min, $size-max, $container in $grid-breakpoints-min-max-container {
+  @media (min-width: $size-min) {
+    .container {
+      width: $container;
+    }
+  }
+}

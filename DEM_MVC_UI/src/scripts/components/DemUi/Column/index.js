@@ -40,19 +40,19 @@ class Column extends React.Component {
 
     // Column widths
     if (xs !== 0) {
-      colWidths.push(styles['col-xs-' + xs]);
+      colWidths.push(styles[`col-xs-${xs}`]);
     }
     if (sm !== 0 && sm !== xs) {
-      colWidths.push(styles['col-sm-' + sm]);
+      colWidths.push(styles[`col-sm-${sm}`]);
     }
     if (md !== 0 && md !== sm) {
-      colWidths.push(styles['col-md-' + md]);
+      colWidths.push(styles[`col-md-${md}`]);
     }
     if (lg !== 0 && lg !== md) {
-      colWidths.push(styles['col-lg-' + lg]);
+      colWidths.push(styles[`col-lg-${lg}`]);
     }
     if (xl !== 0 && xl !== lg) {
-      colWidths.push(styles['col-xl-' + xl]);
+      colWidths.push(styles[`col-xl-${xl}`]);
     }
 
     return colWidths;
@@ -64,19 +64,19 @@ class Column extends React.Component {
 
     // Column offsets
     if (xsOffset !== 0) {
-      offsets.push(styles['col-xs-offset-' + xsOffset]);
+      offsets.push(styles[`col-xs-offset-${xsOffset}`]);
     }
     if (smOffset !== 0 && smOffset !== xsOffset) {
-      offsets.push(styles['col-sm-offset-' + smOffset]);
+      offsets.push(styles[`col-sm-offset-${smOffset}`]);
     }
     if (mdOffset !== 0 && mdOffset !== smOffset) {
-      offsets.push(styles['col-md-offset-' + mdOffset]);
+      offsets.push(styles[`col-md-offset-${mdOffset}`]);
     }
     if (lgOffset !== 0 && lgOffset !== mdOffset) {
-      offsets.push(styles['col-lg-offset-' + lgOffset]);
+      offsets.push(styles[`col-lg-offset-${lgOffset}`]);
     }
     if (xlOffset !== 0 && xlOffset !== lgOffset) {
-      offsets.push(styles['col-xl-offset-' + xlOffset]);
+      offsets.push(styles[`col-xl-offset-${xlOffset}`]);
     }
 
     return offsets;

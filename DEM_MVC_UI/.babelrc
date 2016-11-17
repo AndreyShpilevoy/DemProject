@@ -9,7 +9,7 @@
     ["module-resolver", {
       "root": ["./src/scripts"],
       "alias": {
-        "Grid": "./src/scripts/components/Grid",
+        "DemUi": "./src/scripts/components/DemUi",
         "icons": "./src/scripts/components/icons",
         "bbCodes": "./src/scripts/components/bbCodes",
         "pages": "./src/scripts/containers/pages",

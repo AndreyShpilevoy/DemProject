@@ -1,0 +1,40 @@
+$xs-min: 0px;
+$sm-min: 576px;
+$md-min: 768px;
+$lg-min: 992px;
+$xl-min: 1200px;
+
+$xs-max: 575px;
+$sm-max: 767px;
+$md-max: 991px;
+$lg-max: 1199px;
+$xl-max: 9999999999px;
+
+$xs-container: 100%;
+$sm-container: 540px;
+$md-container: 720px;
+$lg-container: 960px;
+$xl-container: 1140px;
+
+$grid-breakpoints-min-max-container: (
+  (xs, $xs-min, $xs-max, $xs-container),
+  (sm, $sm-min, $sm-max, $sm-container),
+  (md, $md-min, $md-max, $md-container),
+  (lg, $lg-min, $lg-max, $lg-container),
+  (xl, $xl-min, $xl-max, $xl-container)
+);
+
+$grid-col-size: (
+  (1, 8.33333333%),
+  (2, 16.66666667%),
+  (3, 25%),
+  (4, 33.33333333%),
+  (5, 41.66666667%),
+  (6, 50%),
+  (7, 58.33333333%),
+  (8, 66.66666667%),
+  (9, 75%),
+  (10, 83.33333333%),
+  (11, 91.66666667%),
+  (12, 100%),
+);
