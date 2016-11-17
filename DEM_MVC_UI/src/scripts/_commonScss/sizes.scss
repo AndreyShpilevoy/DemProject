@@ -22,6 +22,11 @@ $menuButtonLineHeight: 0.1875rem;
 $menuButtonLineBorderRadius: 0.0625rem;
 $menuButtonLineSecondAndMore: 0.25rem;
 
+$marginBetweenBlocks: 0.3125rem;
+$footerMarginTop: $marginBetweenBlocks;
+$footerHeightMdDown: 1.875rem;
+$footerHeightLgUp: 2.5rem;
+
 
 
 $font-size: 16px; //1rem = 16px
@@ -33,10 +38,7 @@ $page-content-padding-top-xs-sm: 3.4375rem;
 $page-content-padding-top-md:  3.75rem;
 $page-content-padding-top-lg-xl: 5rem;
 
-$footer-height-md-down: 1.875rem;
-$footer-height-lg-up: 2.5rem;
 
-$content-holder-container-and-footer-padding-top: 0.3125rem;
 $content-holder-header-height: 2.5rem;
 $content-holder-header-font-size: 1.25rem;
 $content-holder-header-title-padding-horizontal: 0.9375rem;
@@ -70,7 +72,7 @@ $post-user-name-rank-padding-left: 0.625rem;
 $post-content-container-padding-left: $post-avatar-size + $post-user-name-rank-padding-left;
 
 $breadcrumb-padding-marging-left-right-bottom: 0;
-$breadcrumb-marging-top: $content-holder-container-and-footer-padding-top;
+$breadcrumb-marging-top: $marginBetweenBlocks;
 $breadcrumb-item-arrow-padding-margin-right: 0.1875rem;
 $breadcrumb-item-arrow-padding-left: 0.9375rem;
 $breadcrumb-item-arrow-font-size: 0.9rem;

@@ -7,7 +7,7 @@ import styles from './index.scss';
 class Footer extends React.Component {
     render() {
     return(
-      <Container className={styles.footerContainer}>
+      <Container>
         <Row>
           <Column xs={12}>
             <div id="footer" className={`${styles.footer} ${commonStyles.flex}`}>

@@ -2,14 +2,11 @@
 @import "sizes.scss";
 @import "image-backgrounds.scss";
 
-.footerContainer {
-  padding-top: $content-holder-container-and-footer-padding-top;
-}
-
 .footer {
-  background-color: $footer-background-color;
-  height: $footer-height-md-down;
-  color: $footer-text-color;
+  margin-top: $footerMarginTop;
+  background-color: $footerBackgroundColor;
+  height: $footerHeightMdDown;
+  color: $footerTextColor;
 }
 
 .footerCopyrightWrapper{
@@ -25,14 +22,14 @@
 //lg and bigger screens
 @media (min-width: 992px) {
   .footer {
-    height: $footer-height-lg-up;
-    background-image: $footer-background-lg;
+    height: $footerHeightLgUp;
+    background-image: $footerBackgroundImageLg;
   }
 }
 
 //xl and bigger screens
 @media (min-width: 1200px) {
   .footer {
-    background-image: $footer-background-xl;
+    background-image: $footerBackgroundImageXl;
   }
 }
