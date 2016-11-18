@@ -6,11 +6,6 @@
   margin-left: auto;
 }
 
-.containerFluid {
-  padding-right: 2rem;
-  padding-left: 2rem;
-}
-
 @each $breakpoint, $size-min, $size-max, $container in $grid-breakpoints-min-max-container {
   @media ($size-min) {
     .container {

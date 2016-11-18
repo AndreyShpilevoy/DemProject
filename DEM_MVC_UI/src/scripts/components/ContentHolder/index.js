@@ -60,7 +60,9 @@ class ContentHolder extends React.Component {
       <div className={shouldBeOpen ?
           `${commonClassNamePart} ${styles.contentHolderBodyOpened}` :
           commonClassNamePart} id={this.state.contentHolderBodyId}>
-        {this.props.contentHolderItem.bodyElement}
+          <div className={styles.contentHolderBodyContent}>
+            {this.props.contentHolderItem.bodyElement}
+          </div>
       </div>);
   }
 
@@ -68,7 +70,7 @@ class ContentHolder extends React.Component {
     let {titleElement, firstColumnTerm, secondColumnTerm, thirdColumnTerm} = this.props.contentHolderItem;
     return(
       <div className={styles.contentHolder}>
-        <Container className={`${styles.contentHolderHeader} ${commonStyles.flexColumnVerticalCenter}`}
+        <Container fluid className={`${styles.contentHolderHeader} ${commonStyles.flexColumnVerticalCenter}`}
           id={this.state.contentHolderHeaderId}>
           <Row className={`${commonStyles.flex} ${styles.contentHolderHeaderTitleWrapper}`}>
             <Column lg={6} className={styles.contentHolderHeaderTitle}>

@@ -33,21 +33,26 @@
   align-items: center;
 }
 
-    .iconArrowLeftHolder {
-      display: none;
-      margin-left: auto;
-      .iconArrowLeft {
-        width: $icon-arrow-left-content-holder-title;
-        height: $icon-arrow-left-content-holder-title;
-        path {
-          fill: $orangeTextColor;
-        }
-      }
+.iconArrowLeftHolder {
+  display: none;
+  margin-left: auto;
+  .iconArrowLeft {
+    width: $icon-arrow-left-content-holder-title;
+    height: $icon-arrow-left-content-holder-title;
+    margin: auto;
+    path {
+      fill: $orangeTextColor;
     }
+  }
+}
 
 .contentHolderBody {
   background-color: $contentHolderBodyBackgroundColor;
   color: $contentHolderBodyTextColor;
+}
+
+.contentHolderBodyContent {
+  padding: $contentHolderBodyPadding;
 }
 
 //md and smaller screens
@@ -73,6 +78,6 @@
 //md screens only
 @media ($md-min) and ($md-max) {
   .iconArrowLeftHolder {
-    display: initial;
+    display: flex;
   }
 }
