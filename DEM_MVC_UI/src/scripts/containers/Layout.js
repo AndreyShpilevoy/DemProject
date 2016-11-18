@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as localeActions from 'actions/localeActions';
-import LayoutComponent from 'components/Layout';
+import LayoutComponent from 'Templates/Layout';
 
 class Layout extends React.Component {
   static propTypes = {

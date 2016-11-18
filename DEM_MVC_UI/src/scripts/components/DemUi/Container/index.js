@@ -10,6 +10,11 @@ class Container extends React.Component {
     children: PropTypes.node
   }
 
+  static defaultProps = {
+    className: '',
+    style: {},
+  }
+
   state = {
     componentClassName: this.props.fluid ? styles.containerFluid : styles.container,
   }

@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import TextWrapper from 'components/TextWrapper';
+import TextWrapper from 'Atoms/TextWrapper';
 import TermTranslation from 'services/translations/TermTranslation';
 
 class TermItem extends React.Component {

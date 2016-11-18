@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import TransformDateTime from 'services/dateTime/TransformDateTime';
-import TextWrapper from 'components/TextWrapper';
+import TextWrapper from 'Atoms/TextWrapper';
 
 class RelativeDateTime extends React.Component {
   static propTypes = {

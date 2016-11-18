@@ -1,0 +1,18 @@
+@import "sizes.scss";
+@import "slideAnimation.scss";
+@import "common.scss";
+
+.contentHolder {
+  padding-top: $contentHolderContainerPaddingTop;
+}
+
+//md and smaller screens
+@media ($md-max) {
+    .contentHolderBodyWrapper {
+      @include element-closed;
+    }
+
+    .contentHolderBodyWrapperOpened {
+      @include element-opened;
+    }
+}

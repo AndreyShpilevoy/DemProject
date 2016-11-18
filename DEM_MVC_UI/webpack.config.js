@@ -15,8 +15,7 @@ let debug = process.env.NODE_ENV==='production' ? false : true;
 
 //For all environments
 let entry = [
-  'babel-polyfill',                   // {debug ? DEVELOPMENT : PRODUCTION}
-  `bootstrap-loader/lib/bootstrap.loader?${debug?'':'extractStyles&'}configFilePath=${__dirname}/.bootstraprc!bootstrap-loader/no-op.js`
+  'babel-polyfill'
 ];
 if(debug){
   // DEVELOPMENT
@@ -53,8 +52,8 @@ if(debug){
     test: /\.scss$/,
     use: [
       'style-loader',
-      'css-loader?modules&importLoaders=1&localIdentName=[local]',
-      //'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+      //'css-loader?modules&importLoaders=1&localIdentName=[local]',
+      'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
       'postcss-loader',
       'resolve-url-loader',
       'sass-loader?sourceMap'
@@ -66,8 +65,7 @@ if(debug){
     test: /\.scss$/,
     loader: ExtractTextPlugin.extract({
       fallbackLoader: 'style-loader',
-      loader: 'css-loader?modules&importLoaders=1&localIdentName=[local]&sourceMap!postcss-loader!resolve-url-loader!sass-loader?sourceMap'
-      //loader: 'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]&sourceMap!postcss-loader!resolve-url-loader!sass-loader?sourceMap'
+      loader: 'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]&sourceMap!postcss-loader!resolve-url-loader!sass-loader?sourceMap'
     })
   });
 }

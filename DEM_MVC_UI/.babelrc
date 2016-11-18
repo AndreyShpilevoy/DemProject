@@ -9,13 +9,17 @@
     ["module-resolver", {
       "root": ["./src/scripts"],
       "alias": {
-        "DemUi": "./src/scripts/components/DemUi",
-        "icons": "./src/scripts/components/icons",
-        "bbCodes": "./src/scripts/components/bbCodes",
+        "icons": "./src/scripts/oldComponents/icons",
+        "bbCodes": "./src/scripts/oldComponents/bbCodes",
         "pages": "./src/scripts/containers/pages",
         "testHelpers": "./testHelpers",
         "scss": "./src/scss",
-        "commonScss": "./src/scripts/_commonScss"
+        "commonScss": "./src/scripts/_commonScss",
+        "DemUi": "./src/scripts/components/DemUi",
+        "Atoms": "./src/scripts/components/Atoms",
+        "Molecules": "./src/scripts/components/Molecules",
+        "Organisms": "./src/scripts/components/Organisms",
+        "Templates": "./src/scripts/components/Templates"
       }
     }]
   ],

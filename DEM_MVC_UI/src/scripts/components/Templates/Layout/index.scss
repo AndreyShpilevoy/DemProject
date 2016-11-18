@@ -1,0 +1,27 @@
+@import "sizes.scss";
+@import "common.scss";
+
+.pageContentWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.pageContent {
+  flex: 1 0 auto;
+  padding-top: $pageContentPaddingTopXsSm;
+}
+
+@media ($md-min)
+  {
+  .pageContent  {
+    padding-top: $pageContentPaddingTopMd;
+  }
+}
+
+@media ($lg-min)
+  {
+  .pageContent  {
+    padding-top: $pageContentPaddingTopLgXl;
+  }
+}

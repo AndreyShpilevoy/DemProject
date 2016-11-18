@@ -1,0 +1,8 @@
+@import "colors.scss";
+@import "sizes.scss";
+
+.contentHolderBody {
+  background-color: $contentHolderBodyBackgroundColor;
+  color: $contentHolderBodyTextColor;
+  padding: $contentHolderBodyPadding;
+}
