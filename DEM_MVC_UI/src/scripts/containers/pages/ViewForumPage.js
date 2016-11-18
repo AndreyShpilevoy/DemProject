@@ -4,8 +4,8 @@ import {bindActionCreators} from 'redux';
 import * as chapterActions from 'actions/chapterActions';
 import * as topicActions from 'actions/topicActions';
 import * as breadcrumbsActions from 'actions/breadcrumbsActions';
-import ChapterItem from 'oldComponents/ChapterItem';
-import TopicArray from 'oldComponents/TopicArray';
+import ChapterItem from 'Molecules/ChapterItem';
+import TopicArray from 'Organisms/TopicArray';
 import Breadcrumbs from 'containers/Breadcrumbs';
 
 class ViewForumPage extends React.Component {

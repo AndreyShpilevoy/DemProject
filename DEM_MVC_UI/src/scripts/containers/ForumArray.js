@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as forumActions from 'actions/forumActions';
-import ForumArrayComponent from 'oldComponents/ForumArray';
+import ForumArrayComponent from 'Organisms/ForumArray';
 
 class ForumArray extends React.Component {
   static propTypes = {

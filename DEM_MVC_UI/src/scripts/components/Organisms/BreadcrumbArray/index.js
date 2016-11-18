@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import BreadcrumbItem from 'Atoms/BreadcrumbItem';
+import BreadcrumbItem from 'Molecules/BreadcrumbItem';
 import styles from './index.scss';
 
 class BreadcrumbArray extends React.Component {

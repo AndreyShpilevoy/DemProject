@@ -28,8 +28,6 @@
 {
   box-sizing: border-box;
   flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
 }
 
 @each $breakpoint, $size-min, $size-max in $grid-breakpoints-min-max-container {

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
-import NavigationLinkItem from 'Atoms/NavigationLinkItem';
+import NavigationLinkItem from 'Molecules/NavigationLinkItem';
 import commonStyles from 'commonScss/common.scss';
 import styles from './index.scss';
 

@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import {Container} from 'DemUi';
 import _ from 'lodash';
 import ContentHolder from 'Organisms/ContentHolder';
 import TopicItem from 'oldComponents/TopicItem';
@@ -36,7 +37,7 @@ class TopicArray extends React.Component {
   bindContentHolderItem = () =>({
     uniquePrefix: `topic-array-with-forum-id-${this.props.forumId}`,
     titleElement: <TermItem term={{id: 23, value: 'Topics'}} />,
-    bodyElement: <div className="topics-container container">{this.mapTopics()}</div>,
+    bodyElement: <Container>{this.mapTopics()}</Container>,
     firstColumnTerm: <TermItem term={{id: 2, value: 'Posts'}} />,
     secondColumnTerm:<TermItem term={{id: 22, value: 'Views'}} />,
     thirdColumnTerm: <TermItem term={{id: 3, value: 'Last message in'}} />

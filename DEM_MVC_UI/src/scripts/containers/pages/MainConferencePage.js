@@ -4,8 +4,8 @@ import {bindActionCreators} from 'redux';
 import * as lastActiveTopicActions from 'actions/lastActiveTopicActions';
 import * as chapterActions from 'actions/chapterActions';
 import * as breadcrumbsActions from 'actions/breadcrumbsActions';
-import LastActiveTopicArray from 'oldComponents/LastActiveTopicArray';
-import ChapterArray from 'oldComponents/ChapterArray';
+import LastActiveTopicArray from 'Organisms/LastActiveTopicArray';
+import ChapterArray from 'Organisms/ChapterArray';
 import Breadcrumbs from 'containers/Breadcrumbs';
 
 

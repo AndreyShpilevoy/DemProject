@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as navigationLinkActions from 'actions/navigationLinkActions';
-import NavigationLinkArrayComponent from 'Molecules/NavigationLinkArray';
+import NavigationLinkArrayComponent from 'Organisms/NavigationLinkArray';
 
 class NavigationLinkArray extends React.Component {
   static propTypes = {

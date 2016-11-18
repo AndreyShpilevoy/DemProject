@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import {Container} from 'DemUi';
 import _ from 'lodash';
 import ContentHolder from 'Organisms/ContentHolder';
 import TopicItem from 'oldComponents/TopicItem';
@@ -37,7 +38,7 @@ class LastActiveTopicArray extends React.Component {
   bindContentHolderItem = () =>({
     uniquePrefix: 'last-topic-array',
     titleElement: <TermItem term={{id: 26, value: 'Last messages'}} />,
-    bodyElement: <div className="topics-container container">{this.mapLastActiveTopics()}</div>,
+    bodyElement: <Container>{this.mapLastActiveTopics()}</Container>,
     firstColumnTerm: <TermItem term={{id: 2, value: 'Posts'}} />,
     secondColumnTerm:<TermItem term={{id: 22, value: 'Views'}} />,
     thirdColumnTerm: <TermItem term={{id: 3, value: 'Last message in'}} />

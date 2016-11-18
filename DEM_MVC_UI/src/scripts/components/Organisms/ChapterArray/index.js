@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import ChapterItem from 'oldComponents/ChapterItem';
+import ChapterItem from 'Molecules/ChapterItem';
 
 class ChapterArray extends React.Component {
   static propTypes = {

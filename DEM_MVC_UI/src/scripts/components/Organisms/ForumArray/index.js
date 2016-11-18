@@ -37,7 +37,7 @@ class ForumArray extends React.Component {
   render(){
     let forumItems = this.mapForums();
     return(
-      <div className="forums-container">
+      <div>
         {forumItems}
       </div>
     );

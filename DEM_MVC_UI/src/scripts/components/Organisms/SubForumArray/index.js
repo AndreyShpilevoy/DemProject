@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
 import SubForumItem from 'oldComponents/SubForumItem';
+import styles from './index.scss';
 
 class SubForumArray extends React.Component {
   static propTypes = {
@@ -26,7 +27,7 @@ class SubForumArray extends React.Component {
   render(){
     let subForumItems = this.mapSubForumArray();
     return(
-      <div className="sub-forum-array-container">
+      <div className={styles.subForumsContainer}>
         {subForumItems}
       </div>
     );

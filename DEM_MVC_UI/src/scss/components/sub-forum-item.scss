@@ -2,20 +2,16 @@
 @import "../Common/sizes.scss";
 
 
-.sub-forum-array-container {
-  padding-top: $sub-forum-array-container-padding-size;
+.sub-forum-icon-right-angle {
+  margin-top: $sub-forum-icon-right-angle-margin-top;
+  height: $sub-forum-icon-right-angle-height-weight;
 
-  .sub-forum-icon-right-angle {
-    margin-top: $sub-forum-icon-right-angle-margin-top;
-    height: $sub-forum-icon-right-angle-height-weight;
-
-    .sub-forum-icon-right-angle-path{
-      fill: $forum-sub-forum-topic-container-separator-background-color;
-    }
+  .sub-forum-icon-right-angle-path{
+    fill: $forum-sub-forum-topic-container-separator-background-color;
   }
+}
 
-  .sub-forum-link {
-    font-size: $sub-forum-link-font-size;
-    line-height: $sub-forum-link-line-height;
-  }
+.sub-forum-link {
+  font-size: $sub-forum-link-font-size;
+  line-height: $sub-forum-link-line-height;
 }

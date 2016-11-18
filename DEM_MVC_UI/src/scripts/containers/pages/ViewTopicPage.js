@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as breadcrumbsActions from 'actions/breadcrumbsActions';
 import * as postActions from 'actions/postActions';
 import Breadcrumbs from 'containers/Breadcrumbs';
-import PostArray from 'oldComponents/PostArray';
+import PostArray from 'Organisms/PostArray';
 
 class ViewTopicPage extends React.Component {
   static propTypes = {

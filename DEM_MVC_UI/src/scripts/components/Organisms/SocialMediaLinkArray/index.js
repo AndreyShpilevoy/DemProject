@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
-import SocialMediaLinkItem from 'Atoms/SocialMediaLinkItem';
+import SocialMediaLinkItem from 'Molecules/SocialMediaLinkItem';
 import commonStyles from 'commonScss/common.scss';
 import styles from './index.scss';
 
