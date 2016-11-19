@@ -26,7 +26,7 @@ class TopicItem extends React.Component {
     super(props);
     this.state = {
       latesPostAutorNameStyle: {
-        color: `#${this.props.topicItem.lastPostInfo.latesPostAutorGroupColor}`
+        color: this.props.topicItem.lastPostInfo.latesPostAutorGroupColor
       }
     };
   }

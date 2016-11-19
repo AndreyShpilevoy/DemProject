@@ -1,0 +1,91 @@
+@import "colors.scss";
+@import "sizes.scss";
+
+.forumTitle {
+  font-size: $forum-title-font-size;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.forumDescription {
+  font-size: $forum-description-topics-posts-counter-topics-views-counter-last-message-font-size;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.forumLastActiveTopic {
+  font-size: $forum-description-topics-posts-counter-topics-views-counter-last-message-font-size;
+  .forumLastActiveTopicMessage {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.forumContainerWrapper:last-child {
+  .forumSeparator {
+    display: none;
+  }
+}
+
+
+//md and smaller screens
+@media (max-width: 991px) {
+  .forumTopicsCounter,
+  .forumPostsCounter {
+    display: inline-block;
+    width: initial;
+    padding-right: $forum-topics-posts-counter-padding-right;
+    font-size: $forum-description-topics-posts-counter-topics-views-counter-last-message-font-size;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+//md screens only
+@media (min-width: 768px) and (max-width: 991px) {
+  .forumLastPostWrapper {
+    margin: initial;
+    display: flex;
+    flex-wrap: wrap;
+
+    .forumLastPostAutorNameStyle,
+    .forumLastActiveTopic {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .forumLastPostAutorNameStyle {
+      flex: 0 0 41.66667%;
+      max-width: 41.66667%;
+    }
+
+    .forumLastActiveTopic {
+      flex: 0 0 58.33333%;
+      max-width: 58.33333%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
+//lg and bigger screens
+@media (min-width: 992px) {
+  .forumTopicsCounter,
+  .forumPostsCounter,
+  .forumLastPostWrapper {
+    align-items: center;
+  }
+
+  .forumLastPostWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

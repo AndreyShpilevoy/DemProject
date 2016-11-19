@@ -8,7 +8,7 @@ const topics = [{
       latesPostAutorId: 4,
       latesPostAutorName: 'Buba',
       latesPostAutorAvatart: 'http://i70.fastpic.ru/big/2015/0628/36/ccbb1e2cb8ba8dbd379a6a12dc6b8336.jpg',
-      latesPostAutorGroupColor: '00AA00'
+      latesPostAutorGroupColor: '#00AA00'
     }
   },
   {
@@ -21,7 +21,7 @@ const topics = [{
       latesPostAutorId: 2,
       latesPostAutorName: 'Bykawka',
       latesPostAutorAvatart: null,
-      latesPostAutorGroupColor: 'fbeab2'
+      latesPostAutorGroupColor: '#fbeab2'
     }
   },
   {
@@ -34,7 +34,7 @@ const topics = [{
       latesPostAutorId: 5,
       latesPostAutorName: 'Agent005',
       latesPostAutorAvatart: 'https://pp.vk.me/c9558/u61600334/a_153d373f.jpg',
-      latesPostAutorGroupColor: 'ff00ff'
+      latesPostAutorGroupColor: '#ff00ff'
     }
   },
   {
@@ -47,7 +47,7 @@ const topics = [{
       latesPostAutorId: 3,
       latesPostAutorName: 'ololoid',
       latesPostAutorAvatart: 'http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png',
-      latesPostAutorGroupColor: '99ccff'
+      latesPostAutorGroupColor: '#99ccff'
     }
   },
   {
@@ -60,7 +60,7 @@ const topics = [{
       latesPostAutorId: 1,
       latesPostAutorName: 'kto',
       latesPostAutorAvatart: 'http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif',
-      latesPostAutorGroupColor: 'ffa510'
+      latesPostAutorGroupColor: '#ffa510'
     }
   }
 ];

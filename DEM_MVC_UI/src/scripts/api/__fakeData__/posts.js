@@ -10,7 +10,7 @@ const posts =
       id: 1,
       name: 'Buba',
       avatar: 'http://i70.fastpic.ru/big/2015/0628/36/ccbb1e2cb8ba8dbd379a6a12dc6b8336.jpg',
-      groupColor: '00AA00',
+      groupColor: '#00AA00',
     },
     editInfo: null,
     signature: '[img]http://forums.euw.leagueoflegends.com/board/attachment.php?attachmentid=186257[/img]'
@@ -25,7 +25,7 @@ const posts =
       id: 2,
       name: 'Bykawka',
       avatar: null,
-      groupColor: 'fbeab2',
+      groupColor: '#fbeab2',
     },
     editInfo: null,
     signature: null
@@ -40,12 +40,12 @@ const posts =
       id: 3,
       name: 'Agent005',
       avatar: 'https://pp.vk.me/c9558/u61600334/a_153d373f.jpg',
-      groupColor: 'ff00ff',
+      groupColor: '#ff00ff',
     },
     editInfo: {
       userId: 5,
       userName: 'kto',
-      userGroupColor: 'ffa510',
+      userGroupColor: '#ffa510',
       editReason: 'Сосиска. П.п.2',
       editCount: 1
     },
@@ -61,7 +61,7 @@ const posts =
       id: 4,
       name: 'ololoid',
       avatar: 'http://i72.fastpic.ru/big/2015/0522/10/f93fff451e934900bfb1463615b5b310.png',
-      groupColor: '99ccff',
+      groupColor: '#99ccff',
     },
     editInfo: null,
     signature: null
@@ -76,12 +76,12 @@ const posts =
       id: 5,
       name: 'kto',
       avatar: 'http://i69.fastpic.ru/big/2015/0729/7e/6a397a33426917b4087e403270383c7e.gif',
-      groupColor: 'ffa510',
+      groupColor: '#ffa510',
     },
     editInfo: {
       userId: 5,
       userName: 'kto',
-      userGroupColor: 'ffa510',
+      userGroupColor: '#ffa510',
       editReason: 'gust for lulz',
       editCount: 1
     },

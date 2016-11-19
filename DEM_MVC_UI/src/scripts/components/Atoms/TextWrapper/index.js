@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import styles from './index.scss';
 
 class TextWrapper extends React.Component {
   static propTypes = {
@@ -8,19 +9,15 @@ class TextWrapper extends React.Component {
       spaceAfter: PropTypes.bool,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      spaceBeforeTerm: this.props.spaceBefore ? ' ' : '',
-      termClassName: this.props.className,
-      spaceAfterTerm: this.props.spaceAfter ? ' ' : '',
-    };
-  }
+  getClassName = () => {
+    let {className, spaceBefore, spaceAfter} = this.props;
+    return `${className} ${spaceBefore ? styles.spaceBefore : null} ${spaceAfter ? styles.spaceAfter : null}`;
+  };
 
   render(){
     return this.props.spanContent ?
-      <span className={this.state.termClassName}>
-        {`${this.state.spaceBeforeTerm}${this.props.spanContent}${this.state.spaceAfterTerm}`}
+      <span className={this.getClassName()}>
+        {this.props.spanContent}
       </span> :
       null;
   }

@@ -4,5 +4,5 @@
 .contentHolderBody {
   background-color: $contentHolderBodyBackgroundColor;
   color: $contentHolderBodyTextColor;
-  padding: $contentHolderBodyPadding;
+  padding: $contentHolderBodyPadding/2 $contentHolderBodyPadding;
 }

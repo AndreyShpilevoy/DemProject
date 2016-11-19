@@ -33,7 +33,7 @@ class PostItem extends React.Component {
     super(props);
     this.state = {
       userNameStyle: {
-        color: `#${this.props.postItem.userInfo.groupColor}`
+        color: this.props.postItem.userInfo.groupColor
       }
     };
   }

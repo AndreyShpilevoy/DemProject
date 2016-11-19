@@ -1,4 +1,5 @@
 $mainFontSize: 16px; //1rem = 16px
+$textSpaceSize: 0.3125rem;
 
 $bodyMinWidth: 290px;
 $bodyFontSize: 1rem;
@@ -49,6 +50,8 @@ $contentHolderHeaderTitlePaddingHorizontal: 0.9375rem;
 $contentHolderBodyPadding: $contentHolderHeaderTitlePaddingHorizontal;
 
 $subForumsContainerPaddingTop: 0.625rem;
+$separatorHeight: 0.125rem;
+$separatorMargin: 0.3rem 0;
 
 
 
@@ -58,9 +61,6 @@ $content-holder-header-height: 2.5rem;
 $content-holder-header-font-size: 1.25rem;
 $icon-arrow-left-content-holder-title: 1.2rem;
 
-$forum-topic-container-separator-height: 0.125rem;
-$forum-topic-container-separator-margin-top-bottom: 0.3rem;
-$forum-topic-container-separator-margin-left-right: 0;
 $forum-topics-posts-counter-padding-right: 0.46875rem;
 $forum-title-font-size: 1.3125rem;
 $forum-description-topics-posts-counter-topics-views-counter-last-message-font-size: 0.8rem;

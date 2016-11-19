@@ -1,0 +1,8 @@
+@import "colors.scss";
+@import "sizes.scss";
+
+.separator{
+  background-color: $separatorBackgroundColor;
+  height: $separatorHeight;
+  margin: $separatorMargin;
+}

@@ -12,7 +12,7 @@ const forums = [
       latesPostTimeCreation: new Date('2015/08/17 13:42:32'),
       latesPostAutorId: 1,
       latesPostAutorName: 'kto',
-      latesPostAutorGroupColor: 'ffa510',
+      latesPostAutorGroupColor: '#ffa510',
     },
     subForumArray: [
       {id: 11, title: 'Самопал', order: 2},
@@ -32,7 +32,7 @@ const forums = [
       latesPostTimeCreation: new Date('2016/9/22 12:53:09'),
       latesPostAutorId: 2,
       latesPostAutorName: 'Bykawka',
-      latesPostAutorGroupColor: 'fbeab2'
+      latesPostAutorGroupColor: '#fbeab2'
     }
   },
   {
@@ -48,7 +48,7 @@ const forums = [
       latesPostTimeCreation: new Date('2014/07/02 23:11:31'),
       latesPostAutorId: 3,
       latesPostAutorName: 'ololoid',
-      latesPostAutorGroupColor: '99ccff'
+      latesPostAutorGroupColor: '#99ccff'
     },
     subForumArray: [
       {id: 31, title: 'Багтрекер', order: 27}
@@ -67,7 +67,7 @@ const forums = [
       latesPostTimeCreation: new Date('2007/09/06 22:33:09'),
       latesPostAutorId: 4,
       latesPostAutorName: 'Buba',
-      latesPostAutorGroupColor: '00AA00'
+      latesPostAutorGroupColor: '#00AA00'
     }
   },
   {
@@ -83,7 +83,7 @@ const forums = [
       latesPostTimeCreation: new Date('2016/07/12 14:24:11'),
       latesPostAutorId: 5,
       latesPostAutorName: 'Agent005',
-      latesPostAutorGroupColor: 'ff00ff'
+      latesPostAutorGroupColor: '#ff00ff'
     },
     subForumArray: [
       {id: 51, title: 'FAQ', order: 51},
