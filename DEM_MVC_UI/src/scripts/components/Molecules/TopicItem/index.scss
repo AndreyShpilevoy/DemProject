@@ -1,33 +1,31 @@
 @import "colors.scss";
 @import "sizes.scss";
 @import "image-backgrounds.scss";
+@import "common.scss";
 
-  .topicTitle{
-    font-size: $forum-title-font-size;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.topicMainInfoContainer{
+  width: 100%;
+}
 
-  .topic-parent-forum-wrapper {
-    display: none;
-  }
+.topicTitle{
+  display: block;
+  font-size: $forum-title-font-size;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  .topic-container-separator {
-      background-color: $separatorBackgroundColor;
-      height: $separatorHeight;
-      margin: $separatorMargin;
-  }
+.topicParentForumWrapper {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
 
-  .topic-parent-forum-title,
-  .topic-parent-forum-title:hover{
+  .topicParentForumTitle,
+  .topicParentForumTitle:hover{
     color: $orange-bright-text-color;
   }
-
-  .topic-last-post-wrapper>div{
-    width: 100%;
-    height: 100%;
-  }
+}
 
 .topicContainerWrapper:last-child {
   .topicSeparator {
@@ -35,103 +33,31 @@
   }
 }
 
-
-//md and smaller screens
-@media (max-width: 991px) {
-    .topic-views-counter,
-    .topic-posts-counter {
-      display: inline-block;
-      width: initial;
-      padding-right: $forum-topics-posts-counter-padding-right;
-      font-size: $forum-description-topics-posts-counter-topics-views-counter-last-message-font-size;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .topic-posts-counter {
-      .topic-parent-forum-wrapper {
-        display: initial;
-        padding-left: $forum-topics-posts-counter-padding-right;
-      }
-    }
+.lastPostInfoRow{
+  height: 100%;
 }
 
-//sm and smaller screens
-@media (max-width: 767px){
-    .topic-last-message-time,
-    .topic-last-post-autor-name-style,
-    .topic-last-post-author-sm-separator,
-    .topic-last-post-wrapper {
-      font-size: $forum-description-topics-posts-counter-topics-views-counter-last-message-font-size;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.lastPostInfoColumn{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
-//md screens only
-@media (min-width: 768px) and (max-width: 991px) {
-  .topic-last-post-wrapper {
-    margin: initial;
+@media ($md-min) and ($md-max)
+{
+  .lastPostInfoColumn{
     display: flex;
-    flex-wrap: wrap;
-  }
-
-    .topic-last-post-autor-name-style,
-    .topic-last-message-time {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-  .topic-last-post-autor-name-style {
-    flex: 0 0 58.33333%;
-    max-width: 58.33333%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .topic-last-message-time {
-    flex: 0 0 41.66667%;
-    max-width: 41.66667%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-}
-
-//md and bigger screens
-@media (min-width: 768px) {
-  .topic-last-post-author {
-    display: flex;
-    flex: 1;
-    text-align: center;
-  }
-}
-
-//lg and bigger screens
-@media (min-width: 992px) {
-  .topic-views-counter,
-  .topic-posts-counter,
-  .topic-last-post-wrapper {
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
   }
-
-  .topic-last-post-wrapper {
+}
+@media ($lg-min)
+{
+  .lastPostInfoColumn{
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
   }
-
-  .topic-last-post-author {
-    flex-direction: column;
-    justify-content: center;
-  }
-
-    .topic-parent-forum-wrapper {
-      display: initial;
-    }
 }

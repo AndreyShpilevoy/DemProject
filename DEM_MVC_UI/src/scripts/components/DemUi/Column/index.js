@@ -21,17 +21,7 @@ class Column extends React.Component {
 
   static defaultProps = {
     className: '',
-    style: {},
-    xs: 0,
-    xsOffset: 0,
-    sm: 0,
-    smOffset: 0,
-    md: 0,
-    mdOffset: 0,
-    lg: 0,
-    lgOffset: 0,
-    xl: 0,
-    xlOffset: 0,
+    style: {}
   }
 
   getColumnWidths = () => {
@@ -39,19 +29,19 @@ class Column extends React.Component {
     let colWidths = [];
 
     // Column widths
-    if (xs !== 0) {
+    if (xs) {
       colWidths.push(styles[`col-xs-${xs}`]);
     }
-    if (sm !== 0 && sm !== xs) {
+    if (sm && sm !== xs) {
       colWidths.push(styles[`col-sm-${sm}`]);
     }
-    if (md !== 0 && md !== sm) {
+    if (md && md !== sm) {
       colWidths.push(styles[`col-md-${md}`]);
     }
-    if (lg !== 0 && lg !== md) {
+    if (lg && lg !== md) {
       colWidths.push(styles[`col-lg-${lg}`]);
     }
-    if (xl !== 0 && xl !== lg) {
+    if (xl && xl !== lg) {
       colWidths.push(styles[`col-xl-${xl}`]);
     }
 

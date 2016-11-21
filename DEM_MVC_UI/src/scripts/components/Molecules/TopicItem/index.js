@@ -31,9 +31,9 @@ class TopicItem extends React.Component {
   getParentForum = () => {
     let {parentForumId, parentForumTitle} = this.props.topicItem;
     return (parentForumId || parentForumTitle) ?
-    <span className="topic-parent-forum-wrapper">
-      <TermItem className="topic-parent-forum" term={{id: 25, value: 'Forum:'}} spaceAfter />
-      <Link className="topic-parent-forum-title" to={`/Conference/Forum/${parentForumId}`}>{parentForumTitle}</Link>
+    <span className={styles.topicParentForumWrapper}>
+      <TermItem term={{id: 25, value: 'Forum:'}} spaceAfter />
+      <Link className={styles.topicParentForumTitle} to={`/Conference/Forum/${parentForumId}`}>{parentForumTitle}</Link>
     </span> :
     null;
   }
@@ -41,52 +41,57 @@ class TopicItem extends React.Component {
   render(){
     let {id, title, postsCount, topicViewsCount, lastPostInfo} = this.props.topicItem;
     return(
-      <div className="topicContainerWrapper">
-        <Row className="topic-container">
+      <div className={styles.topicContainerWrapper}>
+        <Row>
           <Column xs={12}>
             <Row>
-              <Column md={5} lg={9} className={commonStyles.flexColumnVerticalCenter}>
+              <Column xs={12} md={7} lg={9} className={commonStyles.flexColumnVerticalCenter}>
                 <Row className={commonStyles.flexRowVerticalCenter}>
-                  <Column lg={8}>
+                  <Column xs={12} lg={8} className={styles.topicMainInfoContainer}>
                     <Row>
                       <Column xs={12}>
-                        <Link className="topicTitle" to={`/Conference/Topic/${id}`}>{title}</Link>
+                        <Link className={styles.topicTitle} to={`/Conference/Topic/${id}`}>{title}</Link>
                       </Column>
                     </Row>
                     <Row>
-                      <Column xs={12}>
+                      <Column xs={12} md={7} lg={12}>
                         {this.getParentForum()}
                       </Column>
+                      <Column xs={0} mg={5} lg={0}>
+                        <Hidden lg={'up'} sm={'down'}>
+                          <TermItem term={{id: 2, value: 'Posts'}} spaceAfter />
+                          {postsCount}
+                        </Hidden>
+                      </Column>
                     </Row>
                   </Column>
-                  <Column lg={2}  className={`${commonStyles.flexRowCenter} topic-posts-counter`}>
-                    <Hidden lg={'up'}>
-                      <TermItem term={{id: 2, value: 'Posts'}} spaceAfter />
+                  <Column xs={0} lg={2}  className={commonStyles.flexRowCenter}>
+                    <Hidden md={'down'}>
+                      {postsCount}
                     </Hidden>
-                    {postsCount}
                   </Column>
-                  <Column lg={2} className={commonStyles.flexRowCenter}>
-                    <Hidden md={'down'} className="topic-views-counter">
+                  <Column xs={0} lg={2} className={commonStyles.flexRowCenter}>
+                    <Hidden md={'down'}>
                       {topicViewsCount}
                     </Hidden>
                   </Column>
                 </Row>
               </Column>
-              <Column md={7} lg={3} className="topic-last-post-wrapper">
-                <Row>
-                  <Column xs={12} lg={10} className={`topic-last-post-author ${commonStyles.flexColumnCenter}`}>
-                    <RelativeDateTime className="topic-last-message-time" relativeDateTime={lastPostInfo.latesPostTimeCreation}/>
-                    <Hidden md={'up'}>
-                      <TermItem className="topic-last-post-author-sm-separator"
-                        term={{id: 24, value: '>>'}} spaceAfter spaceBefore />
+              <Column xs={12} md={5} lg={3}>
+                <Row className={styles.lastPostInfoRow}>
+                  <Column xs={12} lg={10} className={styles.lastPostInfoColumn}>
+                    <RelativeDateTime className={styles.topicLastMessageTime}
+                      relativeDateTime={lastPostInfo.latesPostTimeCreation} spaceAfter/>
+                    <Hidden lg={'up'}>
+                      <TermItem term={{id: 24, value: '>>'}} spaceAfter/>
                     </Hidden>
-                    <UserName className="topic-last-post-autor-name-style"
+                    <UserName className={styles.topicLastPostAutorNameStyle}
                       name={lastPostInfo.latesPostAutorName}
                       id={lastPostInfo.latesPostAutorId}
                       color={lastPostInfo.latesPostAutorGroupColor}/>
                   </Column>
-                  <Column lg={2}>
-                    <Hidden md={'down'} className={commonStyles.flexRowCenter}>
+                  <Column xs={0} lg={2}>
+                    <Hidden md={'down'} className={`${commonStyles.flexRowCenter} ${commonStyles.heigthFull}`}>
                       <UserAvatar id={lastPostInfo.latesPostAutorId} avatarUrl={lastPostInfo.latesPostAutorAvatart} size={2.5}/>
                     </Hidden>
                   </Column>
