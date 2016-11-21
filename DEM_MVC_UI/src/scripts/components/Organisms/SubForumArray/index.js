@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
-import SubForumItem from 'oldComponents/SubForumItem';
+import SubForumItem from 'Molecules/SubForumItem';
 import styles from './index.scss';
 
 class SubForumArray extends React.Component {

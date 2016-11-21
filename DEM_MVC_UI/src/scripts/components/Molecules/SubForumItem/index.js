@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
 import {RightAngle} from 'Molecules/SvgImages';
+import commonStyles from 'commonScss/common.scss';
+import styles from './index.scss';
 
 class SubForumItem extends React.Component {
   static propTypes = {
@@ -14,9 +16,11 @@ class SubForumItem extends React.Component {
   render(){
     let {id, title} = this.props.subForumItem;
     return(
-      <div className="sub-forum-item-container flex flex-row">
-        <RightAngle className="sub-forum-icon-right-angle" />
-        <Link className="sub-forum-link" to={`/Conference/Forum/${id}`}>{title}</Link>
+      <div className={commonStyles.flexRow}>
+        <RightAngle className={styles.subForumIcon} />
+        <Link className={styles.subForumLink} to={`/Conference/Forum/${id}`}>
+          {title}
+        </Link>
       </div>
     );
   }

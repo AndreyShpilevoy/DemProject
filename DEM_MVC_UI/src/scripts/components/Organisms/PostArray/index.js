@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import {Container} from 'DemUi';
 import _ from 'lodash';
 import ContentHolder from 'Organisms/ContentHolder';
 import PostItem from 'oldComponents/PostItem';
@@ -46,7 +45,7 @@ class PostArray extends React.Component {
   bindContentHolderItem = () =>({
     uniquePrefix: `post-array-with-topic-id-${this.props.topicId}`,
     titleElement: <TermItem term={{id: 30, value: 'Posts'}} />,
-    bodyElement: <Container>{this.mapPosts()}</Container>
+    bodyElement: this.mapPosts()
   })
 
   collapseSettings = () => ({

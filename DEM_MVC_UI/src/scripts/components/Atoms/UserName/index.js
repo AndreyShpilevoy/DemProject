@@ -5,18 +5,19 @@ class UserName extends React.Component {
   static propTypes = {
     color: PropTypes.string,
     name: PropTypes.string.isRequired,
-    url: PropTypes.string,
+    id: PropTypes.number.isRequired,
     style: PropTypes.object,
     className: PropTypes.string
   }
 
   static defaultProps = {
     className: '',
-    style: {},
+    style: {}
   }
 
   getStyles = () => {
-    return Object.assign({}, this.props.style, {color: this.props.color});
+    let {style, color} = this.props;
+    return Object.assign({}, style, color ? {color} : {});
   };
 
   render(){

@@ -71,7 +71,8 @@ class ForumItem extends React.Component {
           <Column xs={12} md={7} lg={3} className={styles.forumLastPostWrapper}>
             <Hidden sm={'down'} className={styles.forumLastPostAutorNameStyle}>
               <Hidden md={'down'} style={{display: 'inline-block'}}>
-                <UserName name={lastTopicInfo.latesPostAutorName} color={lastTopicInfo.latesPostAutorGroupColor} link={'/'}/>
+                <UserName name={lastTopicInfo.latesPostAutorName}
+                  color={lastTopicInfo.latesPostAutorGroupColor} id={lastTopicInfo.latesPostAutorId}/>
               </Hidden>
               <RelativeDateTime relativeDateTime={lastTopicInfo.latesPostTimeCreation} spaceBefore/>
             </Hidden>

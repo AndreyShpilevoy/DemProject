@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {Container, Row, Column, Hidden} from 'DemUi';
+import {Row, Column, Hidden} from 'DemUi';
 import {ArrowLeft} from 'Molecules/SvgImages';
 import ToggleClass from 'services/domScripts/ToggleClass';
 import commonStyles from 'commonScss/common.scss';
@@ -52,29 +52,27 @@ class ContentHolderTitle extends React.Component {
   render(){
     let {titleElement, firstColumnTerm, secondColumnTerm, thirdColumnTerm} = this.props.titleModel;
     return (
-      <Container fluid className={`${styles.contentHolderHeader} ${commonStyles.flexColumnVerticalCenter}`}>
-        <Row className={`${commonStyles.flex} ${styles.contentHolderHeaderTitleWrapper}`}>
-          <Column lg={6} className={styles.contentHolderHeaderTitle}>
-            {titleElement}
-          </Column>
-          <Column lg={6} className={commonStyles.flexColumnVerticalCenter}>
-            <Hidden md={'down'}>
-              <Row>
-                <Column lg={3} className={styles.contentHolderHeaderTitleInfoLabel}>
-                  {firstColumnTerm}
-                </Column>
-                <Column lg={3} className={styles.contentHolderHeaderTitleInfoLabel}>
-                  {secondColumnTerm}
-                </Column>
-                <Column lg={6} className={styles.contentHolderHeaderTitleInfoLabel}>
-                  {thirdColumnTerm}
-                </Column>
-              </Row>
-            </Hidden>
-          </Column>
-          {this.getRotatedImageComponent()}
-        </Row>
-      </Container>
+      <Row className={styles.contentHolderHeader}>
+        <Column lg={6} className={`${styles.contentHolderHeaderTitle} ${commonStyles.flexColumnVerticalCenter}`}>
+          {titleElement}
+        </Column>
+        <Column lg={6} className={commonStyles.flexColumnVerticalCenter}>
+          <Hidden md={'down'}>
+            <Row>
+              <Column lg={3} className={commonStyles.flexRowCenter}>
+                {firstColumnTerm}
+              </Column>
+              <Column lg={3} className={commonStyles.flexRowCenter}>
+                {secondColumnTerm}
+              </Column>
+              <Column lg={6} className={commonStyles.flexRowCenter}>
+                {thirdColumnTerm}
+              </Column>
+            </Row>
+          </Hidden>
+        </Column>
+        {this.getRotatedImageComponent()}
+      </Row>
     );
   }
 }

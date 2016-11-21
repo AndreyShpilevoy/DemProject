@@ -1,0 +1,16 @@
+@import "colors.scss";
+@import "sizes.scss";
+
+
+.subForumIcon {
+  margin-top: $subForumIconMarginTop;
+  height: $subForumIconHeight;
+  path {
+    fill: $subForumIconFillColor;
+  }
+}
+
+.subForumLink {
+  font-size: $subForumLinkFontSize;
+  line-height: $subForumLinkLineHeight;
+}

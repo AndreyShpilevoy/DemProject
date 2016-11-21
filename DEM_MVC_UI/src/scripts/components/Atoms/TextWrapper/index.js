@@ -11,7 +11,7 @@ class TextWrapper extends React.Component {
 
   getClassName = () => {
     let {className, spaceBefore, spaceAfter} = this.props;
-    return `${className} ${spaceBefore ? styles.spaceBefore : null} ${spaceAfter ? styles.spaceAfter : null}`;
+    return `${className ? className : ''} ${spaceBefore ? styles.spaceBefore : ''} ${spaceAfter ? styles.spaceAfter : ''}`;
   };
 
   render(){
