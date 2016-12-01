@@ -8,14 +8,14 @@
     "url": "git://github.com/AndreyShpilevoy/DemProject"
   },
   "scripts": {
-    "f": "npm i -g yarn && yarn",
+    "setupEnv": "npm config set production false && npm install -g npm-check-updates",
     "clean-wwwroot": "node_modules/.bin/rimraf ../DEM_MVC/wwwroot && mkdirp ../DEM_MVC/wwwroot",
     "lint": "node_modules/.bin/eslint --color webpack.config.* src tools",
     "test": "cross-env BABEL_ENV=test jest --no-cache",
     "prebuild": "npm-run-all clean-wwwroot lint test",
     "build": "cross-env BABEL_ENV=production babel-node tools/build.js",
     "postbuild": "babel-node tools/distServer.js",
-    "start": "yarn test && cross-env BABEL_ENV=development babel-node tools/srcServer.js"
+    "start": "npm test && cross-env BABEL_ENV=development babel-node tools/srcServer.js"
   },
   "jest": {
     "transform": {
@@ -28,7 +28,7 @@
       "json"
     ],
     "collectCoverage": true,
-    "testPathIgnorePatterns":[
+    "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",
       "<rootDir>/tempTestFolder/"
     ],
@@ -47,8 +47,8 @@
     "babel-eslint": "7.1.1",
     "babel-jest": "17.0.2",
     "babel-loader": "6.2.8",
-    "babel-plugin-lodash": "3.2.9",
-    "babel-plugin-module-resolver": "2.3.0",
+    "babel-plugin-lodash": "3.2.10",
+    "babel-plugin-module-resolver": "2.4.0",
     "babel-plugin-transform-class-properties": "6.19.0",
     "babel-plugin-transform-es2015-modules-commonjs": "6.18.0",
     "babel-plugin-transform-react-remove-prop-types": "0.2.11",
@@ -63,9 +63,9 @@
     "copy-webpack-plugin": "4.0.1",
     "cross-env": "3.1.3",
     "css-loader": "0.26.0",
-    "cssnano": "3.8.0",
+    "cssnano": "3.8.1",
     "enzyme": "2.6.0",
-    "eslint": "3.10.2",
+    "eslint": "3.11.1",
     "eslint-config-airbnb-base": "10.0.1",
     "eslint-import-resolver-babel-module": "2.2.1",
     "eslint-loader": "1.6.1",
@@ -80,11 +80,11 @@
     "jsdom": "9.8.3",
     "mkdirp": "0.5.1",
     "node-sass": "3.13.0",
-    "npm-run-all": "3.1.1",
+    "npm-run-all": "3.1.2",
     "open": "0.0.5",
-    "postcss-initial": "1.5.2",
+    "postcss-initial": "1.5.3",
     "postcss-loader": "1.1.1",
-    "react-addons-test-utils": "15.4.0",
+    "react-addons-test-utils": "15.4.1",
     "react-hot-loader": "3.0.0-beta.6",
     "redux-immutable-state-invariant": "1.2.4",
     "redux-mock-store": "1.2.1",
@@ -93,7 +93,7 @@
     "sass-loader": "4.0.2",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
-    "webpack": "2.1.0-beta.25",
+    "webpack": "2.1.0-beta.27",
     "webpack-dev-middleware": "1.8.4",
     "webpack-hot-middleware": "2.13.2"
   },
@@ -102,9 +102,9 @@
     "lodash": "4.17.2",
     "pace-progress": "1.0.2",
     "raven-js": "3.8.1",
-    "react": "15.4.0",
-    "react-cookie": "0.4.8",
-    "react-dom": "15.4.0",
+    "react": "15.4.1",
+    "react-cookie": "1.0.3",
+    "react-dom": "15.4.1",
     "react-notification-system": "0.2.10",
     "react-redux": "4.4.6",
     "react-router": "3.0.0",
