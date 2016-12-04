@@ -19,7 +19,7 @@ class SocialMediaLinkItem extends React.Component {
     let Icon = IconsVariable[svgName];
     return Icon ?
       <div className={styles.socialMediaLink}>
-        <a href={href} title={title} target="_blank">
+        <a href={href} title={title} target='_blank'>
           <Icon id={`social-media-link-id-${id}`} title={title}/>
         </a>
       </div>:

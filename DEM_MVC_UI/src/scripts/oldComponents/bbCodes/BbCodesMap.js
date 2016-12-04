@@ -23,13 +23,13 @@ import StringHelper from 'services/helpers/StringHelper';
 class BbCodesMap {
   getMaps = {
     'b': (children) =>
-      <BaseSpan key={Math.random()} className="bbCode-bold">{children}</BaseSpan>,
+      <BaseSpan key={Math.random()} className='bbCode-bold'>{children}</BaseSpan>,
     'i': (children) =>
-      <BaseSpan key={Math.random()} className="bbCode-italic">{children}</BaseSpan>,
+      <BaseSpan key={Math.random()} className='bbCode-italic'>{children}</BaseSpan>,
     'u': (children) =>
-      <BaseSpan key={Math.random()} className="bbCode-underline">{children}</BaseSpan>,
+      <BaseSpan key={Math.random()} className='bbCode-underline'>{children}</BaseSpan>,
     's': (children) =>
-      <BaseSpan key={Math.random()} className="bbCode-line-through">{children}</BaseSpan>,
+      <BaseSpan key={Math.random()} className='bbCode-line-through'>{children}</BaseSpan>,
     'offtopic': (children) =>
       <OffTopic key={Math.random()}>{children}</OffTopic>,
     'think': (children) =>
@@ -37,22 +37,22 @@ class BbCodesMap {
     'color': (children, options) =>
       <Color key={Math.random()} options={options}>{children}</Color>,
     'center': (children) =>
-      <BaseSpan key={Math.random()} className="bbCode-position bbCode-center">{children}</BaseSpan>,
+      <BaseSpan key={Math.random()} className='bbCode-position bbCode-center'>{children}</BaseSpan>,
     'left': (children) =>
-      <BaseSpan key={Math.random()} className="bbCode-position bbCode-left">{children}</BaseSpan>,
+      <BaseSpan key={Math.random()} className='bbCode-position bbCode-left'>{children}</BaseSpan>,
     'right': (children) =>
-      <BaseSpan key={Math.random()} className="bbCode-position bbCode-right">{children}</BaseSpan>,
+      <BaseSpan key={Math.random()} className='bbCode-position bbCode-right'>{children}</BaseSpan>,
     'size': (children, options) =>{
       let fontSizeByDefault = 16;
       if(options <= 150 && options > 0){
         return (
-          <BaseSpan key={Math.random()} className="bbCode-size" styleObject={{fontSize: `${options/fontSizeByDefault}rem`}}>
+          <BaseSpan key={Math.random()} className='bbCode-size' styleObject={{fontSize: `${options/fontSizeByDefault}rem`}}>
             {children}
           </BaseSpan>
         );
       } else {
         return (
-          <BaseSpan key={Math.random()} className="bbCode-size" styleObject={{fontSize: '1rem'}}>
+          <BaseSpan key={Math.random()} className='bbCode-size' styleObject={{fontSize: '1rem'}}>
             {children}
           </BaseSpan>
         );

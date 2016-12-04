@@ -9,7 +9,7 @@ class Color extends React.Component {
     const { children } = this.props;
     return (
       <span
-        className = "bbCode-color"
+        className = 'bbCode-color'
         style = {this.props.options ? { color: this.props.options } : null}>
         {children}
       </span>

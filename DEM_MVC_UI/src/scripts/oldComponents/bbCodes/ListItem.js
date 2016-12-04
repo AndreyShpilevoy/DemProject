@@ -8,7 +8,7 @@ class ListItem extends React.Component {
     const { children } = this.props;
     return (
       <li
-        className = "bbCode-list-item">
+        className = 'bbCode-list-item'>
         {children}
       </li>
     );

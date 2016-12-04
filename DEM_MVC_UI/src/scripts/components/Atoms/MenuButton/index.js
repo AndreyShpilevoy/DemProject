@@ -8,7 +8,7 @@ class MenuButton extends React.Component {
 
   render(){
     return(
-      <button type="button" className={styles.menuButton} id={this.props.id}>
+      <button type='button' className={styles.menuButton} id={this.props.id}>
         <span className={styles.menuButtonLine}/>
         <span className={styles.menuButtonLine}/>
         <span className={styles.menuButtonLine}/>

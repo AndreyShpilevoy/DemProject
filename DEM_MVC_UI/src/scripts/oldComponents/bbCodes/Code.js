@@ -23,21 +23,21 @@ class Code extends React.Component {
     let {buttonId, containetId} = this.state;
     const { children, options } = this.props;
     return (
-      <div className = "bbCode-code">
-        <div className = "bbCode-code-header">
-          <div className = "bbCode-code-header-left">
+      <div className = 'bbCode-code'>
+        <div className = 'bbCode-code-header'>
+          <div className = 'bbCode-code-header-left'>
             <TermItem spaceAfter term={{id: 34, value: 'Код:'}} />
-            <span id={buttonId} className = "bbCode-code-select-button">
+            <span id={buttonId} className = 'bbCode-code-select-button'>
               <TermItem spaceAfter term={{id: 35, value: 'Ctrl+A, Ctrl+C'}} />
             </span>
           </div>
-          <div className = "bbCode-code-header-right">
+          <div className = 'bbCode-code-header-right'>
             {options ? options : null}
           </div>
         </div>
         <span
           id={containetId}
-          className = "bbCode-code-content">
+          className = 'bbCode-code-content'>
           {children}
         </span>
       </div>

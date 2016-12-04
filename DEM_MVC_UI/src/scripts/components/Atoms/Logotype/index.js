@@ -5,7 +5,7 @@ import styles from './index.scss';
 class Logotype extends React.Component {
   render(){
     return (
-      <Link to="/">
+      <Link to='/'>
         <div className={styles.logotype}/>
       </Link>
     );

@@ -17,9 +17,9 @@ class Email extends React.Component {
     return (
       <span>
         <a
-          className = "bbCode-email"
+          className = 'bbCode-email'
           href={`mailto:${email}`}
-          rel="nofollow">
+          rel='nofollow'>
           {email}
         </a>
         {this.addBreak()}

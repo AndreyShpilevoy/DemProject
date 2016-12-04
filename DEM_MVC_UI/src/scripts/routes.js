@@ -6,10 +6,10 @@ import ViewForumPage from 'pages/ViewForumPage';
 import ViewTopicPage from 'pages/ViewTopicPage';
 
 export default (
-  <Route path="/" component={Layout}>
+  <Route path='/' component={Layout}>
     <IndexRoute component={MainConferencePage} />
-    <Route path="/Conference" component={MainConferencePage}/>
-    <Route path="/Conference/Forum/:forumId" component={ViewForumPage}/>
-    <Route path="/Conference/Topic/:topicId" component={ViewTopicPage}/>
+    <Route path='/Conference' component={MainConferencePage}/>
+    <Route path='/Conference/Forum/:forumId' component={ViewForumPage}/>
+    <Route path='/Conference/Topic/:topicId' component={ViewTopicPage}/>
   </Route>
 );

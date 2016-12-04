@@ -9,7 +9,7 @@ class Paragraph extends React.Component {
     const { children } = this.props;
     return (
       <p
-        className = "bbCode-paragraph">
+        className = 'bbCode-paragraph'>
         {children}
       </p>
     );

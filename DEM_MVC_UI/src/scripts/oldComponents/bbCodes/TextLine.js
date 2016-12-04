@@ -9,7 +9,7 @@ class TextLine extends React.Component {
     const { children } = this.props;
     return (
       <span
-        className = "bbCode-text-line">
+        className = 'bbCode-text-line'>
         {children}
       </span>
     );

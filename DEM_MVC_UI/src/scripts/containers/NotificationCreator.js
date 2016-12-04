@@ -9,17 +9,14 @@ class NotificationCreator extends React.Component {
   static propTypes = {
     notificationArray: PropTypes.arrayOf(
       PropTypes.shape({
-        message: PropTypes.string.isRequired,
+        message: PropTypes.node.isRequired,
         level: PropTypes.string.isRequired,
         title: PropTypes.string,
         position: PropTypes.string,
         autoDismiss: PropTypes.number,
         dismissible: PropTypes.bool,
         action: PropTypes.object,
-        children: PropTypes.oneOfType([
-          PropTypes.string,
-          PropTypes.element,
-        ]),
+        children: PropTypes.node,
         onAdd: PropTypes.func,
         onRemove: PropTypes.func,
         uid: PropTypes.oneOfType([
@@ -57,7 +54,7 @@ class NotificationCreator extends React.Component {
 
   render(){
     return(
-      <NotificationSystem ref="notificationSystem" />
+      <NotificationSystem ref='notificationSystem' />
     );
   }
 }

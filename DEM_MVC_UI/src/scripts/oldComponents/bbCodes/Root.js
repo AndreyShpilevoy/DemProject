@@ -9,7 +9,7 @@ class Root extends React.Component {
 
     return (
       <span
-        className = "bbCode-root">
+        className = 'bbCode-root'>
         {children}
       </span>
     );

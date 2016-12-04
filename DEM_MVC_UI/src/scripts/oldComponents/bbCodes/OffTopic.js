@@ -8,11 +8,11 @@ class OffTopic extends React.Component {
   render() {
     const { children } = this.props;
     return (
-      <div className = "bbCode-offtopic">
-        <div className = "bbCode-offtopic-header">
+      <div className = 'bbCode-offtopic'>
+        <div className = 'bbCode-offtopic-header'>
           <TermItem term={{id: 31, value: 'Offtopic:'}} />
         </div>
-        <div className = "bbCode-offtopic-content">
+        <div className = 'bbCode-offtopic-content'>
           {children}
         </div>
       </div>

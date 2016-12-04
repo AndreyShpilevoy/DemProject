@@ -18,7 +18,7 @@ class Image extends React.Component {
       <span>
         <img
           alt={url}
-          className = "bbCode-image"
+          className = 'bbCode-image'
           src={url} />
         {this.addBreak()}
       </span>

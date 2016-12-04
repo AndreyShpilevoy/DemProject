@@ -7,11 +7,11 @@ class Think extends React.Component {
   render() {
     const { children } = this.props;
     return (
-      <div className = "bbCode-think">
-        <span className = "bbCode-think-content">
+      <div className = 'bbCode-think'>
+        <span className = 'bbCode-think-content'>
           {children}
         </span>
-        <div className = "bbCode-think-image"/>
+        <div className = 'bbCode-think-image'/>
       </div>
     );
   }

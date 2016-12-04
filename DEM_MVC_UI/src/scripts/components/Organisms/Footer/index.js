@@ -10,7 +10,7 @@ class Footer extends React.Component {
       <Container>
         <Row>
           <Column xs={12}>
-            <div id="footer" className={`${styles.footer} ${commonStyles.flex}`}>
+            <div id='footer' className={`${styles.footer} ${commonStyles.flex}`}>
               <Hidden md={'down'} className={styles.footerEmptyWrapper}/>
               <div className={`${styles.footerCopyrightWrapper} ${commonStyles.flexColumnVerticalCenter}`}>
                 {'DEM Team - 04.03.2007'}

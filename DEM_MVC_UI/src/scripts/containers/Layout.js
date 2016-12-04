@@ -6,7 +6,7 @@ import LayoutComponent from 'Templates/Layout';
 
 class Layout extends React.Component {
   static propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
     actions: PropTypes.object.isRequired
   };
 

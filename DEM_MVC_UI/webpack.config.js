@@ -14,17 +14,28 @@ const cssnano = require('cssnano');
 let debug = process.env.NODE_ENV==='production' ? false : true;
 
 //For all environments
-let entry = [
-  'babel-polyfill'
-];
+let entry = {
+  vendor: [
+    'babel-polyfill',
+    'react',
+    'react-dom',
+    'raven-js',
+    'react-notification-system',
+    'react-redux',
+    'react-router',
+    'react-router-redux',
+    'redux',
+    'redux-saga'
+  ],
+  js: ['./src/scripts/index']
+};
 if(debug){
   // DEVELOPMENT
-  entry.push('webpack-hot-middleware/client?reload=true');
+  entry.vendor.push('webpack-hot-middleware/client?reload=true');
 }
-entry.push('./src/scripts/index');
 
 //For all environments
-let output = {filename: 'dem.min.js?[hash]'};
+let output = {filename: 'js/bundle.js?[chunkhash]'};
             // {debug ? DEVELOPMENT : PRODUCTION}
 output.path = debug ? '/' : path.join(__dirname, '../DEM_MVC/wwwroot');
 output.publicPath = debug ? '/' : '/wwwroot/';
@@ -111,12 +122,17 @@ if(!debug){
   // PRODUCTION
   htmlWebpackPluginSettings.path = path.join(__dirname, '../DEM_MVC/wwwroot');
   htmlWebpackPluginSettings.publicPath = '/wwwroot/';
-  htmlWebpackPluginSettings.paceCss = '/wwwroot/pace.css?' + checksum('./node_modules/pace-progress/themes/orange/pace-theme-flash.css');
-  htmlWebpackPluginSettings.paceJs = '/wwwroot/pace.min.js?' + checksum('./node_modules/pace-progress/pace.min.js');
+  htmlWebpackPluginSettings.paceCss = '/wwwroot/css/pace.css?' + checksum('./node_modules/pace-progress/themes/orange/pace-theme-flash.css');
+  htmlWebpackPluginSettings.paceJs = '/wwwroot/js/pace.min.js?' + checksum('./node_modules/pace-progress/pace.min.js');
 }
 
 //For all environments
 let plugins = [
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    minChunks: Infinity,
+    filename: 'js/vendor.bundle.js?[chunkhash]'
+  }),
   new webpack.DefinePlugin({
       'process.env':{
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
@@ -156,7 +172,7 @@ if(debug){
   plugins.push(
     new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin({
-      filename: 'dem.min.css?[hash]'
+      filename: 'css/bundle.min.css?[hash]'
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {warnings: false},
@@ -164,8 +180,8 @@ if(debug){
       sourceMap: true
   }),
     new CopyWebpackPlugin([
-      { from: './node_modules/pace-progress/themes/orange/pace-theme-flash.css', to: 'pace.css' },
-      { from: './node_modules/pace-progress/pace.min.js', to: 'pace.min.js' },
+      { from: './node_modules/pace-progress/themes/orange/pace-theme-flash.css', to: 'css/pace.css' },
+      { from: './node_modules/pace-progress/pace.min.js', to: 'js/pace.min.js' },
     ], {
         copyUnmodified: false
     })

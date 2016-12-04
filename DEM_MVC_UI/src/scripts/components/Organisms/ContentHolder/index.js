@@ -9,7 +9,7 @@ class ContentHolder extends React.Component {
     contentHolderItem: PropTypes.shape({
       uniquePrefix: PropTypes.string.isRequired,
       titleElement: PropTypes.element.isRequired,
-      bodyElement: PropTypes.element.isRequired,
+      bodyElement: PropTypes.node.isRequired,
       firstColumnTerm: PropTypes.element,
       secondColumnTerm: PropTypes.element,
       thirdColumnTerm: PropTypes.element

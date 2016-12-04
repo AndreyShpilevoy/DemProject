@@ -18,9 +18,9 @@ class Link extends React.Component {
     return (
       <span>
         <a
-          className = "bbCode-link"
+          className = 'bbCode-link'
           href={url}
-          target="_blank">
+          target='_blank'>
           {children}
         </a>
         {this.addBreak()}

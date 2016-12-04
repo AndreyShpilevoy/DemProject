@@ -10,13 +10,13 @@ class Quote extends React.Component {
   getAuthorNameFromOption = () => {
     return this.props.options ?
       <div>
-        <span className = "bbCode-quote-author">
+        <span className = 'bbCode-quote-author'>
           {this.props.options}
         </span>
         <TermItem spaceBefore term={{id: 32, value: 'wrote:'}} />
       </div> :
       <div>
-        <span className = "bbCode-quote-author">
+        <span className = 'bbCode-quote-author'>
           <TermItem term={{id: 33, value: 'Quote:'}} />
         </span>
       </div>;
@@ -26,7 +26,7 @@ class Quote extends React.Component {
     const { children } = this.props;
     return (
       <blockquote
-        className = "bbCode-quote">
+        className = 'bbCode-quote'>
         {this.getAuthorNameFromOption()}
         {children}
       </blockquote>

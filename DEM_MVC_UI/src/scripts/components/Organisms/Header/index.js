@@ -27,7 +27,7 @@ class Header extends React.Component {
       <Container className={styles.headerContainerFixOnTheTop}>
         <Row>
           <Column xs={12}>
-            <nav id="header" className={`${styles.headerNavigationBase} ${styles.headerBackgroundImage}`}>
+            <nav id='header' className={`${styles.headerNavigationBase} ${styles.headerBackgroundImage}`}>
               <Row className={commonStyles.heigthInherit}>
                 <Column xs={12} lg={4} className={`${commonStyles.heigthInherit} ${commonStyles.flex}`}>
                   <div className={`${styles.headerLogoWrapper} ${commonStyles.flexColumnVerticalCenter}`}>

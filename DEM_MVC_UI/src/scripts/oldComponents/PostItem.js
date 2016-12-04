@@ -40,11 +40,11 @@ class PostItem extends React.Component {
 
   getUserAvatar = () => {
     return this.props.postItem.userInfo.avatar ?
-      <Link className="post-avatar" to={'/'}>
+      <Link className='post-avatar' to={'/'}>
         <img src={this.props.postItem.userInfo.avatar} />
       </Link> :
-      <div className="post-avatar">
-        <div className="post-avatar-default"/>
+      <div className='post-avatar'>
+        <div className='post-avatar-default'/>
       </div>;
   }
 
@@ -64,26 +64,26 @@ class PostItem extends React.Component {
   render(){
     let {userInfo, postTime, subject, message} = this.props.postItem;
     return(
-      <div className="post-container-wrapper row">
-        <div className="flex flex-row-vertical-center">
-          <div className="post-avatar-container">
+      <div className='post-container-wrapper row'>
+        <div className='flex flex-row-vertical-center'>
+          <div className='post-avatar-container'>
             {this.getUserAvatar()}
           </div>
-          <Link className="post-user-name" activeStyle={this.state.userNameStyle} to={'/'}>
+          <Link className='post-user-name' activeStyle={this.state.userNameStyle} to={'/'}>
             {userInfo.name}
           </Link>
-          <div className="post-time">
+          <div className='post-time'>
             <LocaleDateTime localeDateTime={postTime}/>
           </div>
-          <div className="post-subject">
+          <div className='post-subject'>
             {subject}
           </div>
         </div>
-        <div className="post-message">
+        <div className='post-message'>
           <BbCodePresenter text={message} />
           {this.getEditInfo()}
         </div>
-        <div className="post-container-separator col-xs-12"/>
+        <div className='post-container-separator col-xs-12'/>
       </div>
     );
   }

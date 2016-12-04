@@ -9,7 +9,7 @@ class OrderedList extends React.Component {
     const { children } = this.props;
     return (
       <ol
-        className = "bbCode-ordered-list">
+        className = 'bbCode-ordered-list'>
         {children}
       </ol>
     );
