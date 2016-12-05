@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import _ from 'lodash';
 import ContentHolder from 'Organisms/ContentHolder';
-import PostItem from 'oldComponents/PostItem';
+import PostItem from 'Molecules/PostItem';
 import TermItem from 'containers/TermItem';
 
 class PostArray extends React.Component {

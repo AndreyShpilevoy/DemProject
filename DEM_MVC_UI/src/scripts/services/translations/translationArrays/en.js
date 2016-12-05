@@ -34,6 +34,7 @@ const en  = [
   {id: 33,   value: 'Quote:', description: 'header for Quote bbCode'},
   {id: 34,   value: 'Code:', description: 'header for Code bbCode'},
   {id: 35,   value: 'Ctrl+A, Ctrl+C', description: 'header for Code bbCode'},
+  {id: 36,   value: 'Last modified:', description: 'Post edit text label'},
 ];
 
 export default en;

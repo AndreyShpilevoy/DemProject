@@ -34,6 +34,7 @@ const ua  = [
   {id: 33,   value: 'Цитата:', description: 'header for Quote bbCode'},
   {id: 34,   value: 'Код:', description: 'header for Code bbCode'},
   {id: 35,   value: 'Ctrl+A, Ctrl+C', description: 'header for Code bbCode'},
+  {id: 36,   value: 'Останній раз змінено:', description: 'Post edit text label'},
 ];
 
 export default ua;

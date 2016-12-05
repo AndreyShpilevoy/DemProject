@@ -101,6 +101,7 @@
   },
   "dependencies": {
     "babel-polyfill": "6.16.0",
+    "dem-ui-grid": "git://github.com/AndreyShpilevoy/DemUiGrid.git",
     "lodash": "4.17.2",
     "pace-progress": "1.0.2",
     "raven-js": "3.8.1",

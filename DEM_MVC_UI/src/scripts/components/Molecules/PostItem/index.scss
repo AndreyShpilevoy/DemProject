@@ -1,0 +1,23 @@
+@import "sizes.scss";
+@import "colors.scss";
+@import "image-backgrounds.scss";
+
+.postUserName{
+  padding-left: $post-user-name-rank-padding-left;
+}
+
+.postTime,
+.postSubject{
+  padding-left: $post-user-name-rank-padding-left*2;
+}
+
+.postMessage{
+  padding-left: $post-content-container-padding-left;
+  width: 100%;
+}
+
+.postContainerWrapper:last-child {
+  .postSeparator {
+    display: none;
+  }
+}

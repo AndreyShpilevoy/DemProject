@@ -34,6 +34,7 @@ const ru  = [
   {id: 33,   value: 'Цитата:', description: 'header for Quote bbCode'},
   {id: 34,   value: 'Код:', description: 'header for Code bbCode'},
   {id: 35,   value: 'Ctrl+A, Ctrl+C', description: 'header for Code bbCode'},
+  {id: 36,   value: 'Последний раз отредактировано:', description: 'Post edit text label'},
 ];
 
 export default ru;
