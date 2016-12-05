@@ -38,7 +38,7 @@ app.use(middleware);
 app.use(webpackHotMiddleware(compiler));
 
 const content = fs.readFileSync(path.join( __dirname, '../src/index.html'), 'utf-8');
-const newValue = content.replace(/(?:<%(.*)%>)/g, '').replace(/(<link (?:.*)>)/g, '').replace(/src=""/g, 'src="/dem.min.js"');
+const newValue = content.replace(/(?:<%(.*)%>)/g, '').replace(/(<link (?:.*)>)/g, '').replace(/src=""/g, 'src="/js/vendor.bundle.js"></script><script type="text/javascript" src="/js/bundle.js"');
 
 app.get('*', (req, res) => {
   res.send(newValue);

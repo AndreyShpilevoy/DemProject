@@ -35,7 +35,7 @@ if(debug){
 }
 
 //For all environments
-let output = {filename: 'js/bundle.js?[chunkhash]'};
+let output = {filename: 'js/bundle.js?[hash]'};
             // {debug ? DEVELOPMENT : PRODUCTION}
 output.path = debug ? '/' : path.join(__dirname, '../DEM_MVC/wwwroot');
 output.publicPath = debug ? '/' : '/wwwroot/';
@@ -131,7 +131,7 @@ let plugins = [
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks: Infinity,
-    filename: 'js/vendor.bundle.js?[chunkhash]'
+    filename: 'js/vendor.bundle.js?[hash]'
   }),
   new webpack.DefinePlugin({
       'process.env':{
