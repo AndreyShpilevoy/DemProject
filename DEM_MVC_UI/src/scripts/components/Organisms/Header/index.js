@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Column, Hidden} from 'DemUi';
+import {Container, Row, Column, Hidden} from 'dem-ui-grid';
 import Logotype from 'Atoms/Logotype';
 import MenuButton from 'Atoms/MenuButton';
 import NavigationLinkArray from 'containers/NavigationLinkArray';
