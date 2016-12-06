@@ -1,0 +1,22 @@
+@import "colors.scss";
+@import "sizes.scss";
+@import "image-backgrounds.scss";
+
+
+.think{
+  padding: $bbCodePadding;
+}
+
+.thinkContent{
+   background-color: $bbCodeThinkBackgroundColor;
+   border-radius: $bbCodeThinkContentBorderRadius;
+   border: $bbCodeBorderSize solid $bbCodeThinkBorderColor;
+   padding: $bbCodePadding;
+}
+
+.thinkImage{
+  background-image: $bbCodeThinkSmile;
+  background-size: $bbCodeThinkImageSize;
+  background-repeat: no-repeat;
+  padding-top: $bbCodeThinkImageSize;
+}

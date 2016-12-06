@@ -1,0 +1,15 @@
+@import "colors.scss";
+@import "sizes.scss";
+@import "image-backgrounds.scss";
+
+
+.quoteAuthor{
+  font-weight: bold;
+}
+
+.quote {
+  border: $bbCodeBorderSize solid $bbCodeQuoteBorderColor;
+  background-color: $bbCodeQuoteBackgroundColor;
+  padding: $bbCodePadding;
+  margin: $bbCodeQuoteMarginVertical $bbCodeQuoteMarginHorisontal;
+}

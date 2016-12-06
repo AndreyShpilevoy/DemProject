@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import TermItem from 'containers/TermItem';
+import styles from './index.scss';
 
 class BbCode_OffTopic extends React.Component {
   static propTypes = {
@@ -8,11 +9,11 @@ class BbCode_OffTopic extends React.Component {
   render() {
     const { children } = this.props;
     return (
-      <div className = 'bbCode-offtopic'>
-        <div className = 'bbCode-offtopic-header'>
+      <div>
+        <div className = {styles.offtopicHeader}>
           <TermItem term={{id: 31, value: 'Offtopic:'}} />
         </div>
-        <div className = 'bbCode-offtopic-content'>
+        <div className = {styles.offtopicContent}>
           {children}
         </div>
       </div>

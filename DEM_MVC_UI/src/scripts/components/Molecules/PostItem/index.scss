@@ -3,16 +3,16 @@
 @import "image-backgrounds.scss";
 
 .postUserName{
-  padding-left: $post-user-name-rank-padding-left;
+  padding-left: $postUserNameRankPaddingLeft;
 }
 
 .postTime,
 .postSubject{
-  padding-left: $post-user-name-rank-padding-left*2;
+  padding-left: $postUserNameRankPaddingLeft*2;
 }
 
 .postMessage{
-  padding-left: $post-content-container-padding-left;
+  padding-left: $postUserNameRankPaddingLeft;
   width: 100%;
 }
 

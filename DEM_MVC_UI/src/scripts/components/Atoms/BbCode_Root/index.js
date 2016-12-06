@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import styles from './index.scss';
 
 class BbCode_Root extends React.Component {
   static propTypes = {
@@ -9,7 +10,7 @@ class BbCode_Root extends React.Component {
 
     return (
       <span
-        className = 'bbCode-root'>
+        className = {styles.root}>
         {children}
       </span>
     );

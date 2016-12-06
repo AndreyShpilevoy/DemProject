@@ -9,7 +9,7 @@
 
 .topicTitle{
   display: block;
-  font-size: $forum-title-font-size;
+  font-size: $topicTitleFontSize;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -23,7 +23,7 @@
 
   .topicParentForumTitle,
   .topicParentForumTitle:hover{
-    color: $orange-bright-text-color;
+    color: $orangeBrightTextColor;
   }
 }
 

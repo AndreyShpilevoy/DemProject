@@ -1,6 +1,7 @@
 $headerBackgroundColor: #322c27;
 $orangeTextColor: #ac6b37;
 $orangeTextColorHovered: #ef9853;
+$orangeBrightTextColor: #e4991c;
 $yellowTextColor: #cbc065;
 $yellowTextColorHovered: #fff495;
 $navigationLinksArrayBackgroundColor: #252525;
@@ -15,17 +16,12 @@ $contentHolderBodyTextColor: #48423d;
 $contentHolderBodyBackgroundColor: #7b736b;
 $separatorBackgroundColor: #9c877c;
 $subForumIconFillColor: $separatorBackgroundColor;
-
-
-
-$orange-bright-text-color: #e4991c;
-$breadcrumb-border-color: $headerBackgroundColor;
-$bbCode-offtopic-color: #67605a;
-$bbCode-quote-border-color: #d4c5b6;
-$bbCode-think-border-color: #ffffff;
-$bbCode-think-background-color: #d4c5b6;
-$bbCode-quote-background-color: #9a8d7f;
-$bbCode-code-header-color: #d4d4d4;
-$bbCode-code-content-color: #ffa100;
-$bbCode-code-border-color: #9c9085;
-$bbCode-code-background-color: #59534d;
+$bbCodeOfftopicColor: #67605a;
+$bbCodeQuoteBorderColor: #d4c5b6;
+$bbCodeThinkBorderColor: #ffffff;
+$bbCodeThinkBackgroundColor: #d4c5b6;
+$bbCodeQuoteBackgroundColor: #9a8d7f;
+$bbCodeCodeHeaderColor: #d4d4d4;
+$bbCodeCodeContentColor: #ffa100;
+$bbCodeCodeBorderColor: #9c9085;
+$bbCodeCodeBackgroundColor: #59534d;

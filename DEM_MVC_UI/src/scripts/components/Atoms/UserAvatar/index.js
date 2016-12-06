@@ -30,9 +30,9 @@ class UserAvatar extends React.Component {
   render(){
     let {avatarUrl} = this.props;
     return(
-      <div className={`${styles.topicAuthorAvatarContainer} ${commonStyles.flexRowCenter}`} style={this.getContainerStyles()}>
-        <Link className={styles.topicAuthorAvatar} to={'/'} activeStyle={this.getImageStyles()}>
-          {avatarUrl ? <img src={avatarUrl} /> : <div className={styles.topicAuthorAvatarDefault}/>}
+      <div className={`${styles.userAvatarContainer} ${commonStyles.flexRowCenter}`} style={this.getContainerStyles()}>
+        <Link className={styles.userAvatar} to={'/'} activeStyle={this.getImageStyles()}>
+          {avatarUrl ? <img src={avatarUrl} /> : <div className={styles.userAvatarDefault}/>}
         </Link>
       </div>
     );

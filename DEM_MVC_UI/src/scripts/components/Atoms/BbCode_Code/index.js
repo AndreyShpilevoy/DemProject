@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import TermItem from 'containers/TermItem';
 import SelectTextFromContainerById from 'services/domScripts/SelectTextFromContainerById';
+import styles from './index.scss';
 
 class BbCode_Code extends React.Component {
   static propTypes = {
@@ -23,21 +24,21 @@ class BbCode_Code extends React.Component {
     let {buttonId, containetId} = this.state;
     const { children, options } = this.props;
     return (
-      <div className = 'bbCode-code'>
-        <div className = 'bbCode-code-header'>
-          <div className = 'bbCode-code-header-left'>
+      <div className = {styles.code}>
+        <div className = {styles.codeHeader}>
+          <div className = {styles.codeHeaderLeft}>
             <TermItem spaceAfter term={{id: 34, value: 'Code:'}} />
-            <span id={buttonId} className = 'bbCode-code-select-button'>
+            <span id={buttonId} className = {styles.codeSelectButton}>
               <TermItem spaceAfter term={{id: 35, value: 'Ctrl+A, Ctrl+C'}} />
             </span>
           </div>
-          <div className = 'bbCode-code-header-right'>
+          <div className = {styles.codeHeaderRight}>
             {options ? options : null}
           </div>
         </div>
         <span
           id={containetId}
-          className = 'bbCode-code-content'>
+          className = {styles.codeContent}>
           {children}
         </span>
       </div>

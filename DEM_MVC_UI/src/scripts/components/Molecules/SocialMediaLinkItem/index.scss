@@ -2,14 +2,14 @@
 @import "image-backgrounds.scss";
 
 .socialMediaLink{
-  height: $social-media-link-height-weight;
-  width: $social-media-link-height-weight;
-  margin: 0 $social-media-link-marging-left-right;
+  height: $socialMediaLinkHeightWeight;
+  width: $socialMediaLinkHeightWeight;
+  margin: 0 $socialMediaLinkMargingLeftRight;
   svg {
       opacity: 0.4;
   }
 }
 
 .socialMediaLink:last-child{
-  margin-right: $social-media-link-last-child-marging-right;
+  margin-right: $socialMediaLinkLastChildMargingRight;
 }

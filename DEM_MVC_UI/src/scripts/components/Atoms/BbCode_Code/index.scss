@@ -1,0 +1,38 @@
+@import "colors.scss";
+@import "sizes.scss";
+@import "image-backgrounds.scss";
+
+
+.code {
+  border: $bbCodeBorderSize solid $bbCodeCodeBorderColor;
+  background-color: $bbCodeCodeBackgroundColor;
+  padding: $bbCodePadding;
+}
+
+.codeHeader{
+  color: $bbCodeCodeHeaderColor;
+  display: flex;
+}
+
+.codeHeaderLeft{
+  margin-right: auto;
+}
+
+.codeHeaderRight{
+  margin-left: auto;
+}
+
+.codeContent{
+  font-family: monospace;
+  white-space: pre-wrap;
+  color: $bbCodeCodeContentColor;
+}
+
+.codeSelectButton{
+  color: $yellowTextColor;
+  cursor: pointer;
+}
+
+.codeSelectButton:hover{
+  color: $yellowTextColorHovered;
+}

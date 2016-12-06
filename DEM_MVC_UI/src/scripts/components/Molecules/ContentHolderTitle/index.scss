@@ -6,7 +6,7 @@
 
 .contentHolderHeader {
   width: 100%;
-  height: $content-holder-header-height;
+  height: $contentHolderHeaderHeight;
   background-color: $contentHolderHeaderBackgroundColor;
   color: $orangeTextColor;
   padding: 0 $contentHolderHeaderTitlePaddingHorizontal;
@@ -17,7 +17,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   width: initial;
-  font-size: $content-holder-header-font-size;
+  font-size: $contentHolderHeaderFontSize;
   a {
     color: $orangeTextColor;
   }
@@ -27,8 +27,8 @@
   display: none;
   margin-left: auto;
   .iconArrowLeft {
-    width: $icon-arrow-left-content-holder-title;
-    height: $icon-arrow-left-content-holder-title;
+    width: $iconArrowLeftContentHolderTitle;
+    height: $iconArrowLeftContentHolderTitle;
     margin: auto;
     path {
       fill: $orangeTextColor;

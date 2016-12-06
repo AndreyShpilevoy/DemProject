@@ -1,12 +1,12 @@
 @import "sizes.scss";
 @import "image-backgrounds.scss";
 
-.topicAuthorAvatarContainer{
-  width: $topic-last-post-author-avatar-size;
+.userAvatarContainer{
+  width: $userAvatarSize;
 }
 
-.topicAuthorAvatar {
-  height: $topic-last-post-author-avatar-size;
+.userAvatar {
+  height: $userAvatarSize;
   width: 100%;
   justify-content: center;
   display: flex;
@@ -15,7 +15,7 @@
   margin-right: auto;
 }
 
-.topicAuthorAvatarDefault,
+.userAvatarDefault,
 img {
   flex: 0 0 auto;
   max-width: 100%;
@@ -26,9 +26,10 @@ img {
   object-fit: scale-down;
 }
 
-.topicAuthorAvatarDefault{
-  background-image: $user-avatar-default;
+.userAvatarDefault{
+  background-image: $userAvatarDefault;
   min-width: 100%;
   min-height: 100%;
   background-size: contain;
+  background-repeat: no-repeat;
 }

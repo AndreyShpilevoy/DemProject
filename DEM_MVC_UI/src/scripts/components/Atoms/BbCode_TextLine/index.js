@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import styles from './index.scss';
 
 class BbCode_TextLine extends React.Component {
   static propTypes = {
@@ -9,7 +10,7 @@ class BbCode_TextLine extends React.Component {
     const { children } = this.props;
     return (
       <span
-        className = 'bbCode-text-line'>
+        className = {styles.text}>
         {children}
       </span>
     );

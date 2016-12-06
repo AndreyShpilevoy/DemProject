@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import styles from './index.scss';
 
 class BbCode_Link extends React.Component {
   static propTypes = {
@@ -18,7 +19,7 @@ class BbCode_Link extends React.Component {
     return (
       <span>
         <a
-          className = 'bbCode-link'
+          className = {styles.link}
           href={url}
           target='_blank'>
           {children}

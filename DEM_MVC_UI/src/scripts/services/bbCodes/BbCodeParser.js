@@ -50,8 +50,8 @@ class BbCodeParser{
         codeIndex--;
       }
 
-      //if codeIndex != null or tag != 'code' - dont add any items to array
-      if(codeIndex == 0 || matchedResult.tag &&  matchedResult.tag.toLowerCase() == 'code'){
+      //if codeIndex != null or tag != 'code' or tag != 'br' - dont add any items to array
+      if(codeIndex == 0 || matchedResult.tag && (matchedResult.tag.toLowerCase() == 'code' || matchedResult.tag.toLowerCase() == 'br')){
         //get text beetwin two tags
         if(result.length > 0 && result[result.length-1].lastIndex !== matchedResult.firstIndex ){
           let calculatedTextPart = {
