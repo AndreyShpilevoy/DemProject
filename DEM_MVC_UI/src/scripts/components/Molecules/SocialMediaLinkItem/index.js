@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import * as Icons from 'Molecules/SvgImages';
+import * as Icons from 'Molecules/SvgImageMapper';
 import styles from './index.scss';
 
 class SocialMediaLinkItem extends React.Component {

@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-class Steam extends React.Component {
+class IconSteam extends React.Component {
   static propTypes = {
     height: PropTypes.number,
     width: PropTypes.number,
@@ -38,4 +38,4 @@ class Steam extends React.Component {
   }
 }
 
-export default Steam;
+export default IconSteam;

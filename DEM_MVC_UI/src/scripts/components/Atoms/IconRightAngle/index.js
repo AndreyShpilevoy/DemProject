@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-class RightAngle extends React.Component {
+class IconRightAngle extends React.Component {
   static propTypes = {
     height: PropTypes.number,
     width: PropTypes.number,
@@ -30,4 +30,4 @@ class RightAngle extends React.Component {
   }
 }
 
-export default RightAngle;
+export default IconRightAngle;

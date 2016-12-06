@@ -26,7 +26,7 @@ class Code extends React.Component {
       <div className = 'bbCode-code'>
         <div className = 'bbCode-code-header'>
           <div className = 'bbCode-code-header-left'>
-            <TermItem spaceAfter term={{id: 34, value: 'Код:'}} />
+            <TermItem spaceAfter term={{id: 34, value: 'Code:'}} />
             <span id={buttonId} className = 'bbCode-code-select-button'>
               <TermItem spaceAfter term={{id: 35, value: 'Ctrl+A, Ctrl+C'}} />
             </span>

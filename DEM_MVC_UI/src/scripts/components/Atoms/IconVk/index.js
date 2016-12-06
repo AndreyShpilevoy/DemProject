@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-class Vk extends React.Component {
+class IconVk extends React.Component {
   static propTypes = {
     height: PropTypes.number,
     width: PropTypes.number,
@@ -48,4 +48,4 @@ class Vk extends React.Component {
   }
 }
 
-export default Vk;
+export default IconVk;

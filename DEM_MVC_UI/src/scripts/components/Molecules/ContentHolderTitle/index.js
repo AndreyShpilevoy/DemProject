@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {Row, Column, Hidden} from 'dem-ui-grid';
-import {ArrowLeft} from 'Molecules/SvgImages';
+import {ArrowLeft} from 'Molecules/SvgImageMapper';
 import ToggleClass from 'services/domScripts/ToggleClass';
 import commonStyles from 'commonScss/common.scss';
 import styles from './index.scss';

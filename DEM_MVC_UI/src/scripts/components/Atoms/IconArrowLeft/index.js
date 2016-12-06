@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-class ArrowLeft extends React.Component {
+class IconArrowLeft extends React.Component {
   static propTypes = {
     height: PropTypes.number,
     width: PropTypes.number,
@@ -31,4 +31,4 @@ class ArrowLeft extends React.Component {
   }
 }
 
-export default ArrowLeft;
+export default IconArrowLeft;

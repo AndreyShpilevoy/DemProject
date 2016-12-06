@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-import {RightAngle} from 'Molecules/SvgImages';
+import {RightAngle} from 'Molecules/SvgImageMapper';
 import commonStyles from 'commonScss/common.scss';
 import styles from './index.scss';
 
