@@ -1,0 +1,31 @@
+
+.bold{
+  font-weight: bold;
+}
+
+.italic{
+  font-style: italic
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+.lineThrough{
+  text-decoration: line-through;
+}
+
+.position {
+  display: inline-flex;
+  width: 100%;
+}
+
+.position.center > *:first-child,
+.position.right > *:first-child {
+  margin-left: auto;
+}
+
+.position.center > *:last-child,
+.position.left > *:last-child {
+  margin-right: auto;
+}

@@ -1,5 +1,5 @@
 import * as bbCodeTypes from 'enums/bbCodeTypes';
-import BbCodesMap from 'bbCodes/BbCodesMap';
+import {bbCodesMapNames} from 'Molecules/BbCodePresenter';
 
 class BbCodeParser{
   getParsedTree = (text) => {
@@ -38,7 +38,7 @@ class BbCodeParser{
       };
 
       //if tag is not exist in avaliable maps - skip step
-      if(!BbCodesMap.getMaps[matchedResult.tag.toLowerCase()]){
+      if(!bbCodesMapNames.includes(matchedResult.tag.toLowerCase())){
         continue;
       }
 

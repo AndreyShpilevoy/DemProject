@@ -5,7 +5,7 @@ import UserName from 'Atoms/UserName';
 import PostEditInfo from 'Atoms/PostEditInfo';
 import Separator from 'Atoms/Separator';
 import LocaleDateTime from 'containers/LocaleDateTime';
-import BbCodePresenter from 'bbCodes/BbCodePresenter';
+import BbCodePresenter from 'Molecules/BbCodePresenter';
 import commonStyles from 'commonScss/common.scss';
 import styles from './index.scss';
 
