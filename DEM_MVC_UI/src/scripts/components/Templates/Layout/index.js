@@ -1,5 +1,5 @@
 ﻿import React, {PropTypes} from 'react';
-import {Container, Row, Column} from 'DemUi';
+import {Container, Row, Column} from 'dem-ui-grid';
 import Header from 'Organisms/Header';
 import Footer from 'Organisms/Footer';
 import NotificationCreator from 'containers/NotificationCreator';

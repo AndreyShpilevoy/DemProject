@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Column, Hidden} from 'DemUi';
+import {Container, Row, Column, Hidden} from 'dem-ui-grid';
 import SocialMediaLinkArray from 'containers/SocialMediaLinkArray';
 import commonStyles from 'commonScss/common.scss';
 import styles from './index.scss';

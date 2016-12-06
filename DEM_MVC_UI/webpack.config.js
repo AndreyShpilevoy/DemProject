@@ -14,12 +14,12 @@ const cssnano = require('cssnano');
 let debug = process.env.NODE_ENV==='production' ? false : true;
 
 //For all environments
-let entry = {
+let entryPoints = {
   vendor: [
     'babel-polyfill',
+    'raven-js',
     'react',
     'react-dom',
-    'raven-js',
     'react-notification-system',
     'react-redux',
     'react-router',
@@ -31,7 +31,7 @@ let entry = {
 };
 if(debug){
   // DEVELOPMENT
-  entry.vendor.push('webpack-hot-middleware/client?reload=true');
+  entryPoints.vendor.push('webpack-hot-middleware/client?reload=true');
 }
 
 //For all environments
@@ -178,7 +178,7 @@ if(debug){
       compress: {warnings: false},
       output: {comments: false},
       sourceMap: true
-  }),
+    }),
     new CopyWebpackPlugin([
       { from: './node_modules/pace-progress/themes/orange/pace-theme-flash.css', to: 'css/pace.css' },
       { from: './node_modules/pace-progress/pace.min.js', to: 'js/pace.min.js' },
@@ -191,7 +191,7 @@ if(debug){
 //For all environments
 module.exports = {
   devtool: debug ? 'cheap-eval-source-map' : 'source-map',
-  entry: entry,
+  entry: entryPoints,
   target: 'web',
   output: output,
   module: {

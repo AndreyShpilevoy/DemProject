@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {Row} from 'DemUi';
+import {Row} from 'dem-ui-grid';
 import UserAvatar from 'Atoms/UserAvatar';
 import UserName from 'Atoms/UserName';
 import PostEditInfo from 'Atoms/PostEditInfo';

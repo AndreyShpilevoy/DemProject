@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import { Link } from 'react-router';
-import {Row, Column, Hidden} from 'DemUi';
+import {Row, Column, Hidden} from 'dem-ui-grid';
 import UserName from 'Atoms/UserName';
 import UserAvatar from 'Atoms/UserAvatar';
 import Separator from 'Atoms/Separator';
