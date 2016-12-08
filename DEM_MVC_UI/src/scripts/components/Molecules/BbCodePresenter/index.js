@@ -19,7 +19,7 @@ import Root from 'Atoms/BbCode_Root';
 import TextLine from 'Atoms/BbCode_TextLine';
 import Think from 'Atoms/BbCode_Think';
 import UnorderedList from 'Atoms/BbCode_UnorderedList';
-import {StringHelper} from 'dem-helpers';
+import StringHelper from 'services/helpers/StringHelper';
 import styles from './index.scss';
 
 
