@@ -3,11 +3,11 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import RelativeDateTime from "containers/RelativeDateTime";
-import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import {sharedFakeStore, validFakeStoreData} from 'store/__mocks__/sharedFakeStore';
+import RelativeDateTime from './index';
 
-jest.mock("../../services/dateTime/TransformDateTime", ()=>({
-  GetRelative: ()=>("some time ago")
+jest.mock('../../services/dateTime/TransformDateTime', ()=>({
+  GetRelative: ()=>('some time ago')
 }));
 
 describe('RelativeDateTime', () => {
@@ -27,10 +27,10 @@ describe('RelativeDateTime', () => {
   });
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve "eng"', () => {
-    expect(setup(0).prop('locale')).toEqual("eng");
+    expect(setup(0).prop('locale')).toEqual('eng');
   });
 
   it('should create RelativeDateTime component with props.term equal to "some time ago"', () => {
-    expect(setup(1).shallow().prop('spanContent')).toEqual("some time ago");
+    expect(setup(1).shallow().prop('spanContent')).toEqual('some time ago');
   });
 });

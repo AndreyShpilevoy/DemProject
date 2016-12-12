@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import SocialMediaLinkArray from "containers/SocialMediaLinkArray";
-import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import * as mockActions from 'actions/__mocks__/sharedFakeActions';
+import {sharedFakeStore, validFakeStoreData} from 'store/__mocks__/sharedFakeStore';
+import SocialMediaLinkArray from './index';
 
 describe('SocialMediaLinkArray', () => {
   function setup(mockConfigId) {
@@ -22,6 +22,6 @@ describe('SocialMediaLinkArray', () => {
 
   it('should find "SocialMediaLinkArray" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("SocialMediaLinkArray").node.type.name).toEqual("SocialMediaLinkArray");
+    expect(divElement.find('SocialMediaLinkArray').node.type.name).toEqual('SocialMediaLinkArray');
   });
 });

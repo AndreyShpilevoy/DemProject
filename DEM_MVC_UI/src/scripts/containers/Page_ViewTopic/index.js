@@ -6,7 +6,7 @@ import * as postActions from 'actions/postActions';
 import Breadcrumbs from 'containers/Breadcrumbs';
 import PostArray from 'Organisms/PostArray';
 
-class ViewTopicPage extends React.Component {
+class Page_ViewTopic extends React.Component {
   static propTypes = {
     params: PropTypes.shape({
       topicId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
@@ -80,4 +80,4 @@ const mapDispatchToProps = (dispatch) => ({
     }, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewTopicPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Page_ViewTopic);

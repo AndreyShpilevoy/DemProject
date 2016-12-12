@@ -3,11 +3,11 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import TermItem from "containers/TermItem";
-import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import {sharedFakeStore, validFakeStoreData} from 'store/__mocks__/sharedFakeStore';
+import TermItem from './index';
 
-jest.mock("../../services/translations/TermTranslation", ()=>({
-  getTermTranslation: ()=>("TestTerm")
+jest.mock('../../services/translations/TermTranslation', ()=>({
+  getTermTranslation: ()=>('TestTerm')
 }));
 
 describe('TermItem', () => {
@@ -16,7 +16,7 @@ describe('TermItem', () => {
       store: sharedFakeStore(mockConfigId),
       term: {
         id: 1,
-        value: "TestTermDefault"
+        value: 'TestTermDefault'
       }
     };
     return shallow(<TermItem {...props}/>);
@@ -27,10 +27,10 @@ describe('TermItem', () => {
   });
 
   it('should get "currentLocale.locale" from "localeReducer" and recieve "eng"', () => {
-    expect(setup(0).prop('locale')).toEqual("eng");
+    expect(setup(0).prop('locale')).toEqual('eng');
   });
 
   it('should create TermItem component with props.term equal to "TestTerm"', () => {
-    expect(setup(1).shallow().prop('spanContent')).toEqual("TestTerm");
+    expect(setup(1).shallow().prop('spanContent')).toEqual('TestTerm');
   });
 });

@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import NavigationLinkArray from "containers/NavigationLinkArray";
-import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import * as mockActions from 'actions/__mocks__/sharedFakeActions';
+import {sharedFakeStore, validFakeStoreData} from 'store/__mocks__/sharedFakeStore';
+import NavigationLinkArray from './index';
 
 describe('NavigationLinkArray', () => {
   function setup(mockConfigId) {
@@ -22,6 +22,6 @@ describe('NavigationLinkArray', () => {
 
   it('should find "NavigationLinkArray" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("NavigationLinkArray").node.type.name).toEqual("NavigationLinkArray");
+    expect(divElement.find('NavigationLinkArray').node.type.name).toEqual('NavigationLinkArray');
   });
 });

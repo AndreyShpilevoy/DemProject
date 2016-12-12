@@ -9,7 +9,7 @@ import ChapterArray from 'Organisms/ChapterArray';
 import Breadcrumbs from 'containers/Breadcrumbs';
 
 
-class MainConferencePage extends React.Component {
+class Page_MainConference extends React.Component {
   static propTypes = {
     lastActiveTopics: PropTypes.arrayOf(
       PropTypes.shape({
@@ -70,4 +70,4 @@ const mapDispatchToProps = (dispatch) => ({
     }, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainConferencePage);
+export default connect(mapStateToProps, mapDispatchToProps)(Page_MainConference);

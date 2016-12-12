@@ -8,7 +8,7 @@ import ChapterItem from 'Molecules/ChapterItem';
 import TopicArray from 'Organisms/TopicArray';
 import Breadcrumbs from 'containers/Breadcrumbs';
 
-class ViewForumPage extends React.Component {
+class Page_ViewForum extends React.Component {
   static propTypes = {
     params: PropTypes.shape({
       forumId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
@@ -91,4 +91,4 @@ const mapDispatchToProps = (dispatch) => ({
     }, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewForumPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Page_ViewForum);

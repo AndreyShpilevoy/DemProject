@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Layout from "containers/Layout";
-import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore} from "store/__mocks__/sharedFakeStore";
+import * as mockActions from 'actions/__mocks__/sharedFakeActions';
+import {sharedFakeStore} from 'store/__mocks__/sharedFakeStore';
+import Layout from './index';
 
 
 
@@ -20,6 +20,6 @@ describe('Layout', () => {
 
   it('should find "Layout" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("Layout").node.type.name).toEqual("Layout");
+    expect(divElement.find('Layout').node.type.name).toEqual('Layout');
   });
 });

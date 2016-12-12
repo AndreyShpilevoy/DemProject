@@ -3,11 +3,11 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ViewTopicPage from "pages/ViewTopicPage";
-import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import * as mockActions from 'actions/__mocks__/sharedFakeActions';
+import {sharedFakeStore, validFakeStoreData} from 'store/__mocks__/sharedFakeStore';
+import PageViewTopic from './index';
 
-describe('ViewTopicPage', () => {
+describe('PageViewTopic', () => {
   function setup(mockConfigId) {
     const props = {
       store: sharedFakeStore(mockConfigId),
@@ -16,7 +16,7 @@ describe('ViewTopicPage', () => {
         topicId: 1
       }
     };
-    return shallow(<ViewTopicPage {...props}/>, { lifecycleExperimental: true });
+    return shallow(<PageViewTopic {...props}/>, { lifecycleExperimental: true });
   }
 
   it('should render "div"',() => {
@@ -29,7 +29,7 @@ describe('ViewTopicPage', () => {
   });
 
   it('should get "allPosts" from "postReducer" and recieve {"postArray": []}', () => {
-    expect(setup(2).prop('postArray')).toEqual({"postArray": []});
+    expect(setup(2).prop('postArray')).toEqual({'postArray': []});
   });
 
   it('should get "allPosts" from "postReducer" and recieve []', () => {
@@ -38,6 +38,6 @@ describe('ViewTopicPage', () => {
 
   it('should find "PostArray" component', () => {
     const divElement = setup(0).shallow();
-    expect(divElement.find("PostArray").node.type.name).toEqual("PostArray");
+    expect(divElement.find('PostArray').node.type.name).toEqual('PostArray');
   });
 });

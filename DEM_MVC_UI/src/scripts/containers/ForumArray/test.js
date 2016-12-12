@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ForumArray from "containers/ForumArray";
-import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import * as mockActions from 'actions/__mocks__/sharedFakeActions';
+import {sharedFakeStore, validFakeStoreData} from 'store/__mocks__/sharedFakeStore';
+import ForumArray from './index';
 
 describe('ForumArray', () => {
   function setup(mockConfigId) {
@@ -27,6 +27,6 @@ describe('ForumArray', () => {
 
   it('should find "ForumArray" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("ForumArray").node.type.name).toEqual("ForumArray");
+    expect(divElement.find('ForumArray').node.type.name).toEqual('ForumArray');
   });
 });

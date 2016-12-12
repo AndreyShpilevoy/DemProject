@@ -1,15 +1,15 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import Layout from 'containers/Layout';
-import MainConferencePage from 'pages/MainConferencePage';
-import ViewForumPage from 'pages/ViewForumPage';
-import ViewTopicPage from 'pages/ViewTopicPage';
+import PageMainConference from 'containers/Page_MainConference';
+import PageViewForum from 'containers/Page_ViewForum';
+import PageViewTopic from 'containers/Page_ViewTopic';
 
 export default (
   <Route path='/' component={Layout}>
-    <IndexRoute component={MainConferencePage} />
-    <Route path='/Conference' component={MainConferencePage}/>
-    <Route path='/Conference/Forum/:forumId' component={ViewForumPage}/>
-    <Route path='/Conference/Topic/:topicId' component={ViewTopicPage}/>
+    <IndexRoute component={PageMainConference} />
+    <Route path='/Conference' component={PageMainConference}/>
+    <Route path='/Conference/Forum/:forumId' component={PageViewForum}/>
+    <Route path='/Conference/Topic/:topicId' component={PageViewTopic}/>
   </Route>
 );

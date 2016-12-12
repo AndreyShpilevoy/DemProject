@@ -3,17 +3,17 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import MainConferencePage from "pages/MainConferencePage";
-import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import * as mockActions from 'actions/__mocks__/sharedFakeActions';
+import {sharedFakeStore, validFakeStoreData} from 'store/__mocks__/sharedFakeStore';
+import PageMainConference from './index';
 
-describe('MainConferencePage', () => {
+describe('PageMainConference', () => {
   function setup(mockConfigId) {
     const props = {
       store: sharedFakeStore(mockConfigId),
       actions: mockActions
     };
-    return shallow(<MainConferencePage {...props}/>, { lifecycleExperimental: true });
+    return shallow(<PageMainConference {...props}/>, { lifecycleExperimental: true });
   }
 
   it('should render "div"',() => {
@@ -27,7 +27,7 @@ describe('MainConferencePage', () => {
 
   it('should find "ChapterArray" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("ChapterArray").first()).toBeTruthy();
+    expect(divElement.find('ChapterArray').first()).toBeTruthy();
   });
 
   it('should get "lastActiveTopics" from "lastActiveTopicReducer" and recieve expected result', () => {
@@ -36,7 +36,7 @@ describe('MainConferencePage', () => {
 
   it('should find "LastActiveTopicArray" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("LastActiveTopicArray").node.type.name).toEqual("LastActiveTopicArray");
+    expect(divElement.find('LastActiveTopicArray').node.type.name).toEqual('LastActiveTopicArray');
   });
 
 });

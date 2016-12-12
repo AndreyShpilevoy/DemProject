@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Title from "containers/Title";
-import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import * as mockActions from 'actions/__mocks__/sharedFakeActions';
+import {sharedFakeStore, validFakeStoreData} from 'store/__mocks__/sharedFakeStore';
+import Title from './index';
 
 
 

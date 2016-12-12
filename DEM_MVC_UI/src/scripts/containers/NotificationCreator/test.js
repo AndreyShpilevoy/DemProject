@@ -3,9 +3,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import NotificationCreator from "containers/NotificationCreator";
-import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import * as mockActions from 'actions/__mocks__/sharedFakeActions';
+import {sharedFakeStore, validFakeStoreData} from 'store/__mocks__/sharedFakeStore';
+import NotificationCreator from './index';
 
 
 describe('NotificationCreator', () => {
@@ -17,14 +17,14 @@ describe('NotificationCreator', () => {
     return shallow(<NotificationCreator {...props}/>, { lifecycleExperimental: true });
   }
     it('Should return "NotificationSystem" object', () => {
-      expect(setup(1).shallow().find("NotificationSystem")).toBeTruthy();
+      expect(setup(1).shallow().find('NotificationSystem')).toBeTruthy();
     });
 
   it('should return "notificationArray" from "notificationReducer" and recieve expected result', () => {
-      expect(setup(1).prop("notificationArray")).toEqual(validFakeStoreData.notificationReducer.allNotifications);
+      expect(setup(1).prop('notificationArray')).toEqual(validFakeStoreData.notificationReducer.allNotifications);
   });
 
     it('should return "notificationArray" from "notificationReducer" and recieve expected result - []', () => {
-    expect(setup(0).prop("notificationArray")).toEqual([]);
+    expect(setup(0).prop('notificationArray')).toEqual([]);
   });
 });

@@ -1,13 +1,13 @@
-/*eslint no-undef: "off"*/
-/* eslint import/no-extraneous-dependencies: "off" */
+/*eslint no-undef: 'off'*/
+/* eslint import/no-extraneous-dependencies: 'off' */
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ViewForumPage from "pages/ViewForumPage";
-import * as mockActions from "actions/__mocks__/sharedFakeActions";
-import {sharedFakeStore, validFakeStoreData} from "store/__mocks__/sharedFakeStore";
+import * as mockActions from 'actions/__mocks__/sharedFakeActions';
+import {sharedFakeStore, validFakeStoreData} from 'store/__mocks__/sharedFakeStore';
+import PageViewForum from './index';
 
-describe('ViewForumPage', () => {
+describe('PageViewForum', () => {
   function setup(mockConfigId) {
     const props = {
       store: sharedFakeStore(mockConfigId),
@@ -16,7 +16,7 @@ describe('ViewForumPage', () => {
         forumId: 3
       }
     };
-    return shallow(<ViewForumPage {...props}/>, { lifecycleExperimental: true });
+    return shallow(<PageViewForum {...props}/>, { lifecycleExperimental: true });
   }
 
   it('should render "div"',() => {
@@ -34,7 +34,7 @@ describe('ViewForumPage', () => {
 
   it('should find "ChapterItem" component', () => {
     const divElement = setup(1).shallow();
-    expect(divElement.find("ChapterItem").node.type.name).toEqual("ChapterItem");
+    expect(divElement.find('ChapterItem').node.type.name).toEqual('ChapterItem');
   });
 
   it('should get "allTopics" from "topicReducer" and recieve expected result', () => {
@@ -51,6 +51,6 @@ describe('ViewForumPage', () => {
 
   it('should find "TopicArray" component', () => {
     const divElement = setup(0).shallow();
-    expect(divElement.find("TopicArray").node.type.name).toEqual("TopicArray");
+    expect(divElement.find('TopicArray').node.type.name).toEqual('TopicArray');
   });
 });
