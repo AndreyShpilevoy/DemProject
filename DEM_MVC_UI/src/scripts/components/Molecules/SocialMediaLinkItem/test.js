@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import SocialMediaLinkItem from 'components/SocialMediaLinkItem';
 import socialMediaLinks from 'api/__fakeData__/socialMediaLinks';
+import SocialMediaLinkItem from './index';
 
 describe('SocialMediaLinkItem', () => {
   function setup(svgName) {
@@ -14,11 +14,6 @@ describe('SocialMediaLinkItem', () => {
 
     return shallow(<SocialMediaLinkItem {...props}/>);
   }
-
-  it('should render top level div with className "social-media-link"',() => {
-    const divElement = setup('Steam').find('div').first();
-    expect(divElement.hasClass('social-media-link')).toBeTruthy();
-  });
 
   it('should contain 1 "a" element if Icon element is defined',() => {
     const aElement = setup('Steam').find('a');
@@ -30,8 +25,8 @@ describe('SocialMediaLinkItem', () => {
     expect(setup('Two').node).toBeNull();
   });
 
-  it('should contain 1 "Vk" element if Icon element is defined',() => {
-    const aElement = setup('Vk').find('Vk');
+  it('should contain 1 "Icon_Vk" element if Icon element is defined',() => {
+    const aElement = setup('Vk').find('Icon_Vk');
     expect(aElement.length).toEqual(1);
   });
 

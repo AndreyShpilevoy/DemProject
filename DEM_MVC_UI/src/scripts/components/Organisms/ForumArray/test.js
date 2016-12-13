@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ForumArray from 'components/ForumArray';
 import forums from 'api/__fakeData__/forums';
+import ForumArray from './index';
 
 describe('ForumArray', () => {
   function setup() {
@@ -14,11 +14,6 @@ describe('ForumArray', () => {
 
     return shallow(<ForumArray {...props}/>);
   }
-
-  it('should render top level div with className "forums-container"',() => {
-    const divElement = setup().find('div').first();
-    expect(divElement.hasClass('forums-container')).toBeTruthy();
-  });
 
   it('child contains 3 ForumItem components',() => {
     const forumItem = setup().find('ForumItem');

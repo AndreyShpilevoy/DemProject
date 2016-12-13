@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import PostArray from 'components/PostArray';
 import posts from 'api/__fakeData__/posts';
+import PostArray from './index';
 
 describe('PostArray', () => {
   function setup() {
@@ -35,10 +35,10 @@ describe('PostArray', () => {
   });
 
   it('props should contain "contentHolderItem" object with ' +
-     '"bodyElement.props.children.length" equel to "3", with ' +
-     '"bodyElement.props.children[0].type.name" equel to "PostItem"',() => {
-    const bodyElement = setup().prop('contentHolderItem').bodyElement;
-    expect(bodyElement.props.children.length).toEqual(3);
-    expect(bodyElement.props.children[0].type.name).toEqual('PostItem');
+     '"bodyContent.length" equel to "3", with ' +
+     '"bodyContent.type.name" equel to "PostItem"',() => {
+    const bodyContent = setup().prop('contentHolderItem').bodyContent;
+    expect(bodyContent.length).toEqual(3);
+    expect(bodyContent[0].type.name).toEqual('PostItem');
   });
 });

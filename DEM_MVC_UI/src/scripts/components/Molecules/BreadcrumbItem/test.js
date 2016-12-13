@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import BreadcrumbItem from 'components/BreadcrumbItem';
 import breadcrumbs from 'api/__fakeData__/breadcrumbs';
+import BreadcrumbItem from './index';
 
 describe('BreadcrumbItem', () => {
   function setup(currentPage) {
@@ -14,16 +14,6 @@ describe('BreadcrumbItem', () => {
     };
     return shallow(<BreadcrumbItem {...props}/>);
   }
-
-  it('should render top level li with className "breadcrumb-item"',() => {
-    const divElement = setup(false).find('div').first();
-    expect(divElement.hasClass('breadcrumb-item')).toBeTruthy();
-  });
-
-  it('should render top level li with className "breadcrumb-item-active"',() => {
-    const divElement = setup(true).find('div').first();
-    expect(divElement.hasClass('breadcrumb-item-active')).toBeTruthy();
-  });
 
   it('Link component has prop "to" equel to "/Conference"',() => {
     const linkComponent = setup(false).find('Link');

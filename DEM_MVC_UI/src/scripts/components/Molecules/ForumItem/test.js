@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ForumItem from 'components/ForumItem';
 import forums from 'api/__fakeData__/forums';
+import ForumItem from './index';
 
 describe('ForumItem', () => {
   function setup() {
@@ -14,11 +14,6 @@ describe('ForumItem', () => {
 
     return shallow(<ForumItem {...props}/>);
   }
-
-  it('should render top level div with className "forum-container-wrapper"',() => {
-    const divElement = setup().find('div').first();
-    expect(divElement.hasClass('forum-container-wrapper')).toBeTruthy();
-  });
 
   it('should contain 1 SubForumArray element',() => {
     const subForumArrayElement = setup().find('SubForumArray');
@@ -35,19 +30,8 @@ describe('ForumItem', () => {
     expect(relativeDateTimeElement.length).toEqual(1);
   });
 
-  it('should contain 3 Link element',() => {
+  it('should contain 2 Link element',() => {
     const linkElement = setup().find('Link');
-    expect(linkElement.length).toEqual(3);
-  });
-
-  it('should have default state',() => {
-    const expectedState = {
-      latesPostAutorNameStyle: {
-        color: '#ffa510'
-      }
-    };
-
-    const stateElement = setup().state();
-    expect(stateElement).toEqual(expectedState);
+    expect(linkElement.length).toEqual(2);
   });
 });

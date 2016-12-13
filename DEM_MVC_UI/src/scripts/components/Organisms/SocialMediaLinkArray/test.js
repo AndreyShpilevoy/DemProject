@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import SocialMediaLinkArray from 'components/SocialMediaLinkArray';
 import socialMediaLinks from 'api/__fakeData__/socialMediaLinks';
+import SocialMediaLinkArray from './index';
 
 describe('SocialMediaLinkArray', () => {
   function setup() {
@@ -14,11 +14,6 @@ describe('SocialMediaLinkArray', () => {
 
     return shallow(<SocialMediaLinkArray {...props}/>);
   }
-
-  it('should render top level div with className "social-media-link-wrapper"',() => {
-    const divElement = setup().find('div').first();
-    expect(divElement.hasClass('social-media-link-wrapper')).toBeTruthy();
-  });
 
   it('child contains 2 SocialMediaLinkItem components',() => {
     const chapterItems = setup().find('SocialMediaLinkItem');

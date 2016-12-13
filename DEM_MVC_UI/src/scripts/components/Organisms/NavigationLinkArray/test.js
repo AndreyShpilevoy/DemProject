@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import NavigationLinkArray from 'components/NavigationLinkArray';
 import navigationLinks from 'api/__fakeData__/navigationLinks';
+import NavigationLinkArray from './index';
 
 describe('NavigationLinkArray', () => {
   function setup() {
@@ -14,11 +14,6 @@ describe('NavigationLinkArray', () => {
 
     return shallow(<NavigationLinkArray {...props}/>);
   }
-
-  it('should render top level div with className "page-content"',() => {
-    const divElement = setup().find('div').first();
-    expect(divElement.hasClass('nav-links-container')).toBeTruthy();
-  });
 
   it('child contains 3 "NavigationLinkItem" components',() => {
     const chapterItems = setup().find('NavigationLinkItem');

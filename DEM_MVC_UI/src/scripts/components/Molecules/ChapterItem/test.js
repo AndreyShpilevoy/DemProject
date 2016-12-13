@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ChapterItem from 'components/ChapterItem';
 import chapters from 'api/__fakeData__/chapters';
+import ChapterItem from './index';
 
 describe('ChapterItem', () => {
   function setup(valid) {
@@ -33,11 +33,11 @@ describe('ChapterItem', () => {
   });
 
   it('props should contain "contentHolderItem" object with ' +
-     '"bodyElement.type.displayName" equel to "Connect(ForumArray)", with ' +
-     '"bodyElement.props.chapterId" equel to "1"',() => {
-    const bodyElement = setup(true).prop('contentHolderItem').bodyElement;
-    expect(bodyElement.type.displayName).toEqual('Connect(ForumArray)');
-    expect(bodyElement.props.chapterId).toEqual(1);
+     '"bodyContent.type.displayName" equel to "Connect(ForumArray)", with ' +
+     '"bodyContent.props.chapterId" equel to "1"',() => {
+    const bodyContent = setup(true).prop('contentHolderItem').bodyContent;
+    expect(bodyContent.type.displayName).toEqual('Connect(ForumArray)');
+    expect(bodyContent.props.chapterId).toEqual(1);
   });
 
   it('props should contain "contentHolderItem" object with ' +

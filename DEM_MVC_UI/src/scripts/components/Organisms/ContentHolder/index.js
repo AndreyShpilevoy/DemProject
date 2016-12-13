@@ -9,7 +9,7 @@ class ContentHolder extends React.Component {
     contentHolderItem: PropTypes.shape({
       uniquePrefix: PropTypes.string.isRequired,
       titleElement: PropTypes.element.isRequired,
-      bodyElement: PropTypes.node.isRequired,
+      bodyContent: PropTypes.node.isRequired,
       firstColumnTerm: PropTypes.element,
       secondColumnTerm: PropTypes.element,
       thirdColumnTerm: PropTypes.element
@@ -58,7 +58,7 @@ class ContentHolder extends React.Component {
         </div>
         <div id={this.state.contentHolderBodyId} className={this.getBodyClassName()}>
           <ContentHolderBody>
-            {this.props.contentHolderItem.bodyElement}
+            {this.props.contentHolderItem.bodyContent}
           </ContentHolderBody>
         </div>
       </div>

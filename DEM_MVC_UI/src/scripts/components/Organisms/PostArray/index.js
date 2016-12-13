@@ -45,7 +45,7 @@ class PostArray extends React.Component {
   bindContentHolderItem = () =>({
     uniquePrefix: `post-array-with-topic-id-${this.props.topicId}`,
     titleElement: <TermItem term={{id: 30, value: 'Posts'}} />,
-    bodyElement: this.mapPosts()
+    bodyContent: this.mapPosts()
   })
 
   collapseSettings = () => ({

@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import SubForumItem from 'components/SubForumItem';
 import forums from 'api/__fakeData__/forums';
+import SubForumItem from './index';
 
 describe('SubForumItem', () => {
   function setup() {
@@ -15,18 +15,13 @@ describe('SubForumItem', () => {
     return shallow(<SubForumItem {...props}/>);
   }
 
-  it('should render top level div with className "sub-forum-item-container"',() => {
-    const divElement = setup().find('div').first();
-    expect(divElement.hasClass('sub-forum-item-container')).toBeTruthy();
-  });
-
   it('should contain 1 "Link" element',() => {
     const linkElement = setup().find('Link');
     expect(linkElement.length).toEqual(1);
   });
 
-  it('should contain 1 "RightAngle" element',() => {
-    const linkElement = setup().find('RightAngle');
+  it('should contain 1 "Icon_RightAngle" element',() => {
+    const linkElement = setup().find('Icon_RightAngle');
     expect(linkElement.length).toEqual(1);
   });
 });

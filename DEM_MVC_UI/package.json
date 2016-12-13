@@ -34,8 +34,7 @@
     ],
     "collectCoverage": true,
     "testPathIgnorePatterns": [
-      "<rootDir>/node_modules/",
-      "<rootDir>/tempTestFolder/"
+      "<rootDir>/node_modules/"
     ],
     "coveragePathIgnorePatterns": [
       "(.*/__tests__/.*|.*/(test.js|index.scss))",

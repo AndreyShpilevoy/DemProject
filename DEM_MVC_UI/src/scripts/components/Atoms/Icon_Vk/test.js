@@ -3,11 +3,11 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Vk from 'icons/Vk';
+import IconVk from './index';
 
-describe('Vk', () => {
+describe('IconVk', () => {
   function setup() {
-    return shallow(<Vk />);
+    return shallow(<IconVk />);
   }
 
   it('should render top level svg with default class "icon-vk"',() => {

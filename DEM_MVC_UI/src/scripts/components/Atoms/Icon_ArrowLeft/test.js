@@ -3,11 +3,11 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import ArrowLeft from 'icons/ArrowLeft';
+import IconArrowLeft from './index';
 
-describe('ArrowLeft', () => {
+describe('IconArrowLeft', () => {
   function setup() {
-    return shallow(<ArrowLeft />);
+    return shallow(<IconArrowLeft />);
   }
 
   it('should render top level svg with default class "icon-arrow-left"',() => {

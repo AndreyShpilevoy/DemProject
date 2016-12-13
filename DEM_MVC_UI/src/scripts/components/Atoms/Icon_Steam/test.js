@@ -3,11 +3,11 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Steam from 'icons/Steam';
+import IconSteam from './index';
 
-describe('Steam', () => {
+describe('IconSteam', () => {
   function setup() {
-    return shallow(<Steam />);
+    return shallow(<IconSteam />);
   }
 
   it('should render top level svg with default class "icon-steam"',() => {

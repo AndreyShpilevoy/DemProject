@@ -3,16 +3,17 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import LastActiveTopicArray from 'components/LastActiveTopicArray';
-import lastActiveTopics from 'api/__fakeData__/lastActiveTopics';
+import topics from 'api/__fakeData__/topics';
+import TopicArray from './index';
 
-describe('LastActiveTopicArray', () => {
+describe('TopicArray', () => {
   function setup() {
     const props = {
-      lastActiveTopics: [lastActiveTopics[2], lastActiveTopics[0], lastActiveTopics[1]]
+      forumId: 1,
+      topicArray: [topics[2], topics[0], topics[1]]
     };
 
-    return shallow(<LastActiveTopicArray {...props}/>);
+    return shallow(<TopicArray {...props}/>);
   }
 
   it('should render ContentHolder',() => {
@@ -20,24 +21,25 @@ describe('LastActiveTopicArray', () => {
     expect(contentHolderElement.node.type.name).toEqual('ContentHolder');
   });
 
-  it('props should contain "contentHolderItem" object with "uniquePrefix" equel to "last-topic-array"',() => {
-    expect(setup().prop('contentHolderItem').uniquePrefix).toEqual('last-topic-array');
+
+  it('props should contain "contentHolderItem" object with "uniquePrefix" equel to "topic-array-with-forum-id-1"',() => {
+    expect(setup().prop('contentHolderItem').uniquePrefix).toEqual('topic-array-with-forum-id-1');
   });
 
   it('props should contain "contentHolderItem" object with ' +
      '"titleElement.type.displayName" equel to "Connect(TermItem)", with ' +
-     '"titleElement.props.term" equel to "Last messages"',() => {
+     '"titleElement.props.term" equel to "Topics"',() => {
     const titleElement = setup().prop('contentHolderItem').titleElement;
     expect(titleElement.type.displayName).toEqual('Connect(TermItem)');
-    expect(titleElement.props.term).toEqual({id: 26, value: 'Last messages'});
+    expect(titleElement.props.term).toEqual({id: 23, value: 'Topics'});
   });
 
   it('props should contain "contentHolderItem" object with ' +
-     '"bodyElement.props.children.length" equel to "3", with ' +
-     '"bodyElement.props.children[0].type.name" equel to "TopicItem"',() => {
-    const bodyElement = setup().prop('contentHolderItem').bodyElement;
-    expect(bodyElement.props.children.length).toEqual(3);
-    expect(bodyElement.props.children[0].type.name).toEqual('TopicItem');
+     '"bodyContent.length" equel to "3", with ' +
+     '"bodyContent[0].type.name" equel to "TopicItem"',() => {
+    const bodyContent = setup().prop('contentHolderItem').bodyContent;
+    expect(bodyContent.length).toEqual(3);
+    expect(bodyContent[0].type.name).toEqual('TopicItem');
   });
 
   it('props should contain "contentHolderItem" object with ' +

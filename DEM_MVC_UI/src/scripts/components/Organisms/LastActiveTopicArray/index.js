@@ -37,7 +37,7 @@ class LastActiveTopicArray extends React.Component {
   bindContentHolderItem = () =>({
     uniquePrefix: 'last-topic-array',
     titleElement: <TermItem term={{id: 26, value: 'Last messages'}} />,
-  bodyElement: <div>{this.mapLastActiveTopics()}</div>,
+  bodyContent: <div>{this.mapLastActiveTopics()}</div>,
     firstColumnTerm: <TermItem term={{id: 2, value: 'Posts'}} />,
     secondColumnTerm:<TermItem term={{id: 22, value: 'Views'}} />,
     thirdColumnTerm: <TermItem term={{id: 3, value: 'Last message in'}} />

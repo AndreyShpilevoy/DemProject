@@ -4,7 +4,7 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import Header from 'components/Header';
+import Header from './index';
 
 jest.mock('../../services/domScripts/ToggleClass');
 jest.mock('../../services/domScripts/ShrinkingHeader');

@@ -3,11 +3,11 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import RightAngle from 'icons/RightAngle';
+import IconRightAngle from './index';
 
-describe('RightAngle', () => {
+describe('IconRightAngle', () => {
   function setup() {
-    return shallow(<RightAngle />);
+    return shallow(<IconRightAngle />);
   }
 
   it('should render top level svg with default class "icon-right-angle"',() => {

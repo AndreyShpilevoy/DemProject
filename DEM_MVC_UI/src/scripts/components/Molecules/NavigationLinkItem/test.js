@@ -3,8 +3,8 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
-import NavigationLinkItem from 'components/NavigationLinkItem';
 import navigationLinks from 'api/__fakeData__/navigationLinks';
+import NavigationLinkItem from './index';
 
 describe('NavigationLinkItem', () => {
   function setup() {
@@ -14,14 +14,14 @@ describe('NavigationLinkItem', () => {
     return shallow(<NavigationLinkItem {...props}/>);
   }
 
-  it('should render top level li with className nav-array-item',() => {
+  it('should render top level li',() => {
     const liElement = setup().find('li');
-    expect(liElement.hasClass('nav-array-item')).toBeTruthy();
+    expect(liElement.length).toBe(1);
   });
 
-  it('should render Link component with className nav-link',() => {
+  it('should render Link component',() => {
     const linkComponent = setup().find('Link');
-    expect(linkComponent.hasClass('nav-link')).toBeTruthy();
+    expect(linkComponent.length).toBe(1);
   });
 
   it('Link component has title equel to "Conference"',() => {
@@ -34,9 +34,9 @@ describe('NavigationLinkItem', () => {
     expect(linkComponent.prop('to')).toBe('/');
   });
 
-  it('should render div for Navigation Link Separator with className nav-link-separator',() => {
+  it('should render div for Navigation Link Separator',() => {
     const divElement = setup().find('div');
-    expect(divElement.hasClass('nav-link-separator')).toBeTruthy();
+    expect(divElement.length).toBe(1);
   });
 
 });
