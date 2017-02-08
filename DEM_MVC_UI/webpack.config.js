@@ -11,10 +11,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const checksum = require('checksum');
 const cssnano = require('cssnano');
 
-let debug = process.env.NODE_ENV==='production' ? false : true;
+const debug = process.env.NODE_ENV==='production' ? false : true;
 
 //For all environments
-let entryPoints = {
+const entryPoints = {
   vendor: [
     'babel-polyfill',
     'raven-js',
@@ -35,13 +35,13 @@ if(debug){
 }
 
 //For all environments
-let output = {filename: 'js/bundle.js?[hash]'};
+const output = {filename: 'js/bundle.js?[hash]'};
             // {debug ? DEVELOPMENT : PRODUCTION}
 output.path = debug ? '/' : path.join(__dirname, '../DEM_MVC/wwwroot');
 output.publicPath = debug ? '/' : '/wwwroot/';
 
 //For all environments
-let rules = [{
+const rules = [{
     test: /\.js$/,
     exclude: /(node_modules)/,
     include: path.join(__dirname, './src'),
@@ -52,6 +52,30 @@ let rules = [{
     use: 'url-loader?limit=8192&name=images/[name]-[hash].[ext]'
   }];
 
+const styleLoaders = [
+  {
+    loader: 'css-loader',
+    query: {
+      sourceMap: debug ? false : true,
+      modules: true,
+      importLoaders: 1,
+      localIdentName: debug ? '[name]__[local]___[hash:base64:5]' :'[hash:base64:5]'
+    }
+  },
+  'postcss-loader',
+  'resolve-url-loader',
+  {
+    loader: 'sass-loader',
+    query: {
+      sourceMap: true,
+      includePaths: [
+        path.resolve(__dirname, './src/scripts/_commonScss'),
+        path.resolve(__dirname, 'node_modules')
+      ]
+    }
+  }
+];
+
 if(debug){
   // DEVELOPMENT
   rules.push({
@@ -61,14 +85,7 @@ if(debug){
     include: path.join(__dirname, './src')
   },{
     test: /\.scss$/,
-    use: [
-      'style-loader',
-      //'css-loader?modules&importLoaders=1&localIdentName=[local]',
-      'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-      'postcss-loader',
-      'resolve-url-loader',
-      'sass-loader?sourceMap'
-    ]
+    use: ['style-loader', ...styleLoaders]
   });
 } else {
   // PRODUCTION
@@ -76,18 +93,18 @@ if(debug){
     test: /\.scss$/,
     loader: ExtractTextPlugin.extract({
       fallbackLoader: 'style-loader',
-      loader: 'css-loader?modules&importLoaders=1&localIdentName=[hash:base64:5]&sourceMap!postcss-loader!resolve-url-loader!sass-loader?sourceMap'
+      loader: styleLoaders
     })
   });
 }
 
 //For all environments
-let eslint = {
+const eslint = {
   failOnWarning: false,
   failOnError: true
 };
 
-let postcss = [
+const postcss = [
   Autoprefixer({
     browsers: ['> 1%', 'last 2 versions'],
     cascade: false
@@ -113,7 +130,7 @@ if(!debug){
 }
 
 //For all environments
-let htmlWebpackPluginSettings = {
+const htmlWebpackPluginSettings = {
   hash: !debug,
   filename: 'index.html',
   template: path.join(__dirname, './src/index.html'),
@@ -127,7 +144,7 @@ if(!debug){
 }
 
 //For all environments
-let plugins = [
+const plugins = [
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks: Infinity,
@@ -149,9 +166,6 @@ let plugins = [
         alias: {
           'images': __dirname + './src/images',
         },
-      },
-      sassLoader: {
-        includePaths: [path.resolve(__dirname, './src/scripts/_commonScss')]
       },
       postcss: function () {
         return postcss;
