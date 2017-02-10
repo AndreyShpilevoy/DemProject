@@ -5,19 +5,19 @@
 
 
 .contentHolderHeader {
-  width: 100%;
-  height: $contentHolderHeaderHeight;
   background-color: $contentHolderHeaderBackgroundColor;
   color: $orangeTextColor;
+  height: $contentHolderHeaderHeight;
   padding: 0 $contentHolderHeaderTitlePaddingHorizontal;
+  width: 100%;
 }
 
 .contentHolderHeaderTitle {
-  white-space: nowrap;
+  font-size: $contentHolderHeaderFontSize;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
   width: initial;
-  font-size: $contentHolderHeaderFontSize;
   a {
     color: $orangeTextColor;
   }
@@ -27,9 +27,9 @@
   display: none;
   margin-left: auto;
   .iconArrowLeft {
-    width: $iconArrowLeftContentHolderTitle;
     height: $iconArrowLeftContentHolderTitle;
     margin: auto;
+    width: $iconArrowLeftContentHolderTitle;
     path {
       fill: $orangeTextColor;
     }
@@ -38,13 +38,13 @@
 
 //md and smaller screens
 @media ($md-max) {
-    .iconArrowLeft {
-      @include element-rotate-center-to-0;
-    }
+  .iconArrowLeft {
+    @include element-rotate-center-to-0;
+  }
 
-    .iconArrowLeftOpened {
-      @include element-rotate-center-to--90;
-    }
+  .iconArrowLeftOpened {
+    @include element-rotate-center-to--90;
+  }
 }
 
 //md screens only

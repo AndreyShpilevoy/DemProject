@@ -6,16 +6,16 @@
 
 .headerNavigationBase {
   background-color: $headerBackgroundColor;
-  padding: initial;
   height: $headerHeightXsSm;
+  padding: initial;
   transition: $headerTransition;
 }
 
 .headerContainerFixOnTheTop {
-  top: 0;
+  left: 0;
   position: fixed;
   right: 0;
-  left: 0;
+  top: 0;
   z-index: 1030;
 }
 
@@ -26,10 +26,10 @@
 }
 
 .headerLogoContainer {
-  width: $headerLogoContainerWidthXsSm;
   height: $headerLogoContainerHeightXsSm;
   padding-left: $headerLogoContainerPaddingLeft;
   transition: $headerTransition;
+  width: $headerLogoContainerWidthXsSm;
 }
 
 //md and smaller screens
@@ -38,11 +38,11 @@
     padding-right: $headerNavigationMenuButtomContainerPaddingRight;
   }
 
-  .NavigationMenuLinksDefault  {
-    width: 100%;
+  .NavigationMenuLinksDefault {
+    @include element-closed;
     display: flex;
     flex-flow: column;
-    @include element-closed;
+    width: 100%;
   }
 
   .NavigationMenuLinksOpened {
@@ -61,8 +61,8 @@
   }
 
   .headerLogoContainer {
-    width: $headerLogoContainerWidthMd;
     height: $headerLogoContainerHeightMd;
+    width: $headerLogoContainerWidthMd;
   }
 }
 
@@ -77,16 +77,16 @@
   }
 
   .headerLogoContainer {
-    width: $headerLogoContainerWidthLgXl;
     height: $headerLogoContainerHeightLgXl;
+    width: $headerLogoContainerWidthLgXl;
   }
 
 
   .headerShrink {
     height: $headerHeightLg/2;
     .headerLogoContainer {
-      width: $headerLogoContainerWidthLgXl/2;
       height: $headerLogoContainerHeightLgXl/2;
+      width: $headerLogoContainerWidthLgXl/2;
     }
 
     &.headerBackgroundImage {

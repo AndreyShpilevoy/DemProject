@@ -4,17 +4,17 @@
 
 .navigationLinksArray {
   background-color: $navigationLinksArrayBackgroundColor;
+  list-style-type: none;
   margin: initial;
   padding: initial;
-  list-style-type: none;
 }
 
 //md and smaller screens
 @media ($md-max) {
   .navigationLinksArray  {
-    width: 100%;
     display: flex;
     flex-flow: column;
+    width: 100%;
   }
 }
 
@@ -22,7 +22,7 @@
 @media ($lg-min) {
   .navigationLinksArray {
     background-color: initial;
-    padding-right: $navigationLinksArrayPaddingRight;
     margin-left: auto;
+    padding-right: $navigationLinksArrayPaddingRight;
   }
 }

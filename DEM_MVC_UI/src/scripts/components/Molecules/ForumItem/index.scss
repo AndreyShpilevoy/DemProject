@@ -3,24 +3,24 @@
 
 .forumTitle {
   font-size: $forumTitleFontSize;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .forumDescription {
   font-size: $forumColumnFontSize;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .forumLastActiveTopic {
   font-size: $forumColumnFontSize;
   .forumLastActiveTopicMessage {
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
@@ -36,28 +36,28 @@
   .forumTopicsCounter,
   .forumPostsCounter {
     display: inline-block;
-    width: initial;
-    padding-right: $forumCounterPaddingRight;
     font-size: $forumColumnFontSize;
-    white-space: nowrap;
     overflow: hidden;
+    padding-right: $forumCounterPaddingRight;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    width: initial;
   }
 }
 
 //md screens only
 @media (min-width: 768px) and (max-width: 991px) {
   .forumLastPostWrapper {
-    margin: initial;
     display: flex;
     flex-wrap: wrap;
+    margin: initial;
 
     .forumLastPostAutorNameStyle,
     .forumLastActiveTopic {
+      align-items: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
     }
 
     .forumLastPostAutorNameStyle {
@@ -66,11 +66,11 @@
     }
 
     .forumLastActiveTopic {
-      flex: 0 0 58.33333%;
-      max-width: 58.33333%;
       display: flex;
+      flex: 0 0 58.33333%;
       flex-direction: column;
       justify-content: center;
+      max-width: 58.33333%;
     }
   }
 }

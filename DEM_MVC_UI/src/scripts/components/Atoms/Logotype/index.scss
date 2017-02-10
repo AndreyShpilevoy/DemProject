@@ -1,8 +1,8 @@
 @import "image-backgrounds.scss";
 
 .logotype {
-  height: 100%;
-  width: 100%;
   background: $logotypeBackgroundImage;
   background-size: cover;
+  height: 100%;
+  width: 100%;
 }

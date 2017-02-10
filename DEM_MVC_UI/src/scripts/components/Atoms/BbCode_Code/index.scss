@@ -4,8 +4,8 @@
 
 
 .code {
-  border: $bbCodeBorderSize solid $bbCodeCodeBorderColor;
   background-color: $bbCodeCodeBackgroundColor;
+  border: $bbCodeBorderSize solid $bbCodeCodeBorderColor;
   padding: $bbCodePadding;
 }
 
@@ -23,9 +23,9 @@
 }
 
 .codeContent{
+  color: $bbCodeCodeContentColor;
   font-family: monospace;
   white-space: pre-wrap;
-  color: $bbCodeCodeContentColor;
 }
 
 .codeSelectButton{

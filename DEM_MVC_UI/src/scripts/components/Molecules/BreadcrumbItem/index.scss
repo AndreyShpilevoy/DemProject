@@ -6,31 +6,31 @@
   min-width: 4%;
 
   .breadcrumbItemArrow {
-    display: block;
     background: $breadcrumbItemBackgroundColor;
-    text-align: center;
-    padding-right: $breadcrumbItemArrowPaddingMarginRight;
-    padding-left: $breadcrumbItemArrowPaddingLeft;
-    position: relative;
-    margin-right: $breadcrumbItemArrowPaddingMarginRight;
-    text-decoration: none;
+    display: block;
     font-size: $breadcrumbItemArrowFontSize;
-    line-height: $breadcrumbItemArrowLineHeight;
     font-weight: bold;
     height: $breadcrumbItemArrowHeight;
+    line-height: $breadcrumbItemArrowLineHeight;
+    margin-right: $breadcrumbItemArrowPaddingMarginRight;
+    padding-left: $breadcrumbItemArrowPaddingLeft;
+    padding-right: $breadcrumbItemArrowPaddingMarginRight;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
 
     div {
-      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 
   .breadcrumbItemArrow:after,
   .breadcrumbItemArrow:before {
-    content: "";
-    border-top: $breadcrumbItemArrowHeight/2 solid transparent;
     border-bottom: $breadcrumbItemArrowHeight/2 solid transparent;
+    border-top: $breadcrumbItemArrowHeight/2 solid transparent;
+    content: "";
     position: absolute;
     top: 0;
   }
@@ -58,8 +58,8 @@
 
   &.breadcrumbItemActive .breadcrumbItemArrow,
   &.breadcrumbItemIgnored .breadcrumbItemArrow{
-    pointer-events: none;
     cursor: default;
+    pointer-events: none;
   }
 
 

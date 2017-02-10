@@ -3,10 +3,10 @@
 
 .socialMediaLink{
   height: $socialMediaLinkHeightWeight;
-  width: $socialMediaLinkHeightWeight;
   margin: 0 $socialMediaLinkMargingLeftRight;
+  width: $socialMediaLinkHeightWeight;
   svg {
-      opacity: 0.4;
+    opacity: 0.4;
   }
 }
 

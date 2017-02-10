@@ -8,11 +8,11 @@
 
 //md and smaller screens
 @media ($md-max) {
-    .contentHolderBodyWrapper {
-      @include element-closed;
-    }
+  .contentHolderBodyWrapper {
+    @include element-closed;
+  }
 
-    .contentHolderBodyWrapperOpened {
-      @include element-opened;
-    }
+  .contentHolderBodyWrapperOpened {
+    @include element-opened;
+  }
 }

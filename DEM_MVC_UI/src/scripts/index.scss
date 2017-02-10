@@ -1,6 +1,7 @@
 @import "sizes.scss";
 @import "colors.scss";
 
+// sass-lint:disable no-ids
 html, body, #app {
   height: 100%;
 }
@@ -8,6 +9,7 @@ html, body, #app {
 #app {
   min-height: 100%;
 }
+// sass-lint:enable no-ids
 
 html {
   font-size: $mainFontSize;
@@ -18,8 +20,8 @@ body {
   font-family: Arial,sans-serif;
   font-size: $bodyFontSize;
   line-height: $bodyLineHeight;
-  min-width: $bodyMinWidth;
   margin: initial;
+  min-width: $bodyMinWidth;
 }
 
 a:link,

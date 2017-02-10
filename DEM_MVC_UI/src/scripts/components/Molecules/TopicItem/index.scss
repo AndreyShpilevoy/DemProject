@@ -10,16 +10,16 @@
 .topicTitle{
   display: block;
   font-size: $topicTitleFontSize;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .topicParentForumWrapper {
-  white-space: nowrap;
+  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: block;
+  white-space: nowrap;
 
   .topicParentForumTitle,
   .topicParentForumTitle:hover{
@@ -38,26 +38,26 @@
 }
 
 .lastPostInfoColumn{
-  height: 100%;
   display: flex;
   flex-direction: row;
+  height: 100%;
 }
 
 @media ($md-min) and ($md-max)
 {
   .lastPostInfoColumn{
+    align-items: center;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
   }
 }
 @media ($lg-min)
 {
   .lastPostInfoColumn{
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
   }
 }

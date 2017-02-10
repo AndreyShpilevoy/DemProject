@@ -8,15 +8,15 @@
 }
 
 .thinkContent{
-   background-color: $bbCodeThinkBackgroundColor;
-   border-radius: $bbCodeThinkContentBorderRadius;
-   border: $bbCodeBorderSize solid $bbCodeThinkBorderColor;
-   padding: $bbCodePadding;
+  background-color: $bbCodeThinkBackgroundColor;
+  border: $bbCodeBorderSize solid $bbCodeThinkBorderColor;
+  border-radius: $bbCodeThinkContentBorderRadius;
+  padding: $bbCodePadding;
 }
 
 .thinkImage{
   background-image: $bbCodeThinkSmile;
-  background-size: $bbCodeThinkImageSize;
   background-repeat: no-repeat;
+  background-size: $bbCodeThinkImageSize;
   padding-top: $bbCodeThinkImageSize;
 }

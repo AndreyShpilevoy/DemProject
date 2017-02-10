@@ -2,9 +2,9 @@
 @import "common.scss";
 
 .pageContentWrapper {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .pageContent {
@@ -13,14 +13,14 @@
 }
 
 @media ($md-min)
-  {
+{
   .pageContent  {
     padding-top: $pageContentPaddingTopMd;
   }
 }
 
 @media ($lg-min)
-  {
+{
   .pageContent  {
     padding-top: $pageContentPaddingTopLgXl;
   }

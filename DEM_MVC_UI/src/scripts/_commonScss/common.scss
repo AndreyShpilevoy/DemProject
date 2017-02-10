@@ -39,22 +39,22 @@ $xl-max: 'max-width: 9999999999px';
 }
 
 .flexRowVerticalCenter {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
 
 .flexColumnCenter {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
 
 .flexRowCenter {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
 }
 

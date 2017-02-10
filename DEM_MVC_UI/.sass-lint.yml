@@ -44,9 +44,3 @@ rules:
   property-sort-order:
     - 1
     - ignore-custom-properties: true
-  variable-for-property:
-    - 2
-    -
-      properties:
-        - margin
-        - content

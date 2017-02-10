@@ -4,15 +4,15 @@
 @import "image-backgrounds.scss";
 
 .footer {
-  margin-top: $footerMarginTop;
   background-color: $footerBackgroundColor;
-  height: $footerHeightMdDown;
   color: $footerTextColor;
+  height: $footerHeightMdDown;
+  margin-top: $footerMarginTop;
 }
 
 .footerCopyrightWrapper{
-  flex: 1 0 0;
   align-items: center;
+  flex: 1 0 0;
 }
 
 .footerEmptyWrapper,
@@ -23,8 +23,8 @@
 //lg and bigger screens
 @media ($lg-min) {
   .footer {
-    height: $footerHeightLgUp;
     background-image: $footerBackgroundImageLg;
+    height: $footerHeightLgUp;
   }
 }
 

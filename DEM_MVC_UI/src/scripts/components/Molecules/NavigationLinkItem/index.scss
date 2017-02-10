@@ -4,13 +4,13 @@
 
 .navigationLinkItemContainer {
   .navigationLinkItem {
-    display: block;
     color: $orangeTextColor;
+    display: block;
     font-size: $navigationLinkItemFontSize;
-    padding: $navigationLinkItemPadding;
-    white-space: nowrap;
     overflow: hidden;
+    padding: $navigationLinkItemPadding;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .navigationLinkItem:hover{

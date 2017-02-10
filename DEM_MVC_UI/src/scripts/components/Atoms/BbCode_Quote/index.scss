@@ -8,8 +8,8 @@
 }
 
 .quote {
-  border: $bbCodeBorderSize solid $bbCodeQuoteBorderColor;
   background-color: $bbCodeQuoteBackgroundColor;
-  padding: $bbCodePadding;
+  border: $bbCodeBorderSize solid $bbCodeQuoteBorderColor;
   margin: $bbCodeQuoteMarginVertical $bbCodeQuoteMarginHorisontal;
+  padding: $bbCodePadding;
 }

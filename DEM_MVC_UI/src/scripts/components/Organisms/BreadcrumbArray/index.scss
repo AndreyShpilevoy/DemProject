@@ -1,7 +1,7 @@
 @import "sizes.scss";
 
 .breadcrumb {
-  margin-top: $breadcrumbMargingTop;
   display: flex;
   flex-flow: row wrap;
+  margin-top: $breadcrumbMargingTop;
 }

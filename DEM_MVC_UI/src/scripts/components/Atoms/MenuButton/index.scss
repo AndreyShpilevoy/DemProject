@@ -9,10 +9,10 @@
   //.menuButtonLine like in bootstrap 3
   .menuButtonLine {
     background-color: $orangeTextColor;
-    display: block;
-    width: $menuButtonLineWidth;
-    height: $menuButtonLineHeight;
     border-radius: $menuButtonLineBorderRadius;
+    display: block;
+    height: $menuButtonLineHeight;
+    width: $menuButtonLineWidth;
   }
 
   .menuButtonLine + .menuButtonLine {
