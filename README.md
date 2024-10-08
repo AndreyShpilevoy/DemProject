@@ -11,16 +11,21 @@ In future in Wiki I will write documentation about project.
 
 ### Build instructions:
 
-Tested on Node 12.13, using VS2022 to build:
+Tested on Node 12.13, using VS2022 to build.
+
+**Install Node packages:**
 > npm install --only=dev
 
+(Note: you might need to first cd to ./DEM_MVC before running npm)
+
+**Install further dependencies using Bower:**
 > bower install 
 (or individual install of jquery and jquery-ui via bower if automatics fails)
 
-Check that local gulp compiles by running:
+**Check that local gulp compiles by running:**
 > gulp bild-debug
 
-Now build in VS
+**Now build in VS**
 
 ### Running locally
 
