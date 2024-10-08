@@ -1,10 +1,12 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="keywords" content="Фан сайт игры Ex Machina HTA моды форум патчи ремастер" />
     <title>@ViewBag.Title</title>
     <link type="text/css" rel="stylesheet" href="~/wwwroot/css/dem.min.css" />
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
 </head>
 <body>
     <div class="on-left" title="Наверх" id="back-to-top" style="display: none;"></div>
@@ -15,19 +17,25 @@
             <li>
                 <a href="/">Форумы</a>
             </li>
-            <li>
-                @Html.ActionLink("Временный чат", "Chat", "Conference")
+            <li class="hidden-xs">
+                <a href="https://github.com/DeusExMachinaTeam/EM-CommunityPatch">Скачать Community Remaster</a>
             </li>
             <li>
+                <a href="https://discord.gg/nq6BsRk">Наш Discord</a>
+            </li>
+            <li class="hidden-xs">
+                <a href="https://deuswiki.com/w/Deus_Ex_Machina_Вики">DeusWiki</a>
+            </li>
+            <li class="hidden-xs">
                 <a href="http://vk.com/exmachina2">Группа в ВК</a>
             </li>
             @Html.Partial("_LoginPartial")
         </ul>
         @RenderBody()
+        <div id="footerWrap">
+            <div id="footer">DEM team © 04.03.2007</div>
+        </div>
     </div>
-<div id="footerWrap">
-    <div id="footer"></div>
-</div>
     <script src="~/wwwroot/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/wwwroot/lib/jquery-ui/jquery-ui.min.js"></script>
     <script src="~/wwwroot/js/dem.min.js"></script>
