@@ -1,7 +1,7 @@
 ﻿@model DEM_MVC.Models.ManageViewModels.VerifyPhoneNumberViewModel
 
 @{
-    ViewBag.Title = "Verify Phone Number";
+    ViewBag.Title = "Подтвердить номер телефона - DeusExMachina Форум";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -10,7 +10,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.Hidden("phoneNumber", @Model.PhoneNumber)
-    <h4>Enter verification code</h4>
+    <h4>Отправить проверочный код</h4>
     <h5>@ViewBag.Status</h5>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -22,7 +22,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Submit" class="ui-button ui-state-default ui-button-text-only ui-button-external-logins" />
+            <input type="submit" value="Отправить" class="ui-button ui-state-default ui-button-text-only ui-button-external-logins" />
         </div>
     </div>
 }
