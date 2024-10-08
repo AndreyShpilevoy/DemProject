@@ -21,3 +21,10 @@ Check that local gulp compiles by running:
 > gulp bild-debug
 
 Now build in VS
+
+### Running locally
+
+Update SQL connection credential in connectionStrings of:
+> DEM_MVC\Web.config
+
+to connect to local or remote MS SQL DB to debug from VS
