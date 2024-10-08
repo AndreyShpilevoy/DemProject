@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DEM_MVC_DAL.Services;
 
 namespace DEM_MVC_DAL.Entities.TopicsViewEntities
@@ -58,5 +59,7 @@ namespace DEM_MVC_DAL.Entities.TopicsViewEntities
 
         [Column(Name = "polls_only")]
         public bool PollsOnly { get; set; }
+        
+        public List<Tuple<int, string>> Parents { get; set; }
     }
 }

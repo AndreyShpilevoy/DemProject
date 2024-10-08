@@ -1,5 +1,6 @@
 ﻿@using DEM_MVC.Services
 @model DEM_MVC_BL.Models.PostModels.PostTableViewModelList
+@using System
 
 @{
     var postTableViewModel = Model.PostTableViewModel;
@@ -16,29 +17,27 @@
     var postId = "postId" + post.PostId;
     var btnClasses = "display-none ui-button ui-state-default ui-button-text-only";
 
-    <div id="@postId" class="post postShadow @pollOptionOddEvenInt">
-        <div class="postLink">
-            @Html.ActionLink("Link to post", "ViewTopic", "Conference", new { topicId = post.TopicId, page = Model.PageNumber, postId = post.PostId }, null)
-        </div>
-        <div class="postButtons">
-            buttons
-            <div class="admin-delete-post-buttons">
-                <button class="deletePostBtn @btnClasses" role="button" onclick="deletePost(@post.PostId)"><span class="ui-button-text colorRed">Delete Post</span></button>
-            </div>
-        </div>
-        <div class="postTime">
-            <span>Сообщение отправлено: @post.PostTime</span>
-        </div>
+    <div id="@postId" class="post @pollOptionOddEvenInt">
         <div class="postBody">
-            <div class="postUserInfo postShadow">
-                <div class="UsenName" style="color: #@post.User.GroupColor">
+            <div class="postUserInfo col-xs-2 col-sm-2 col-md-3 col-lg-2">
+                <div class="UsenName hidden-xs" style="color: #@post.User.GroupColor">
                     <span class="userName">@post.User.UserName</span>
-                    <div class="admin-ban-unban-buttons">
-                        <button class="banUserBtn @btnClasses" role="button" onclick="banUser(@post.UserId)"><span class="ui-button-text colorRed">Ban User</span></button>
-                        <button class="unbanUserBtn @btnClasses" role="button" onclick="unbanUser(@post.UserId)"><span class="ui-button-text colorGreen">UnBan User</span></button>
-                    </div>
                 </div>
-                <div class="UserRank">
+                <div class="UserAvatar">
+                    @if (!String.IsNullOrWhiteSpace(post.User.UserAvatar))
+                    {
+                        <img class="avatarImageSize" alt="Аватара" src="@post.User.UserAvatar">
+                    }
+                    else if (!String.IsNullOrWhiteSpace(post.User.GroupAvatar))
+                    {
+                        <img class="avatarImageSize" alt="Аватара" src="@post.User.GroupAvatar">
+                    }
+                    else
+                    {
+                        <img class="avatarImageSize" alt="Аватара" src="../wwwroot/images/avatar/100/noavatar.gif">
+                    }
+                </div>
+                <div class="UserRank hidden-xs">
                     @if (String.IsNullOrWhiteSpace(post.User.UserUniqueRank))
                     {
                         <span>@Html.Raw(post.User.UserCommonRank)</span>
@@ -48,50 +47,184 @@
                         <span>@Html.Raw(post.User.UserUniqueRank)</span>
                     }
                 </div>
-                <div class="UserAvatar">
-                    @if (!String.IsNullOrWhiteSpace(post.User.UserAvatar))
-                    {
-                        <img class="postShadow avatarImageSize" alt="Аватара" src="@post.User.UserAvatar">
+                <div class="Posts hidden-xs">
+                    <span class="yellowText">Сообщений:</span>
+                    <span>@post.User.UserPostsCount</span>
+                </div>
+                <div class="UserAge hidden-xs">
+                    @{
+                        DateTime start = post.User.UserBirthday;
+                        DateTime end = DateTime.Now;
+                        int years = (end.Year - start.Year - 1) +
+                            (((end.Month > start.Month) ||
+                            ((end.Month == start.Month) && (end.Day >= start.Day))) ? 1 : 0);
                     }
-                    else if (!String.IsNullOrWhiteSpace(post.User.GroupAvatar))
+
+                    @if (years < 110)
                     {
-                        <img class="postShadow avatarImageSize" alt="Аватара" src="@post.User.GroupAvatar">
+                        <span class="yellowText">Возраст:</span>
+                        <span>@years</span>
                     }
                 </div>
-                <div class="UserAge">
-                    @post.User.UserBirthday
+                <div class="UserFrom hidden-xs">
+                    @if (!String.IsNullOrWhiteSpace(post.User.UserFrom))
+                    {
+                        <span class="yellowText">Откуда:</span>
+                        <span>@Html.Raw(post.User.UserFrom)</span>
+                    }
                 </div>
-                <div class="UserFrom">
-                    @Html.Raw(post.User.UserFrom)
+                <div class="UserRegistered hidden-xs">
+                    @{
+                        DateTime regDate = post.User.UserRegDate;
+                        TimeSpan diffTime = end - regDate;
+                        String timeString = "";
+                        double averageDaysInMonth = 30.436;
+                        double averageDaysInYear = 365.25;
+
+                        int yearsPassed = end.Year - regDate.Year;
+                        int monthsPassed = end.Month - regDate.Month;
+
+                        if (end.Day < regDate.Day)
+                        {
+                            monthsPassed -= 1;
+                        }
+
+                        if (end.DayOfYear < regDate.DayOfYear)
+                        {
+                            yearsPassed -= 1;
+                            if (monthsPassed < 0)
+                            {
+                                monthsPassed += 12;
+                            }
+                        }
+
+                        if (diffTime.Days == 0)
+                        {
+                            if (diffTime.Hours == 0)
+                            {
+                                if (diffTime.Minutes == 0)
+                                {
+                                    timeString = "недавно =)";
+                                }
+                                else
+                                {
+                                    timeString = "меньше часа";
+                                }
+                            }
+                            else
+                            {
+                                timeString = "меньше дня";
+                            }
+                        }
+                        else if (monthsPassed < 1 && yearsPassed < 1)
+                        {
+                            String dayWord = HelpfulFunctionsService.SelectRightEnding(diffTime.Days, "день", "дня", "дней");
+                            timeString = diffTime.TotalDays + " " + dayWord;
+                        }
+                        else if (yearsPassed < 1)
+                        {
+                            int daysPassed = Convert.ToInt32(diffTime.TotalDays / averageDaysInMonth);
+                            String monthWord = HelpfulFunctionsService.SelectRightEnding(monthsPassed, "месяц", "месяца", "месяцев");
+                            String dayWord = HelpfulFunctionsService.SelectRightEnding(daysPassed, "день", "дня", "дней");
+                            timeString = monthsPassed + " " + monthWord + " " + daysPassed + " " + dayWord;
+                        }
+                        else if (monthsPassed > 0)
+                        {
+                            double daysLeft = diffTime.TotalDays / averageDaysInYear;
+
+                            String yearWord = HelpfulFunctionsService.SelectRightEnding(yearsPassed, "год", "года", "лет");
+                            String monthWord = HelpfulFunctionsService.SelectRightEnding(monthsPassed, "месяца", "месяца", "месяцев");
+                            timeString = yearsPassed + " " + yearWord + " " + monthsPassed + " " + monthWord;
+                        }
+                        else
+                        {
+                            String yearWord = HelpfulFunctionsService.SelectRightEnding(yearsPassed, "год", "года", "лет");
+                            timeString = yearsPassed + " " + yearWord;
+                        }
+                        <span class="yellowText">С нами:</span>
+                        <span>@timeString</span>
+                    }
                 </div>
-                <div class="UserMedals">
+                @* <div class="UserMedals">
                     medals
-                </div>
-                <div class="Reputation">
+                </div> *@
+                @* <div class="Reputation">
                     reputation
+                </div> *@
+                <div class="admin-ban-unban-buttons">
+                    <button class="banUserBtn @btnClasses" role="button" onclick="banUser(@post.UserId)"><span class="ui-button-text colorRed">Забанить</span></button>
+                    <button class="unbanUserBtn @btnClasses" role="button" onclick="unbanUser(@post.UserId)"><span class="ui-button-text colorGreen">Разбанить</span></button>
                 </div>
-                <div class="Posts">
-                    @post.User.UserPostsCount
-                </div>
-                <div class="UserWithUs">
+                @* <div class="UserWithUs">
                     with us
-                </div>
+                </div> *@
             </div>
-            <div class="postTextAndSignature">
-                <div class="postText postShadow">
-                    @Html.Raw(post.PostText)
+            <div class="postTextAndSigAndInfo col-xs-10 col-sm-10 col-md-9 col-lg-10">
+                <div class="postTextAndSignature">
+                    <div class="postInfoTop">
+                        <div class="UsenName hidden visible-xs">
+                            @{
+                                System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("ru-RU");
+                                DateTime postTime = post.PostTime;
+                                DateTime nowTime = DateTime.Now;
+                                var DayAlias = postTime.ToString("d MMMM yyyy", culture);
+                                if (postTime.Year == nowTime.Year)
+                                {
+                                    if (postTime.DayOfYear == nowTime.DayOfYear)
+                                    {
+                                        DayAlias = "Сегодня";
+                                    }
+                                    else if (postTime.DayOfYear == nowTime.DayOfYear - 1)
+                                    {
+                                        DayAlias = "Вчера";
+                                    }
+                                }
+                                var FullPostTimeString = DayAlias + " в " + postTime.ToString("t", culture);
+                            }
+                            <span class="userName" style="color: #@post.User.GroupColor">@post.User.UserName</span>
+                            <span class="smallTime">@FullPostTimeString</span>
+                        </div>
+                        <div class="postCreateTime hidden-xs">
+                            Отправлено: @post.PostTime
+                        </div>
+                        <div class="postLink hidden-xs">
+                            @Html.ActionLink("Ссылка на сообщение", "ViewTopic", "Conference", new { topicId = post.TopicId, page = Model.PageNumber, postId = post.PostId }, null)
+                        </div>
+                    </div>
+                    <div class="postText">
+                        @{
+                            var text_with_smilies = post.PostText.Replace("{SMILIES_PATH}", "../wwwroot/images/Smiles");
+                        }
+                        @Html.Raw(text_with_smilies)
+                    </div>
+                    @if (!String.IsNullOrWhiteSpace(post.User.UserSignature))
+                    {
+                        <hr class="postTextAndSigSeparator">
+                        <div class="postUserSignature">
+                            @{
+                                var sig_with_smilies = post.User.UserSignature.Replace("{SMILIES_PATH}", "../wwwroot/images/Smiles");
+                            }
+                            @Html.Raw(sig_with_smilies)
+                        </div>
+                    }
                 </div>
-                <div class="postUserSignature postShadow">
-                    @Html.Raw(post.User.UserSignature)
+                <div class="postInfoBottom">
+                @if (Convert.ToString(post.PostEditTime) != "01.01.1970 0:00:00" && Convert.ToString(post.PostEditTime) != "01.01.1753 0:00:00")
+                {
+                    <span class="postEditTime">Отредактировано: @post.PostEditTime (@post.PostEditReason)</span>
+                }
+                <div class="admin-delete-post-buttons">
+                    <button class="deletePostBtn @btnClasses" role="button" onclick="deletePost(@post.PostId)"><span class="ui-button-text colorRed">Удалить пост</span></button>
+                </div>
                 </div>
             </div>
         </div>
         <div class="clear"></div>
-        <div class="postEdits">
-            @post.PostEditTime
-        </div>
-        <div class="postWarnings">
-            warnings
-        </div>
+        @* <div class="postEdits"> *@
+            @* @post.PostEditTime *@
+        @* </div> *@
+        @* <div class="postWarnings"> *@
+            @* warnings *@
+        @* </div> *@
     </div>
 }

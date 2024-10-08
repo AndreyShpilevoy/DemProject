@@ -15,7 +15,8 @@ AS
 			  userTable.group_colour,
 			  userTable.topic_title AS last_topic_title,
 			  userTable.topic_id AS last_topic_id,
-			  forum_order
+			  forumTable.forum_order,
+			  userTable.post_id as last_post_id
 	FROM (
 	
 	SELECT tableWithUserId.last_post_time
@@ -25,6 +26,7 @@ AS
 		,tableWithUserId.forum_id
 		,tableWithUserId.topic_title
 		,tableWithUserId.topic_id
+		,tableWithUserId.post_id
 	  FROM dem_users usersTable JOIN (
 	  
 			SELECT tableWithTime.last_post_time
@@ -32,6 +34,7 @@ AS
 				,postsTable.topic_id
 				,tableWithTime.forum_id
 				,topicsTable.topic_title
+				,postsTable.post_id
 			FROM dem_posts postsTable, dem_topics topicsTable,(
 	  
 					  SELECT MAX(postsTable.post_time) AS last_post_time

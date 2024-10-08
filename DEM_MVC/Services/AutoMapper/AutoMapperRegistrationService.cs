@@ -128,6 +128,7 @@ namespace DEM_MVC.Services.AutoMapper
 					.ForMember(dest => dest.TopicFirstPostShow, opts => opts.Ignore())
 					.ForMember(dest => dest.PollsEnabled, opts => opts.Ignore())
 					.ForMember(dest => dest.PollsOnly, opts => opts.Ignore())
+					.ForMember(dest => dest.Parents, opts => opts.Ignore())
 					.ReverseMap()
 					.ForMember(dest => dest.PagesCount, opts => opts.ResolveUsing<TopicEntityPagesCountResolver>());
 
@@ -142,6 +143,7 @@ namespace DEM_MVC.Services.AutoMapper
 					.ForMember(dest => dest.LastPostUsername, opts => opts.Ignore())
 					.ForMember(dest => dest.LastPostGroupColor, opts => opts.Ignore())
 					.ForMember(dest => dest.LastPostId, opts => opts.Ignore())
+					.ForMember(dest => dest.Parents, opts => opts.Ignore())
 					.ReverseMap()
 					.ForMember(dest => dest.PagesCount, opts => opts.ResolveUsing<TopicEntityPagesCountResolver>());
 
@@ -159,7 +161,11 @@ namespace DEM_MVC.Services.AutoMapper
 					.ForMember(dest => dest.LastTopicTitle, opts => opts.Ignore())
 					.ForMember(dest => dest.LastTopicId, opts => opts.Ignore())
 					.ForMember(dest => dest.ForumOrder, opts => opts.Ignore())
-					.ReverseMap()
+					.ForMember(dest => dest.LastPostId, opts => opts.Ignore())
+					.ForMember(dest => dest.LastTopicPostCount, opts => opts.Ignore())
+					.ForMember(dest => dest.Parents, opts => opts.Ignore())
+                    .ForMember(dest => dest.Invisible, opts => opts.Ignore())
+                    .ReverseMap()
 					.ForMember(dest => dest.PagesCount, opts => opts.ResolveUsing<ForumEntityPagesCountResolver>());
 			});
 

@@ -14,6 +14,9 @@ namespace DEM_MVC_DAL.Entities.UserForPostViewEntities
         [Column(Name = "user_birthday")]
         public DateTime UserBirthday { get; set; }
 
+        [Column(Name = "user_regdate")]
+        public DateTime UserRegDate { get; set; }
+
         [Column(Name = "user_avatar")]
         public string UserAvatar { get; set; }
 

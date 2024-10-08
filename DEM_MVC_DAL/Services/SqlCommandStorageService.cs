@@ -38,8 +38,10 @@
                             user_id, username, 
                             group_colour, 
                             last_topic_title, 
-                            last_topic_id, 
-                            forum_order
+                            last_topic_id,
+                            forum_order,
+                            last_post_id,
+                            topic_post_count
 
                         FROM ForumsView";
         }
@@ -48,7 +50,10 @@
         {
             return @"SELECT forum_id, 
                             sub_forums_count, 
-                            topics_count
+                            topics_count,
+                            forum_name,
+                            forum_desc,
+                            parent_id
 
                         FROM ForumsView
                         WHERE forum_id = @forumId";
@@ -92,6 +97,31 @@
 
                         FROM TopicsView
                         WHERE topic_id = @topicId";
+        }
+
+        internal static string GetLastNTopics()
+        {
+            return @"SELECT TOP (@numOfTopics) forum_id
+                          ,topic_id
+                          ,topic_title
+                          ,topic_starter_username
+                          ,topic_starter_user_id
+                          ,topic_starter_group_color
+                          ,topic_start_time
+                          ,posts_count
+                          ,topic_views
+                          ,last_post_time
+                          ,last_post_user_id
+                          ,last_post_username
+                          ,last_post_group_color
+                          ,last_post_id
+                          ,topic_closed
+                          ,topic_first_post_show
+                          ,polls_enabled
+                          ,polls_only
+                      FROM TopicsView
+                      WHERE forum_id NOT IN @invisibleForums
+                      ORDER BY last_post_time DESC";
         }
 
         internal static string GetPollsByTopicId()
@@ -162,6 +192,7 @@
             return @"SELECT user_id,
                    username,
                    user_birthday,
+                   user_regdate,
                    user_avatar,
                    user_signature,
                    user_from,
@@ -647,6 +678,18 @@
             return @"SELECT *
                         FROM [dem_permissions_groups]
                         WHERE [group_id] in @groupsId AND [permission_Id] =
+                       (
+                           SELECT [permission_Id]
+                            FROM [dem_permissions]
+                            WHERE [permission_Title] = @permissionTitle
+	                    )";
+        }
+
+        internal static string GetGroupPermissionByGroupIdAndPermissionName()
+        {
+            return @"SELECT *
+                        FROM [dem_permissions_groups]
+                        WHERE [group_id] = @groupId AND [permission_Id] =
                        (
                            SELECT [permission_Id]
                             FROM [dem_permissions]

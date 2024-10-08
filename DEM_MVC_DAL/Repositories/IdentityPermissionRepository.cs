@@ -56,6 +56,36 @@ namespace DEM_MVC_DAL.Repositories
             return identityPermissionEntities;
         }
 
+        public List<IdentityPermissionEntity> GetPermissionByGroupId(string permissionTitle, int groupId, IConnectionFactory connectionFactory)
+        {
+            List<IdentityPermissionEntity> identityPermissionEntities = new List<IdentityPermissionEntity>();
+
+            try
+            {
+                List<GroupPermissionEntity> groupPermissionEntities;
+
+                using (var connection = connectionFactory.Create())
+                {
+                    groupPermissionEntities =
+                        connection.Query<GroupPermissionEntity>(
+                            SqlCommandStorageService.GetGroupPermissionByGroupIdAndPermissionName(),
+                            new { permissionTitle, groupId }).ToList();
+                }
+
+                foreach (var groupPermissionEntity in groupPermissionEntities)
+                {
+                    groupPermissionEntity.Type = IdentityPermissionType.GroupPermission;
+                    identityPermissionEntities.Add(groupPermissionEntity);
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, $"{nameof(IdentityPermissionRepository)}. Error in function {DemLogger.GetCallerInfo()}");
+            }
+
+            return identityPermissionEntities;
+        }
+
         public List<IdentityPermissionEntity> GetSeveralPermissionsByUserId(List<string> permissionsTitleList, int userId, IConnectionFactory connectionFactory)
         {
             List<IdentityPermissionEntity> identityPermissionEntities = new List<IdentityPermissionEntity>();

@@ -1,9 +1,28 @@
 ﻿@using DEM_MVC.Services.HtmlHelpers
 @model DEM_MVC_BL.Models.ForumModels.ForumInfoViewModel
 @{
-    ViewBag.Title = "ViewForum";
+    ViewBag.Title = String.Format("{0} - DeusExMachina Форум", Model.Title);
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var pageDescription = String.Format("Фан сайт форум игры Ex Machina - Раздел: {0}. Описание: {1}", Model.Title, Model.Description);
+
 }
+<meta name="description" content="@pageDescription" />
+<span class="topicTitle">@Html.ActionLink(Model.Title, "ViewForum", "Conference", new { forumId = Model.ForumId }, null)</span>
+<div class="topicDescription">@Model.Description</div>
+<hr class="medium-hr">
+<div>
+    <span>@Html.ActionLink("Форум", "Index")</span>
+    <span> › </span>
+    @{
+        foreach (var parent in Model.Parents)
+        {
+            <span>@Html.ActionLink(parent.Item2, "ViewForum", "Conference", new { forumId = parent.Item1 }, null)</span>
+            <span> › </span>
+        }
+    }
+    <span>@Html.ActionLink(Model.Title, "ViewForum", "Conference", new { forumId = Model.ForumId }, null)</span>
+</div>
+
 @if (Model.SubForumsCount > 0)
 {
     @Html.Action("ShowForumTableById", "Conference")
@@ -18,10 +37,10 @@
 {
     <div class="forum-actions">
         <div class="forum-actions-buttons">
-            New topic btn
+            @* New topic btn *@
         </div>
         <div class="forum-actions-paging">
-            @Html.TopicPagingForViewForum(Model, "ViewForum", "Conference", new {@class = navigationBtnClasses}, new {@class = currentPageNavigationBtnClasses})
+            @Html.TopicPagingForViewForum(Model, "ViewForum", "Conference", new { @class = navigationBtnClasses }, new { @class = currentPageNavigationBtnClasses })
         </div>
         <div class="clear"></div>
     </div>
@@ -30,10 +49,10 @@
 
     <div class="forum-actions">
         <div class="forum-actions-buttons">
-            New topic btn
+            @* New topic btn *@
         </div>
         <div class="forum-actions-paging">
-            @Html.TopicPagingForViewForum(Model, "ViewForum", "Conference", new {@class = navigationBtnClasses}, new {@class = currentPageNavigationBtnClasses})
+            @Html.TopicPagingForViewForum(Model, "ViewForum", "Conference", new { @class = navigationBtnClasses }, new { @class = currentPageNavigationBtnClasses })
         </div>
         <div class="clear"></div>
     </div>
@@ -42,7 +61,7 @@ else
 {
     <div class="forum-actions">
         <div class="forum-actions-buttons">
-            New topic btn
+            @* New topic btn *@
         </div>
         <div class="clear"></div>
     </div>

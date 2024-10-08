@@ -2,10 +2,25 @@
 
 
 @{
-    ViewBag.Title = "ViewForum";
+    ViewBag.Title = String.Format("{0} - DeusExMachina Форум", Model.Title);
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var pageDescription = String.Format("Фан сайт форум игры Ex Machina - Тема: {0}", Model.Title);
 }
 
+<meta name="description" content="@pageDescription" />
+
+<div class="topicTitle">@Html.ActionLink(Model.Title, "ViewTopic", "Conference", new { topicId = Model.TopicId }, null)</div>
+<hr class="medium-hr">
+<div>
+    <span>@Html.ActionLink("Форум", "Index")</span>
+    @{
+        foreach (var parent in Model.Parents)
+        {
+            <span> › </span>
+            <span>@Html.ActionLink(parent.Item2, "ViewForum", "Conference", new { forumId = parent.Item1 }, null)</span>
+        }
+    }
+</div>
 
 <div class="topic-actions">
     <div class="topic-actions-buttons">

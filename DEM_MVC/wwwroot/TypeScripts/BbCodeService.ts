@@ -175,7 +175,7 @@ class BbCodeService {
     }
 
     private createFrame(urlLink: string, width: number, height: number) {
-        return `<iframe style="vertical-align: bottom; width: ${width}px; height: ${height}px;" width="${width}" height="${height}" src="${urlLink}" webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>`;
+        return `<iframe style="vertical-align: bottom; max-width: ${width}px; width: 100%; aspect-ratio: 1.777;" src="${urlLink}" webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>`;
     }
 
     private createHtml5TagFromTheSource(sourceLink: string, frameWidth: number, frameHeight: number): string {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
@@ -48,6 +49,26 @@ namespace DEM_MVC_DAL.Repositories
                 DemLogger.Current.Error(exception, $"{nameof(TopicRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return topicViewEntity;
+        }
+
+        public List<TopicsViewEntity> GetLastNTopics(IConnectionFactory connectionFactory, int numOfTopics, Dictionary<int, bool> forumsVisibility)
+        {
+            List<TopicsViewEntity> topicViewEntities = new List<TopicsViewEntity>();
+            try
+            {
+                using (var connection = connectionFactory.Create())
+                {
+                    var invisibleForums = (from kvp in forumsVisibility
+                                           where kvp.Value == true
+                                           select kvp.Key).Distinct().ToArray();
+                    topicViewEntities = connection.Query<TopicsViewEntity>(SqlCommandStorageService.GetLastNTopics(), new { numOfTopics, invisibleForums }).ToList();
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, $"{nameof(TopicRepository)}. Error in function {DemLogger.GetCallerInfo()}");
+            }
+            return topicViewEntities;
         }
     }
 }

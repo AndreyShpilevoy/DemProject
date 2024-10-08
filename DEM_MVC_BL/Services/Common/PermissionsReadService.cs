@@ -42,6 +42,39 @@ namespace DEM_MVC_BL.Services.Common
             return result;
         }
 
+        public List<string> GetUnauthorisedHiddenForumIds()
+        {
+            List<string> listOfForums = new List<string>();
+            try
+            {
+                // groupId 1 is a dummy for unauthorised users
+                var permissions = _permissionRepository.GetPermissionByGroupId("view_forum", 1, _connectionFactory);
+                var permissionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
+                listOfForums = CalculateHiddenForumsIds(permissionModels);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, $"{nameof(PermissionsReadService)}. Error in function {DemLogger.GetCallerInfo()}");
+            }
+            return listOfForums;
+        }
+
+        public List<string> GetUserHiddenForumIds(int userId)
+        {
+            List<string> listOfForums = new List<string>();
+            try
+            {
+                var permissions = _permissionRepository.GetPermissionByUserId("view_forum", userId, _connectionFactory);
+                var permissionModels = Mapper.Map<List<IdentityPermissionEntity>, List<IdentityPermissionModel>>(permissions);
+                listOfForums = CalculateHiddenForumsIds(permissionModels);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, $"{nameof(PermissionsReadService)}. Error in function {DemLogger.GetCallerInfo()}");
+            }
+            return listOfForums;
+        }
+
         public bool UserHasPermissionByForumId(int userId, int forumId, List<string> permissionsNameList)
         {
             bool result = false;
@@ -92,6 +125,19 @@ namespace DEM_MVC_BL.Services.Common
                 DemLogger.Current.Error(exception, $"{nameof(PermissionsReadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return result;
+        }
+
+        private List<string> CalculateHiddenForumsIds(List<IdentityPermissionModel> permissionModels)
+        {
+            var forumsId = new List<string>();
+
+            foreach (var groupPermissoionModel in permissionModels.Where(x => x.Type == IdentityPermissionType.GroupPermission && !x.SettingsState))
+            {
+                forumsId = groupPermissoionModel.ForumsId.Split(',').ToList();
+            }
+            forumsId = forumsId.Distinct().ToList();
+
+            return forumsId;
         }
 
         private bool CalulateUserPermissionsForForumId(int forumId, List<IdentityPermissionModel> permissoionModels)

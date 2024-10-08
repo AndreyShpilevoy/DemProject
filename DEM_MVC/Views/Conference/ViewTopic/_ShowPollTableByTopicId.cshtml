@@ -4,15 +4,10 @@
 
 @foreach (var poll in Model)
 {
-    <div class="pollContainer">
+    <div class="pollContainer col-xs-12 col-sm-10 col-lg-9">
         <div class="pollTitle">
             <span>
                 Голосование "@Html.Raw(poll.PollTitle)"
-            </span>
-        </div>
-        <div class="pollMaxOptionsDescription">
-            <span>
-                Можно выбрать только @poll.PollMaxOptions @Html.Raw(HelpfulFunctionsService.SelectRightEnding(poll.PollMaxOptions, "вариант", "варианта", "вариантов")) ответа.
             </span>
         </div>
         <div class="pollOptionsConteiner">
@@ -53,6 +48,11 @@
                     </div>
                 </div>
             }
+        </div>
+        <div class="pollMaxOptionsDescription">
+            <span>
+                Можно выбрать только @poll.PollMaxOptions @Html.Raw(HelpfulFunctionsService.SelectRightEnding(poll.PollMaxOptions, "вариант", "варианта", "вариантов")) ответа.
+            </span>
         </div>
         <div class="divCenter">
             <input class="ui-button ui-state-default ui-button-text-only" type="submit" value="Переголосовать" name="update">

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.UI;
 using AutoMapper;
 using DEM_MVC.Models;
 using DEM_MVC_BL.Interfaces.IServices.Common;
 using DEM_MVC_BL.Interfaces.IServices.Conference;
 using DEM_MVC_BL.Models.PostModels;
+using DEM_MVC_BL.Models.TopicModels;
 using DEM_MVC_Infrastructure.Models;
 using Microsoft.AspNet.Identity;
 
@@ -49,8 +51,17 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ShowForumTable()
         {
-            var forumTableViewModels = _forumReadService.GetAllForumTableViewModels();
+            var forumTableViewModels = _forumReadService.GetAllForumTableViewModels(_permissionsService);
             return PartialView("Index/_ShowForumTable", forumTableViewModels);
+        }
+
+        [HttpGet]
+        public ActionResult ShowLatestTopicsTable()
+        {
+            var numberOfTopics = _configReadService.GetLatestTopicsOnIndexPageCount();
+            var forumVisibility = _forumReadService.GetForumsVisibility(_permissionsService);
+            var topicTableViewModel = _topicReadService.GetLatestTopicsToShow(forumVisibility, numberOfTopics);
+            return PartialView("Index/_ShowLatestTopicsTable", topicTableViewModel);
         }
 
         #endregion
@@ -60,7 +71,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ViewForum(int forumId, int? page)
         {
-            var forumInfoViewModel = _forumReadService.GetForumInfoViewModelById(forumId);
+            var forumInfoViewModel = _forumReadService.GetForumInfoViewModelById(forumId, _permissionsService);
             forumInfoViewModel.PageNumber = page == null || page < 1 ? 1 : (int) page;
             return View("ViewForum/ViewForum", forumInfoViewModel);
         }
@@ -68,7 +79,7 @@ namespace DEM_MVC.Controllers
         [HttpGet]
         public ActionResult ShowForumTableById(int forumId)
         {
-            var forumTableViewModel = _forumReadService.GetForumTableViewModelById(forumId);
+            var forumTableViewModel = _forumReadService.GetForumTableViewModelById(forumId, _permissionsService);
             return PartialView("ViewForum/_ShowForumTableById", forumTableViewModel);
         }
 
@@ -76,8 +87,8 @@ namespace DEM_MVC.Controllers
         public ActionResult ShowTopicTableByForumId(int forumId, int? page)
         {
             var onPage = _configReadService.GetTopicsOnPageCount();
-            var forumInfoViewModel = _topicReadService.GetTopicTableViewModelsByForumId(forumId, onPage, page);
-            return PartialView("ViewForum/_ShowTopicTableByForumId", forumInfoViewModel);
+            var topicTableViewModel = _topicReadService.GetTopicTableViewModelsByForumId(forumId, onPage, page);
+            return PartialView("ViewForum/_ShowTopicTableByForumId", topicTableViewModel);
         }
 
         #endregion
@@ -88,6 +99,10 @@ namespace DEM_MVC.Controllers
         public ActionResult ViewTopic(int topicId, int? page)
         {
             var topicInfoViewModel = _topicReadService.GetTopicInfoViewModelById(topicId);
+            var forumInfoViewModel = _forumReadService.GetForumInfoViewModelById(topicInfoViewModel.ForumId, _permissionsService);
+            List<Tuple<int, string>> parents = forumInfoViewModel.Parents;
+            parents.Add(new Tuple<int, string>(forumInfoViewModel.ForumId, forumInfoViewModel.Title));
+            topicInfoViewModel.Parents = parents;
             topicInfoViewModel.PageNumber = page == null || page < 1 ? 1 : (int) page;
             return View("ViewTopic/ViewTopic", topicInfoViewModel);
         }

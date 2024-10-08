@@ -8,21 +8,18 @@
 
     <div class="topicsContainer">
         <div class="topicsCategory">
-            <div class="topicsCategoryName col-sm-5 col-md-6 col-xs-12">
-                Тема
-            </div>
-            <div class="topicsCategoryPosts col-sm-1 col-md-1 hidden-xs">
-                <span class="visible-xs visible-sm hidden">Сообщ.</span>
-                <span class="hidden-xs hidden-sm">Сообщений</span>
+            <div class="topicsCategoryName col-sm-6 col-md-7 col-lg-6 col-xs-12">
+                Активные темы
             </div>
             <div class="topicsCategoryViews col-sm-1 col-md-1 hidden-xs">
                 <span class="visible-xs visible-sm hidden">Просм.</span>
                 <span class="hidden-xs hidden-sm">Просмотров</span>
             </div>
-            <div class="topicsCategoryTopicStarter col-sm-2 col-md-1 hidden-xs">
-                Автор темы
+            <div class="topicsCategoryPosts col-sm-1 col-md-1 hidden-xs">
+                <span class="visible-xs visible-sm hidden">Собщ.</span>
+                <span class="hidden-xs hidden-sm">Сообщений</span>
             </div>
-            <div class="topicsCategoryLastPost col-sm-3 col-md-3 hidden-xs">
+            <div class="topicsCategoryLastPost col-sm-3 col-md-3 col-lg-4 hidden-xs">
                 Последнее сообщение
             </div>
         </div>
@@ -38,7 +35,7 @@
                 }
                 var topic = Model[i];
                 <div class="topic @topicRowBg" onmouseover=@Html.Raw("this.style.background='#666';") onmouseout=@topicColorCode>
-                    <div class="topicsCategoryName col-sm-5 col-md-6 col-xs-12">
+                    <div class="topicsCategoryName col-sm-6 col-md-7 col-lg-6 col-xs-12">
                         <div class="topicNameInForum">
                             @Html.ActionLink(topic.Title, "ViewTopic", "Conference", new { topicId = topic.TopicId }, null)
                             @{
@@ -56,31 +53,31 @@
                             <div class="visible-xs hidden">
                                 <span style="color: #@topic.TopicStarterGroupColor; font-weight: bold;">@Html.Raw(topic.TopicStarterUsername)</span>
                                 <span style="font-weight: normal;">| Cоздана @dateCreatedStringShort</span>
+                                <div class="topicsCategoryNameDescriptionPaging">
+                                    @Html.PostPagingForViewForum(topic, "ViewTopic", "Conference", new { @class = navigationBtnClasses })
+                                </div>
                             </div>
-                            <div class="hidden-xs" style="font-weight: normal;">Cоздана @dateCreatedString</div>
-                        </div>
-                        <div class="topicsCategoryNameDescription">
-                            @*<span style="color: #@topic.TopicStarterGroupColor; font-weight: bold;">@Html.Raw(topic.TopicStarterUsername)</span> » @dateCreatedString*@
-                        </div>
-                        <div class="topicsCategoryNameDescriptionPaging">
-                            @Html.PostPagingForViewForum(topic, "ViewTopic", "Conference", new { @class = navigationBtnClasses })
+                            <div class="hidden-xs" style="font-weight: normal;">
+                                <span>Cоздана </span>
+                                <span style="color: #@topic.TopicStarterGroupColor; font-weight: bold;">@Html.Raw(topic.TopicStarterUsername)</span>
+                                <span>@dateCreatedString</span>
+                                <div class="topicsCategoryNameDescriptionPaging">
+                                    @Html.PostPagingForViewForum(topic, "ViewTopic", "Conference", new { @class = navigationBtnClasses })
+                                </div>
+                            </div>
                         </div>
                         <div class="clear"></div>
-                    </div>
-                    <div class="topicsCategoryPosts col-sm-1 col-md-1 hidden-xs">
-                        @topic.PostsCount
                     </div>
                     <div class="topicsCategoryViews col-sm-1 col-md-1 hidden-xs">
                         @topic.TopicViews
                     </div>
-                    <div class="topicsCategoryTopicStarter col-sm-2 col-md-1 hidden-xs">
-                        <span style="color: #@topic.TopicStarterGroupColor; font-weight: bold;">@Html.Raw(topic.TopicStarterUsername)</span>
-                        @*» @dateCreatedString*@
+                    <div class="topicsCategoryPosts col-sm-1 col-md-1 hidden-xs">
+                        @topic.PostsCount
                     </div>
                     <hr class="small-hr col-xs-12 hidden visible-xs">
-                    <div class="topicsCategoryLastPost col-sm-3 col-md-3 col-xs-12">
+                    <div class="topicsCategoryLastPost col-sm-3 col-md-3 col-lg-4 col-xs-12">
                         <span class="visible-xs hidden marginRight">Последнее сообщение:</span>
-                        <div class="marginRight" >
+                        <div class="marginRight">
                             <span style="color: #@topic.LastPostGroupColor; font-weight: bold;">@Html.Raw(topic.LastPostUsername)</span>
                         </div>
                         <div>
@@ -94,4 +91,5 @@
             }
         </div>
     </div>
+    <br />
 }

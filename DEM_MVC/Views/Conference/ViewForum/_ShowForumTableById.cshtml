@@ -4,28 +4,33 @@
 {
     <div class="forumsContainer">
         <div class="forumsCategory">
-            <div class="forumsCategoryName">
+            <div class="forumsCategoryName col-sm-6 col-md-7 col-xs-12">
                 Раздел
             </div>
-            <div class="forumsCategoryTopics">
+            <div class="forumsCategoryTopics col-sm-1 col-md-1 hidden-xs">
                 Темы
             </div>
-            <div class="forumsCategoryPosts">
+            <div class="forumsCategoryPosts col-sm-2 col-md-1 hidden-xs">
                 Сообщения
             </div>
-            <div class="forumsCategoryLastPost">
+            <div class="forumsCategoryLastPost col-sm-3 col-md-3 hidden-xs">
                 Последнее сообщение
             </div>
         </div>
         <div class="forumsCategoryBody">
             @foreach (var forum in Model.SubForums)
             {
+                if (forum.Invisible)
+                {
+                    continue;
+                }
                 <div class="forum">
-                    <div class="forumsCategoryName">
+                    <div class="forumsCategoryName col-sm-6 col-md-7 col-xs-12">
                         <div>
                             @Html.ActionLink(forum.Title, "ViewForum", "Conference", new { forumId = forum.ForumId }, null)
+                            <span class="visible-xs hidden">Темы: @forum.TopicsCount | Сообщений: @forum.PostsCount</span>
                         </div>
-                        <div>
+                        <div class="forumCategoryDescription hidden-xs">
                             @Html.Raw(forum.Description)
                         </div>
                         @if (forum.DisplaySubForums && forum.SubForums.Count > 0)
@@ -39,13 +44,15 @@
                             </div>
                         }
                     </div>
-                    <div class="forumsCategoryTopics">
+                    <div class="forumsCategoryTopics col-sm-1 col-md-1 hidden-xs">
                         @forum.TopicsCount
                     </div>
-                    <div class="forumsCategoryPosts">
+                    <div class="forumsCategoryPosts col-sm-2 col-md-1 hidden-xs">
                         @forum.PostsCount
                     </div>
-                    <div class="forumsCategoryLastPost">
+                    <hr class="small-hr col-xs-12 hidden visible-xs">
+                    <div class="forumsCategoryLastPost col-xs-12 col-md-3 col-sm-3">
+                        <span class="visible-xs hidden">Последнее сообщение:</span>
                         @if (String.IsNullOrWhiteSpace(forum.Username))
                         {
                             <div>Нет тем</div>

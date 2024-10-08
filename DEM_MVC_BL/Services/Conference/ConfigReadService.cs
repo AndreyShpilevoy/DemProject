@@ -80,5 +80,16 @@ namespace DEM_MVC_BL.Services.Conference
             var result = Int32.Parse(topicsOnPage.ConfigValue);
             return result == 0 ? 1 : result;
         }
+
+        public int GetLatestTopicsOnIndexPageCount()
+        {
+            var latestTopicsOnPage = ConfigModels.FirstOrDefault(x => x.ConfigName == "latestTopicsOnIndexPage");
+
+            if (latestTopicsOnPage == null)
+                return 5;
+
+            var result = Int32.Parse(latestTopicsOnPage.ConfigValue);
+            return result == 0 ? 1 : result;
+        }
     }
 }
