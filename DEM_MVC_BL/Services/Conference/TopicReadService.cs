@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI;
 using AutoMapper;
 using DEM_MVC_BL.Interfaces.IServices.Conference;
+using DEM_MVC_BL.Models.ForumModels;
 using DEM_MVC_BL.Models.TopicModels;
 using DEM_MVC_DAL.Entities.TopicsViewEntities;
 using DEM_MVC_DAL.Interfaces.IFactory;
@@ -52,6 +54,22 @@ namespace DEM_MVC_BL.Services.Conference
                 DemLogger.Current.Error(exception, $"{nameof(TopicReadService)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return topicShowViewModel;
+        }
+
+        public List<TopicTableViewModel> GetLatestTopicsToShow(Dictionary<int, bool> forumsVisibility, int numberOfTopics)
+        {
+            var topicTableViewModels = new List<TopicTableViewModel>();
+
+            try
+            {
+                List<TopicsViewEntity> topicViewEntities = _topicRepository.GetLastNTopics(_connectionFactory, numberOfTopics, forumsVisibility);
+                topicTableViewModels = Mapper.Map<List<TopicsViewEntity>, List<TopicTableViewModel>>(topicViewEntities);
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, $"{nameof(TopicReadService)}. Error in function {DemLogger.GetCallerInfo()}");
+            }
+            return topicTableViewModels.OrderByDescending(x => x.LastPostTime).ToList();
         }
     }
 }

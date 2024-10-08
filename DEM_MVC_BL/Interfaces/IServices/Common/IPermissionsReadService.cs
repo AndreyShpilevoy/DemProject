@@ -11,5 +11,11 @@ namespace DEM_MVC_BL.Interfaces.IServices.Common
         bool UserHasPermissionByTopicId(int userId, int topicId, string permissionName);
 
         bool UserHasPermissionByTopicId(int userId, int topicId, List<string> permissionsNameList);
+
+        List<string> GetUserHiddenForumIds(int userId);
+        
+        List<string> GetUnauthorisedHiddenForumIds();
+
+        
     }
 }

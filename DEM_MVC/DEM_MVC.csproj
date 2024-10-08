@@ -28,6 +28,7 @@
     <SccProvider>SAK</SccProvider>
     <UseGlobalApplicationHostFile />
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -394,7 +395,10 @@
     <Content Include="App_Data\SQL_Scripts\Migrate_Script_From_adeusexm_phpbbex_To_DEM.sql" />
     <Content Include="App_Data\SQL_Scripts\Truncate_DEM_tables.sql" />
     <Content Include="typings.json" />
+    <Content Include="favicon.ico" />
+    <Content Include="robots.txt" />
     <Content Include="DEM_MVC.ruleset" />
+    <Content Include="Views\Conference\Index\_ShowLatestTopicsTable.cshtml" />
     <None Include="wwwroot\scss\bootstrap.scss" />
     <None Include="wwwroot\scss\main-dem.scss" />
     <Content Include="wwwroot\css\dem.min.css" />
@@ -414,11 +418,13 @@
     <Content Include="wwwroot\images\jquery-ui\ui-icons_fbeab2_256x240.png" />
     <Content Include="wwwroot\images\jquery-ui\ui-icons_ffffff_256x240.png" />
     <None Include="wwwroot\scss\jquery-ui.scss" />
-    <Content Include="wwwroot\images\DEM\footer.png" />
-    <Content Include="wwwroot\images\DEM\head.png" />
+    <Content Include="wwwroot\images\DEM\footer.webp" />
+    <Content Include="wwwroot\images\DEM\head.webp" />
+    <Content Include="wwwroot\images\DEM\last_post.gif" />
     <Content Include="wwwroot\images\DEM\ui-poll-5c5c5c_1x100.png" />
     <Content Include="wwwroot\images\DEM\ui-poll-6c6c6c_1x100.png" />
     <Content Include="wwwroot\images\DEM\ui-poll-result-f1831f_1x100.png" />
+    <Content Include="wwwroot\images\avatar\100\noavatar.gif" />
     <Content Include="ErrorPages\2000.html" />
     <Content Include="ErrorPages\400.shtml" />
     <Content Include="ErrorPages\401.shtml" />

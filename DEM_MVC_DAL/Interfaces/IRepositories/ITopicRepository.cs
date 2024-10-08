@@ -8,5 +8,6 @@ namespace DEM_MVC_DAL.Interfaces.IRepositories
     {
         List<TopicsViewEntity> GetTopicsByForumId(int forumId, IConnectionFactory connectionFactory, int onPage, int? page);
         TopicsViewEntity GetTopicById(int topicId, IConnectionFactory connectionFactory);
+        List<TopicsViewEntity> GetLastNTopics(IConnectionFactory connectionFactory, int numOfTopics, Dictionary<int, bool> forumsVisibility);
     }
 }

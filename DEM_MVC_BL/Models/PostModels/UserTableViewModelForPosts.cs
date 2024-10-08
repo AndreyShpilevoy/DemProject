@@ -9,6 +9,7 @@ namespace DEM_MVC_BL.Models.PostModels
         public int UserId { get; set; }
         public string UserName { get; set; }
         public DateTime UserBirthday { get; set; }
+        public DateTime UserRegDate { get; set; }
         public string UserAvatar { get; set; }
         public string UserSignature { get; set; }
         public string UserFrom { get; set; }

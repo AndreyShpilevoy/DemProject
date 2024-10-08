@@ -1,7 +1,7 @@
 ﻿@model DEM_MVC.Models.AccountViewModels.VerifyCodeViewModel
 
 @{
-    ViewBag.Title = "Verify";
+    ViewBag.Title = "Подтвердить - DeusExMachina Форум";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -10,7 +10,7 @@
     @Html.AntiForgeryToken()
     @Html.Hidden("provider", @Model.Provider)
     @Html.Hidden("rememberMe", @Model.RememberMe)
-    <h4>Enter verification code</h4>
+    <h4>Введите код проверки</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">

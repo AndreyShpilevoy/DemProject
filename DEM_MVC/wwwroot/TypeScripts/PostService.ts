@@ -37,7 +37,7 @@ class PostService {
             type: "get",
             url: stringUrl + window.location.search,
             success(partialView) {
-                $(partialView).dialog({
+                (<any>$(partialView)).dialog({
                     resizable: false,
                     width: 1000,
                     modal: true,
@@ -62,7 +62,7 @@ class PostService {
                             text: "Cancel",
                             "class": self.dialogButtonClasses,
                             click() {
-                                $(this).dialog("close");
+                                (<any>$(this)).dialog("close");
                             }
                         }
                     ]

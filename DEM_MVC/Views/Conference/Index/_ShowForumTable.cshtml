@@ -1,31 +1,43 @@
 ﻿@model IEnumerable<DEM_MVC_BL.Models.ForumModels.ForumTableViewModel>
+@using Microsoft.Practices.ServiceLocation;
+@using System
 
 @foreach (var forumCategory in Model)
 {
+    if (forumCategory.Invisible)
+    {
+        continue;
+    }
     <div class="forumsContainer">
         <div class="forumsCategory">
-            <div class="forumsCategoryName">
+            <div class="forumsCategoryName col-xs-12 col-sm-6 col-md-7 col-lg-6">
                 @Html.ActionLink(forumCategory.Title, "ViewForum", "Conference", new { forumId = forumCategory.ForumId }, null)
             </div>
-            <div class="forumsCategoryTopics">
+            <div class="forumsCategoryTopics hidden-xs col-sm-1 col-md-1">
                 Темы
             </div>
-            <div class="forumsCategoryPosts">
-                Сообщения
+            <div class="forumsCategoryPosts hidden-xs col-sm-1 col-md-1">
+                <span class="visible-xs visible-sm hidden">Сообщ.</span>
+                <span class="hidden-xs hidden-sm">Сообщений</span>
             </div>
-            <div class="forumsCategoryLastPost">
+            <div class="forumsCategoryLastPost hidden-xs col-sm-4 col-md-3 col-lg-4">
                 Последнее сообщение
             </div>
         </div>
         <div class="forumsCategoryBody">
             @foreach (var forum in forumCategory.SubForums)
             {
-                <div class="forum">
-                    <div class="forumsCategoryName">
-                        <div>
-                            @Html.ActionLink(forum.Title, "ViewForum", "Conference", new { forumId = forum.ForumId }, null)
+                if (forum.Invisible)
+                {
+                    continue;
+                }
+                <div class="forum" onmouseover="this.style.background='#666';" onmouseout="this.style.background='transparent';">
+                    <div class="forumsCategoryName col-xs-12 col-sm-6 col-md-7 col-lg-6">
+                        <div class="forumCategoryName">
+                            <div class="smlRightMargin">@Html.ActionLink(forum.Title, "ViewForum", "Conference", new { forumId = forum.ForumId }, null)</div>
+                            <div class="hidden shortForumStats visible-xs" title="Темы: @forum.TopicsCount | Сообщений: @forum.PostsCount">🗂️</div>
                         </div>
-                        <div>
+                        <div class="forumCategoryDescription">
                             @forum.Description
                         </div>
                         @if (forum.DisplaySubForums && forum.SubForums.Count > 0)
@@ -34,18 +46,20 @@
                                 Подразделы:
                                 @foreach (var subForum in forum.SubForums)
                                 {
-                                    <span>@Html.ActionLink(subForum.Title, "ViewForum", "Conference", new { forumId = subForum.ForumId }, null) </span>
+                                    <span class="subForumName">@Html.ActionLink(subForum.Title, "ViewForum", "Conference", new { forumId = subForum.ForumId }, null) </span>
                                 }
                             </div>
                         }
                     </div>
-                    <div class="forumsCategoryTopics">
+                    <div class="forumsCategoryTopics hidden-xs col-sm-1 col-md-1">
                         @forum.TopicsCount
                     </div>
-                    <div class="forumsCategoryPosts">
+                    <div class="forumsCategoryPosts hidden-xs col-sm-1 col-md-1">
                         @forum.PostsCount
                     </div>
-                    <div class="forumsCategoryLastPost">
+                    <hr class="small-hr col-xs-12 hidden visible-xs">
+                    <div class="forumsCategoryLastPost col-xs-12 col-md-3 col-sm-4 col-lg-4">
+                        <span class="visible-xs hidden lastPostLabel">Последнее сообщение:</span>
                         @if (String.IsNullOrWhiteSpace(forum.Username))
                         {
                             <div>Нет тем</div>
@@ -53,10 +67,19 @@
                         else
                         {
                             <div>
-                                 @Html.ActionLink(forum.LastTopicTitle, "ViewTopic", "Conference", new {topicId = forum.LastTopicId}, null)
+                                @Html.ActionLink(forum.LastTopicTitle, "ViewTopic", "Conference", new { topicId = forum.LastTopicId }, null)
                             </div>
                             <div>
-                                @forum.LastPostTime <span style="color: #@forum.GroupColor">@forum.Username</span>
+                                @{
+                                    DateTime postDate = forum.LastPostTime;
+                                    System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("ru-RU");
+                                    var dateString = postDate.ToString("f", culture);
+                                    var pageNum = (int)Math.Ceiling((double)forum.LastTopicPostCount / 20);
+                                }
+                                @dateString <span style="color: #@forum.GroupColor; font-weight: bold;">@forum.Username</span>
+                                <a href="@Url.Action("ViewTopic", "Conference", new { topicId = forum.LastTopicId, page = pageNum, postId = forum.LastPostId })">
+                                    <img alt=">>" title="К первому непрочитанному сообщению" src="wwwroot/images/DEM/last_post.gif">
+                                </a>
                             </div>
                         }
                     </div>

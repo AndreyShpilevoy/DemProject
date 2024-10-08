@@ -38,6 +38,7 @@ namespace DEM_MVC_DAL.Repositories
                 using (var connection = connectionFactory.Create())
                 {
                     forumsViewEntity = connection.Query<ForumsViewEntity>(SqlCommandStorageService.GetForumViewInfoById(), new { forumId }).SingleOrDefault();
+                    forumsViewEntity.Parents = GetForumParents(forumsViewEntity, connectionFactory);
                 }
             }
             catch (Exception exception)
@@ -45,6 +46,29 @@ namespace DEM_MVC_DAL.Repositories
                 DemLogger.Current.Error(exception, $"{nameof(ForumsViewRepository)}. Error in function {DemLogger.GetCallerInfo()}");
             }
             return forumsViewEntity;
+        }
+
+        public List<Tuple<int, string>> GetForumParents(ForumsViewEntity forumView, IConnectionFactory connectionFactory)
+        {
+            List<Tuple<int, string>> parents = new List<Tuple<int, string>>();
+            try
+            {
+                using (var connection = connectionFactory.Create())
+                {
+                    if (forumView.ParentId != 0)
+                    {
+                        ForumsViewEntity parentViewEntity = new ForumsViewEntity();
+                        parentViewEntity = connection.Query<ForumsViewEntity>(SqlCommandStorageService.GetForumViewInfoById(), new { forumId = forumView.ParentId }).SingleOrDefault();
+                        parents.Add(new Tuple<int, string>(forumView.ParentId, parentViewEntity.Title));
+                        parents.InsertRange(0, GetForumParents(parentViewEntity, connectionFactory));
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                DemLogger.Current.Error(exception, $"{nameof(ForumsViewRepository)}. Error in function {DemLogger.GetCallerInfo()}");
+            }
+            return parents;
         }
 
         public int GetForumIdByTopicId(int topicId, IConnectionFactory connectionFactory)

@@ -6,10 +6,10 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 
 var gulp = require("gulp"),
     typings = require("gulp-typings"),
-    sass = require("gulp-sass"),
+    sass = require("gulp-sass")(require('sass')),
     del = require("del"),
     concat = require("gulp-concat"),
-    cssmin = require("gulp-cssmin"),
+    csso = require("gulp-csso"),
     uglify = require("gulp-uglify"),
     gulpsync = require("gulp-sync")(gulp),
     typeScript = require("gulp-typescript"),
@@ -104,12 +104,9 @@ gulp.task("concat-and-min:js", function () {
 
 gulp.task("concat-and-min:css", function () {
     return gulp.src(paths.cssTempFolder + fileSelectors.allCss)
-        .pipe(autoprefixer({
-            browsers: ["> 1%", "last 2 versions"],
-            cascade: false
-        }))
+        .pipe(autoprefixer())
         .pipe(concat("dem.min.css"))
-        .pipe(cssmin())
+        .pipe(csso())
         .pipe(gulp.dest(paths.cssFolder));
 });
 
@@ -121,22 +118,19 @@ gulp.task("concat:js", function () {
 
 gulp.task("concat:css", function () {
     return gulp.src(paths.cssTempFolder + fileSelectors.allCss)
-        .pipe(autoprefixer({
-            browsers: ["> 1%", "last 2 versions"],
-            cascade: false
-        }))
+        .pipe(autoprefixer())
         .pipe(concat("dem.min.css"))
         .pipe(gulp.dest(paths.cssFolder));
 });
 
-gulp.task("bild-debug", gulpsync.async(
-    [["clean:js", "procces:ts-to-js", "concat:js", "clean:temp-js"],
-    ["clean:css", "procces:sass-to-css", "concat:css", "clean:temp-css"]]
+gulp.task("bild-debug", gulp.parallel(
+    gulp.series("clean:js", "procces:ts-to-js", "concat:js", "clean:temp-js"),
+    gulp.series("clean:css", "procces:sass-to-css", "concat:css", "clean:temp-css")
     ));
 
-gulp.task("bild-release", gulpsync.async(
-    [["clean:js", "procces:ts-to-js", "concat-and-min:js", "clean:temp-js"],
-    ["clean:css", "procces:sass-to-css", "concat-and-min:css", "clean:temp-css"]]
+gulp.task("bild-release", gulp.parallel(
+    gulp.series("clean:js", "procces:ts-to-js", "concat-and-min:js", "clean:temp-js"),
+    gulp.series("clean:css", "procces:sass-to-css", "concat-and-min:css", "clean:temp-css")
     ));
 
-gulp.task("bild-reload:typings", gulpsync.sync(["clean:typingsDest", "load:typings", "move:typings", "clean:typingsSrc"]));
+gulp.task("bild-reload:typings", gulp.series("clean:typingsDest", "load:typings", "move:typings", "clean:typingsSrc"));

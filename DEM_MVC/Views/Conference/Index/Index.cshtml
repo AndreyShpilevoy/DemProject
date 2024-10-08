@@ -1,9 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Главная - DeusExMachina Форум - Фан сайт игр Ex Machina / Hard Truck Apocalypse - моды, помощь с вылетами и ошибками, Discord сервер";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<meta name="description" content="Старейший фан сайт форум любителей игры Ex Machina, здесь вы всегда сможете найти новости, моды, программы и многое другое для вашей любимой игры. Мы переехали в Discord, форум работает в архивном режиме." />
+
+@Html.Action("ShowLatestTopicsTable", "Conference")
 @Html.Action("ShowForumTable", "Conference")
 
 @*temporal block start*@

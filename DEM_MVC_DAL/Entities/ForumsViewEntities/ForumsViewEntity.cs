@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DEM_MVC_DAL.Services;
 
 namespace DEM_MVC_DAL.Entities.ForumsViewEntities
@@ -52,5 +53,15 @@ namespace DEM_MVC_DAL.Entities.ForumsViewEntities
 
         [Column(Name = "forum_order")]
         public int ForumOrder { get; set; }
+
+        [Column(Name = "last_post_id")]
+        public int LastPostId { get; set; }
+
+        [Column(Name = "topic_post_count")]
+        public int LastTopicPostCount { get; set; }
+
+        public bool Invisible { get; set; }
+
+        public List<Tuple<int, string>> Parents { get; set; }
     }
 }

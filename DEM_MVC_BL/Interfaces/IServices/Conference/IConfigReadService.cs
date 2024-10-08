@@ -8,5 +8,6 @@ namespace DEM_MVC_BL.Interfaces.IServices.Conference
         List<ConfigModel> ConfigModels { get; }
         int GetPostsOnPageCount();
         int GetTopicsOnPageCount();
+        int GetLatestTopicsOnIndexPageCount();
     }
 }

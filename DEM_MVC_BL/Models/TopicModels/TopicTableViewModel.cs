@@ -4,6 +4,7 @@ namespace DEM_MVC_BL.Models.TopicModels
 {
     public class TopicTableViewModel
     {
+        public int ForumId { get; set; }
         public int TopicId { get; set; }
         public string Title { get; set; }
         public string TopicStarterUsername { get; set; }

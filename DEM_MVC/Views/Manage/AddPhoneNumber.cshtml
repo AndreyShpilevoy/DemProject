@@ -1,7 +1,7 @@
 ﻿@model DEM_MVC.Models.ManageViewModels.AddPhoneNumberViewModel
 
 @{
-    ViewBag.Title = "Phone Number";
+    ViewBag.Title = "Номер телефона - DeusExMachina Форум";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -9,7 +9,7 @@
 @using (Html.BeginForm("AddPhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Add a phone number</h4>
+    <h4>Добавить номер телефона</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">

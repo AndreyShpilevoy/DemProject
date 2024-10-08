@@ -12,27 +12,34 @@ body {
     background-color: #1B1B1B;
     height: 100%;
     margin: 0;
-    font-size: 12px;
+    font-size: 10px;
     font-family: Verdana,Helvetica,Arial,sans-serif;
     color: #f5f4f1;
 }
 
 #wrap {
-    width: 1200px;
+    max-width: 1200px;
     background-color: #292929;
     box-shadow: 0px 0px 15px #464646;
     box-sizing: border-box;
     margin: 0 auto;
-    padding: 0 20px 90px;
+    padding: 0 5px 0;
     min-height: 100%;
     height: auto !important;
     height: 100%;
 }
 
+@media (min-width: 768px) {
+    #wrap {
+        padding: 0 20px 0;
+    }
+}
+
 #header {
-    background-image: url('../images/DEM/head.png');
-    height: 231px;
-    width: 1160px;
+    background-image: url('../images/DEM/head.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: 5.0;
 }
 
 #headerMargin {
@@ -40,20 +47,50 @@ body {
 }
 
 #footerWrap {
-    width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin-top: 3px;
+    padding-bottom: 5px;
 }
 
 #footer {
-    background-image: url('../images/DEM/footer.png');
-    width: 1160px;
-    margin: -86px auto 0;
-    height: 86px;
+    background-image: none;
+    text-align: center;
+    line-height: normal;
+    color: #FFA600;
+    font-weight: bold;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: inherit;
+    margin: 0px auto 0;
+    padding: 5px 0;    
 }
+
+@media (min-width: 768px) {
+    #footer {
+        line-height: 56px;
+        background-image: url("../images/DEM/footer.webp");
+        aspect-ratio: 13;
+        color: black;
+        margin: 0px auto 0;
+        line-height: 4.4;
+        font-size: min(11px, 0.92vw);
+    }
+}
+
 
 .forumsContainer,
 .topicsContainer {
     padding-top: 5px;
+}
+
+.shortForumStats {
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+.lastPostLabel {
+    font-weight: bold;
 }
 
 .forumsCategory,
@@ -66,61 +103,146 @@ body {
     font-weight: bold;
     text-shadow: 2px 2px 2px #000000;
     text-transform: uppercase;
-    display: table;
+    display: flex;
     width: 100%;
     padding-bottom: 5px;
     padding-top: 5px;
     box-sizing: border-box;
+    align-items: center;
 }
 
 .forumsCategory > div,
 .forumsCategoryBody > .forum > div,
 .topicsCategory > div,
 .topicsCategoryBody > .topic > div {
-    display: table-cell;
+    // display: table-cell;
     vertical-align: middle;
 }
 
 .forumsCategoryName,
-.topicsCategoryName {
-    width: 635px;
+.forumsCategoryLastPost {
+    // overflow-wrap: anywhere;
     padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+
+.forumCategoryName {
+    font-weight: bold;
+    font-size: 1.1em;
+    font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
+    display: flex;
+}
+
+.smlRightMargin {
+    margin-right: 2px;
+}
+
+.forumCategoryDescription {
+    color: #eee;
+}
+
 
 .forumsCategoryTopics,
-.forumsCategoryPosts,
-.topicsCategoryPosts,
-.topicsCategoryViews {
-    width: 98px;
+.forumsCategoryPosts {
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.forumsCategoryLastPost,
-.topicsCategoryLastPost {
-    width: 311px;
+.topicsCategoryPosts,
+.topicsCategoryViews,
+.topicsCategoryTopicStarter {
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topicsCategoryLastPost {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+    .topicsCategoryLastPost {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
 }
 
 .forumsCategoryBody,
 .topicsCategoryBody {
     background-color: #565656;
-    display: table;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
+}
+
+.marginRight {
+    margin-right: 3px;
 }
 
 .forumsCategoryBody > .forum,
 .topicsCategoryBody > .topic {
-    border-bottom: 1px solid #939393;
+    border-bottom: 2px solid #939393;
     border-left: 2px solid #939393;
     border-right: 2px solid #939393;
     box-sizing: border-box;
 }
 
+@media (min-width: 768px) {
+    .forumsCategoryBody > .forum,
+    .topicsCategoryBody > .topic {
+        border-bottom: 1px solid #939393;
+    }
+}
+
+
 .forumsCategoryBody > .forum > div,
 .topicsCategoryBody > .topic > div {
     border-left: 1px solid #969696;
-    font-size: 1.2em;
-    line-height: 2.2em;
+    font-size: 1.13em;
+    line-height: 1.7em;
+    padding: 5px 15px;
+}
+
+.topicsCategoryName {
+    // overflow-wrap: anywhere;
+    display: flex;
+    flex-direction: column;
+}
+
+.topic {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.topicNameInForum {
+    font-weight: bold;
+}
+
+.topicTitle {
+    font-size: 2em;
+}
+
+.forumTitle {
+    font-size: 2em;
+}
+
+.forum {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 a {
@@ -149,15 +271,18 @@ a {
 }
 
 .demNavigationBtn {
-    margin: 0 1.5px;
-    padding: 0 1.5px;
+    // margin: 0 1.5px;
+    // padding: 0 1.5px;
+    margin: 0px 2px;
+    padding: 2px 6px;
+    border-radius: 4px;
 
     > .ui-button-text {
         padding: 0;
     }
 
     &:link:hover {
-        background: #707070 url("images/ui-bg_flat_100_707070_40x100.png") repeat-x scroll 50% 50%;
+        background: #707070 url("../images/ui-bg_flat_100_707070_40x100.png") repeat-x scroll 50% 50%;
         border: 1px solid #939393;
         color: #fbeab2;
         font-weight: bold;
@@ -166,7 +291,8 @@ a {
 
 .demNavigationSpan {
     margin: 0 2px;
-    padding: 0 2px;
+    padding: 2px 6px;
+    border-radius: 4px;
 }
 
 .topic-actions {
@@ -203,12 +329,16 @@ a {
 
 .ui-poll-common-color {
     background: #cccccc url("Themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png") repeat-x scroll 50% 50%;
+    border-radius: 4px;
+    padding-top: 1.5px;
+    padding-left: 2px;
 }
 
 .ui-poll-result-color {
     background: #f1831f url("../images/DEM/ui-poll-result-f1831f_1x100.png") repeat-x scroll 50% 50%;
     height: 2em;
     line-height: 2em;
+    border-radius: 3px;
     text-align: right;
     padding-right: 8px;
 }
@@ -216,6 +346,12 @@ a {
 .ui-pollOptional-total {
     color: #ffffff;
     padding-right: 2px;
+    padding-left: 2px;
+}
+
+#pollsMainPanel {
+    display: flex;
+    justify-content: center;
 }
 
 .pollContainer {
@@ -223,24 +359,30 @@ a {
     box-shadow: 0px 0px 15px #121212;
     box-sizing: border-box;
     margin: 5px 0;
-    padding: 5px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .pollTitle {
     color: #ffffff;
     font-size: 1.8em;
+    margin: 0px 10px;
 }
 
 .pollMaxOptionsDescription,
 .pollTotalVoted {
     color: #ffffff;
     font-size: 1em;
-    padding: 5px;
+    padding-bottom: 6px;
+    margin-left: 5px;
+    text-align: center;
 }
 
 .pollOptionsConteiner {
     margin: 10px;
-    box-shadow: 0px 0px 15px #121212;
+    box-shadow: 0px 0px 7px #121212;
     box-sizing: border-box;
 }
 
@@ -261,6 +403,7 @@ a {
 
 .pollOptionColumn {
     display: table-cell;
+    vertical-align: middle;
 }
 
 .pollOptionTotalPercent {
@@ -276,6 +419,7 @@ a {
 .pollOptionText {
     width: 30%;
     font-size: 1.1em;
+    padding-left: 5px;
 }
 
 .divCenter {
@@ -287,39 +431,54 @@ div.clear {
 }
 
 .postShadow {
-    box-shadow: 0px 0px 15px #121212;
     box-sizing: border-box;
 }
 
 .post {
-    margin: 5px 0;
-    padding: 5px;
+    margin: 5px 5px 5px 0;
+    border: 1px solid #666666;
+}
+
+.postLink {
+    margin-left: 15px;
 }
 
 .postBody {
-    width: 1150px;
+    background-color: #606060;
     float: left;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .postTextAndSignature {
-    width: 390px;
     float: left;
+}
+
+.postTextAndSigSeparator {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+    border: 0;
+    border-top: 1px solid #777;
 }
 
 .postUserInfo {
-    background-color: #4c4c4c;
-    width: 200px;
-    margin: 10px;
-    padding: 15px;
+    background-color: #424242;
+    border-right: 1px solid #242424;
+    text-align: center;
     float: left;
 }
 
-.postText,
-.postUserSignature {
-    background-color: #4c4c4c;
-    margin: 10px 10px 10px 5px;
-    padding: 15px;
-    width: 915px;
+.UserRank {
+    margin-bottom: 5px;
+}
+
+.postTextAndSigAndInfo {
+    display: flex;
+    padding: 0px;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .postTextAndSignature img {
@@ -328,9 +487,86 @@ div.clear {
     width: 100%;
 }
 
+.postInfoTop {
+    background: #383838;
+    display: flex;
+    border-bottom: 1px solid #242424;
+    flex-direction: row;
+    padding: 4px 0px 4px 20px;
+}
+
+.postInfoBottom {
+    text-align: right;
+}
+
+.admin-delete-post-buttons {
+    text-align: start;
+    padding: 6px 17px;
+    background: #383838;
+}
+
+.postEditTime {
+    font-size: 0.9em;
+    color: lightgrey;
+}
+
+.postCreateTime {
+    color: lightgrey;
+}
+
 .avatarImageSize {
-    max-width: 150px;
-    max-height: 150px;
+    object-fit: scale-down;
+    min-width: 30%;
+    object-fit: scale-down;
+    min-width: 30%;
+    max-width: 100%;
+    width: auto;
+}
+
+.postUserInfo {
+    padding: 3px 3px;
+}
+
+.UserAvatar {
+    margin: 5px;
+    aspect-ratio: 1;
+    border-radius: 10%;
+    overflow: hidden;
+}
+
+.postText,
+.postUserSignature {
+    padding: 6px 11px;
+    overflow-wrap: anywhere;
+    font-size: 1.15em;
+}
+
+@media (min-width: 768px) {
+    .avatarImageSize {
+        max-width: 128px;
+        width: 100%;
+    }
+
+    .postUserInfo {
+        padding: 10px 15px 10px 15px;
+    }
+
+    .UserAvatar {
+        aspect-ratio: auto;
+        margin: 10px;
+        border-radius: 0px;
+    }
+
+    .postText,
+    .postUserSignature {
+    padding: 13px 19px;
+    font-size: 1.1em;
+    }
+}
+
+.smallTime {
+    font-size: 0.9em;
+    margin: 0px 5px;
 }
 
 .postColor1 {
@@ -345,6 +581,19 @@ div.clear {
     /*todo*/
 }
 
+.topicColor1 {
+    background: #565656;
+}
+
+.topicColor2 {
+    background: #464646;
+}
+
+
+.UsenName {
+    padding-bottom: 1px;
+}
+
 .userName {
     font-size: 1.1em;
     font-weight: bold;
@@ -354,24 +603,31 @@ div.clear {
     margin: 5px;
 }*/
 
-.UserAvatar {
-    margin: 5px 0;
-}
-
 blockquote {
-    background: #8d8782 none no-repeat scroll 10px 7px;
-    background-image: url("data:image/gif;base64,R0lGODlhDwAMALMPAHBwbj8/P62sqaGgnYiIht7d2FhXVnx8ektLS8XFwWRkYrm4tdLRzJWUkTMzM+rp5CH5BAEAAA8ALAAAAAAPAAwAAARG8MlJK12GUaYSFY6jTEngIIWUhIj2MGawTEjoPko4SwNLhg4KACiQNICNSQ6oOQAdu2Vo8CA8k48jcAZCToYOwkQLsJgpEQA7");
-    border: 1px solid #d8d8d8;
+    background: #464646;
+    border: 1px dotted #000000;
     font-size: 0.95em;
-    margin: 0.5em 1px 0 25px;
+    margin: 0.5em 0.5em 0 0.5em;
     overflow: hidden;
+    word-wrap: normal;
     padding: 10px;
+
+    blockquote p {
+        padding-top: 10px;
+        margin: 0px;
+    }
 }
 
 .quoteAutor {
-    bottom: 3px;
-    padding-left: 20px;
+    bottom: 0px;
+    padding: 8px 10px;
+    font-weight: bold;
+    margin-left: -10px;
+    margin-top: -10px;
+    margin-right: -10px;
     position: relative;
+    border-left: 4px #927d6a solid;
+    background: #755f4b url("../images/DEM/quote.gif") no-repeat right;
 }
 
 dl {
@@ -411,29 +667,29 @@ dl {
 
     &.spoilerbox {
         background-color: #615952;
-        border: 1px solid #d8d8d8;
+        border: 2px solid #292929;
         font-size: 1em;
         margin: 0.25em 0;
-        padding: 3px;
 
         > dt {
-            color: #fbeab2;
+            color: #fbf6e4;
             cursor: pointer;
             display: block;
             font-size: 0.9em;
             line-height: 0.9em;
-            padding: 4px 5px 4px 18px;
+            padding: 8px 14px;
             width: auto;
         }
 
         &.spoilerbox-on > dd {
             display: block;
+            background: #464646;
+            padding: 10px;
         }
 
         > dd {
-            border-top: 1px solid #cccccc;
+            border-top: 2px solid #292929;
             display: none;
-            margin-top: 3px;
             padding: 3px 3px 0;
         }
     }
@@ -487,13 +743,15 @@ dl {
 
         a {
             border: 1px solid transparent;
-            /*height: 21px;*/
-            line-height: 22px;
-            margin: 1px 1px 1px 0;
+            line-height: 25px;
             padding: 0 10px 0 11px;
             display: block;
             float: left;
             white-space: nowrap;
+        }
+
+        a:hover {
+            background: #333 none repeat scroll 0 0;
         }
     }
 }
@@ -595,4 +853,12 @@ dl {
 .ui-button-external-logins{
     padding: .4em 1em;
     margin: 2px 0;
+}
+
+span.yellowText {
+    color: #fbeab2;
+}
+
+span.subForumName {
+    margin-right: 3px;
 }

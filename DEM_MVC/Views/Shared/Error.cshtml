@@ -1,17 +1,18 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
 
 @{
-    ViewBag.Title = "Error";
+    ViewBag.Title = "Ошибка - DeusExMachina Форум";
 }
 
 <h1 class="text-danger">Error.</h1>
 @{
     if (String.IsNullOrEmpty(ViewBag.errorMessage))
     {
-        <h2 class="text-danger">An error occurred while processing your request.</h2>
+        <h2 class="text-danger">Возникла ошибка при попытке обработать ваш запрос. Обратитесь к администратору через наш Discord.</h2>
     }
     else
     {
+        <h2 class="text-danger">Возникла ошибка при попытке обработать ваш запрос. Обратитесь к администратору через наш Discord.</h2>
         <h2 class="text-danger">@ViewBag.errorMessage</h2>
     }
 }

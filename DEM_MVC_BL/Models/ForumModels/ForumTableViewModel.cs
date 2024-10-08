@@ -20,7 +20,11 @@ namespace DEM_MVC_BL.Models.ForumModels
         public string LastTopicTitle { get; set; }
         public int LastTopicId { get; set; }
         public int ForumOrder { get; set; }
+        public int LastPostId { get; set; }
+        public int LastTopicPostCount { get; set; }
         public List<ForumTableViewModel> SubForums { get; set; }
+        public List<Tuple<int, string>> Parents { get; set; }
+        public bool Invisible { get; set; }
 
         public ForumTableViewModel()
         {
