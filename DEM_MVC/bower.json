@@ -1,5 +1,5 @@
 {
-  "name": "DeusExMachina",
+  "name": "deusexmachina",
   "private": true,
   "dependencies": {
     "jquery": "^2.2.3",
